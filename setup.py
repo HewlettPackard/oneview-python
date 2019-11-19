@@ -20,13 +20,13 @@ from setuptools import find_packages
 from setuptools import setup
 
 setup(name='hpOneView',
-      version='5.0.0-beta',
+      version='5.0.0',
       description='HPE OneView Python Library',
-      url='https://github.com/HewlettPackard/python-hpOneView',
-      download_url="https://github.com/HewlettPackard/python-hpOneView/tarball/v5.0.0-beta",
+      url='https://github.com/HewlettPackard/oneview-python',
+      download_url="https://github.com/HewlettPackard/oneview-python/tarball/v5.0.0",
       author='Hewlett Packard Enterprise Development LP',
       author_email='oneview-pythonsdk@hpe.com',
-      license='MIT',
+      license='Apache',
       packages=find_packages(exclude=['examples*', 'tests*']),
       keywords=['oneview', 'hpe'],
       install_requires=['future>=0.15.2'])
