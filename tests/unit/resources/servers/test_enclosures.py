@@ -102,7 +102,6 @@ class EnclosuresTest(TestCase):
         mock_patch.return_value = {}
 
         self._enclosures.patch('replace', '/name', 'new_name', timeout=1)
-        print (self._enclosures.data)
         mock_patch.assert_called_once_with('/rest/enclosures/ad28cf21-8b15-4f92-bdcf-51cb2042db32',
                                            body=[{u'path': '/name', u'value': 'new_name', u'op': 'replace'}],
                                            custom_headers=None, timeout=1)
