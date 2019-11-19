@@ -13,9 +13,8 @@ Extends support of the SDK to OneView REST API version 800 (OneView v4.10).
   From this version onwards, create/get_by_name/get_by_id will return an object of the resource instead of data.
 
   E.g.
-       oneview_client = OneViewClient(config)
-       fc_networks = oneview_client.fc_networks
-
+       oneview_client = OneViewClient(config)              # Create OneView client
+       fc_networks = oneview_client.fc_networks            # Get FCNetowrk resource client
        fc_network = fc_networks.get_by_name(name) / create # Get an existing FCNetwork's object by it's name or create one
        fc_network.update(update_data)                      # Update FCNetwork
        fc_network.delete()                                 # Delete FCNetwork
