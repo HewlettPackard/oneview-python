@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hpOneView.resources.task_monitor &mdash; HPE OneView Python SDK 5.0.0-beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> HPE OneView Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.0-beta
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">HPE OneView Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../hpOneView.html">hpOneView</a> &raquo;</li>
+        
+      <li>hpOneView.resources.task_monitor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hpOneView.resources.task_monitor</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">###</span>
+<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">###</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="kn">from</span> <span class="nn">future</span> <span class="k">import</span> <span class="n">standard_library</span>
+
+<span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
+
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">errno</span> <span class="k">import</span> <span class="n">ECONNABORTED</span><span class="p">,</span> <span class="n">ETIMEDOUT</span><span class="p">,</span> <span class="n">ENOEXEC</span><span class="p">,</span> <span class="n">EINVAL</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ECONNRESET</span><span class="p">,</span> <span class="n">ENETDOWN</span><span class="p">,</span> <span class="n">ECONNREFUSED</span>
+<span class="kn">from</span> <span class="nn">hpOneView.exceptions</span> <span class="k">import</span> <span class="n">HPOneViewInvalidResource</span><span class="p">,</span> <span class="n">HPOneViewTimeout</span><span class="p">,</span> <span class="n">HPOneViewTaskError</span><span class="p">,</span> <span class="n">HPOneViewUnknownType</span>
+
+<span class="n">TASK_PENDING_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;New&#39;</span><span class="p">,</span> <span class="s1">&#39;Starting&#39;</span><span class="p">,</span> <span class="s1">&#39;Pending&#39;</span><span class="p">,</span> <span class="s1">&#39;Running&#39;</span><span class="p">,</span> <span class="s1">&#39;Suspended&#39;</span><span class="p">,</span> <span class="s1">&#39;Stopping&#39;</span><span class="p">]</span>
+<span class="n">TASK_ERROR_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="s1">&#39;Warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Terminated&#39;</span><span class="p">,</span> <span class="s1">&#39;Killed&#39;</span><span class="p">]</span>
+<span class="n">TASK_COMPLETED_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="s1">&#39;Warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Completed&#39;</span><span class="p">,</span> <span class="s1">&#39;Terminated&#39;</span><span class="p">,</span> <span class="s1">&#39;Killed&#39;</span><span class="p">]</span>
+
+<span class="n">MSG_UNKNOWN_OBJECT_TYPE</span> <span class="o">=</span> <span class="s1">&#39;Unknown object type&#39;</span>
+<span class="n">MSG_TASK_TYPE_UNRECONIZED</span> <span class="o">=</span> <span class="s2">&quot;Task type: &#39;</span><span class="si">%s</span><span class="s2">&#39; resource is not a recognized version&quot;</span>
+<span class="n">MSG_UNKNOWN_EXCEPTION</span> <span class="o">=</span> <span class="s1">&#39;Unknown Exception&#39;</span>
+<span class="n">MSG_TIMEOUT</span> <span class="o">=</span> <span class="s1">&#39;Waited </span><span class="si">%s</span><span class="s1"> seconds for task to complete, aborting&#39;</span>
+<span class="n">MSG_INVALID_TASK</span> <span class="o">=</span> <span class="s1">&#39;Invalid task was provided&#39;</span>
+
+<span class="n">UNLIMITED_TIMEOUT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="TaskMonitor"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor">[docs]</a><span class="k">class</span> <span class="nc">TaskMonitor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># Seconds to wait when a network failure occurs</span>
+    <span class="n">CONNECTION_FAILURE_TIMEOUT</span> <span class="o">=</span> <span class="mi">90</span>
+
+    <span class="c1"># Known error numbers when the connection drops</span>
+    <span class="n">CONNECTION_FAILURE_ERROR_NUMBERS</span> <span class="o">=</span> <span class="p">[</span><span class="n">ENOEXEC</span><span class="p">,</span> <span class="n">EINVAL</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ETIMEDOUT</span><span class="p">,</span> <span class="n">ECONNRESET</span><span class="p">,</span>
+                                        <span class="n">ECONNABORTED</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ENETDOWN</span><span class="p">,</span> <span class="n">ECONNREFUSED</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
+
+<div class="viewcode-block" id="TaskMonitor.get_current_seconds"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.get_current_seconds">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_current_seconds</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TaskMonitor.wait_for_task"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.wait_for_task">[docs]</a>    <span class="k">def</span> <span class="nf">wait_for_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wait for task execution and return associated resource.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task: task dict</span>
+<span class="sd">            timeout: timeout in seconds</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Associated resource when creating or updating; True when deleting.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wait_task_completion</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+        <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Waiting for task. Percentage complete: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;computedPercentComplete&#39;</span><span class="p">)))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Waiting for task. Task state: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;taskState&#39;</span><span class="p">)))</span>
+
+        <span class="n">task_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_task_response</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Task completed&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">task_response</span></div>
+
+<div class="viewcode-block" id="TaskMonitor.get_completed_task"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.get_completed_task">[docs]</a>    <span class="k">def</span> <span class="nf">get_completed_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Waits until the task is completed and returns the task resource.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task: TaskResource</span>
+<span class="sd">            timeout: Timeout in seconds</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: TaskResource</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wait_task_completion</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__wait_task_completion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HPOneViewUnknownType</span><span class="p">(</span><span class="n">MSG_INVALID_TASK</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Waiting for task completion...&#39;</span><span class="p">)</span>
+
+        <span class="c1"># gets current cpu second for timeout</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_seconds</span><span class="p">()</span>
+        <span class="n">connection_failure_control</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">last_success</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_current_seconds</span><span class="p">())</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_task_running</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">connection_failure_control</span><span class="p">):</span>
+            <span class="c1"># wait 1 to 10 seconds</span>
+            <span class="c1"># the value increases to avoid flooding server with requests</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="mi">10</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Waiting for task. Percentage complete: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;computedPercentComplete&#39;</span><span class="p">)))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Waiting for task. Task state: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;taskState&#39;</span><span class="p">)))</span>
+
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">timeout</span> <span class="o">!=</span> <span class="n">UNLIMITED_TIMEOUT</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">start_time</span> <span class="o">+</span> <span class="n">timeout</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_seconds</span><span class="p">()):</span>
+                <span class="k">raise</span> <span class="n">HPOneViewTimeout</span><span class="p">(</span><span class="n">MSG_TIMEOUT</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">timeout</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__get_task_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="n">deleted_states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Delete&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;Remove&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;Delete server hardware type&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;Remove SAN manager&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskState&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">TASK_ERROR_STATES</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskState&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Warning&#39;</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">error_code</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="s1">&#39;taskErrors&#39;</span> <span class="ow">in</span> <span class="n">task</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskErrors&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskErrors&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s1">&#39;message&#39;</span> <span class="ow">in</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="n">err</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+
+                <span class="n">error_code</span> <span class="o">=</span> <span class="n">err</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;errorCode&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">msg</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">HPOneViewTaskError</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">error_code</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="s1">&#39;taskStatus&#39;</span> <span class="ow">in</span> <span class="n">task</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskStatus&#39;</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="n">HPOneViewTaskError</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskStatus&#39;</span><span class="p">],</span> <span class="n">error_code</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">HPOneViewTaskError</span><span class="p">(</span><span class="n">MSG_UNKNOWN_EXCEPTION</span><span class="p">,</span> <span class="n">error_code</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">task</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">deleted_states</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">task</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Task&#39;</span><span class="p">):</span>
+            <span class="c1"># get associated resource when is not a delete task</span>
+            <span class="n">task</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_associated_resource</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">entity</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Task completed, unknown response: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">task</span>
+
+<div class="viewcode-block" id="TaskMonitor.is_task_running"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.is_task_running">[docs]</a>    <span class="k">def</span> <span class="nf">is_task_running</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">connection_failure_control</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if a task is running according to: TASK_PENDING_STATES [&#39;New&#39;, &#39;Starting&#39;,</span>
+<span class="sd">        &#39;Pending&#39;, &#39;Running&#39;, &#39;Suspended&#39;, &#39;Stopping&#39;]</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task (dict): OneView Task resource.</span>
+<span class="sd">            connection_failure_control (dict):</span>
+<span class="sd">                A dictionary instance that contains last_success for error tolerance control.</span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">            &gt;&gt;&gt; connection_failure_control = dict(last_success=int(time.time()))</span>
+<span class="sd">            &gt;&gt;&gt; while self.is_task_running(task, connection_failure_control):</span>
+<span class="sd">            &gt;&gt;&gt;     pass</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True when in TASK_PENDING_STATES; False when not.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;uri&#39;</span> <span class="ow">in</span> <span class="n">task</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">connection_failure_control</span><span class="p">:</span>
+                    <span class="c1"># Updates last success</span>
+                    <span class="n">connection_failure_control</span><span class="p">[</span><span class="s1">&#39;last_success&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_seconds</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s1">&#39;taskState&#39;</span> <span class="ow">in</span> <span class="n">task</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskState&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">TASK_PENDING_STATES</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">error</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; when waiting for the task: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">connection_failure_control</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">error</span>
+
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">&#39;errno&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">error</span><span class="o">.</span><span class="n">errno</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">CONNECTION_FAILURE_ERROR_NUMBERS</span><span class="p">:</span>
+                    <span class="n">last_success</span> <span class="o">=</span> <span class="n">connection_failure_control</span><span class="p">[</span><span class="s1">&#39;last_success&#39;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">last_success</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">CONNECTION_FAILURE_TIMEOUT</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_seconds</span><span class="p">():</span>
+                        <span class="c1"># Timeout reached</span>
+                        <span class="k">raise</span> <span class="n">error</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Return task is running when network instability occurs</span>
+                        <span class="k">return</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">error</span>
+
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="TaskMonitor.get"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a task by its uri.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task: task dict, must have &#39;uri&#39; key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            task dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">task</span></div>
+
+<div class="viewcode-block" id="TaskMonitor.get_associated_resource"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.get_associated_resource">[docs]</a>    <span class="k">def</span> <span class="nf">get_associated_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a resource associated with a task.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task: task dict</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: task (updated), the entity found (dict)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HPOneViewUnknownType</span><span class="p">(</span><span class="n">MSG_INVALID_TASK</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;tasks&#39;</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;backups&#39;</span><span class="p">:</span>
+            <span class="c1"># it is an error if type is not in obj, so let the except flow</span>
+            <span class="k">raise</span> <span class="n">HPOneViewUnknownType</span><span class="p">(</span><span class="n">MSG_UNKNOWN_OBJECT_TYPE</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TaskResourceV2&#39;</span><span class="p">:</span>
+            <span class="n">resource_uri</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;associatedResource&#39;</span><span class="p">][</span><span class="s1">&#39;resourceUri&#39;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">resource_uri</span> <span class="ow">and</span> <span class="n">resource_uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/rest/appliance/support-dumps/&quot;</span><span class="p">):</span>
+                <span class="c1"># Specific for support dumps</span>
+                <span class="k">return</span> <span class="n">task</span><span class="p">,</span> <span class="n">resource_uri</span>
+
+        <span class="k">elif</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BACKUP&#39;</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskUri&#39;</span><span class="p">])</span>
+            <span class="n">resource_uri</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HPOneViewInvalidResource</span><span class="p">(</span><span class="n">MSG_TASK_TYPE_UNRECONIZED</span> <span class="o">%</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+
+        <span class="n">entity</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">resource_uri</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">resource_uri</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">task</span><span class="p">,</span> <span class="n">entity</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright (C) 2016 Hewlett Packard Enterprise Development LP
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

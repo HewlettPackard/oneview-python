@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hpOneView.resources.servers.server_profile_templates &mdash; HPE OneView Python SDK 5.0.0-beta documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> HPE OneView Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.0-beta
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">HPE OneView Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../hpOneView.html">hpOneView</a> &raquo;</li>
+        
+      <li>hpOneView.resources.servers.server_profile_templates</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hpOneView.resources.servers.server_profile_templates</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">###</span>
+<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">###</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">future</span> <span class="k">import</span> <span class="n">standard_library</span>
+
+<span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">from</span> <span class="nn">hpOneView.resources.resource</span> <span class="k">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ensure_resource_client</span>
+
+
+<div class="viewcode-block" id="ServerProfileTemplate"><a class="viewcode-back" href="../../../../hpOneView.resources.servers.html#hpOneView.resources.servers.server_profile_templates.ServerProfileTemplate">[docs]</a><span class="k">class</span> <span class="nc">ServerProfileTemplate</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The server profile template resource provides methods to create, retrieve, modify, and delete server</span>
+<span class="sd">    profile templates.</span>
+
+<span class="sd">    A server profile template serves as a structural reference when creating a server profile.</span>
+<span class="sd">    All of the configuration constructs of a server profile are present in the server profile template.</span>
+<span class="sd">    The server profile template serves as the initial and ongoing reference for the structure of a server profile.</span>
+<span class="sd">    The server profile template defines the centralized source for the configuration of firmware, connections,</span>
+<span class="sd">    local storage, SAN storage, boot, BIOS, profile affinity and hide unused flexNICs.</span>
+
+<span class="sd">    After being created from a server profile template, the server profile continues to maintain an association to its</span>
+<span class="sd">    server profile template. Any drift in configuration consistency between the server profile template and server</span>
+<span class="sd">    profile(s) is monitored and made visible on both the server profile template and the associated server profile(s).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/server-profile-templates&#39;</span>
+    <span class="n">TRANSFORMATION_PATH</span> <span class="o">=</span> <span class="s2">&quot;/transformation/?serverHardwareTypeUri=</span><span class="si">{server_hardware_type_uri}</span><span class="s2">&quot;</span> <span class="o">+</span> \
+                          <span class="s2">&quot;&amp;enclosureGroupUri=</span><span class="si">{enclosure_group_uri}</span><span class="s2">&quot;</span>
+
+    <span class="n">DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ServerProfileTemplateV1&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;300&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ServerProfileTemplateV2&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;500&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ServerProfileTemplateV3&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ServerProfileTemplateV4&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ServerProfileTemplateV5&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ServerProfileTemplate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ServerProfileTemplate.get_all"><a class="viewcode-back" href="../../../../hpOneView.resources.servers.html#hpOneView.resources.servers.server_profile_templates.ServerProfileTemplate.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets a list of server profile templates based on optional sorting and filtering and is constrained by start and</span>
+<span class="sd">        count parameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start: The first item to return, using 0-based indexing. If not specified, the default</span>
+<span class="sd">                is 0 - start with the first available item.</span>
+<span class="sd">            count: The number of resources to return. Providing a -1 for the count parameter will restrict</span>
+<span class="sd">                the result set size to 64 server profile templates. The maximum number of profile templates</span>
+<span class="sd">                is restricted to 256, that is, if user requests more than 256, this will be internally limited to 256.</span>
+<span class="sd">                The actual number of items in the response might differ from the</span>
+<span class="sd">                requested count if the sum of start and count exceeds the total number of items, or if returning the</span>
+<span class="sd">                requested number of items would take too long.</span>
+<span class="sd">            filter (list or str): A general filter/query string to narrow the list of items returned. The default is no filter; all</span>
+<span class="sd">                resources are returned. Filters are supported for the name, description, affinity, macType, wwnType,</span>
+<span class="sd">                serialNumberType, status, serverHardwareTypeUri, enclosureGroupUri, and firmware.firmwareBaselineUri attributes.</span>
+<span class="sd">            sort: The sort order of the returned data set. By default, the sort order is based</span>
+<span class="sd">                on create time with the oldest entry first.</span>
+<span class="sd">            scope_uris: An expression to restrict the resources returned according to the scopes to which they are assigned.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of server profile templates.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="n">scope_uris</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ServerProfileTemplate.create"><a class="viewcode-back" href="../../../../hpOneView.resources.servers.html#hpOneView.resources.servers.server_profile_templates.ServerProfileTemplate.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: Additional fields can be passed to create the resource.</span>
+<span class="sd">            uri: Resouce uri</span>
+<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">                in OneView; it just stops waiting for its completion.</span>
+<span class="sd">            force: Flag to force the operation</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Created resource.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">default_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_default_values</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">default_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="n">resource_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">)</span>
+        <span class="n">new_resource</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">,</span> <span class="n">resource_data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_resource</span></div>
+
+    <span class="nd">@ensure_resource_client</span><span class="p">(</span><span class="n">update_data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates server profile template.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: Data to update the resource.</span>
+<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">                in OneView; it just stops waiting for its completion.</span>
+<span class="sd">            force: Force the update operation.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dict with the updated resource data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
+
+        <span class="n">resource</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">resource</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_new_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A profile object will be returned with the configuration based on this template. Specify the profile name and</span>
+<span class="sd">        server hardware to assign. If template has any fiber channel connection (which is specified as bootable) but no</span>
+<span class="sd">        boot target was defined, that connection will be instantiated as a non-bootable connection. So modify that</span>
+<span class="sd">        connection to change it to bootable and to specify the boot target.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: The server profile resource.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/new-profile&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_hardware_type_uri</span><span class="p">,</span> <span class="n">enclosure_group_uri</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transforms an existing profile template by supplying a new server hardware type and enclosure group or both.</span>
+<span class="sd">        A profile template will be returned with a new configuration based on the capabilities of the supplied</span>
+<span class="sd">        server hardware type and/or enclosure group. All configured connections will have their port assignments</span>
+<span class="sd">        set to &#39;Auto.&#39;</span>
+<span class="sd">        The new profile template can subsequently be used in the update method, but is not guaranteed to pass</span>
+<span class="sd">        validation. Any incompatibilities will be flagged when the transformed server profile template is submitted.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            This method is available for API version 300 or later.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            server_hardware_type_uri: The URI of the new server hardware type.</span>
+<span class="sd">            enclosure_group_uri: The URI of the new enclosure group.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: The server profile template resource.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TRANSFORMATION_PATH</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">],</span> <span class="n">query_params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ServerProfileTemplate.get_available_networks"><a class="viewcode-back" href="../../../../hpOneView.resources.servers.html#hpOneView.resources.servers.server_profile_templates.ServerProfileTemplate.get_available_networks">[docs]</a>    <span class="k">def</span> <span class="nf">get_available_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the list of Ethernet networks, Fibre Channel networks and network sets that are available</span>
+<span class="sd">        to a server profile template along with their respective ports. The scopeUris, serverHardwareTypeUri and</span>
+<span class="sd">        enclosureGroupUri parameters should be specified to get the available networks for a new server profile template.</span>
+<span class="sd">        The serverHardwareTypeUri, enclosureGroupUri, and profileTemplateUri should be specified to get available</span>
+<span class="sd">        networks for an existing server profile template.</span>
+<span class="sd">        The scopeUris parameter is ignored when the profileTemplateUri is specified.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            enclosureGroupUri: The URI of the enclosure group is required when the serverHardwareTypeUri</span>
+<span class="sd">                specifies a blade server.</span>
+<span class="sd">            profileTemplateUri: If the URI of the server profile template is provided the list of available</span>
+<span class="sd">                networks will include only networks that share a scope with the server profile template.</span>
+<span class="sd">            scopeUris: An expression to restrict the resources returned according to the scopes</span>
+<span class="sd">                to which they are assigned.</span>
+<span class="sd">            serverHardwareTypeUri: If the server hardware type specifies a rack server, the list of</span>
+<span class="sd">                available network includes all networks that are applicable for the specified server hardware type.</span>
+<span class="sd">                If the server hardware type specifies a blade server, the enclosureGroupUri parameter must be</span>
+<span class="sd">                specified, and the list of available networks includes all networks that are applicable for the</span>
+<span class="sd">                specified server hardware type and all empty bays within the enclosure group that can support</span>
+<span class="sd">                the specified server hardware type.</span>
+<span class="sd">            view: The FunctionType (Ethernet or FibreChannel) to filter the list of networks returned.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary with available networks details.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query_string</span> <span class="o">=</span> <span class="s1">&#39;&amp;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">?</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;/available-networks&quot;</span><span class="p">,</span> <span class="n">query_string</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright (C) 2016 Hewlett Packard Enterprise Development LP
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
