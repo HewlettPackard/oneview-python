@@ -21,7 +21,7 @@ import mock
 
 from hpOneView.connection import connection
 from hpOneView.resources.networking.network_sets import NetworkSets
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class NetworkSetsTest(unittest.TestCase):
@@ -29,17 +29,18 @@ class NetworkSetsTest(unittest.TestCase):
         self.host = '127.0.0.1'
         self.connection = connection(self.host)
         self._network_sets = NetworkSets(self.connection)
+        self._network_sets.data = {'uri': '/rest/network-sets/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(Resource, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
         self._network_sets.get_all(2, 500, filter, sort)
 
-        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(2, 500, filter, sort)
 
-    @mock.patch.object(ResourceClient, 'create')
+    @mock.patch.object(ResourceHelper, 'create')
     def test_create_should_use_given_values(self, mock_create):
         resource = {
             'name': 'OneViewSDK Test Network Set',
@@ -51,61 +52,40 @@ class NetworkSetsTest(unittest.TestCase):
         mock_create.return_value = {}
 
         self._network_sets.create(resource, 10)
-        mock_create.assert_called_once_with(resource_rest_call, timeout=10,
-                                            default_values=self._network_sets.DEFAULT_VALUES)
+        mock_create.assert_called_once_with(resource_rest_call, 10, -1, None, False)
 
-    @mock.patch.object(ResourceClient, 'update')
-    def test_update_should_use_given_values(self, mock_update):
+    @mock.patch.object(ResourceHelper, 'do_put')
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_update_should_use_given_values(self, mock_get, mock_put):
         resource = {
             'name': 'OneViewSDK Test Network Set',
             'type': 'network-set',
-            'uri': 'a_uri',
             'connectionTemplateUri': None
         }
-        resource_rest_call = resource.copy()
-        mock_update.return_value = {}
+        resource_updated = resource.copy()
+        resource_updated['uri'] = self._network_sets.data["uri"]
+        mock_put.return_value = resource_updated
+        mock_get.return_value = resource
 
         self._network_sets.update(resource, 20)
-        mock_update.assert_called_once_with(resource_rest_call, timeout=20,
-                                            default_values=self._network_sets.DEFAULT_VALUES)
+        mock_put.assert_called_once_with(self._network_sets.data['uri'],
+                                         resource_updated, 20, None)
 
-    @mock.patch.object(ResourceClient, 'delete')
+    @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
-        id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
-        self._network_sets.delete(id, force=False)
+        self._network_sets.delete(force=False)
+        mock_delete.assert_called_once_with(self._network_sets.data["uri"],
+                                            custom_headers=None,
+                                            force=False, timeout=-1)
 
-        mock_delete.assert_called_once_with(id, force=False, timeout=-1)
-
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):
         self._network_sets.get_by('name', 'OneViewSDK Test Network Set')
 
         mock_get_by.assert_called_once_with(
             'name', 'OneViewSDK Test Network Set')
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_called_once(self, mock_get):
-        self._network_sets.get('3518be0e-17c1-4189-8f81-83f3724f6155')
-
-        mock_get.assert_called_once_with(
-            '3518be0e-17c1-4189-8f81-83f3724f6155')
-
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_with_uri_called_once(self, mock_get):
-        uri = '/rest/network-sets/3518be0e-17c1-4189-8f81-83f3724f6155'
-        self._network_sets.get(uri)
-
-        mock_get.assert_called_once_with(uri)
-
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_without_ethernet_called_once(self, mock_get):
-        id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
-        uri = '/rest/network-sets/ad28cf21-8b15-4f92-bdcf-51cb2042db32/withoutEthernet'
-        self._network_sets.get_without_ethernet(id)
-
-        mock_get.assert_called_once_with(uri)
-
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_without_ethernet_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
@@ -114,10 +94,10 @@ class NetworkSetsTest(unittest.TestCase):
 
         mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
 
-    @mock.patch.object(ResourceClient, 'patch')
+    @mock.patch.object(ResourcePatchMixin, 'patch')
     def test_patch_should_use_user_defined_values(self, mock_patch):
         mock_patch.return_value = {}
 
-        self._network_sets.patch('/rest/fake/ns123', 'replace', '/scopeUris', ['/rest/fake/scope123'], 1)
-        mock_patch.assert_called_once_with('/rest/fake/ns123', 'replace', '/scopeUris',
-                                           ['/rest/fake/scope123'], timeout=1)
+        self._network_sets.patch('replace', '/scopeUris', ['/rest/fake/scope123'], 1)
+        mock_patch.assert_called_once_with('replace', '/scopeUris',
+                                           ['/rest/fake/scope123'], 1)
