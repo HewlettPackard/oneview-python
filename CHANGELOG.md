@@ -1,16 +1,16 @@
 # 5.0.0
 #### Notes
-Extends support of the SDK to OneView REST API version 800 (OneView v4.10).
+Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 
 #### Major changes
- 1. Extending support of the SDK to API version 800.
- 2. Refactored base classes to make available resource data with the resource object.
+ 1. Extending support of the SDK to API version 1200.
+ 2. Refactored base classes to make resource data available with the resource object.
     This will help to add more helper methods for the resources and hide data complexity from the user.
  3. Introduced mixin classes to include the optional features of the resources.
 
 #### Breaking
   Enhancement made in this version breaks the previous version of the SDK.
-  From this version onwards, create/get_by_name/get_by_id will return an object of the resource instead of data.
+  From this version onwards, create/update/get_by_name/get_by_id will return an object of the resource instead of data.
 
   E.g.
 ```
@@ -23,6 +23,9 @@ Extends support of the SDK to OneView REST API version 800 (OneView v4.10).
   Refer example directory for more examples.
 
 #### Features supported with the current release
+- Network set
+
+# TODO: Move the below resources to the above list once the resource module is updated to use API versions 1000 and 1200
 - Connection template
 - Enclosure
 - Enclosure group
