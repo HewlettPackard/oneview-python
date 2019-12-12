@@ -94,6 +94,12 @@ class NetworkSetsTest(unittest.TestCase):
 
         mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
 
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_without_ethernet_called_once(self, mock_get):
+        uri = "{}/withoutEthernet".format(self._network_sets.data['uri'])
+        self._network_sets.get_without_ethernet()
+        mock_get.assert_called_once_with(uri)
+
     @mock.patch.object(ResourcePatchMixin, 'patch')
     def test_patch_should_use_user_defined_values(self, mock_patch):
         mock_patch.return_value = {}
