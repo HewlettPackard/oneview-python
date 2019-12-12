@@ -120,7 +120,7 @@
 |<sub>/rest/logical-interconnects/{id}/settings</sub>                                     | PUT      | :white_check_mark:   | :heavy_minus_sign:   | :heavy_minus_sign:   |
 |<sub>/rest/logical-interconnects/{id}/snmp-configuration</sub>                           | GET      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/snmp-configuration</sub>                           | PUT      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/logical-interconnects/{id}/support-dumps</sub>                                | POST     | tion_x:   | :heavy_multiplication_x:   | :heavy_multiplication_x:   | :heavy_multiplication_x:   |
+|<sub>/rest/logical-interconnects/{id}/support-dumps</sub>                                | POST     | :heavy_multiplication_x: | :heavy_multiplication_x:   | :heavy_multiplication_x:  |
 |<sub>/rest/logical-interconnects/{id}/unassignedPortsForPortMonitor</sub>                | GET      | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/unassignedUplinkPortsForPortMonitor</sub>          | GET      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/configuration</sub>                                | PUT      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
@@ -128,7 +128,7 @@
 |<sub>/rest/logical-interconnects/{id}/port-monitor</sub>                                 | PUT      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/telemetry-configurations/{tcId}</sub>              | GET      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/telemetry-configurations/{tcId}</sub>              | PUT      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/logical-interconnects/compliance</sub>                                        | POST     | lication_x:       | :heavy_multiplication_x:       |:heavy_multiplication_x:     |:heavy_multiplication_x:     |
+|<sub>/rest/logical-interconnects/compliance</sub>                                        | POST     | :heavy_multiplication_x:       |:heavy_multiplication_x:     |:heavy_multiplication_x:     |
 |<sub>/rest/logical-interconnects/{id}</sub>                                              | PATCH    | :white_check_mark:   |  :heavy_minus_sign:  |  :white_check_mark:  |
 |     **Logical Switch Groups**
 |<sub>/rest/logical-switch-groups</sub>                                                   | GET      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:  |
@@ -316,7 +316,7 @@
 ## HPE Synergy Image Streamer
 
 | Endpoints                                                                       | Verb             | V500                 | V600                 | V800
-| ------------------------------------------------------------------------------  | ---------------- | :------------------: | :------------------: | :------------------: | :------------------: |
+| ------------------------------------------------------------------------------  | ---------------- | :------------------: | :------------------: | :------------------: | 
 |     **Deployment Plans**                                                                                         |
 |<sub> /rest/deployment-plans </sub>                                              | POST             | :white_check_mark: | :white_check_mark: |
 |<sub> /rest/deployment-plans </sub>                                              | GET              | :white_check_mark: | :white_check_mark: |
