@@ -74,7 +74,7 @@ class StorageSystems(Resource):
             dict: Host types.
         """
         uri = "{}/storage-pools".format(self.data["uri"])
-        return self._client.get(uri)
+        return self._helper.do_get(uri)
 
     def remove(self, force=False, timeout=-1):
         """
@@ -184,5 +184,5 @@ class StorageSystems(Resource):
             list: Storage Template List.
         """
         uri = "{}/templates".format(self.data["uri"])
-        return self._helper.do_get(self._client.build_query_uri(start=start, count=count, filter=filter,
+        return self._helper.do_get(self._helper.build_query_uri(start=start, count=count, filter=filter,
                                                                 query=query, sort=sort, uri=uri))

@@ -138,7 +138,6 @@ class TaskMonitor(object):
                 error_code = err.get('errorCode')
 
             if msg:
-                print(msg)
                 raise HPOneViewTaskError(msg, error_code)
             elif 'taskStatus' in task and task['taskStatus']:
                 raise HPOneViewTaskError(task['taskStatus'], error_code)
