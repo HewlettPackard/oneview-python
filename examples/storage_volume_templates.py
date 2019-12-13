@@ -27,11 +27,16 @@ config = {
         "password": ""
     }
 }
+config = {
+    "ip": "10.30.9.143",
+    "credentials": {
+        "userName": "administrator",
+        "password": "sijeadmin"
+    }
+}
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-
-oneview_client = OneViewClient(config)
 
 networks = "/rest/fcoe-networks/7f0f74a0-4957-47ac-81c1-f573aa6d83de"
 scope_uris = "/rest/scopes/63d1ca81-95b3-41f1-a1ee-f9e1bc2d635f"
@@ -128,10 +133,11 @@ options = {
 }
 
 oneview_client = OneViewClient(config)
+storage_pools = oneview_client.storage_pools
 
 # Find or add storage pool to use in template
 print("Find or add storage pool to use in template")
-storage_pools = oneview_client.storage_pools.get_all()
+storage_pools = storage_pools.get_all()
 storage_pool_added = False
 storage_system_added = False
 if storage_pools:
