@@ -231,11 +231,11 @@ class TaskMonitor(object):
         if not task:
             raise HPOneViewUnknownType(MSG_INVALID_TASK)
 
-        if task['category'] != 'tasks' and task['category'] != 'backups':
+        if task['category'] not in ['tasks', 'backups']:
             # it is an error if type is not in obj, so let the except flow
             raise HPOneViewUnknownType(MSG_UNKNOWN_OBJECT_TYPE)
 
-        if task['type'] == 'TaskResourceV2':
+        if task['type'] in ['TaskResourceV2', 'TaskResourceV3']:
             resource_uri = task['associatedResource']['resourceUri']
 
             if resource_uri and resource_uri.startswith("/rest/appliance/support-dumps/"):

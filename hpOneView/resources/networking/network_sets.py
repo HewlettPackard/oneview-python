@@ -23,11 +23,10 @@ from future import standard_library
 
 standard_library.install_aliases()
 
+from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
-from hpOneView.resources.resource import ResourceClient
 
-
-class NetworkSets(object):
+class NetworkSets(Resource, ResourcePatchMixin):
     """
     Network Sets API client.
 
@@ -38,110 +37,14 @@ class NetworkSets(object):
         '200': {"type": "network-set"},
         '300': {"type": "network-setV300"},
         '500': {"type": "network-setV300"},
-        '600': {"type": "network-setV4"}
+        '600': {"type": "network-setV4"},
+        '800': {"type": "network-setV4"},
+        '1000': {"type": "network-setV4"},
+        '1200': {"type": "network-setV5"}
     }
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
-
-    def get_all(self, start=0, count=-1, filter='', sort=''):
-        """
-        Gets a paginated collection of network sets. The collection is based on optional
-        sorting and filtering and is constrained by start and count parameters.
-
-        Args:
-            start:
-                The first item to return, using 0-based indexing.
-                If not specified, the default is 0 - start with the first available item.
-            count:
-                The number of resources to return. A count of -1 requests all items.
-                The actual number of items in the response might differ from the requested
-                count if the sum of start and count exceeds the total number of items.
-            filter (list or str):
-                A general filter/query string to narrow the list of items returned. The
-                default is no filter; all resources are returned.
-            sort:
-                The sort order of the returned data set. By default, the sort order is based
-                on create time with the oldest entry first.
-
-        Returns:
-            list: A list of Network sets.
-        """
-        return self._client.get_all(start, count, filter=filter, sort=sort)
-
-    def delete(self, resource, force=False, timeout=-1):
-        """
-        Deletes a network set.
-
-        Any deployed connections that are using the network are placed in the 'Failed' state.
-
-        Args:
-            resource: dict object to delete
-            force:
-                 If set to true, the operation completes despite any problems with
-                 network connectivity or errors on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            bool: Indicates if the resource was successfully deleted.
-        """
-        return self._client.delete(resource, force=force, timeout=timeout)
-
-    def get(self, id_or_uri):
-        """
-        Gets the network set with the specified ID.
-
-        Args:
-            id_or_uri: ID or URI of network set.
-
-        Returns:
-            dict: Network set.
-        """
-        return self._client.get(id_or_uri)
-
-    def create(self, resource, timeout=-1):
-        """
-        Creates a network set.
-
-        Args:
-            resource (dict): Object to create.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns: Created resource.
-        """
-        return self._client.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
-
-    def update(self, resource, timeout=-1):
-        """
-        Updates a network set.
-
-        Args:
-            resource (dict): Object to update.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Updated resource.
-        """
-        return self._client.update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
-
-    def get_by(self, field, value):
-        """
-        Gets all network sets that match the filter.
-
-        The search is case-insensitive.
-
-        Args:
-            field: Field name to filter.
-            value: Value to filter.
-
-        Returns:
-            list: A list of Network sets.
-        """
-        return self._client.get_by(field, value)
+    def __init__(self, connection, data=None):
+        super(NetworkSets, self).__init__(connection, data)
 
     def get_all_without_ethernet(self, start=0, count=-1, filter='', sort=''):
         """
@@ -166,38 +69,20 @@ class NetworkSets(object):
         Returns:
             list: List of network sets, excluding Ethernet networks.
         """
-        without_ethernet_client = ResourceClient(
-            self._connection, "/rest/network-sets/withoutEthernet")
+        without_ethernet_client = ResourceHelper("/rest/network-sets/withoutEthernet",
+                                                 self._connection,
+                                                 self._task_monitor)
+
         return without_ethernet_client.get_all(start, count, filter=filter, sort=sort)
 
-    def get_without_ethernet(self, id_or_uri):
+    def get_without_ethernet(self):
         """
         Gets the network set with the specified ID or URI without ethernet.
 
-        Args:
-            id_or_uri: Can be either the Network Set ID or URI.
-
         Returns:
             dict: Network set excluding Ethernet networks.
+         uri = "{}/script".format(self.data['uri'])
+        return self._helper.do_get(uri)
         """
-        uri = self._client.build_uri(id_or_uri) + "/withoutEthernet"
-        return self._client.get(uri)
-
-    def patch(self, id_or_uri, operation, path, value, timeout=-1):
-        """
-        Uses the PATCH to update the given resource.
-
-        Only one operation can be performed in each PATCH call.
-
-        Args:
-            id_or_uri: Can be either the resource ID or the resource URI.
-            operation: Patch operation
-            path: Path
-            value: Value
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Updated resource.
-        """
-        return self._client.patch(id_or_uri, operation, path, value, timeout=timeout)
+        uri = "{}/withoutEthernet".format(self.data['uri'])
+        return self._helper.do_get(uri)
