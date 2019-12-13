@@ -25,45 +25,18 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource
 
 
-class StoragePools(object):
+class StoragePools(Resource):
     """
     Storage Pools API client.
 
     """
     URI = '/rest/storage-pools'
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
-
-    def get_all(self, start=0, count=-1, filter='', sort=''):
-        """
-        Gets a list of storage pools. Returns a list of storage pools based on optional sorting and filtering, and
-        constrained by start and count parameters. The following storage pool attributes can be used with filtering and
-        sorting operation: name, domain, deviceType, deviceSpeed, supportedRAIDLevel, status, and state.
-
-        Args:
-            start:
-                The first item to return, using 0-based indexing.
-                If not specified, the default is 0 - start with the first available item.
-            count:
-                The number of resources to return. A count of -1 requests all items.
-                The actual number of items in the response might differ from the requested
-                count if the sum of start and count exceeds the total number of items.
-            filter (list or str):
-                A general filter/query string to narrow the list of items returned. The
-                default is no filter; all resources are returned.
-            sort:
-                The sort order of the returned data set. By default, the sort order is based
-                on create time with the oldest entry first.
-
-        Returns:
-            list: A list of storage pools.
-        """
-        return self._client.get_all(start, count, filter=filter, sort=sort)
+    def __init__(self, connection, data=None):
+        super(StoragePools, self).__init__(connection, data)
 
     def add(self, resource, timeout=-1):
         """
@@ -80,21 +53,9 @@ class StoragePools(object):
             dict: Created storage pool.
 
         """
-        return self._client.create(resource, timeout=timeout)
+        return self.create(resource, timeout=timeout)
 
-    def get(self, id_or_uri):
-        """
-        Gets the specified storage pool resource by ID or by URI.
-
-        Args:
-            id_or_uri: Can be either the storage pool id or the storage pool uri.
-
-        Returns:
-            dict: The storage pool.
-        """
-        return self._client.get(id_or_uri)
-
-    def remove(self, resource, force=False, timeout=-1):
+    def remove(self, force=False, timeout=-1):
         """
         Removes an imported storage pool from OneView.
 
@@ -112,22 +73,7 @@ class StoragePools(object):
             dict: Details of associated resource.
 
         """
-        return self._client.delete(resource, force=force, timeout=timeout)
-
-    def get_by(self, field, value):
-        """
-        Gets all storage pools that match the filter.
-
-        The search is case-insensitive.
-
-        Args:
-            field: Field name to filter.
-            value: Value to filter.
-
-        Returns:
-            list: A list of storage pools.
-        """
-        return self._client.get_by(field, value)
+        return self.delete(force=force, timeout=timeout)
 
     def get_reachable_storage_pools(self, start=0, count=-1, filter='', query='', sort='',
                                     networks=None, scope_exclusions=None, scope_uris=''):
@@ -171,26 +117,5 @@ class StoragePools(object):
             uri = uri + "?" if "?" not in uri else uri + "&"
             uri += "scopeExclusions={}".format(storage_pools_uris)
 
-        return self._client.get(self._client.build_query_uri(start=start, count=count, filter=filter, query=query,
+        return self._client.get(self._helper.build_query_uri(start=start, count=count, filter=filter, query=query,
                                                              sort=sort, uri=uri, scope_uris=scope_uris))
-
-    def update(self, resource, timeout=-1):
-        """
-        Updates a storage pool.
-        It can be used to manage/unmanage a storage pool, update attributes or to request a refresh.
-        To manage or unmanage a storage pool: Set the isManaged attribute true to manage or false to unmanage.
-        Attempting to unmanage a StoreVirtual pool is not allowed and the attempt will return a task error.
-        To request a refresh set the "requestingRefresh" attribute to true. No other attribute update can be performed
-        while also requesting a refresh of the pool.
-
-        Args:
-            resource (dict):
-                Object to update.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Updated storage system.
-        """
-        return self._client.update(resource, timeout=timeout)
