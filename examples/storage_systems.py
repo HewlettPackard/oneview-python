@@ -33,10 +33,11 @@ config = {
         "userName": "administrator",
         "password": "sijeadmin"
     },
-    'storage_system_hostname': ''
-    'storage_system_username': ''
-    'storage_system_password': ''
-    'storage_system_family': ''
+    'api_version': 1200,
+    'storage_system_hostname': '172.18.11.11',
+    'storage_system_username': 'dcs',
+    'storage_system_password': 'dcs',
+    'storage_system_family': 'StoreServ'
 }
 
 
@@ -54,17 +55,17 @@ oneview_client = OneViewClient(config)
 storage_systems = oneview_client.storage_systems
 
 # Add and update storage system for management
-try:
-    storage_system = storage_systems.add(options)
-    print("\nAdded storage system '%s'.\n   uri = '%s'" %
-          (storage_system.data['name'], storage_system.data['uri']))
-except HPOneViewException as e:
-    storage_system = storage_systems.get_by_hostname(options['hostname'])
-    if storage_system:
-        print("\nStorage system '%s' was already added.\n   uri = '%s'" %
-              (storage_system.data['name'], storage_system.data['uri']))
-    else:
-        print(e.msg)
+#try:
+storage_system = storage_systems.add(options)
+#    print("\nAdded storage system '%s'.\n   uri = '%s'" %
+#          (storage_system.data['name'], storage_system.data['uri']))
+#except HPOneViewException as e:
+#    storage_system = storage_systems.get_by_hostname(options['hostname'])
+#    if storage_system:
+#        print("\nStorage system '%s' was already added.\n   uri = '%s'" %
+#              (storage_system.data['name'], storage_system.data['uri']))
+#    else:
+#        print(e.msg)
 
 # Adds managed domains and managed pools to StoreServ storage systems
 # This is a one-time only action, after this you cannot change the managed values
