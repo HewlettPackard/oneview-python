@@ -726,7 +726,6 @@ class ResourceHelper(object):
             Retunrs Task object.
         """
         self.validate_resource_uri(uri)
-
         task, entity = self._connection.post(uri, resource, custom_headers=custom_headers)
 
         if not task:
