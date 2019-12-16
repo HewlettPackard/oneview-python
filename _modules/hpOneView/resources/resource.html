@@ -163,24 +163,24 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="k">import</span> <span class="n">standard_library</span>
-<span class="kn">from</span> <span class="nn">future.utils</span> <span class="k">import</span> <span class="n">lmap</span>
+<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span> <span class="nn">future.utils</span> <span class="kn">import</span> <span class="n">lmap</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">quote</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 
-<span class="kn">from</span> <span class="nn">hpOneView.resources.task_monitor</span> <span class="k">import</span> <span class="n">TaskMonitor</span>
-<span class="kn">from</span> <span class="nn">hpOneView</span> <span class="k">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.task_monitor</span> <span class="kn">import</span> <span class="n">TaskMonitor</span>
+<span class="kn">from</span> <span class="nn">hpOneView</span> <span class="kn">import</span> <span class="n">exceptions</span>
 
 <span class="n">RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED</span> <span class="o">=</span> <span class="s1">&#39;Resource was not provided&#39;</span>
 <span class="n">RESOURCE_CLIENT_INVALID_FIELD</span> <span class="o">=</span> <span class="s1">&#39;Invalid field was provided&#39;</span>
@@ -198,14 +198,14 @@
 
 <div class="viewcode-block" id="EnsureResourceClient"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.resource.EnsureResourceClient">[docs]</a><span class="k">class</span> <span class="nc">EnsureResourceClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Decorator class to update the resource data.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">update_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">update_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_data</span> <span class="o">=</span> <span class="n">update_data</span>
 
-    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__call__</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">:</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">ensure_resource_data</span><span class="p">(</span><span class="n">update_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -237,7 +237,7 @@
     <span class="c1"># Default values required for the api versions</span>
     <span class="n">DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">connection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span> <span class="o">=</span> <span class="n">TaskMonitor</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span> <span class="o">=</span> <span class="n">ResourceHelper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span>
@@ -467,7 +467,7 @@
 
 <div class="viewcode-block" id="ResourceHelper"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.resource.ResourceHelper">[docs]</a><span class="k">class</span> <span class="nc">ResourceHelper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">task_monitor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">task_monitor</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_base_uri</span> <span class="o">=</span> <span class="n">base_uri</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">connection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span> <span class="o">=</span> <span class="n">task_monitor</span>
@@ -874,7 +874,6 @@
 <span class="sd">            Retunrs Task object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate_resource_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-
         <span class="n">task</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
@@ -1157,7 +1156,7 @@
 <span class="sd">    This class implements common functions for HpOneView API rest</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_uri</span> <span class="o">=</span> <span class="n">uri</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span> <span class="o">=</span> <span class="n">TaskMonitor</span><span class="p">(</span><span class="n">con</span><span class="p">)</span>

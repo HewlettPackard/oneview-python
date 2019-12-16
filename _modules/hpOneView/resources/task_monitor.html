@@ -163,12 +163,12 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="k">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
@@ -176,8 +176,8 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">errno</span> <span class="k">import</span> <span class="n">ECONNABORTED</span><span class="p">,</span> <span class="n">ETIMEDOUT</span><span class="p">,</span> <span class="n">ENOEXEC</span><span class="p">,</span> <span class="n">EINVAL</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ECONNRESET</span><span class="p">,</span> <span class="n">ENETDOWN</span><span class="p">,</span> <span class="n">ECONNREFUSED</span>
-<span class="kn">from</span> <span class="nn">hpOneView.exceptions</span> <span class="k">import</span> <span class="n">HPOneViewInvalidResource</span><span class="p">,</span> <span class="n">HPOneViewTimeout</span><span class="p">,</span> <span class="n">HPOneViewTaskError</span><span class="p">,</span> <span class="n">HPOneViewUnknownType</span>
+<span class="kn">from</span> <span class="nn">errno</span> <span class="kn">import</span> <span class="n">ECONNABORTED</span><span class="p">,</span> <span class="n">ETIMEDOUT</span><span class="p">,</span> <span class="n">ENOEXEC</span><span class="p">,</span> <span class="n">EINVAL</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ECONNRESET</span><span class="p">,</span> <span class="n">ENETDOWN</span><span class="p">,</span> <span class="n">ECONNREFUSED</span>
+<span class="kn">from</span> <span class="nn">hpOneView.exceptions</span> <span class="kn">import</span> <span class="n">HPOneViewInvalidResource</span><span class="p">,</span> <span class="n">HPOneViewTimeout</span><span class="p">,</span> <span class="n">HPOneViewTaskError</span><span class="p">,</span> <span class="n">HPOneViewUnknownType</span>
 
 <span class="n">TASK_PENDING_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;New&#39;</span><span class="p">,</span> <span class="s1">&#39;Starting&#39;</span><span class="p">,</span> <span class="s1">&#39;Pending&#39;</span><span class="p">,</span> <span class="s1">&#39;Running&#39;</span><span class="p">,</span> <span class="s1">&#39;Suspended&#39;</span><span class="p">,</span> <span class="s1">&#39;Stopping&#39;</span><span class="p">]</span>
 <span class="n">TASK_ERROR_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="s1">&#39;Warning&#39;</span><span class="p">,</span> <span class="s1">&#39;Terminated&#39;</span><span class="p">,</span> <span class="s1">&#39;Killed&#39;</span><span class="p">]</span>
@@ -202,7 +202,7 @@
     <span class="n">CONNECTION_FAILURE_ERROR_NUMBERS</span> <span class="o">=</span> <span class="p">[</span><span class="n">ENOEXEC</span><span class="p">,</span> <span class="n">EINVAL</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ETIMEDOUT</span><span class="p">,</span> <span class="n">ECONNRESET</span><span class="p">,</span>
                                         <span class="n">ECONNABORTED</span><span class="p">,</span> <span class="n">ENETUNREACH</span><span class="p">,</span> <span class="n">ENETDOWN</span><span class="p">,</span> <span class="n">ECONNREFUSED</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
 
 <div class="viewcode-block" id="TaskMonitor.get_current_seconds"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.task_monitor.TaskMonitor.get_current_seconds">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -378,11 +378,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">HPOneViewUnknownType</span><span class="p">(</span><span class="n">MSG_INVALID_TASK</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;tasks&#39;</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;backups&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="s1">&#39;backups&#39;</span><span class="p">]:</span>
             <span class="c1"># it is an error if type is not in obj, so let the except flow</span>
             <span class="k">raise</span> <span class="n">HPOneViewUnknownType</span><span class="p">(</span><span class="n">MSG_UNKNOWN_OBJECT_TYPE</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TaskResourceV2&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;TaskResourceV2&#39;</span><span class="p">,</span> <span class="s1">&#39;TaskResourceV3&#39;</span><span class="p">]:</span>
             <span class="n">resource_uri</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;associatedResource&#39;</span><span class="p">][</span><span class="s1">&#39;resourceUri&#39;</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">resource_uri</span> <span class="ow">and</span> <span class="n">resource_uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/rest/appliance/support-dumps/&quot;</span><span class="p">):</span>

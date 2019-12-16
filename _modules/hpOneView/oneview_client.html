@@ -165,96 +165,96 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This module implements a common client for HPE OneView REST API.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="k">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">hpOneView.connection</span> <span class="k">import</span> <span class="n">connection</span>
-<span class="kn">from</span> <span class="nn">hpOneView.image_streamer.image_streamer_client</span> <span class="k">import</span> <span class="n">ImageStreamerClient</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.security.certificate_authority</span> <span class="k">import</span> <span class="n">CertificateAuthority</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.connections</span> <span class="k">import</span> <span class="n">Connections</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.fc_networks</span> <span class="k">import</span> <span class="n">FcNetworks</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.fcoe_networks</span> <span class="k">import</span> <span class="n">FcoeNetworks</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.ethernet_networks</span> <span class="k">import</span> <span class="n">EthernetNetworks</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.connection_templates</span> <span class="k">import</span> <span class="n">ConnectionTemplates</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.fabrics</span> <span class="k">import</span> <span class="n">Fabrics</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.network_sets</span> <span class="k">import</span> <span class="n">NetworkSets</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.data_services.metric_streaming</span> <span class="k">import</span> <span class="n">MetricStreaming</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.switches</span> <span class="k">import</span> <span class="n">Switches</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.switch_types</span> <span class="k">import</span> <span class="n">SwitchTypes</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.activity.tasks</span> <span class="k">import</span> <span class="n">Tasks</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.restores</span> <span class="k">import</span> <span class="n">Restores</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.scopes</span> <span class="k">import</span> <span class="n">Scopes</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.licenses</span> <span class="k">import</span> <span class="n">Licenses</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.enclosures</span> <span class="k">import</span> <span class="n">Enclosures</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.logical_enclosures</span> <span class="k">import</span> <span class="n">LogicalEnclosures</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.enclosure_groups</span> <span class="k">import</span> <span class="n">EnclosureGroups</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_hardware</span> <span class="k">import</span> <span class="n">ServerHardware</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_hardware_types</span> <span class="k">import</span> <span class="n">ServerHardwareTypes</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools_ranges</span> <span class="k">import</span> <span class="n">IdPoolsRanges</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools_ipv4_ranges</span> <span class="k">import</span> <span class="n">IdPoolsIpv4Ranges</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools_ipv4_subnets</span> <span class="k">import</span> <span class="n">IdPoolsIpv4Subnets</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools</span> <span class="k">import</span> <span class="n">IdPools</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.interconnects</span> <span class="k">import</span> <span class="n">Interconnects</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.interconnect_types</span> <span class="k">import</span> <span class="n">InterconnectTypes</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.interconnect_link_topologies</span> <span class="k">import</span> <span class="n">InterconnectLinkTopologies</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_interconnect_types</span> <span class="k">import</span> <span class="n">SasInterconnectTypes</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.internal_link_sets</span> <span class="k">import</span> <span class="n">InternalLinkSets</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.uncategorized.unmanaged_devices</span> <span class="k">import</span> <span class="n">UnmanagedDevices</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_downlinks</span> <span class="k">import</span> <span class="n">LogicalDownlinks</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.facilities.power_devices</span> <span class="k">import</span> <span class="n">PowerDevices</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.facilities.racks</span> <span class="k">import</span> <span class="n">Racks</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.facilities.datacenters</span> <span class="k">import</span> <span class="n">Datacenters</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.fc_sans.managed_sans</span> <span class="k">import</span> <span class="n">ManagedSANs</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.fc_sans.san_managers</span> <span class="k">import</span> <span class="n">SanManagers</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.fc_sans.endpoints</span> <span class="k">import</span> <span class="n">Endpoints</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_interconnects</span> <span class="k">import</span> <span class="n">LogicalInterconnects</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_interconnect_groups</span> <span class="k">import</span> <span class="n">LogicalInterconnectGroups</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_logical_interconnects</span> <span class="k">import</span> <span class="n">SasLogicalInterconnects</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_switch_groups</span> <span class="k">import</span> <span class="n">LogicalSwitchGroups</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_switches</span> <span class="k">import</span> <span class="n">LogicalSwitches</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_interconnects</span> <span class="k">import</span> <span class="n">SasInterconnects</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_profiles</span> <span class="k">import</span> <span class="n">ServerProfiles</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_profile_templates</span> <span class="k">import</span> <span class="n">ServerProfileTemplate</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.sas_logical_jbods</span> <span class="k">import</span> <span class="n">SasLogicalJbods</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_systems</span> <span class="k">import</span> <span class="n">StorageSystems</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_pools</span> <span class="k">import</span> <span class="n">StoragePools</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_volume_templates</span> <span class="k">import</span> <span class="n">StorageVolumeTemplates</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_volume_attachments</span> <span class="k">import</span> <span class="n">StorageVolumeAttachments</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.drive_enclosures</span> <span class="k">import</span> <span class="n">DriveEnclosures</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.firmware_drivers</span> <span class="k">import</span> <span class="n">FirmwareDrivers</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.firmware_bundles</span> <span class="k">import</span> <span class="n">FirmwareBundles</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.backups</span> <span class="k">import</span> <span class="n">Backups</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.volumes</span> <span class="k">import</span> <span class="n">Volumes</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.sas_logical_jbod_attachments</span> <span class="k">import</span> <span class="n">SasLogicalJbodAttachments</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.uplink_sets</span> <span class="k">import</span> <span class="n">UplinkSets</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.migratable_vc_domains</span> <span class="k">import</span> <span class="n">MigratableVcDomains</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_logical_interconnect_groups</span> <span class="k">import</span> <span class="n">SasLogicalInterconnectGroups</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.search.index_resources</span> <span class="k">import</span> <span class="n">IndexResources</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.search.labels</span> <span class="k">import</span> <span class="n">Labels</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.activity.alerts</span> <span class="k">import</span> <span class="n">Alerts</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.activity.events</span> <span class="k">import</span> <span class="n">Events</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.uncategorized.os_deployment_plans</span> <span class="k">import</span> <span class="n">OsDeploymentPlans</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.uncategorized.os_deployment_servers</span> <span class="k">import</span> <span class="n">OsDeploymentServers</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.security.certificate_rabbitmq</span> <span class="k">import</span> <span class="n">CertificateRabbitMQ</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.security.login_details</span> <span class="k">import</span> <span class="n">LoginDetails</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.security.roles</span> <span class="k">import</span> <span class="n">Roles</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.security.users</span> <span class="k">import</span> <span class="n">Users</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_read_community</span> <span class="k">import</span> <span class="n">ApplianceDeviceReadCommunity</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations</span> <span class="k">import</span> <span class="n">ApplianceDeviceSNMPv1TrapDestinations</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_snmp_v3_trap_destinations</span> <span class="k">import</span> <span class="n">ApplianceDeviceSNMPv3TrapDestinations</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_snmp_v3_users</span> <span class="k">import</span> <span class="n">ApplianceDeviceSNMPv3Users</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_node_information</span> <span class="k">import</span> <span class="n">ApplianceNodeInformation</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_time_and_locale_configuration</span> <span class="k">import</span> <span class="n">ApplianceTimeAndLocaleConfiguration</span>
-<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.versions</span> <span class="k">import</span> <span class="n">Versions</span>
+<span class="kn">from</span> <span class="nn">hpOneView.connection</span> <span class="kn">import</span> <span class="n">connection</span>
+<span class="kn">from</span> <span class="nn">hpOneView.image_streamer.image_streamer_client</span> <span class="kn">import</span> <span class="n">ImageStreamerClient</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.security.certificate_authority</span> <span class="kn">import</span> <span class="n">CertificateAuthority</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.connections</span> <span class="kn">import</span> <span class="n">Connections</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.fc_networks</span> <span class="kn">import</span> <span class="n">FcNetworks</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.fcoe_networks</span> <span class="kn">import</span> <span class="n">FcoeNetworks</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.ethernet_networks</span> <span class="kn">import</span> <span class="n">EthernetNetworks</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.connection_templates</span> <span class="kn">import</span> <span class="n">ConnectionTemplates</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.fabrics</span> <span class="kn">import</span> <span class="n">Fabrics</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.network_sets</span> <span class="kn">import</span> <span class="n">NetworkSets</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.data_services.metric_streaming</span> <span class="kn">import</span> <span class="n">MetricStreaming</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.switches</span> <span class="kn">import</span> <span class="n">Switches</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.switch_types</span> <span class="kn">import</span> <span class="n">SwitchTypes</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.activity.tasks</span> <span class="kn">import</span> <span class="n">Tasks</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.restores</span> <span class="kn">import</span> <span class="n">Restores</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.scopes</span> <span class="kn">import</span> <span class="n">Scopes</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.licenses</span> <span class="kn">import</span> <span class="n">Licenses</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.enclosures</span> <span class="kn">import</span> <span class="n">Enclosures</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.logical_enclosures</span> <span class="kn">import</span> <span class="n">LogicalEnclosures</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.enclosure_groups</span> <span class="kn">import</span> <span class="n">EnclosureGroups</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_hardware</span> <span class="kn">import</span> <span class="n">ServerHardware</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_hardware_types</span> <span class="kn">import</span> <span class="n">ServerHardwareTypes</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools_ranges</span> <span class="kn">import</span> <span class="n">IdPoolsRanges</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools_ipv4_ranges</span> <span class="kn">import</span> <span class="n">IdPoolsIpv4Ranges</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools_ipv4_subnets</span> <span class="kn">import</span> <span class="n">IdPoolsIpv4Subnets</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.id_pools</span> <span class="kn">import</span> <span class="n">IdPools</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.interconnects</span> <span class="kn">import</span> <span class="n">Interconnects</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.interconnect_types</span> <span class="kn">import</span> <span class="n">InterconnectTypes</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.interconnect_link_topologies</span> <span class="kn">import</span> <span class="n">InterconnectLinkTopologies</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_interconnect_types</span> <span class="kn">import</span> <span class="n">SasInterconnectTypes</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.internal_link_sets</span> <span class="kn">import</span> <span class="n">InternalLinkSets</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.uncategorized.unmanaged_devices</span> <span class="kn">import</span> <span class="n">UnmanagedDevices</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_downlinks</span> <span class="kn">import</span> <span class="n">LogicalDownlinks</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.facilities.power_devices</span> <span class="kn">import</span> <span class="n">PowerDevices</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.facilities.racks</span> <span class="kn">import</span> <span class="n">Racks</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.facilities.datacenters</span> <span class="kn">import</span> <span class="n">Datacenters</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.fc_sans.managed_sans</span> <span class="kn">import</span> <span class="n">ManagedSANs</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.fc_sans.san_managers</span> <span class="kn">import</span> <span class="n">SanManagers</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.fc_sans.endpoints</span> <span class="kn">import</span> <span class="n">Endpoints</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_interconnects</span> <span class="kn">import</span> <span class="n">LogicalInterconnects</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_interconnect_groups</span> <span class="kn">import</span> <span class="n">LogicalInterconnectGroups</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_logical_interconnects</span> <span class="kn">import</span> <span class="n">SasLogicalInterconnects</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_switch_groups</span> <span class="kn">import</span> <span class="n">LogicalSwitchGroups</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.logical_switches</span> <span class="kn">import</span> <span class="n">LogicalSwitches</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_interconnects</span> <span class="kn">import</span> <span class="n">SasInterconnects</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_profiles</span> <span class="kn">import</span> <span class="n">ServerProfiles</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.server_profile_templates</span> <span class="kn">import</span> <span class="n">ServerProfileTemplate</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.sas_logical_jbods</span> <span class="kn">import</span> <span class="n">SasLogicalJbods</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_systems</span> <span class="kn">import</span> <span class="n">StorageSystems</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_pools</span> <span class="kn">import</span> <span class="n">StoragePools</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_volume_templates</span> <span class="kn">import</span> <span class="n">StorageVolumeTemplates</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.storage_volume_attachments</span> <span class="kn">import</span> <span class="n">StorageVolumeAttachments</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.drive_enclosures</span> <span class="kn">import</span> <span class="n">DriveEnclosures</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.firmware_drivers</span> <span class="kn">import</span> <span class="n">FirmwareDrivers</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.firmware_bundles</span> <span class="kn">import</span> <span class="n">FirmwareBundles</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.backups</span> <span class="kn">import</span> <span class="n">Backups</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.volumes</span> <span class="kn">import</span> <span class="n">Volumes</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.storage.sas_logical_jbod_attachments</span> <span class="kn">import</span> <span class="n">SasLogicalJbodAttachments</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.uplink_sets</span> <span class="kn">import</span> <span class="n">UplinkSets</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.servers.migratable_vc_domains</span> <span class="kn">import</span> <span class="n">MigratableVcDomains</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.networking.sas_logical_interconnect_groups</span> <span class="kn">import</span> <span class="n">SasLogicalInterconnectGroups</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.search.index_resources</span> <span class="kn">import</span> <span class="n">IndexResources</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.search.labels</span> <span class="kn">import</span> <span class="n">Labels</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.activity.alerts</span> <span class="kn">import</span> <span class="n">Alerts</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.activity.events</span> <span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.uncategorized.os_deployment_plans</span> <span class="kn">import</span> <span class="n">OsDeploymentPlans</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.uncategorized.os_deployment_servers</span> <span class="kn">import</span> <span class="n">OsDeploymentServers</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.security.certificate_rabbitmq</span> <span class="kn">import</span> <span class="n">CertificateRabbitMQ</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.security.login_details</span> <span class="kn">import</span> <span class="n">LoginDetails</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.security.roles</span> <span class="kn">import</span> <span class="n">Roles</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.security.users</span> <span class="kn">import</span> <span class="n">Users</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_read_community</span> <span class="kn">import</span> <span class="n">ApplianceDeviceReadCommunity</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations</span> <span class="kn">import</span> <span class="n">ApplianceDeviceSNMPv1TrapDestinations</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_snmp_v3_trap_destinations</span> <span class="kn">import</span> <span class="n">ApplianceDeviceSNMPv3TrapDestinations</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_device_snmp_v3_users</span> <span class="kn">import</span> <span class="n">ApplianceDeviceSNMPv3Users</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_node_information</span> <span class="kn">import</span> <span class="n">ApplianceNodeInformation</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.appliance_time_and_locale_configuration</span> <span class="kn">import</span> <span class="n">ApplianceTimeAndLocaleConfiguration</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.settings.versions</span> <span class="kn">import</span> <span class="n">Versions</span>
 
 <span class="n">ONEVIEW_CLIENT_INVALID_PROXY</span> <span class="o">=</span> <span class="s1">&#39;Invalid Proxy format&#39;</span>
 
@@ -262,7 +262,7 @@
 <div class="viewcode-block" id="OneViewClient"><a class="viewcode-back" href="../../hpOneView.html#hpOneView.oneview_client.OneViewClient">[docs]</a><span class="k">class</span> <span class="nc">OneViewClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">DEFAULT_API_VERSION</span> <span class="o">=</span> <span class="mi">300</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span> <span class="o">=</span> <span class="n">connection</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">],</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api_version&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_API_VERSION</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ssl_certificate&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
                                        <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;timeout&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__image_streamer_ip</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;image_streamer_ip&quot;</span><span class="p">)</span>
