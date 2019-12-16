@@ -117,5 +117,5 @@ class StoragePools(Resource):
             uri = uri + "?" if "?" not in uri else uri + "&"
             uri += "scopeExclusions={}".format(storage_pools_uris)
 
-        return self._client.get(self._helper.build_query_uri(start=start, count=count, filter=filter, query=query,
-                                                             sort=sort, uri=uri, scope_uris=scope_uris))
+        return self._helper.do_get(self._helper.build_query_uri(start=start, count=count, filter=filter, query=query,
+                                                                sort=sort, uri=uri, scope_uris=scope_uris))

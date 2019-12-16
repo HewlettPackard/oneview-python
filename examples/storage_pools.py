@@ -15,7 +15,6 @@
 # limitations under the License.
 ###
 
-from pprint import pprint
 from hpOneView.oneview_client import OneViewClient
 from hpOneView.exceptions import HPOneViewException
 from config_loader import try_load_from_file
@@ -27,20 +26,6 @@ config = {
         "password": "<password>"
     }
 }
-
-config = {
-    "ip": "10.30.9.143",
-    "credentials": {
-        "userName": "administrator",
-        "password": "sijeadmin"
-    },
-    'api_version': 1200,
-    'storage_system_hostname': '172.18.11.11',
-    'storage_system_username': 'dcs',
-    'storage_system_password': 'dcs',
-    'storage_system_family': 'StoreServ'
-}
-
 
 scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf7'
 storage_pool_uris = ['/rest/storage-pools/5F9CA89B-C632-4F09-BC55-A8AA00DA5C4A']
@@ -62,12 +47,15 @@ if s_systems:
         s_system.data['name'], s_system.data['uri']))
 else:
     options = {
-        "ip_hostname": config['storage_system_hostname'],
+        "hostname": config['storage_system_hostname'],
         "username": config['storage_system_username'],
-        "password": config['storage_system_password']
+        "password": config['storage_system_password'],
+        "family": config['storage_system_family']
     }
     s_system = storage_systems.add(options)
     s_system_data = s_system.data
+    print(s_system_data)
+    open('/home/administrator/Documents/oneview-python/log.txt', 'w').write(str(s_system_data))
     s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
     s_systems.update(s_system_data)
     storage_system_added = True
@@ -129,16 +117,18 @@ for pool in storage_pools_filtered:
     print("   '{}' at uri: '{}'".format(
         pool['name'], pool['uri']))
 
-# Get storage pool by id and update it
-try:
-    print('Update storage pool description with new description "new description"')
-    s_system_data = s_system.data.copy()
-    s_system_data['description'] = "new description"
-    s_system.update(s_system_data)
-    print('Updated storage pool description')
+if storage_pools_all and storage_pools_all[0]:
+    # Get storage pool by id and update it
+    storage_pool = storage_pools.get_by_uri(storage_pools_all[0]['uri'])
+    try:
+        print('Update storage pool description with new description "new description"')
+        s_pool_data = storage_pool.data.copy()
+        s_pool_data['description'] = "new description"
+        storage_pool.update(s_pool_data)
+        print('Updated storage pool description')
 
-except HPOneViewException as e:
-    print(e.msg)
+    except HPOneViewException as e:
+        print(e.msg)
 
 # Remove storage system, if it was added
 if storage_system_added:
