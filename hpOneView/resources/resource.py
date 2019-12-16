@@ -177,7 +177,6 @@ class Resource(object):
         data = self._helper.update_resource_fields(data, default_values)
 
         logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
-
         resource_data = self._helper.create(data, uri, timeout, custom_headers, force)
         new_resource = self.new(self._connection, resource_data)
 
@@ -726,7 +725,6 @@ class ResourceHelper(object):
             Retunrs Task object.
         """
         self.validate_resource_uri(uri)
-
         task, entity = self._connection.post(uri, resource, custom_headers=custom_headers)
 
         if not task:

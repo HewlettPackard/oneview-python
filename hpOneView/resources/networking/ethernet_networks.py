@@ -41,7 +41,9 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         '300': {"type": "ethernet-networkV300"},
         '500': {"type": "ethernet-networkV300"},
         '600': {"type": "ethernet-networkV4"},
-        '800': {"type": "ethernet-networkV4"}
+        '800': {"type": "ethernet-networkV4"},
+        '1000': {"type": "ethernet-networkV4"},
+        '1200': {"type": "ethernet-networkV4"}
     }
     BULK_DEFAULT_VALUES = {
         '200': {"type": "bulk-ethernet-network"},
@@ -49,6 +51,8 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         '500': {"type": "bulk-ethernet-network"},
         '600': {"type": "bulk-ethernet-networkV1"},
         '800': {"type": "bulk-ethernet-networkV1"},
+        '1000': {"type": "bulk-ethernet-networkV1"},
+        '1200': {"type": "bulk-ethernet-networkV1"}
     }
 
     def __init__(self, connection, data=None):
