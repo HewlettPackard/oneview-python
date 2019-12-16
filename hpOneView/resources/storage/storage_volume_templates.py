@@ -82,5 +82,5 @@ class StorageVolumeTemplates(Resource):
         Returns:
             list: Storage systems.
         """
-        uri = "{}/compatible-systems".format(seld.data["uri"])
+        uri = "{}/compatible-systems".format(self.data["uri"])
         return self._helper.do_get(uri)
