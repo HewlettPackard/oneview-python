@@ -112,7 +112,7 @@ class Volumes(Resource):
             dict: Added resource.
         """
         uri = self.URI + "/from-existing"
-        return self._client.create(resource, uri=uri, timeout=timeout)
+        return self._helper.create(resource, uri=uri, timeout=timeout)
 
     def create_from_snapshot(self, data, timeout=-1):
         """
@@ -136,7 +136,7 @@ class Volumes(Resource):
             dict: Created data.
         """
         uri = self.URI + "/from-snapshot"
-        return self._client.create(data, uri=uri, timeout=timeout)
+        return self._helper.create(data, uri=uri, timeout=timeout)
 
     def delete(self, force=False, export_only=None, suppress_device_updates=None, timeout=-1):
         """
