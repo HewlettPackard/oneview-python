@@ -22,15 +22,15 @@ from hpOneView.oneview_client import OneViewClient
 EXAMPLE_CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../config.json')
 
 oneview_client = OneViewClient.from_json_file(EXAMPLE_CONFIG_FILE)
-
 image_streamer_client = oneview_client.create_image_streamer_client()
+deployment_plans = image_streamer_client.deployment_plans
 
 # To run this example set a valid Build Plan URI
 deployment_plan_information = {
     "name": "Demo Deployment Plan",
     "description": "",
     "hpProvided": "false",
-    "oeBuildPlanURI": "/rest/build-plans/1beb9333-66a8-48d5-82b6-1bda1a81582a",
+    "oeBuildPlanURI": "/rest/build-plans/134b7e3f-4305-47c4-8d15-44d265697bf0",
 }
 
 if oneview_client.api_version >= 500:
@@ -38,44 +38,45 @@ if oneview_client.api_version >= 500:
 
 # Create a Deployment Plan
 print("Create a Deployment Plan")
-deployment_plan_created = image_streamer_client.deployment_plans.create(deployment_plan_information)
-pprint(deployment_plan_created)
+deployment_plan_created = deployment_plans.create(deployment_plan_information)
+pprint(deployment_plan_created.data)
 
 # Update the Deployment Plan
 print("\nUpdate the Deployment Plan")
-deployment_plan_created["name"] = "Demo Deployment Plan - Renamed"
-deployment_plan_updated = image_streamer_client.deployment_plans.update(deployment_plan_created)
-pprint(deployment_plan_updated)
+deployment_plan_data = deployment_plan_created.data.copy()
+deployment_plan_data["name"] = "Demo Deployment Plan - Renamed"
+deployment_plan_created.update(deployment_plan_data)
+pprint(deployment_plan_created.data)
 
 # Get the Deployment Plan by URI
 print("\nGet the Deployment Plan by URI")
-deployment_plan_by_uri = image_streamer_client.deployment_plans.get(deployment_plan_created['uri'])
-pprint(deployment_plan_by_uri)
+deployment_plan_by_uri = deployment_plans.get_by_uri(deployment_plan_created.data['uri'])
+pprint(deployment_plan_by_uri.data)
 
 # Get the Deployment Plan by name
 print("\nGet the Deployment Plan by name")
-deployment_plan_by_name = image_streamer_client.deployment_plans.get_by('name', deployment_plan_updated['name'])
-pprint(deployment_plan_by_name)
+deployment_plan_by_name = deployment_plans.get_by_name(deployment_plan_created.data['name'])
+pprint(deployment_plan_by_name.data)
 
 # Get all Deployment Plans
 print("\nGet all Deployment Plans")
-deployment_plans = image_streamer_client.deployment_plans.get_all()
-for deployment_plan in deployment_plans:
+deployment_plans_all = deployment_plans.get_all()
+for deployment_plan in deployment_plans_all:
     print(deployment_plan['name'])
 
 if oneview_client.api_version >= 500:
     # Get the list of ServerProfile and ServerProfileTemplate URI that are using OEDP {id}
     print("\nGet the list of ServerProfile and ServerProfileTemplate URI that are using OEDP {id}")
-    deployment_usedby = image_streamer_client.deployment_plans.get_usedby(deployment_plan_created['id'])
+    deployment_usedby = deployment_plan_created.get_usedby()
     pprint(deployment_usedby)
 
 if oneview_client.api_version >= 600:
     # Get the list of ServerProfile and ServerProfileTemplate URI that are using OEDP {id}
     print("\nGet the OSDP of a Deployment Plan ")
-    deployment_osdp = image_streamer_client.deployment_plans.get_osdp(deployment_plan_created['id'])
+    deployment_osdp = deployment_plan_created.get_osdp()
     pprint(deployment_osdp)
 
 # Delete the Deployment Plan
 print("\nDelete the Deployment Plan")
-image_streamer_client.deployment_plans.delete(deployment_plan_by_uri)
+deployment_plan_created.delete()
 print("Deployment Plan deleted successfully")

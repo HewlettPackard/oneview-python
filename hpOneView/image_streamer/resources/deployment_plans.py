@@ -52,7 +52,8 @@ class DeploymentPlans(Resource):
         """
         data = self.__default_values.copy()
         data.update(resource)
-        return self._helper.create(data, timeout=timeout)
+
+        return super(DeploymentPlans, self).create(data, timeout=timeout)
 
     def get_osdp(self):
         """
@@ -72,4 +73,4 @@ class DeploymentPlans(Resource):
             dict: The OS Deployment Plan.
         """
         uri = "{}/usedby".format(self.data["uri"])
-        return self._helper.get(uri)
+        return self._helper.do_get(uri)
