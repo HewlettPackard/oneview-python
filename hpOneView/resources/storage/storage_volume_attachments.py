@@ -81,23 +81,19 @@ class StorageVolumeAttachments(Resource):
         custom_headers = {'Accept-Language': 'en_US'}
         return self._helper.create(resource, uri=uri, timeout=timeout, custom_headers=custom_headers)
 
-    def get_paths(self, id_or_uri, path_id_or_uri=''):
+    def get_paths(self, path_id=''):
         """
         Gets all paths or a specific attachment path for the specified volume attachment.
 
         Args:
-            path_id_or_uri: Can be either the path id or the path uri.
+            path_id: path id
 
         Returns:
             dict: Paths.
         """
-        if path_id_or_uri:
-            uri = self._client.build_uri(path_id_or_uri)
-            if "/paths" not in uri:
-                uri = "{}/paths/{}".format(self.data["uri"], uri)
-
+        if path_id:
+            uri = "{}/paths/{}".format(self.data["uri"], path_id)
         else:
             uri = "{}/paths".format(self.data["uri"])
 
-        return self.helper.do_get(uri)
-
+        return self._helper.do_get(uri)
