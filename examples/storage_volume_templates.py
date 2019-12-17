@@ -170,7 +170,7 @@ else:
         }
         storage_system = storage_systems.add(options_storage)
         s_system_data = storage_system.data.copy()
-        s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
+        s_system_data['managedDomain'] = storage_system.data['unmanagedDomains'][0]
         storage_system.update(s_system_data)
         storage_system_added = True
         print("      Added storage system '{name}' at uri: {uri}".format(**storage_system.data))

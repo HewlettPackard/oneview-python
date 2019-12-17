@@ -68,13 +68,15 @@ class StorageVolumeTemplatesTest(unittest.TestCase):
     def test_delete_called_once(self, mock_delete):
         self._storage_volume_templates.delete(force=True, timeout=50)
         mock_delete.assert_called_once_with(self._storage_volume_templates.data["uri"],
-                                            custom_headers=None, force=True, timeout=50)
+                                            custom_headers={u'If-Match': u'*', u'Accept-Language': u'en_US'},
+                                            force=True, timeout=50)
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once_with_defaults(self, mock_delete):
         self._storage_volume_templates.delete()
         mock_delete.assert_called_once_with(self._storage_volume_templates.data["uri"],
-                                            custom_headers=None, force=False, timeout=-1)
+                                            custom_headers={u'If-Match': u'*', u'Accept-Language': u'en_US'},
+                                            force=False, timeout=-1)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_connectable_volume_templates_called_once(self, mock_get):

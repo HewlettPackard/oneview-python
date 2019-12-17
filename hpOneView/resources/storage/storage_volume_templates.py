@@ -103,4 +103,3 @@ class StorageVolumeTemplates(Resource):
         uri = self.data['uri']
 
         return self._helper.delete(uri, force=force, timeout=timeout, custom_headers=custom_headers)
-
