@@ -40,7 +40,6 @@ config = {
     'storage_system_family': 'StoreServ'
 }
 
-
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
@@ -50,7 +49,7 @@ scope_uris = "/rest/scopes/63d1ca81-95b3-41f1-a1ee-f9e1bc2d635f"
 # Request body for create operation
 # Supported from API version >= 500
 options = {
-    # "rootTemplateUri": "/rest/storage-volume-templates/5dbaf127-053b-4988-82fe-a80800eef1f3",
+    "rootTemplateUri": "/rest/storage-volume-templates/b8c4489e-4a19-4bfe-857c-aab8006478a7",
     "properties": {
         "name": {
             "title": "Volume name",
@@ -105,7 +104,7 @@ options = {
             "format": "x-uri-reference",
             "required": "true",
             "description": "A common provisioning group URI reference",
-            # "default": "/rest/storage-pools/0DB2A6C7-04D3-4830-9229-A80800EEF1F1"
+            "default": "/rest/storage-pools/628C1EBD-5BA7-40F2-A856-A93C0143AC73"
         },
         "snapshotPool": {
             "meta": {
@@ -115,7 +114,7 @@ options = {
             "type": "string",
             "title": "Snapshot Pool",
             "format": "x-uri-reference",
-            # "default": "/rest/storage-pools/0DB2A6C7-04D3-4830-9229-A80800EEF1F1",
+            "default": "/rest/storage-pools/628C1EBD-5BA7-40F2-A856-A93C0143AC73",
             "description": "A URI reference to the common provisioning group used to create snapshots"
         },
         "provisioningType": {
@@ -145,12 +144,12 @@ storage_volume_templates = oneview_client.storage_volume_templates
 
 # Find or add storage pool to use in template
 print("Find or add storage pool to use in template")
-storage_pools = storage_pools.get_all()
+storage_pools_all = storage_pools.get_all()
 storage_pool_added = False
 storage_system_added = False
-if storage_pools:
-    storage_pool_data = storage_pools[0]
-    storage_pool = storage_pools.get_by_url(storage_pool_data["uri"])
+if storage_pools_all:
+    storage_pool_data = storage_pools_all[0]
+    storage_pool = storage_pools.get_by_uri(storage_pool_data["uri"])
     print("   Found storage pool '{name}' at uri: '{uri}".format(**storage_pool.data))
 else:
     # Find or add storage system
@@ -171,9 +170,8 @@ else:
         }
         storage_system = storage_systems.add(options_storage)
         s_system_data = storage_system.data.copy()
-        open('/home/administrator/Documents/oneview-python/log.txt', 'w').write(str(s_system_data))
-#        s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
-#        storage_system.update(s_system_data)
+        s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
+        storage_system.update(s_system_data)
         storage_system_added = True
         print("      Added storage system '{name}' at uri: {uri}".format(**storage_system.data))
 

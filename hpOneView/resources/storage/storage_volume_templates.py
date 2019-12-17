@@ -84,3 +84,23 @@ class StorageVolumeTemplates(Resource):
         """
         uri = "{}/compatible-systems".format(self.data["uri"])
         return self._helper.do_get(uri)
+
+    def delete(self, force=False, timeout=-1):
+        """
+        Deletes the specified storage volume template.
+
+        Args:
+            force (bool):
+                 If set to true, the operation completes despite any problems with
+                 network connectivity or errors on the resource itself. The default is false.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+        Returns:
+            bool: Indicates if the resource was successfully deleted.
+        """
+        custom_headers = {'Accept-Language': 'en_US', 'If-Match': '*'}
+        uri = self.data['uri']
+
+        return self._helper.delete(uri, force=force, timeout=timeout, custom_headers=custom_headers)
+
