@@ -28,6 +28,16 @@ config = {
     }
 }
 
+config = {
+    "ip": "10.50.4.100",
+    "credentials": {
+        "userName": "kattumun",
+        "password": "P@ssw0rd!"
+    },
+    "api_version": 1200
+
+}
+
 # To run all parts of this example, a server profile uri, volume uri, volume attachment id and
 # path id must be defined.
 serverProfileUri = None
@@ -37,13 +47,13 @@ path_id = None
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-
 oneview_client = OneViewClient(config)
+volume_attachments = oneview_client.storage_volume_attachments
 
 # Get all volume attachments
 print("\nGet all volume attachments")
-volume_attachments = oneview_client.storage_volume_attachments.get_all()
-for attachment in volume_attachments:
+volume_attachments_all = volume_attachments.get_all()
+for attachment in volume_attachments_all:
     print('\n#### Storage Volume Attachment info:')
     pprint(attachment)
 
@@ -51,7 +61,7 @@ for attachment in volume_attachments:
 try:
     print("\nGet all storage volume attachments filtering by storage volume URI")
     filter = "storageVolumeUri='{}'".format(storageVolumeUri)
-    volume_attachments_filtered = oneview_client.storage_volume_attachments.get_all(filter=filter)
+    volume_attachments_filtered = volume_attachments.get_all(filter=filter)
     for attachment in volume_attachments_filtered:
         print('\n#### Storage Volume Attachment info:')
         pprint(attachment)
@@ -60,7 +70,7 @@ except HPOneViewException as e:
 
 # Get the list of extra unmanaged storage volumes
 print("\nGet the list of extra unmanaged storage volumes")
-unmanaged_storage_volumes = oneview_client.storage_volume_attachments.get_extra_unmanaged_storage_volumes()
+unmanaged_storage_volumes = volume_attachments.get_extra_unmanaged_storage_volumes()
 pprint(unmanaged_storage_volumes)
 
 # Removes extra presentations from a specified server profile.
@@ -70,46 +80,27 @@ try:
         "resourceUri": serverProfileUri
     }
     print("\nRemoves extra presentations from a specified server profile at uri: '{}".format(serverProfileUri))
-    oneview_client.storage_volume_attachments.remove_extra_presentations(info)
+    volume_attachments.remove_extra_presentations(info)
     print("   Done.")
-except HPOneViewException as e:
-    print(e.msg)
-
-# Get storage volume attachment by id
-try:
-    print("\nGet storage volume attachment by id: '{}'".format(attachment_id))
-    volume_attachment_byid = oneview_client.storage_volume_attachments.get(attachment_id)
-    print('\n#### Storage Volume Attachment info:')
-    pprint(attachment)
 except HPOneViewException as e:
     print(e.msg)
 
 if volume_attachments:
     # Get storage volume attachment by uri
-    print("\nGet storage volume attachment by uri: '{uri}'".format(**volume_attachments[0]))
-    volume_attachment_byid = oneview_client.storage_volume_attachments.get(volume_attachments[0]['uri'])
+    print("\nGet storage volume attachment by uri: '{uri}'".format(**volume_attachments_all[0]))
+    volume_attachment_byid = oneview_client.storage_volume_attachments.get_by_uri(volume_attachments_all[0]['uri'])
     print('\n#### Storage Volume Attachment info:')
-    pprint(attachment)
+    pprint(volume_attachment_byid.data)
 
     if oneview_client.api_version < 500:
         # Get all volume attachment paths
-        print("\nGet all volume attachment paths for volume attachment at uri: {uri}".format(**volume_attachment_byid))
-        paths = oneview_client.storage_volume_attachments.get_paths(volume_attachment_byid['uri'])
+        print("\nGet all volume attachment paths for volume attachment at uri: {uri}".format(**volume_attachment_byid.data))
+        paths = volume_attachment_byid.get_paths()
         for path in paths:
             print("   Found path at uri: {uri}".format(**path))
 
         if paths:
             # Get specific volume attachment path by uri
             print("\nGet specific volume attachment path by uri")
-            path_byuri = oneview_client.storage_volume_attachments.get_paths(
-                volume_attachment_byid['uri'], paths[0]['uri'])
+            path_byuri = volume_attachment_byid.get_paths(paths[0]['uri'])
             pprint(path_byuri)
-
-# Get volume attachment path by id
-if path_id and oneview_client.api_version < 500:
-    try:
-        print("\nGet volume attachment path by id: '{}'\n  at attachment with id: '{}'".format(path_id, attachment_id))
-        path_byid = oneview_client.storage_volume_attachments.get_paths(attachment_id, path_id)
-        pprint(path_byid)
-    except HPOneViewException as e:
-        print(e.msg)

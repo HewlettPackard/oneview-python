@@ -62,7 +62,7 @@ class StorageVolumeAttachments(Resource):
             list: Extra unmanaged storage volumes.
         """
         uri = self.URI + "/repair?alertFixType=ExtraUnmanagedStorageVolumes"
-        return self._client.get_all(start=start, count=count, filter=filter, sort=sort, uri=uri)
+        return self._helper.get_all(start=start, count=count, filter=filter, sort=sort, uri=uri)
 
     def remove_extra_presentations(self, resource, timeout=-1):
         """
@@ -79,7 +79,7 @@ class StorageVolumeAttachments(Resource):
         """
         uri = self.URI + "/repair"
         custom_headers = {'Accept-Language': 'en_US'}
-        return self._client.create(resource, uri=uri, timeout=timeout, custom_headers=custom_headers)
+        return self._helper.create(resource, uri=uri, timeout=timeout, custom_headers=custom_headers)
 
     def get_paths(self, id_or_uri, path_id_or_uri=''):
         """
