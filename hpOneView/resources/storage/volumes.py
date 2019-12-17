@@ -32,21 +32,53 @@ INVALID_VOLUME_URI = "When no snapshot uri is provided, volume id or valume uri 
 
 class VolumeSnapshots(Resource):
     """
-    Volumes API client.
+    Volume snapshots API client.
 
     """
-
-    URI = '/rest/storage-volumes'
-
-    DEFAULT_VALUES_SNAPSHOT = {
+    DEFAULT_VALUES = {
         '200': {"type": "Snapshot"},
         '300': {"type": "Snapshot"},
         '500': {}
     }
 
-    def __init__(self, connection, volume_id, snapshot_id=None):
-        self.URI += "{}/snapshots/{}".format(volume_id, snapshot_id or '')
-        super(VolumeSnapshots, self).__init__(connection)
+    def __init__(self, connection, data=None, volume_uri=None, snapshot_id=None):
+        self.URI = "{}/snapshots/{}".format(volume_uri, snapshot_id or '')
+        super(VolumeSnapshots, self).__init__(connection, data)
+
+    def create(self, data=None, timeout=-1, custom_headers=None, force=False):
+        """Makes a POST request to create a resource when a request body is required.
+
+        Args:
+            data: Additional fields can be passed to create the resource.
+            uri: Resouce uri
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+            custom_headers: Allows set specific HTTP headers.
+        Returns:
+            Created resource.
+        """
+        super(VolumeSnapshots, self).create(data, timeout=timeout, custom_headers=custom_headers, force=force)
+        return self.get_by_name(data["name"])
+
+    def delete(self, force=False, timeout=-1):
+        """
+        Deletes a snapshot from OneView and the storage system.
+
+        Args:
+            force (bool):
+                 If set to true, the operation completes despite any problems with
+                 network connectivity or errors on the resource itself. The default is false.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        Returns:
+            dict: Details of associated volume.
+
+        """
+        headers = {'If-Match': '*'}
+        super(VolumeSnapshots, self).delete(force=force, timeout=timeout,
+                                            custom_headers=headers)
 
 
 class Volumes(Resource):
@@ -54,22 +86,16 @@ class Volumes(Resource):
     Volumes API client.
 
     """
-
     URI = '/rest/storage-volumes'
-
-    DEFAULT_VALUES_SNAPSHOT = {
-        '200': {"type": "Snapshot"},
-        '300': {"type": "Snapshot"},
-        '500': {}
-    }
 
     def __init__(self, connection, data=None):
         super(Volumes, self).__init__(connection, data)
         self._snapshots = None
 
-    def ___get_snapshot_object():
+    def __get_snapshot_object(self):
         if self.data and not self._snapshots:
-            self._snapshots = VolumeSnapshots(self._connection, self.data["id"])
+            self._snapshots = VolumeSnapshots(self._connection,
+                                              volume_uri=self.data["uri"])
 
     def add_from_existing(self, resource, timeout=-1):
         """
@@ -167,7 +193,7 @@ class Volumes(Resource):
             list: A list of snapshots.
         """
         self.__get_snapshot_object()
-        return self._snapshots.get_all(start, count, filter=filter, sort=sort, uri=uri)
+        return self._snapshots.get_all(start, count, filter=filter, sort=sort)
 
     def create_snapshot(self, snapshot, timeout=-1):
         """
@@ -184,7 +210,7 @@ class Volumes(Resource):
             dict: Storage volume.
         """
         self.__get_snapshot_object()
-        return self._snapshots.create(snapshot, timeout=timeout, default_values=self.DEFAULT_VALUES_SNAPSHOT)
+        return self._snapshots.create(snapshot, timeout=timeout)
 
     def get_snapshot_by_name(self, name):
         """
@@ -197,7 +223,7 @@ class Volumes(Resource):
             object: VolumeSnapshots
         """
         self.__get_snapshot_object()
-        return self.snapshots.get_by_name(name)
+        return self._snapshots.get_by_name(name)
 
     def get_snapshot_by_uri(self, uri):
         """
