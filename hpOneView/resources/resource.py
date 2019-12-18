@@ -155,7 +155,6 @@ class Resource(object):
             list: A list of items matching the specified filter.
         """
         result = self._helper.get_all(start=start, count=count, filter=filter, sort=sort)
-
         return result
 
     def create(self, data=None, uri=None, timeout=-1, custom_headers=None, force=False):
@@ -177,7 +176,6 @@ class Resource(object):
         data = self._helper.update_resource_fields(data, default_values)
 
         logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
-
         resource_data = self._helper.create(data, uri, timeout, custom_headers, force)
         new_resource = self.new(self._connection, resource_data)
 
@@ -249,7 +247,6 @@ class Resource(object):
         if "." not in field:
             # This filter only work for the first level
             results = [item for item in results if str(item.get(field, "")).lower() == value.lower()]
-
         return results
 
     def get_by_name(self, name):
@@ -262,13 +259,11 @@ class Resource(object):
             Resource object or None if resource does not exist.
         """
         result = self.get_by("name", name)
-
         if result:
             data = result[0]
             new_resource = self.new(self._connection, data)
         else:
             new_resource = None
-
         return new_resource
 
     def get_by_uri(self, uri):
@@ -410,7 +405,6 @@ class ResourceHelper(object):
             uri += '?force={}'.format(force)
 
         logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
-
         return self.do_post(uri, data, timeout, custom_headers)
 
     def delete(self, uri, force=False, timeout=-1, custom_headers=None):

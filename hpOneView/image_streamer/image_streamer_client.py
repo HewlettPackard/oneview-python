@@ -115,9 +115,7 @@ class ImageStreamerClient(object):
         Returns:
             DeploymentPlans:
         """
-        if not self.__deployment_plans:
-            self.__deployment_plans = DeploymentPlans(self.__connection)
-        return self.__deployment_plans
+        return DeploymentPlans(self.__connection)
 
     @property
     def artifact_bundles(self):
