@@ -462,6 +462,22 @@ class ResourceHelper(object):
 
         return self.do_put(uri, resource, timeout, custom_headers)
 
+    def update_with_zero_body(self, uri, timeout=-1, custom_headers=None):
+        """Makes a PUT request to update a resource when no request body is required.
+
+        Args:
+            uri: Allows to use a different URI other than resource URI
+            timeout: Timeout in seconds. Wait for task completion by default.
+                The timeout does not abort the operation in OneView; it just stops waiting for its completion.
+            custom_headers: Allows to set custom HTTP headers.
+
+        Returns:
+            A dict with updated resource data.
+        """
+        logger.debug('Update with zero length body (uri = %s)' % uri)
+
+        return self.do_put(uri, None, timeout, custom_headers)
+
     def create_report(self, uri, timeout=-1):
         """
         Creates a report and returns the output.
