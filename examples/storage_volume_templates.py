@@ -27,19 +27,6 @@ config = {
     }
 }
 
-config = {
-    "ip": "10.30.9.143",
-    "credentials": {
-        "userName": "administrator",
-        "password": "sijeadmin"
-    },
-    'api_version': 500,
-    'storage_system_hostname': '172.18.11.11',
-    'storage_system_username': 'dcs',
-    'storage_system_password': 'dcs',
-    'storage_system_family': 'StoreServ'
-}
-
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
