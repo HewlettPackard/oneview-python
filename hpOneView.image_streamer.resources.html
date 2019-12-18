@@ -885,8 +885,8 @@ on create time with the oldest entry first.</li>
 <span id="hponeview-image-streamer-resources-deployment-plans-module"></span><h2>hpOneView.image_streamer.resources.deployment_plans module<a class="headerlink" href="#module-hpOneView.image_streamer.resources.deployment_plans" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans">
-<em class="property">class </em><code class="descclassname">hpOneView.image_streamer.resources.deployment_plans.</code><code class="descname">DeploymentPlans</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpOneView.image_streamer.resources.deployment_plans.</code><code class="descname">DeploymentPlans</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
 <dl class="attribute">
 <dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/deployment-plans'</em><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.URI" title="Permalink to this definition">¶</a></dt>
@@ -918,120 +918,16 @@ in OneView, it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes the Deployment Plan.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> – dict object to delete</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resource was successfully deleted.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieves a specific Deployment Plan resource based on the ID or URI provided.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the Deployment Plan.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The Deployment Plan.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a list of Deployment Plans resources based on optional sorting and filtering, and constrained by start and
-count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
-The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of Deployment Plan.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all Deployment Plans that match the filter.</p>
-<p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of Deployment Plans.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_osdp">
-<code class="descname">get_osdp</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get_osdp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_osdp" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_osdp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get_osdp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_osdp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieves facts about Server Profiles and Server Profile Templates that are using Deployment Plan based on the ID or URI provided.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the Deployment Plan.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Server Profiles and Server Profile Templates</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Server Profiles and Server Profile Templates</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -1039,42 +935,15 @@ on create time with the oldest entry first.</li>
 
 <dl class="method">
 <dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_usedby">
-<code class="descname">get_usedby</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get_usedby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_usedby" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_usedby</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.get_usedby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.get_usedby" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieves the OS deployment plan details from OneView for a deployment plan resource based on the ID or URI provided.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the Deployment Plan.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The OS Deployment Plan.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The OS Deployment Plan.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/image_streamer/resources/deployment_plans.html#DeploymentPlans.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.image_streamer.resources.deployment_plans.DeploymentPlans.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates the properties of the Deployment Plan.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation
-in OneView, it just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated Deployment Plan.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
