@@ -1244,15 +1244,71 @@ in OneView; it just stops waiting for its completion.</li>
 <div class="section" id="module-hpOneView.resources.storage.volumes">
 <span id="hponeview-resources-storage-volumes-module"></span><h2>hpOneView.resources.storage.volumes module<a class="headerlink" href="#module-hpOneView.resources.storage.volumes" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="hpOneView.resources.storage.volumes.Volumes">
-<em class="property">class </em><code class="descclassname">hpOneView.resources.storage.volumes.</code><code class="descname">Volumes</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Volumes API client.</p>
+<dt id="hpOneView.resources.storage.volumes.VolumeSnapshots">
+<em class="property">class </em><code class="descclassname">hpOneView.resources.storage.volumes.</code><code class="descname">VolumeSnapshots</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em>, <em>volume_uri=None</em>, <em>snapshot_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#VolumeSnapshots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.VolumeSnapshots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
+<p>Volume snapshots API client.</p>
 <dl class="attribute">
-<dt id="hpOneView.resources.storage.volumes.Volumes.DEFAULT_VALUES_SNAPSHOT">
-<code class="descname">DEFAULT_VALUES_SNAPSHOT</code><em class="property"> = {u'200': {u'type': u'Snapshot'}, u'300': {u'type': u'Snapshot'}, u'500': {}}</em><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.DEFAULT_VALUES_SNAPSHOT" title="Permalink to this definition">¶</a></dt>
+<dt id="hpOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'Snapshot'}, u'300': {u'type': u'Snapshot'}, u'500': {}}</em><a class="headerlink" href="#hpOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="hpOneView.resources.storage.volumes.VolumeSnapshots.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#VolumeSnapshots.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.VolumeSnapshots.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a resource when a request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – Additional fields can be passed to create the resource.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.storage.volumes.VolumeSnapshots.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#VolumeSnapshots.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.VolumeSnapshots.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a snapshot from OneView and the storage system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Details of associated volume.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpOneView.resources.storage.volumes.Volumes">
+<em class="property">class </em><code class="descclassname">hpOneView.resources.storage.volumes.</code><code class="descname">Volumes</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
+<p>Volumes API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.storage.volumes.Volumes.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/storage-volumes'</em><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.URI" title="Permalink to this definition">¶</a></dt>
@@ -1274,43 +1330,6 @@ in OneView, just stop waiting for its completion.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Added resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates or adds a volume.</p>
-<p>There are six different methods to create the volume:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Common = Storage System + Storage Pool</li>
-<li>Template = Storage Volume Template</li>
-<li>Common with snapshots = Storage System + Storage Pool + Snapshot Pool</li>
-<li>Management = Storage System + wwn</li>
-<li>Management by name = Storage System + Storage System Volume Name</li>
-<li>Snapshot = Snapshot Pool + Storage Pool + Snapshot.</li>
-</ol>
-<p>NOTE: Use numbers 4 and 5 to add a volume for management; it does not create new volumes.</p>
-</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stop waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created or added resource.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
@@ -1353,14 +1372,13 @@ in OneView, just stop waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.storage.volumes.Volumes.create_snapshot">
-<code class="descname">create_snapshot</code><span class="sig-paren">(</span><em>volume_id_or_uri</em>, <em>snapshot</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.create_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.create_snapshot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_snapshot</code><span class="sig-paren">(</span><em>snapshot</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.create_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.create_snapshot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a snapshot for the specified volume.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>volume_id_or_uri</strong> – Can be either the volume ID or the volume URI.</li>
 <li><strong>snapshot</strong> (<em>dict</em>) – Object to create.</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
 OneView, just stops waiting for its completion.</li>
@@ -1379,14 +1397,13 @@ OneView, just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.storage.volumes.Volumes.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>export_only=None</em>, <em>suppress_device_updates=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.delete" title="Permalink to this definition">¶</a></dt>
+<code class="descname">delete</code><span class="sig-paren">(</span><em>force=False</em>, <em>export_only=None</em>, <em>suppress_device_updates=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes a managed volume.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to delete.</li>
 <li><strong>force</strong> – If set to true, the operation completes despite any problems with
 network connectivity or errors on the resource itself. The default is false.</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
@@ -1404,81 +1421,6 @@ Setting its value to False has the same behavior as the default behavior.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.delete_snapshot">
-<code class="descname">delete_snapshot</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.delete_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.delete_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes a snapshot from OneView and the storage system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to remove.</li>
-<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Details of associated volume.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the managed volume.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the volume ID or the volume URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Managed volume.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a paginated collection of managed volumes. The collection is based on optional
-sorting and filtering and is constrained by start and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
-The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of managed volumes.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
 </td>
 </tr>
 </tbody>
@@ -1531,31 +1473,6 @@ name and optional proxy name</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all managed volumes that matches the given filter.</p>
-<p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of managed volumes.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths">
 <code class="descname">get_extra_managed_storage_volume_paths</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_extra_managed_storage_volume_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the list of extra managed storage volume paths.</p>
@@ -1587,33 +1504,8 @@ on create time with the oldest entry first.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.get_snapshot">
-<code class="descname">get_snapshot</code><span class="sig-paren">(</span><em>snapshot_id_or_uri</em>, <em>volume_id_or_uri=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a snapshot of a volume.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>volume_id_or_uri</strong> – Can be either the volume ID or the volume URI. It is optional if it is passed a snapshot URI,
-but required if it passed a snapshot ID.</li>
-<li><strong>snapshot_id_or_uri</strong> – Can be either the snapshot ID or the snapshot URI.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The snapshot.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpOneView.resources.storage.volumes.Volumes.get_snapshot_by">
-<code class="descname">get_snapshot_by</code><span class="sig-paren">(</span><em>volume_id_or_uri</em>, <em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshot_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshot_by" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_snapshot_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshot_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshot_by" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all snapshots that match the filter.</p>
 <p>The search is case-insensitive.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1621,7 +1513,6 @@ but required if it passed a snapshot ID.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>volume_id_or_uri</strong> – Can be either the volume id or the volume uri.</li>
 <li><strong>field</strong> – Field name to filter.</li>
 <li><strong>value</strong> – Value to filter.</li>
 </ul>
@@ -1638,8 +1529,44 @@ but required if it passed a snapshot ID.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="hpOneView.resources.storage.volumes.Volumes.get_snapshot_by_name">
+<code class="descname">get_snapshot_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshot_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshot_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets snapshot by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Snapshot name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">VolumeSnapshots</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri">
+<code class="descname">get_snapshot_by_uri</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshot_by_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets snapshot by uri.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – Snapshot uri</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">VolumeSnapshots</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="hpOneView.resources.storage.volumes.Volumes.get_snapshots">
-<code class="descname">get_snapshots</code><span class="sig-paren">(</span><em>volume_id_or_uri</em>, <em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshots" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_snapshots</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.get_snapshots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.get_snapshots" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all snapshots of a volume. Returns a list of snapshots based on optional sorting and filtering, and
 constrained by start and count parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1647,7 +1574,6 @@ constrained by start and count parameters.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>volume_id_or_uri</strong> – Can be either the volume id or the volume uri.</li>
 <li><strong>start</strong> – The first item to return, using 0-based indexing.
 If not specified, the default is 0 - start with the first available item.</li>
 <li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
@@ -1672,49 +1598,18 @@ on create time with the oldest entry first.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.storage.volumes.Volumes.repair">
-<code class="descname">repair</code><span class="sig-paren">(</span><em>volume_id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.repair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.repair" title="Permalink to this definition">¶</a></dt>
+<code class="descname">repair</code><span class="sig-paren">(</span><em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.repair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.repair" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes extra presentations from a specified volume on the storage system.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>volume_id_or_uri</strong> – Can be either the volume id or the volume uri.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-OneView, just stops waiting for its completion.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+OneView, just stops waiting for its completion.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Storage volume.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Storage volume.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.storage.volumes.Volumes.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/storage/volumes.html#Volumes.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.storage.volumes.Volumes.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates properties of a volume.</p>
-<p>Reverts a volume to the specified snapshot.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors on
-the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated resource.</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
