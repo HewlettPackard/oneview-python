@@ -21,7 +21,7 @@ from hpOneView.exceptions import HPOneViewException
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "<ov_ip>",
     "credentials": {
         "userName": "<username>",
         "password": "<password>"
@@ -30,13 +30,13 @@ config = {
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-
 oneview_client = OneViewClient(config)
+interconnects = oneview_client.interconnects
 
 # To run this example you must define an interconnect, otherwise, it will get the first one automatically
-interconnect_id = ""
-if not interconnect_id:
-    interconnect_id = oneview_client.interconnects.get_all(0, 1)[0]['uri']
+interconnect_uri = interconnects.get_all(0, 1)[0]['uri']
+interconnect_id = interconnect_uri.replace('/rest/interconnects/', '')
+interconnect = interconnects.get_by_uri(interconnect_uri)
 
 port_d1 = {
     "type": "port",
@@ -56,28 +56,22 @@ ports_for_update = [port_d1, port_d2]
 
 # Get the first two Interconnects
 print("\nGet the first two interconnects")
-try:
-    interconnects = oneview_client.interconnects.get_all(0, 2)
-    pprint(interconnects)
-except HPOneViewException as e:
-    print(e.msg)
+interconnects_all = interconnects.get_all(0, 2)
+pprint(interconnects_all)
 
 # Get Interconnects Statistics
 print("\nGet the interconnect statistics")
-try:
-    interconnect_statistics = oneview_client.interconnects.get_statistics(interconnect_id)
-    if interconnect_statistics:
-        pprint(interconnect_statistics['moduleStatistics'])
-    else:
-        pprint("\nThere are no statistics for the interconnect {0}".format(interconnect_id))
-except HPOneViewException as e:
-    print(e.msg)
+interconnect_statistics = interconnect.get_statistics()
+if interconnect_statistics:
+    pprint(interconnect_statistics['moduleStatistics'])
+else:
+    pprint("\nThere are no statistics for the interconnect {0}".format(interconnect.data["name"]))
 
 # Get the Statistics from a port of an Interconnects
 print("\nGet the port statistics for downlink port 1 on the interconnect "
       "that matches the specified ID")
 try:
-    statistics = oneview_client.interconnects.get_statistics(interconnect_id, port_d1["portName"])
+    statistics = interconnect.get_statistics(port_d1["portName"])
     pprint(statistics)
 except HPOneViewException as e:
     print(e.msg)
@@ -86,34 +80,25 @@ except HPOneViewException as e:
 print("\nGet the subport statistics for subport 1 on downlink port 2 on the interconnect "
       "that matches the specified ID")
 try:
-    statistics = oneview_client.interconnects.get_subport_statistics(interconnect_id,
-                                                                     port_d1["portName"],
-                                                                     port_d1["bayNumber"])
+    statistics = interconnect.get_subport_statistics(port_d1["portName"],
+                                                     port_d1["bayNumber"])
     pprint(statistics)
-except HPOneViewException as e:
-    print(e.msg)
-
-# Get by ID
-print("\nGet Interconnect that matches the specified ID")
-try:
-    interconnect = oneview_client.interconnects.get(interconnect_id)
-    pprint(interconnect)
 except HPOneViewException as e:
     print(e.msg)
 
 # Get by hostName
 print("\nGet an interconnect by hostName")
 try:
-    interconnect = oneview_client.interconnects.get_by('hostName', interconnect["hostName"])[0]
-    pprint(interconnect)
+    interconnect_by_host = interconnects.get_by('hostName', interconnect.data["hostName"])[0]
+    pprint(interconnect_by_host)
 except HPOneViewException as e:
     print(e.msg)
 
 # Get by name
 print("\nGet an interconnect by name")
 try:
-    interconnect = oneview_client.interconnects.get_by_name(interconnect["name"])
-    pprint(interconnect)
+    interconnect_by_name = interconnects.get_by_name(interconnect.data["name"])
+    pprint(interconnect_by_name.data)
 except HPOneViewException as e:
     print(e.msg)
 
@@ -121,13 +106,12 @@ except HPOneViewException as e:
 print("\nTurn the power off and the UID light to 'Off' for interconnect " +
       "that matches the specified ID")
 try:
-    interconnect = oneview_client.interconnects.patch(
-        id_or_uri=interconnect_id,
+    interconnect_patch = interconnect.patch(
         operation='replace',
         path='/powerState',
         value='Off'
     )
-    pprint(interconnect)
+    pprint(interconnect_patch)
 except HPOneViewException as e:
     print(e.msg)
 
@@ -137,7 +121,7 @@ try:
     port_for_update = port_d1.copy()
     port_for_update["enabled"] = False
 
-    updated = oneview_client.interconnects.update_port(port_for_update, interconnect_id)
+    updated = interconnect.update_port(port_for_update)
     pprint(updated)
 except HPOneViewException as e:
     print(e.msg)
@@ -145,7 +129,7 @@ except HPOneViewException as e:
 # Reset of port protection.
 print("\nTrigger a reset of port protection of the interconnect that matches the specified ID")
 try:
-    result = oneview_client.interconnects.reset_port_protection(interconnect_id)
+    result = interconnect.reset_port_protection()
     pprint(result)
 except HPOneViewException as e:
     print(e.msg)
@@ -154,7 +138,7 @@ except HPOneViewException as e:
 print("\nGet the named servers for the interconnect that matches the specified ID")
 
 try:
-    interconnect_ns = oneview_client.interconnects.get_name_servers(interconnect_id)
+    interconnect_ns = interconnect.get_name_servers()
     pprint(interconnect_ns)
 except HPOneViewException as e:
     print(e.msg)
@@ -162,11 +146,11 @@ except HPOneViewException as e:
 # Get the interconnect ports.
 try:
     print("\nGet all the interconnect ports.")
-    ports = oneview_client.interconnects.get_ports(interconnect_id)
+    ports = interconnect.get_ports()
     pprint(ports)
 
     print("\nGet an interconnect port.")
-    ports = oneview_client.interconnects.get_port(interconnect_id, port_d1["portId"])
+    ports = interconnect.get_port(port_d1["portId"])
     pprint(ports)
 
 except HPOneViewException as e:
@@ -174,9 +158,8 @@ except HPOneViewException as e:
 
 # Updates the interconnect ports.
 print("\nUpdate the interconnect ports")
-
 try:
-    updated = oneview_client.interconnects.update_ports(ports_for_update, interconnect_id)
+    updated = interconnect.update_ports(ports_for_update)
 
     # filtering only updated ports
     names = [port_d1["portName"], port_d2["portName"]]
@@ -188,18 +171,16 @@ except HPOneViewException as e:
 
 # Updates the interconnect configuration.
 print("\nUpdate the interconnect configuration")
-
 try:
-    updated = oneview_client.interconnects.update_configuration(interconnect_id)
+    updated = interconnect.update_configuration()
     pprint(updated)
 except HPOneViewException as e:
     print(e.msg)
 
 # Gets the interconnect configuration.
 print("\nGet the interconnect pluggable module information")
-
 try:
-    plug_info = oneview_client.interconnects.get_pluggable_module_information(interconnect_id)
+    plug_info = interconnect.get_pluggable_module_information()
     pprint(plug_info)
 except HPOneViewException as e:
     print(e.msg)
