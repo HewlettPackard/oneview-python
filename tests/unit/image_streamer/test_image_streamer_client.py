@@ -73,9 +73,9 @@ class ImageStreamerClientTest(TestCase):
     def test_deployment_plans_has_right_type(self):
         self.assertIsInstance(self._client.deployment_plans, DeploymentPlans)
 
-    def test_deployment_plans_lazy_loading(self):
+    def test_deployment_plans_client(self):
         resource = self._client.deployment_plans
-        self.assertEqual(resource, self._client.deployment_plans)
+        self.assertNotEqual(resource, self._client.deployment_plans)
 
     def test_artifact_bundles_has_right_type(self):
         self.assertIsInstance(self._client.artifact_bundles, ArtifactBundles)
