@@ -610,6 +610,22 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="ResourceHelper.update_with_zero_body"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.resource.ResourceHelper.update_with_zero_body">[docs]</a>    <span class="k">def</span> <span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Makes a PUT request to update a resource when no request body is required.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uri: Allows to use a different URI other than resource URI</span>
+<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default.</span>
+<span class="sd">                The timeout does not abort the operation in OneView; it just stops waiting for its completion.</span>
+<span class="sd">            custom_headers: Allows to set custom HTTP headers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dict with updated resource data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Update with zero length body (uri = </span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">uri</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="ResourceHelper.create_report"><a class="viewcode-back" href="../../../hpOneView.resources.html#hpOneView.resources.resource.ResourceHelper.create_report">[docs]</a>    <span class="k">def</span> <span class="nf">create_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a report and returns the output.</span>

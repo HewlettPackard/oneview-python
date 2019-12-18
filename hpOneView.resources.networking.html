@@ -644,8 +644,8 @@ The search is case-insensitive</p>
 <span id="hponeview-resources-networking-interconnects-module"></span><h2>hpOneView.resources.networking.interconnects module<a class="headerlink" href="#module-hpOneView.resources.networking.interconnects" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects">
-<em class="property">class </em><code class="descclassname">hpOneView.resources.networking.interconnects.</code><code class="descname">Interconnects</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpOneView.resources.networking.interconnects.</code><code class="descname">Interconnects</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.ResourcePatchMixin" title="hpOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.ResourcePatchMixin</span></code></a>, <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
 <p>Interconnects API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.URI">
@@ -653,109 +653,16 @@ The search is case-insensitive</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="hpOneView.resources.networking.interconnects.Interconnects.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the Interconnect by ID or by URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.networking.interconnects.Interconnects.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a paginated collection of interconnects that includes the ports.</p>
-<p>To avoid a timeout on busy systems, the recommended maximum value of count is 2.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
-The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of interconnects.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.networking.interconnects.Interconnects.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all interconnects that match the filter
-The search is case-insensitive</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of interconnects.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.networking.interconnects.Interconnects.get_by_name">
-<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_by_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve an Interconnect by its name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Interconnect name.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Interconnect.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.get_name_servers">
-<code class="descname">get_name_servers</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_name_servers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_name_servers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_name_servers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_name_servers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_name_servers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the named servers for an interconnect.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the name servers for an interconnect.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the name servers for an interconnect.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -763,17 +670,15 @@ The search is case-insensitive</p>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.get_pluggable_module_information">
-<code class="descname">get_pluggable_module_information</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_pluggable_module_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_pluggable_module_information" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_pluggable_module_information</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_pluggable_module_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_pluggable_module_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all the pluggable module information.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the interconnect id or uri.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dicts of the pluggable module information.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicts of the pluggable module information.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">array</td>
 </tr>
 </tbody>
 </table>
@@ -781,23 +686,17 @@ The search is case-insensitive</p>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.get_port">
-<code class="descname">get_port</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>port_id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_port" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_port</code><span class="sig-paren">(</span><em>port_id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_port" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets an interconnect port.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or uri.</li>
-<li><strong>port_id_or_uri</strong> – The interconnect port id or uri.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>port_id_or_uri</strong> – The interconnect port id or uri.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The interconnect port.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The interconnect port.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -805,14 +704,13 @@ The search is case-insensitive</p>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.get_ports">
-<code class="descname">get_ports</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>start=0</em>, <em>count=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_ports" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_ports</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_ports" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all interconnect ports.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</li>
 <li><strong>start</strong> – The first item to return, using 0-based indexing.
 If not specified, the default is 0 - start with the first available item.</li>
 <li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
@@ -833,23 +731,17 @@ count if the sum of start and count exceeds the total number of items.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.get_statistics">
-<code class="descname">get_statistics</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>port_name=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_statistics" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_statistics</code><span class="sig-paren">(</span><em>port_name=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_statistics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the statistics from an interconnect.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</li>
-<li><strong>port_name</strong> (<em>str</em>) – A specific port name of an interconnect.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>port_name</strong> (<em>str</em>) – A specific port name of an interconnect.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The statistics for the interconnect that matches id.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The statistics for the interconnect that matches id.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -857,14 +749,13 @@ count if the sum of start and count exceeds the total number of items.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.get_subport_statistics">
-<code class="descname">get_subport_statistics</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>port_name</em>, <em>subport_number</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_subport_statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_subport_statistics" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_subport_statistics</code><span class="sig-paren">(</span><em>port_name</em>, <em>subport_number</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.get_subport_statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.get_subport_statistics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the subport statistics on an interconnect.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</li>
 <li><strong>port_name</strong> (<em>str</em>) – A specific port name of an interconnect.</li>
 <li><strong>subport_number</strong> (<em>int</em>) – The subport.</li>
 </ul>
@@ -881,54 +772,20 @@ count if the sum of start and count exceeds the total number of items.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpOneView.resources.networking.interconnects.Interconnects.patch">
-<code class="descname">patch</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>operation</em>, <em>path</em>, <em>value</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.patch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a specific patch operation for the given interconnect.</p>
-<p>There is a limited set of interconnect properties which might be changed.
-They are: ‘powerState’, ‘uidState’, and ‘deviceResetState’.</p>
-<p>If the interconnect supports the operation, the operation is performed and
-a task is returned through which the results are reported.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri</li>
-<li><strong>operation</strong> – The type of operation: one of “add”, “copy”, “move”, “remove”, “replace”, or “test”.</li>
-<li><strong>path</strong> – The JSON path the operation is to use. The exact meaning depends on the type of operation.</li>
-<li><strong>value</strong> – The value to add or replace for “add” and “replace” operations or the value to compare against
-for a “test” operation. Not used by “copy”, “move”, or “remove”.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.reset_port_protection">
-<code class="descname">reset_port_protection</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.reset_port_protection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.reset_port_protection" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reset_port_protection</code><span class="sig-paren">(</span><em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.reset_port_protection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.reset_port_protection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Triggers a reset of port protection.</p>
 <p>Cause port protection to be reset on all the interconnects of the logical interconnect that matches ID.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The interconnect.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The interconnect.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -936,22 +793,17 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.update_configuration">
-<code class="descname">update_configuration</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.update_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.update_configuration" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_configuration</code><span class="sig-paren">(</span><em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.update_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.update_configuration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reapplies the appliance’s configuration on the interconnect. This includes running the same configure steps
 that were performed as part of the interconnect add by the enclosure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Interconnect</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Interconnect</td>
 </tr>
 </tbody>
 </table>
@@ -959,14 +811,13 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.update_port">
-<code class="descname">update_port</code><span class="sig-paren">(</span><em>port_information</em>, <em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.update_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.update_port" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_port</code><span class="sig-paren">(</span><em>port_information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.update_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.update_port" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates an interconnect port.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</li>
 <li><strong>port_information</strong> (<em>dict</em>) – object to update</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
@@ -985,14 +836,13 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpOneView.resources.networking.interconnects.Interconnects.update_ports">
-<code class="descname">update_ports</code><span class="sig-paren">(</span><em>ports</em>, <em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.update_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.update_ports" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_ports</code><span class="sig-paren">(</span><em>ports</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/interconnects.html#Interconnects.update_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.interconnects.Interconnects.update_ports" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the interconnect ports.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the interconnect id or the interconnect uri.</li>
 <li><strong>ports</strong> (<em>list</em>) – Ports to update.</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>

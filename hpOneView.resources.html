@@ -1499,6 +1499,29 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="hpOneView.resources.resource.ResourceHelper.update_with_zero_body">
+<code class="descname">update_with_zero_body</code><span class="sig-paren">(</span><em>uri</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/resource.html#ResourceHelper.update_with_zero_body"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.resource.ResourceHelper.update_with_zero_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a PUT request to update a resource when no request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – Allows to use a different URI other than resource URI</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default.
+The timeout does not abort the operation in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows to set custom HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict with updated resource data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="hpOneView.resources.resource.ResourceHelper.validate_resource_uri">
 <code class="descname">validate_resource_uri</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/resource.html#ResourceHelper.validate_resource_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.resource.ResourceHelper.validate_resource_uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper method to validate URI of the resource.</p>
