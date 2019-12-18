@@ -405,8 +405,7 @@ class ResourceHelper(object):
             uri += '?force={}'.format(force)
 
         logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
-        result = self.do_post(uri, data, timeout, custom_headers)
-        return result
+        return self.do_post(uri, data, timeout, custom_headers)
 
     def delete(self, uri, force=False, timeout=-1, custom_headers=None):
         """Deletes current resource.
