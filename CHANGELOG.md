@@ -29,6 +29,7 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 - Storage pool
 - Storage system
 - Storage volume
+- Storage volume attachment
 
 # TODO: Move the below resources to the above list once the resource module is updated to use API versions 1000 and 1200
 - Connection template
