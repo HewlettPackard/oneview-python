@@ -21,7 +21,6 @@ import mock
 
 from hpOneView.connection import connection
 from hpOneView.resources.resource import ResourceHelper, Resource
-from hpOneView.resources.storage.volumes import INVALID_VOLUME_URI
 from hpOneView.resources.storage.volumes import Volumes
 
 
@@ -98,13 +97,8 @@ class VolumesTest(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_by_resource_called_once(self, mock_delete):
-        resource = {
-            'uri': self.resource_uri,
-            'name': 'VOLUME_FAKE'
-        }
-        self._volumes.delete(force=False, timeout=-1)
-
         expected_headers = {"If-Match": '*'}
+        self._volumes.delete()
         mock_delete.assert_called_once_with(self.resource_uri, force=False,
                                             timeout=-1, custom_headers=expected_headers)
 
@@ -135,21 +129,17 @@ class VolumesTest(unittest.TestCase):
     def test_get_snapshots_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
-        uri = '{}/snapshots/'.format(self.resource_uri)
-
         self._volumes.get_snapshots(2, 500, filter, sort)
         mock_get_all.assert_called_once_with(count=500, filter='name=TestName', sort='name:ascending', start=2)
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_snapshots_called_once_with_default(self, mock_get_all):
-        uri = '{}/snapshots/'.format(self.resource_uri)
         self._volumes.get_snapshots()
         mock_get_all.assert_called_once_with(count=-1, filter=u'', sort=u'', start=0)
 
     @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_create_snapshot_should_be_called_once(self, mock_get, mock_create):
-        uri = '{}/snapshots/'.format(self.resource_uri)
         resource = {
             'name': 'OneViewSDK Test Snapshot',
         }
