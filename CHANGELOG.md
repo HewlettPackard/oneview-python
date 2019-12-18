@@ -23,26 +23,14 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
   Refer example directory for more examples.
 
 #### Features supported with the current release
-- Deployment plan
-- Interconnect
-- Network set
-- Storage pool
-- Storage system
-- Storage volume
-- Storage volume attachment
-
-# TODO: Move the below resources to the above list once the resource module is updated to use API versions 1000 and 1200
 - Connection template
-- Enclosure
-- Enclosure group
+- Deployment plan
 - Ethernet network
 - FC network
 - FCOE network
+- Interconnect
 - Interconnect type
 - Internal link set
-- Logical enclosure
-- Logical interconnect
-- Logical interconnect group
 - Logical switch group
 - Managed SAN
 - OS deployment plan
@@ -50,9 +38,21 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 - SAS interconnect type
 - SAS logical interconnect
 - SAS logical interconnect group
-- Server hardware
+- Network set
 - Server hardware type
-- Server profile
-- Server profile template
+- Storage pool
+- Storage system
+- Storage volume
+- Storage volume attachment
 - Switch type
 - Uplink set
+
+# TODO: Move the below resources to the above list once the resource module is updated to use API versions 1000 and 1200
+- Enclosure
+- Enclosure group
+- Logical enclosure
+- Logical interconnect
+- Logical interconnect group
+- Server hardware
+- Server profile
+- Server profile template
