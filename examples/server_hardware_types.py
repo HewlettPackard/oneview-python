@@ -49,7 +49,7 @@ pprint(server_hardware_type_by_uri.data, depth=2)
 
 # Get by name and update
 print("\nGet a Server Hardware Type by name")
-server_hardware_type = server_hardware_types.get_by_name("SY 480 Gen9 1")
+server_hardware_type = server_hardware_types.get_by_name("SY 480 Gen9 2")
 pprint(server_hardware_type.data, depth=2)
 update = {
     'description': "Updated Description"

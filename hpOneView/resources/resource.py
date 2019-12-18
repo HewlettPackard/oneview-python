@@ -693,7 +693,6 @@ class ResourceHelper(object):
             and make request to pagination URI to get all the resources.
         """
         items = []
-
         while uri:
             logger.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
             response = self._connection.get(uri)

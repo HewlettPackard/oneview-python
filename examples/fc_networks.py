@@ -26,7 +26,7 @@ config = {
         "userName": "<username>",
         "password": "<password>"
     },
-    "api_version": 800
+    "api_version": 1200
 }
 
 options = {
