@@ -28,16 +28,6 @@ config = {
     }
 }
 
-config = {
-    "ip": "10.50.4.100",
-    "credentials": {
-        "userName": "kattumun",
-        "password": "P@ssw0rd!"
-    },
-    "api_version": 600
-
-}
-
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
@@ -77,8 +67,7 @@ options = {
     "isPermanent": False
 }
 
-#new_volume = volumes.create(options)
-new_volume = volumes.get_by_name('ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED')
+new_volume = volumes.create(options)
 pprint(new_volume.data)
 
 # Add a volume for management by the appliance using the WWN of the volume
@@ -111,7 +100,7 @@ print("\nFound a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.dat
 # Update the name of the volume recently found to 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
 volume_data = volume.data.copy()
 volume_data['name'] = 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
-#volume.update(volume_data)
+volume.update(volume_data)
 print("\nVolume updated successfully.\n  uri = '{uri}'\n  with attribute 'name' = {name}".format(**volume.data))
 
 # Find a volume by URI
@@ -171,12 +160,12 @@ connections = [{'networkUri': '/rest/fc-networks/90bd0f63-3aab-49e2-a45f-a52500b
                 'proxyName': '20:19:50:EB:1A:0F:0E:B6', 'initiatorName': '10:00:62:01:F8:70:00:0E'},
                {'networkUri': '/rest/fc-networks/8acd0f62-1aab-49e2-a45a-d22500b4acdb',
                 'proxyName': '20:18:40:EB:1A:0F:0E:C7', 'initiatorName': '10:00:72:01:F8:70:00:0F'}]
-#attachable_volumes = volumes.get_attachable_volumes(scope_uris=scope_uris, connections=connections)
-#pprint(attachable_volumes)
+attachable_volumes = volumes.get_attachable_volumes(scope_uris=scope_uris, connections=connections)
+pprint(attachable_volumes)
 
 print("\nDelete the recently created volumes")
 new_volume.delete()
 print("The volume, that was previously created with a Storage Pool, was deleted from OneView and storage system")
-if volume_added_with_wwn:
+if unmanaged_volume_wwn:
     volume_added_with_wwn.delete(export_only=True)
     print("The volume, that was previously added using the WWN of the volume, was deleted from OneView")
