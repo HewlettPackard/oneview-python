@@ -21,7 +21,7 @@ import mock
 
 from hpOneView.connection import connection
 from hpOneView.resources.storage.storage_systems import StorageSystems
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourceHelper
 
 
 class StorageSystemsTest(unittest.TestCase):
@@ -29,92 +29,78 @@ class StorageSystemsTest(unittest.TestCase):
         self.host = '127.0.0.1'
         self.connection = connection(self.host)
         self._storage_systems = StorageSystems(self.connection)
+        self._storage_systems.data = {'uri': '/rest/storage-systems/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
         self._storage_systems.get_all(2, 500, filter, sort)
+        mock_get_all.assert_called_once_with(count=500, filter='name=TestName', sort='name:ascending', start=2)
 
-        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
-
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once_with_default(self, mock_get_all):
         self._storage_systems.get_all()
-        mock_get_all.assert_called_once_with(0, -1, filter='', sort='')
+        mock_get_all.assert_called_once_with(count=-1, filter='', sort='', start=0)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_id_called_once(self, mock_get):
-        storage_systems_id = "TXQ1010306"
-        self._storage_systems.get(storage_systems_id)
-        mock_get.assert_called_once_with(storage_systems_id)
-
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_uri_called_once(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
-        self._storage_systems.get(storage_systems_uri)
-        mock_get.assert_called_once_with(storage_systems_uri)
-
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_host_types_called_once(self, mock_get):
         storage_systems_host_types_uri = "/rest/storage-systems/host-types"
         self._storage_systems.get_host_types()
         mock_get.assert_called_once_with(storage_systems_host_types_uri)
 
-    @mock.patch.object(ResourceClient, 'get_collection')
+    @mock.patch.object(ResourceHelper, 'get_collection')
     def test_get_managed_ports_called_once_with_uri(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
-        storage_systems_managed_ports_uri = "/rest/storage-systems/TXQ1010306/managedPorts"
-        self._storage_systems.get_managed_ports(storage_systems_uri)
+        storage_systems_managed_ports_uri = "{}/managedPorts".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_managed_ports()
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get_collection')
+    @mock.patch.object(ResourceHelper, 'get_collection')
     def test_get_managed_ports_called_once_with_id(self, mock_get):
-        storage_systems_id = "TXQ1010306"
-        storage_systems_managed_ports_uri = "/rest/storage-systems/TXQ1010306/managedPorts"
-        self._storage_systems.get_managed_ports(storage_systems_id)
+        storage_systems_managed_ports_uri = "{}/managedPorts".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_managed_ports()
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get_collection')
+    @mock.patch.object(ResourceHelper, 'get_collection')
     def test_get_managed_ports_called_once_with_uri_and_port_id(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
         port_id = "C862833E-907C-4124-8841-BDC75444CF76"
         storage_systems_managed_ports_uri = \
-            "/rest/storage-systems/TXQ1010306/managedPorts/C862833E-907C-4124-8841-BDC75444CF76"
-        self._storage_systems.get_managed_ports(storage_systems_uri, port_id)
+            "{}/managedPorts/C862833E-907C-4124-8841-BDC75444CF76".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_managed_ports(port_id)
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get_collection')
+    @mock.patch.object(ResourceHelper, 'get_collection')
     def test_get_managed_ports_called_once_with_id_and_port_id(self, mock_get):
-        storage_systems_id = "TXQ1010306"
         port_id = "C862833E-907C-4124-8841-BDC75444CF76"
         storage_systems_managed_ports_uri = \
-            "/rest/storage-systems/TXQ1010306/managedPorts/C862833E-907C-4124-8841-BDC75444CF76"
-        self._storage_systems.get_managed_ports(storage_systems_id, port_id)
+            "{}/managedPorts/C862833E-907C-4124-8841-BDC75444CF76".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_managed_ports(port_id)
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get_collection')
+    @mock.patch.object(ResourceHelper, 'get_collection')
     def test_get_managed_ports_called_once_with_uri_and_port_uri(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
         port_uri = \
-            "/rest/storage-systems/TXQ1010306/managedPorts/C862833E-907C-4124-8841-BDC75444CF76"
+            "{}/managedPorts/C862833E-907C-4124-8841-BDC75444CF76".format(self._storage_systems.data["uri"])
+
         storage_systems_managed_ports_uri = \
-            "/rest/storage-systems/TXQ1010306/managedPorts/C862833E-907C-4124-8841-BDC75444CF76"
-        self._storage_systems.get_managed_ports(storage_systems_uri, port_uri)
+            "{}/managedPorts/C862833E-907C-4124-8841-BDC75444CF76".format(self._storage_systems.data["uri"])
+
+        self._storage_systems.get_managed_ports(port_uri)
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get_collection')
+    @mock.patch.object(ResourceHelper, 'get_collection')
     def test_get_managed_ports_called_once_with_id_and_port_uri(self, mock_get):
-        storage_systems_id = "TXQ1010306"
         port_uri = \
-            "/rest/storage-systems/TXQ1010306/managedPorts/C862833E-907C-4124-8841-BDC75444CF76"
+            "{}/managedPorts/C862833E-907C-4124-8841-BDC75444CF76".format(self._storage_systems.data["uri"])
+
         storage_systems_managed_ports_uri = \
-            "/rest/storage-systems/TXQ1010306/managedPorts/C862833E-907C-4124-8841-BDC75444CF76"
-        self._storage_systems.get_managed_ports(storage_systems_id, port_uri)
+            "{}/managedPorts/C862833E-907C-4124-8841-BDC75444CF76".format(self._storage_systems.data["uri"])
+
+        self._storage_systems.get_managed_ports(port_uri)
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'create')
+    @mock.patch.object(ResourceHelper, 'create')
     def test_add_called_once_with_defaults(self, mock_create):
         storage_system = {
             "ip_hostname": "example.com",
@@ -122,9 +108,9 @@ class StorageSystemsTest(unittest.TestCase):
             "password": "password"
         }
         self._storage_systems.add(storage_system)
-        mock_create.assert_called_once_with(storage_system, timeout=-1)
+        mock_create.assert_called_once_with(storage_system, None, -1, None, False)
 
-    @mock.patch.object(ResourceClient, 'create')
+    @mock.patch.object(ResourceHelper, 'create')
     def test_add_called_once(self, mock_create):
         storage_system = {
             "ip_hostname": "example.com",
@@ -132,24 +118,17 @@ class StorageSystemsTest(unittest.TestCase):
             "password": "password"
         }
         self._storage_systems.add(storage_system, 70)
-        mock_create.assert_called_once_with(storage_system, timeout=70)
+        mock_create.assert_called_once_with(storage_system, None, 70, None, False)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_storage_pools_called_once_with_uri(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
-        storage_systems_managed_ports_uri = "/rest/storage-systems/TXQ1010306/storage-pools"
-        self._storage_systems.get_storage_pools(storage_systems_uri)
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_storage_pools_called_once(self, mock_get):
+        storage_systems_managed_ports_uri = "{}/storage-pools".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_storage_pools()
         mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_storage_pools_called_once_with_id(self, mock_get):
-        storage_systems_id = "TXQ1010306"
-        storage_systems_managed_ports_uri = "/rest/storage-systems/TXQ1010306/storage-pools"
-        self._storage_systems.get_storage_pools(storage_systems_id)
-        mock_get.assert_called_once_with(storage_systems_managed_ports_uri)
-
-    @mock.patch.object(ResourceClient, 'update')
-    def test_update_called_once_with_defaults(self, update):
+    @mock.patch.object(ResourceHelper, 'do_put')
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_update_called_once_with_defaults(self, mock_do_get, mock_do_put):
         storage_system = {
             "type": "StorageSystemV3",
             "credentials": {
@@ -158,11 +137,18 @@ class StorageSystemsTest(unittest.TestCase):
             },
             "name": "StoreServ1",
         }
+        uri = self._storage_systems.data["uri"]
+        update_request = storage_system.copy()
+        update_request["uri"] = uri
+
+        mock_do_get.return_value = storage_system
         self._storage_systems.update(storage_system)
-        update.assert_called_once_with(storage_system, timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'update')
-    def test_update_called_once(self, mock_update):
+        mock_do_put.assert_called_once_with(uri, update_request, -1, None)
+
+    @mock.patch.object(ResourceHelper, 'do_put')
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_update_called_once(self, mock_do_get, mock_do_put):
         storage_system = {
             "type": "StorageSystemV3",
             "credentials": {
@@ -171,38 +157,40 @@ class StorageSystemsTest(unittest.TestCase):
             },
             "name": "StoreServ1",
         }
+        uri = self._storage_systems.data["uri"]
+        update_request = storage_system.copy()
+        update_request["uri"] = uri
+
+        mock_do_get.return_value = storage_system
         self._storage_systems.update(storage_system, 70)
-        mock_update.assert_called_once_with(storage_system, timeout=70)
 
-    @mock.patch.object(ResourceClient, 'delete')
+        mock_do_put.assert_called_once_with(uri, update_request, 70, None)
+
+    @mock.patch.object(ResourceHelper, 'delete')
     def test_remove_called_once(self, mock_delete):
-        id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
-        if_match_header = {'If-Match': '*'}
-        self._storage_systems.remove(id, force=True, timeout=50)
+        self._storage_systems.remove(force=True, timeout=50)
 
-        mock_delete.assert_called_once_with(id, force=True, timeout=50, custom_headers=if_match_header)
+        mock_delete.assert_called_once_with(self._storage_systems.data["uri"],
+                                            custom_headers={'If-Match': '*'}, force=True, timeout=50)
 
-    @mock.patch.object(ResourceClient, 'delete')
+    @mock.patch.object(Resource, 'delete')
     def test_remove_called_once_with_defaults(self, mock_delete):
-        id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
         if_match_header = {'If-Match': '*'}
-        self._storage_systems.remove(id)
+        self._storage_systems.remove()
 
-        mock_delete.assert_called_once_with(id, force=False, timeout=-1, custom_headers=if_match_header)
+        mock_delete.assert_called_once_with(force=False, timeout=-1, custom_headers=if_match_header)
 
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_by_called_once(self, mock_get_by):
         self._storage_systems.get_by("name", "test name")
+        mock_get_by.assert_called_once_with(count=-1, filter='"name=\'test name\'"', sort='', start=0)
 
-        mock_get_by.assert_called_once_with("name", "test name")
-
-    @mock.patch.object(ResourceClient, 'get_by_name')
-    def test_get_by_name_called_once(self, mock_get_by):
+    @mock.patch.object(ResourceHelper, 'get_all')
+    def test_get_by_name_called_once(self, mock_get_all):
         self._storage_systems.get_by_name("test name")
+        mock_get_all.assert_called_once_with(count=-1, filter='"name=\'test name\'"', sort='', start=0)
 
-        mock_get_by.assert_called_once_with(name="test name")
-
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_by_ip_hostname_find_value(self, get_all):
         get_all.return_value = [
             {"credentials": {
@@ -218,9 +206,9 @@ class StorageSystemsTest(unittest.TestCase):
         self.assertEqual(
             {"credentials": {
                 "ip_hostname": "20.0.0.0",
-                "username": "username"}}, result)
+                "username": "username"}}, result.data)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_by_ip_hostname_value_not_found(self, get_all):
         get_all.return_value = [
             {"credentials": {
@@ -235,7 +223,7 @@ class StorageSystemsTest(unittest.TestCase):
         get_all.assert_called_once()
         self.assertIsNone(result)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_by_hostname(self, get_all):
         get_all.return_value = [
             {"hostname": "10.0.0.0",
@@ -248,27 +236,23 @@ class StorageSystemsTest(unittest.TestCase):
         get_all.assert_called_once()
         self.assertEqual(
             {"hostname": "20.0.0.0",
-             "username": "username"}, result)
+             "username": "username"}, result.data)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_reachable_ports_called_once(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
-        reachable_ports_uri = "/rest/storage-systems/TXQ1010306/reachable-ports?start=0&count=-1"
-        self._storage_systems.get_reachable_ports(storage_systems_uri)
+        reachable_ports_uri = "{}/reachable-ports?start=0&count=-1".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_reachable_ports()
         mock_get.assert_called_once_with(reachable_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_reachable_ports_called_once_with_networks(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
         networks = ['rest/net1', 'rest/net2']
-        reachable_ports_uri = "/rest/storage-systems/TXQ1010306/reachable-ports" \
-                              "?networks='rest/net1,rest/net2'&start=0&count=-1"
-        self._storage_systems.get_reachable_ports(storage_systems_uri, networks=networks)
+        reachable_ports_uri = "{}/reachable-ports?networks='rest/net1,rest/net2'&start=0&count=-1".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_reachable_ports(networks=networks)
         mock_get.assert_called_once_with(reachable_ports_uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_templates_called_once(self, mock_get):
-        storage_systems_uri = "/rest/storage-systems/TXQ1010306"
-        templates_uri = "/rest/storage-systems/TXQ1010306/templates?start=0&count=-1"
-        self._storage_systems.get_templates(storage_systems_uri)
+        templates_uri = "{}/templates?start=0&count=-1".format(self._storage_systems.data["uri"])
+        self._storage_systems.get_templates()
         mock_get.assert_called_once_with(templates_uri)
