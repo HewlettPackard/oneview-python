@@ -54,11 +54,10 @@ else:
     }
     s_system = storage_systems.add(options)
     s_system_data = s_system.data
-    print(s_system_data)
-    open('/home/administrator/Documents/oneview-python/log.txt', 'w').write(str(s_system_data))
     s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
     s_systems.update(s_system_data)
     storage_system_added = True
+
     print("   Added storage system '{}' at uri: {}".format(
         s_system.data['name'], s_system.data['uri']))
 
