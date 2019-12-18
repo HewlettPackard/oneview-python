@@ -28,16 +28,6 @@ config = {
     }
 }
 
-config = {
-    "ip": "10.50.4.100",
-    "credentials": {
-        "userName": "kattumun",
-        "password": "P@ssw0rd!"
-    },
-    "api_version": 1200
-
-}
-
 # To run all parts of this example, a server profile uri, volume uri, volume attachment id and
 # path id must be defined.
 serverProfileUri = None
@@ -88,7 +78,7 @@ except HPOneViewException as e:
 if volume_attachments:
     # Get storage volume attachment by uri
     print("\nGet storage volume attachment by uri: '{uri}'".format(**volume_attachments_all[0]))
-    volume_attachment_byid = oneview_client.storage_volume_attachments.get_by_uri(volume_attachments_all[0]['uri'])
+    volume_attachment_byid = volume_attachments.get_by_uri(volume_attachments_all[0]['uri'])
     print('\n#### Storage Volume Attachment info:')
     pprint(volume_attachment_byid.data)
 
