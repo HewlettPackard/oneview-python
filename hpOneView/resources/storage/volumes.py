@@ -50,7 +50,6 @@ class VolumeSnapshots(Resource):
 
         Args:
             data: Additional fields can be passed to create the resource.
-            uri: Resouce uri
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
             custom_headers: Allows set specific HTTP headers.
