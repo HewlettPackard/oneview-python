@@ -21,55 +21,46 @@ import mock
 
 from hpOneView.connection import connection
 from hpOneView.resources.networking.interconnects import Interconnects
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class InterconnectsTest(unittest.TestCase):
+
     def setUp(self):
         self.host = '127.0.0.1'
         self.connection = connection(self.host)
         self._interconnects = Interconnects(self.connection)
+        self._interconnects.data = {'uri': '/rest/interconnects/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_statistics(self, mock_get):
-        self._interconnects.get_statistics('3518be0e-17c1-4189-8f81-83f3724f6155')
-
-        uri = '/rest/interconnects/3518be0e-17c1-4189-8f81-83f3724f6155/statistics'
+        self._interconnects.get_statistics()
+        uri = '{}/statistics'.format(self._interconnects.data["uri"])
 
         mock_get.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_statistics_with_port_name(self, mock_get):
-        self._interconnects.get_statistics('3518be0e-17c1-4189-8f81-83f3724f6155', 'd1')
-
-        uri = '/rest/interconnects/3518be0e-17c1-4189-8f81-83f3724f6155/statistics/d1'
+        self._interconnects.get_statistics('d1')
+        uri = '{}/statistics/d1'.format(self._interconnects.data["uri"])
 
         mock_get.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_interconnect_name_servers(self, mock_get):
-        uri = '/rest/interconnects/5v8f3ec0-52t4-475a-84g4-c4iod72d2c20/nameServers'
-        interconnect_id = '5v8f3ec0-52t4-475a-84g4-c4iod72d2c20'
+        uri = '{}/nameServers'.format(self._interconnects.data["uri"])
+        self._interconnects.get_name_servers()
 
-        self._interconnects.get_name_servers(interconnect_id)
         mock_get.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_statistics_with_port_name_and_subport(self, mock_get):
-        self._interconnects.get_subport_statistics('3518be0e-17c1-4189-8f81-83f3724f6155', 'd1', 1)
-
-        uri = '/rest/interconnects/3518be0e-17c1-4189-8f81-83f3724f6155/statistics/d1/subport/1'
+        self._interconnects.get_subport_statistics('d1', 1)
+        uri = '{}/statistics/d1/subport/1'.format(self._interconnects.data["uri"])
 
         mock_get.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_interconnect(self, mock_get):
-        interconnect_id = '5v8f3ec0-52t4-475a-84g4-c4iod72d2c20'
-
-        self._interconnects.get(interconnect_id)
-        mock_get.assert_called_once_with(interconnect_id)
-
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_interconnect_by_key(self, mock_get_by):
         field = 'name'
         value = 'fakeName'
@@ -77,54 +68,50 @@ class InterconnectsTest(unittest.TestCase):
         self._interconnects.get_by(field, value)
         mock_get_by.assert_called_once_with(field, value)
 
-    @mock.patch.object(ResourceClient, 'get_by_name')
+    @mock.patch.object(Resource, 'get_by_name')
     def test_get_interconnect_by_name(self, mock_get_by_name):
         name = 'fakeName'
 
         self._interconnects.get_by_name(name)
         mock_get_by_name.assert_called_once_with(name)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
         self._interconnects.get_all(2, 5, filter, sort)
-        mock_get_all.assert_called_once_with(2, 5, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(count=5, filter='name=TestName', sort='name:ascending', start=2)
 
-    @mock.patch.object(ResourceClient, 'patch')
+    @mock.patch.object(ResourcePatchMixin, 'patch')
     def test_patch_interconnect_should_return_the_task(self, mock_patch):
-        interconnect_id = '5v8f3ec0-52t4-475a-84g4-c4iod72d2c20'
         operation = 'replace'
         path = '/powerState'
         value = 'On'
         timeout = 10
 
-        self._interconnects.patch(interconnect_id, operation, path, value, timeout)
-        mock_patch.assert_called_once_with(interconnect_id, operation, path, value, timeout)
+        self._interconnects.patch(operation, path, value, timeout)
+        mock_patch.assert_called_once_with(operation, path, value, timeout)
 
-    @mock.patch.object(ResourceClient, 'update')
+    @mock.patch.object(ResourceHelper, 'update')
     def test_update_interconnect_port(self, mock_update):
-        interconnect_id = '5v8f3ec0-52t4-475a-84g4-c4iod72d2c20'
-        url = '/rest/interconnects/5v8f3ec0-52t4-475a-84g4-c4iod72d2c20/ports'
+        url = '{}/ports'.format(self._interconnects.data["uri"])
         information = {
             "type": "port",
             "bayNumber": 1,
         }
-        self._interconnects.update_port(information, interconnect_id)
-        mock_update.assert_called_once_with(information, url, -1)
+        self._interconnects.update_port(information)
+        mock_update.assert_called_once_with(information, url, timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'update_with_zero_body')
+    @mock.patch.object(ResourceHelper, 'update_with_zero_body')
     def test_reset_port_protection(self, mock_update):
-        interconnect_id = '5v8f3ec0-52t4-475a-84g4-c4iod72d2c20'
-        url = '/rest/interconnects/5v8f3ec0-52t4-475a-84g4-c4iod72d2c20/resetportprotection'
-        self._interconnects.reset_port_protection(interconnect_id)
+        url = '{}/resetportprotection'.format(self._interconnects.data["uri"])
+        self._interconnects.reset_port_protection()
         mock_update.assert_called_once_with(url, -1)
 
-    @mock.patch.object(ResourceClient, 'update')
+    @mock.patch.object(ResourceHelper, 'update')
     def test_update_ports(self, mock_update):
-        interconnect_id = '5v8f3ec0-52t4-475a-84g4-c4iod72d2c20'
-        url = '/rest/interconnects/5v8f3ec0-52t4-475a-84g4-c4iod72d2c20/update-ports'
+        url = '{}/update-ports'.format(self._interconnects.data["uri"])
 
         port1 = {
             "type": "port2",
@@ -143,73 +130,62 @@ class InterconnectsTest(unittest.TestCase):
         clone["type"] = "port"
         expected_ports = [port1, clone]
 
-        self._interconnects.update_ports(ports, interconnect_id)
-        mock_update.assert_called_once_with(expected_ports, url, -1)
+        self._interconnects.update_ports(ports)
+        mock_update.assert_called_once_with(expected_ports, url, timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_ports_called_once(self, mock_get_all):
-        interconnect_id = "123456"
-        uri = '/rest/interconnects/123456/ports'
-
-        self._interconnects.get_ports(interconnect_id, 2, 5)
+        uri = '{}/ports'.format(self._interconnects.data["uri"])
+        self._interconnects.get_ports(2, 5)
 
         mock_get_all.assert_called_once_with(2, 5, uri=uri)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_ports_called_once_with_defaults(self, mock_get_all):
-        interconnect_id = "123456"
-        uri = '/rest/interconnects/123456/ports'
-
-        self._interconnects.get_ports(interconnect_id)
+        uri = '{}/ports'.format(self._interconnects.data["uri"])
+        self._interconnects.get_ports()
 
         mock_get_all.assert_called_once_with(0, -1, uri=uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_ports_should_return_the_ports(self, mock_get):
-        interconnect_id = "123456"
         port_id = "88888"
-
         ports = [{"mock": "value"}, {"mock": "value2"}]
         mock_get.return_value = ports
 
-        result = self._interconnects.get_port(interconnect_id, port_id)
+        result = self._interconnects.get_port(port_id)
 
         self.assertEqual(result, ports)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_port_called_once(self, mock_get):
-        interconnect_id = "123456"
         port_id = "88888"
-        uri = '/rest/interconnects/123456/ports/88888'
+        uri = '{}/ports/88888'.format(self._interconnects.data["uri"])
 
-        self._interconnects.get_port(interconnect_id, port_id)
+        self._interconnects.get_port(port_id)
 
         mock_get.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_port_should_return_the_port(self, mock_get):
-        interconnect_id = "123456"
         port_id = "88888"
-
         mock_get.return_value = {"mock": "value"}
 
-        result = self._interconnects.get_port(interconnect_id, port_id)
+        result = self._interconnects.get_port(port_id)
 
         self.assertEqual(result, {"mock": "value"})
 
-    @mock.patch.object(ResourceClient, 'update_with_zero_body')
+    @mock.patch.object(ResourceHelper, 'update_with_zero_body')
     def test_update_configuration_by_uri(self, mock_update_with_zero_body):
-        uri_interconnect = '/rest/interconnects/0123456789test'
-        uri_rest_call = '/rest/interconnects/0123456789test/configuration'
-
-        self._interconnects.update_configuration(uri_interconnect)
+        uri_rest_call = '{}/configuration'.format(self._interconnects.data["uri"])
+        self._interconnects.update_configuration()
 
         mock_update_with_zero_body.assert_called_once_with(uri_rest_call, timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_pluggable_module_information(self, mock_get):
-        self._interconnects.get_pluggable_module_information('0123456789test')
+        self._interconnects.get_pluggable_module_information()
 
-        uri = '/rest/interconnects/0123456789test/pluggableModuleInformation'
+        uri = '{}/pluggableModuleInformation'.format(self._interconnects.data["uri"])
 
         mock_get.assert_called_once_with(uri)

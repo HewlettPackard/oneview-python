@@ -155,7 +155,6 @@ class Resource(object):
             list: A list of items matching the specified filter.
         """
         result = self._helper.get_all(start=start, count=count, filter=filter, sort=sort)
-
         return result
 
     def create(self, data=None, uri=None, timeout=-1, custom_headers=None, force=False):
@@ -248,7 +247,6 @@ class Resource(object):
         if "." not in field:
             # This filter only work for the first level
             results = [item for item in results if str(item.get(field, "")).lower() == value.lower()]
-
         return results
 
     def get_by_name(self, name):
@@ -261,13 +259,11 @@ class Resource(object):
             Resource object or None if resource does not exist.
         """
         result = self.get_by("name", name)
-
         if result:
             data = result[0]
             new_resource = self.new(self._connection, data)
         else:
             new_resource = None
-
         return new_resource
 
     def get_by_uri(self, uri):
@@ -409,7 +405,6 @@ class ResourceHelper(object):
             uri += '?force={}'.format(force)
 
         logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
-
         return self.do_post(uri, data, timeout, custom_headers)
 
     def delete(self, uri, force=False, timeout=-1, custom_headers=None):
@@ -460,6 +455,22 @@ class ResourceHelper(object):
             uri += '?force=True'
 
         return self.do_put(uri, resource, timeout, custom_headers)
+
+    def update_with_zero_body(self, uri, timeout=-1, custom_headers=None):
+        """Makes a PUT request to update a resource when no request body is required.
+
+        Args:
+            uri: Allows to use a different URI other than resource URI
+            timeout: Timeout in seconds. Wait for task completion by default.
+                The timeout does not abort the operation in OneView; it just stops waiting for its completion.
+            custom_headers: Allows to set custom HTTP headers.
+
+        Returns:
+            A dict with updated resource data.
+        """
+        logger.debug('Update with zero length body (uri = %s)' % uri)
+
+        return self.do_put(uri, None, timeout, custom_headers)
 
     def create_report(self, uri, timeout=-1):
         """
@@ -676,7 +687,6 @@ class ResourceHelper(object):
             and make request to pagination URI to get all the resources.
         """
         items = []
-
         while uri:
             logger.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
             response = self._connection.get(uri)

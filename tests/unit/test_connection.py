@@ -535,7 +535,8 @@ class ConnectionTest(unittest.TestCase):
 
         mock_stream = Mock()
 
-        result = self.connection.download_to_stream(mock_stream, '/rest/download.zip')
+        result = self.connection.download_to_stream(mock_stream, '/rest/download.zip',
+                                                    custom_headers={'custom': 'custom'})
 
         self.assertTrue(result)
         mock_stream.write.assert_has_calls([call('111'), call('222'), call('333')])
@@ -879,6 +880,16 @@ class ConnectionTest(unittest.TestCase):
         self.assertTrue('timed out' in context.exception.msg)
 
     @patch.object(connection, 'get')
+    def test_get_by_uri(self, mock_get):
+        uri = "/rest/uri"
+        self.connection.get_by_uri(uri)
+        mock_get.assert_called_once_with(uri)
+
+    def test_make_url(self):
+        url = self.connection.make_url('/test/path')
+        self.assertEqual(url, url)
+
+    @patch.object(connection, 'get')
     @patch.object(connection, 'post')
     def test_login(self, mock_post, mock_get):
         mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
@@ -939,8 +950,8 @@ class ConnectionTest(unittest.TestCase):
     def test_login_with_exception_in_put_username_password_sessionID(self, mock_put, mock_get):
         mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
         mock_put.side_effect = HPOneViewException("Failed")
-
-        self.assertRaises(HPOneViewException, self.connection.login, {"userName": "administrator", "password": "", "sessionID": "123"})
+        self.assertRaises(HPOneViewException, self.connection.login, {"userName": "administrator",
+                                                                      "password": "", "sessionID": "123"})
 
     @patch.object(connection, 'get')
     def test_validate_version_exceeding_minimum(self, mock_get):

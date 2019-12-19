@@ -52,7 +52,7 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         '600': {"type": "bulk-ethernet-networkV1"},
         '800': {"type": "bulk-ethernet-networkV1"},
         '1000': {"type": "bulk-ethernet-networkV1"},
-        '1200': {"type": "bulk-ethernet-networkV1"}
+        '1200': {"type": "bulk-ethernet-networkV2"}
     }
 
     def __init__(self, connection, data=None):
