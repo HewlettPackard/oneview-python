@@ -33,6 +33,7 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 - Internal link set
 - Logical switch group
 - Managed SAN
+- Network set
 - OS deployment plan
 - SAS interconnect
 - SAS interconnect type
@@ -44,6 +45,7 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 - Storage system
 - Storage volume
 - Storage volume attachment
+- Storage volume template
 - Switch type
 - Uplink set
 

@@ -25,10 +25,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource
 
 
-class StorageVolumeTemplates(object):
+class StorageVolumeTemplates(Resource):
     """
     Storage Volume Templates API client.
 
@@ -40,63 +40,8 @@ class StorageVolumeTemplates(object):
         '300': {"type": "StorageVolumeTemplateV3"}
     }
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
-
-    def get_all(self, start=0, count=-1, filter='', sort=''):
-        """
-        Gets a list of storage volume templates.
-
-        Args:
-            start:
-                The first item to return, using 0-based indexing.
-                If not specified, the default is 0 - start with the first available item.
-            count:
-                The number of resources to return. A count of -1 requests all items.
-                The actual number of items in the response might differ from the requested
-                count if the sum of start and count exceeds the total number of items.
-            filter (list or str):
-                A general filter/query string to narrow the list of items returned. The
-                default is no filter; all resources are returned.
-            sort:
-                The sort order of the returned data set. By default, the sort order is based
-                on create time with the oldest entry first.
-
-        Returns:
-            list: A list of storage volume templates.
-        """
-        return self._client.get_all(start, count, filter=filter, sort=sort)
-
-    def create(self, resource, timeout=-1):
-        """
-        Creates a new storage volume template.
-
-        Args:
-            resource (dict):
-                Object to create.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Created storage volume template.
-        """
-        custom_headers = {'Accept-Language': 'en_US'}
-        return self._client.create(resource, timeout=timeout, custom_headers=custom_headers,
-                                   default_values=self.DEFAULT_VALUES)
-
-    def get(self, id_or_uri):
-        """
-        Gets the specified storage volume template resource by ID or by URI.
-
-        Args:
-            id_or_uri: Can be either the storage volume template ID or the storage volume template URI.
-
-        Returns:
-            dict: The storage volume template
-        """
-        return self._client.get(id_or_uri)
+    def __init__(self, connection, data=None):
+        super(StorageVolumeTemplates, self).__init__(connection, data)
 
     def get_connectable_volume_templates(self, start=0, count=-1, filter='', query='', sort=''):
         """
@@ -109,9 +54,9 @@ class StorageVolumeTemplates(object):
         """
         uri = self.URI + "/connectable-volume-templates"
 
-        get_uri = self._client.build_query_uri(start=start, count=count, filter=filter,
+        get_uri = self._helper.build_query_uri(start=start, count=count, filter=filter,
                                                query=query, sort=sort, uri=uri)
-        return self._client.get(get_uri)
+        return self._helper.do_get(get_uri)
 
     def get_reachable_volume_templates(self, start=0, count=-1, filter='', query='', sort='',
                                        networks=None, scope_uris='', private_allowed_only=False):
@@ -126,31 +71,25 @@ class StorageVolumeTemplates(object):
 
         uri += "?networks={}&privateAllowedOnly={}".format(networks, private_allowed_only)
 
-        get_uri = self._client.build_query_uri(start=start, count=count, filter=filter,
+        get_uri = self._helper.build_query_uri(start=start, count=count, filter=filter,
                                                query=query, sort=sort, uri=uri, scope_uris=scope_uris)
-        return self._client.get(get_uri)
+        return self._helper.do_get(get_uri)
 
-    def get_compatible_systems(self, id_or_uri):
+    def get_compatible_systems(self):
         """
         Retrieves a collection of all storage systems that is applicable to this storage volume template.
-
-        Args:
-            id_or_uri:
-                Can be either the power device id or the uri
 
         Returns:
             list: Storage systems.
         """
-        uri = self._client.build_uri(id_or_uri) + "/compatible-systems"
-        return self._client.get(uri)
+        uri = "{}/compatible-systems".format(self.data["uri"])
+        return self._helper.do_get(uri)
 
-    def delete(self, resource, force=False, timeout=-1):
+    def delete(self, force=False, timeout=-1):
         """
         Deletes the specified storage volume template.
 
         Args:
-            resource (dict):
-                Object to remove.
             force (bool):
                  If set to true, the operation completes despite any problems with
                  network connectivity or errors on the resource itself. The default is false.
@@ -161,37 +100,6 @@ class StorageVolumeTemplates(object):
             bool: Indicates if the resource was successfully deleted.
         """
         custom_headers = {'Accept-Language': 'en_US', 'If-Match': '*'}
-        return self._client.delete(resource, force=force, timeout=timeout, custom_headers=custom_headers)
+        uri = self.data['uri']
 
-    def update(self, resource, timeout=-1):
-        """
-        Updates a storage volume template.
-
-        Args:
-            resource (dict):
-                Object to update.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Updated storage volume system
-        """
-        custom_headers = {'Accept-Language': 'en_US'}
-        return self._client.update(resource, timeout=timeout, custom_headers=custom_headers,
-                                   default_values=self.DEFAULT_VALUES)
-
-    def get_by(self, field, value):
-        """
-        Gets all storage volume templates that match the filter.
-
-        The search is case-insensitive.
-
-        Args:
-            field: Field name to filter.
-            value: Value to filter.
-
-        Returns:
-            list: A list of storage volume templates that match the filter.
-        """
-        return self._client.get_by(field, value)
+        return self._helper.delete(uri, force=force, timeout=timeout, custom_headers=custom_headers)
