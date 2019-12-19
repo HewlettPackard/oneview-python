@@ -41,6 +41,8 @@ class FcoeNetworks(ResourcePatchMixin, Resource):
         '500': {"type": "fcoe-networkV300"},
         '600': {"type": "fcoe-networkV4"},
         '800': {"type": "fcoe-networkV4"},
+        '1000': {"type": "fcoe-networkV4"},
+        '1200': {"type": "fcoe-networkV4"}
     }
 
     def __init__(self, connection, data=None):

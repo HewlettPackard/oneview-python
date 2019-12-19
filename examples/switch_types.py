@@ -46,5 +46,5 @@ pprint(switch_types_sorted, depth=2)
 if switch_types_all:
     # Get by name
     print("\nGet a switch_types by name:")
-    switch_type_byname = switch_types.get_by_name(switch_types_all[0]['name'])[0]
+    switch_type_byname = switch_types.get_by_name(switch_types_all[0]['name'])
     pprint(switch_type_byname.data, depth=1)

@@ -40,7 +40,9 @@ class ConnectionTemplates(Resource):
         '300': {"type": "connection-template"},
         '500': {"type": "connection-template"},
         '600': {"type": "connection-template"},
-        '800': {"type": "connection-template"}
+        '800': {"type": "connection-template"},
+        '1000': {"type": "connection-template"},
+        '1200': {"type": "connection-template"}
     }
 
     def __init__(self, connection, data=None):

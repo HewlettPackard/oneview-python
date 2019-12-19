@@ -43,7 +43,9 @@ class LogicalSwitchGroups(ResourcePatchMixin, Resource):
         '300': {"type": "logical-switch-groupV300"},
         '500': {"type": "logical-switch-groupV300"},
         '600': {"type": "logical-switch-groupV4"},
-        '800': {"type": "logical-switch-groupV4"}
+        '800': {"type": "logical-switch-groupV4"},
+        '1000': {"type": "logical-switch-groupV4"},
+        '1200': {"type": "logical-switch-groupV4"}
     }
 
     def __init__(self, connection, data=None):

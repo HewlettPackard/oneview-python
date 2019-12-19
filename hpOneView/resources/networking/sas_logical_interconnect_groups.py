@@ -42,6 +42,8 @@ class SasLogicalInterconnectGroups(Resource):
         '500': {'type': 'sas-logical-interconnect-group'},
         '600': {'type': 'sas-logical-interconnect-groupV2'},
         '800': {'type': 'sas-logical-interconnect-groupV2'},
+        '1000': {'type': 'sas-logical-interconnect-groupV2'},
+        '1200': {'type': 'sas-logical-interconnect-groupV2'},
     }
 
     def __init__(self, connection, data=None):
