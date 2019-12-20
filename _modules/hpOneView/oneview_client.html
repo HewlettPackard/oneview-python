@@ -260,7 +260,7 @@
 
 
 <div class="viewcode-block" id="OneViewClient"><a class="viewcode-back" href="../../hpOneView.html#hpOneView.oneview_client.OneViewClient">[docs]</a><span class="k">class</span> <span class="nc">OneViewClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">DEFAULT_API_VERSION</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">DEFAULT_API_VERSION</span> <span class="o">=</span> <span class="mi">800</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span> <span class="o">=</span> <span class="n">connection</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">],</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api_version&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_API_VERSION</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ssl_certificate&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
@@ -498,9 +498,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            FcoeNetworks:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fcoe_networks</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__fcoe_networks</span> <span class="o">=</span> <span class="n">FcoeNetworks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fcoe_networks</span>
+        <span class="k">return</span> <span class="n">FcoeNetworks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ethernet_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -568,9 +566,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            NetworkSets:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__network_sets</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__network_sets</span> <span class="o">=</span> <span class="n">NetworkSets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__network_sets</span>
+        <span class="k">return</span> <span class="n">NetworkSets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">server_hardware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -580,9 +576,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            ServerHardware:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware</span> <span class="o">=</span> <span class="n">ServerHardware</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware</span>
+        <span class="k">return</span> <span class="n">ServerHardware</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">server_hardware_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -592,10 +586,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            ServerHardwareTypes:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware_types</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware_types</span> <span class="o">=</span> <span class="n">ServerHardwareTypes</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware_types</span>
+        <span class="k">return</span> <span class="n">ServerHardwareTypes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_vsn_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -701,9 +692,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            SwitchTypes:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__switch_types</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__switch_types</span> <span class="o">=</span> <span class="n">SwitchTypes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__switch_types</span>
+        <span class="k">return</span> <span class="n">SwitchTypes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_switch_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -747,9 +736,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            EnclosureGroups:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enclosure_groups</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__enclosure_groups</span> <span class="o">=</span> <span class="n">EnclosureGroups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enclosure_groups</span>
+        <span class="k">return</span> <span class="n">EnclosureGroups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enclosures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -769,9 +756,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            LogicalEnclosures:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logical_enclosures</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__logical_enclosures</span> <span class="o">=</span> <span class="n">LogicalEnclosures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logical_enclosures</span>
+        <span class="k">return</span> <span class="n">LogicalEnclosures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">metric_streaming</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -793,9 +778,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Interconnects:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__interconnects</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__interconnects</span> <span class="o">=</span> <span class="n">Interconnects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__interconnects</span>
+        <span class="k">return</span> <span class="n">Interconnects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interconnect_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -827,9 +810,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            SasInterconnectTypes:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_interconnect_types</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__sas_interconnect_types</span> <span class="o">=</span> <span class="n">SasInterconnectTypes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_interconnect_types</span>
+        <span class="k">return</span> <span class="n">SasInterconnectTypes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">internal_link_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -839,9 +820,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            InternalLinkSets:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__internal_link_sets</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__internal_link_sets</span> <span class="o">=</span> <span class="n">InternalLinkSets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__internal_link_sets</span>
+        <span class="k">return</span> <span class="n">InternalLinkSets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_interconnect_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -851,10 +830,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            LogicalInterconnectGroups:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logical_interconnect_groups</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__logical_interconnect_groups</span> <span class="o">=</span> <span class="n">LogicalInterconnectGroups</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logical_interconnect_groups</span>
+        <span class="k">return</span> <span class="n">LogicalInterconnectGroups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_interconnects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -874,9 +850,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            SasLogicalInterconnects:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnects</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnects</span> <span class="o">=</span> <span class="n">SasLogicalInterconnects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnects</span>
+        <span class="k">return</span> <span class="n">SasLogicalInterconnects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_downlinks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -979,9 +953,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            StorageSystems:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_systems</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__storage_systems</span> <span class="o">=</span> <span class="n">StorageSystems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_systems</span>
+        <span class="k">return</span> <span class="n">StorageSystems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_pools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -991,9 +963,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            StoragePools:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_pools</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__storage_pools</span> <span class="o">=</span> <span class="n">StoragePools</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_pools</span>
+        <span class="k">return</span> <span class="n">StoragePools</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_volume_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1003,9 +973,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            StorageVolumeTemplates:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_volume_templates</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__storage_volume_templates</span> <span class="o">=</span> <span class="n">StorageVolumeTemplates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_volume_templates</span>
+        <span class="k">return</span> <span class="n">StorageVolumeTemplates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_volume_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1015,9 +983,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            StorageVolumeAttachments:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_volume_attachments</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__storage_volume_attachments</span> <span class="o">=</span> <span class="n">StorageVolumeAttachments</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__storage_volume_attachments</span>
+        <span class="k">return</span> <span class="n">StorageVolumeAttachments</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">firmware_drivers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1061,9 +1027,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Volumes:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__volumes</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__volumes</span> <span class="o">=</span> <span class="n">Volumes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__volumes</span>
+        <span class="k">return</span> <span class="n">Volumes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_logical_jbod_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1085,9 +1049,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            ManagedSANs:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__managed_sans</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__managed_sans</span> <span class="o">=</span> <span class="n">ManagedSANs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__managed_sans</span>
+        <span class="k">return</span> <span class="n">ManagedSANs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">migratable_vc_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1109,9 +1071,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            SasInterconnects:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_interconnects</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__sas_interconnects</span> <span class="o">=</span> <span class="n">SasInterconnects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_interconnects</span>
+        <span class="k">return</span> <span class="n">SasInterconnects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_logical_interconnect_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1121,9 +1081,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            SasLogicalInterconnectGroups:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnect_groups</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnect_groups</span> <span class="o">=</span> <span class="n">SasLogicalInterconnectGroups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnect_groups</span>
+        <span class="k">return</span> <span class="n">SasLogicalInterconnectGroups</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">drive_enclosures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
