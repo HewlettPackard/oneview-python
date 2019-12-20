@@ -9,15 +9,17 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
  3. Introduced mixin classes to include the optional features of the resources.
  4. Added below methods for all the resources by introducing a base class for the resource client classes.
     Appropriate exception will be raised, if any of the features are not available for a resource.
-
-    a) create       - Returns created object
-    b) update       - Returns updated object
-    c) delete       - Returns boolean
-    d) get_all      - Returns list of resource data
-    e) get_by       - Returns resource data
-    f) get_by_name  - Returns resource object
-    g) get_by_uri   - Returns resource object
-
+    
+    | Methods             | Returns                                       |
+    | ------------------  | --------------------------------------------- |
+    | create              |   resource object                             |
+    | update              |   resource object                             |
+    | delete              |   boolean                                     |
+    | get_all             |   list of resource data                       |
+    | get_by_name         |   resource object                             |
+    | get_by_uri          |   resource object                             |
+    | get_by              |   resource data                               |
+    
 #### Breaking
   Enhancement made in this version breaks the previous version of the SDK.
   From this version onwards, create/update/get_by_name/get_by_id will return an object of the resource instead of data.
