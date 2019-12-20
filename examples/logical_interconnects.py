@@ -28,13 +28,13 @@ config = {
 }
 
 # To run this example, a logical interconnect name is required
-logical_interconnect_name = "SYN03_LE-SYN03_LIG"
+logical_interconnect_name = "testlg1-Renamed Logical Interconnect Group"
 
 # To install the firmware driver, a firmware driver name is required
 firmware_driver_name = "HPE Synergy Custom SPP 2018110 2019 02 15, 2019.02.15.00"
 
 # An Enclosure name must be set to create/delete an interconnect at a given location
-enclosure_name = "SYN03_Frame1"
+enclosure_name = "0000A66102"
 
 # Define the scope name to add the logical interconnect to it
 scope_name = "test"

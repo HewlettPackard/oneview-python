@@ -90,7 +90,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type
+                "permittedInterconnectTypeUri": interconnect_type_url
             },
             {
                 "logicalDownlinkUri": None,
@@ -208,7 +208,7 @@ ligs = logical_interconnect_groups.get_all(
 pprint(ligs)
 
 # Get Logical Interconnect Group by property
-lig = logical_interconnect_groups.get_by('name', 'SYN-LIG')[0]
+lig = logical_interconnect_groups.get_by('name', 'LIG')[0]
 print("Found lig by name: '%s'.\n  uri = '%s'" % (lig['name'], lig['uri']))
 
 # Get Logical Interconnect Group by scope_uris

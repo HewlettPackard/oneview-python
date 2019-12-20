@@ -37,7 +37,7 @@ options = {
     "licensingIntent": "OneView",
     "configurationState": "Managed"
 }
-server_name = "RenamedEnclosure, bay 1"
+server_name = "0000A66101, bay 3"
 
 oneview_client = OneViewClient(config)
 server_hardwares = oneview_client.server_hardware

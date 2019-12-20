@@ -54,7 +54,9 @@ class ServerProfileTemplate(Resource):
         '300': {'type': 'ServerProfileTemplateV2'},
         '500': {'type': 'ServerProfileTemplateV3'},
         '600': {'type': 'ServerProfileTemplateV4'},
-        '800': {'type': 'ServerProfileTemplateV5'}
+        '800': {'type': 'ServerProfileTemplateV5'},
+        '1000': {'type': 'ServerProfileTemplateV6'},
+        '1200': {'type': 'ServerProfileTemplateV7'}
     }
 
     def __init__(self, connection, data=None):

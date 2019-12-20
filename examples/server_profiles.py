@@ -45,7 +45,7 @@ profile_template_name = "OneView Test Profile Template"
 profile_name = "OneView Test Profile"
 enclosure_group_name = "SYN03_EC"
 server_hardware_type_name = "SY 480 Gen9 2"
-server_hardware_name = "SYN03_Frame1, bay 1"
+server_hardware_name = "0000A66102, bay 3"
 # To run the example 'get a specific storage system' you must define a storage system ID
 storage_system_id = None
 
