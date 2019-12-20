@@ -22,7 +22,7 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
     
 #### Breaking
   Enhancement made in this version breaks the previous version of the SDK.
-  From this version onwards, create/update/get_by_name/get_by_id will return an object of the resource instead of data.
+  From this version onwards, create/update/get_by_name/get_by_uri will return an object of the resource instead of data.
 
   E.g.
 ```
