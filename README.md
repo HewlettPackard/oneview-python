@@ -94,7 +94,7 @@ export ONEVIEWSDK_SESSIONID='123'
 
 
 # Optional
-export ONEVIEWSDK_API_VERSION='300'
+export ONEVIEWSDK_API_VERSION='800'
 export ONEVIEWSDK_AUTH_LOGIN_DOMAIN='authdomain'
 export ONEVIEWSDK_SSL_CERTIFICATE='<path_to_cert.crt_file>'
 export ONEVIEWSDK_PROXY='<proxy_host>:<proxy_port>'
@@ -193,30 +193,28 @@ export ONEVIEWSDK_PROXY='<proxy_host>:<proxy_port>'
 
 ### Setting your OneView version
 
-The OneView Python SDK supports the API endpoints for HPE OneView 2.0, 3.0, 3.10, 4.0 and 4.10.
+The OneView Python SDK supports the API endpoints for HPE OneView 4.10, 4.20 and 5.00.
 
-The current `default` HPE OneView version used by the Python SDK is `3.00`, API `300`.
+The current `default` HPE OneView version used by the Python SDK is `4.10`, API `800`.
 
 To use a different API, you must set the API version on the OneViewClient configuration, either using the JSON configuration:
 
 ```json
-"api_version": 600
+"api_version": 800
 ```
 OR using the Environment variable:
 
 ```bash
-export ONEVIEWSDK_API_VERSION='600'
+export ONEVIEWSDK_API_VERSION='800'
 ```
 
-If this property is not specified, it will fall back to the ```300``` default value.
+If this property is not specified, it will fall back to the ```800``` default value.
 
 The API list is as follows:
 
-- HPE OneView 2.0 API version: `200`
-- HPE OneView 3.0 API version: `300`
-- HPE OneView 3.10 API version: `500`
-- HPE OneView 4.0 API version: `600`
 - HPE OneView 4.10 API version: `800`
+- HPE OneView 4.20 API version: `1000`
+- HPE OneView 5.00 API version: `1200`
 
 ### HPE Synergy Image Streamer
 
@@ -278,7 +276,7 @@ try:
 except HPOneViewException as e:
     print(e.msg)
     if e.oneview_response:
-    	pprint(e.oneview_response)   
+    	pprint(e.oneview_response)
 ```
 
 For compatibility purposes, the Exception args property is defined with the error arguments. For example:

@@ -36,18 +36,18 @@ class ConnectionTest(unittest.TestCase):
             'Accept-Language': 'en_US'
         }
         self.default_headers = {
-            'X-API-Version': 300,
+            'X-API-Version': 800,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
         self.default_headers_with_etag_validation_off = {
-            'X-API-Version': 300,
+            'X-API-Version': 800,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'If-Match': '*'
         }
         self.merged_headers = {
-            'X-API-Version': 300,
+            'X-API-Version': 800,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Accept-Language': 'en_US'
@@ -109,11 +109,11 @@ class ConnectionTest(unittest.TestCase):
         self.connection.disable_etag_validation()
         self.assertEqual(self.default_headers_with_etag_validation_off, self.connection._headers)
 
-    def test_headers_with_api_version_300(self):
-        self.connection = connection(self.host, 300)
+    def test_headers_with_api_version_800(self):
+        self.connection = connection(self.host, 800)
 
         expected_headers = self.default_headers.copy()
-        expected_headers['X-API-Version'] = 300
+        expected_headers['X-API-Version'] = 800
         self.assertEqual(expected_headers, self.connection._headers)
 
     @patch.object(HTTPSConnection, 'request')
@@ -648,7 +648,7 @@ class ConnectionTest(unittest.TestCase):
             call('auth', 'LTIxNjUzMjc0OTUzzHoF7eEkZLEUWVA-fuOZP4VGA3U8e67E'),
             call('Content-Type', 'multipart/form-data; boundary=----------ThIs_Is_tHe_bouNdaRY_$'),
             call('Content-Length', 2621440),
-            call('X-API-Version', 300)]
+            call('X-API-Version', 800)]
 
         internal_conn = self.connection.get_connection.return_value
         internal_conn.putheader.assert_has_calls(expected_putheader_calls)
@@ -821,7 +821,7 @@ class ConnectionTest(unittest.TestCase):
 
         mock_conn.request.assert_called_once_with('POST', '/rest/test', 'body',
                                                   {'Content-Type': 'application/json',
-                                                   'X-API-Version': 300, 'Accept': 'application/json'})
+                                                   'X-API-Version': 800, 'Accept': 'application/json'})
 
         mock_conn.close.assert_called_once()
 
@@ -838,7 +838,7 @@ class ConnectionTest(unittest.TestCase):
 
         mock_conn.request.assert_called_once_with('POST', '/rest/test', 'body',
                                                   {'Content-Type': 'application/json',
-                                                   'X-API-Version': 300, 'Accept': 'application/json'})
+                                                   'X-API-Version': 800, 'Accept': 'application/json'})
 
         mock_conn.close.assert_called_once()
 
@@ -862,7 +862,7 @@ class ConnectionTest(unittest.TestCase):
 
         mock_conn.request.assert_called_with('POST', '/rest/test', 'body',
                                              {'Content-Type': 'application/json',
-                                              'X-API-Version': 300,
+                                              'X-API-Version': 800,
                                               'Accept': 'application/json'})
 
         mock_conn.close.assert_has_calls([call(), call()])
@@ -892,7 +892,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     @patch.object(connection, 'post')
     def test_login(self, mock_post, mock_get):
-        mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
         mock_post.return_value = {'cat': 'task'}, {'sessionID': '123'}
 
         self.connection.login({})
@@ -910,7 +910,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     @patch.object(connection, 'post')
     def test_login_with_exception_in_post(self, mock_post, mock_get):
-        mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
         mock_post.side_effect = HPOneViewException("Failed")
 
         self.assertRaises(HPOneViewException, self.connection.login, {})
@@ -918,7 +918,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
     def test_login_sessionID(self, mock_put, mock_get):
-        mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
         mock_put.return_value = {'cat': 'task'}, {'sessionID': '123'}
 
         self.connection.login({"sessionID": "123"})
@@ -929,7 +929,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
     def test_login_username_password_sessionID(self, mock_put, mock_get):
-        mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
         mock_put.return_value = {'cat': 'task'}, {'sessionID': '123'}
 
         self.connection.login({"userName": "administrator", "password": "", "sessionID": "123"})
@@ -940,7 +940,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
     def test_login_with_exception_in_put(self, mock_put, mock_get):
-        mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
         mock_put.side_effect = HPOneViewException("Failed")
 
         self.assertRaises(HPOneViewException, self.connection.login, {"sessionID": "123"})
@@ -948,14 +948,14 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
     def test_login_with_exception_in_put_username_password_sessionID(self, mock_put, mock_get):
-        mock_get.side_effect = [{'minimumVersion': 300, 'currentVersion': 400}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
         mock_put.side_effect = HPOneViewException("Failed")
         self.assertRaises(HPOneViewException, self.connection.login, {"userName": "administrator",
                                                                       "password": "", "sessionID": "123"})
 
     @patch.object(connection, 'get')
     def test_validate_version_exceeding_minimum(self, mock_get):
-        self.connection._apiVersion = 300
+        self.connection._apiVersion = 800
         mock_get.side_effect = [{'minimumVersion': 400, 'currentVersion': 400}]
 
         self.assertRaises(HPOneViewException, self.connection.validateVersion)
@@ -963,7 +963,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'get')
     def test_validate_version_exceeding_current(self, mock_get):
         self.connection._apiVersion = 400
-        mock_get.side_effect = [{'minimumVersion': 200, 'currentVersion': 300}]
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
 
         self.assertRaises(HPOneViewException, self.connection.validateVersion)
 

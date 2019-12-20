@@ -48,7 +48,7 @@ logger = logging.getLogger(__name__)
 
 
 class connection(object):
-    def __init__(self, applianceIp, api_version=300, sslBundle=False, timeout=None):
+    def __init__(self, applianceIp, api_version=800, sslBundle=False, timeout=None):
         self._session = None
         self._host = applianceIp
         self._cred = None
