@@ -40,7 +40,9 @@ class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
         '300': {"type": "logical-interconnect-groupV300"},
         '500': {"type": "logical-interconnect-groupV300"},
         '600': {"type": "logical-interconnect-groupV4"},
-        '800': {"type": "logical-interconnect-groupV5"}
+        '800': {"type": "logical-interconnect-groupV5"},
+        '1000': {"type": "logical-interconnect-groupV6"},
+        '1200': {"type": "logical-interconnect-groupV7"}
     }
 
     def __init__(self, connection, data=None):

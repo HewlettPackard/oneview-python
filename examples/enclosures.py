@@ -35,7 +35,7 @@ config = {
     "enclosure_password": "",
 }
 
-enclosure_name = "Enc1"
+enclosure_name = "Enc"
 
 # Declare a CA signed certificate file path.
 certificate_file = ""

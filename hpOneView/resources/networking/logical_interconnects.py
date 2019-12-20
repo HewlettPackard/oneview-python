@@ -62,7 +62,9 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         '300': {"type": "telemetry-configuration"},
         '500': {"type": "telemetry-configuration"},
         '600': {"type": "telemetry-configuration"},
-        '800': {"type": "telemetry-configuration"}
+        '800': {"type": "telemetry-configuration"},
+        '1000': {"type": "telemetry-configuration"},
+        '1200': {"type": "telemetry-configuration"}
     }
 
     def __init__(self, connection, data=None):
