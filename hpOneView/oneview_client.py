@@ -112,7 +112,7 @@ ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 
 
 class OneViewClient(object):
-    DEFAULT_API_VERSION = 300
+    DEFAULT_API_VERSION = 800
 
     def __init__(self, config):
         self.__connection = connection(config["ip"], config.get('api_version', self.DEFAULT_API_VERSION), config.get('ssl_certificate', False),
@@ -350,9 +350,7 @@ class OneViewClient(object):
         Returns:
             FcoeNetworks:
         """
-        if not self.__fcoe_networks:
-            self.__fcoe_networks = FcoeNetworks(self.__connection)
-        return self.__fcoe_networks
+        return FcoeNetworks(self.__connection)
 
     @property
     def ethernet_networks(self):
@@ -420,9 +418,7 @@ class OneViewClient(object):
         Returns:
             NetworkSets:
         """
-        if not self.__network_sets:
-            self.__network_sets = NetworkSets(self.__connection)
-        return self.__network_sets
+        return NetworkSets(self.__connection)
 
     @property
     def server_hardware(self):
@@ -432,9 +428,7 @@ class OneViewClient(object):
         Returns:
             ServerHardware:
         """
-        if not self.__server_hardware:
-            self.__server_hardware = ServerHardware(self.__connection)
-        return self.__server_hardware
+        return ServerHardware(self.__connection)
 
     @property
     def server_hardware_types(self):
@@ -444,10 +438,7 @@ class OneViewClient(object):
         Returns:
             ServerHardwareTypes:
         """
-        if not self.__server_hardware_types:
-            self.__server_hardware_types = ServerHardwareTypes(
-                self.__connection)
-        return self.__server_hardware_types
+        return ServerHardwareTypes(self.__connection)
 
     @property
     def id_pools_vsn_ranges(self):
@@ -553,9 +544,7 @@ class OneViewClient(object):
         Returns:
             SwitchTypes:
         """
-        if not self.__switch_types:
-            self.__switch_types = SwitchTypes(self.__connection)
-        return self.__switch_types
+        return SwitchTypes(self.__connection)
 
     @property
     def logical_switch_groups(self):
@@ -599,9 +588,7 @@ class OneViewClient(object):
         Returns:
             EnclosureGroups:
         """
-        if not self.__enclosure_groups:
-            self.__enclosure_groups = EnclosureGroups(self.__connection)
-        return self.__enclosure_groups
+        return EnclosureGroups(self.__connection)
 
     @property
     def enclosures(self):
@@ -621,9 +608,7 @@ class OneViewClient(object):
         Returns:
             LogicalEnclosures:
         """
-        if not self.__logical_enclosures:
-            self.__logical_enclosures = LogicalEnclosures(self.__connection)
-        return self.__logical_enclosures
+        return LogicalEnclosures(self.__connection)
 
     @property
     def metric_streaming(self):
@@ -645,9 +630,7 @@ class OneViewClient(object):
         Returns:
             Interconnects:
         """
-        if not self.__interconnects:
-            self.__interconnects = Interconnects(self.__connection)
-        return self.__interconnects
+        return Interconnects(self.__connection)
 
     @property
     def interconnect_types(self):
@@ -679,9 +662,7 @@ class OneViewClient(object):
         Returns:
             SasInterconnectTypes:
         """
-        if not self.__sas_interconnect_types:
-            self.__sas_interconnect_types = SasInterconnectTypes(self.__connection)
-        return self.__sas_interconnect_types
+        return SasInterconnectTypes(self.__connection)
 
     @property
     def internal_link_sets(self):
@@ -691,9 +672,7 @@ class OneViewClient(object):
         Returns:
             InternalLinkSets:
         """
-        if not self.__internal_link_sets:
-            self.__internal_link_sets = InternalLinkSets(self.__connection)
-        return self.__internal_link_sets
+        return InternalLinkSets(self.__connection)
 
     @property
     def logical_interconnect_groups(self):
@@ -703,10 +682,7 @@ class OneViewClient(object):
         Returns:
             LogicalInterconnectGroups:
         """
-        if not self.__logical_interconnect_groups:
-            self.__logical_interconnect_groups = LogicalInterconnectGroups(
-                self.__connection)
-        return self.__logical_interconnect_groups
+        return LogicalInterconnectGroups(self.__connection)
 
     @property
     def logical_interconnects(self):
@@ -726,9 +702,7 @@ class OneViewClient(object):
         Returns:
             SasLogicalInterconnects:
         """
-        if not self.__sas_logical_interconnects:
-            self.__sas_logical_interconnects = SasLogicalInterconnects(self.__connection)
-        return self.__sas_logical_interconnects
+        return SasLogicalInterconnects(self.__connection)
 
     @property
     def logical_downlinks(self):
@@ -831,9 +805,7 @@ class OneViewClient(object):
         Returns:
             StorageSystems:
         """
-        if not self.__storage_systems:
-            self.__storage_systems = StorageSystems(self.__connection)
-        return self.__storage_systems
+        return StorageSystems(self.__connection)
 
     @property
     def storage_pools(self):
@@ -843,9 +815,7 @@ class OneViewClient(object):
         Returns:
             StoragePools:
         """
-        if not self.__storage_pools:
-            self.__storage_pools = StoragePools(self.__connection)
-        return self.__storage_pools
+        return StoragePools(self.__connection)
 
     @property
     def storage_volume_templates(self):
@@ -855,9 +825,7 @@ class OneViewClient(object):
         Returns:
             StorageVolumeTemplates:
         """
-        if not self.__storage_volume_templates:
-            self.__storage_volume_templates = StorageVolumeTemplates(self.__connection)
-        return self.__storage_volume_templates
+        return StorageVolumeTemplates(self.__connection)
 
     @property
     def storage_volume_attachments(self):
@@ -867,9 +835,7 @@ class OneViewClient(object):
         Returns:
             StorageVolumeAttachments:
         """
-        if not self.__storage_volume_attachments:
-            self.__storage_volume_attachments = StorageVolumeAttachments(self.__connection)
-        return self.__storage_volume_attachments
+        return StorageVolumeAttachments(self.__connection)
 
     @property
     def firmware_drivers(self):
@@ -913,9 +879,7 @@ class OneViewClient(object):
         Returns:
             Volumes:
         """
-        if not self.__volumes:
-            self.__volumes = Volumes(self.__connection)
-        return self.__volumes
+        return Volumes(self.__connection)
 
     @property
     def sas_logical_jbod_attachments(self):
@@ -937,9 +901,7 @@ class OneViewClient(object):
         Returns:
             ManagedSANs:
         """
-        if not self.__managed_sans:
-            self.__managed_sans = ManagedSANs(self.__connection)
-        return self.__managed_sans
+        return ManagedSANs(self.__connection)
 
     @property
     def migratable_vc_domains(self):
@@ -961,9 +923,7 @@ class OneViewClient(object):
         Returns:
             SasInterconnects:
         """
-        if not self.__sas_interconnects:
-            self.__sas_interconnects = SasInterconnects(self.__connection)
-        return self.__sas_interconnects
+        return SasInterconnects(self.__connection)
 
     @property
     def sas_logical_interconnect_groups(self):
@@ -973,9 +933,7 @@ class OneViewClient(object):
         Returns:
             SasLogicalInterconnectGroups:
         """
-        if not self.__sas_logical_interconnect_groups:
-            self.__sas_logical_interconnect_groups = SasLogicalInterconnectGroups(self.__connection)
-        return self.__sas_logical_interconnect_groups
+        return SasLogicalInterconnectGroups(self.__connection)
 
     @property
     def drive_enclosures(self):

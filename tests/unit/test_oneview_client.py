@@ -212,15 +212,15 @@ class OneViewClientTest(unittest.TestCase):
         mock_open.return_value = self.__mock_file_open(json_config_content)
         oneview_client = OneViewClient.from_json_file("config.json")
 
-        self.assertEqual(300, oneview_client.connection._apiVersion)
-        self.assertEqual(300, oneview_client.api_version)
+        self.assertEqual(800, oneview_client.connection._apiVersion)
+        self.assertEqual(800, oneview_client.api_version)
 
     @mock.patch.object(connection, 'login')
     @mock.patch(mock_builtin('open'))
     def test_configured_api_version(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
-          "api_version": 200,
+          "api_version": 1000,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -230,8 +230,8 @@ class OneViewClientTest(unittest.TestCase):
         mock_open.return_value = self.__mock_file_open(json_config_content)
         oneview_client = OneViewClient.from_json_file("config.json")
 
-        self.assertEqual(200, oneview_client.connection._apiVersion)
-        self.assertEqual(200, oneview_client.api_version)
+        self.assertEqual(1000, oneview_client.connection._apiVersion)
+        self.assertEqual(1000, oneview_client.api_version)
 
     @mock.patch.object(connection, 'login')
     @mock.patch.object(connection, 'set_proxy')
@@ -244,7 +244,7 @@ class OneViewClientTest(unittest.TestCase):
                                                 authLoginDomain='',
                                                 sessionID=''))
         mock_set_proxy.assert_not_called()
-        self.assertEqual(300, oneview_client.connection._apiVersion)
+        self.assertEqual(800, oneview_client.connection._apiVersion)
 
     @mock.patch.object(connection, 'login')
     @mock.patch.object(connection, 'set_proxy')
@@ -257,7 +257,7 @@ class OneViewClientTest(unittest.TestCase):
                                                 authLoginDomain='',
                                                 sessionID='123'))
         mock_set_proxy.assert_not_called()
-        self.assertEqual(300, oneview_client.connection._apiVersion)
+        self.assertEqual(800, oneview_client.connection._apiVersion)
 
     @mock.patch.object(connection, 'login')
     @mock.patch.object(connection, 'set_proxy')
@@ -330,7 +330,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor_with_only_sessionID(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': 300,
+        mock_cls.assert_called_once_with({'api_version': 800,
                                           'proxy': '',
                                           'timeout': None,
                                           'ip': '172.16.100.199',
@@ -394,9 +394,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_fcoe_networks_has_value(self):
         self.assertIsNotNone(self._oneview.fcoe_networks)
 
-    def test_lazy_loading_fcoe_networks(self):
+    def test_fcoe_networks_client(self):
         fcn = self._oneview.fcoe_networks
-        self.assertEqual(fcn, self._oneview.fcoe_networks)
+        self.assertNotEqual(fcn, self._oneview.fcoe_networks)
 
     def test_metric_streaming_has_right_type(self):
         self.assertIsInstance(self._oneview.metric_streaming, MetricStreaming)
@@ -404,9 +404,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_metric_streaming_has_value(self):
         self.assertIsNotNone(self._oneview.metric_streaming)
 
-    def test_lazy_loading_enclosure_groups(self):
+    def test_enclosure_groups_client(self):
         enclosure_groups = self._oneview.enclosure_groups
-        self.assertEqual(enclosure_groups, self._oneview.enclosure_groups)
+        self.assertNotEqual(enclosure_groups, self._oneview.enclosure_groups)
 
     def test_lazy_loading_tasks(self):
         tasks = self._oneview.tasks
@@ -415,13 +415,13 @@ class OneViewClientTest(unittest.TestCase):
     def test_should_return_new_connection_templates_obj(self):
         self.assertNotEqual(self._oneview.connection_templates, self._oneview.connection_templates)
 
-    def test_lazy_loading_switch_types(self):
+    def test_switch_types_client(self):
         switch_types = self._oneview.switch_types
-        self.assertEqual(switch_types, self._oneview.switch_types)
+        self.assertNotEqual(switch_types, self._oneview.switch_types)
 
-    def test_lazy_loading_network_sets(self):
+    def test_network_sets_client(self):
         network_sets = self._oneview.network_sets
-        self.assertEqual(network_sets, self._oneview.network_sets)
+        self.assertNotEqual(network_sets, self._oneview.network_sets)
 
     def test_lazy_loading_fabrics(self):
         fabrics = self._oneview.fabrics
@@ -438,9 +438,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_should_return_new_ethernet_networks_obj(self):
         self.assertNotEqual(self._oneview.ethernet_networks, self._oneview.ethernet_networks)
 
-    def test_lazy_loading_server_hardware(self):
+    def test_server_hardware_client(self):
         server_hardware = self._oneview.server_hardware
-        self.assertEqual(server_hardware, self._oneview.server_hardware)
+        self.assertNotEqual(server_hardware, self._oneview.server_hardware)
 
     def test_interconnect_link_topologies_has_right_type(self):
         self.assertIsInstance(self._oneview.interconnect_link_topologies, InterconnectLinkTopologies)
@@ -455,9 +455,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_sas_interconnect_types_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_interconnect_types, SasInterconnectTypes)
 
-    def test_lazy_loading_sas_interconnect_types(self):
+    def test_sas_interconnect_types_client(self):
         sas_interconnect_types = self._oneview.sas_interconnect_types
-        self.assertEqual(sas_interconnect_types, self._oneview.sas_interconnect_types)
+        self.assertNotEqual(sas_interconnect_types, self._oneview.sas_interconnect_types)
 
     def test_interconnects_has_right_type(self):
         self.assertIsInstance(self._oneview.interconnects, Interconnects)
@@ -465,9 +465,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_interconnects_has_value(self):
         self.assertIsNotNone(self._oneview.interconnects)
 
-    def test_lazy_loading_interconnects(self):
+    def test_interconnects_client(self):
         interconnects = self._oneview.interconnects
-        self.assertEqual(interconnects, self._oneview.interconnects)
+        self.assertNotEqual(interconnects, self._oneview.interconnects)
 
     def test_certificate_authority_has_right_type(self):
         self.assertIsInstance(self._oneview.certificate_authority, CertificateAuthority)
@@ -483,9 +483,9 @@ class OneViewClientTest(unittest.TestCase):
         connections = self._oneview.connections
         self.assertEqual(connections, self._oneview.connections)
 
-    def test_lazy_loading_server_hardware_types(self):
+    def test_server_hardware_types_client(self):
         server_hardware_types = self._oneview.server_hardware_types
-        self.assertEqual(server_hardware_types, self._oneview.server_hardware_types)
+        self.assertNotEqual(server_hardware_types, self._oneview.server_hardware_types)
 
     def test_lazy_loading_id_pools_vsn_ranges(self):
         id_pools_vsn_ranges = self._oneview.id_pools_vsn_ranges
@@ -538,9 +538,9 @@ class OneViewClientTest(unittest.TestCase):
         id_pools = self._oneview.id_pools
         self.assertEqual(id_pools, self._oneview.id_pools)
 
-    def test_lazy_loading_logical_enclosures(self):
+    def test_logical_enclosures(self):
         logical_enclosures = self._oneview.logical_enclosures
-        self.assertEqual(logical_enclosures, self._oneview.logical_enclosures)
+        self.assertNotEqual(logical_enclosures, self._oneview.logical_enclosures)
 
     def test_should_return_new_interconnect_types_obj(self):
         self.assertNotEqual(self._oneview.interconnect_types, self._oneview.interconnect_types)
@@ -549,13 +549,13 @@ class OneViewClientTest(unittest.TestCase):
         logical_downlinks = self._oneview.logical_downlinks
         self.assertEqual(logical_downlinks, self._oneview.logical_downlinks)
 
-    def test_lazy_loading_storage_systems(self):
+    def test_storage_systems_client(self):
         storage_systems = self._oneview.storage_systems
-        self.assertEqual(storage_systems, self._oneview.storage_systems)
+        self.assertNotEqual(storage_systems, self._oneview.storage_systems)
 
-    def test_lazy_loading_storage_pools(self):
+    def test_storage_pools_client(self):
         storage_pools = self._oneview.storage_pools
-        self.assertEqual(storage_pools, self._oneview.storage_pools)
+        self.assertNotEqual(storage_pools, self._oneview.storage_pools)
 
     def test_lazy_loading_firmware_drivers(self):
         firmware_drivers = self._oneview.firmware_drivers
@@ -625,9 +625,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_logical_interconnect_groups_has_value(self):
         self.assertIsNotNone(self._oneview.logical_interconnect_groups)
 
-    def test_lazy_loading_logical_interconnect_groups(self):
+    def test_logical_interconnect_groups_client(self):
         logical_interconnect_groups = self._oneview.logical_interconnect_groups
-        self.assertEqual(logical_interconnect_groups, self._oneview.logical_interconnect_groups)
+        self.assertNotEqual(logical_interconnect_groups, self._oneview.logical_interconnect_groups)
 
     def test_logical_switch_groups_has_right_type(self):
         self.assertIsInstance(self._oneview.logical_switch_groups, LogicalSwitchGroups)
@@ -659,9 +659,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_sas_logical_interconnects_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_logical_interconnects, SasLogicalInterconnects)
 
-    def test_lazy_loading_sas_logical_interconnects(self):
+    def test_sas_logical_interconnects_client(self):
         sas_logical_interconnects = self._oneview.sas_logical_interconnects
-        self.assertEqual(sas_logical_interconnects, self._oneview.sas_logical_interconnects)
+        self.assertNotEqual(sas_logical_interconnects, self._oneview.sas_logical_interconnects)
 
     def test_storage_volume_templates_has_right_type(self):
         self.assertIsInstance(self._oneview.storage_volume_templates, StorageVolumeTemplates)
@@ -669,9 +669,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_storage_volume_templates_has_value(self):
         self.assertIsNotNone(self._oneview.storage_volume_templates)
 
-    def test_lazy_loading_storage_volume_templates(self):
+    def test_storage_volume_templates_client(self):
         storage_volume_templates = self._oneview.storage_volume_templates
-        self.assertEqual(storage_volume_templates, self._oneview.storage_volume_templates)
+        self.assertNotEqual(storage_volume_templates, self._oneview.storage_volume_templates)
 
     def test_storage_volume_attachments_has_right_type(self):
         self.assertIsInstance(self._oneview.storage_volume_attachments, StorageVolumeAttachments)
@@ -679,9 +679,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_storage_volume_attachments_has_value(self):
         self.assertIsNotNone(self._oneview.storage_volume_attachments)
 
-    def test_lazy_loading_storage_volume_attachments(self):
+    def test_storage_volume_attachments_client(self):
         storage_volume_attachments = self._oneview.storage_volume_attachments
-        self.assertEqual(storage_volume_attachments, self._oneview.storage_volume_attachments)
+        self.assertNotEqual(storage_volume_attachments, self._oneview.storage_volume_attachments)
 
     def test_should_return_new_uplink_sets_obj(self):
         self.assertNotEqual(self._oneview.uplink_sets, self._oneview.uplink_sets)
@@ -716,9 +716,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_sas_logical_interconnect_groups_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_logical_interconnect_groups, SasLogicalInterconnectGroups)
 
-    def test_lazy_loading_sas_logical_interconnect_groups(self):
+    def test_sas_logical_interconnect_groups_client(self):
         sas_logical_interconnect_groups = self._oneview.sas_logical_interconnect_groups
-        self.assertEqual(sas_logical_interconnect_groups, self._oneview.sas_logical_interconnect_groups)
+        self.assertNotEqual(sas_logical_interconnect_groups, self._oneview.sas_logical_interconnect_groups)
 
     def test_login_details_has_right_type(self):
         self.assertIsInstance(self._oneview.login_details, LoginDetails)
@@ -739,9 +739,8 @@ class OneViewClientTest(unittest.TestCase):
     def test_volumes_has_value(self):
         self.assertIsNotNone(self._oneview.volumes)
 
-    def test_lazy_loading_volumes(self):
-        copy_volumes = self._oneview.volumes
-        self.assertEqual(copy_volumes, self._oneview.volumes)
+    def test_volumes_client(self):
+        self.assertNotEqual(self._oneview.volumes, self._oneview.volumes)
 
     def test_sas_logical_jbod_attachments_right_type(self):
         self.assertIsInstance(self._oneview.sas_logical_jbod_attachments, SasLogicalJbodAttachments)
@@ -782,14 +781,14 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_lazy_loading_managed_sans(self):
         managed_sans = self._oneview.managed_sans
-        self.assertEqual(managed_sans, self._oneview.managed_sans)
+        self.assertNotEqual(managed_sans, self._oneview.managed_sans)
 
     def test_sas_interconnects_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_interconnects, SasInterconnects)
 
-    def test_lazy_loading_sas_interconnects(self):
+    def test_sas_interconnects_client(self):
         sas_interconnects = self._oneview.sas_interconnects
-        self.assertEqual(sas_interconnects, self._oneview.sas_interconnects)
+        self.assertNotEqual(sas_interconnects, self._oneview.sas_interconnects)
 
     def test_drive_enclosure_has_right_type(self):
         self.assertIsInstance(self._oneview.drive_enclosures, DriveEnclosures)
@@ -808,9 +807,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_internal_link_sets_has_right_type(self):
         self.assertIsInstance(self._oneview.internal_link_sets, InternalLinkSets)
 
-    def test_lazy_loading_internal_link_sets(self):
+    def test_internal_link_sets_client(self):
         internal_links = self._oneview.internal_link_sets
-        self.assertEqual(internal_links, self._oneview.internal_link_sets)
+        self.assertNotEqual(internal_links, self._oneview.internal_link_sets)
 
     def test_index_resources_has_right_type(self):
         self.assertIsInstance(self._oneview.index_resources, IndexResources)

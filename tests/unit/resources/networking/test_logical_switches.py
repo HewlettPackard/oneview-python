@@ -67,7 +67,6 @@ class LogicalSwitchesTest(unittest.TestCase):
         resource_with_default_values = {
             "logicalSwitch": {
                 "name": "Test Logical Switch",
-                "type": "logical-switchV300"
             }
         }
         mock_create.return_value = {}
@@ -110,7 +109,6 @@ class LogicalSwitchesTest(unittest.TestCase):
         resource_with_default_values = {
             "logicalSwitch": {
                 "name": "Test Logical Switch",
-                "type": "logical-switchV300",
                 "uri": uri
             },
             "uri": "a_uri"

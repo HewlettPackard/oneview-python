@@ -133,7 +133,7 @@ class LogicalInterconnectsTest(unittest.TestCase):
         }
         settings_rest_call = settings.copy()
         settings_rest_call["type"] = "type"
-        settings_rest_call["ethernetSettings"]["type"] = "EthernetInterconnectSettingsV201"
+        settings_rest_call["ethernetSettings"]["type"] = "EthernetInterconnectSettingsV4"
         self._logical_interconnect.update_settings(settings)
 
         mock_update.assert_called_once_with(settings_rest_call, uri=uri_rest_call, force=False, timeout=-1)
@@ -142,7 +142,7 @@ class LogicalInterconnectsTest(unittest.TestCase):
     def test_update_settings_with_force(self, mock_update):
         self._logical_interconnect.update_settings({}, force=True)
 
-        mock_update.assert_called_once_with({"type": "InterconnectSettingsV201"},
+        mock_update.assert_called_once_with({},
                                             uri="/rest/logical-interconnects/ad28cf21-8b15-4f92-bdcf-51cb2042db32/settings",
                                             force=True, timeout=-1)
 
@@ -155,10 +155,9 @@ class LogicalInterconnectsTest(unittest.TestCase):
         }
         settings_with_default_values = {
             "ethernetSettings": {
-                "type": "EthernetInterconnectSettingsV201",
+                "type": "EthernetInterconnectSettingsV4",
                 "macRefreshInterval": "5"
-            },
-            "type": "InterconnectSettingsV201"
+            }
         }
         self._logical_interconnect.update_settings(settings)
 

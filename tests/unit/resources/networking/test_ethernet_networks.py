@@ -51,7 +51,7 @@ class EthernetNetworksTest(TestCase):
             "privateNetwork": False
         }
         resource_rest_call = resource.copy()
-        resource_rest_call['type'] = 'ethernet-networkV300'
+        resource_rest_call['type'] = 'ethernet-networkV4'
         mock_create.return_value = {}
 
         self._ethernet_networks.create(resource, timeout=12)
@@ -72,7 +72,7 @@ class EthernetNetworksTest(TestCase):
             }
         }
         resource_rest_call = resource.copy()
-        resource_rest_call['type'] = 'bulk-ethernet-network'
+        resource_rest_call['type'] = 'bulk-ethernet-networkV1'
 
         mock_create.return_value = {}
         mock_get_all.return_value = []
