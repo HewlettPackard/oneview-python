@@ -10,7 +10,7 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
  4. Added below methods for all the resources by introducing a base class for the resource client classes.
     Appropriate exception will be raised, if any of the features are not available for a resource.
     
-    | Methods             | Returns                                       |
+    | Method              | Returns                                       |
     | ------------------  | --------------------------------------------- |
     | create              |   resource object                             |
     | update              |   resource object                             |
