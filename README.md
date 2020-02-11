@@ -327,7 +327,7 @@ You can also check out examples of tests for different resources in the [tests](
 
 ## License
 
-This project is licensed under the MIT license. Please see [LICENSE](LICENSE) for more information.
+This project is licensed under the Apache license. Please see [LICENSE](LICENSE) for more information.
 
 ## Version and changes
 
