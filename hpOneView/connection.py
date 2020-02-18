@@ -167,11 +167,11 @@ class connection(object):
                     self.__handle_download_error(resp, conn)
 
                 if resp.status == 302:
-                    self.download_to_stream(stream_writer=stream_writer,
-                                            url=resp.getheader('Location'),
-                                            body=body,
-                                            method=method,
-                                            custom_headers=http_headers)
+                    return self.download_to_stream(stream_writer=stream_writer,
+                                                   url=resp.getheader('Location'),
+                                                   body=body,
+                                                   method=method,
+                                                   custom_headers=http_headers)
 
                 tempbytes = True
                 while tempbytes:
