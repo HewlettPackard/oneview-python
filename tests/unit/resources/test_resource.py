@@ -2349,7 +2349,7 @@ class ResourceClientTest(unittest.TestCase):
 
         self.resource_client.download(uri, file_path)
 
-        mock_download_to_stream.assert_called_once_with(mock.ANY, uri)
+        mock_download_to_stream.assert_called_once_with(mock.ANY, uri, custom_headers=mock.ANY)
 
     @mock.patch.object(connection, 'download_to_stream')
     @mock.patch(mock_builtin('open'))
@@ -2362,7 +2362,7 @@ class ResourceClientTest(unittest.TestCase):
         self.resource_client.download(uri, file_path)
 
         mock_open.assert_called_once_with(file_path, 'wb')
-        mock_download_to_stream.assert_called_once_with(fake_file, mock.ANY)
+        mock_download_to_stream.assert_called_once_with(fake_file, uri, custom_headers=mock.ANY)
 
     @mock.patch.object(connection, 'download_to_stream')
     @mock.patch(mock_builtin('open'))
