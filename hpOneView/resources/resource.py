@@ -1660,7 +1660,10 @@ class ResourceClient(object):
             bool: Indicates if the file was successfully downloaded.
         """
         with open(file_path, 'wb') as file:
-            return self._connection.download_to_stream(file, uri)
+            return self._connection.download_to_stream(
+                file,
+                uri,
+                custom_headers={"Accept": "application/octetstream;q=0.8, application/json"})
 
     def __validate_resource_uri(self, path):
         if self._uri not in path:
