@@ -166,6 +166,13 @@ class connection(object):
                 if resp.status >= 400:
                     self.__handle_download_error(resp, conn)
 
+                if resp.status == 302:
+                    return self.download_to_stream(stream_writer=stream_writer,
+                                                   url=resp.getheader('Location'),
+                                                   body=body,
+                                                   method=method,
+                                                   custom_headers=http_headers)
+
                 tempbytes = True
                 while tempbytes:
                     tempbytes = resp.read(chunk_size)

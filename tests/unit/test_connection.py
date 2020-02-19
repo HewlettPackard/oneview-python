@@ -541,6 +541,28 @@ class ConnectionTest(unittest.TestCase):
         self.assertTrue(result)
         mock_stream.write.assert_has_calls([call('111'), call('222'), call('333')])
 
+    @patch.object(connection, 'get_connection')
+    def test_download_to_stream_handling_of_status_302(self, mock_get_conn):
+        # Mocking two responses as the first response would be redirect status 302 with header
+        # having location to download. Second response would have 200
+        mock_redirect_resp = Mock(status=302)
+        mock_redirect_resp.getheader.return_value = "/redirect/download.zip"
+
+        mock_resp = Mock(status=200)
+        mock_resp.read.side_effect = ["Something", None]
+
+        mock_conn = Mock()
+        mock_get_conn.return_value = mock_conn
+        mock_conn.getresponse.side_effect = [mock_redirect_resp, mock_resp]
+
+        mock_stream = Mock()
+
+        result = self.connection.download_to_stream(mock_stream, '/rest/download.zip')
+
+        mock_redirect_resp.getheader.assert_has_calls([call('Location')])
+        mock_stream.write.assert_has_calls([call("Something")])
+        self.assertTrue(result)
+
     @patch('time.sleep')
     @patch.object(connection, 'get_connection')
     def test_download_to_stream_when_error_status_with_response_body(self, mock_get_conn, mock_sleep):
