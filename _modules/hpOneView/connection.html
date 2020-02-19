@@ -314,6 +314,13 @@
                 <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status</span> <span class="o">&gt;=</span> <span class="mi">400</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">__handle_download_error</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 
+                <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">302</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_to_stream</span><span class="p">(</span><span class="n">stream_writer</span><span class="o">=</span><span class="n">stream_writer</span><span class="p">,</span>
+                                                   <span class="n">url</span><span class="o">=</span><span class="n">resp</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="s1">&#39;Location&#39;</span><span class="p">),</span>
+                                                   <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+                                                   <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+                                                   <span class="n">custom_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
+
                 <span class="n">tempbytes</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">while</span> <span class="n">tempbytes</span><span class="p">:</span>
                     <span class="n">tempbytes</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">)</span>

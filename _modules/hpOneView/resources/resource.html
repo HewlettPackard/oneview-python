@@ -1808,7 +1808,10 @@
 <span class="sd">            bool: Indicates if the file was successfully downloaded.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">download_to_stream</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">download_to_stream</span><span class="p">(</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">uri</span><span class="p">,</span>
+                <span class="n">custom_headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/octetstream;q=0.8, application/json&quot;</span><span class="p">})</span></div>
 
     <span class="k">def</span> <span class="nf">__validate_resource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uri</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
