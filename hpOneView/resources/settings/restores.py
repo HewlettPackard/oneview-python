@@ -35,7 +35,8 @@ class Restores(object):
 
     DEFAULT_VALUES = {
         '200': {"type": "RESTORE"},
-        '300': {"type": "RESTORE"}
+        '300': {"type": "RESTORE"},
+        '1200': {"type": "RESTOREV1000"}
     }
 
     def __init__(self, con):
