@@ -102,7 +102,7 @@ class Backups(object):
         Returns:
             dict: Details of the uploaded backup.
         """
-        return self._client.upload(file_path)
+        return self._client.upload(file_path, self.URI + '/archive')
 
     def get_config(self):
         """

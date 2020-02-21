@@ -73,7 +73,7 @@ class BackupsTest(TestCase):
 
         self._client.upload(filepath)
 
-        mock_upload.assert_called_once_with(filepath)
+        mock_upload.assert_called_once_with(filepath, '/rest/backups/archive')
 
     @mock.patch.object(ResourceClient, 'get')
     def test_get_config_called_once(self, mock_get):
