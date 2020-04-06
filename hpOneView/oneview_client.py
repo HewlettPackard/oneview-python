@@ -107,6 +107,7 @@ from hpOneView.resources.settings.appliance_device_snmp_v3_users import Applianc
 from hpOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
 from hpOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpOneView.resources.settings.versions import Versions
+from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 
@@ -198,6 +199,7 @@ class OneViewClient(object):
         self.__backups = None
         self.__login_details = None
         self.__licenses = None
+        self.__hypervisor_managers = None
 
     @classmethod
     def from_json_file(cls, file_name):
@@ -1171,3 +1173,16 @@ class OneViewClient(object):
         if not self.__licenses:
             self.__licenses = Licenses(self.__connection)
         return self.__licenses
+
+    @property
+    def hypervisor_managers(self):
+        """
+        Gets the Hypervisor Managers API client.
+
+        Returns:
+            HypervisorManagers
+        """
+        if not self.__hypervisor_managers:
+            self.__hypervisor_managers = HypervisorManagers(self.__connection)
+        return self.__hypervisor_managers
+

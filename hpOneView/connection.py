@@ -640,7 +640,11 @@ uri = {
     # ------------------------------------
     # Uncategorized
     # ------------------------------------
-    'unmanaged-devices': '/rest/unmanaged-devices'
+    'unmanaged-devices': '/rest/unmanaged-devices',
+    # ------------------------------------
+    # Hypervisors
+    # ------------------------------------
+    'hypervisor-managers': '/rest/hypervisor-managers'
 }
 
 ############################################################################

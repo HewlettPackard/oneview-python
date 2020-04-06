@@ -68,3 +68,4 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 - Storage volume template
 - Switch type
 - Uplink set
+- Hypervisor managers
