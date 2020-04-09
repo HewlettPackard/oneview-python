@@ -16,7 +16,6 @@
 ###
 
 from unittest import TestCase
-from pprint import pprint
 
 import mock
 
@@ -26,7 +25,6 @@ from hpOneView.resources.resource import Resource, ResourceHelper
 
 
 class HypervisorManagersTest(TestCase):
-    RESOURCE_ID = "81decf85-0dff-4a5e-8a95-52994eeb6493"
 
     def setUp(self):
         self.host = '127.0.0.1'
