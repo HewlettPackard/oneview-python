@@ -1182,6 +1182,4 @@ class OneViewClient(object):
         Returns:
             HypervisorManagers
         """
-        if not self.__hypervisor_managers:
-            self.__hypervisor_managers = HypervisorManagers(self.__connection)
-        return self.__hypervisor_managers
+        return HypervisorManagers(self.__connection)

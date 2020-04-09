@@ -929,4 +929,4 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_lazy_loading_hypervisor_managers(self):
         hypervisor_managers = self._oneview.hypervisor_managers
-        self.assertEqual(hypervisor_managers, self._oneview.hypervisor_managers)
+        self.assertNotEqual(hypervisor_managers, self._oneview.hypervisor_managers)

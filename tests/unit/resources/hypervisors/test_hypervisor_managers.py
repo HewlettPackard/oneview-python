@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,21 +16,26 @@
 ###
 
 from unittest import TestCase
+from pprint import pprint
 
 import mock
 
 from hpOneView.connection import connection
 from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourceHelper
 
 
 class HypervisorManagersTest(TestCase):
+    RESOURCE_ID = "81decf85-0dff-4a5e-8a95-52994eeb6493"
+
     def setUp(self):
         self.host = '127.0.0.1'
         self.connection = connection(self.host)
         self._hypervisor_managers = HypervisorManagers(self.connection)
+        self.uri = "/rest/hypervisor-managers/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
+        self._hypervisor_managers.data = {"uri": self.uri}
 
-    @mock.patch.object(ResourceClient, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
         resource = dict(
             type="HypervisorManagerV2",
@@ -39,13 +44,16 @@ class HypervisorManagersTest(TestCase):
             hypervisorType="Vmware",
             username="dcs",
             password="dcs",
-            initialScopeUris=[]
+            initialScopeUris=[],
         )
-        mock_create.return_value = {}
-        self._hypervisor_managers.add(resource, 70)
-        mock_create.assert_called_once_with(resource.copy(), timeout=70)
 
-    @mock.patch.object(ResourceClient, 'create')
+        resource_rest_call = resource.copy()
+        mock_create.return_value = {}
+
+        self._hypervisor_managers.create(resource, timeout=70)
+        mock_create.assert_called_once_with(resource_rest_call, timeout=70)
+
+    @mock.patch.object(Resource, 'create')
     def test_add_called_once_with_defaults(self, mock_create):
         resource = dict(
             type="HypervisorManagerV2",
@@ -56,39 +64,35 @@ class HypervisorManagersTest(TestCase):
             password="dcs",
             initialScopeUris=[],
         )
-        self._hypervisor_managers.add(resource)
-        mock_create.assert_called_once_with(resource.copy(), timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+        resource_rest_call = resource.copy()
+        mock_create.return_value = {}
+
+        self._hypervisor_managers.create(resource)
+        mock_create.assert_called_once_with(resource_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
-        fields = 'name'
-        view = 'expand'
         query = 'query'
         scope_uris = 'rest/scopes/cd237b60-09e2-45c4-829e-082e318a6d2a'
 
-        self._hypervisor_managers.get_all(2, 500, filter=filter, sort=sort, fields=fields, view=view, query=query, scope_uris=scope_uris)
-        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort, fields=fields, view=view, query=query, scope_uris=scope_uris)
+        self._hypervisor_managers.get_all(2, 500, filter=filter, sort=sort, query=query, scope_uris=scope_uris)
+        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort, query=query, scope_uris=scope_uris)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once_with_default(self, mock_get_all):
         self._hypervisor_managers.get_all()
-        mock_get_all.assert_called_once_with(0, -1, filter='', sort='', fields='', view='', query='', scope_uris='')
+        mock_get_all.assert_called_once_with(0, -1, filter='', sort='', query='', scope_uris='')
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_id_called_once(self, mock_get):
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_uri_called_once(self, mock_get_by_uri):
         uri = "/rest/hypervisor-managers/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
-        self._hypervisor_managers.get(uri)
-        mock_get.assert_called_once_with(uri)
+        self._hypervisor_managers.get_by_uri(uri)
+        mock_get_by_uri.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_uri_called_once(self, mock_get):
-        id = "f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
-        self._hypervisor_managers.get(id)
-        mock_get.assert_called_once_with(id)
-
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):
         hypervisor_managers = [{'name': 'name1', 'displayName': 'display1'}, {'name': 'name2', 'displayName': 'display2'}]
         mock_get_by.return_value = hypervisor_managers
@@ -96,47 +100,40 @@ class HypervisorManagersTest(TestCase):
         mock_get_by.assert_called_once_with("displayName", "display1")
         self.assertEqual(result, hypervisor_managers)
 
-    @mock.patch.object(ResourceClient, 'get_by')
-    def test_get_by_name_should_return_none_when_resource_is_not_found(self, mock_get_by):
-        mock_get_by.return_value = []
-        response = self._hypervisor_managers.get_by_name("test")
-        mock_get_by.assert_called_once_with("name", "test")
-        self.assertEqual(response, None)
-
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_by_name_called_once(self, mock_get_by):
-        hypervisor_managers = [{'name': 'test name', 'id': 1}, {'name': 'test name', 'id': 2}]
+        hypervisor_managers = [{'name': 'test name1', 'id': 1}, {'name': 'test name2', 'id': 2}]
         mock_get_by.return_value = hypervisor_managers
-        result = self._hypervisor_managers.get_by_name("test name")
-        mock_get_by.assert_called_once_with("name", "test name")
-        self.assertEqual(result, {'name': 'test name', 'id': 1})
+        result = self._hypervisor_managers.get_by_name("test name1")
+        mock_get_by.assert_called_once_with("name", "test name1")
+        self.assertEqual(result.data['id'], 1)
 
-    @mock.patch.object(ResourceClient, 'update')
-    def test_update_called_once_with_default(self, mock_update):
-        hypervisor_manager = {
-            "id": "4b4b87e2-eea8-4c90-8eca-b92eaaeecfff",
-            "name": "HypervisorManager"
+    @mock.patch.object(Resource, 'ensure_resource_data')
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_called_once_with_default(self, mock_update, mock_ensure_client):
+        resource = {
+            "name": "HypervisorManagerNew",
+            "uri": self.uri
         }
-        self._hypervisor_managers.update(hypervisor_manager)
-        mock_update.assert_called_once_with(hypervisor_manager, force=False, timeout=-1)
+        self._hypervisor_managers.update(resource)
+        mock_update.assert_called_once_with(resource, self.uri, False, -1, None)
 
-    @mock.patch.object(ResourceClient, 'update')
-    def test_update_called_once(self, mock_update):
-        hypervisor_manager = {
-            "id": "4b4b87e2-eea8-4c90-8eca-b92eaaeecfff",
-            "name": "HypervisorManager"
+    @mock.patch.object(Resource, 'ensure_resource_data')
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_called_once(self, mock_update, mock_ensure_client):
+        resource = {
+            "uri": self.uri,
+            "name": "NewHypervisorManager"
         }
-        self._hypervisor_managers.update(hypervisor_manager, True, 70)
-        mock_update.assert_called_once_with(hypervisor_manager, force=True, timeout=70)
+        self._hypervisor_managers.update(resource, 70)
+        mock_update.assert_called_once_with(resource, self.uri, False, 70, None)
 
-    @mock.patch.object(ResourceClient, 'delete')
+    @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
-        uri = '/rest/hypervisor-managers/ad28cf21-8b15-4f92-bdcf-51cb2042db32'
-        self._hypervisor_managers.delete(uri, force=True, timeout=50)
-        mock_delete.assert_called_once_with(uri, force=True, timeout=50)
+        self._hypervisor_managers.delete(force=False)
+        mock_delete.assert_called_once_with(self.uri, custom_headers=None, force=False, timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'delete')
-    def test_delete_called_once_with_defaults(self, mock_delete):
-        id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
-        self._hypervisor_managers.delete(id)
-        mock_delete.assert_called_once_with(id, force=False, timeout=-1)
+    @mock.patch.object(ResourceHelper, 'delete')
+    def test_delete_called_once_with_force(self, mock_delete):
+        self._hypervisor_managers.delete(force=True)
+        mock_delete.assert_called_once_with(self.uri, custom_headers=None, force=True, timeout=-1)
