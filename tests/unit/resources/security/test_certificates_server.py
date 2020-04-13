@@ -67,7 +67,6 @@ class CertificatesServerTest(TestCase):
         self._certificate_server.get_remote(remote_server)
         mock_get_remote.assert_called_once_with(uri_rest_call)
 
-
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_by_aliasName_called_once(self, mock_get_by_aliasName):
         uri_rest_call = "{0}/{1}".format(self.uri, "test1")

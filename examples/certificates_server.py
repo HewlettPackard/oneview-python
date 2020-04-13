@@ -33,12 +33,12 @@ remote_server_options = {
 }
 
 options = {
-    "certificateDetails":[
-      {
-         "aliasName":"vcenter",
-         "base64Data":"",
-         "type":"CertificateDetailV2"
-      }
+    "certificateDetails": [
+        {
+            "aliasName": "vcenter",
+            "base64Data": "",
+            "type": "CertificateDetailV2"
+        }
     ],
 }
 
@@ -58,12 +58,14 @@ print(ca_certificate)
 options['certificateDetails'][0]['base64Data'] = ca_certificate
 options['certificateDetails'][0]['type'] = remote_server_cert['certificateDetails'][0]['type']
 server_certificate = certificate_server.create(data=options)
-print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
+print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
+      server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
 
 # Fetch certificate by alias name
 print("\nGet server certificate by alias name")
 server_cert_by_alias = certificate_server.get_by_aliasName("vcenter")
-print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(server_cert_by_alias['certificateDetails'][0]['aliasName'], server_cert_by_alias['uri']))
+print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(
+      server_cert_by_alias['certificateDetails'][0]['aliasName'], server_cert_by_alias['uri']))
 
 # Get by uri
 print("\nGet a server certificate by uri")
@@ -74,7 +76,8 @@ pprint(server_cert_by_uri.data)
 print("\nUpdate recently created server certificate")
 data_to_update = {'name': 'Updated vcenter'}
 server_certificate.update(data=data_to_update)
-print("\nUpdated server certificate {} successfully.\n".format(server_certificate.data['certificateDetails'][0]['aliasName']))
+print("\nUpdated server certificate {} successfully.\n".format(
+      server_certificate.data['certificateDetails'][0]['aliasName']))
 
 # Delete the added server certificate
 server_certificate.delete()
