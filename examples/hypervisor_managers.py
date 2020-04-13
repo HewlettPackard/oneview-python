@@ -56,7 +56,7 @@ else:
 
 # Get all, with defaults
 print("\nGet all hypervisor managers")
-hyp_managers_all = hypervisor_manager.get_all()
+hyp_managers_all = hypervisor_managers.get_all()
 for hyp in hyp_managers_all:
     print('  - {}'.format(hyp['name']))
 

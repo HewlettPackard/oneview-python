@@ -1,3 +1,10 @@
+# 5.1.0 (unreleased version)
+#### Notes
+Provides SDK support to OneView REST API version 800, 1000 and 1200 (OneView v5.10).
+
+#### New Resource
+- Hypervisor Managers
+
 # 5.0.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
@@ -68,11 +75,3 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
 - Storage volume template
 - Switch type
 - Uplink set
-
-
-# 5.1.0 (unreleased version)
-#### Notes
-Provides SDK support to OneView REST API version 800, 1000 and 1200 (OneView v5.10).
-
-#### New Resource
-- Hypervisor Managers

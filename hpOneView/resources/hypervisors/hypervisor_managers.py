@@ -24,10 +24,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpOneView.resources.resource import Resource, ResourcePatchMixin
+from hpOneView.resources.resource import Resource
 
 
-class HypervisorManagers(ResourcePatchMixin, Resource):
+class HypervisorManagers(Resource):
     """
     Hypervisor Managers API client.
 
