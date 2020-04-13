@@ -1,8 +1,8 @@
-# 5.1.0 (unreleased version)
+# 5.11.0 (unreleased version)
 #### Notes
-Provides SDK support to OneView REST API version 800, 1000 and 1200 (OneView v5.10).
+Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
 
-#### New Resource
+#### Features supported
 - Hypervisor Managers
 
 # 5.0.0
