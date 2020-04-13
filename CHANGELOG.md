@@ -1,4 +1,4 @@
-# 5.11.0 (unreleased version)
+# 5.1.0 (unreleased version)
 #### Notes
 Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
 
