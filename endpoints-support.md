@@ -25,6 +25,12 @@
 |<sub>/rest/connection-templates/defaultConnectionTemplate</sub>                          |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/connection-templates/{id}</sub>                                               |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/connection-templates/{id}</sub>                                               |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|     **Certificates Server**
+|<sub>/rest/certificates/servers</sub>                                                    |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/certificates/https/remote/example.com</sub>                                   |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Enclosure Groups**
 |<sub>/rest/enclosure-groups</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/enclosure-groups</sub>                                                        | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
