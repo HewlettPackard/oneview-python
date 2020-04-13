@@ -73,6 +73,12 @@
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | PATCH    |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|     **Hypervisor Managers**
+|<sub>/rest/hypervisor-managers</sub>                                                     |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/hypervisor-managers</sub>                                                     |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/hypervisor-managers/{id}</sub>                                                |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/hypervisor-managers/{id}</sub>                                                |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/hypervisor-managers/{id}</sub>                                                |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Interconnects**
 |<sub>/rest/interconnects</sub>                                                           | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/interconnects/{id}</sub>                                                      | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
@@ -306,13 +312,6 @@
 |<sub>/rest/storage-volumes/{id}/snapshots</sub>                                          | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/storage-volumes/{id}/snapshots/{snapshotId}</sub>                             | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/storage-volumes/{id}/snapshots/{snapshotId}</sub>                             | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|     **Hypervisor Managers**
-|<sub>/rest/hypervisor-managers</sub>                                                    |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers</sub>                                                    |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers/{id}</sub>                                               |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers/{id}</sub>                                               |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers/{id}</sub>                                               |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-
 
 ## HPE Synergy Image Streamer
 
