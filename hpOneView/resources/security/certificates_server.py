@@ -54,7 +54,9 @@ class CertificatesServer(Resource):
             data: Fields passed to create the resource.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
-        Returns:
+            custom_headers: Allows set specific HTTP headers.
+
+        Return:
             Created resource.
         """
         if not data:
@@ -79,7 +81,6 @@ class CertificatesServer(Resource):
 
         Return:
              dict: Certificate chain of remote server
-
         """
         uri = "{0}/https/remote/{1}".format(self.URI, remote_address)
         return self._helper.do_get(uri)
