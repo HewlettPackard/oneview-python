@@ -81,6 +81,7 @@ from tests.test_utils import mock_builtin
 from hpOneView.resources.settings.licenses import Licenses
 from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
 from hpOneView.resources.security.certificates_server import CertificatesServer
+from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
@@ -938,3 +939,10 @@ class OneViewClientTest(unittest.TestCase):
     def test_certificates_server_client(self):
         certificates_server = self._oneview.certificates_server
         self.assertNotEqual(certificates_server, self._oneview.certificates_server)
+
+    def test_hypervisor_cluster_profiles_has_right_type(self):
+        self.assertIsInstance(self._oneview.hypervisor_cluster_profiles, HypervisorClusterProfiles)
+
+    def test_hypervisor_cluster_profiles_client(self):
+        HypervisorClusterProfiles = self._oneview.hypervisor_cluster_profiles
+        self.assertNotEqual(HypervisorClusterProfiles, self._oneview.hypervisor_cluster_profiles)
