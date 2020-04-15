@@ -87,6 +87,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.security.certificate_authority">hpOneView.resources.security.certificate_authority module</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.security.certificate_rabbitmq">hpOneView.resources.security.certificate_rabbitmq module</a></li>
+<li><a class="reference internal" href="#module-hpOneView.resources.security.certificates_server">hpOneView.resources.security.certificates_server module</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.security.login_details">hpOneView.resources.security.login_details module</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.security.roles">hpOneView.resources.security.roles module</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.security.users">hpOneView.resources.security.users module</a></li>
@@ -325,6 +326,87 @@ Valid key formats are Base64 and PKCS12.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpOneView.resources.security.certificates_server">
+<span id="hponeview-resources-security-certificates-server-module"></span><h2>hpOneView.resources.security.certificates_server module<a class="headerlink" href="#module-hpOneView.resources.security.certificates_server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpOneView.resources.security.certificates_server.CertificatesServer">
+<em class="property">class </em><code class="descclassname">hpOneView.resources.security.certificates_server.</code><code class="descname">CertificatesServer</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/security/certificates_server.html#CertificatesServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.security.certificates_server.CertificatesServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
+<p>The Certificates Servers resource provides REST APIs for configuration of device or
+server certificates for the appliance to establish SSL communication with other managed network entities.</p>
+<p>Import, Update and Delete APIs are asynchronous and GET API is synchronous.</p>
+<dl class="attribute">
+<dt id="hpOneView.resources.security.certificates_server.CertificatesServer.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'CertificateInfoV2'}, u'1200': {u'type': u'CertificateInfoV2'}, u'800': {u'type': u'CertificateInfoV2'}}</em><a class="headerlink" href="#hpOneView.resources.security.certificates_server.CertificatesServer.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpOneView.resources.security.certificates_server.CertificatesServer.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/certificates'</em><a class="headerlink" href="#hpOneView.resources.security.certificates_server.CertificatesServer.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.security.certificates_server.CertificatesServer.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/security/certificates_server.html#CertificatesServer.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.security.certificates_server.CertificatesServer.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a server certificate resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – Fields passed to create the resource.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created certificate resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.security.certificates_server.CertificatesServer.get_by_aliasName">
+<code class="descname">get_by_aliasName</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/security/certificates_server.html#CertificatesServer.get_by_aliasName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.security.certificates_server.CertificatesServer.get_by_aliasName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the device or server certificate, already trusted in the appliance,
+with the specified aliasName.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> (<em>str</em>) – Alias name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Certificate of trusted appliance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.security.certificates_server.CertificatesServer.get_remote">
+<code class="descname">get_remote</code><span class="sig-paren">(</span><em>remote_address</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/security/certificates_server.html#CertificatesServer.get_remote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.security.certificates_server.CertificatesServer.get_remote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the device or server certificate and certificate chain of the specified device or server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>remote_address</strong> – Address of remote server</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Certificate chain of remote server</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
