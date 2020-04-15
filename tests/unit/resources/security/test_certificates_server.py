@@ -33,7 +33,7 @@ class CertificatesServerTest(TestCase):
         self.uri = "/rest/certificates/servers"
         self._certificate_server.data = {"uri": self.uri}
 
-    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
         resource = dict(
             type="CertificateInfoV2",
@@ -44,9 +44,9 @@ class CertificatesServerTest(TestCase):
         mock_create.return_value = {}
 
         self._certificate_server.create(resource, timeout=20)
-        mock_create.assert_called_once_with(resource_rest_call, self.uri, 20, None)
+        mock_create.assert_called_once_with(resource_rest_call, uri=self.uri, timeout=20)
 
-    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_called_once_with_defaults(self, mock_create):
         resource = dict(
             type="CertificateInfoV2",
@@ -57,7 +57,7 @@ class CertificatesServerTest(TestCase):
         mock_create.return_value = {}
 
         self._certificate_server.create(resource)
-        mock_create.assert_called_once_with(resource_rest_call, self.uri, -1, None)
+        mock_create.assert_called_once_with(resource_rest_call, uri=self.uri, timeout=-1)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_remote_server_called_once(self, mock_get_remote):

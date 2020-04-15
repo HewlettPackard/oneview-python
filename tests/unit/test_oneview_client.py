@@ -935,6 +935,6 @@ class OneViewClientTest(unittest.TestCase):
     def test_certificates_server_has_right_type(self):
         self.assertIsInstance(self._oneview.certificates_server, CertificatesServer)
 
-    def test_lazy_loading_certificates_server(self):
+    def test_certificates_server_client(self):
         certificates_server = self._oneview.certificates_server
         self.assertNotEqual(certificates_server, self._oneview.certificates_server)

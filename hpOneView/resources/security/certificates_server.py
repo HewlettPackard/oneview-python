@@ -38,7 +38,6 @@ class CertificatesServer(Resource):
     URI = '/rest/certificates'
 
     DEFAULT_VALUES = {
-        '600': {"type": "CertificateInfoV2"},
         '800': {"type": "CertificateInfoV2"},
         '1000': {"type": "CertificateInfoV2"},
         '1200': {"type": "CertificateInfoV2"}
@@ -47,29 +46,20 @@ class CertificatesServer(Resource):
     def __init__(self, connection, data=None):
         super(CertificatesServer, self).__init__(connection, data)
 
-    def create(self, data=None, timeout=-1, custom_headers=None):
-        """Makes a POST request to create a resource when a request body is required.
+    def create(self, data=None, timeout=-1):
+        """
+        Makes a POST request to create a server certificate resource.
 
         Args:
             data: Fields passed to create the resource.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
-            custom_headers: Allows set specific HTTP headers.
 
         Return:
-            Created resource.
+            Created certificate resource.
         """
-        if not data:
-            data = {}
-
-        default_values = self._get_default_values()
-        data = self._helper.update_resource_fields(data, default_values)
         uri_create = "{}/servers".format(self.URI)
-
-        resource_data = self._helper.create(data, uri_create, timeout, custom_headers)
-        new_resource = self.new(self._connection, resource_data)
-
-        return new_resource
+        return super(CertificatesServer, self).create(data, uri=uri_create, timeout=timeout)
 
     def get_remote(self, remote_address):
         """
