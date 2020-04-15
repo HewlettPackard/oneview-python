@@ -57,9 +57,8 @@ class HypervisorClusterProfilesTest(TestCase):
         self._hypervisor_cluster_profiles.create(resource)
         mock_create.assert_called_once_with(resource_rest_call)
 
-
     @mock.patch.object(ResourceHelper, 'create')
-    def test_create_called_once(self, mock_create_vswitch):
+    def test_create_vswitch_layout_called_once(self, mock_create_vswitch):
         resource = dict(
             virtualSwitchType="Standard",
             type="vmware",
@@ -73,7 +72,7 @@ class HypervisorClusterProfilesTest(TestCase):
         mock_create_vswitch.assert_called_once_with(resource_rest_call, vswitch_uri, 60)
 
     @mock.patch.object(ResourceHelper, 'create')
-    def test_create_called_once_with_defaults(self, mock_create_vswitch):
+    def test_create_vswitch_layout_called_once_with_defaults(self, mock_create_vswitch):
         resource = dict(
             virtualSwitchType="Standard",
             type="vmware",
