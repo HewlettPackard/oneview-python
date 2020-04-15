@@ -3,6 +3,7 @@
 Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
 
 #### Features supported
+- Certificates Server
 - Hypervisor Managers
 
 # 5.0.0

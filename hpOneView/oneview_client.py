@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -108,6 +108,7 @@ from hpOneView.resources.settings.appliance_node_information import ApplianceNod
 from hpOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpOneView.resources.settings.versions import Versions
 from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
+from hpOneView.resources.security.certificates_server import CertificatesServer
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 
@@ -200,6 +201,7 @@ class OneViewClient(object):
         self.__login_details = None
         self.__licenses = None
         self.__hypervisor_managers = None
+        self.__certificates_server = None
 
     @classmethod
     def from_json_file(cls, file_name):
@@ -1183,3 +1185,13 @@ class OneViewClient(object):
             HypervisorManagers
         """
         return HypervisorManagers(self.__connection)
+
+    @property
+    def certificates_server(self):
+        """
+        Gets the Certificates Server API client.
+
+        Returns:
+            Server Certificate:
+        """
+        return CertificatesServer(self.__connection)
