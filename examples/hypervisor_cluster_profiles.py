@@ -40,7 +40,7 @@ options = {
         "virtualSwitchType": "Standard"
     },
     "hypervisorHostProfileTemplate": {
-        "serverProfileTemplateUri": "/rest/server-profile-templates/ab4778bf-f109-4023-9759-7a8b0ac90e36",
+        "serverProfileTemplateUri": "spt_basic",
         "deploymentPlan": {
             "serverPassword": "test",
             "deploymentCustomArgs": []
@@ -58,20 +58,22 @@ options = {
     },
     "name": "Test_cluster_profile",
     "mgmtIpSettingsOverride": None,
-    "hypervisorManagerUri": "/rest/hypervisor-managers/c3a5a6c7-ccb4-491b-ba2a-3e37bda5f5e0",
+    "hypervisorManagerUri": "172.18.13.11",
     "path": "DC1",
     "initialScopeUris": []
 }
 
 vswitch_options = {
-    "hypervisorManagerUri": "/rest/hypervisor-managers/c3a5a6c7-ccb4-491b-ba2a-3e37bda5f5e0",
-    "serverProfileTemplateUri": "/rest/server-profile-templates/ab4778bf-f109-4023-9759-7a8b0ac90e36"
+    "hypervisorManagerUri": "172.18.13.11",
+    "serverProfileTemplateUri": "spt_basic"
 }
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 oneview_client = OneViewClient.config()
 hypervisor_cluster_profiles = oneview_client.hypervisor_cluster_profiles
+hypervisor_managers = oneview_client.hypervisor_managers
+profile_templates = oneview_client.server_profile_templates
 
 # Get all cluster profiles
 print("\nGet all hypervisor cluster profiles")
@@ -89,11 +91,25 @@ if hypervisor_cluster_profile:
 else:
     # Create virtual switch layout
     print("\nCreate virtual switch layout")
+
+    # Getting the uris from name
+    hypervisor_manager_info = hypervisor_managers.get_by_name(vswitch_options['hypervisorManagerUri'])
+    hyp_mgr_uri = hypervisor_manager_info.data['uri']
+    spt_info = profile_templates.get_by_name(vswitch_options['serverProfileTemplateUri'])
+    spt_uri = spt_info.data['uri']
+
+    # Replacing the name in json body with uri
+    vswitch_options['hypervisorManagerUri'] = hyp_mgr_uri
+    vswitch_options['serverProfileTemplateUri'] = spt_uri
+
     vswitch_layout = hypervisor_cluster_profiles.create_virtual_switch_layout(data=vswitch_options)
     pprint(vswitch_layout)
 
     # Create a Hypervisor Cluster Profile with the options provided
+    options['hypervisorManagerUri'] = hyp_mgr_uri
+    options['hypervisorHostProfileTemplate']['serverProfileTemplateUri'] = spt_uri
     options['hypervisorHostProfileTemplate']['virtualSwitches'] = vswitch_layout
+
     hypervisor_cluster_profile = hypervisor_cluster_profiles.create(data=options)
     print("\nCreated a hypervisor cluster profile with name: {}.\n  uri = {}".format(
         hypervisor_cluster_profile.data['name'], hypervisor_cluster_profile.data['uri']))
