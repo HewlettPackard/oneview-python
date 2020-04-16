@@ -148,7 +148,7 @@
   <h1>Source code for hpOneView.resources.task_monitor</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -273,7 +273,8 @@
         <span class="n">deleted_states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Delete&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;Remove&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;Delete server hardware type&#39;</span><span class="p">,</span>
-                          <span class="s1">&#39;Remove SAN manager&#39;</span><span class="p">]</span>
+                          <span class="s1">&#39;Remove SAN manager&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;Delete hypervisor cluster profile.&#39;</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskState&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">TASK_ERROR_STATES</span> <span class="ow">and</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskState&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Warning&#39;</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span>

@@ -257,6 +257,7 @@
 <span class="kn">from</span> <span class="nn">hpOneView.resources.settings.versions</span> <span class="kn">import</span> <span class="n">Versions</span>
 <span class="kn">from</span> <span class="nn">hpOneView.resources.hypervisors.hypervisor_managers</span> <span class="kn">import</span> <span class="n">HypervisorManagers</span>
 <span class="kn">from</span> <span class="nn">hpOneView.resources.security.certificates_server</span> <span class="kn">import</span> <span class="n">CertificatesServer</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.hypervisors.hypervisor_cluster_profiles</span> <span class="kn">import</span> <span class="n">HypervisorClusterProfiles</span>
 
 <span class="n">ONEVIEW_CLIENT_INVALID_PROXY</span> <span class="o">=</span> <span class="s1">&#39;Invalid Proxy format&#39;</span>
 
@@ -1342,7 +1343,17 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Server Certificate:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">CertificatesServer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">CertificatesServer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hypervisor_cluster_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the Hypervisor Cluster Profiles API client.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Hypervisor Cluster Profiles:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">HypervisorClusterProfiles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

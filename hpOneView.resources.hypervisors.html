@@ -85,6 +85,7 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpOneView.resources.hypervisors package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-hpOneView.resources.hypervisors.hypervisor_cluster_profiles">hpOneView.resources.hypervisors.hypervisor_cluster_profiles module</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.hypervisors.hypervisor_managers">hpOneView.resources.hypervisors.hypervisor_managers module</a></li>
 <li><a class="reference internal" href="#module-hpOneView.resources.hypervisors">Module contents</a></li>
 </ul>
@@ -157,6 +158,100 @@
 <h1>hpOneView.resources.hypervisors package<a class="headerlink" href="#hponeview-resources-hypervisors-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-hpOneView.resources.hypervisors.hypervisor_cluster_profiles">
+<span id="hponeview-resources-hypervisors-hypervisor-cluster-profiles-module"></span><h2>hpOneView.resources.hypervisors.hypervisor_cluster_profiles module<a class="headerlink" href="#module-hpOneView.resources.hypervisors.hypervisor_cluster_profiles" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles">
+<em class="property">class </em><code class="descclassname">hpOneView.resources.hypervisors.hypervisor_cluster_profiles.</code><code class="descname">HypervisorClusterProfiles</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
+<p>The cluster profile resource manager REST APIs to create, retrieve, modify and delete hypervisor cluster profiles.</p>
+<dl class="attribute">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'HypervisorClusterProfileV3'}, u'1200': {u'type': u'HypervisorClusterProfileV3'}, u'800': {u'type': u'HypervisorClusterProfileV3'}}</em><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/hypervisor-cluster-profiles'</em><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout">
+<code class="descname">create_virtual_switch_layout</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.create_virtual_switch_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates vSwitch layout using information specified in the request body.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – Fields passed to create the resource.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created virtual switch layout.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em>, <em>query=u''</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of hypervisor cluster profiles based on optional sorting and filtering,
+and constrained by start and count parameters.</p>
+<p>The maximum number of profiles is restricted to 100, i.e.,
+if user requests more than 100, this will be internally limited to 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+The actual number of items in the response might differ from the requested
+count if the sum of start and count exceeds the total number of items.</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</li>
+<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</li>
+<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of Hypervisor cluster profiles</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview">
+<code class="descname">get_compliance_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.get_compliance_preview"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the preview of manual and automatic updates required to make the cluster profile consistent with its template.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">cluster profile compliance preview</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-hpOneView.resources.hypervisors.hypervisor_managers">
 <span id="hponeview-resources-hypervisors-hypervisor-managers-module"></span><h2>hpOneView.resources.hypervisors.hypervisor_managers module<a class="headerlink" href="#module-hpOneView.resources.hypervisors.hypervisor_managers" title="Permalink to this headline">¶</a></h2>

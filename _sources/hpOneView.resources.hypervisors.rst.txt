@@ -4,6 +4,14 @@ hpOneView.resources.hypervisors package
 Submodules
 ----------
 
+hpOneView.resources.hypervisors.hypervisor\_cluster\_profiles module
+--------------------------------------------------------------------
+
+.. automodule:: hpOneView.resources.hypervisors.hypervisor_cluster_profiles
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpOneView.resources.hypervisors.hypervisor\_managers module
 -----------------------------------------------------------
 
