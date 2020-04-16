@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,10 +20,10 @@ from setuptools import find_packages
 from setuptools import setup
 
 setup(name='hpOneView',
-      version='5.0.0',
+      version='5.1.0',
       description='HPE OneView Python Library',
       url='https://github.com/HewlettPackard/oneview-python',
-      download_url="https://github.com/HewlettPackard/oneview-python/tarball/v5.0.0",
+      download_url="https://github.com/HewlettPackard/oneview-python/tarball/v5.1.0",
       author='Hewlett Packard Enterprise Development LP',
       author_email='oneview-pythonsdk@hpe.com',
       license='Apache',
