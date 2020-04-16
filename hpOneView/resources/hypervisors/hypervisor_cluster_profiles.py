@@ -42,23 +42,6 @@ class HypervisorClusterProfiles(Resource):
     def __init__(self, connection, data=None):
         super(HypervisorClusterProfiles, self).__init__(connection, data)
 
-    def create_virtual_switch_layout(self, data=None, timeout=-1):
-        """Generates vSwitch layout using information specified in the request body.
-
-        Args:
-            data: Fields passed to create the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Return:
-            Created virtual switch layout.
-        """
-        if not data:
-            data = {}
-
-        vswitch_uri = "{}/virtualswitch-layout".format(self.URI)
-        return self._helper.create(data, vswitch_uri, timeout)
-
     def get_all(self, start=0, count=-1, filter='', sort='', query='', scope_uris=''):
         """
         Gets a list of hypervisor cluster profiles based on optional sorting and filtering,
@@ -92,6 +75,23 @@ class HypervisorClusterProfiles(Resource):
              list: List of Hypervisor cluster profiles
         """
         return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, scope_uris=scope_uris)
+
+    def create_virtual_switch_layout(self, data=None, timeout=-1):
+        """Generates vSwitch layout using information specified in the request body.
+
+        Args:
+            data: Fields passed to create the resource.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        Return:
+            Created virtual switch layout.
+        """
+        if not data:
+            data = {}
+
+        vswitch_uri = "{}/virtualswitch-layout".format(self.URI)
+        return self._helper.create(data, vswitch_uri, timeout)
 
     def get_compliance_preview(self):
         """
