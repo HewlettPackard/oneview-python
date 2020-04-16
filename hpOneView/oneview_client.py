@@ -109,6 +109,7 @@ from hpOneView.resources.settings.appliance_time_and_locale_configuration import
 from hpOneView.resources.settings.versions import Versions
 from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
 from hpOneView.resources.security.certificates_server import CertificatesServer
+from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 
@@ -1195,3 +1196,13 @@ class OneViewClient(object):
             Server Certificate:
         """
         return CertificatesServer(self.__connection)
+
+    @property
+    def hypervisor_cluster_profiles(self):
+        """
+        Gets the Hypervisor Cluster Profiles API client.
+
+        Returns:
+            Hypervisor Cluster Profiles:
+        """
+        return HypervisorClusterProfiles(self.__connection)
