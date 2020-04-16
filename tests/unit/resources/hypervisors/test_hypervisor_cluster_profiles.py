@@ -85,6 +85,15 @@ class HypervisorClusterProfilesTest(TestCase):
         self._hypervisor_cluster_profiles.create_virtual_switch_layout(resource)
         mock_create_vswitch.assert_called_once_with(resource_rest_call, vswitch_uri, -1)
 
+    @mock.patch.object(ResourceHelper, 'create')
+    def test_create_vswitch_layout_called_once_with_no_data(self, mock_create_vswitch):
+        vswitch_uri = "{}/virtualswitch-layout".format(self.uri)
+        mock_create_vswitch.return_value = {}
+        resource = {}
+
+        self._hypervisor_cluster_profiles.create_virtual_switch_layout()
+        mock_create_vswitch.assert_called_once_with(resource, vswitch_uri, -1)
+
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_compliance_preview(self, mock_get):
         uri_rest_call = '{}/compliance-preview'.format(self.uri)
