@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,89 +20,74 @@ from unittest import TestCase
 import mock
 
 from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourceHelper
 from hpOneView.resources.settings.firmware_drivers import FirmwareDrivers
-
-ALL_FIRMWARE_DRIVERS = [
-    {
-        'name': 'Supplemental Update',
-        'uri': '/rest/firmware-drivers/hp-firmware-hdd-a1b08f8a6b-HPGH-1_1_x86_64',
-        'fwComponents': [{'fileName': 'hp-firmware-hdd-a1b08f8a6b-HPGH-1.1.x86_64.rpm'}]
-    },
-    {
-        'name': 'Service Pack for ProLiant.iso',
-        'uri': '/rest/firmware-drivers/spp_gen9_snap6_add-on_bundle',
-        'fwComponents': [{'fileName': 'spp_gen9_snap6_add-on_bundle.zip'}]
-    }
-]
 
 
 class FirmwareDriversTest(TestCase):
-    DEFAULT_HOST = '127.0.0.1'
 
     def setUp(self):
-        oneview_connection = connection(self.DEFAULT_HOST)
-        self.resource = FirmwareDrivers(oneview_connection)
+        self.host = '127.0.0.1'
+        self.connection = connection(self.host)
+        self._firmware_drivers = FirmwareDrivers(self.connection)
+        self.uri = "/rest/firmware-drivers"
+        self._firmware_drivers.data = {"uri": self.uri}
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(Resource, 'get_all')
     def test_get_all(self, mock_get_all):
         filter_by = 'name=TestName'
         sort = 'name:ascending'
 
-        self.resource.get_all(2, 500, filter_by, sort)
-        mock_get_all.assert_called_once_with(2, 500, filter=filter_by, sort=sort)
+        self._firmware_drivers.get_all(2, 500, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
 
-    @mock.patch.object(ResourceClient, 'get_all')
-    def test_get_by(self, mock_get_all):
-        property_name = 'name'
-        firmware_name = 'Service Pack for ProLiant.iso'
-        expected_result = [ALL_FIRMWARE_DRIVERS[1]]
-        mock_get_all.return_value = ALL_FIRMWARE_DRIVERS
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_all_called_once_with_default(self, mock_get_all):
+        self._firmware_drivers.get_all()
+        mock_get_all.assert_called_once_with()
 
-        result = self.resource.get_by(property_name, firmware_name)
-        self.assertEqual(expected_result, result)
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_uri_called_once(self, mock_get_by_uri):
+        uri = "/rest/firmware-drivers/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
+        self._firmware_drivers.get_by_uri(uri)
+        mock_get_by_uri.assert_called_once_with(uri)
 
-    @mock.patch.object(ResourceClient, 'get_all')
-    def test_get_by_without_match(self, mock_get_all):
-        property_name = 'name'
-        firmware_name = 'Service Pack for ProLiant X64'
-        mock_get_all.return_value = ALL_FIRMWARE_DRIVERS
+    @mock.patch.object(Resource, 'get_by')
+    def test_get_by_called_once(self, mock_get_by):
+        drivers = [{'name': 'name1', 'type': 'SPP'}, {'name': 'name2', 'type': 'HotFix'}]
+        mock_get_by.return_value = drivers
+        result = self._firmware_drivers.get_by("type", 'SPP')
+        mock_get_by.assert_called_once_with("type", 'SPP')
+        self.assertEqual(result, drivers)
 
-        result = self.resource.get_by(property_name, firmware_name)
-        self.assertEqual(0, len(result))
+    @mock.patch.object(Resource, 'get_by')
+    def test_get_by_name_called_once(self, mock_get_by_name):
+        drivers = [{'name': 'name1', 'type': 'SPP'}, {'name': 'name2', 'type': 'HotFix'}]
+        mock_get_by_name.return_value = drivers
+        result = self._firmware_drivers.get_by_name("name1")
+        mock_get_by_name.assert_called_once_with("name", "name1")
+        self.assertEqual(result.data['type'], 'SPP')
 
-    @mock.patch.object(ResourceClient, 'get_all')
-    def test_get_by_when_there_are_not_any_firmware(self, mock_get_all):
-        property_name = 'name'
-        firmware_name = 'Service Pack for ProLiant X64'
-        mock_get_all.return_value = []
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_schema(self, mock_get):
+        uri_rest_call = '{}/schema'.format(self.uri)
 
-        result = self.resource.get_by(property_name, firmware_name)
-        self.assertEqual(0, len(result))
+        self._firmware_drivers.get_schema()
+        mock_get.assert_called_once_with(uri_rest_call)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_id(self, mock_get):
-        firmware_id = "SPP2012080.2012_0713.57"
+    @mock.patch.object(Resource, 'create')
+    def test_add_called_once_with_defaults(self, mock_create):
+        resource = dict(
+            customBaselineName="FirmwareDriver1_Example",
+        )
 
-        self.resource.get(firmware_id)
-        mock_get.assert_called_once_with(firmware_id)
-
-    @mock.patch.object(ResourceClient, 'create')
-    def test_create_should_use_given_values(self, mock_create):
-        resource = {
-            'customBaselineName': 'FirmwareDriver1_Example',
-            'baselineUri': '/rest/fakespp',
-            'hotfixUris': ['/rest/fakehotfix']
-        }
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
 
-        self.resource.create(resource, 30)
-        mock_create.assert_called_once_with(resource_rest_call, timeout=30)
+        self._firmware_drivers.create(resource)
+        mock_create.assert_called_once_with(resource_rest_call)
 
-    @mock.patch.object(ResourceClient, 'delete')
-    def test_remove(self, mock_delete):
-        fake_firmware = dict(name='Service Pack for ProLiant.iso')
-
-        self.resource.delete(fake_firmware)
-        mock_delete.assert_called_once_with(fake_firmware, force=False, timeout=-1)
+    @mock.patch.object(Resource, 'delete')
+    def test_delete_called_once_with_force(self, mock_delete):
+        self._firmware_drivers.delete(force=True)
+        mock_delete.assert_called_once_with(force=True)

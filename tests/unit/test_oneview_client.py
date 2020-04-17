@@ -70,6 +70,7 @@ from hpOneView.resources.activity.events import Events
 from hpOneView.resources.security.certificate_rabbitmq import CertificateRabbitMQ
 from hpOneView.resources.security.roles import Roles
 from hpOneView.resources.security.users import Users
+from hpOneView.resources.settings.firmware_drivers import FirmwareDrivers
 from hpOneView.resources.settings.appliance_device_read_community import ApplianceDeviceReadCommunity
 from hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
 from hpOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
@@ -560,9 +561,9 @@ class OneViewClientTest(unittest.TestCase):
         storage_pools = self._oneview.storage_pools
         self.assertNotEqual(storage_pools, self._oneview.storage_pools)
 
-    def test_lazy_loading_firmware_drivers(self):
+    def test_firmware_drivers_client(self):
         firmware_drivers = self._oneview.firmware_drivers
-        self.assertEqual(firmware_drivers, self._oneview.firmware_drivers)
+        self.assertNotEqual(firmware_drivers, self._oneview.firmware_drivers)
 
     def test_lazy_loading_firmware_bundles(self):
         firmware_bundles = self._oneview.firmware_bundles

@@ -1,3 +1,10 @@
+# 5.1.1 (unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
+
+#### Features supported
+- Firmware Drivers
+
 # 5.1.0
 #### Notes
 Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
