@@ -33,7 +33,7 @@ config = {
 
 options = {
     "customBaselineName": "FirmwareDriver1_Example",
- }
+}
 
 firmware_name = "HPE Synergy Custom SPP 2019031"
 

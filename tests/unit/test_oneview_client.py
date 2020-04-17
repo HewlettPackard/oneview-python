@@ -561,6 +561,9 @@ class OneViewClientTest(unittest.TestCase):
         storage_pools = self._oneview.storage_pools
         self.assertNotEqual(storage_pools, self._oneview.storage_pools)
 
+    def test_firmware_drivers_has_right_type(self):
+        self.assertIsInstance(self._oneview.firmware_drivers, FirmwareDrivers)
+
     def test_firmware_drivers_client(self):
         firmware_drivers = self._oneview.firmware_drivers
         self.assertNotEqual(firmware_drivers, self._oneview.firmware_drivers)

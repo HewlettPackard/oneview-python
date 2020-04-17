@@ -35,7 +35,7 @@ class FirmwareDriversTest(TestCase):
 
     @mock.patch.object(Resource, 'get_all')
     def test_get_all(self, mock_get_all):
-        filter_by = 'name=TestName'
+        filter = 'name=TestName'
         sort = 'name:ascending'
 
         self._firmware_drivers.get_all(2, 500, filter=filter, sort=sort)

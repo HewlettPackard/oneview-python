@@ -31,8 +31,7 @@ class FirmwareDrivers(Resource):
     """
     The firmware drivers resource managers provides REST APIs to retrieve the firmware bundle inventory data.
 
-    Note: As per the API docs, 'type' field is not present in the firmware drivers POST call. 
-          So default values are not added.
+    Note: As per the API docs, 'type' field is not present in the firmware drivers POST call. So default values are not added.
 
     """
     URI = '/rest/firmware-drivers'
