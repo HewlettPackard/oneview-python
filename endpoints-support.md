@@ -20,6 +20,13 @@
 
 | Endpoints                                                                               | Verb     |  V800                 | V1000               | V1200
 | --------------------------------------------------------------------------------------- | -------- |  :------------------: | :------------------:| :------------------: |
+|     **Appliance SNMPv1 Trap Destinations**
+|<sub>/rest/appliance/trap-destinations</sub>                                             |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/appliance/trap-destinations/validation</sub>                                  |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/appliance/trap-destinations/{id}</sub>                                        |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/appliance/trap-destinations/{id}</sub>                                        |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/appliance/trap-destinations/{id}</sub>                                        |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/appliance/trap-destinations/{id}</sub>                                        |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Connection Templates**
 |<sub>/rest/connection-templates</sub>                                                    |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/connection-templates/defaultConnectionTemplate</sub>                          |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
