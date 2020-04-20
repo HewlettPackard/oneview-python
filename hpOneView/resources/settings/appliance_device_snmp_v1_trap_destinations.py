@@ -53,7 +53,6 @@ class ApplianceDeviceSNMPv1TrapDestinations(Resource):
         uri = "{0}/{1}".format(self.URI, id)
         return self._helper.do_get(uri)
 
-
     def create_validation(self, data=None, timeout=-1):
         """
         Validate whether a hostname or ip address is a valid trap destination.
