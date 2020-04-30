@@ -59,9 +59,9 @@ print("\nGet server certificate by alias name")
 server_certificate = certificate_server.get_by_alias_name("vcenter")
 if server_certificate:
     print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(
-      server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
+        server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
 else:
-# Add a server certificate with the options provided
+    # Add a server certificate with the options provided
     options['certificateDetails'][0]['base64Data'] = ca_certificate
     options['certificateDetails'][0]['type'] = remote_server_cert.data['certificateDetails'][0]['type']
     server_certificate = certificate_server.create(data=options)
