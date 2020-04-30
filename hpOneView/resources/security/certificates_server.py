@@ -25,6 +25,7 @@ standard_library.install_aliases()
 
 
 from hpOneView.resources.resource import Resource
+from hpOneView.exceptions import HPOneViewException
 
 
 class CertificatesServer(Resource):
@@ -73,9 +74,9 @@ class CertificatesServer(Resource):
              dict: Certificate chain of remote server
         """
         uri = "{0}/https/remote/{1}".format(self.URI, remote_address)
-        return self._helper.do_get(uri)
+        return super(CertificatesServer, self).get_by_uri(uri=uri)
 
-    def get_by_aliasName(self, alias_name):
+    def get_by_alias_name(self, alias_name):
         """
         Retrieves the device or server certificate, already trusted in the appliance,
         with the specified aliasName.
@@ -87,4 +88,8 @@ class CertificatesServer(Resource):
             dict: Certificate of trusted appliance
         """
         uri = "{0}/servers/{1}".format(self.URI, alias_name)
-        return self._helper.do_get(uri)
+        try:
+            response = super(CertificatesServer, self).get_by_uri(uri=uri)
+        except HPOneViewException:
+            response = None
+        return response

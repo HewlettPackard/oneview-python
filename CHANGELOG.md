@@ -1,3 +1,8 @@
+# 5.1.1 (Unreleased)
+
+#### Bug fixes & Enhancements
+- #34 Handle exception of get_by_aliasname method in certificates_server resource and return resource object
+
 # 5.1.0
 #### Notes
 Extends support of the SDK to OneView REST API version 800, 1000 and 1200.

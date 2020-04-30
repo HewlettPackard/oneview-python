@@ -22,6 +22,7 @@ import mock
 from hpOneView.connection import connection
 from hpOneView.resources.security.certificates_server import CertificatesServer
 from hpOneView.resources.resource import Resource, ResourceHelper
+from hpOneView.exceptions import HPOneViewException
 
 
 class CertificatesServerTest(TestCase):
@@ -59,19 +60,24 @@ class CertificatesServerTest(TestCase):
         self._certificate_server.create(resource)
         mock_create.assert_called_once_with(resource_rest_call, uri=self.uri, timeout=-1)
 
-    @mock.patch.object(ResourceHelper, 'do_get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_remote_server_called_once(self, mock_get_remote):
         remote_server = "1.2.3.4"
         uri_rest_call = "/rest/certificates/https/remote/{}".format(remote_server)
 
         self._certificate_server.get_remote(remote_server)
-        mock_get_remote.assert_called_once_with(uri_rest_call)
+        mock_get_remote.assert_called_once_with(uri=uri_rest_call)
 
-    @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_by_aliasName_called_once(self, mock_get_by_aliasName):
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_aliasName_called_once(self, mock_get_by_aliasname):
         uri_rest_call = "{0}/{1}".format(self.uri, "test1")
-        self._certificate_server.get_by_aliasName("test1")
-        mock_get_by_aliasName.assert_called_once_with(uri_rest_call)
+        self._certificate_server.get_by_alias_name("test1")
+        mock_get_by_aliasname.assert_called_once_with(uri=uri_rest_call)
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_aliasName_when_not_found(self, mock_get_by):
+        mock_get_by.side_effect = HPOneViewException("not found")
+        self.assertEqual(self._certificate_server.get_by_alias_name("test1"), None)
 
     @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'update')
