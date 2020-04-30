@@ -51,21 +51,22 @@ certificate_server = oneview_client.certificates_server
 # Fetch server certificate of remote server
 print("\nGet server certificate of remote server by ip address")
 remote_server_cert = certificate_server.get_remote(remote_server_options['name'])
-ca_certificate = remote_server_cert['certificateDetails'][0]['base64Data']
+ca_certificate = remote_server_cert.data['certificateDetails'][0]['base64Data']
 print(ca_certificate)
-
-# Add a server certificate with the options provided
-options['certificateDetails'][0]['base64Data'] = ca_certificate
-options['certificateDetails'][0]['type'] = remote_server_cert['certificateDetails'][0]['type']
-server_certificate = certificate_server.create(data=options)
-print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
-      server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
 
 # Fetch certificate by alias name
 print("\nGet server certificate by alias name")
-server_cert_by_alias = certificate_server.get_by_aliasName("vcenter")
-print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(
-      server_cert_by_alias['certificateDetails'][0]['aliasName'], server_cert_by_alias['uri']))
+server_certificate = certificate_server.get_by_alias_name("vcenter")
+if server_certificate:
+    print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(
+      server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
+else:
+# Add a server certificate with the options provided
+    options['certificateDetails'][0]['base64Data'] = ca_certificate
+    options['certificateDetails'][0]['type'] = remote_server_cert.data['certificateDetails'][0]['type']
+    server_certificate = certificate_server.create(data=options)
+    print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
+          server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
 
 # Get by uri
 print("\nGet a server certificate by uri")
