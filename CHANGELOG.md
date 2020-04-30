@@ -1,4 +1,4 @@
-# 5.1.1 (Unreleased)
+# 5.1.1
 
 #### Bug fixes & Enhancements
 - #34 Handle exception of get_by_aliasname method in certificates_server resource and return resource object
