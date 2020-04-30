@@ -173,6 +173,7 @@
 
 
 <span class="kn">from</span> <span class="nn">hpOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">hpOneView.exceptions</span> <span class="kn">import</span> <span class="n">HPOneViewException</span>
 
 
 <div class="viewcode-block" id="CertificatesServer"><a class="viewcode-back" href="../../../../hpOneView.resources.security.html#hpOneView.resources.security.certificates_server.CertificatesServer">[docs]</a><span class="k">class</span> <span class="nc">CertificatesServer</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
@@ -221,9 +222,9 @@
 <span class="sd">             dict: Certificate chain of remote server</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/https/remote/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">remote_address</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificatesServer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificatesServer.get_by_aliasName"><a class="viewcode-back" href="../../../../hpOneView.resources.security.html#hpOneView.resources.security.certificates_server.CertificatesServer.get_by_aliasName">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_aliasName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificatesServer.get_by_alias_name"><a class="viewcode-back" href="../../../../hpOneView.resources.security.html#hpOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_alias_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the device or server certificate, already trusted in the appliance,</span>
 <span class="sd">        with the specified aliasName.</span>
@@ -235,7 +236,11 @@
 <span class="sd">            dict: Certificate of trusted appliance</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/servers/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificatesServer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">HPOneViewException</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">response</span></div></div>
 </pre></div>
 
            </div>
