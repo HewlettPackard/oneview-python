@@ -160,10 +160,12 @@ class HypervisorClusterProfilesTest(TestCase):
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
+        delete_uri = "{}?softDelete=False".format(self.uri)
         self._hypervisor_cluster_profiles.delete(force=False)
-        mock_delete.assert_called_once_with(self.uri, custom_headers=None, force=False, timeout=-1)
+        mock_delete.assert_called_once_with(delete_uri, timeout=-1)
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once_with_force(self, mock_delete):
+        delete_uri = "{}?softDelete=False&force=True".format(self.uri)
         self._hypervisor_cluster_profiles.delete(force=True)
-        mock_delete.assert_called_once_with(self.uri, custom_headers=None, force=True, timeout=-1)
+        mock_delete.assert_called_once_with(delete_uri, timeout=-1)

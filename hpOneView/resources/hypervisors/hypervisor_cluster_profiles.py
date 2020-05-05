@@ -36,7 +36,8 @@ class HypervisorClusterProfiles(Resource):
     DEFAULT_VALUES = {
         '800': {"type": "HypervisorClusterProfileV3"},
         '1000': {"type": "HypervisorClusterProfileV3"},
-        '1200': {"type": "HypervisorClusterProfileV3"}
+        '1200': {"type": "HypervisorClusterProfileV3"},
+        '1600': {"type": "HypervisorClusterProfileV3"}
     }
 
     def __init__(self, connection, data=None):
@@ -102,3 +103,26 @@ class HypervisorClusterProfiles(Resource):
         """
         compliance_uri = "{0}/compliance-preview".format(self.data["uri"])
         return self._helper.do_get(compliance_uri)
+
+    def delete(self, timeout=-1, softDelete=False, force=False):
+        """
+        Deletes a hypervisor cluster profile object from the appliance based on Hypervisor Cluster Profile UUID
+
+        Args:
+            force:
+                If set to true, the operation completes despite any probles with network
+                connectivity or errors on the resource itself. Default is false.
+            softDelete:
+                If set to true, the hypervisor cluster profile and its hypervisor profiles
+                are removed from appliance only. If set to false, the associated cluster and
+                hosts are also removed in the hypervisor manager.
+
+        Return:
+            Boolean value. True for success and False for failure.
+        """
+        uri = "{}?softDelete={}".format(self.data['uri'], softDelete)
+
+        if force:
+            uri += '&force=True'
+
+        return self._helper.delete(uri, timeout=timeout)

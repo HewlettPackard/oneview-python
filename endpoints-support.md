@@ -18,19 +18,19 @@
 
 ## HPE OneView
 
-| Endpoints                                                                               | Verb     |  V800                 | V1000               | V1200
-| --------------------------------------------------------------------------------------- | -------- |  :------------------: | :------------------:| :------------------: |
+| Endpoints                                                                               | Verb     |  V800                 | V1000               | V1200                | V1600               |
+| --------------------------------------------------------------------------------------- | -------- |  :------------------: | :------------------:| :------------------: | :-----------------: |
 |     **Connection Templates**
 |<sub>/rest/connection-templates</sub>                                                    |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/connection-templates/defaultConnectionTemplate</sub>                          |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/connection-templates/{id}</sub>                                               |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/connection-templates/{id}</sub>                                               |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Certificates Server**
-|<sub>/rest/certificates/servers</sub>                                                    |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/certificates/https/remote/example.com</sub>                                   |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/certificates/servers</sub>                                                    |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/certificates/https/remote/example.com</sub>                                   |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/certificates/servers/{aliasName}</sub>                                        |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |     **Enclosure Groups**
 |<sub>/rest/enclosure-groups</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/enclosure-groups</sub>                                                        | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
@@ -80,19 +80,19 @@
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Hypervisor Cluster Profiles**
-|<sub>/rest/hypervisor-cluster-profiles</sub>                                             |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-cluster-profiles</sub>                                             |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-cluster-profiles/{id}</sub>                                        |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-cluster-profiles/{id}</sub>                                        |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-cluster-profiles/{id}</sub>                                        |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-cluster-profiles/virtualswitch-layout</sub>                        |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-cluster-profiles/{id}/compliance-preview</sub>                     |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles</sub>                                             |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles</sub>                                             |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles/{id}</sub>                                        |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles/{id}</sub>                                        |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles/{id}</sub>                                        |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles/virtualswitch-layout</sub>                        |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-cluster-profiles/{id}/compliance-preview</sub>                     |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |     **Hypervisor Managers**
-|<sub>/rest/hypervisor-managers</sub>                                                     |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers</sub>                                                     |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers/{id}</sub>                                                |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers/{id}</sub>                                                |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/hypervisor-managers/{id}</sub>                                                |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/hypervisor-managers</sub>                                                     |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-managers</sub>                                                     |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-managers/{id}</sub>                                                |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-managers/{id}</sub>                                                |PUT       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/hypervisor-managers/{id}</sub>                                                |DELETE    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |     **Interconnects**
 |<sub>/rest/interconnects</sub>                                                           | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/interconnects/{id}</sub>                                                      | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
