@@ -41,7 +41,8 @@ class CertificatesServer(Resource):
     DEFAULT_VALUES = {
         '800': {"type": "CertificateInfoV2"},
         '1000': {"type": "CertificateInfoV2"},
-        '1200': {"type": "CertificateInfoV2"}
+        '1200': {"type": "CertificateInfoV2"},
+        '1600': {"type": "CertificateInfoV2"}
     }
 
     def __init__(self, connection, data=None):

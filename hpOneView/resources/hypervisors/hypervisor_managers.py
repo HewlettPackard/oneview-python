@@ -37,7 +37,8 @@ class HypervisorManagers(Resource):
     DEFAULT_VALUES = {
         '800': {"type": "HypervisorManagerV2"},
         '1000': {"type": "HypervisorManagerV2"},
-        '1200': {"type": "HypervisorManagerV2"}
+        '1200': {"type": "HypervisorManagerV2"},
+        '1600': {"type": "HypervisorManagerV2"}
     }
 
     def __init__(self, connection, data=None):

@@ -29,13 +29,11 @@ config = {
 }
 
 options = {
-    "type": "HypervisorManagerV2",
     "name": "172.18.13.11",
     "displayName": "vcenter",
     "hypervisorType": "Vmware",
     "username": "dcs",
     "password": "dcs",
-    "initialScopeUris": []
 }
 
 # Try load config from a file (if there is a config file)

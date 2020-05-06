@@ -29,7 +29,7 @@ config = {
 }
 
 options = {
-    "type": "HypervisorClusterProfileV3",
+    "name": "Test_cluster_profile",
     "description": "test cluster",
     "hypervisorType": "Vmware",
     "hypervisorClusterSettings": {
@@ -56,7 +56,6 @@ options = {
             "configurePortGroups": True
         }
     },
-    "name": "Test_cluster_profile",
     "mgmtIpSettingsOverride": None,
     "hypervisorManagerUri": "172.18.13.11",
     "path": "DC1",
@@ -148,5 +147,5 @@ profile_compliance = hypervisor_cluster_profile.get_compliance_preview()
 print("   - Compliance preview: '{}'".format(profile_compliance))
 
 # Delete the created hypervisor cluster profile
-hypervisor_cluster_profile.delete()
+hypervisor_cluster_profile.delete(soft_delete=True, force=True)
 print("\nSuccessfully deleted hypervisor cluster profile")
