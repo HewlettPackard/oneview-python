@@ -54,7 +54,11 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         '300': {"type": "EthernetInterconnectSettingsV201"},
         '500': {"type": "EthernetInterconnectSettingsV201"},
         '600': {"type": "EthernetInterconnectSettingsV4"},
-        '800': {"type": "EthernetInterconnectSettingsV4"}
+        '800': {"type": "EthernetInterconnectSettingsV4"},
+        '1000': {'type': "EthernetInterconnectSettingsV5"},
+        '1200': {'type': "EthernetInterconnectSettingsV6"},
+        '1400': {'type': "EthernetInterconnectSettingsV7"},
+        '1600': {'type': "EthernetInterconnectSettingsV7"}
     }
 
     SETTINGS_TELEMETRY_CONFIG_DEFAULT_VALUES = {
@@ -64,7 +68,10 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         '600': {"type": "telemetry-configuration"},
         '800': {"type": "telemetry-configuration"},
         '1000': {"type": "telemetry-configuration"},
-        '1200': {"type": "telemetry-configuration"}
+        '1200': {"type": "telemetry-configuration"},
+        '1400': {"type": "telemetry-configuration"},
+        '1600': {"type": "telemetry-configuration"}
+
     }
 
     def __init__(self, connection, data=None):

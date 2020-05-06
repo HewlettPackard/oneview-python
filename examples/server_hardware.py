@@ -173,5 +173,6 @@ if oneview_client.api_version >= 500:
     pprint(sdx_server)
 
 # Remove rack server
+# This operation works till Oneview API Version 500.
 server.remove()
 print("Server removed successfully")

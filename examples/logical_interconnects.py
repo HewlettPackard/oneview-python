@@ -48,7 +48,7 @@ logical_interconnects = oneview_client.logical_interconnects
 print("\nGet all logical interconnects")
 all_logical_interconnects = logical_interconnects.get_all()
 for logical_interconnect in all_logical_interconnects:
-    print('  Name: {name}').format(**logical_interconnect)
+    print('  Name: {name}'.format(**logical_interconnect))
 
 # Get installed firmware
 print("\nGet the installed firmware for a logical interconnect that matches the specified name.")
@@ -61,7 +61,7 @@ enclosure = enclosures.data if enclosures else None
 
 # Get a logical interconnect by name
 logical_interconnect = logical_interconnects.get_by_name(logical_interconnect_name)
-print("\nFound logical interconnect by name {name}.\n URI: {uri}").format(**logical_interconnect.data)
+print("\nFound logical interconnect by name {name}.\n URI: {uri}".format(**logical_interconnect.data))
 print(logical_interconnect.data)
 
 # Install the firmware to a logical interconnect
