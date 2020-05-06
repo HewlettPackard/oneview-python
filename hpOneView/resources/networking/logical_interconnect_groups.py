@@ -42,7 +42,9 @@ class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
         '600': {"type": "logical-interconnect-groupV4"},
         '800': {"type": "logical-interconnect-groupV5"},
         '1000': {"type": "logical-interconnect-groupV6"},
-        '1200': {"type": "logical-interconnect-groupV7"}
+        '1200': {"type": "logical-interconnect-groupV7"},
+        '1400': {"type": "logical-interconnect-groupV8"},
+        '1600': {"type": "logical-interconnect-groupV8"}
     }
 
     def __init__(self, connection, data=None):
