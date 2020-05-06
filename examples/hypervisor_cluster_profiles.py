@@ -147,5 +147,5 @@ profile_compliance = hypervisor_cluster_profile.get_compliance_preview()
 print("   - Compliance preview: '{}'".format(profile_compliance))
 
 # Delete the created hypervisor cluster profile
-hypervisor_cluster_profile.delete(softDelete=True, force=True)
+hypervisor_cluster_profile.delete(soft_delete=True, force=True)
 print("\nSuccessfully deleted hypervisor cluster profile")
