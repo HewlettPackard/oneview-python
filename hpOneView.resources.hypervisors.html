@@ -168,7 +168,7 @@
 <p>The cluster profile resource manager REST APIs to create, retrieve, modify and delete hypervisor cluster profiles.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'HypervisorClusterProfileV3'}, u'1200': {u'type': u'HypervisorClusterProfileV3'}, u'800': {u'type': u'HypervisorClusterProfileV3'}}</em><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'HypervisorClusterProfileV3'}, u'1200': {u'type': u'HypervisorClusterProfileV3'}, u'1600': {u'type': u'HypervisorClusterProfileV3'}, u'800': {u'type': u'HypervisorClusterProfileV3'}}</em><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -192,6 +192,30 @@ in OneView; it just stops waiting for its completion.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created virtual switch layout.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>timeout=-1</em>, <em>soft_delete=False</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a hypervisor cluster profile object from the appliance based on Hypervisor Cluster Profile UUID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>force</strong> – If set to true, the operation completes despite any probles with network
+connectivity or errors on the resource itself. Default is false.</li>
+<li><strong>soft_delete</strong> – If set to true, the hypervisor cluster profile and its hypervisor profiles
+are removed from appliance only. If set to false, the associated cluster and
+hosts are also removed in the hypervisor manager.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Boolean value. True for success and False for failure.</p>
 </td>
 </tr>
 </tbody>
@@ -262,7 +286,7 @@ which they are assigned.</li>
 <p>Hypervisor Managers API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'HypervisorManagerV2'}, u'1200': {u'type': u'HypervisorManagerV2'}, u'800': {u'type': u'HypervisorManagerV2'}}</em><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'HypervisorManagerV2'}, u'1200': {u'type': u'HypervisorManagerV2'}, u'1600': {u'type': u'HypervisorManagerV2'}, u'800': {u'type': u'HypervisorManagerV2'}}</em><a class="headerlink" href="#hpOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
