@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -119,12 +119,14 @@ logical_enclosure.update_configuration()
 print("   Done.")
 
 # Update and get script
-print("Update script")
-script = "# TEST COMMAND"
-logical_enclosure_updated = logical_enclosure.update_script(
-    logical_enclosure.data['uri'], script)
-print("   updated script: '{}'".format(
-    logical_enclosure.get_script()))
+# This method is available for API version 300
+if oneview_client.api_version == 300:
+    print("Update script")
+    script = "# TEST COMMAND"
+l   ogical_enclosure_updated = logical_enclosure.update_script(
+        logical_enclosure.data['uri'], script)
+    print("   updated script: '{}'".format(
+        logical_enclosure.get_script()))
 
 # Create support dumps
 print("Generate support dump")
