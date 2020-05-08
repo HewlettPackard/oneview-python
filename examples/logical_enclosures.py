@@ -107,6 +107,7 @@ print("   Done. uri: '%s', 'name': '%s'" %
       (logical_enclosure.data['uri'], logical_enclosure.data['name']))
 
 print("Reset name")
+resource = logical_enclosure.data.copy()
 resource["name"] = previous_name
 logical_enclosure.update(resource)
 print("   Done. uri: '%s', 'name': '%s'" %
