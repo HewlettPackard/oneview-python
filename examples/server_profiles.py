@@ -134,13 +134,15 @@ profile_updated = profile.update(server_transformed)
 pprint(profile_updated.data)
 
 # Create a new Server Profile Template based on an existing Server Profile
-new_spt = profile.get_new_profile_template()
-print('\nNew SPT generated:')
-pprint(new_spt)
+#This method works with all the API versions till 1200
+if oneview_client.api_version <= 1200:
+    new_spt = profile.get_new_profile_template()
+    print('\nNew SPT generated:')
+    pprint(new_spt)
 
-new_spt['name'] = 'spt_generated_from_sp'
-new_spt = profile_templates.create(new_spt)
-print('\nNew SPT created successfully.')
+    new_spt['name'] = 'spt_generated_from_sp'
+    new_spt = profile_templates.create(new_spt)
+    print('\nNew SPT created successfully.')
 
 new_spt.delete()
 print('\nDropped recently created SPT.')
@@ -187,11 +189,13 @@ if oneview_client.api_version >= 600:
         print("No Server Profiles Group found.")
 
 # Get the list of available servers
-print("\nList all available servers associated with a server hardware type and enclosure group")
-available_servers = server_profiles.get_available_servers(
-    enclosureGroupUri=enclosure_group.data["uri"],
-    serverHardwareTypeUri=hardware_type.data["uri"])
-pprint(available_servers)
+#This method works with all the API versions till 1200
+if oneview_client.api_version <= 1200:
+    print("\nList all available servers associated with a server hardware type and enclosure group")
+    available_servers = server_profiles.get_available_servers(
+        enclosureGroupUri=enclosure_group.data["uri"],
+        serverHardwareTypeUri=hardware_type.data["uri"])
+    pprint(available_servers)
 
 # List available storage systems
 print("\nList available storage systems associated with the given enclosure group URI and server hardware type URI")
