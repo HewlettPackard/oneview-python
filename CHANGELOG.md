@@ -12,6 +12,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Logical Interconnect Groups
 - Server Hardware
 - Server Hardware Types
+- Tasks
 
 # 5.1.1
 
