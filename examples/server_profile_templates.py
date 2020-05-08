@@ -25,7 +25,7 @@ config = {
         "userName": "<username>",
         "password": "<password>"
     },
-    "api_version": 800
+    "api_version": "<api_version>"
 }
 
 # Try load config from a file (if there is a config file)
