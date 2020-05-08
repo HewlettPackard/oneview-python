@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-
+# Below example works till Oneview API Version 1600.
 
 from pprint import pprint
 
