@@ -124,10 +124,8 @@ print("   Done.")
 if oneview_client.api_version == 300:
     print("Update script")
     script = "# TEST COMMAND"
-l   ogical_enclosure_updated = logical_enclosure.update_script(
-        logical_enclosure.data['uri'], script)
-    print("   updated script: '{}'".format(
-        logical_enclosure.get_script()))
+    logical_enclosure_updated = logical_enclosure.update_script(logical_enclosure.data['uri'], script)
+    print("   updated script: '{}'".format(logical_enclosure.get_script()))
 
 # Create support dumps
 print("Generate support dump")
