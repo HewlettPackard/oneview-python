@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ config = {
         "userName": "<username>",
         "password": "<password>",
     },
-    "api_version": 800
+    "api_version": <api_version>
 }
 
 # Try load config from a file (if there is a config file)
@@ -130,9 +130,7 @@ server_transformed = profile.get_transformation(
 pprint(server_transformed)
 
 print("Transformation complete. Updating server profile with the new configuration.")
-if profile.data['type']:
-    del profile.data['type']
-profile_updated = profile.update(server_transformed)
+profile_updated = profile.update(server_transformed['serverProfile'])
 pprint(profile_updated.data)
 
 # Create a new Server Profile Template based on an existing Server Profile
@@ -146,8 +144,8 @@ if oneview_client.api_version <= 1200:
     new_spt = profile_templates.create(new_spt)
     print('\nNew SPT created successfully.')
 
-new_spt.delete()
-print('\nDropped recently created SPT.')
+    new_spt.delete()
+    print('\nDropped recently created SPT.')
 
 # Delete the created server profile
 print("\nDelete the created server profile")
@@ -155,7 +153,9 @@ profile.delete()
 print("The server profile was successfully deleted.")
 
 # Delete the created server profile template
-server_template.delete()
+if server_template:
+    server_template.delete()
+    print("The server profile template was successfully deleted")
 
 # Get profile ports
 print("\nRetrieve the port model associated with a server hardware type and enclosure group")
@@ -200,14 +200,17 @@ if oneview_client.api_version <= 1200:
     pprint(available_servers)
 
 # List available storage systems
-print("\nList available storage systems associated with the given enclosure group URI and server hardware type URI")
-available_storage_systems = server_profiles.get_available_storage_systems(
-    count=25, start=0, enclosureGroupUri=enclosure_group.data["uri"],
-    serverHardwareTypeUri=hardware_type.data["uri"])
-pprint(available_storage_systems)
+#This method works with all the API versions till 500
+if oneview_client.api_version <= 500:
+    print("\nList available storage systems associated with the given enclosure group URI and server hardware type URI")
+    available_storage_systems = server_profiles.get_available_storage_systems(
+        count=25, start=0, enclosureGroupUri=enclosure_group.data["uri"],
+        serverHardwareTypeUri=hardware_type.data["uri"])
+    pprint(available_storage_systems)
 
 # Get a specific storage system
-if storage_system_id:
+#This method works with all the API versions till 500
+if storage_system_id and oneview_client.api_version <= 500:
     print("\nRetrieve a specific storage system associated with the given enclosure group URI, a server hardware"
           " type URI and a storage system ID")
     available_storage_system = server_profiles.get_available_storage_system(
