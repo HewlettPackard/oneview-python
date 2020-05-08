@@ -130,6 +130,8 @@ server_transformed = profile.get_transformation(
 pprint(server_transformed)
 
 print("Transformation complete. Updating server profile with the new configuration.")
+if profile.data['type']:
+    del profile.data['type']
 profile_updated = profile.update(server_transformed)
 pprint(profile_updated.data)
 
