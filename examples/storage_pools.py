@@ -63,7 +63,7 @@ else:
             pprint(pool_to_manage)
             break
     s_system_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
-    s_system.update(s_system_data) 
+    s_system.update(s_system_data)
     print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
           s_system.data['deviceSpecificAttributes']['managedDomain']))
     storage_system_added = True
