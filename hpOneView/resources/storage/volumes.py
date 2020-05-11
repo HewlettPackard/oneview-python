@@ -336,5 +336,5 @@ class Volumes(Resource):
         uri = self.URI + '/attachable-volumes'
         if connections:
             uri += str('?' + 'connections=' + connections.__str__())
-            uri=uri.replace(" ","")
+            uri=uri.replace(" ", "")
         return self._helper.get_all(start, count, filter=filter, query=query, sort=sort, uri=uri, scope_uris=scope_uris)
