@@ -961,6 +961,13 @@ class ResourceTest(BaseTest):
     def test_get_by_id_with_result(self, mock_get):
         self.resource_client.get_by_id("123")
         mock_get.assert_called_once_with("/rest/testuri/123")
+    
+    @mock.patch.object(connection, "get")
+    def test_get_by_id_without_result(self, mock_get):
+        mock_get.return_value = []
+        response = self.resource_client.get_by_id("123")
+        self.assertIsNone(response)
+        mock_get.assert_called_once_with("/rest/testuri/123")
 
     @mock.patch.object(connection, "get")
     def test_get_collection_uri(self, mock_get):
@@ -1695,6 +1702,15 @@ class ResourceClientTest(unittest.TestCase):
 
         self.resource_client.create(dict_to_create, timeout=-1)
         mock_post.assert_called_once_with(self.URI, dict_to_create, custom_headers=None)
+
+    @mock.patch.object(connection, 'post')
+    def test_create_uri_with_force(self, mock_post):
+        dict_to_create = {"resource_name": "a name", "force": "yes"}
+        mock_post.return_value = {}, {}
+
+        self.resource_client.create(dict_to_create, timeout=-1)
+        expected_uri = "/rest/testuri?force=True"
+        mock_post.assert_called_once_with(expected_uri, dict_to_create, custom_headers=None)
 
     @mock.patch.object(connection, 'post')
     def test_create_with_api_version_200(self, mock_post):
