@@ -55,7 +55,7 @@ pprint(tasks_filtered)
 # Performs a patch operation
 if oneview_client.api_version >= 1200:
     task = tasks.get_by_id("36BD6806-71CD-4F1B-AA12-5E3E67379659")
-    if task.data['isCancellable '] == 'false':
+    if task.data['isCancellable'] and task.data['isCancellable'] == 'false':
         try:
             updated_tasks = tasks.patch(
                 value={
