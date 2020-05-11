@@ -33,7 +33,7 @@ storage_pool_uris = ['/rest/storage-pools/5F9CA89B-C632-4F09-BC55-A8AA00DA5C4A']
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-oneview_client = OneViewClient.from_json_file('config-rename.json')
+oneview_client = OneViewClient.from_json_file('config.json')
 storage_systems = oneview_client.storage_systems
 storage_pools = oneview_client.storage_pools
 
