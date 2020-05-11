@@ -32,21 +32,22 @@ config = {
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+tasks = oneview_client.tasks
 
 # Getting the first 5 tasks
 print("Getting the first 5 tasks")
-tasks = oneview_client.tasks.get_all(0, 5)
-pprint(tasks)
+tasks_limited = tasks.get_all(0, 5)
+pprint(tasks_limited)
 
 # Get a specific task
 print("Get a specific task")
 try:
-    tasks = oneview_client.tasks.get("36BD6806-71CD-4F1B-AA12-5E3E67379659")
+    tasks = tasks.get("36BD6806-71CD-4F1B-AA12-5E3E67379659")
     pprint(tasks)
 except HPOneViewException as e:
     print(e.msg)
 
 # Get a tree of tasks with specified filter
 print("Get a tree of tasks")
-tasks = oneview_client.tasks.get_all(filter="\"taskState='Completed'\"", view="tree", count=10)
-pprint(tasks)
+tasks_filtered = tasks.get_all(filter="\"taskState='Completed'\"", view="tree", count=10)
+pprint(tasks_filtered)
