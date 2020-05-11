@@ -297,12 +297,16 @@ class Resource(object):
 
         """
 
-        result = self.get_by("id", id)
+        uri = "{}/{}".format(self.URI, id)
+        self._helper.validate_resource_uri(uri)
+        data = self._helper.do_get(uri)
+        
         if result:
             data = result[0]
             new_resource = self.new(self._connection, data)
         else:
             new_resource = None
+
         return new_resource
 
     def _get_default_values(self, default_values=None):
