@@ -36,7 +36,7 @@ class Tasks(Resource):
     URI = '/rest/tasks'
 
     def __init__(self, con):
-        super(Tasks, self).__init__(connection, data)
+        super(Tasks, self).__init__(con, data)
 
     def get(self, id_or_uri):
         """
