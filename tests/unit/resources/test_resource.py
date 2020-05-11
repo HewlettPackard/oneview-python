@@ -957,7 +957,7 @@ class ResourceTest(BaseTest):
         self.resource_client.get_by_uri("/rest/testuri")
         mock_get.assert_called_once_with('/rest/testuri')
 
-    @mock.patch.object(Resource, "get")
+    @mock.patch.object(connection, "get")
     def test_get_by_id_with_result(self, mock_get):
         self.resource_client.get_by_id("123,")
         mock_get.assert_called_once_with("123")
