@@ -35,8 +35,8 @@ class Tasks(ResourcePatchMixin, Resource):
     """
     URI = '/rest/tasks'
 
-    def __init__(self, con):
-        super(Tasks, self).__init__(con)
+    def __init__(self, connection, data=None):
+        super(Tasks, self).__init__(connection, data)
 
     def get_all(self, start=0, count=-1, fields='', filter='', query='', sort='', view=''):
         """
