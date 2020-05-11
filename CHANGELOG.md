@@ -4,6 +4,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 
 #### Features supported with the current release
 - Certificates Server
+- Enclosures
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 - Interconnects
