@@ -18,6 +18,7 @@
 from hpOneView.oneview_client import OneViewClient
 from hpOneView.exceptions import HPOneViewException
 from config_loader import try_load_from_file
+from pprint import pprint
 
 config = {
     "ip": "<oneview_ip>",
@@ -31,8 +32,8 @@ scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf7'
 storage_pool_uris = ['/rest/storage-pools/5F9CA89B-C632-4F09-BC55-A8AA00DA5C4A']
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+config = try_load_from_file(config,'config-rename.json')
+oneview_client = OneViewClient.from_json_file('config-rename.json')
 storage_systems = oneview_client.storage_systems
 storage_pools = oneview_client.storage_pools
 
@@ -53,9 +54,18 @@ else:
         "family": config['storage_system_family']
     }
     s_system = storage_systems.add(options)
-    s_system_data = s_system.data
-    s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
-    s_systems.update(s_system_data)
+    s_system_data = s_system.data.copy()
+    s_system_data['deviceSpecificAttributes']['managedDomain'] = s_system_data['deviceSpecificAttributes']['discoveredDomains'][0]
+    for pool in s_system_data['deviceSpecificAttributes']['discoveredPools']:
+        if pool['domain'] == s_system_data['deviceSpecificAttributes']['managedDomain']:
+            pool_to_manage = pool
+            s_system_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
+            pprint(pool_to_manage)
+            break
+    s_system_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage] 
+    s_system.update(s_system_data)                                       
+    print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
+          s_system.data['deviceSpecificAttributes']['managedDomain']))   
     storage_system_added = True
 
     print("   Added storage system '{}' at uri: {}".format(
