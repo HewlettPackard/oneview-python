@@ -961,7 +961,7 @@ class ResourceTest(BaseTest):
     def test_get_by_id_with_result(self, mock_get):
         self.resource_client.get_by_id("123")
         mock_get.assert_called_once_with("/rest/testuri/123")
-    
+
     @mock.patch.object(connection, "get")
     def test_get_by_id_without_result(self, mock_get):
         mock_get.return_value = []
@@ -1709,7 +1709,7 @@ class ResourceClientTest(unittest.TestCase):
         mock_post.return_value = {}, {}
 
         self.resource_client.create(dict_to_create, timeout=-1)
-        expected_uri = "/rest/testuri?force=True"
+        expected_uri = "/rest/testuri"
         mock_post.assert_called_once_with(expected_uri, dict_to_create, custom_headers=None)
 
     @mock.patch.object(connection, 'post')
