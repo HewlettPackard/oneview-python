@@ -21,7 +21,7 @@ import mock
 
 from hpOneView.connection import connection
 from hpOneView.resources.activity.tasks import Tasks
-from hpOneView.resources.resource import Resource
+from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class TasksTest(TestCase):
@@ -30,7 +30,7 @@ class TasksTest(TestCase):
         self.connection = connection(self.host)
         self._tasks = Tasks(self.connection)
 
-    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all(self, mock_get):
         self._tasks.get_all(fields='parentTaskUri,owner,name',
                              filter="\"taskState='Running'&filter=associatedResource.resourceCatgory='appliance'\"",
@@ -41,8 +41,3 @@ class TasksTest(TestCase):
                                          filter='"taskState=\'Running\'&filter=associatedResource'
                                                 '.resourceCatgory=\'appliance\'"',
                                          query='', sort='name:ascending', start=0, view='day')
-
-    @mock.patch.object(Resource, 'get')
-    def test_get_specific(self, mock_get):
-        self._tasks.get('35323930-4936-4450-5531-303153474820')
-        mock_get.assert_called_once_with('35323930-4936-4450-5531-303153474820')

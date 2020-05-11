@@ -39,11 +39,11 @@ print("Getting the first 5 tasks")
 tasks_limited = tasks.get_all(0, 5)
 pprint(tasks_limited)
 
-# Get a specific task
+# Get a specific task by id
 print("Get a specific task")
 try:
-    tasks = tasks.get("36BD6806-71CD-4F1B-AA12-5E3E67379659")
-    pprint(tasks)
+    tasks = tasks.get_by_id("36BD6806-71CD-4F1B-AA12-5E3E67379659")
+    pprint(tasks.data)
 except HPOneViewException as e:
     print(e.msg)
 
@@ -51,3 +51,17 @@ except HPOneViewException as e:
 print("Get a tree of tasks")
 tasks_filtered = tasks.get_all(filter="\"taskState='Completed'\"", view="tree", count=10)
 pprint(tasks_filtered)
+
+# Performs a patch operation
+if oneview_client.api_version >= 1200:
+    task = tasks.get_by_id("36BD6806-71CD-4F1B-AA12-5E3E67379659")
+    if task.data['isCancellable '] == 'false':
+        try:
+            updated_tasks = tasks.patch(
+                value={
+                    "isCancellable": "true",
+                })
+            pprint(updated_tasks.data)
+        except HPOneViewException as e:
+            print(e.msg)
+

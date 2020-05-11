@@ -956,6 +956,18 @@ class ResourceTest(BaseTest):
     def test_get_by_uri(self, mock_get):
         self.resource_client.get_by_uri("/rest/testuri")
         mock_get.assert_called_once_with('/rest/testuri')
+    
+    @mock.patch.object(Resource, "get_by")
+    def test_get_by_id_with_result(self, mock_get_by):
+        self.resource_client.get_by_id("123,")
+        mock_get_by.assert_called_once_with("id", "123")
+    
+    @mock.patch.object(Resource, "get_by")
+    def test_get_by_id_without_result(self, mock_get_by):
+        mock_get_by.return_value = []
+        response = self.resource_client.get_by_id("123")
+        self.assertIsNone(response)
+        mock_get_by.assert_called_once_with("id", "123")
 
     @mock.patch.object(connection, "get")
     def test_get_collection_uri(self, mock_get):

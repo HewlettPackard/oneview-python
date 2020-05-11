@@ -25,10 +25,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpOneView.resources.resource import Resource
+from hpOneView.resources.resource import Resource, ResourcePatchMixin
 
 
-class Tasks(Resource):
+class Tasks(ResourcePatchMixin, Resource):
     """
     Tasks API client.
 
@@ -37,21 +37,6 @@ class Tasks(Resource):
 
     def __init__(self, con):
         super(Tasks, self).__init__(con)
-
-    def get(self, id_or_uri):
-        """
-        Retrieve a task by its uri.
-
-        Args:
-            id_or_uri: task id (or uri)
-
-        Returns:
-            dict: The task.
-
-        """
-
-        task = self._helper.get(id_or_uri)
-        return task
 
     def get_all(self, start=0, count=-1, fields='', filter='', query='', sort='', view=''):
         """

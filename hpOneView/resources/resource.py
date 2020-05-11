@@ -285,6 +285,26 @@ class Resource(object):
 
         return new_resource
 
+    def get_by_id(self, id):
+            """
+        Retrieves a resource by its id.
+
+        Args:
+            id: id of Resource
+
+        Returns:
+            Resource object or None if resource does not exist.
+
+        """
+
+        result = self.get_by("id", id)
+        if result:
+            data = result[0]
+            new_resource = self.new(self._connection, data)
+        else:
+            new_resource = None
+        return new_resource
+
     def _get_default_values(self, default_values=None):
         """Gets the default values set for a resource"""
 
