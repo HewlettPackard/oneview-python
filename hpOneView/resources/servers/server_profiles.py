@@ -44,8 +44,7 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
         '600': {"type": "ServerProfileV8"},
         '800': {"type": "ServerProfileV9"},
         '1000': {"type": "ServerProfileV10"},
-        '1200': {"type": "ServerProfileV11"},
-        '1600': {"type": "ServerProfileV12"}
+        '1200': {"type": "ServerProfileV11"}
     }
 
     def __init__(self, connection, data=None):
