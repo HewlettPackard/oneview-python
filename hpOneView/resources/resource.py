@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -286,8 +286,7 @@ class Resource(object):
         return new_resource
 
     def get_by_id(self, id):
-            """
-        Retrieves a resource by its id.
+        """Retrieves a resource by its id.
 
         Args:
             id: id of Resource
@@ -300,9 +299,8 @@ class Resource(object):
         uri = "{}/{}".format(self.URI, id)
         self._helper.validate_resource_uri(uri)
         data = self._helper.do_get(uri)
-        
-        if result:
-            data = result[0]
+
+        if data:
             new_resource = self.new(self._connection, data)
         else:
             new_resource = None

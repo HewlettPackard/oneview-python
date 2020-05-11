@@ -64,4 +64,3 @@ if oneview_client.api_version >= 1200:
             pprint(updated_tasks.data)
         except HPOneViewException as e:
             print(e.msg)
-
