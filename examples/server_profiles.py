@@ -201,13 +201,14 @@ available_storage_systems = server_profiles.get_available_storage_systems(
 pprint(available_storage_systems)
 
 # Get a specific storage system
-print("\nRetrieve a specific storage system associated with the given enclosure group URI, a server hardware"
-    " type URI and a storage system ID")
-available_storage_system = server_profiles.get_available_storage_system(
-    storageSystemId=storage_system_id,
-    enclosureGroupUri=enclosure_group.data["uri"],
-    serverHardwareTypeUri=hardware_type.data["uri"])
-pprint(available_storage_system)
+if storage_system_id:
+    print("\nRetrieve a specific storage system associated with the given enclosure group URI, a server hardware"
+        " type URI and a storage system ID")
+    available_storage_system = server_profiles.get_available_storage_system(
+        storageSystemId=storage_system_id,
+        enclosureGroupUri=enclosure_group.data["uri"],
+        serverHardwareTypeUri=hardware_type.data["uri"])
+    pprint(available_storage_system)
 
 # List available targets
 print("\nList all available servers and bays for a given enclosure group.")
