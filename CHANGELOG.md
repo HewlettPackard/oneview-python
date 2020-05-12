@@ -4,6 +4,9 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 
 #### Features supported with the current release
 - Certificates Server
+- Ethernet network
+- FC network
+- FCOE network
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 - Interconnects
@@ -11,8 +14,10 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Groups
+- Network set
 - Server Hardware
 - Server Hardware Types
+- Uplink set
 
 # 5.1.1
 

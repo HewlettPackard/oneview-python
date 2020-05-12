@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,7 +45,8 @@ class UplinkSets(Resource):
         '600': {"type": "uplink-setV4"},
         '800': {"type": "uplink-setV4"},
         '1000': {"type": "uplink-setV5"},
-        '1200': {"type": "uplink-setV6"}
+        '1200': {"type": "uplink-setV6"},
+        '1600': {"type": "uplink-setV6"}
     }
 
     def __init__(self, connection, data=None):
