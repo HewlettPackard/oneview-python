@@ -44,7 +44,7 @@ if s_systems:
     s_system_data = s_systems[0]
     s_system = storage_systems.get_by_uri(s_system_data["uri"])
     storage_system_added = False
-    print("   Found storage system '{}' at uri: {}".format(
+    print("Found storage system '{}' at uri: {}".format(
         s_system.data['name'], s_system.data['uri']))
 else:
     options = {
