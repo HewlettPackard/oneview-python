@@ -143,4 +143,4 @@ if storage_pools_all and storage_pools_all[0]:
 if storage_system_added:
     print("Remove recently added storage system")
     s_system.remove()
-    print("   Done.")
+    print("Done.")
