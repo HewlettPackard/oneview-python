@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 from hpOneView.oneview_client import OneViewClient
 from hpOneView.exceptions import HPOneViewException
 from config_loader import try_load_from_file
+from pprint import pprint
 
 config = {
     "ip": "<oneview_ip>",
@@ -27,12 +28,12 @@ config = {
     }
 }
 
-scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf7'
+scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf'
 storage_pool_uris = ['/rest/storage-pools/5F9CA89B-C632-4F09-BC55-A8AA00DA5C4A']
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient.from_json_file('config.json')
 storage_systems = oneview_client.storage_systems
 storage_pools = oneview_client.storage_pools
 
@@ -43,7 +44,7 @@ if s_systems:
     s_system_data = s_systems[0]
     s_system = storage_systems.get_by_uri(s_system_data["uri"])
     storage_system_added = False
-    print("   Found storage system '{}' at uri: {}".format(
+    print("Found storage system '{}' at uri: {}".format(
         s_system.data['name'], s_system.data['uri']))
 else:
     options = {
@@ -53,9 +54,18 @@ else:
         "family": config['storage_system_family']
     }
     s_system = storage_systems.add(options)
-    s_system_data = s_system.data
-    s_system_data['managedDomain'] = s_system.data['unmanagedDomains'][0]
-    s_systems.update(s_system_data)
+    s_system_data = s_system.data.copy()
+    s_system_data['deviceSpecificAttributes']['managedDomain'] = s_system_data['deviceSpecificAttributes']['discoveredDomains'][0]
+    for pool in s_system_data['deviceSpecificAttributes']['discoveredPools']:
+        if pool['domain'] == s_system_data['deviceSpecificAttributes']['managedDomain']:
+            pool_to_manage = pool
+            s_system_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
+            pprint(pool_to_manage)
+            break
+    s_system_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
+    s_system.update(s_system_data)
+    print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
+          s_system.data['deviceSpecificAttributes']['managedDomain']))
     storage_system_added = True
 
     print("   Added storage system '{}' at uri: {}".format(
@@ -133,4 +143,4 @@ if storage_pools_all and storage_pools_all[0]:
 if storage_system_added:
     print("Remove recently added storage system")
     s_system.remove()
-    print("   Done.")
+    print("Done.")
