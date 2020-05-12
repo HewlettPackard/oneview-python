@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -187,9 +187,9 @@ class VolumesTest(unittest.TestCase):
 
         self._volumes.get_attachable_volumes(2, 500, filter, query, sort, scope_uris, connections)
 
-        expected_uri = "/rest/storage-volumes/attachable-volumes?connections=" \
-                       "[{'networkUri': '/rest/fc-networks/90bd0f63-3aab-49e2-a45f-a52500b46616'}, " \
-                       "{'networkUri': '/rest/fc-networks/8acd0f62-1aab-49e2-a45a-d22500b4acdb'}]"
+        expected_uri = "/rest/storage-volumes/attachable-volumes?connections="\
+                       "[{'networkUri':'/rest/fc-networks/90bd0f63-3aab-49e2-a45f-a52500b46616'},"\
+                       "{'networkUri':'/rest/fc-networks/8acd0f62-1aab-49e2-a45a-d22500b4acdb'}]"
         mock_get_all.assert_called_once_with(2, 500, uri=expected_uri, filter=filter, query=query, sort=sort,
                                              scope_uris=scope_uris)
 
