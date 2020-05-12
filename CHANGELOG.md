@@ -22,6 +22,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Storage Volume Attachments
 - Storage Volume
 - Server Profiles
+- Tasks
 - Uplink set
 
 # 5.1.1
