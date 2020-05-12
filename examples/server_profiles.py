@@ -26,7 +26,7 @@ config = {
         "userName": "<username>",
         "password": "<password>",
     },
-    "api_version": 800
+    "api_version": "<api_version>"
 }
 
 # Try load config from a file (if there is a config file)
@@ -134,7 +134,7 @@ profile_updated = profile.update(server_transformed['serverProfile'])
 pprint(profile_updated.data)
 
 # Create a new Server Profile Template based on an existing Server Profile
-# This method works with all the API versions till 1200
+# This method i.e., get_new_profile_template works with all the API versions till 1200
 if oneview_client.api_version <= 1200:
     new_spt = profile.get_new_profile_template()
     print('\nNew SPT generated:')
@@ -177,7 +177,7 @@ available_networks = server_profiles.get_available_networks(
 pprint(available_networks)
 
 # Get the all Ethernet networks associated with a server hardware type, enclosure group and scopeuris
-# This method works with all the API versions but the scope_uris param is available
+# This method ie., get_available_networks works with all the API versions but the scope_uris param is available
 # with API version 600 and above
 if oneview_client.api_version >= 600:
     available_networks = server_profiles.get_available_networks(
@@ -191,7 +191,8 @@ if oneview_client.api_version >= 600:
         print("No Server Profiles Group found.")
 
 # Get the list of available servers
-# This method works with all the API versions till 1200
+# This method i.e.,get_available_servers works with all the API versions till 1200
+# as it got deprecated from apiVersion 1200
 if oneview_client.api_version <= 1200:
     print("\nList all available servers associated with a server hardware type and enclosure group")
     available_servers = server_profiles.get_available_servers(
@@ -200,7 +201,7 @@ if oneview_client.api_version <= 1200:
     pprint(available_servers)
 
 # List available storage systems
-# This method works with all the API versions till 500
+# This method i.e., get_available_storage_systems works with all the API versions till 500
 if oneview_client.api_version <= 500:
     print("\nList available storage systems associated with the given enclosure group URI and server hardware type URI")
     available_storage_systems = server_profiles.get_available_storage_systems(
@@ -209,7 +210,7 @@ if oneview_client.api_version <= 500:
     pprint(available_storage_systems)
 
 # Get a specific storage system
-# This method works with all the API versions till 500
+# This method ie.,get_available_storage_system works with all the API versions till 500
 if storage_system_id and oneview_client.api_version <= 500:
     print("\nRetrieve a specific storage system associated with the given enclosure group URI, a server hardware"
           " type URI and a storage system ID")
