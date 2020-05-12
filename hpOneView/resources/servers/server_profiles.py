@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,7 +44,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
         '600': {"type": "ServerProfileV8"},
         '800': {"type": "ServerProfileV9"},
         '1000': {"type": "ServerProfileV10"},
-        '1200': {"type": "ServerProfileV11"}
+        '1200': {"type": "ServerProfileV11"},
+        '1600': {"type": "ServerProfileV12"}
     }
 
     def __init__(self, connection, data=None):
