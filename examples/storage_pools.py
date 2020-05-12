@@ -28,7 +28,7 @@ config = {
     }
 }
 
-scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf7'
+scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf'
 storage_pool_uris = ['/rest/storage-pools/5F9CA89B-C632-4F09-BC55-A8AA00DA5C4A']
 
 # Try load config from a file (if there is a config file)
