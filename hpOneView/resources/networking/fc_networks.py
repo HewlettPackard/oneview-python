@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -41,7 +41,8 @@ class FcNetworks(ResourcePatchMixin, Resource):
         '600': {"type": "fc-networkV4"},
         '800': {"type": "fc-networkV4"},
         '1000': {"type": "fc-networkV4"},
-        '1200': {"type": "fc-networkV4"}
+        '1200': {"type": "fc-networkV4"},
+        '1600': {"type": "fc-networkV4"}
     }
 
     def __init__(self, connection, data=None):

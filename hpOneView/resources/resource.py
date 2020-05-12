@@ -507,7 +507,7 @@ class ResourceHelper(object):
         Returns:
             list:
         """
-        logger.debug('Creating Report (uri = %s)'.format(uri))
+        logger.debug('Creating Report')
         task, _ = self._connection.post(uri, {})
 
         if not task:
@@ -1632,7 +1632,7 @@ class ResourceClient(object):
         Returns:
             list:
         """
-        logger.debug('Creating Report (uri = %s)'.format(uri))
+        logger.debug('Creating Report')
         task, _ = self._connection.post(uri, {})
 
         if not task:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,7 +40,8 @@ class NetworkSets(Resource, ResourcePatchMixin):
         '600': {"type": "network-setV4"},
         '800': {"type": "network-setV4"},
         '1000': {"type": "network-setV4"},
-        '1200': {"type": "network-setV5"}
+        '1200': {"type": "network-setV5"},
+        '1600': {"type": "network-setV5"}
     }
 
     def __init__(self, connection, data=None):
