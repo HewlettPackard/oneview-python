@@ -16,6 +16,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Network set
 - Server Hardware
 - Server Hardware Types
+- Server Profiles
 - Uplink set
 
 # 5.1.1
