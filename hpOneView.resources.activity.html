@@ -463,31 +463,13 @@ collections of resources).</li>
 <span id="hponeview-resources-activity-tasks-module"></span><h2>hpOneView.resources.activity.tasks module<a class="headerlink" href="#module-hpOneView.resources.activity.tasks" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpOneView.resources.activity.tasks.Tasks">
-<em class="property">class </em><code class="descclassname">hpOneView.resources.activity.tasks.</code><code class="descname">Tasks</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/activity/tasks.html#Tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.activity.tasks.Tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpOneView.resources.activity.tasks.</code><code class="descname">Tasks</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/activity/tasks.html#Tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.activity.tasks.Tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.ResourcePatchMixin" title="hpOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.ResourcePatchMixin</span></code></a>, <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
 <p>Tasks API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.activity.tasks.Tasks.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/tasks'</em><a class="headerlink" href="#hpOneView.resources.activity.tasks.Tasks.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.activity.tasks.Tasks.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/activity/tasks.html#Tasks.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.activity.tasks.Tasks.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve a task by its uri.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – task id (or uri)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The task.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <dl class="method">
 <dt id="hpOneView.resources.activity.tasks.Tasks.get_all">
