@@ -20,7 +20,7 @@ from unittest import TestCase
 import mock
 
 from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourcePatchMixin
+from hpOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
 from hpOneView.resources.settings.scopes import Scopes
 
 
@@ -31,7 +31,8 @@ class ScopesTest(TestCase):
         oneview_connection = connection(self.DEFAULT_HOST)
         self.resource = Scopes(oneview_connection)
 
-    @mock.patch.object(Resource, 'do_get')
+
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all(self, mock_get_all):
         sort = 'name:ascending'
         query = 'name eq "TestName"'
@@ -39,27 +40,6 @@ class ScopesTest(TestCase):
 
         self.resource.get_all(2, 500, sort, query, view)
         mock_get_all.assert_called_once_with(2, 500, sort=sort, query=query, view=view)
-
-    @mock.patch.object(Resource, 'do_get')
-    def test_get_by_name_should_return_scope_when_found(self, mock_get_all):
-        mock_get_all.return_value = [
-            {"name": "SampleScope1", "uri": "/rest/scopes/1"},
-            {"name": "SampleScope2", "uri": "/rest/scopes/2"}
-        ]
-        scope = self.resource.get_by_name("SampleScope2")
-        expected_result = {"name": "SampleScope2", "uri": "/rest/scopes/2"}
-
-        self.assertEqual(scope, expected_result)
-
-    @mock.patch.object(Resource, 'do_get')
-    def test_get_by_name_should_return_null_when_not_found(self, mock_get_all):
-        mock_get_all.return_value = [
-            {"name": "SampleScope1", "uri": "/rest/scopes/1"},
-            {"name": "SampleScope2", "uri": "/rest/scopes/2"}
-        ]
-        scope = self.resource.get_by_name("SampleScope3")
-
-        self.assertIsNone(scope)
 
 
     @mock.patch.object(Resource, 'update')
@@ -112,25 +92,10 @@ class ScopesTest(TestCase):
             "addedResourceUris": ["/rest/ethernet-networks/e801b73f-b4e8-4b32-b042-36f5bac2d60f"],
             "removedResourceUris": ["/rest/ethernet-networks/390bc9f9-cdd5-4c70-b38f-cf04e64f5c72"]
         }
-        self.resource.update_resource_assignments(uri, information)
+        self.resource.update_resource_assignments(uri, information, timeout=-1)
 
         mock_patch_request.assert_called_once_with(
             '/rest/scopes/11c466d1-0ade-4aae-8317-2fb20b6ef3f2/resource-assignments',
             information.copy(),
-            custom_headers={'Content-Type': 'application/json'},
             timeout=-1)
 
-    @mock.patch.object(ResourcePatchMixin, 'patch')
-    def test_patch_called_once(self, mock_patch):
-        uri = '/rest/scopes/main-scope'
-
-        resource_uris = ["/rest/ethernet-networks/ethernet-1", "/rest/ethernet-networks/ethernet-2"]
-        self.resource.patch(uri, 'replace', '/addedResourceUris', resource_uris)
-
-        mock_patch.assert_called_once_with(
-            '/rest/scopes/main-scope',
-            'replace',
-            '/addedResourceUris',
-            ["/rest/ethernet-networks/ethernet-1", "/rest/ethernet-networks/ethernet-2"],
-            custom_headers={'Content-Type': 'application/json-patch+json'},
-            timeout=-1)

@@ -714,7 +714,7 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_lazy_loading_scopes(self):
         copy_scopes = self._oneview.scopes
-        self.assertEqual(copy_scopes, self._oneview.scopes)
+        self.assertNotEqual(copy_scopes, self._oneview.scopes)
 
     def test_sas_logical_interconnect_groups_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_logical_interconnect_groups, SasLogicalInterconnectGroups)

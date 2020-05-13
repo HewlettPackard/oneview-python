@@ -97,7 +97,7 @@ class Scopes(Resource, ResourcePatchMixin):
 
 
     def delete(self, resource, timeout=-1):
-       """
+        """
         Deletes a Scope.
 
         Args:
@@ -110,6 +110,7 @@ class Scopes(Resource, ResourcePatchMixin):
             bool: Indicates if the resource was successfully deleted.
 
         """
+
         if type(resource) is dict:
             headers = {'If-Match': resource.get('eTag', '*')}
         else:

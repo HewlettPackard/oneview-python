@@ -399,9 +399,7 @@ class OneViewClient(object):
         Returns:
             Scopes:
         """
-        if not self.__scopes:
-            self.__scopes = Scopes(self.__connection)
-        return self.__scopes
+        return Scopes(self.__connection)
 
     @property
     def datacenters(self):
