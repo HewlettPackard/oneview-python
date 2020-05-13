@@ -92,7 +92,7 @@ class Scopes(Resource, ResourcePatchMixin):
 
         """
         headers = {'If-Match': resource.get('eTag', '*')}
-        return super(Scopes, self).update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES,custom_headers=headers)
+        return super(Scopes, self).update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES, custom_headers=headers)
 
     def delete(self, resource, timeout=-1):
         """
