@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,34 +25,18 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourcePatchMixin
 
 
-class Tasks(object):
+class Tasks(ResourcePatchMixin, Resource):
     """
     Tasks API client.
 
     """
     URI = '/rest/tasks'
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
-
-    def get(self, id_or_uri):
-        """
-        Retrieve a task by its uri.
-
-        Args:
-            id_or_uri: task id (or uri)
-
-        Returns:
-            dict: The task.
-
-        """
-
-        task = self._client.get(id_or_uri)
-        return task
+    def __init__(self, connection, data=None):
+        super(Tasks, self).__init__(connection, data)
 
     def get_all(self, start=0, count=-1, fields='', filter='', query='', sort='', view=''):
         """
@@ -88,5 +72,5 @@ class Tasks(object):
         Returns:
             list: A list of tasks.
         """
-        return self._client.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view,
+        return self._helper.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view,
                                     fields=fields)
