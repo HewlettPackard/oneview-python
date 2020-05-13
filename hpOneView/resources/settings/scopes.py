@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ class Scopes(Resource, ResourcePatchMixin):
             list: A list of scopes.
         """
         return self._helper.get_all(start, count, sort=sort, query=query, view=view)
-    
+
     def update(self, resource, timeout=-1):
         """
         Updates a scope.
@@ -92,9 +92,7 @@ class Scopes(Resource, ResourcePatchMixin):
 
         """
         headers = {'If-Match': resource.get('eTag', '*')}
-        return super(Scopes, self).update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES,
-                                   custom_headers=headers)
-
+        return super(Scopes, self).update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES,custom_headers=headers)
 
     def delete(self, resource, timeout=-1):
         """
@@ -117,7 +115,7 @@ class Scopes(Resource, ResourcePatchMixin):
             headers = {'If-Match': '*'}
         return super(Scopes, self).delete(resource, timeout=timeout, custom_headers=headers)
 
-    #This function will work till API version 300
+    # This function will work till API version 300
     def update_resource_assignments(self, id_or_uri, resource_assignments, timeout=-1):
         """
         Modifies scope membership by adding or removing resource assignments.

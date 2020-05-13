@@ -31,7 +31,6 @@ class ScopesTest(TestCase):
         oneview_connection = connection(self.DEFAULT_HOST)
         self.resource = Scopes(oneview_connection)
 
-
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all(self, mock_get_all):
         sort = 'name:ascending'
@@ -40,7 +39,6 @@ class ScopesTest(TestCase):
 
         self.resource.get_all(2, 500, sort, query, view)
         mock_get_all.assert_called_once_with(2, 500, sort=sort, query=query, view=view)
-
 
     @mock.patch.object(Resource, 'update')
     def test_update_called_once(self, mock_update):
@@ -98,4 +96,3 @@ class ScopesTest(TestCase):
             '/rest/scopes/11c466d1-0ade-4aae-8317-2fb20b6ef3f2/resource-assignments',
             information.copy(),
             timeout=-1)
-
