@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -56,7 +56,8 @@ class ServerProfileTemplate(Resource):
         '600': {'type': 'ServerProfileTemplateV4'},
         '800': {'type': 'ServerProfileTemplateV5'},
         '1000': {'type': 'ServerProfileTemplateV6'},
-        '1200': {'type': 'ServerProfileTemplateV7'}
+        '1200': {'type': 'ServerProfileTemplateV7'},
+        '1600': {'type': 'ServerProfileTemplateV7'}
     }
 
     def __init__(self, connection, data=None):

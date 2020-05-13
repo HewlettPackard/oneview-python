@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ config = {
         "userName": "<username>",
         "password": "<password>"
     },
-    "api_version": "800",
+    "api_version": "<api_version>",
     "enclosure_group_uri": "/rest/enclosure-groups/06475bf3-084b-4874",
     "enclosure_hostname": "",
     "enclosure_username": "",
@@ -106,12 +106,13 @@ except HPOneViewException as e:
     print(e.msg)
 
 # Get the enclosure script
-print("Get the enclosure script")
-try:
-    script = enclosure.get_script()
-    pprint(script)
-except HPOneViewException as e:
-    print(e.msg)
+if oneview_client.api_version == 300:
+    print("Get the enclosure script")
+    try:
+        script = enclosure.get_script()
+        pprint(script)
+    except HPOneViewException as e:
+        print(e.msg)
 
 # Buid the SSO URL parameters
 print("Build the SSO (Single Sign-On) URL parameters for the enclosure")

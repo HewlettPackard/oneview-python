@@ -4,6 +4,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 
 #### Features supported with the current release
 - Certificates Server
+- Enclosures
 - Ethernet network
 - FC network
 - FCOE network
@@ -17,12 +18,13 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Network set
 - Server Hardware
 - Server Hardware Types
+- Server Profiles
+- Server Profile Templates
 - Storage Systems
 - Storage Pools
 - Storage Templates
 - Storage Volume Attachments
 - Storage Volume
-- Server Profiles
 - Tasks
 - Uplink set
 
