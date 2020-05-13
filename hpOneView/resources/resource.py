@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -285,6 +285,28 @@ class Resource(object):
 
         return new_resource
 
+    def get_by_id(self, id):
+        """Retrieves a resource by its id.
+
+        Args:
+            id: id of Resource
+
+        Returns:
+            Resource object or None if resource does not exist.
+
+        """
+
+        uri = "{}/{}".format(self.URI, id)
+        self._helper.validate_resource_uri(uri)
+        data = self._helper.do_get(uri)
+
+        if data:
+            new_resource = self.new(self._connection, data)
+        else:
+            new_resource = None
+
+        return new_resource
+
     def _get_default_values(self, default_values=None):
         """Gets the default values set for a resource"""
 
@@ -485,7 +507,7 @@ class ResourceHelper(object):
         Returns:
             list:
         """
-        logger.debug('Creating Report (uri = %s)'.format(uri))
+        logger.debug('Creating Report')
         task, _ = self._connection.post(uri, {})
 
         if not task:
@@ -1610,7 +1632,7 @@ class ResourceClient(object):
         Returns:
             list:
         """
-        logger.debug('Creating Report (uri = %s)'.format(uri))
+        logger.debug('Creating Report')
         task, _ = self._connection.post(uri, {})
 
         if not task:
