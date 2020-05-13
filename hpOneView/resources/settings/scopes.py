@@ -24,10 +24,10 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource, ResourcePatchMixin
 
 
-class Scopes(object):
+class Scopes(Resource, ResourcePatchMixin):
     """
     Scopes API client.
 
@@ -39,12 +39,15 @@ class Scopes(object):
 
     DEFAULT_VALUES = {
         '300': {"type": "Scope"},
-        '500': {"type": "ScopeV2"}
+        '500': {"type": "ScopeV2"},
+        '800': {"type": "ScopeV3"},
+        '1000': {"type": "ScopeV3"},
+        '1200': {"type": "ScopeV3"},
+        '1600': {"type": "ScopeV3"}
     }
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(Scopes, self).__init__(connection, data)
 
     def get_all(self, start=0, count=-1, sort='', query='', view=''):
         """
@@ -72,50 +75,8 @@ class Scopes(object):
         Returns:
             list: A list of scopes.
         """
-        return self._client.get_all(start, count, sort=sort, query=query, view=view)
-
-    def get(self, id_or_uri):
-        """
-        Gets the Scope with the specified ID or URI.
-
-        Args:
-            id_or_uri: ID or URI of the Scope
-
-        Returns:
-            dict: Scope
-        """
-        return self._client.get(id_or_uri)
-
-    def get_by_name(self, name):
-        """
-        Gets a Scope by name.
-
-        Args:
-            name: Name of the Scope
-
-        Returns:
-            dict: Scope.
-        """
-        scopes = self._client.get_all()
-        result = [x for x in scopes if x['name'] == name]
-        return result[0] if result else None
-
-    def create(self, resource, timeout=-1):
-        """
-        Creates a scope.
-
-        Args:
-            resource (dict): Object to create.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            dict: Created scope.
-
-        """
-        return self._client.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
-
+        return self._helper.get_all(start, count, sort=sort, query=query, view=view)
+    
     def update(self, resource, timeout=-1):
         """
         Updates a scope.
@@ -131,11 +92,12 @@ class Scopes(object):
 
         """
         headers = {'If-Match': resource.get('eTag', '*')}
-        return self._client.update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES,
+        return super(Scopes, self).update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES,
                                    custom_headers=headers)
 
+
     def delete(self, resource, timeout=-1):
-        """
+       """
         Deletes a Scope.
 
         Args:
@@ -152,8 +114,9 @@ class Scopes(object):
             headers = {'If-Match': resource.get('eTag', '*')}
         else:
             headers = {'If-Match': '*'}
-        return self._client.delete(resource, timeout=timeout, custom_headers=headers)
+        return super(Scopes, self).delete(resource, timeout=timeout, custom_headers=headers)
 
+    #This function will work till API version 300
     def update_resource_assignments(self, id_or_uri, resource_assignments, timeout=-1):
         """
         Modifies scope membership by adding or removing resource assignments.
@@ -168,28 +131,5 @@ class Scopes(object):
         Returns:
             dict: Updated resource.
         """
-        uri = self._client.build_uri(id_or_uri) + "/resource-assignments"
-
-        headers = {'Content-Type': 'application/json'}
-
-        return self._client.patch_request(uri, resource_assignments, timeout=timeout, custom_headers=headers)
-
-    def patch(self, id_or_uri, operation, path, value, timeout=-1):
-        """
-        Uses the PATCH to update a resource for the given scope.
-
-        Only one operation can be performed in each PATCH call.
-
-        Args:
-            id_or_uri: Can be either the resource ID or the resource URI.
-            operation: Patch operation
-            path: Path
-            value: Value
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Updated resource.
-        """
-        headers = {'Content-Type': 'application/json-patch+json'}
-        return self._client.patch(id_or_uri, operation, path, value, timeout=timeout, custom_headers=headers)
+        uri = self._helper.build_uri(id_or_uri) + "/resource-assignments"
+        return super(Scopes, self).patch_request(uri, resource_assignments, timeout=timeout)
