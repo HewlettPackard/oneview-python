@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -336,4 +336,5 @@ class Volumes(Resource):
         uri = self.URI + '/attachable-volumes'
         if connections:
             uri += str('?' + 'connections=' + connections.__str__())
+            uri = uri.replace(" ", "")
         return self._helper.get_all(start, count, filter=filter, query=query, sort=sort, uri=uri, scope_uris=scope_uris)
