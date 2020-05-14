@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -104,15 +104,19 @@ enclosure_group.update(resource)
 pprint(enclosure_group.data)
 
 # Update an Enclosure Group Script
-print("Update an Enclosure Group Script")
-script = "#TEST COMMAND"
-update_script_result = enclosure_group.update_script(script)
-pprint(update_script_result)
+# This method is available for API version 300
+if oneview_client.api_version == 300:
+    print("Update an Enclosure Group Script")
+    script = "#TEST COMMAND"
+    update_script_result = enclosure_group.update_script(script)
+    pprint(update_script_result)
 
 # Gets the configuration script of a Enclosure Group
-print("Gets the configuration script of an Enclosure Group")
-script = enclosure_group.get_script()
-print(script)
+# This method is available for API version 300
+if oneview_client.api_version == 300:
+    print("Gets the configuration script of an Enclosure Group")
+    script = enclosure_group.get_script()
+    print(script)
 
 # Delete an Enclosure Group
 print("Delete the created Enclosure Group")

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,45 +33,54 @@ options = {
     "port": 162
 }
 
+destination_ip = '2.2.2.2'
+
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-
 oneview_client = OneViewClient(config)
+appliance_device_snmp_v1_trap_destinations = oneview_client.appliance_device_snmp_v1_trap_destinations
+
+# Lists the appliance device SNMP v1 Trap Destination
+print("\n Get list of appliance SNMP v1 trap destination")
+snmp_v1_trap_all = appliance_device_snmp_v1_trap_destinations.get_all()
+for snmp_trap in snmp_v1_trap_all:
+    print('  - {}: {}'.format(snmp_trap['destination'], snmp_trap['uri']))
 
 # Add appliance device SNMP v1 Trap Destination
-snmp_v1_trap = oneview_client.appliance_device_snmp_v1_trap_destinations.create(options)
-snmp_v1_trap_uri = snmp_v1_trap['uri']
-print("\n## Create appliance SNMP v1 trap destination successfully!")
-pprint(snmp_v1_trap)
+snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.create(options)
+print("\n Created appliance SNMP v1 trap destination successfully!")
+pprint(snmp_v1_trap.data)
 
 # Add appliance device SNMP v1 Trap Destination with ID
 trap_id = 9
-snmp_v1_trap = oneview_client.appliance_device_snmp_v1_trap_destinations.create(options, trap_id)
-print("\n## Create appliance SNMP v1 trap destination successfully!")
-pprint(snmp_v1_trap)
+options['destination'] = destination_ip
+snmp_v1_trap_id = appliance_device_snmp_v1_trap_destinations.create(options, trap_id)
+print("\n Created appliance SNMP v1 trap destination by id successfully!")
+pprint(snmp_v1_trap_id.data)
 
-# Lists the appliance device SNMP v1 Trap Destination
-snmp_v1_trap = oneview_client.appliance_device_snmp_v1_trap_destinations.get_all()
-print("\n## Got appliance SNMP v1 trap destination successfully!")
-pprint(snmp_v1_trap)
+# Get the appliance device SNMP v1 Trap Destination by id
+print("\n Get appliance SNMP v1 trap destination by id")
+snmp_v1_trap_by_id = appliance_device_snmp_v1_trap_destinations.get_by_id(1)
+pprint(snmp_v1_trap_by_id.data)
 
 # Lists the appliance device SNMP v1 Trap Destination by destination (unique)
-snmp_v1_trap = oneview_client.appliance_device_snmp_v1_trap_destinations.get_by('destination', '1.1.1.1')
-print("\n## Got appliance SNMP v1 trap by destination successfully!")
-pprint(snmp_v1_trap)
+print("\n## Get appliance SNMP v1 trap by destination..")
+snmp_v1_traps = appliance_device_snmp_v1_trap_destinations.get_by('destination', options['destination'])
+for snmp_trap in snmp_v1_traps:
+    print(' - {} : {}'.format(snmp_trap['destination'], snmp_trap['communityString']))
 
 # Get by URI
-print("Find an SNMP v1 trap destination by URI")
-snmp_v1_trap = oneview_client.appliance_device_snmp_v1_trap_destinations.get(snmp_v1_trap_uri)
-pprint(snmp_v1_trap)
+print("\n Find an SNMP v1 trap destination by URI")
+snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.get_by_uri(snmp_v1_trap.data['uri'])
+pprint(snmp_v1_trap.data)
 
 # Change appliance device SNMP v1 Trap Destination - Only Community String and Port can be changed
-snmp_v1_trap['communityString'] = 'testTwo'
-snmp_v1_trap = oneview_client.appliance_device_snmp_v1_trap_destinations.update(snmp_v1_trap)
+data = {'communityString': 'testTwo'}
+snmp_v1_trap = snmp_v1_trap.update(data)
 print("\n## Update appliance SNMP v1 trap destination successfully!")
-pprint(snmp_v1_trap)
+pprint(snmp_v1_trap.data)
 
 # Delete Created Entry
-del_result = oneview_client.appliance_device_snmp_v1_trap_destinations.delete(snmp_v1_trap)
+snmp_v1_trap.delete()
+snmp_v1_trap_id.delete()
 print("\n## Delete appliance SNMP v1 trap destination successfully!")
-pprint(del_result)
