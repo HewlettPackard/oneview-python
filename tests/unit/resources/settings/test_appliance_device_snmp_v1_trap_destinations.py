@@ -107,7 +107,6 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
         mock_create_validation.return_value = {}
-        mock_get_all.return_value = []
 
         self.__appliance_device_snmp_v1_trap_destinations.create(resource)
         mock_create_validation.assert_called_once_with(resource_validation, timeout=-1, uri=validation_uri)
