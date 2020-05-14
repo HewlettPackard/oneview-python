@@ -333,13 +333,13 @@
 
 ## HPE Synergy Image Streamer
 
-| Endpoints                                                                       | Verb             | V800                 | V1000                 | V1020
-| ------------------------------------------------------------------------------  | ---------------- | :------------------: | :------------------:  | :------------------:  |
+| Endpoints                                                                       | Verb             | V800                 | V1000                 | V1020                 | V1600
+| ------------------------------------------------------------------------------  | ---------------- | :------------------: | :------------------:  | :------------------:  | :------------------:  |
 |     **Deployment Plans**
-|<sub> /rest/deployment-plans </sub>                                              | POST             |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-|<sub> /rest/deployment-plans </sub>                                              | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-|<sub> /rest/deployment-plans/{id} </sub>                                         | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-|<sub> /rest/deployment-plans/{id} </sub>                                         | PUT              |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-|<sub> /rest/deployment-plans/{id} </sub>                                         | DELETE           |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-|<sub> /rest/deployment-plans/{id}/usedby </sub>                                  | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-|<sub> /rest/deployment-plans/{id}/osdp </sub>                                    | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans </sub>                                              | POST             |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans </sub>                                              | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans/{id} </sub>                                         | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans/{id} </sub>                                         | PUT              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans/{id} </sub>                                         | DELETE           |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans/{id}/usedby </sub>                                  | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/deployment-plans/{id}/osdp </sub>                                    | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |

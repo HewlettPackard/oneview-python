@@ -4,6 +4,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 
 #### Features supported with the current release
 - Certificates Server
+- Deployment plan
 - Enclosures
 - Ethernet network
 - FC network

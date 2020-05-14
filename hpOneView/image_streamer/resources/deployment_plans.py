@@ -55,22 +55,24 @@ class DeploymentPlans(Resource):
 
         return super(DeploymentPlans, self).create(data, timeout=timeout)
 
-    def get_osdp(self):
+    def get_osdp(self, uri_or_id=None):
         """
         Retrieves facts about Server Profiles and Server Profile Templates that are using Deployment Plan based on the ID or URI provided.
 
         Returns:
             dict: Server Profiles and Server Profile Templates
         """
-        uri = "{}/osdp".format(self.data["uri"])
-        return self._helper.do_get(uri)
+        if uri_or_id is None:
+            uri_or_id = "{}/osdp".format(self.data["uri"])
+        return self._helper.do_get(uri_or_id)
 
-    def get_usedby(self):
+    def get_usedby(self,uri_or_id=None):
         """
         Retrieves the OS deployment plan details from OneView for a deployment plan resource based on the ID or URI provided.
 
         Returns:
             dict: The OS Deployment Plan.
         """
-        uri = "{}/usedby".format(self.data["uri"])
-        return self._helper.do_get(uri)
+        if uri_or_id is None:
+            uri_or_id = "{}/usedby".format(self.data["uri"])
+        return self._helper.do_get(uri_or_id)
