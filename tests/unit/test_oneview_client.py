@@ -28,6 +28,7 @@ from hpOneView.resources.facilities.racks import Racks
 from hpOneView.resources.fc_sans.managed_sans import ManagedSANs
 from hpOneView.resources.fc_sans.san_managers import SanManagers
 from hpOneView.resources.fc_sans.endpoints import Endpoints
+from hpOneView.resources.settings.firmware_drivers import FirmwareDrivers
 from hpOneView.resources.settings.backups import Backups
 from hpOneView.resources.settings.restores import Restores
 from hpOneView.resources.settings.scopes import Scopes
@@ -560,9 +561,12 @@ class OneViewClientTest(unittest.TestCase):
         storage_pools = self._oneview.storage_pools
         self.assertNotEqual(storage_pools, self._oneview.storage_pools)
 
-    def test_lazy_loading_firmware_drivers(self):
+    def test_firmware_drivers_has_right_type(self):
+        self.assertIsInstance(self._oneview.firmware_drivers, FirmwareDrivers)
+
+    def test_firmware_drivers_client(self):
         firmware_drivers = self._oneview.firmware_drivers
-        self.assertEqual(firmware_drivers, self._oneview.firmware_drivers)
+        self.assertNotEqual(firmware_drivers, self._oneview.firmware_drivers)
 
     def test_lazy_loading_firmware_bundles(self):
         firmware_bundles = self._oneview.firmware_bundles
@@ -882,9 +886,9 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_device_snmp_v1_trap_destinations,
                               ApplianceDeviceSNMPv1TrapDestinations)
 
-    def test_lazy_loading_appliance_device_device_snmp_v1_trap_destinations(self):
+    def test_appliance_device_device_snmp_v1_trap_destinations_client(self):
         appliance_device_snmp_v1_trap_destinations = self._oneview.appliance_device_snmp_v1_trap_destinations
-        self.assertEqual(appliance_device_snmp_v1_trap_destinations, self._oneview.appliance_device_snmp_v1_trap_destinations)
+        self.assertNotEqual(appliance_device_snmp_v1_trap_destinations, self._oneview.appliance_device_snmp_v1_trap_destinations)
 
     def test_appliance_device_device_snmp_v3_trap_destinations_has_right_type(self):
         self.assertIsInstance(self._oneview.appliance_device_snmp_v3_trap_destinations,

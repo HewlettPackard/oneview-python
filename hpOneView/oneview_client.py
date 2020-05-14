@@ -850,9 +850,7 @@ class OneViewClient(object):
         Returns:
             FirmwareDrivers:
         """
-        if not self.__firmware_drivers:
-            self.__firmware_drivers = FirmwareDrivers(self.__connection)
-        return self.__firmware_drivers
+        return FirmwareDrivers(self.__connection)
 
     @property
     def firmware_bundles(self):
@@ -1078,9 +1076,7 @@ class OneViewClient(object):
         Returns:
             ApplianceDeviceSNMPv1TrapDestinations:
         """
-        if not self.__appliance_device_snmp_v1_trap_destinations:
-            self.__appliance_device_snmp_v1_trap_destinations = ApplianceDeviceSNMPv1TrapDestinations(self.__connection)
-        return self.__appliance_device_snmp_v1_trap_destinations
+        return ApplianceDeviceSNMPv1TrapDestinations(self.__connection)
 
     @property
     def appliance_device_snmp_v3_trap_destinations(self):

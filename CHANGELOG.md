@@ -3,16 +3,20 @@
 Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 
 #### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
 - Certificates Server
 - Deployment plan
 - Enclosures
+- Enclosure Groups
 - Ethernet network
 - FC network
 - FCOE network
+- Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 - Interconnects
 - Interconnect Types
+- Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Groups
 - Network set
