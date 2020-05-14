@@ -850,9 +850,7 @@ class OneViewClient(object):
         Returns:
             FirmwareDrivers:
         """
-        if not self.__firmware_drivers:
-            self.__firmware_drivers = FirmwareDrivers(self.__connection)
-        return self.__firmware_drivers
+        return FirmwareDrivers(self.__connection)
 
     @property
     def firmware_bundles(self):
