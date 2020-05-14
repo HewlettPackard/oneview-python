@@ -89,6 +89,59 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
     @mock.patch.object(ResourceHelper, 'get_all')
     @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(Resource, 'create')
+    def test_create_called_once_with_defaults_1(self, mock_create, mock_create_validation, mock_get_all):
+        create_uri = "{}/1".format(self.uri)
+        validation_uri = "{}/validation".format(self.uri)
+        resource = {
+            'destination': '1.1.1.1',
+            'communityString': 'public',
+            'port': 162
+        }
+
+        resource_validation = {
+            'destination': '1.1.1.1',
+            'communityString': 'public',
+            'uri': create_uri
+        }
+
+        resource_rest_call = resource.copy()
+        mock_create.return_value = {}
+        mock_create_validation.return_value = {}
+        mock_get_all.return_value = []
+
+        self.__appliance_device_snmp_v1_trap_destinations.create(resource)
+        mock_create_validation.assert_called_once_with(resource_validation, timeout=-1, uri=validation_uri)
+        mock_create.assert_called_once_with(resource_rest_call, timeout=-1, uri=create_uri)
+
+    @mock.patch.object(ResourceHelper, 'get_all')
+    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
+    def test_create_called_once_with_defaults_2(self, mock_create, mock_create_validation, mock_get_all):
+        create_uri = "{}/3".format(self.uri)
+        validation_uri = "{}/validation".format(self.uri)
+        resource = {
+            'destination': '1.1.1.1',
+            'communityString': 'public',
+            'port': 162
+        }
+
+        resource_validation = {
+            'destination': '1.1.1.1',
+            'communityString': 'public',
+            'uri': create_uri
+        }
+
+        resource_rest_call = resource.copy()
+        mock_create.return_value = {}
+        mock_create_validation.return_value = {}
+        mock_get_all.return_value = [{"uri": "/rest/1"}, {"uri": "/rest/2"}]
+        self.__appliance_device_snmp_v1_trap_destinations.create(resource)
+        mock_create_validation.assert_called_once_with(resource_validation, timeout=-1, uri=validation_uri)
+        mock_create.assert_called_once_with(resource_rest_call, timeout=-1, uri=create_uri)
+
+    @mock.patch.object(ResourceHelper, 'get_all')
+    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_called_once_with_defaults(self, mock_create, mock_create_validation, mock_get_all):
         create_uri = "{}/1".format(self.uri)
         validation_uri = "{}/validation".format(self.uri)
