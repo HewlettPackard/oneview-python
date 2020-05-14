@@ -106,13 +106,12 @@ except HPOneViewException as e:
     print(e.msg)
 
 # Get the enclosure script
-if oneview_client.api_version == 300:
-    print("Get the enclosure script")
-    try:
-        script = enclosure.get_script()
-        pprint(script)
-    except HPOneViewException as e:
-        print(e.msg)
+print("Get the enclosure script")
+try:
+    script = enclosure.get_script()
+    pprint(script)
+except HPOneViewException as e:
+    print(e.msg)
 
 # Buid the SSO URL parameters
 print("Build the SSO (Single Sign-On) URL parameters for the enclosure")
