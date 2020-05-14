@@ -20,7 +20,7 @@ from unittest import TestCase
 import mock
 
 from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourceSchemaMixin
+from hpOneView.resources.resource import Resource, ResourceSchemaMixin
 from hpOneView.resources.settings.firmware_drivers import FirmwareDrivers
 
 
