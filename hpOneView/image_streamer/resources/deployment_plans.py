@@ -66,7 +66,7 @@ class DeploymentPlans(Resource):
             uri_or_id = "{}/osdp".format(self.data["uri"])
         return self._helper.do_get(uri_or_id)
 
-    def get_usedby(self,uri_or_id=None):
+    def get_usedby(self, uri_or_id=None):
         """
         Retrieves the OS deployment plan details from OneView for a deployment plan resource based on the ID or URI provided.
 
