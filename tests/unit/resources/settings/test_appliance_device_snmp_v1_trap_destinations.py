@@ -87,29 +87,6 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
         mock_create_validation.assert_called_once_with(resource_validation, timeout=-1, uri=validation_uri)
         mock_create.assert_called_once_with(resource_rest_call, timeout=-1, uri=create_uri)
 
-    @mock.patch.object(ResourceHelper, 'create')
-    @mock.patch.object(Resource, 'create')
-    def test_create_should_fail(self, mock_create, mock_create_validation):
-        create_uri = "{}/1".format(self.uri)
-        trap_id = 1
-        validation_uri = "{}/validation".format(self.uri)
-        resource = {
-            'destination': '1.1.1.1',
-            'communityString': 'public',
-            'port': 162
-        }
-
-        resource_validation = {
-            'destination': '1.1.1.1',
-            'communityString': 'public',
-            'uri': create_uri
-        }
-
-        resource_rest_call = resource.copy()
-        mock_create.return_value = {}
-        mock_create_validation.side_effect = HPOneViewException
-        self.assertRaises(Exception, self.__appliance_device_snmp_v1_trap_destinations.create_validation, {"uri": "uri"})
-
     @mock.patch.object(ResourceHelper, 'get_all')
     @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(Resource, 'create')
@@ -120,7 +97,6 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
             'destination': '1.1.1.1',
             'communityString': 'public',
             'port': 162
-
         }
 
         resource_validation = {
@@ -137,13 +113,6 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
         self.__appliance_device_snmp_v1_trap_destinations.create(resource)
         mock_create_validation.assert_called_once_with(resource_validation, timeout=-1, uri=validation_uri)
         mock_create.assert_called_once_with(resource_rest_call, timeout=-1, uri=create_uri)
-
-
-#        resource = {}
-#        mock_create.return_value = {}
-
-#        self.__appliance_device_snmp_v1_trap_destinations.create(resource)
-#        mock_create.assert_called_once_with(resource, create_uri, -1)
 
     @mock.patch.object(ResourceHelper, 'create')
     def test_create_validation_called_once(self, mock_create_validation):

@@ -87,11 +87,7 @@ class ApplianceDeviceSNMPv1TrapDestinations(Resource):
         else:
             uri = '{}/{}'.format(self.URI, id)
 
-        try:
-            response = self.create_validation(data['destination'], data['communityString'], uri)
-        except HPOneViewException as e:
-            raise HPOneViewException(e.msg)
-
+        self.create_validation(data['destination'], data['communityString'], uri)
         return super(ApplianceDeviceSNMPv1TrapDestinations, self).create(data, uri=uri, timeout=timeout)
 
     def __findFirstMissing(self, array, start, end):
