@@ -22,6 +22,7 @@ from config_loader import try_load_from_file
 
 config = {
     "ip": "<oneview_ip>",
+    "api_version": "<api_version>"
     "credentials": {
         "userName": "<username>",
         "password": "<password>"
