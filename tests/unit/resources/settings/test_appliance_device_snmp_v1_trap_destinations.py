@@ -22,7 +22,6 @@ import mock
 from hpOneView.connection import connection
 from hpOneView.resources.resource import Resource, ResourceHelper
 from hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
-from hpOneView.exceptions import HPOneViewException
 
 
 class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):

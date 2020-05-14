@@ -25,7 +25,6 @@ standard_library.install_aliases()
 
 
 from hpOneView.resources.resource import Resource
-from hpOneView.exceptions import HPOneViewException
 
 
 class ApplianceDeviceSNMPv1TrapDestinations(Resource):
