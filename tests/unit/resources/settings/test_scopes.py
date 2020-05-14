@@ -52,7 +52,6 @@ class ScopesTest(TestCase):
 
         headers = {'If-Match': '*'}
         mock_update.assert_called_once_with(data_rest_call, timeout=60,
-                                            default_values=self.resource.DEFAULT_VALUES,
                                             custom_headers=headers)
 
     @mock.patch.object(Resource, 'update')
@@ -62,8 +61,7 @@ class ScopesTest(TestCase):
         self.resource.update(data, -1)
 
         headers = {'If-Match': '2016-11-03T18:41:10.751Z/2016-11-03T18:41:10.751Z'}
-        mock_update.assert_called_once_with(mock.ANY, timeout=mock.ANY, default_values=mock.ANY,
-                                            custom_headers=headers)
+        mock_update.assert_called_once_with(mock.ANY, timeout=mock.ANY, custom_headers=headers)
 
     @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
