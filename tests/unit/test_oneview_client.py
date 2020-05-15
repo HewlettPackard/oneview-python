@@ -47,6 +47,7 @@ from hpOneView.resources.networking.sas_logical_interconnect_groups import SasLo
 from hpOneView.resources.networking.sas_logical_interconnects import SasLogicalInterconnects
 from hpOneView.resources.networking.sas_interconnect_types import SasInterconnectTypes
 from hpOneView.resources.facilities.datacenters import Datacenters
+from hpOneView.resources.servers.enclosures import Enclosures
 from hpOneView.resources.servers.server_profile_templates import ServerProfileTemplate
 from hpOneView.resources.servers.server_profiles import ServerProfiles
 from hpOneView.resources.servers.id_pools import IdPools
@@ -545,6 +546,10 @@ class OneViewClientTest(unittest.TestCase):
     def test_logical_enclosures(self):
         logical_enclosures = self._oneview.logical_enclosures
         self.assertNotEqual(logical_enclosures, self._oneview.logical_enclosures)
+
+    def test_enclosures(self):
+        enclosures = self._oneview.enclosures
+        self.assertNotEqual(enclosures, self._oneview.enclosures)
 
     def test_should_return_new_interconnect_types_obj(self):
         self.assertNotEqual(self._oneview.interconnect_types, self._oneview.interconnect_types)
