@@ -20,6 +20,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Logical Interconnects
 - Logical Interconnect Groups
 - Network set
+- Scopes
 - Server Hardware
 - Server Hardware Types
 - Server Profiles

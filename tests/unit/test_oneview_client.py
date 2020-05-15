@@ -546,6 +546,10 @@ class OneViewClientTest(unittest.TestCase):
         logical_enclosures = self._oneview.logical_enclosures
         self.assertNotEqual(logical_enclosures, self._oneview.logical_enclosures)
 
+    def test_enclosures(self):
+        enclosures = self._oneview.enclosures
+        self.assertNotEqual(enclosures, self._oneview.enclosures)
+
     def test_should_return_new_interconnect_types_obj(self):
         self.assertNotEqual(self._oneview.interconnect_types, self._oneview.interconnect_types)
 
@@ -718,7 +722,7 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_lazy_loading_scopes(self):
         copy_scopes = self._oneview.scopes
-        self.assertEqual(copy_scopes, self._oneview.scopes)
+        self.assertNotEqual(copy_scopes, self._oneview.scopes)
 
     def test_sas_logical_interconnect_groups_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_logical_interconnect_groups, SasLogicalInterconnectGroups)
