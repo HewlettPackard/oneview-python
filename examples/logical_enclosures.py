@@ -120,12 +120,11 @@ logical_enclosure.update_configuration()
 print("   Done.")
 
 # Update and get script
-# This method is available for API version 300
-if oneview_client.api_version == 300:
-    print("Update script")
-    script = "# TEST COMMAND"
-    logical_enclosure_updated = logical_enclosure.update_script(logical_enclosure.data['uri'], script)
-    print("   updated script: '{}'".format(logical_enclosure.get_script()))
+# This method is available for API version 300 in synergy and in all API versions in c7000
+print("Update script")
+script = "# TEST COMMAND"
+logical_enclosure_updated = logical_enclosure.update_script(logical_enclosure.data['uri'], script)
+print("   updated script: '{}'".format(logical_enclosure.get_script()))
 
 # Create support dumps
 print("Generate support dump")
