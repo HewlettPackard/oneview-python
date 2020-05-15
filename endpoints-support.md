@@ -44,8 +44,8 @@
 |<sub>/rest/enclosure-groups/{id}</sub>                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/enclosure-groups/{id}</sub>                                                   | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/enclosure-groups/{id}</sub>                                                   | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/enclosure-groups/{id}/script</sub>                                            | GET      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |
-|<sub>/rest/enclosure-groups/{id}/script</sub>                                            | PUT      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |
+|<sub>/rest/enclosure-groups/{id}/script</sub>                                            | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/enclosure-groups/{id}/script</sub>                                            | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Enclosures**
 |<sub>/rest/enclosures</sub>                                                              | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/enclosures</sub>                                                              | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
@@ -56,7 +56,7 @@
 |<sub>/rest/enclosures/{id}/environmentalConfiguration</sub>                              | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/enclosures/{id}/environmentalConfiguration</sub>                              | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/enclosures/{id}/refreshState</sub>                                            | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/enclosures/{id}/script</sub>                                                  | GET      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :heavy_minus_sign:   |
+|<sub>/rest/enclosures/{id}/script</sub>                                                  | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/enclosures/{id}/sso</sub>                                                     | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/enclosures/{id}/utilization</sub>                                             | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/enclosures/{id}/https/certificaterequest</sub>                                | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
@@ -135,8 +135,8 @@
 |<sub>/rest/logical-enclosures/{id}</sub>                                                 | PATCH    |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/logical-enclosures/{id}</sub>                                                 | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/logical-enclosures/{id}/configuration</sub>                                   | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/logical-enclosures/{id}/script</sub>                                          | GET      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :heavy_minus_sign:   |
-|<sub>/rest/logical-enclosures/{id}/script</sub>                                          | PUT      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :heavy_minus_sign:   |
+|<sub>/rest/logical-enclosures/{id}/script</sub>                                          | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/logical-enclosures/{id}/script</sub>                                          | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/logical-enclosures/{id}/support-dumps</sub>                                   | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/logical-enclosures/{id}/updateFromGroup</sub>                                 | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |     **Logical Interconnect Groups**
