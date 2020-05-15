@@ -10,6 +10,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Ethernet network
 - FC network
 - FCOE network
+- Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 - Interconnects
