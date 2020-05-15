@@ -47,7 +47,6 @@ from hpOneView.resources.networking.sas_logical_interconnect_groups import SasLo
 from hpOneView.resources.networking.sas_logical_interconnects import SasLogicalInterconnects
 from hpOneView.resources.networking.sas_interconnect_types import SasInterconnectTypes
 from hpOneView.resources.facilities.datacenters import Datacenters
-from hpOneView.resources.servers.enclosures import Enclosures
 from hpOneView.resources.servers.server_profile_templates import ServerProfileTemplate
 from hpOneView.resources.servers.server_profiles import ServerProfiles
 from hpOneView.resources.servers.id_pools import IdPools
