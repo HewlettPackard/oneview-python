@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -80,9 +80,9 @@ class ImageStreamerClientTest(TestCase):
     def test_artifact_bundles_has_right_type(self):
         self.assertIsInstance(self._client.artifact_bundles, ArtifactBundles)
 
-    def test_artifact_bundles_lazy_loading(self):
+    def test_artifact_bundles_client(self):
         resource = self._client.artifact_bundles
-        self.assertEqual(resource, self._client.artifact_bundles)
+        self.assertNotEqual(resource, self._client.artifact_bundles)
 
     def test_deployment_groups_has_right_type(self):
         self.assertIsInstance(self._client.deployment_groups, DeploymentGroups)

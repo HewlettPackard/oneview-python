@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -125,9 +125,7 @@ class ImageStreamerClient(object):
         Returns:
             ArtifactBundles:
         """
-        if not self.__artifact_bundles:
-            self.__artifact_bundles = ArtifactBundles(self.__connection)
-        return self.__artifact_bundles
+        return ArtifactBundles(self.__connection)
 
     @property
     def deployment_groups(self):
