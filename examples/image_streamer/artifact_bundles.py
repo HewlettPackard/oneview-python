@@ -25,7 +25,7 @@ oneview_client = OneViewClient.from_json_file(EXAMPLE_CONFIG_FILE)
 image_streamer_client = oneview_client.create_image_streamer_client()
 artifact_bundles = image_streamer_client.artifact_bundles
 
-artifact_bundles_to_be_created= {
+artifact_bundles_to_be_created = {
     "name": "Artifact Bundles Test",
     "description": "Description of Artifact Bundles Test",
     "buildPlans": [
@@ -125,6 +125,5 @@ pprint(response)
 
 # Upload a Backup of Artifact Bundle from file
 print("\nUpload a Backup of Artifact Bundle from file")
-response = artifact_bundles.upload_backup_bundle_from_file(artifact_bundle_file_path['upload_backup'],
-                                    artifact_bundles_deployment_group['deploymentGroupURI'])
-pprint(response)
+res = artifact_bundles.upload_backup_bundle_from_file(artifact_bundle_file_path['upload_backup'], artifact_bundles_deployment_group['deploymentGroupURI'])
+pprint(res)
