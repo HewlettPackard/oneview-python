@@ -35,7 +35,10 @@ class ArtifactBundles(ResourceFileHandlerMixin, Resource):
     DOWNLOAD_PATH = '/rest/artifact-bundles/download'
 
     DEFAULT_VALUES = {
-        '300': {"type": "ArtifactsBundle"}
+        '800': {"type": "ArtifactsBundle"},
+        '1000': {"type": "ArtifactsBundle"},
+        '1020': {"type": "ArtifactsBundle"},
+        '1600': {"type": "ArtifactsBundle"}
     }
 
     def __init__(self, connection, data=None):
