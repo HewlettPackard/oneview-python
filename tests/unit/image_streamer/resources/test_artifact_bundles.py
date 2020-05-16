@@ -70,7 +70,7 @@ class ArtifactBundlesTest(TestCase):
         uri = '/rest/artifact-bundles/test'
         destination = '~/image.zip'
 
-        self._artifact_bundles.download(destination, uri)
+        self._artifact_bundles.download(destination)
         mock_download.assert_called_once_with('/rest/artifact-bundles/download/test', destination)
 
     @mock.patch.object(Resource, 'create')
@@ -136,5 +136,5 @@ class ArtifactBundlesTest(TestCase):
             'taskUri': task_uri
         }
 
-        self._artifact_bundles.stop_artifact_creation(task_uri, artifact_uri)
+        self._artifact_bundles.stop_artifact_creation(task_uri)
         mock_update.assert_called_once_with(data, uri=uri)
