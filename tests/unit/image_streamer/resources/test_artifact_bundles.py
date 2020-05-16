@@ -67,7 +67,6 @@ class ArtifactBundlesTest(TestCase):
 
     @mock.patch.object(ResourceFileHandlerMixin, 'download')
     def test_download_called_once_by_uri(self, mock_download):
-        uri = '/rest/artifact-bundles/test'
         destination = '~/image.zip'
 
         self._artifact_bundles.download(destination)
