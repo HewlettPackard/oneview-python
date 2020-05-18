@@ -34,15 +34,11 @@ class ArtifactBundles(ResourceFileHandlerMixin, Resource):
     BACKUP_ARCHIVE_PATH = '/rest/artifact-bundles/backups/archive'
     DOWNLOAD_PATH = '/rest/artifact-bundles/download'
 
-    DEFAULT_VALUES = {
-        '800': {"type": "ArtifactsBundle"},
-        '1000': {"type": "ArtifactsBundle"},
-        '1020': {"type": "ArtifactsBundle"},
-        '1600': {"type": "ArtifactsBundle"}
-    }
-
     def __init__(self, connection, data=None):
         super(ArtifactBundles, self).__init__(connection, data)
+        self.__default_values = {
+            'type': 'ArtifactsBundle'
+        }
 
     def get_all_backups(self):
         """
