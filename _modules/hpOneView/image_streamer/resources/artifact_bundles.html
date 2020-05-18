@@ -148,7 +148,7 @@
   <h1>Source code for hpOneView.image_streamer.resources.artifact_bundles</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -172,92 +172,21 @@
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 
-<span class="kn">from</span> <span class="nn">hpOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span><span class="p">,</span> <span class="n">extract_id_from_uri</span>
+<span class="kn">from</span> <span class="nn">hpOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceFileHandlerMixin</span><span class="p">,</span> <span class="n">extract_id_from_uri</span>
 
 
-<div class="viewcode-block" id="ArtifactBundles"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles">[docs]</a><span class="k">class</span> <span class="nc">ArtifactBundles</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ArtifactBundles"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles">[docs]</a><span class="k">class</span> <span class="nc">ArtifactBundles</span><span class="p">(</span><span class="n">ResourceFileHandlerMixin</span><span class="p">,</span> <span class="n">Resource</span><span class="p">):</span>
 
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/artifact-bundles&#39;</span>
-    <span class="n">DEPLOYMENT_GROUPS_URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/deployment-groups/&#39;</span>
     <span class="n">BACKUPS_PATH</span> <span class="o">=</span> <span class="s1">&#39;/rest/artifact-bundles/backups&#39;</span>
     <span class="n">BACKUP_ARCHIVE_PATH</span> <span class="o">=</span> <span class="s1">&#39;/rest/artifact-bundles/backups/archive&#39;</span>
-    <span class="n">STOP_CREATION_PATH</span> <span class="o">=</span> <span class="s1">&#39;/stopArtifactCreate&#39;</span>
     <span class="n">DOWNLOAD_PATH</span> <span class="o">=</span> <span class="s1">&#39;/rest/artifact-bundles/download&#39;</span>
 
-    <span class="n">DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;300&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ArtifactsBundle&quot;</span><span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__default_values</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ArtifactsBundle&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ArtifactsBundle&#39;</span>
         <span class="p">}</span>
-
-<div class="viewcode-block" id="ArtifactBundles.get_all"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets a list of Artifacts Bundle based on optional sorting and filtering, and constrained by start and count</span>
-<span class="sd">        parameters.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            start:</span>
-<span class="sd">                The first item to return, using 0-based indexing.</span>
-<span class="sd">                If not specified, the default is 0 - start with the first available item.</span>
-<span class="sd">            count:</span>
-<span class="sd">                The number of resources to return. A count of -1 requests all items.</span>
-
-<span class="sd">                The actual number of items in the response might differ from the requested</span>
-<span class="sd">                count if the sum of start and count exceeds the total number of items.</span>
-<span class="sd">            filter (list or str):</span>
-<span class="sd">                A general filter/query string to narrow the list of items returned. The</span>
-<span class="sd">                default is no filter; all resources are returned.</span>
-<span class="sd">            sort:</span>
-<span class="sd">                The sort order of the returned data set. By default, the sort order is based</span>
-<span class="sd">                on create time with the oldest entry first.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            list: A list of Artifacts Bundle.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.get"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Retrieves the overview details for the selected Artifact Bundle as per the selected attributes.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            id_or_uri: ID or URI of the Artifact Bundle.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: The Artifact Bundle.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.get_by"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get_by">[docs]</a>    <span class="k">def</span> <span class="nf">get_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets all of the Artifacts Bundle resources that match the filter.</span>
-
-<span class="sd">        The search is case-insensitive.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            field: Field name to filter.</span>
-<span class="sd">            value: Value to filter.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            list: The Artifacts Bundle.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_by</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.get_by_name"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets an Artifact Bundle by name.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            name: Name of the Artifact Bundle.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: The Artifact Bundle.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ArtifactBundles.get_all_backups"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get_all_backups">[docs]</a>    <span class="k">def</span> <span class="nf">get_all_backups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -266,49 +195,54 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list of Backups for Artifacts Bundle.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">id_or_uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ArtifactBundles.get_backup"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get_backup">[docs]</a>    <span class="k">def</span> <span class="nf">get_backup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="ArtifactBundles.get_backup"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.get_backup">[docs]</a>    <span class="k">def</span> <span class="nf">get_backup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the details for the backup from an Artifact Bundle.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            id_or_uri: ID or URI of the Artifact Bundle.</span>
+<span class="sd">            uri: URI of the Artifact Bundle.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Dict: Backup for an Artifacts Bundle.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_or_uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ArtifactBundles.download_archive_artifact_bundle"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.download_archive_artifact_bundle">[docs]</a>    <span class="k">def</span> <span class="nf">download_archive_artifact_bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="ArtifactBundles.download_archive"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.download_archive">[docs]</a>    <span class="k">def</span> <span class="nf">download_archive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Downloads an archive for the Artifact Bundle.</span>
+<span class="sd">        Downloads backup archive for the Artifact Bundle.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            id_or_uri: ID or URI of the Artifact Bundle.</span>
-<span class="sd">            file_path(str): Destination file path.</span>
+<span class="sd">            path(str): Destination file path.</span>
+<span class="sd">            uri: URI of the Artifact Bundle.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Successfully downloaded.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="p">:</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
 
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUP_ARCHIVE_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span></div>
+        <span class="n">download_uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUP_ARCHIVE_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_uri</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ArtifactBundles.download_artifact_bundle"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.download_artifact_bundle">[docs]</a>    <span class="k">def</span> <span class="nf">download_artifact_bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="ArtifactBundles.download"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Download the Artifact Bundle.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            id_or_uri: ID or URI of the Artifact Bundle.</span>
-<span class="sd">            file_path(str): Destination file path.</span>
+<span class="sd">            uri: URI of the Artifact Bundle.</span>
+<span class="sd">            path(str): Destination file path.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Successfully downloaded.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DOWNLOAD_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="p">:</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
+
+        <span class="n">download_uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DOWNLOAD_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_uri</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ArtifactBundles.create_backup"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.create_backup">[docs]</a>    <span class="k">def</span> <span class="nf">create_backup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -324,7 +258,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: A Deployment Group associated with the Artifact Bundle backup.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ArtifactBundles.upload_bundle_from_file"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.upload_bundle_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">upload_bundle_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -336,80 +270,29 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Artifact bundle.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ArtifactBundles.upload_backup_bundle_from_file"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.upload_backup_bundle_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">upload_backup_bundle_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">deployment_groups_id_or_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="ArtifactBundles.upload_backup_bundle_from_file"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.upload_backup_bundle_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">upload_backup_bundle_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">deployment_group_uri</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Restore an Artifact Bundle from a backup file.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            file_path (str): The File Path to restore the Artifact Bundle.</span>
-<span class="sd">            deployment_groups_id_or_uri: ID or URI of the Deployment Groups.</span>
+<span class="sd">            deployment_group_uri: URI of the Deployment Groups.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Deployment group.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">deployment_groups_uri</span> <span class="o">=</span> <span class="n">deployment_groups_id_or_uri</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUP_ARCHIVE_PATH</span> <span class="o">+</span> <span class="s2">&quot;?deploymentGrpUri=&quot;</span> <span class="o">+</span> <span class="n">deployment_group_uri</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ArtifactBundles</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEPLOYMENT_GROUPS_URI</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">deployment_groups_id_or_uri</span><span class="p">:</span>
-            <span class="n">deployment_groups_uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEPLOYMENT_GROUPS_URI</span> <span class="o">+</span> <span class="n">deployment_groups_id_or_uri</span>
-
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUP_ARCHIVE_PATH</span> <span class="o">+</span> <span class="s2">&quot;?deploymentGrpUri=&quot;</span> <span class="o">+</span> <span class="n">deployment_groups_uri</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.create"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates an Artifact Bundle.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            resource (dict): Object to create.</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView, it just stops waiting for its completion.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: Created resource.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.delete"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Deletes an Artifact Bundle.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            resource(str, dict):</span>
-<span class="sd">                Accept either the resource id  or the entire resource.</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation in</span>
-<span class="sd">                OneView, it just stops waiting for its completion.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: Indicates if the resource was successfully deleted.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.update"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Updates only name for the Artifact Bundle.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            resource (dict): Object to update.</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView, it just stops waiting for its completion.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: Updated resource.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_VALUES</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ArtifactBundles.extract_bundle"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.extract_bundle">[docs]</a>    <span class="k">def</span> <span class="nf">extract_bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ArtifactBundles.extract"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.extract">[docs]</a>    <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Extracts the existing bundle on the appliance and creates all the artifacts.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            resource (dict): Artifact Bundle to extract.</span>
+<span class="sd">            uri: URI of artifact bundle</span>
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation in</span>
 <span class="sd">                OneView, it just stops waiting for its completion.</span>
@@ -417,14 +300,19 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: The Artifact Bundle.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">})</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="p">:</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="ArtifactBundles.extract_backup_bundle"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.extract_backup_bundle">[docs]</a>    <span class="k">def</span> <span class="nf">extract_backup_bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">extract_uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">?extract=true&amp;forceImport=true&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">extract_uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;text/plain;charset=UTF-8&quot;</span><span class="p">})</span></div>
+
+<div class="viewcode-block" id="ArtifactBundles.extract_backup"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.extract_backup">[docs]</a>    <span class="k">def</span> <span class="nf">extract_backup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Extracts the existing backup bundle on the appliance and creates all the artifacts.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            resource (dict): Deployment Group to extract.</span>
+<span class="sd">            uri: URI of artifact backup</span>
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Waits for task completion by default. The timeout does not abort the operation in</span>
 <span class="sd">                OneView, it just stops waiting for its completion.</span>
@@ -432,26 +320,32 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: A Deployment Group associated with the Artifact Bundle backup.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">BACKUP_ARCHIVE_PATH</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="p">:</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="ArtifactBundles.stop_artifact_creation"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.stop_artifact_creation">[docs]</a>    <span class="k">def</span> <span class="nf">stop_artifact_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">task_uri</span><span class="p">):</span>
+        <span class="n">extract_uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BACKUPS_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">extract_uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ArtifactBundles.stop_artifact_creation"><a class="viewcode-back" href="../../../../hpOneView.image_streamer.resources.html#hpOneView.image_streamer.resources.artifact_bundles.ArtifactBundles.stop_artifact_creation">[docs]</a>    <span class="k">def</span> <span class="nf">stop_artifact_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uri</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Stops creation of the selected Artifact Bundle.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            id_or_uri: ID or URI of the Artifact Bundle.</span>
 <span class="sd">            task_uri: Task URI associated with the Artifact Bundle.</span>
+<span class="sd">            uri: URI of the Artifact Bundle.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="p">:</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span>
+
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;taskUri&quot;</span><span class="p">:</span> <span class="n">task_uri</span>
         <span class="p">}</span>
 
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">extract_id_from_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">STOP_CREATION_PATH</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div></div>
+        <span class="n">stop_uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/stopArtifactCreate&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">stop_uri</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
