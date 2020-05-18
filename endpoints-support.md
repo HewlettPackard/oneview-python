@@ -366,3 +366,19 @@
 |<sub> /rest/deployment-plans/{id} </sub>                                         | DELETE           |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 |<sub> /rest/deployment-plans/{id}/usedby </sub>                                  | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 |<sub> /rest/deployment-plans/{id}/osdp </sub>                                    | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|     **Artifact Bundles**
+|<sub> /rest/artifact-bundles </sub>                                              | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles </sub>                                              | POST             |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles </sub>                                              | POST             |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/backups </sub>                                      | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/backups </sub>                                      | POST             |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/backups/archive </sub>                              | POST             |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/backups/archive/{id} </sub>                         | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/backups/{id} </sub>                                 | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/backups/{id} </sub>                                 | PUT              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/download/{id} </sub>                                | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/{id} </sub>                                         | GET              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/{id} </sub>                                         | PUT              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/{id} </sub>                                         | PUT              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/{id} </sub>                                         | DELETE           |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+|<sub> /rest/artifact-bundles/{id}/stopArtifactCreate </sub>                      | PUT              |  :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |

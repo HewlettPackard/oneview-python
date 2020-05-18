@@ -822,6 +822,14 @@ class ResourceTest(BaseTest):
         result = self.resource_client.delete()
         self.assertTrue(result)
 
+    @mock.patch.object(connection, 'delete')
+    def test_helper_delete_all_should_return_true(self, mock_delete):
+        mock_delete.return_value = None, self.response_body
+
+        filter = "name='Exchange Server'"
+        result = self.resource_helper.delete_all(filter=filter, force=True, timeout=-1)
+        self.assertTrue(result)
+
     @mock.patch.object(Resource, "ensure_resource_data")
     @mock.patch.object(connection, "delete")
     @mock.patch.object(TaskMonitor, "wait_for_task")
