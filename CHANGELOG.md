@@ -1,5 +1,4 @@
 # 5.2.1 (unreleased)
-
 Added code to handle login acknowledgement.
 
 #### Bug fixes & Enhancements
