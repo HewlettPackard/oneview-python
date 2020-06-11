@@ -1,6 +1,9 @@
 # 5.2.1 (unreleased)
 
+Added code to handle login acknowledgement.
+
 #### Bug fixes & Enhancements
+- #58 loginMsgAck is not handled in python code
 - #60 SPT type for api1600 should be ServerProfileTemplateV8
 
 # 5.2.0
