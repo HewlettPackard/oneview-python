@@ -1,5 +1,6 @@
 # 5.2.1 (unreleased)
-Added code to handle login acknowledgement.
+1. Added code to handle login acknowledgement.
+2. This release adds support for docker image versioning as per GIT release version. 
 
 #### Bug fixes & Enhancements
 - #58 loginMsgAck is not handled in python code
