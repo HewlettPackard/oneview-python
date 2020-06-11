@@ -1,3 +1,8 @@
+# 5.2.1 (unreleased)
+
+#### Bug fixes & Enhancements
+- #60 SPT type for api1600 should be ServerProfileTemplateV8
+
 # 5.2.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
