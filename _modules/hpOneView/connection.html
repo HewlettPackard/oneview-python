@@ -596,6 +596,7 @@
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">raise</span><span class="p">(</span><span class="n">HPOneViewException</span><span class="p">(</span><span class="s1">&#39;Failure during login attempt.</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()))</span>
 
+        <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;loginMsgAck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># This will handle the login acknowledgement message</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span> <span class="o">=</span> <span class="n">cred</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sessionID&quot;</span><span class="p">):</span>
