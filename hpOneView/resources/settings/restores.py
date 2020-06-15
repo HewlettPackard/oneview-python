@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,59 +24,24 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpOneView.resources.resource import ResourceClient
+from hpOneView.resources.resource import Resource
 
 
-class Restores(object):
+class Restores(Resource):
     """
     Restore API client for initiate a restore of an appliance and to get the status of the restore operation.
     """
     URI = '/rest/restores'
 
     DEFAULT_VALUES = {
-        '200': {"type": "RESTORE"},
-        '300': {"type": "RESTORE"}
+        '800': {"type": "RESTORE"},
+        '1000': {"type": "RESTOREV1000"},
+        '1200': {"type": "RESTOREV1000"},
+        '1600': {"type": "RESTOREV1000"}
     }
 
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
-
-    def get_all(self):
-        """
-        Retrieve the status of any current appliance restore.
-
-        Returns:
-            list: A collection of restore status, but there will be at most one restore status. The status for
-            the last restore will be returned if there has been a restore.
-        """
-        return self._client.get_all()
-
-    def get(self, id_or_uri):
-        """
-        Retrieves the status of the specified restore operation.
-
-        Args:
-            id_or_uri: ID or URI of the Restore.
-
-        Returns:
-            dict: Restore
-        """
-        return self._client.get(id_or_uri)
-
-    def get_by(self, field, value):
-        """
-        Gets all Restores that match the filter.
-
-        The search is case-insensitive.
-
-        Args:
-            field: Field name to filter.
-            value: Value to filter.
-
-        Returns:
-            list: A list of Restores.
-        """
-        return self._client.get_by(field, value)
+    def __init__(self, connection, data=None):
+        super(Restores, self).__init__(connection, data)
 
     def get_failure(self):
         """
@@ -85,12 +50,11 @@ class Restores(object):
         The restore result remains valid until a user logs in. After a user logs in, the restore result will be reset.
         This rest request will return only the valid result after restore has completed and before a user logs in.
 
-
         Returns:
             dict: Restore Result
         """
-        uri = self.URI + '/failure'
-        return self._client.get(uri)
+        failure_uri = "{0}/failure".format(self.URI)
+        return self._helper.do_get(failure_uri)
 
     def restore(self, resource, timeout=-1):
         """
@@ -107,4 +71,5 @@ class Restores(object):
             dict: Restore.
 
         """
-        return self._client.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
+        return super(Restores, self).create(resource, timeout=timeout)
+

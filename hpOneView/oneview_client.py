@@ -387,9 +387,7 @@ class OneViewClient(object):
         Returns:
             Restores:
         """
-        if not self.__restores:
-            self.__restores = Restores(self.__connection)
-        return self.__restores
+        return Restores(self.__connection)
 
     @property
     def scopes(self):

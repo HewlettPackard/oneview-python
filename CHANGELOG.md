@@ -1,7 +1,13 @@
 # 5.2.1 (unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 800, 1000, 1200 and 1600.
 Added code to handle login acknowledgement.
 
+#### Features supported
+- Restores
+
 #### Bug fixes & Enhancements
+- #23 MISSING_JSON_TYPE error code is thrown when attempting to restore the appliance
 - #58 loginMsgAck is not handled in python code
 - #60 SPT type for api1600 should be ServerProfileTemplateV8
 
