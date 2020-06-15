@@ -63,4 +63,3 @@ pprint(restore_by_uri.data)
 print("\nRetrieving Restore Failure")
 failures = restores.get_failure()
 pprint(failures)
-

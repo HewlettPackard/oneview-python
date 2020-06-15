@@ -43,4 +43,3 @@ class RestoresTest(TestCase):
         }
         self.resource.restore(restore)
         mock_create.assert_called_once_with(restore, timeout=-1)
-

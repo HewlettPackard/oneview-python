@@ -72,4 +72,3 @@ class Restores(Resource):
 
         """
         return super(Restores, self).create(resource, timeout=timeout)
-
