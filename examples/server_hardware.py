@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ if not server:
     # Create a rack-mount server
     # This is only supported on appliance which support rack mounted servers
     server = server_hardwares.add(options)
-    print("Added rack mount server '%s'.\n  uri = '%s'" % (server['name'], server['uri']))
+    print("Added rack mount server '%s'.\n  uri = '%s'" % (server.data['name'], server.data['uri']))
 
 # Create Multiple rack-mount servers
 # This is only supported on appliance which support rack mounted servers
@@ -66,6 +66,7 @@ if oneview_client.api_version >= 600:
         "configurationState": "Managed",
     }
     multiple_server = server_hardwares.add_multiple_servers(options_to_add_multiple_server)
+    pprint(multiple_server.data)
 else:
     print("\nCANNOT CREATE MULTIPLE SERVERS! Endpoint supported for REST API Versions 600 and above only.\n")
 
