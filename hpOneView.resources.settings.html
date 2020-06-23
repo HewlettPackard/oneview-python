@@ -1143,78 +1143,18 @@ on create time with the oldest entry first.</li>
 <span id="hponeview-resources-settings-restores-module"></span><h2>hpOneView.resources.settings.restores module<a class="headerlink" href="#module-hpOneView.resources.settings.restores" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpOneView.resources.settings.restores.Restores">
-<em class="property">class </em><code class="descclassname">hpOneView.resources.settings.restores.</code><code class="descname">Restores</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/settings/restores.html#Restores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpOneView.resources.settings.restores.</code><code class="descname">Restores</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/settings/restores.html#Restores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpOneView.resources.html#hpOneView.resources.resource.Resource" title="hpOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpOneView.resources.resource.Resource</span></code></a></p>
 <p>Restore API client for initiate a restore of an appliance and to get the status of the restore operation.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.settings.restores.Restores.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'RESTORE'}, u'300': {u'type': u'RESTORE'}}</em><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'RESTOREV1000'}, u'1200': {u'type': u'RESTOREV1000'}, u'1600': {u'type': u'RESTOREV1000'}, u'800': {u'type': u'RESTORE'}}</em><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="hpOneView.resources.settings.restores.Restores.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/restores'</em><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.settings.restores.Restores.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/settings/restores.html#Restores.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieves the status of the specified restore operation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the Restore.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Restore</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.settings.restores.Restores.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/settings/restores.html#Restores.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve the status of any current appliance restore.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A collection of restore status, but there will be at most one restore status. The status for
-the last restore will be returned if there has been a restore.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpOneView.resources.settings.restores.Restores.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/settings/restores.html#Restores.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.settings.restores.Restores.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all Restores that match the filter.</p>
-<p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of Restores.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <dl class="method">
 <dt id="hpOneView.resources.settings.restores.Restores.get_failure">
