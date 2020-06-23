@@ -17,6 +17,7 @@ methods described below.
 
 ##Using Docker container
 We also provide a lightweight and easy way to test and run `oneview-python`. The `hewlettpackardenterprise/hpe-oneview-sdk-for-python:<tag>` docker image contains an installation of oneview-python installation you can use by just pulling down the Docker Image:
+
 The Docker Store image `tag` consist of two sections: `<sdk_version-OV_version>`
 
 ```bash
