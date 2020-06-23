@@ -7,6 +7,7 @@ Added code to handle login acknowledgement.
 - Restores
 
 #### Bug fixes & Enhancements
+- #21 In correct endpoint passed when uploading a downloaded appliance backup
 - #23 MISSING_JSON_TYPE error code is thrown when attempting to restore the appliance
 - #58 loginMsgAck is not handled in python code
 - #60 SPT type for api1600 should be ServerProfileTemplateV8
