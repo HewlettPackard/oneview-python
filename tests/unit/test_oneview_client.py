@@ -713,9 +713,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_restores_has_right_type(self):
         self.assertIsInstance(self._oneview.restores, Restores)
 
-    def test_lazy_loading_restores(self):
-        copy_restores = self._oneview.restores
-        self.assertEqual(copy_restores, self._oneview.restores)
+    def test_restores_client(self):
+        restores = self._oneview.restores
+        self.assertNotEqual(restores, self._oneview.restores)
 
     def test_scopes_has_right_type(self):
         self.assertIsInstance(self._oneview.scopes, Scopes)
