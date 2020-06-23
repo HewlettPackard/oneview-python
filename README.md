@@ -21,7 +21,7 @@ We also provide a lightweight and easy way to test and run `oneview-python`. The
 The Docker Store image `tag` consist of two sections: `<sdk_version-OV_version>`
 
 ```bash
-# Download and store a local copy of oneview-python and
+# Download and store a local copy of hpe-oneview-sdk-for-python and
 # use it as a Docker image.
 $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2
 
