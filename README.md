@@ -15,6 +15,21 @@ The HPE OneView Python library depends on the
 2/3 compatibility. This will be installed automatically if you use the installation
 methods described below.
 
+##Using Docker container
+We also provide a lightweight and easy way to test and run `oneview-python`. The `hewlettpackardenterprise/hpe-oneview-sdk-for-python:<tag>` docker image contains an installation of oneview-python installation you can use by just pulling down the Docker Image:
+The Docker Store image `tag` consist of two sections: `<sdk_version-OV_version>`
+
+```bash
+# Download and store a local copy of oneview-python and
+# use it as a Docker image.
+$ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2
+
+Run docker commands and this will create
+# a sh session where you can create files, issue commands and execute the tests
+$ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2 /bin/sh
+```
+
+
 ## Installation
 
 ### From source
