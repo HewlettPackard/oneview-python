@@ -112,6 +112,7 @@ from hpOneView.resources.security.certificates_server import CertificatesServer
 from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
+ONEVIEW_CLIENT_INVALID_I3S_IP = 'Invalid image streamer ip'
 
 
 class OneViewClient(object):
@@ -295,6 +296,9 @@ class OneViewClient(object):
         Returns:
             ImageStreamerClient:
         """
+        if not self.__image_streamer_ip:
+            raise ValueError(ONEVIEW_CLIENT_INVALID_I3S_IP)
+
         image_streamer = ImageStreamerClient(self.__image_streamer_ip,
                                              self.__connection.get_session_id(),
                                              self.__connection._apiVersion,

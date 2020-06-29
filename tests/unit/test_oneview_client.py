@@ -357,12 +357,10 @@ class OneViewClientTest(unittest.TestCase):
         client = OneViewClient(config)
         client.connection.set_session_id('123')
 
-        i3s = client.create_image_streamer_client()
-
-        self.assertEqual(i3s.connection.get_session_id(), client.connection.get_session_id())
-        self.assertEqual(i3s.connection._apiVersion, client.api_version)
-        self.assertEqual(i3s.connection.get_host(), None)
-        self.assertEqual(client.connection.get_host(), "172.16.102.59")
+        try:
+            client.create_image_streamer_client()
+        except ValueError as e:
+            self.assertTrue("image streamer ip" in e.args[0])
 
     @mock.patch.object(connection, 'login')
     def test_create_image_streamer_client_with_image_streamer_ip(self, mock_login):
