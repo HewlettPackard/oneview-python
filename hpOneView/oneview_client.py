@@ -113,15 +113,17 @@ from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import Hypervis
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 ONEVIEW_CLIENT_INVALID_I3S_IP = 'Invalid image streamer ip'
+ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 
 
 class OneViewClient(object):
     DEFAULT_API_VERSION = 800
 
     def __init__(self, config):
-        self.__connection = connection(config["ip"], config.get('api_version', self.DEFAULT_API_VERSION), config.get('ssl_certificate', False),
+        self.__connection = connection(config.get('ip'), config.get('api_version', self.DEFAULT_API_VERSION), config.get('ssl_certificate', False),
                                        config.get('timeout'))
         self.__image_streamer_ip = config.get("image_streamer_ip")
+        self.__validate_host()
         self.__set_proxy(config)
         self.__connection.login(config["credentials"])
         self.__certificate_authority = None
@@ -268,6 +270,13 @@ class OneViewClient(object):
             proxy_host = splitted[0]
             proxy_port = int(splitted[1])
             self.__connection.set_proxy(proxy_host, proxy_port)
+
+    def __validate_host(self):
+        """
+        Fails if oneview ip is not provided
+        """
+        if not self.__connection._host:
+            raise ValueError(ONEVIEW_CLIENT_MISSING_IP)
 
     @property
     def api_version(self):

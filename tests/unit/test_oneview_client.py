@@ -137,6 +137,17 @@ class OneViewClientTest(unittest.TestCase):
 
         self._oneview = OneViewClient(config)
 
+    def test_raise_error_missing_ip(self):
+        config = {"ip": "",
+                  "credentials": {
+                      "userName": "administrator",
+                      "password": ""}}
+
+        try:
+            OneViewClient(config)
+        except ValueError as e:
+            self.assertTrue("ip address is missing" in e.args[0])
+
     def test_raise_error_invalid_proxy(self):
         config = {"ip": "172.16.102.59",
                   "proxy": "3128",
