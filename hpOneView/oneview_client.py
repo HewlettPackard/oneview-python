@@ -112,7 +112,7 @@ from hpOneView.resources.security.certificates_server import CertificatesServer
 from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
-ONEVIEW_CLIENT_INVALID_I3S_IP = 'Invalid image streamer ip'
+ONEVIEW_CLIENT_INVALID_I3S_IP = 'Image streamer ip address is missing'
 ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 
 

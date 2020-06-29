@@ -371,7 +371,7 @@ class OneViewClientTest(unittest.TestCase):
         try:
             client.create_image_streamer_client()
         except ValueError as e:
-            self.assertTrue("image streamer ip" in e.args[0])
+            self.assertTrue("Image streamer ip" in e.args[0])
 
     @mock.patch.object(connection, 'login')
     def test_create_image_streamer_client_with_image_streamer_ip(self, mock_login):
