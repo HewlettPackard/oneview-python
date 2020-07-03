@@ -1,17 +1,14 @@
-# 5.2.1 (unreleased)
+# 5.2.1
 #### Notes
-Extends support of the SDK to OneView REST API version 800, 1000, 1200 and 1600.
+Added support to OneView 'Restores' feature for REST API versions 800, 1000, 1200 and 1600.
 Added code to handle login acknowledgement.
 
-#### Features supported
-- Restores
-
 #### Bug fixes & Enhancements
-- #21 In correct endpoint passed when uploading a downloaded appliance backup
-- #23 MISSING_JSON_TYPE error code is thrown when attempting to restore the appliance
-- #58 loginMsgAck is not handled in python code
-- #60 SPT type for api1600 should be ServerProfileTemplateV8
-- #67 raise exception with proper error message when ip is not provided in config
+- [#21](https://github.com/HewlettPackard/oneview-python/issues/21) In correct endpoint passed when uploading a downloaded appliance backup
+- [#23](https://github.com/HewlettPackard/oneview-python/issues/23) MISSING_JSON_TYPE error code is thrown when attempting to restore the appliance
+- [#58](https://github.com/HewlettPackard/oneview-python/issues/58) loginMsgAck is not handled in python code
+- [#60](https://github.com/HewlettPackard/oneview-python/issues/60) SPT type for api1600 should be ServerProfileTemplateV8
+- [#67](https://github.com/HewlettPackard/oneview-python/issues/67) raise exception with proper error message when ip is not provided in config
 
 # 5.2.0
 #### Notes
