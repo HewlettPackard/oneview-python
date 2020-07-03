@@ -25,7 +25,7 @@ The Docker Store image `tag` consist of two sections: `<sdk_version-OV_version>`
 # use it as a Docker image.
 $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2
 
-Run docker commands and this will in turn create
+# Run docker commands and this will in turn create
 # a sh session where you can create files, issue commands and execute the tests
 $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2 /bin/sh
 ```
