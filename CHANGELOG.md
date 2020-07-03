@@ -1,10 +1,7 @@
 # 5.2.1
 #### Notes
-Extends support of the SDK to OneView REST API version 800, 1000, 1200 and 1600.
+Added support to OneView 'Restores' feature for REST API versions 800, 1000, 1200 and 1600.
 Added code to handle login acknowledgement.
-
-#### Features supported
-- Restores
 
 #### Bug fixes & Enhancements
 - [#21](https://github.com/HewlettPackard/oneview-python/issues/21) In correct endpoint passed when uploading a downloaded appliance backup
