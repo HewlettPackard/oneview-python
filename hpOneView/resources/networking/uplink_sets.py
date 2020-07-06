@@ -46,7 +46,8 @@ class UplinkSets(Resource):
         '800': {"type": "uplink-setV4"},
         '1000': {"type": "uplink-setV5"},
         '1200': {"type": "uplink-setV6"},
-        '1600': {"type": "uplink-setV6"}
+        '1600': {"type": "uplink-setV7"},
+        '1800': {"type": "uplink-setV7"}
     }
 
     def __init__(self, connection, data=None):

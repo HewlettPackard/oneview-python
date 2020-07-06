@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,12 +19,14 @@ from pprint import pprint
 from hpOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
+# To run this example fill the ip and the credentials below or use a configuration file
 config = {
-    "ip": "10.50.9.33",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
-    }
+        "userName": "<username>",
+        "password": "<password>"
+    },
+    "api_version": "<api_version>"
 }
 
 options = {
@@ -83,8 +85,8 @@ print("\nGet a fcoe-network by uri")
 fcoe_nets_by_uri = fcoe_networks.get_by_uri(fcoe_network.data['uri'])
 pprint(fcoe_nets_by_uri.data)
 
-# Adds FCOE network to scope defined
-if scope_name:
+# Adds FCOE network to scope defined only for V300 and V500
+if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
     scope = oneview_client.scopes.get_by_name(scope_name)
     fcoe_with_scope = fcoe_network.patch('replace',

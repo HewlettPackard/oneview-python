@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,13 +20,14 @@ from hpOneView.oneview_client import OneViewClient
 from hpOneView.exceptions import HPOneViewException
 from config_loader import try_load_from_file
 
+# To run this example fill the ip and the credentials below or use a configuration file
 config = {
-    "ip": "10.50.9.33",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
+        "userName": "<username>",
+        "password": "<password>"
     },
-    "api_version": 1800
+    "api_version": "<api_version>"
 }
 
 options = {
@@ -38,7 +39,7 @@ options = {
 }
 
 # Scope name to perform the patch operation
-scope_name = "test"
+scope_name = "test_scope"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -89,8 +90,8 @@ fc_network.update(data=data_to_update)
 print("\nUpdated fc-network '%s' successfully.\n  uri = '%s'" % (fc_network.data['name'], fc_network.data['uri']))
 print("  with attribute {'autoLoginRedistribution': %s}" % fc_network.data['autoLoginRedistribution'])
 
-# Adds fcnetwork to scope defined
-if scope_name:
+# Adds fc-network to scope defined only for V300 and V500
+if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
     scope = oneview_client.scopes.get_by_name(scope_name)
     print(scope['uri'])
