@@ -22,12 +22,12 @@ from hpOneView.oneview_client import OneViewClient
 
 # To run this example fill the ip and the credentials bellow or use a configuration file
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "10.50.9.33",
     "credentials": {
-        "userName": "<username>",
-        "password": "<password>",
+        "userName": "Administrator",
+        "password": "admin123",
     },
-    "api_version": 800
+    "api_version": 1800
 }
 
 # Try load config from a file (if there is a config file)
@@ -59,7 +59,7 @@ options = {
     "status": "OK",
     "logicalInterconnectUri": logical_interconnect_uri,
     "networkUris": [
-        ethernet_network_uri
+    #    ethernet_network_uri
     ],
     "fcNetworkUris": [],
     "fcoeNetworkUris": [],

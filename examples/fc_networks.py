@@ -21,12 +21,12 @@ from hpOneView.exceptions import HPOneViewException
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "10.50.9.33",
     "credentials": {
-        "userName": "<username>",
-        "password": "<password>"
+        "userName": "Administrator",
+        "password": "admin123"
     },
-    "api_version": 1200
+    "api_version": 1800
 }
 
 options = {
@@ -38,7 +38,7 @@ options = {
 }
 
 # Scope name to perform the patch operation
-scope_name = "test_scope"
+scope_name = "test"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -90,10 +90,10 @@ print("\nUpdated fc-network '%s' successfully.\n  uri = '%s'" % (fc_network.data
 print("  with attribute {'autoLoginRedistribution': %s}" % fc_network.data['autoLoginRedistribution'])
 
 # Adds fcnetwork to scope defined
-print("\nGet scope then add the network to it")
-scope = oneview_client.scopes.get_by_name(scope_name)
-print(scope['uri'])
-if scope:
+if scope_name:
+    print("\nGet scope then add the network to it")
+    scope = oneview_client.scopes.get_by_name(scope_name)
+    print(scope['uri'])
     try:
         fc_with_scope = fc_network.patch('replace',
                                          '/scopeUris',

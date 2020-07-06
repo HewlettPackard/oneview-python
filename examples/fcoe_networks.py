@@ -20,10 +20,10 @@ from hpOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "10.50.9.33",
     "credentials": {
-        "userName": "<username>",
-        "password": "<password>"
+        "userName": "Administrator",
+        "password": "admin123"
     }
 }
 
