@@ -173,6 +173,13 @@ if oneview_client.api_version >= 500:
     sdx_server = server.get_physical_server_hardware()
     pprint(sdx_server)
 
+# This operation works from Oneview API Version 1800.
+if oneview_client.api_version >= 1800:
+    # Gets the updated version 2 local storage resource for the server.
+    print("Get updated local storage resource of server hardware")
+    local_storage = server.get_local_storage()
+    pprint(local_storage)
+
 # Remove rack server
 # This operation works till Oneview API Version 500.
 server.remove()

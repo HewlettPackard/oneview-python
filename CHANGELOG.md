@@ -1,3 +1,17 @@
+# 5.3.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+
+#### Features supported with the current release
+- Enclosures
+- Enclosure Groups
+- Interconnects
+- Interconnect Types
+- Logical Enclosures
+- Server Hardware
+- Server Hardware Types
+- Tasks
+
 # 5.2.1
 #### Notes
 Added support to OneView 'Restores' feature for REST API versions 800, 1000, 1200 and 1600.

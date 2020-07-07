@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -255,5 +255,21 @@ class ServerHardwareTest(TestCase):
         uri_rest_call = '{}/physicalServerHardware'.format(self.uri)
 
         self._server_hardware.get_physical_server_hardware()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_local_storage(self, mock_get):
+        uri_rest_call = '{}/localStorageV2'.format(self.uri)
+
+        self._server_hardware.get_local_storage()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_local_storage_with_ip(self, mock_get):
+        uri_rest_call = '{}/localStorageV2?ip=172.16.8.4'.format(self.uri)
+
+        self._server_hardware.get_local_storage(ip='172.16.8.4')
 
         mock_get.assert_called_once_with(uri_rest_call)
