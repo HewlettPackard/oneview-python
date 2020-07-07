@@ -307,7 +307,7 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_local_storage(self, ip=None):
         """
-        Gets the updated version 2 local storage resource for the server, including storage controllers, 
+        Gets the updated version 2 local storage resource for the server, including storage controllers,
         drives, and volumes.
 
         Args:
