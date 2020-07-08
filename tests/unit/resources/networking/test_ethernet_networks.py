@@ -256,7 +256,7 @@ class EthernetNetworksTest(TestCase):
         expected_result = [6, 7, 9, 10]
         result = self._ethernet_networks.dissociate_values_or_ranges('6-7,9-10')
         self.assertEqual(result, expected_result)
-    
+
     @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(Resource, 'get_all')
     def test_delete_bulk(self, mock_get_all, mock_create):

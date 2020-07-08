@@ -23,8 +23,7 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpOneView.resources.resource import (Resource, ResourcePatchMixin,
-                                          ensure_resource_client)
+from hpOneView.resources.resource import (Resource, ResourcePatchMixin)
 
 
 class FcNetworks(ResourcePatchMixin, Resource):
@@ -50,7 +49,6 @@ class FcNetworks(ResourcePatchMixin, Resource):
     def __init__(self, connection, data=None):
         super(FcNetworks, self).__init__(connection, data)
 
-    @ensure_resource_client
     def delete_bulk(self, resource, timeout=-1):
         """
         Deletes bulk fc networks.

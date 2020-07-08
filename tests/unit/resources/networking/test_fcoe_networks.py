@@ -93,7 +93,7 @@ class FcoeNetworksTest(TestCase):
                                                           'op': 'replace'}],
                                                    custom_headers=None,
                                                    timeout=-1)
-    
+
     @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(Resource, 'get_all')
     def test_delete_bulk(self, mock_get_all, mock_create):

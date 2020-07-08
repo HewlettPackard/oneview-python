@@ -180,8 +180,7 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         """
         uri = "{}/associatedUplinkGroups".format(self.data['uri'])
         return self._helper.do_get(uri)
-   
-    @ensure_resource_client
+
     def delete_bulk(self, resource, timeout=-1):
         """
         Deletes bulk Ethernet networks.
