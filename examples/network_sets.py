@@ -19,13 +19,14 @@ from pprint import pprint
 from hpOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
+# To run this example fill the ip and the credentials below or use a configuration file
 config = {
-    "ip": "10.50.9.33",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
+        "userName": "<username>",
+        "password": "<password>"
     },
-    "api_version": 1800
+    "api_version": "<api_version>"
 }
 
 options = {

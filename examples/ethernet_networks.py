@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,13 +20,14 @@ from pprint import pprint
 from config_loader import try_load_from_file
 from hpOneView.oneview_client import OneViewClient
 
+# To run this example fill the ip and the credentials below or use a configuration file
 config = {
-    "ip": "10.50.9.33",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
+        "userName": "<username>",
+        "password": "<password>"
     },
-    "api_version": 1800
+    "api_version": "<api_version>"
 }
 
 options = {
@@ -60,7 +61,7 @@ options_bulk_delete = {
 }
 
 # Scope name to perform the patch operation
-scope_name = "test"
+scope_name = ""
 ethernet_name = "OneViewSDK Test Ethernet Network"
 
 # Try load config from a file (if there is a config file)
@@ -141,8 +142,8 @@ for uri in uplink_group_uris:
     uplink = uplink_sets.get_by_uri(uri)
     pprint(uplink.data)
 
-# Adds ethernet to scope defined
-if scope_name:
+# Adds Ethernet network to scope defined only for V300 and V500
+if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
     scope = oneview_client.scopes.get_by_name(scope_name)
     ethernet_with_scope = ethernet_network.patch('replace',
