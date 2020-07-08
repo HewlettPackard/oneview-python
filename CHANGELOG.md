@@ -1,3 +1,17 @@
+# 5.3.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
+
+#### Features supported with the current release
+- Certificates Server
+- Connection Templates
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Logical Interconnects
+- Logical Interconnect Group
+- Storage Systems
+- Storage Pools
+
 # 5.2.1
 #### Notes
 Added support to OneView 'Restores' feature for REST API versions 800, 1000, 1200 and 1600.

@@ -33,15 +33,11 @@ class HypervisorClusterProfiles(Resource):
     """
     URI = '/rest/hypervisor-cluster-profiles'
 
-    DEFAULT_VALUES = {
-        '800': {"type": "HypervisorClusterProfileV3"},
-        '1000': {"type": "HypervisorClusterProfileV3"},
-        '1200': {"type": "HypervisorClusterProfileV3"},
-        '1600': {"type": "HypervisorClusterProfileV3"}
-    }
-
     def __init__(self, connection, data=None):
         super(HypervisorClusterProfiles, self).__init__(connection, data)
+        self.__default_values = {
+            'type': 'HypervisorClusterProfileV3'
+        }
 
     def get_all(self, start=0, count=-1, filter='', sort='', query='', scope_uris=''):
         """

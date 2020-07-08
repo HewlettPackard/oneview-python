@@ -38,15 +38,11 @@ class CertificatesServer(Resource):
     """
     URI = '/rest/certificates'
 
-    DEFAULT_VALUES = {
-        '800': {"type": "CertificateInfoV2"},
-        '1000': {"type": "CertificateInfoV2"},
-        '1200': {"type": "CertificateInfoV2"},
-        '1600': {"type": "CertificateInfoV2"}
-    }
-
     def __init__(self, connection, data=None):
         super(CertificatesServer, self).__init__(connection, data)
+        self.__default_values = {
+            'type': 'CertificateInfoV2'
+        }
 
     def create(self, data=None, timeout=-1):
         """

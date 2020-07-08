@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,10 +38,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     FIRMWARE_PATH = "/firmware"
     SNMP_CONFIGURATION_PATH = "/snmp-configuration"
     PORT_MONITOR_PATH = "/port-monitor"
-    LOCATIONS_PATH = "/locations/interconnects"
     FORWARDING_INFORMATION_PATH = "/forwarding-information-base"
     QOS_AGGREGATED_CONFIGURATION = "/qos-aggregated-configuration"
-    locations_uri = "{uri}{locations}".format(uri=URI, locations=LOCATIONS_PATH)
 
     SETTINGS_DEFAULT_VALUES = {
         '200': {"type": "InterconnectSettingsV3"},
@@ -58,7 +56,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         '1000': {'type': "EthernetInterconnectSettingsV5"},
         '1200': {'type': "EthernetInterconnectSettingsV6"},
         '1400': {'type': "EthernetInterconnectSettingsV7"},
-        '1600': {'type': "EthernetInterconnectSettingsV7"}
+        '1600': {'type': "EthernetInterconnectSettingsV7"},
+        '1800': {'type': "EthernetInterconnectSettingsV7"}
     }
 
     SETTINGS_TELEMETRY_CONFIG_DEFAULT_VALUES = {
@@ -70,8 +69,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         '1000': {"type": "telemetry-configuration"},
         '1200': {"type": "telemetry-configuration"},
         '1400': {"type": "telemetry-configuration"},
-        '1600': {"type": "telemetry-configuration"}
-
+        '1600': {"type": "telemetry-configuration"},
+        '1800': {"type": "telemetry-configuration"}
     }
 
     def __init__(self, connection, data=None):
@@ -333,48 +332,6 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         uri = "{}{}".format(self.data["uri"], self.PORT_MONITOR_PATH)
         return self._helper.update(data, uri=uri, timeout=timeout)
-
-    def create_interconnect(self, location_entries, timeout=-1):
-        """
-        Creates an interconnect at the given location.
-
-        Warning:
-            It does not create the LOGICAL INTERCONNECT itself.
-            It will fail if no interconnect is already present on the specified position.
-
-        Args:
-            location_entries (dict): Dictionary with location entries.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Created interconnect.
-        """
-        return self._helper.create(location_entries, uri=self.locations_uri, timeout=timeout)
-
-    def delete_interconnect(self, enclosure_uri, bay, timeout=-1):
-        """
-        Deletes an interconnect from a location.
-
-        Warning:
-            This won't delete the LOGICAL INTERCONNECT itself and might cause inconsistency between the enclosure
-            and Logical Interconnect Group.
-
-        Args:
-            enclosure_uri: URI of the Enclosure
-            bay: Bay
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            bool: Indicating if the interconnect was successfully deleted.
-        """
-        uri = "{path}?location=Enclosure:{enclosure_uri},Bay:{bay}".format(path=self.LOCATIONS_PATH,
-                                                                           enclosure_uri=enclosure_uri,
-                                                                           bay=bay)
-        return self._helper.delete(uri, timeout=timeout)
 
     @ensure_resource_client
     def get_firmware(self):
