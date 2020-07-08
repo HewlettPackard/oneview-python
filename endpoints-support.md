@@ -72,6 +72,7 @@
 |<sub>/rest/ethernet-networks/{id}</sub>                                                  | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/ethernet-networks/{id}/associatedProfiles</sub>                               | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/ethernet-networks/{id}/associatedUplinkGroups</sub>                           | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/ethernet-networks/bulk-delete</sub>                                           | POST     |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :white_check_mark:   |  :white_check_mark:   |
 |     **FC Networks**
 |<sub>/rest/fc-networks</sub>                                                             | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/fc-networks</sub>                                                             | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
@@ -79,6 +80,7 @@
 |<sub>/rest/fc-networks/{id}</sub>                                                        | PATCH    |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :heavy_minus_sign:   |  :heavy_minus_sign:   |
 |<sub>/rest/fc-networks/{id}</sub>                                                        | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/fc-networks/{id}</sub>                                                        | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/fc-networks/bulk-delete</sub>                                                 | POST     |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :white_check_mark:   |  :white_check_mark:   |
 |     **FCoE Networks**
 |<sub>/rest/fcoe-networks</sub>                                                           | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/fcoe-networks</sub>                                                           | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
@@ -86,6 +88,7 @@
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | PATCH    |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :heavy_minus_sign:   |  :heavy_minus_sign:   |
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/fcoe-networks/bulk-delete</sub>                                               | POST     |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :white_check_mark:   |  :white_check_mark:   |
 |     **Firmware Drivers**
 |<sub>/rest/firmware-drivers</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/firmware-drivers</sub>                                                        | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |
