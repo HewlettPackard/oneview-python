@@ -160,8 +160,7 @@
 |<sub>/rest/logical-interconnects/{id}/firmware</sub>                                     | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/forwarding-information-base</sub>                  | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/forwarding-information-base</sub>                  | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/logical-interconnects/{id}/forwarding-information-base/{dumpFileName}.{suffix}</sub>| GET   | :heavy_multiplication_x:   | :heavy_multiplication_x:   | :heavy_multiplication_x:   |   :heavy_multiplication_x:   |
-:heavy_multiplication_x:   |
+|<sub>/rest/logical-interconnects/{id}/forwarding-information-base/{dumpFileName}.{suffix}</sub>| GET   | :heavy_multiplication_x:   | :heavy_multiplication_x:  |  :heavy_multiplication_x:|  :heavy_multiplication_x:  | :heavy_multiplication_x:  |
 |<sub>/rest/logical-interconnects/{id}/internalNetworks</sub>                             | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/internalVlans</sub>                                | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/qos-aggregated-configuration</sub>                 | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |

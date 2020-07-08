@@ -217,4 +217,3 @@ telemetry_config = {
 }
 logical_interconnect_updated = logical_interconnect.update_telemetry_configurations(configuration=telemetry_config)
 pprint(logical_interconnect_updated)
-
