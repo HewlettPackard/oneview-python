@@ -37,6 +37,14 @@ options = {
     "linkStabilityTime": 30,
 }
 
+options_bulk_delete = {
+    "networkUris": [
+        "/rest/fc-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
+        "/rest/fc-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
+        "/rest/fc-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
+    ]
+}
+
 # Scope name to perform the patch operation
 scope_name = "test"
 
@@ -105,3 +113,9 @@ if scope_name:
 # Delete the created network
 fc_network.delete()
 print("\nSuccessfully deleted fc-network")
+
+# Delete bulk fcnetworks
+if oneview_client.api_version >= 1600:
+    print("\nDelete bulk fcnetworks")
+    fc_network.delete_bulk(options_bulk_delete)
+    print("Successfully deleted bulk fcnetworks")

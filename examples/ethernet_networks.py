@@ -51,6 +51,14 @@ options_bulk = {
     }
 }
 
+options_bulk_delete = {
+    "networkUris": [
+        "/rest/ethernet-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
+        "/rest/ethernet-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
+        "/rest/ethernet-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
+    ]
+}
+
 # Scope name to perform the patch operation
 scope_name = "test"
 ethernet_name = "OneViewSDK Test Ethernet Network"
@@ -105,7 +113,7 @@ else:
 
 # Create bulk ethernet networks
 print("\nCreate bulk ethernet networks")
-ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
+ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk_delete)
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
@@ -143,10 +151,10 @@ if scope_name:
     pprint(ethernet_with_scope)
 
 # Delete bulk ethernet networks
-print("\nDelete bulk ethernet networks")
-for net in ethernet_nets_bulk:
-    ethernet_networks.get_by_uri(net['uri']).delete()
-print("   Done.")
+if oneview_client.api_version >= 1600:
+    print("\nDelete bulk ethernet networks")
+    ethernet_network.delete_bulk(options_bulk_delete)
+    print("Successfully deleted bulk ethernetnetworks")
 
 # Delete the created network
 print("\nDelete the ethernet network")

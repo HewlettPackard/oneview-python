@@ -33,6 +33,14 @@ options = {
     "connectionTemplateUri": None,
 }
 
+options_bulk_delete = {
+    "networkUris": [
+        "/rest/fcoe-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
+        "/rest/fcoe-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
+        "/rest/fcoe-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
+    ]
+}
+
 # Scope name to perform the patch operation
 scope_name = ""
 
@@ -95,3 +103,9 @@ if scope_name:
 # Delete the created network
 fcoe_network.delete()
 print("\nSuccessfully deleted fcoe-network")
+
+# Delete bulk fcoe networks
+if oneview_client.api_version >= 1600:
+    print("\nDelete bulk fcoe networks")
+    fcoe_network.delete_bulk(options_bulk_delete)
+    print("Successfully deleted bulk fcoe networks")

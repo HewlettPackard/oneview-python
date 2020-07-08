@@ -23,7 +23,8 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpOneView.resources.resource import Resource, ResourcePatchMixin
+from hpOneView.resources.resource import (Resource, ResourcePatchMixin,
+                                          ensure_resource_client)
 
 
 class FcNetworks(ResourcePatchMixin, Resource):
@@ -48,3 +49,18 @@ class FcNetworks(ResourcePatchMixin, Resource):
 
     def __init__(self, connection, data=None):
         super(FcNetworks, self).__init__(connection, data)
+
+    def delete_bulk(self, resource, timeout=-1):
+        """
+        Deletes bulk fc networks.
+
+        Args:
+            resource (dict): Specifications to delete in bulk.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        """
+        uri = self.URI + '/bulk-delete'
+
+        return self._helper.create(resource, uri=uri, timeout=timeout)
