@@ -50,6 +50,7 @@ class FcNetworks(ResourcePatchMixin, Resource):
     def __init__(self, connection, data=None):
         super(FcNetworks, self).__init__(connection, data)
 
+    @ensure_resource_client
     def delete_bulk(self, resource, timeout=-1):
         """
         Deletes bulk fc networks.

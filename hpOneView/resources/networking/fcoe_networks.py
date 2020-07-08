@@ -50,7 +50,7 @@ class FcoeNetworks(ResourcePatchMixin, Resource):
 
     def __init__(self, connection, data=None):
         super(FcoeNetworks, self).__init__(connection, data)
-        
+   
     @ensure_resource_client
     def delete_bulk(self, resource, timeout=-1):
         """
