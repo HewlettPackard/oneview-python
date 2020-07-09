@@ -1,3 +1,12 @@
+# 5.3.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+
+#### Features supported with the current release
+- Server Profiles
+- Server Profile Templates
+- Scopes
+
 # 5.2.1
 #### Notes
 Added support to OneView 'Restores' feature for REST API versions 800, 1000, 1200 and 1600.
