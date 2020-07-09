@@ -140,7 +140,8 @@ print("Successfully refreshed the state of the server at:\n   'uri': '{}'".forma
 
 # Get URL to launch SSO session for iLO Integrated Remote Console
 # Application (IRC)
-remote_console_url = server.get_java_remote_console_url()
+# You can also specify ip or consoleType if you need, inside function get_remote_console_url()
+remote_console_url = server.get_remote_console_url()
 print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console Application",
       " for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
 

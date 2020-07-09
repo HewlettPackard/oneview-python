@@ -272,7 +272,7 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
         return self._helper.update(configuration, uri=uri, timeout=timeout)
 
     @ensure_resource_client
-    def get_remote_console_url(self, ip=None):
+    def get_remote_console_url(self, ip=None, consoleType=None):
         """
         Generates a Single Sign-On (SSO) session for the iLO Integrated Remote Console Application (IRC) and returns the
         URL to launch it. If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO and the
@@ -289,6 +289,9 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         if ip:
             uri = "{}?ip={}".format(uri, ip)
+        
+        elif consoleType:
+            uri = "{}?consoleType={}".format(uri, consoleType)
 
         return self._helper.do_get(uri)
 

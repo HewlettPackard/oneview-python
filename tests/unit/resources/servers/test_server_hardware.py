@@ -206,6 +206,14 @@ class ServerHardwareTest(TestCase):
 
         mock_get.assert_called_once_with(uri_rest_call)
 
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_remote_console_url_with_consoleType(self, mock_get):
+        uri_rest_call = '{}/remoteConsoleUrl?consoleType=.net IRC'.format(self.uri)
+
+        self._server_hardware.get_remote_console_url(consoleType='.Net IRC')
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
     @mock.patch.object(ResourceHelper, 'do_put')
     def test_update_mp_firware_version_called_once(self, mock_get):
         self._server_hardware.update_mp_firware_version()
