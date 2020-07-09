@@ -281,6 +281,7 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         Args:
             ip: IP address or host name of the server's iLO management processor
+            consoleType: Type of console requested
 
         Returns:
             URL
@@ -289,7 +290,7 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         if ip:
             uri = "{}?ip={}".format(uri, ip)
-        
+
         elif consoleType:
             uri = "{}?consoleType={}".format(uri, consoleType)
 
