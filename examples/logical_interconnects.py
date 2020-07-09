@@ -84,7 +84,7 @@ if scope and oneview_client.api_version not in [200, 600]:
     print("\nPatches the logical interconnect adding one scope to it")
     logical_interconnect.patch('replace',
                                '/scopeUris',
-                               [scope['uri']])
+                               [scope.data['uri']])
     pprint(logical_interconnect.data)
 
 print("\nGet the Ethernet interconnect settings for the logical interconnect")

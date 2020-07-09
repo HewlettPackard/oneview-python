@@ -97,7 +97,7 @@ if scope:
     try:
         fc_with_scope = fc_network.patch('replace',
                                          '/scopeUris',
-                                         [scope['uri']])
+                                         [scope.data['uri']])
         pprint(fc_with_scope)
     except HPOneViewException, e:
         print(e)

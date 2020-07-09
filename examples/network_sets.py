@@ -109,7 +109,7 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
     scope = oneview_client.scopes.get_by_name(scope_name)
     net_set_with_scope = network_sets.patch('replace',
                                             '/scopeUris',
-                                            [scope['uri']])
+                                            [scope.data['uri']])
     pprint(net_set_with_scope)
 
 # Delete network set

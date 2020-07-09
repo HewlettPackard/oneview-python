@@ -139,7 +139,7 @@ if scope_name:
     scope = oneview_client.scopes.get_by_name(scope_name)
     ethernet_with_scope = ethernet_network.patch('replace',
                                                  '/scopeUris',
-                                                 [scope['uri']])
+                                                 [scope.data['uri']])
     pprint(ethernet_with_scope)
 
 # Delete bulk ethernet networks

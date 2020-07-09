@@ -89,7 +89,7 @@ if scope_name:
     scope = oneview_client.scopes.get_by_name(scope_name)
     fcoe_with_scope = fcoe_network.patch('replace',
                                          '/scopeUris',
-                                         [scope['uri']])
+                                         [scope.data['uri']])
     pprint(fcoe_with_scope.data)
 
 # Delete the created network
