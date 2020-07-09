@@ -228,12 +228,12 @@ for construction of networks. Its value is copied when a new connection template
 <p>Ethernet Networks API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.ethernet_networks.EthernetNetworks.BULK_DEFAULT_VALUES">
-<code class="descname">BULK_DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'bulk-ethernet-networkV1'}, u'1200': {u'type': u'bulk-ethernet-networkV2'}, u'1600': {u'type': u'bulk-ethernet-networkV2'}, u'200': {u'type': u'bulk-ethernet-network'}, u'300': {u'type': u'bulk-ethernet-network'}, u'500': {u'type': u'bulk-ethernet-network'}, u'600': {u'type': u'bulk-ethernet-networkV1'}, u'800': {u'type': u'bulk-ethernet-networkV1'}}</em><a class="headerlink" href="#hpOneView.resources.networking.ethernet_networks.EthernetNetworks.BULK_DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BULK_DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'bulk-ethernet-networkV1'}, u'1200': {u'type': u'bulk-ethernet-networkV2'}, u'1600': {u'type': u'bulk-ethernet-networkV2'}, u'1800': {u'type': u'bulk-ethernet-networkV2'}, u'200': {u'type': u'bulk-ethernet-network'}, u'300': {u'type': u'bulk-ethernet-network'}, u'500': {u'type': u'bulk-ethernet-network'}, u'600': {u'type': u'bulk-ethernet-networkV1'}, u'800': {u'type': u'bulk-ethernet-networkV1'}}</em><a class="headerlink" href="#hpOneView.resources.networking.ethernet_networks.EthernetNetworks.BULK_DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.ethernet_networks.EthernetNetworks.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'ethernet-networkV4'}, u'1200': {u'type': u'ethernet-networkV4'}, u'1600': {u'type': u'ethernet-networkV4'}, u'200': {u'type': u'ethernet-networkV3'}, u'300': {u'type': u'ethernet-networkV300'}, u'500': {u'type': u'ethernet-networkV300'}, u'600': {u'type': u'ethernet-networkV4'}, u'800': {u'type': u'ethernet-networkV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.ethernet_networks.EthernetNetworks.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'ethernet-networkV4'}, u'1200': {u'type': u'ethernet-networkV4'}, u'1600': {u'type': u'ethernet-networkV4'}, u'1800': {u'type': u'ethernet-networkV4'}, u'200': {u'type': u'ethernet-networkV3'}, u'300': {u'type': u'ethernet-networkV300'}, u'500': {u'type': u'ethernet-networkV300'}, u'600': {u'type': u'ethernet-networkV4'}, u'800': {u'type': u'ethernet-networkV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.ethernet_networks.EthernetNetworks.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -260,6 +260,25 @@ in OneView; it just stops waiting for its completion.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.networking.ethernet_networks.EthernetNetworks.delete_bulk">
+<code class="descname">delete_bulk</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/ethernet_networks.html#EthernetNetworks.delete_bulk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.ethernet_networks.EthernetNetworks.delete_bulk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes bulk Ethernet networks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resource</strong> (<em>dict</em>) – Specifications to delete in bulk.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -502,13 +521,32 @@ on the resource itself. The default is false.</li>
 <p>Fibre Channel networks API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.fc_networks.FcNetworks.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'fc-networkV4'}, u'1200': {u'type': u'fc-networkV4'}, u'1600': {u'type': u'fc-networkV4'}, u'200': {u'type': u'fc-networkV2'}, u'300': {u'type': u'fc-networkV300'}, u'500': {u'type': u'fc-networkV300'}, u'600': {u'type': u'fc-networkV4'}, u'800': {u'type': u'fc-networkV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.fc_networks.FcNetworks.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'fc-networkV4'}, u'1200': {u'type': u'fc-networkV4'}, u'1600': {u'type': u'fc-networkV4'}, u'1800': {u'type': u'fc-networkv4'}, u'200': {u'type': u'fc-networkV2'}, u'300': {u'type': u'fc-networkV300'}, u'500': {u'type': u'fc-networkV300'}, u'600': {u'type': u'fc-networkV4'}, u'800': {u'type': u'fc-networkV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.fc_networks.FcNetworks.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.fc_networks.FcNetworks.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/fc-networks'</em><a class="headerlink" href="#hpOneView.resources.networking.fc_networks.FcNetworks.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.networking.fc_networks.FcNetworks.delete_bulk">
+<code class="descname">delete_bulk</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/fc_networks.html#FcNetworks.delete_bulk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.fc_networks.FcNetworks.delete_bulk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes bulk fc networks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resource</strong> (<em>dict</em>) – Specifications to delete in bulk.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -522,13 +560,32 @@ on the resource itself. The default is false.</li>
 <p>FCoE Networks API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.fcoe_networks.FcoeNetworks.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'fcoe-networkV4'}, u'1200': {u'type': u'fcoe-networkV4'}, u'1600': {u'type': u'fcoe-networkV4'}, u'200': {u'type': u'fcoe-network'}, u'300': {u'type': u'fcoe-networkV300'}, u'500': {u'type': u'fcoe-networkV300'}, u'600': {u'type': u'fcoe-networkV4'}, u'800': {u'type': u'fcoe-networkV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.fcoe_networks.FcoeNetworks.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'fcoe-networkV4'}, u'1200': {u'type': u'fcoe-networkV4'}, u'1600': {u'type': u'fcoe-networkV4'}, u'1800': {u'type': u'fcoe-networkV4'}, u'200': {u'type': u'fcoe-network'}, u'300': {u'type': u'fcoe-networkV300'}, u'500': {u'type': u'fcoe-networkV300'}, u'600': {u'type': u'fcoe-networkV4'}, u'800': {u'type': u'fcoe-networkV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.fcoe_networks.FcoeNetworks.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.fcoe_networks.FcoeNetworks.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/fcoe-networks'</em><a class="headerlink" href="#hpOneView.resources.networking.fcoe_networks.FcoeNetworks.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="hpOneView.resources.networking.fcoe_networks.FcoeNetworks.delete_bulk">
+<code class="descname">delete_bulk</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpOneView/resources/networking/fcoe_networks.html#FcoeNetworks.delete_bulk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpOneView.resources.networking.fcoe_networks.FcoeNetworks.delete_bulk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes bulk FCoE networks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resource</strong> (<em>dict</em>) – Specifications to delete in bulk.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -1704,7 +1761,7 @@ in OneView, just stop waiting for its completion.</li>
 <p>Network Sets API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.network_sets.NetworkSets.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'network-setV4'}, u'1200': {u'type': u'network-setV5'}, u'1600': {u'type': u'network-setV5'}, u'200': {u'type': u'network-set'}, u'300': {u'type': u'network-setV300'}, u'500': {u'type': u'network-setV300'}, u'600': {u'type': u'network-setV4'}, u'800': {u'type': u'network-setV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.network_sets.NetworkSets.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'network-setV4'}, u'1200': {u'type': u'network-setV5'}, u'1600': {u'type': u'network-setV5'}, u'1800': {u'type': u'network-setV5'}, u'200': {u'type': u'network-set'}, u'300': {u'type': u'network-setV300'}, u'500': {u'type': u'network-setV300'}, u'600': {u'type': u'network-setV4'}, u'800': {u'type': u'network-setV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.network_sets.NetworkSets.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2317,7 +2374,7 @@ supported for update.</p>
 <p>Uplink Sets API client.</p>
 <dl class="attribute">
 <dt id="hpOneView.resources.networking.uplink_sets.UplinkSets.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'uplink-setV5'}, u'1200': {u'type': u'uplink-setV6'}, u'1600': {u'type': u'uplink-setV6'}, u'200': {u'type': u'uplink-setV3'}, u'300': {u'type': u'uplink-setV300'}, u'500': {u'type': u'uplink-setV300'}, u'600': {u'type': u'uplink-setV4'}, u'800': {u'type': u'uplink-setV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.uplink_sets.UplinkSets.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'uplink-setV5'}, u'1200': {u'type': u'uplink-setV6'}, u'1600': {u'type': u'uplink-setV7'}, u'1800': {u'type': u'uplink-setV7'}, u'200': {u'type': u'uplink-setV3'}, u'300': {u'type': u'uplink-setV300'}, u'500': {u'type': u'uplink-setV300'}, u'600': {u'type': u'uplink-setV4'}, u'800': {u'type': u'uplink-setV4'}}</em><a class="headerlink" href="#hpOneView.resources.networking.uplink_sets.UplinkSets.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
