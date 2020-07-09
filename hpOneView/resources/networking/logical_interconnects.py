@@ -500,5 +500,5 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         Returns:
             dict: Logical Interconnect.
         """
-        uri = "{}/ethernetSettings".format(self.data["uri"])
+        uri = "{}/igmpSettings".format(self.data["uri"])
         return self._helper.update(configuration, uri=uri, force=force, timeout=timeout)
