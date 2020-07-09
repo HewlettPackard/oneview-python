@@ -88,7 +88,7 @@ if oneview_client.api_version == 300:
     except HPOneViewException as e:
         print(e.msg)
 
-# Updates the name and description of a scope assigning and unassigning two ethernet resources 
+# Updates the name and description of a scope assigning and unassigning two ethernet resources
 # (Available only from API500)
 if oneview_client.api_version >= 500:
     try:
