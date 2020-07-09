@@ -208,7 +208,7 @@ class ServerHardwareTest(TestCase):
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_remote_console_url_with_consoleType(self, mock_get):
-        uri_rest_call = '{}/remoteConsoleUrl?consoleType=.net IRC'.format(self.uri)
+        uri_rest_call = '{}/remoteConsoleUrl?consoleType=.Net IRC'.format(self.uri)
 
         self._server_hardware.get_remote_console_url(consoleType='.Net IRC')
 
