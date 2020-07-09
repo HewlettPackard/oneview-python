@@ -66,7 +66,6 @@ class ScopesTest(TestCase):
 
     @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
-        id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
         self.resource.delete(timeout=-1)
 
         mock_delete.assert_called_once_with(timeout=-1, custom_headers={'If-Match': '*'})
@@ -77,7 +76,7 @@ class ScopesTest(TestCase):
 
         self.resource.get_by_uri(uri)
         mock_get.assert_called_once_with(uri)
-    
+
     @mock.patch.object(Resource, 'get_by')
     def test_get_by_name_called_once(self, mock_get_by):
         self.resource.get_by_name('test-scope')
