@@ -5,12 +5,17 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 #### Features supported with the current release
 - Enclosures
 - Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
 - Interconnects
 - Interconnect Types
 - Logical Enclosures
+- Network set
 - Server Hardware
 - Server Hardware Types
 - Tasks
+- Uplink set
 
 # 5.2.1
 #### Notes
