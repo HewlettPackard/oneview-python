@@ -36,9 +36,10 @@ class ScopesTest(TestCase):
         sort = 'name:ascending'
         query = 'name eq "TestName"'
         view = 'expand'
+        filter = 'name:'
 
-        self.resource.get_all(2, 500, sort, query, view)
-        mock_get_all.assert_called_once_with(2, 500, sort=sort, query=query, view=view)
+        self.resource.get_all(2, 500, filter, sort, query, view)
+        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort, query=query, view=view)
 
     @mock.patch.object(Resource, 'update')
     def test_update_called_once(self, mock_update):
@@ -66,19 +67,21 @@ class ScopesTest(TestCase):
     @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
         id = 'ad28cf21-8b15-4f92-bdcf-51cb2042db32'
-        self.resource.delete(id, timeout=-1)
+        self.resource.delete(timeout=-1)
 
-        mock_delete.assert_called_once_with(id, timeout=-1, custom_headers={'If-Match': '*'})
+        mock_delete.assert_called_once_with(timeout=-1, custom_headers={'If-Match': '*'})
 
-    @mock.patch.object(Resource, 'delete')
-    def test_delete_should_verify_if_match_etag_when_provided(self, mock_delete):
-        data = {'uri': 'a_uri',
-                'eTag': '2016-11-03T18:41:10.751Z/2016-11-03T18:41:10.751Z'}
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_with_uri_called_once(self, mock_get):
+        uri = '/rest/scopes/3518be0e-17c1-4189-8f81-83f3724f6155'
 
-        self.resource.delete(data, -1)
-
-        headers = {'If-Match': '2016-11-03T18:41:10.751Z/2016-11-03T18:41:10.751Z'}
-        mock_delete.assert_called_once_with(mock.ANY, timeout=mock.ANY, custom_headers=headers)
+        self.resource.get_by_uri(uri)
+        mock_get.assert_called_once_with(uri)
+    
+    @mock.patch.object(Resource, 'get_by')
+    def test_get_by_name_called_once(self, mock_get_by):
+        self.resource.get_by_name('test-scope')
+        mock_get_by.assert_called_once_with('name', 'test-scope')
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_update_resource_assignments_called_once(self, mock_patch_request):
