@@ -88,17 +88,28 @@ if oneview_client.api_version == 300:
     except HPOneViewException as e:
         print(e.msg)
 
-# Patch the scope assigning and unassigning two ethernet resources (Available only in API500)
-if oneview_client.api_version == 500:
+# Updates the name and description of a scope assigning and unassigning two ethernet resources 
+# (Available only from API500)
+if oneview_client.api_version >= 500:
     try:
         print("\n## Patch the scope adding two resource uris")
-        resource_list = [resource_uri_1, resource_uri_2]
-        edited_scope = scopes.patch(scope['uri'], 'replace', '/addedResourceUris', resource_list)
-        pprint(edited_scope)
+        edited_scope = scope.patch('add', '/addedResourceUris/-', resource_uri_1)
+        pprint(edited_scope.data)
 
         print("\n## Patch the scope removing the two previously added resource uris")
-        edited_scope = scopes.patch(scope['uri'], 'replace', '/removedResourceUris', resource_list)
-        pprint(edited_scope)
+        resource_list = [resource_uri_1]
+        edited_scope = scope.patch('replace', '/removedResourceUris', resource_list)
+        pprint(edited_scope.data)
+
+        print("\n## Patch the scope updating the name")
+        update_name = "MySampleScope"
+        edited_scope = scope.patch('replace', '/name', update_name)
+        pprint(edited_scope.data)
+
+        print("\n## Patch the scope updating the description")
+        update_description = "Modified scope description"
+        edited_scope = scope.patch('replace', '/description', update_description)
+        pprint(edited_scope.data)
     except HPOneViewException as e:
         print(e.msg)
 
