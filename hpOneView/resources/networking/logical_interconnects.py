@@ -473,3 +473,32 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         """
         uri = "{}/ethernetSettings".format(self.data["uri"])
         return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_igmp_settings(self):
+        """
+        Gets the Igmp settings for the Logical Interconnect.
+
+        Returns:
+            dict: Ethernet Igmp Settings
+        """
+        uri = "{}/igmpSettings".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def update_igmp_settings(self, configuration, force=False, timeout=-1):
+        """
+        Updates the Igmp interconnect settings for the logical interconnect.
+
+        Args:
+            configuration:  Igmp interconnect settings.
+            force: If set to true, the operation completes despite any problems with network connectivity or errors
+                on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        Returns:
+            dict: Logical Interconnect.
+        """
+        uri = "{}/ethernetSettings".format(self.data["uri"])
+        return self._helper.update(configuration, uri=uri, force=force, timeout=timeout)

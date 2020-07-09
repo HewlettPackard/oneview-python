@@ -359,3 +359,20 @@ class LogicalInterconnectsTest(unittest.TestCase):
                                          ['rest/fake/scope123'], 1)
         mock_patch.assert_called_once_with('replace', '/scopeUris',
                                            ['rest/fake/scope123'], 1)
+
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_igmp_settings(self, mock_update):
+        uri_rest_call = '{}/igmpSettings'.format(self.uri)
+        configuration = {"igmpIdleTimeoutInterval": 200}
+        configuration_rest_call = configuration.copy()
+
+        self._logical_interconnect.update_igmp_settings(configuration)
+
+        mock_update.assert_called_once_with(configuration_rest_call, uri=uri_rest_call, force=False, timeout=-1)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_igmp_settings(self, mock_get):
+        self._logical_interconnect.get_igmp_settings()
+
+        expected_uri = '{}/igmpSettings'.format(self.uri)
+        mock_get.assert_called_once_with(expected_uri)

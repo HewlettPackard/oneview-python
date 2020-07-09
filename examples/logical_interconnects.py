@@ -84,7 +84,7 @@ if scope and oneview_client.api_version not in [200, 600]:
     print("\nPatches the logical interconnect adding one scope to it")
     logical_interconnect.patch('replace',
                                '/scopeUris',
-                               [scope['uri']])
+                               [scope.data['uri']])
     pprint(logical_interconnect.data)
 
 print("\nGet the Ethernet interconnect settings for the logical interconnect")
@@ -217,3 +217,17 @@ telemetry_config = {
 }
 logical_interconnect_updated = logical_interconnect.update_telemetry_configurations(configuration=telemetry_config)
 pprint(logical_interconnect_updated)
+
+# Gets the IGMP interconnect settings for the logical interconnect.
+if oneview_client.api_version >= 1600:
+    print("\nGets the IGMP interconnect settings for the logical interconnect")
+    igmp_settings = logical_interconnect.get_igmp_settings()
+    pprint(igmp_settings)
+
+# Updates IGMP interconnect settings for the logical interconnect.
+if oneview_client.api_version >= 1600:
+    print("\nUpdates IGMP interconnect settings for the logical interconnect")
+    igmp_settings['igmpIdleTimeoutInterval'] = 200
+    igmp_settings_updated = logical_interconnect.update_igmp_settings(igmp_settings)
+    pprint(igmp_settings_updated)
+    print("\nUpdated IGMP interconnect settings for the logical interconnect successfully")
