@@ -50,7 +50,7 @@ pprint(scope.data)
 
 # Update the name of the scope
 print("\n## Update the scope")
-resource = scope.data.copy() 
+resource = scope.data.copy()
 resource['name'] = "SampleScopeRenamed"
 scope.update(resource)
 print("\n## scope updated successfully")
