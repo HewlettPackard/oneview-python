@@ -6,6 +6,9 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 - Server Profiles
 - Server Profile Templates
 - Scopes
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
 
 # 5.2.1
 #### Notes

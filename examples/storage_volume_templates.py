@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -213,10 +213,11 @@ print("   Found '{name}' at uri: {uri}".format(**volume_template_byname.data))
 
 # Gets the storage templates that are connected on the specified networks
 # scoper_uris and private_allowed_only parameters supported only with API version >= 600
-print("Get torage templates that are connected on the specified networks")
-storage_templates = storage_volume_templates.get_reachable_volume_templates(
-    networks=networks, scope_uris=scope_uris, private_allowed_only=False)
-print(storage_templates)
+if oneview_client.api_version >= 600:
+    print("Get storage templates that are connected on the specified networks")
+    storage_templates = storage_volume_templates.get_reachable_volume_templates(
+        networks=networks, scope_uris=scope_uris, private_allowed_only=False)
+    print(storage_templates)
 
 # Retrieves all storage systems that is applicable to the storage volume template.
 print("Get storage systems that is applicable to the storage volume template")
