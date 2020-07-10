@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -93,3 +93,23 @@ class FcoeNetworksTest(TestCase):
                                                           'op': 'replace'}],
                                                    custom_headers=None,
                                                    timeout=-1)
+
+    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'get_all')
+    def test_delete_bulk(self, mock_get_all, mock_create):
+        resource = {
+            "networkUris": [
+                "/rest/fcoe-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
+                "/rest/fcoe-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
+                "/rest/fcoe-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
+            ]
+        }
+        resource_rest_call = resource.copy()
+
+        mock_create.return_value = {}
+        mock_get_all.return_value = []
+
+        self._fcoe_networks.delete_bulk(resource, 27)
+
+        mock_create.assert_called_once_with(
+            resource_rest_call, uri='/rest/fcoe-networks/bulk-delete', timeout=27)

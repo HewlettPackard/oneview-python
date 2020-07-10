@@ -3,12 +3,17 @@
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 
 #### Features supported with the current release
+- Ethernet network
+- FC network
+- FCOE network
+- Scopes
 - Server Profiles
 - Server Profile Templates
-- Scopes
 - Storage Templates
 - Storage Volume Attachments
 - Storage Volume 
+- Network set
+- Uplink set
 
 # 5.2.1
 #### Notes
