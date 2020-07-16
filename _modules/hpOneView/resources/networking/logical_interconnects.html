@@ -151,7 +151,7 @@
   <h1>Source code for hpOneView.resources.networking.logical_interconnects</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -189,10 +189,8 @@
     <span class="n">FIRMWARE_PATH</span> <span class="o">=</span> <span class="s2">&quot;/firmware&quot;</span>
     <span class="n">SNMP_CONFIGURATION_PATH</span> <span class="o">=</span> <span class="s2">&quot;/snmp-configuration&quot;</span>
     <span class="n">PORT_MONITOR_PATH</span> <span class="o">=</span> <span class="s2">&quot;/port-monitor&quot;</span>
-    <span class="n">LOCATIONS_PATH</span> <span class="o">=</span> <span class="s2">&quot;/locations/interconnects&quot;</span>
     <span class="n">FORWARDING_INFORMATION_PATH</span> <span class="o">=</span> <span class="s2">&quot;/forwarding-information-base&quot;</span>
     <span class="n">QOS_AGGREGATED_CONFIGURATION</span> <span class="o">=</span> <span class="s2">&quot;/qos-aggregated-configuration&quot;</span>
-    <span class="n">locations_uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{uri}{locations}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">URI</span><span class="p">,</span> <span class="n">locations</span><span class="o">=</span><span class="n">LOCATIONS_PATH</span><span class="p">)</span>
 
     <span class="n">SETTINGS_DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;InterconnectSettingsV3&quot;</span><span class="p">},</span>
@@ -209,7 +207,8 @@
         <span class="s1">&#39;1000&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s2">&quot;EthernetInterconnectSettingsV5&quot;</span><span class="p">},</span>
         <span class="s1">&#39;1200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s2">&quot;EthernetInterconnectSettingsV6&quot;</span><span class="p">},</span>
         <span class="s1">&#39;1400&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s2">&quot;EthernetInterconnectSettingsV7&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;1600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s2">&quot;EthernetInterconnectSettingsV7&quot;</span><span class="p">}</span>
+        <span class="s1">&#39;1600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s2">&quot;EthernetInterconnectSettingsV7&quot;</span><span class="p">},</span>
+        <span class="s1">&#39;1800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s2">&quot;EthernetInterconnectSettingsV7&quot;</span><span class="p">}</span>
     <span class="p">}</span>
 
     <span class="n">SETTINGS_TELEMETRY_CONFIG_DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{</span>
@@ -221,8 +220,8 @@
         <span class="s1">&#39;1000&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;telemetry-configuration&quot;</span><span class="p">},</span>
         <span class="s1">&#39;1200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;telemetry-configuration&quot;</span><span class="p">},</span>
         <span class="s1">&#39;1400&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;telemetry-configuration&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;1600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;telemetry-configuration&quot;</span><span class="p">}</span>
-
+        <span class="s1">&#39;1600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;telemetry-configuration&quot;</span><span class="p">},</span>
+        <span class="s1">&#39;1800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;telemetry-configuration&quot;</span><span class="p">}</span>
     <span class="p">}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -485,48 +484,6 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">PORT_MONITOR_PATH</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LogicalInterconnects.create_interconnect"><a class="viewcode-back" href="../../../../hpOneView.resources.networking.html#hpOneView.resources.networking.logical_interconnects.LogicalInterconnects.create_interconnect">[docs]</a>    <span class="k">def</span> <span class="nf">create_interconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location_entries</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates an interconnect at the given location.</span>
-
-<span class="sd">        Warning:</span>
-<span class="sd">            It does not create the LOGICAL INTERCONNECT itself.</span>
-<span class="sd">            It will fail if no interconnect is already present on the specified position.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            location_entries (dict): Dictionary with location entries.</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView; it just stops waiting for its completion.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: Created interconnect.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">location_entries</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">locations_uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="LogicalInterconnects.delete_interconnect"><a class="viewcode-back" href="../../../../hpOneView.resources.networking.html#hpOneView.resources.networking.logical_interconnects.LogicalInterconnects.delete_interconnect">[docs]</a>    <span class="k">def</span> <span class="nf">delete_interconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enclosure_uri</span><span class="p">,</span> <span class="n">bay</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Deletes an interconnect from a location.</span>
-
-<span class="sd">        Warning:</span>
-<span class="sd">            This won&#39;t delete the LOGICAL INTERCONNECT itself and might cause inconsistency between the enclosure</span>
-<span class="sd">            and Logical Interconnect Group.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            enclosure_uri: URI of the Enclosure</span>
-<span class="sd">            bay: Bay</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView; it just stops waiting for its completion.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: Indicating if the interconnect was successfully deleted.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{path}</span><span class="s2">?location=Enclosure:</span><span class="si">{enclosure_uri}</span><span class="s2">,Bay:</span><span class="si">{bay}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LOCATIONS_PATH</span><span class="p">,</span>
-                                                                           <span class="n">enclosure_uri</span><span class="o">=</span><span class="n">enclosure_uri</span><span class="p">,</span>
-                                                                           <span class="n">bay</span><span class="o">=</span><span class="n">bay</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
-
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">get_firmware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -666,7 +623,36 @@
 <span class="sd">            dict: Ethernet Interconnect Settings</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/ethernetSettings&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_igmp_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the Igmp settings for the Logical Interconnect.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Ethernet Igmp Settings</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/igmpSettings&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">update_igmp_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the Igmp interconnect settings for the logical interconnect.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            configuration:  Igmp interconnect settings.</span>
+<span class="sd">            force: If set to true, the operation completes despite any problems with network connectivity or errors</span>
+<span class="sd">                on the resource itself. The default is false.</span>
+<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">                in OneView; it just stops waiting for its completion.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Logical Interconnect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/igmpSettings&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
