@@ -43,8 +43,25 @@ class FcoeNetworks(ResourcePatchMixin, Resource):
         '800': {"type": "fcoe-networkV4"},
         '1000': {"type": "fcoe-networkV4"},
         '1200': {"type": "fcoe-networkV4"},
-        '1600': {"type": "fcoe-networkV4"}
+        '1600': {"type": "fcoe-networkV4"},
+        '1800': {"type": "fcoe-networkV4"}
+
     }
 
     def __init__(self, connection, data=None):
         super(FcoeNetworks, self).__init__(connection, data)
+
+    def delete_bulk(self, resource, timeout=-1):
+        """
+        Deletes bulk FCoE networks.
+
+        Args:
+            resource (dict): Specifications to delete in bulk.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        """
+        uri = self.URI + '/bulk-delete'
+
+        return self._helper.create(resource, uri=uri, timeout=timeout)
