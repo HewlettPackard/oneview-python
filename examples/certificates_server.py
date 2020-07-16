@@ -45,7 +45,7 @@ options = {
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-oneview_client = OneViewClient.config()
+oneview_client = OneViewClient(config)
 certificate_server = oneview_client.certificates_server
 
 # Fetch server certificate of remote server

@@ -34,15 +34,11 @@ class HypervisorManagers(Resource):
     """
     URI = '/rest/hypervisor-managers'
 
-    DEFAULT_VALUES = {
-        '800': {"type": "HypervisorManagerV2"},
-        '1000': {"type": "HypervisorManagerV2"},
-        '1200': {"type": "HypervisorManagerV2"},
-        '1600': {"type": "HypervisorManagerV2"}
-    }
-
     def __init__(self, connection, data=None):
         super(HypervisorManagers, self).__init__(connection, data)
+        self.__default_values = {
+            'type': 'HypervisorManagerV2'
+        }
 
     def get_all(self, start=0, count=-1, filter='', sort='', query='', scope_uris=''):
         """

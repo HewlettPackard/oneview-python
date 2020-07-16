@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -175,17 +175,6 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
         """
         uri = "{}/refreshState".format(self.data['uri'])
         return self._helper.do_put(uri, configuration, timeout, None)
-
-    @ensure_resource_client
-    def get_script(self):
-        """
-        Gets the script of the enclosure.
-
-        Returns:
-            Enclosure script.
-        """
-        uri = "{}/script".format(self.data['uri'])
-        return self._helper.do_get(uri)
 
     @ensure_resource_client
     def get_sso(self, role):
