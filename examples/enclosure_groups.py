@@ -104,14 +104,14 @@ enclosure_group.update(resource)
 pprint(enclosure_group.data)
 
 # Update an Enclosure Group Script
-# update_script is available for API version 300 in Synery and in all versions in C7000
+# update_script is available for API version 300 in Synergy and in all versions in C7000
 print("Update an Enclosure Group Script")
 script = "#TEST COMMAND"
 update_script_result = enclosure_group.update_script(script)
 pprint(update_script_result)
 
 # Gets the configuration script of a Enclosure Group
-# get_script is available for API version 300 in Synery and in all versions in C7000
+# get_script is available for API version 300 in Synergy and in all versions in C7000
 print("Gets the configuration script of an Enclosure Group")
 script = enclosure_group.get_script()
 print(script)

@@ -140,7 +140,8 @@ print("Successfully refreshed the state of the server at:\n   'uri': '{}'".forma
 
 # Get URL to launch SSO session for iLO Integrated Remote Console
 # Application (IRC)
-remote_console_url = server.get_java_remote_console_url()
+# You can also specify ip or consoleType if you need, inside function get_remote_console_url()
+remote_console_url = server.get_remote_console_url()
 print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console Application",
       " for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
 
@@ -172,6 +173,13 @@ if oneview_client.api_version >= 500:
     print("Get SDX physical server hardware")
     sdx_server = server.get_physical_server_hardware()
     pprint(sdx_server)
+
+# This operation works from Oneview API Version 1800.
+if oneview_client.api_version >= 1800:
+    # Gets the updated version 2 local storage resource for the server.
+    print("Get updated local storage resource of server hardware")
+    local_storage = server.get_local_storage()
+    pprint(local_storage)
 
 # Remove rack server
 # This operation works till Oneview API Version 500.
