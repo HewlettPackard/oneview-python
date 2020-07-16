@@ -11,6 +11,7 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 - Ethernet network
 - FC network
 - FCOE network
+
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
@@ -21,10 +22,16 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 - Logical Interconnect Group
 - Network set
 - Restores
+- Scopes
 - Server Hardware
 - Server Hardware Types
-- Storage Systems
+- Server Profiles
+- Server Profile Templates
 - Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
 - Tasks
 - Uplink set
 
