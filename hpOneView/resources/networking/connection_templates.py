@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -35,18 +35,11 @@ class ConnectionTemplates(Resource):
     """
     URI = '/rest/connection-templates'
 
-    DEFAULT_VALUES = {
-        '200': {"type": "connection-template"},
-        '300': {"type": "connection-template"},
-        '500': {"type": "connection-template"},
-        '600': {"type": "connection-template"},
-        '800': {"type": "connection-template"},
-        '1000': {"type": "connection-template"},
-        '1200': {"type": "connection-template"}
-    }
-
     def __init__(self, connection, data=None):
         super(ConnectionTemplates, self).__init__(connection, data)
+        self.__default_values = {
+            'type': 'connection-template'
+        }
 
     def get_default(self):
         """

@@ -38,7 +38,7 @@ options = {
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-oneview_client = OneViewClient.config()
+oneview_client = OneViewClient(config)
 hypervisor_managers = oneview_client.hypervisor_managers
 
 # Find recently created hypervisor manager by name

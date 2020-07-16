@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -273,24 +273,6 @@ class LogicalInterconnectsTest(unittest.TestCase):
 
         mock_get.assert_called_once_with(uri_telemetry_configuration)
 
-    @mock.patch.object(ResourceHelper, 'create')
-    def test_create_interconnect_called_once(self, mock_create):
-        location_entries = {"locationEntries": [{"type": "Bay", "value": "1"}]}
-
-        self._logical_interconnect.create_interconnect(location_entries.copy(), timeout=-1)
-
-        mock_create.assert_called_once_with(location_entries,
-                                            uri="/rest/logical-interconnects/locations/interconnects",
-                                            timeout=-1)
-
-    @mock.patch.object(ResourceHelper, 'delete')
-    def test_delete_interconnect_called_once(self, mock_delete):
-        self._logical_interconnect.delete_interconnect(enclosure_uri="/rest/enclosures/09SGH100X6J1",
-                                                       bay=3, timeout=-1)
-
-        expected_uri = "/locations/interconnects?location=Enclosure:/rest/enclosures/09SGH100X6J1,Bay:3"
-        mock_delete.assert_called_once_with(expected_uri, timeout=-1)
-
     @mock.patch.object(ResourceHelper, 'build_uri')
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_firmware(self, mock_get, mock_build_uri):
@@ -377,3 +359,19 @@ class LogicalInterconnectsTest(unittest.TestCase):
                                          ['rest/fake/scope123'], 1)
         mock_patch.assert_called_once_with('replace', '/scopeUris',
                                            ['rest/fake/scope123'], 1)
+
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_igmp_settings(self, mock_update):
+        configuration = {"igmpIdleTimeoutInterval": 200}
+        configuration_rest_call = configuration.copy()
+
+        self._logical_interconnect.update_igmp_settings(configuration)
+
+        mock_update.assert_called_once_with(configuration_rest_call, uri='{}/igmpSettings'.format(self.uri), force=False, timeout=-1)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_igmp_settings(self, mock_get):
+        self._logical_interconnect.get_igmp_settings()
+
+        expected_uri = '{}/igmpSettings'.format(self.uri)
+        mock_get.assert_called_once_with(expected_uri)
