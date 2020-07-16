@@ -3,10 +3,13 @@
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 
 #### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
 - Ethernet network
 - FC network
 - FCOE network
+- Firmware Drivers
 - Network set
+- Restores
 - Uplink set
 
 # 5.2.1
