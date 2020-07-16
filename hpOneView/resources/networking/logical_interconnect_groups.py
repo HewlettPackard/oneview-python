@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,7 +44,8 @@ class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
         '1000': {"type": "logical-interconnect-groupV6"},
         '1200': {"type": "logical-interconnect-groupV7"},
         '1400': {"type": "logical-interconnect-groupV8"},
-        '1600': {"type": "logical-interconnect-groupV8"}
+        '1600': {"type": "logical-interconnect-groupV8"},
+        '1800': {"type": "logical-interconnect-groupV8"}
     }
 
     def __init__(self, connection, data=None):
