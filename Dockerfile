@@ -1,8 +1,13 @@
 FROM python:3.7-slim-buster
 
+LABEL maintainer "Chebrolu Harika <bala-sai-harika.chebrolu@hpe.com>"
 
-LABEL maintainer "Priyanka Sood <priyanka.sood@hpe.com>"
+WORKDIR /root
 
-RUN pip install hpOneView==5.0.0
+RUN pip install hpOneView
+
+ADD . oneview/
+
+WORKDIR /root/oneview
 
 CMD ["/bin/bash"]
