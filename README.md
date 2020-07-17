@@ -209,7 +209,7 @@ export ONEVIEWSDK_PROXY='<proxy_host>:<proxy_port>'
 
 ### Setting your OneView version
 
-The OneView Python SDK supports the API endpoints for HPE OneView 4.10, 4.20 and 5.00.
+The OneView Python SDK supports the API endpoints for HPE OneView 4.10, 4.20, 5.00, 5.20, 5.30.
 
 The current `default` HPE OneView version used by the Python SDK is `4.10`, API `800`.
 
