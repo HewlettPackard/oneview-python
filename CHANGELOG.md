@@ -1,4 +1,4 @@
-# 5.3.0(unreleased)
+# 5.3.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 
@@ -11,7 +11,6 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 - Ethernet network
 - FC network
 - FCOE network
-
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
