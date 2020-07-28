@@ -16,7 +16,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v3      
         name: Build & push Docker image
         with:
-          image: hpe/oneview-python
+          image: hewlettpackardenterprise/hpe-oneview-sdk-for-python
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
