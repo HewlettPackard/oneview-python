@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,13 +20,14 @@ from pprint import pprint
 from config_loader import try_load_from_file
 from hpOneView.oneview_client import OneViewClient
 
+# To run this example fill the ip and the credentials below or use a configuration file
 config = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
         "password": "<password>"
     },
-    "api_version": 800
+    "api_version": "<api_version>"
 }
 
 options = {
@@ -49,6 +50,14 @@ options_bulk = {
         "maximumBandwidth": 10000,
         "typicalBandwidth": 2000
     }
+}
+
+options_bulk_delete = {
+    "networkUris": [
+        "/rest/ethernet-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
+        "/rest/ethernet-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
+        "/rest/ethernet-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
+    ]
 }
 
 # Scope name to perform the patch operation
@@ -105,7 +114,7 @@ else:
 
 # Create bulk ethernet networks
 print("\nCreate bulk ethernet networks")
-ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
+ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk_delete)
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
@@ -133,20 +142,20 @@ for uri in uplink_group_uris:
     uplink = uplink_sets.get_by_uri(uri)
     pprint(uplink.data)
 
-# Adds ethernet to scope defined
-if scope_name:
+# Adds Ethernet network to scope defined only for V300 and V500
+if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
     scope = oneview_client.scopes.get_by_name(scope_name)
     ethernet_with_scope = ethernet_network.patch('replace',
                                                  '/scopeUris',
-                                                 [scope['uri']])
+                                                 [scope.data['uri']])
     pprint(ethernet_with_scope)
 
 # Delete bulk ethernet networks
-print("\nDelete bulk ethernet networks")
-for net in ethernet_nets_bulk:
-    ethernet_networks.get_by_uri(net['uri']).delete()
-print("   Done.")
+if oneview_client.api_version >= 1600:
+    print("\nDelete bulk ethernet networks")
+    ethernet_network.delete_bulk(options_bulk_delete)
+    print("Successfully deleted bulk ethernetnetworks")
 
 # Delete the created network
 print("\nDelete the ethernet network")

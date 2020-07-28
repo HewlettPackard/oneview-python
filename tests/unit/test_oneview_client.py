@@ -137,6 +137,17 @@ class OneViewClientTest(unittest.TestCase):
 
         self._oneview = OneViewClient(config)
 
+    def test_raise_error_missing_ip(self):
+        config = {"ip": "",
+                  "credentials": {
+                      "userName": "administrator",
+                      "password": ""}}
+
+        try:
+            OneViewClient(config)
+        except ValueError as e:
+            self.assertTrue("ip address is missing" in e.args[0])
+
     def test_raise_error_invalid_proxy(self):
         config = {"ip": "172.16.102.59",
                   "proxy": "3128",
@@ -357,12 +368,10 @@ class OneViewClientTest(unittest.TestCase):
         client = OneViewClient(config)
         client.connection.set_session_id('123')
 
-        i3s = client.create_image_streamer_client()
-
-        self.assertEqual(i3s.connection.get_session_id(), client.connection.get_session_id())
-        self.assertEqual(i3s.connection._apiVersion, client.api_version)
-        self.assertEqual(i3s.connection.get_host(), None)
-        self.assertEqual(client.connection.get_host(), "172.16.102.59")
+        try:
+            client.create_image_streamer_client()
+        except ValueError as e:
+            self.assertTrue("Image streamer ip" in e.args[0])
 
     @mock.patch.object(connection, 'login')
     def test_create_image_streamer_client_with_image_streamer_ip(self, mock_login):
@@ -713,9 +722,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_restores_has_right_type(self):
         self.assertIsInstance(self._oneview.restores, Restores)
 
-    def test_lazy_loading_restores(self):
-        copy_restores = self._oneview.restores
-        self.assertEqual(copy_restores, self._oneview.restores)
+    def test_restores_client(self):
+        restores = self._oneview.restores
+        self.assertNotEqual(restores, self._oneview.restores)
 
     def test_scopes_has_right_type(self):
         self.assertIsInstance(self._oneview.scopes, Scopes)

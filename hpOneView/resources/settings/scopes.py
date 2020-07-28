@@ -43,13 +43,14 @@ class Scopes(Resource, ResourcePatchMixin):
         '800': {"type": "ScopeV3"},
         '1000': {"type": "ScopeV3"},
         '1200': {"type": "ScopeV3"},
-        '1600': {"type": "ScopeV3"}
+        '1600': {"type": "ScopeV3"},
+        '1800': {"type": "ScopeV3"}
     }
 
     def __init__(self, connection, data=None):
         super(Scopes, self).__init__(connection, data)
 
-    def get_all(self, start=0, count=-1, sort='', query='', view=''):
+    def get_all(self, start=0, count=-1, filter='', sort='', query='', view=''):
         """
          Gets a list of scopes.
 
@@ -61,6 +62,9 @@ class Scopes(Resource, ResourcePatchMixin):
                 The number of resources to return. A count of -1 requests all items.
                 The actual number of items in the response might differ from the requested
                 count if the sum of start and count exceeds the total number of items.
+            filter (list or str):
+                A general filter/query string to narrow the list of items returned. The
+                default is no filter; all resources are returned.
             sort:
                 The sort order of the returned data set. By default, the sort order is based
                 on create time with the oldest entry first.
@@ -75,7 +79,7 @@ class Scopes(Resource, ResourcePatchMixin):
         Returns:
             list: A list of scopes.
         """
-        return self._helper.get_all(start, count, sort=sort, query=query, view=view)
+        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, view=view)
 
     def update(self, resource, timeout=-1):
         """
@@ -94,12 +98,11 @@ class Scopes(Resource, ResourcePatchMixin):
         headers = {'If-Match': resource.get('eTag', '*')}
         return super(Scopes, self).update(resource, timeout=timeout, custom_headers=headers)
 
-    def delete(self, resource, timeout=-1):
+    def delete(self, timeout=-1):
         """
         Deletes a Scope.
 
         Args:
-            resource: dict object to delete
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -108,12 +111,8 @@ class Scopes(Resource, ResourcePatchMixin):
             bool: Indicates if the resource was successfully deleted.
 
         """
-
-        if type(resource) is dict:
-            headers = {'If-Match': resource.get('eTag', '*')}
-        else:
-            headers = {'If-Match': '*'}
-        return super(Scopes, self).delete(resource, timeout=timeout, custom_headers=headers)
+        headers = {'If-Match': '*'}
+        return super(Scopes, self).delete(timeout=timeout, custom_headers=headers)
 
     # This function will work till API version 300
     def update_resource_assignments(self, id_or_uri, resource_assignments, timeout=-1):

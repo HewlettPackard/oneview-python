@@ -19,13 +19,14 @@ from pprint import pprint
 from hpOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
+# To run this example fill the ip and the credentials below or use a configuration file
 config = {
-    "ip": "<ov_ip>",
+    "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
         "password": "<password>"
     },
-    "api_version": 1200
+    "api_version": "<api_version>"
 }
 
 options = {
@@ -109,7 +110,7 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
     scope = oneview_client.scopes.get_by_name(scope_name)
     net_set_with_scope = network_sets.patch('replace',
                                             '/scopeUris',
-                                            [scope['uri']])
+                                            [scope.data['uri']])
     pprint(net_set_with_scope)
 
 # Delete network set

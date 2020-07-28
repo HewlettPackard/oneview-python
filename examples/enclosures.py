@@ -96,20 +96,24 @@ try:
 except HPOneViewException as e:
     print(e.msg)
 
+# Set the calibrated max power of an unmanaged or unsupported enclosure
+print("Set the calibrated max power of an unmanaged or unsupported enclosure")
+
+try:
+    configuration = {
+        "calibratedMaxPower": 2500
+    }
+    enclosure_updated_encConf = enclosure.update_environmental_configuration(configuration)
+    print("  Done.")
+except HPOneViewException as e:
+    print(e.msg)
+
 # Refresh the enclosure
 print("Refreshing the enclosure")
 try:
     refresh_state = {"refreshState": "RefreshPending"}
     enclosure.refresh_state(refresh_state)
     print("  Done")
-except HPOneViewException as e:
-    print(e.msg)
-
-# Get the enclosure script
-print("Get the enclosure script")
-try:
-    script = enclosure.get_script()
-    pprint(script)
 except HPOneViewException as e:
     print(e.msg)
 

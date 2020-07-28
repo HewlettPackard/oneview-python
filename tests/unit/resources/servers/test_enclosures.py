@@ -161,14 +161,6 @@ class EnclosuresTest(TestCase):
 
     @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_script_by_uri(self, mock_get, ensure_resource_data):
-        uri_rest_call = '/rest/enclosures/ad28cf21-8b15-4f92-bdcf-51cb2042db32/script'
-
-        self._enclosures.get_script()
-        mock_get.assert_called_once_with(uri_rest_call)
-
-    @mock.patch.object(Resource, 'ensure_resource_data')
-    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_sso_by_uri(self, mock_get, ensure_resource_data):
         uri_rest_call = '/rest/enclosures/ad28cf21-8b15-4f92-bdcf-51cb2042db32/sso?role=Active'
 
