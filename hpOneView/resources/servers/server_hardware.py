@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -272,7 +272,7 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
         return self._helper.update(configuration, uri=uri, timeout=timeout)
 
     @ensure_resource_client
-    def get_remote_console_url(self, ip=None):
+    def get_remote_console_url(self, ip=None, consoleType=None):
         """
         Generates a Single Sign-On (SSO) session for the iLO Integrated Remote Console Application (IRC) and returns the
         URL to launch it. If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO and the
@@ -281,6 +281,7 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         Args:
             ip: IP address or host name of the server's iLO management processor
+            consoleType: Type of console requested
 
         Returns:
             URL
@@ -289,6 +290,9 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         if ip:
             uri = "{}?ip={}".format(uri, ip)
+
+        elif consoleType:
+            uri = "{}?consoleType={}".format(uri, consoleType)
 
         return self._helper.do_get(uri)
 
@@ -302,4 +306,23 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
             Resource
         """
         uri = "{}/physicalServerHardware".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_local_storage(self, ip=None):
+        """
+        Gets the updated version 2 local storage resource for the server, including storage controllers,
+        drives, and volumes.
+
+        Args:
+            ip: IP address or host name of the server's iLO management processor
+
+        Returns:
+            Resource
+        """
+        uri = "{}/localStorageV2".format(self.data["uri"])
+
+        if ip:
+            uri = "{}?ip={}".format(uri, ip)
+
         return self._helper.do_get(uri)

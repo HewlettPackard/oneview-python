@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ try:
 except HPOneViewException as e:
     print(e.msg)
 
-if volume_attachments:
+if len(volume_attachments_all) != 0:
     # Get storage volume attachment by uri
     print("\nGet storage volume attachment by uri: '{uri}'".format(**volume_attachments_all[0]))
     volume_attachment_byid = volume_attachments.get_by_uri(volume_attachments_all[0]['uri'])

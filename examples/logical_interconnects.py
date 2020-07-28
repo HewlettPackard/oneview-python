@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 from pprint import pprint
 
 from hpOneView.oneview_client import OneViewClient
-from examples.config_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 config = {
     "ip": "<oneview_ip>",
@@ -84,7 +84,7 @@ if scope and oneview_client.api_version not in [200, 600]:
     print("\nPatches the logical interconnect adding one scope to it")
     logical_interconnect.patch('replace',
                                '/scopeUris',
-                               [scope['uri']])
+                               [scope.data['uri']])
     pprint(logical_interconnect.data)
 
 print("\nGet the Ethernet interconnect settings for the logical interconnect")
@@ -143,6 +143,7 @@ pprint(snmp_configuration)
 # Update the SNMP configuration for the logical interconnect
 print("\nUpdate the SNMP configuration for the logical interconnect")
 snmp_configuration['enabled'] = True
+snmp_configuration['readCommunity'] = "public"
 logical_interconnect_updated = logical_interconnect.update_snmp_configuration(snmp_configuration)
 interconnect_snmp = logical_interconnect_updated['snmpConfiguration']
 print("  Updated SNMP configuration at uri: {uri}\n  with 'enabled': '{enabled}'".format(**interconnect_snmp))
@@ -217,18 +218,16 @@ telemetry_config = {
 logical_interconnect_updated = logical_interconnect.update_telemetry_configurations(configuration=telemetry_config)
 pprint(logical_interconnect_updated)
 
-# Create an interconnect at a specified location
-if enclosure['uri']:
-    print("\nCreate an interconnect at the specified location")
-    bay = 1
-    location = {
-        "locationEntries": [
-            {"type": "Enclosure", "value": enclosure['uri']},
-            {"type": "Bay", "value": bay}
-        ]
-    }
-    interconnect = logical_interconnects.create_interconnect(location)
-    pprint(interconnect)
+# Gets the IGMP interconnect settings for the logical interconnect.
+if oneview_client.api_version >= 1600:
+    print("\nGets the IGMP interconnect settings for the logical interconnect")
+    igmp_settings = logical_interconnect.get_igmp_settings()
+    pprint(igmp_settings)
 
-    logical_interconnects.delete_interconnect(enclosure['uri'], bay)
-    print("\nThe interconnect was successfully deleted.")
+# Updates IGMP interconnect settings for the logical interconnect.
+if oneview_client.api_version >= 1600:
+    print("\nUpdates IGMP interconnect settings for the logical interconnect")
+    igmp_settings['igmpIdleTimeoutInterval'] = 200
+    igmp_settings_updated = logical_interconnect.update_igmp_settings(igmp_settings)
+    pprint(igmp_settings_updated)
+    print("\nUpdated IGMP interconnect settings for the logical interconnect successfully")

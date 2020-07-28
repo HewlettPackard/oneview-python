@@ -246,7 +246,7 @@ if oneview_client.api_version <= 500:
         print("\nPatches the logical interconnect group adding one scope to it")
         updated_lig = lig.patch('replace',
                                 '/scopeUris',
-                                [scope['uri']])
+                                [scope.data['uri']])
         pprint(updated_lig.data)
 
 # Get default settings

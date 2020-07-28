@@ -69,7 +69,7 @@ vswitch_options = {
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
-oneview_client = OneViewClient.config()
+oneview_client = OneViewClient(config)
 hypervisor_cluster_profiles = oneview_client.hypervisor_cluster_profiles
 hypervisor_managers = oneview_client.hypervisor_managers
 profile_templates = oneview_client.server_profile_templates

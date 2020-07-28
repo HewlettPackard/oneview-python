@@ -41,7 +41,8 @@ class NetworkSets(Resource, ResourcePatchMixin):
         '800': {"type": "network-setV4"},
         '1000': {"type": "network-setV4"},
         '1200': {"type": "network-setV5"},
-        '1600': {"type": "network-setV5"}
+        '1600': {"type": "network-setV5"},
+        '1800': {"type": "network-setV5"}
     }
 
     def __init__(self, connection, data=None):

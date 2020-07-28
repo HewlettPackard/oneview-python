@@ -15,6 +15,22 @@ The HPE OneView Python library depends on the
 2/3 compatibility. This will be installed automatically if you use the installation
 methods described below.
 
+##Using Docker container
+We also provide a lightweight and easy way to test and run `oneview-python`. The `hewlettpackardenterprise/hpe-oneview-sdk-for-python:<tag>` docker image contains an installation of oneview-python installation you can use by just pulling down the Docker Image:
+
+The Docker Store image `tag` consist of two sections: `<sdk_version-OV_version>`
+
+```bash
+# Download and store a local copy of hpe-oneview-sdk-for-python and
+# use it as a Docker image.
+$ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2
+
+# Run docker commands and this will in turn create
+# a sh session where you can create files, issue commands and execute the tests
+$ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2 /bin/sh
+```
+
+
 ## Installation
 
 ### From source
@@ -193,7 +209,7 @@ export ONEVIEWSDK_PROXY='<proxy_host>:<proxy_port>'
 
 ### Setting your OneView version
 
-The OneView Python SDK supports the API endpoints for HPE OneView 4.10, 4.20 and 5.00.
+The OneView Python SDK supports the API endpoints for HPE OneView 4.10, 4.20, 5.00, 5.20, 5.30.
 
 The current `default` HPE OneView version used by the Python SDK is `4.10`, API `800`.
 
@@ -215,6 +231,8 @@ The API list is as follows:
 - HPE OneView 4.10 API version: `800`
 - HPE OneView 4.20 API version: `1000`
 - HPE OneView 5.00 API version: `1200`
+- HPE OneView 5.20 API version: `1600`
+- HPE OneView 5.30 API version: `1800`
 
 ### HPE Synergy Image Streamer
 

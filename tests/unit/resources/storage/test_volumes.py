@@ -153,6 +153,19 @@ class VolumesTest(unittest.TestCase):
 
         mock_get_by.assert_called_once_with("name", "test name")
 
+    # @mock.patch.object(Resource, 'get_by')
+    # def test_get_snapshot_by_uri_called_once(self, mock_get_by):
+    #     uri = "/rest/storage-volumes/f0a0a113-ec97-41b4-83ce-d7c92b900e7c/snapshots/23"
+    #     self._volumes.get_snapshot_by_uri(uri)
+
+    #     mock_get_by.assert_called_once_with("name", "test name")
+
+    @mock.patch.object(Resource, 'get_by')
+    def test_get_snapshot_by_name_called_once(self, mock_get_by):
+        self._volumes.get_snapshot_by_name("test name")
+
+        mock_get_by.assert_called_once_with("name", "test name")
+
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_extra_managed_storage_volume_paths_called_once(self, mock_get_all):
         filter = 'name=TestName'

@@ -44,7 +44,9 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         '800': {"type": "ethernet-networkV4"},
         '1000': {"type": "ethernet-networkV4"},
         '1200': {"type": "ethernet-networkV4"},
-        '1600': {"type": "ethernet-networkV4"}
+        '1600': {"type": "ethernet-networkV4"},
+        '1800': {"type": "ethernet-networkV4"}
+
     }
     BULK_DEFAULT_VALUES = {
         '200': {"type": "bulk-ethernet-network"},
@@ -54,7 +56,9 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         '800': {"type": "bulk-ethernet-networkV1"},
         '1000': {"type": "bulk-ethernet-networkV1"},
         '1200': {"type": "bulk-ethernet-networkV2"},
-        '1600': {"type": "bulk-ethernet-networkV2"}
+        '1600': {"type": "bulk-ethernet-networkV2"},
+        '1800': {"type": "bulk-ethernet-networkV2"}
+
     }
 
     def __init__(self, connection, data=None):
@@ -176,3 +180,18 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         """
         uri = "{}/associatedUplinkGroups".format(self.data['uri'])
         return self._helper.do_get(uri)
+
+    def delete_bulk(self, resource, timeout=-1):
+        """
+        Deletes bulk Ethernet networks.
+
+        Args:
+            resource (dict): Specifications to delete in bulk.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        """
+        uri = self.URI + '/bulk-delete'
+
+        return self._helper.create(resource, uri=uri, timeout=timeout)
