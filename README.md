@@ -15,7 +15,37 @@ The HPE OneView Python library depends on the
 2/3 compatibility. This will be installed automatically if you use the installation
 methods described below.
 
-##Using Docker container
+### Running Examples with local docker container
+If you'd rather run the examples in a Docker container, you can use the Dockerfile at the top level of this repo.
+All you need is Docker and git (optional).
+
+1. Clone this repo and cd into it:
+   ```bash
+   $ git clone https://github.com/HewlettPackard/oneview-python.git
+   $ cd oneview-python
+   ```
+
+   Note: You can navigate to the repo url and download the repo as a zip file if you don't want to use git.
+
+2. Build the docker image: `$ docker build -t oneview-python .`
+
+   Note: If you're behind a proxy, please edit the Dockerfile before building, uncommenting/adding the necessary ENV directives for your environment.
+
+3. Now you can run any of the example in this directory:
+   ```bash
+   # Run the container, passing in your credentials to OneView and specifying which example recipe to run.
+   # -v : The volume on which repo code is mounted
+   # Replace "connection_templates" with the name of the example you'd like to run)
+   # Replace "pwd" with the path of the example file you'd like to run.
+
+   $ docker run -it --rm \
+     -v $(pwd)/:/root/oneview
+     python examples/connection_templates.py
+   ```
+
+That's it! If you'd like to modify a example, simply modify the example file (on the host), then re-run the image.
+
+### Running Examples with published docker image
 We also provide a lightweight and easy way to test and run `oneview-python`. The `hewlettpackardenterprise/hpe-oneview-sdk-for-python:<tag>` docker image contains an installation of oneview-python installation you can use by just pulling down the Docker Image:
 
 The Docker Store image `tag` consist of two sections: `<sdk_version-OV_version>`
