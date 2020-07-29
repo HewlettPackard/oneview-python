@@ -39,7 +39,7 @@ All you need is Docker and git (optional).
    # Replace "pwd" with the path of the example file you'd like to run.
 
    $ docker run -it --rm \
-     -v $(pwd)/:/root/oneview
+     -v $(pwd)/:/root/oneview/
      python examples/connection_templates.py
    ```
 

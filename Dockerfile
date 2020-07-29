@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     curl
 
 # install dependencies to run examples
+RUN python -m pip install --upgrade pip
 RUN pip install hpOneView
 
 ADD . oneview/
