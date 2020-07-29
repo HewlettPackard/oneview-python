@@ -35,7 +35,7 @@ All you need is Docker and git (optional).
    ```bash
    # Run the container, passing in your credentials to OneView and specifying which example recipe to run.
    # -v : The volume on which repo code is mounted
-   # Replace "connection_templates" with the name of the example you'd like to run)
+   # Replace "connection_templates" with the name of the example you'd like to run
    # Replace "pwd" with the path of the example file you'd like to run.
 
    $ docker run -it --rm \
