@@ -19,10 +19,10 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.security.certificates_server import CertificatesServer
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.connection import connection
+from hpeOneView.resources.security.certificates_server import CertificatesServer
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class CertificatesServerTest(TestCase):
@@ -76,7 +76,7 @@ class CertificatesServerTest(TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_aliasName_when_not_found(self, mock_get_by):
-        mock_get_by.side_effect = HPOneViewException("not found")
+        mock_get_by.side_effect = HPEOneViewException("not found")
         self.assertEqual(self._certificate_server.get_by_alias_name("test1"), None)
 
     @mock.patch.object(Resource, 'ensure_resource_data')

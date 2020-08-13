@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class HypervisorManagersTest(TestCase):

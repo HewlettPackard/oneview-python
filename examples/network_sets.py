@@ -16,7 +16,7 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 # To run this example fill the ip and the credentials below or use a configuration file

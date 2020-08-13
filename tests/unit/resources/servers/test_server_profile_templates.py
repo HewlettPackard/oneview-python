@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.server_profile_templates import ServerProfileTemplate
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.server_profile_templates import ServerProfileTemplate
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 TIMEOUT = -1
 

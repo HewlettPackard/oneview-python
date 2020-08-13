@@ -19,11 +19,11 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.server_hardware import ServerHardware
-from hpOneView.resources.resource import (ResourceHelper,
-                                          ResourceUtilizationMixin,
-                                          ResourcePatchMixin)
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.server_hardware import ServerHardware
+from hpeOneView.resources.resource import (ResourceHelper,
+                                           ResourceUtilizationMixin,
+                                           ResourcePatchMixin)
 
 
 class ServerHardwareTest(TestCase):

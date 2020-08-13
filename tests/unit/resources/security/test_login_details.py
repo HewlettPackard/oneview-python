@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.security.login_details import LoginDetails
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.security.login_details import LoginDetails
+from hpeOneView.resources.resource import ResourceClient
 
 
 class LoginDetailsTest(unittest.TestCase):

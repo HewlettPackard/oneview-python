@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.interconnect_types import InterconnectTypes
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.interconnect_types import InterconnectTypes
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class InterconnectTypesTest(unittest.TestCase):

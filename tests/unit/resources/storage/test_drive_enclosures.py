@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.storage.drive_enclosures import DriveEnclosures
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.storage.drive_enclosures import DriveEnclosures
+from hpeOneView.resources.resource import ResourceClient
 
 
 class DriveEnclosuresTest(unittest.TestCase):

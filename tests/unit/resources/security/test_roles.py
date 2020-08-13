@@ -19,9 +19,9 @@
 import mock
 
 from unittest import TestCase
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.security.roles import Roles
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.security.roles import Roles
 
 
 class RolesTest(TestCase):

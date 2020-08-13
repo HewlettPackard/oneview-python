@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class HypervisorClusterProfilesTest(TestCase):

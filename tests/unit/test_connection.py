@@ -24,8 +24,8 @@ import os.path
 
 from mock import patch, call, Mock, ANY
 from http.client import HTTPSConnection, BadStatusLine, HTTPException
-from hpOneView.connection import connection
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.connection import connection
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class ConnectionTest(unittest.TestCase):
@@ -211,7 +211,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.post('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -224,7 +224,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.post('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -292,7 +292,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.put('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -305,7 +305,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.put('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -373,7 +373,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.patch('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -386,7 +386,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.patch('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -454,7 +454,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.delete('/path')
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -467,7 +467,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.delete('/path', self.request_body)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.oneview_response, self.expected_response_body)
         else:
             self.fail()
@@ -577,7 +577,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.download_to_stream(mock_stream, '/rest/download.zip')
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.msg, 'error message')
         else:
             self.fail()
@@ -597,7 +597,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.download_to_stream(mock_stream, '/rest/download.zip')
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.msg, 'error message')
         else:
             self.fail()
@@ -616,7 +616,7 @@ class ConnectionTest(unittest.TestCase):
 
         try:
             self.connection.download_to_stream(mock_stream, '/rest/download.zip')
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.msg, 'Error 500')
         else:
             self.fail()
@@ -630,7 +630,7 @@ class ConnectionTest(unittest.TestCase):
 
         mock_stream = Mock()
 
-        with self.assertRaises(HPOneViewException) as context:
+        with self.assertRaises(HPEOneViewException) as context:
             resp, body = self.connection.download_to_stream(mock_stream, '/rest/download.zip')
 
         self.assertTrue('timed out' in context.exception.msg)
@@ -745,7 +745,7 @@ class ConnectionTest(unittest.TestCase):
                                            fields=None,
                                            files="/a/path/filename.zip",
                                            baseName="archive.zip")
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             self.assertEqual(e.msg, "An error occurred.")
         else:
             self.fail()
@@ -896,7 +896,7 @@ class ConnectionTest(unittest.TestCase):
         mock_response = Mock()
         mock_conn.getresponse.side_effect = [HTTPException('timed out'), mock_response]
 
-        with self.assertRaises(HPOneViewException) as context:
+        with self.assertRaises(HPEOneViewException) as context:
             resp, body = self.connection.do_http('POST', '/rest/test', 'body')
 
         self.assertTrue('timed out' in context.exception.msg)
@@ -923,19 +923,19 @@ class ConnectionTest(unittest.TestCase):
         self.assertEqual(self.connection.get_session(), True)
 
     @patch.object(connection, 'get')
-    def test_login_catches_exceptions_as_hpOneView(self, mock_get):
+    def test_login_catches_exceptions_as_hpeOneView(self, mock_get):
         mock_get.side_effect = [Exception('test')]
 
-        with self.assertRaises(HPOneViewException):
+        with self.assertRaises(HPEOneViewException):
             self.connection.login({})
 
     @patch.object(connection, 'get')
     @patch.object(connection, 'post')
     def test_login_with_exception_in_post(self, mock_post, mock_get):
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
-        mock_post.side_effect = HPOneViewException("Failed")
+        mock_post.side_effect = HPEOneViewException("Failed")
 
-        self.assertRaises(HPOneViewException, self.connection.login, {})
+        self.assertRaises(HPEOneViewException, self.connection.login, {})
 
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
@@ -963,31 +963,31 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(connection, 'put')
     def test_login_with_exception_in_put(self, mock_put, mock_get):
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
-        mock_put.side_effect = HPOneViewException("Failed")
+        mock_put.side_effect = HPEOneViewException("Failed")
 
-        self.assertRaises(HPOneViewException, self.connection.login, {"sessionID": "123"})
+        self.assertRaises(HPEOneViewException, self.connection.login, {"sessionID": "123"})
 
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
     def test_login_with_exception_in_put_username_password_sessionID(self, mock_put, mock_get):
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
-        mock_put.side_effect = HPOneViewException("Failed")
-        self.assertRaises(HPOneViewException, self.connection.login, {"userName": "administrator",
-                                                                      "password": "", "sessionID": "123"})
+        mock_put.side_effect = HPEOneViewException("Failed")
+        self.assertRaises(HPEOneViewException, self.connection.login, {"userName": "administrator",
+                                                                       "password": "", "sessionID": "123"})
 
     @patch.object(connection, 'get')
     def test_validate_version_exceeding_minimum(self, mock_get):
         self.connection._apiVersion = 800
         mock_get.side_effect = [{'minimumVersion': 400, 'currentVersion': 400}]
 
-        self.assertRaises(HPOneViewException, self.connection.validateVersion)
+        self.assertRaises(HPEOneViewException, self.connection.validateVersion)
 
     @patch.object(connection, 'get')
     def test_validate_version_exceeding_current(self, mock_get):
         self.connection._apiVersion = 400
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
 
-        self.assertRaises(HPOneViewException, self.connection.validateVersion)
+        self.assertRaises(HPEOneViewException, self.connection.validateVersion)
 
     @patch.object(shutil, 'copyfileobj')
     @patch.object(connection, '_open')

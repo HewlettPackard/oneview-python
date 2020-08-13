@@ -17,9 +17,9 @@
 import unittest
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.sas_logical_interconnects import SasLogicalInterconnects
-from hpOneView.resources.resource import ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.sas_logical_interconnects import SasLogicalInterconnects
+from hpeOneView.resources.resource import ResourceHelper
 
 
 class SasLogicalInterconnectsTest(unittest.TestCase):

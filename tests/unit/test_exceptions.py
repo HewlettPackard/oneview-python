@@ -22,18 +22,18 @@ import os
 import tempfile
 import pickle
 
-from hpOneView.exceptions import handle_exceptions
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.exceptions import HPOneViewInvalidResource
-from hpOneView.exceptions import HPOneViewUnknownType
-from hpOneView.exceptions import HPOneViewTaskError
-from hpOneView.exceptions import HPOneViewResourceNotFound
-from hpOneView.exceptions import HPOneViewValueError
+from hpeOneView.exceptions import handle_exceptions
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.exceptions import HPEOneViewInvalidResource
+from hpeOneView.exceptions import HPEOneViewUnknownType
+from hpeOneView.exceptions import HPEOneViewTaskError
+from hpeOneView.exceptions import HPEOneViewResourceNotFound
+from hpeOneView.exceptions import HPEOneViewValueError
 
 
 class ExceptionsTest(unittest.TestCase):
     def test_exception_constructor_with_string(self):
-        exception = HPOneViewException("A message string")
+        exception = HPEOneViewException("A message string")
 
         self.assertEqual(exception.msg, "A message string")
         self.assertEqual(exception.oneview_response, None)
@@ -41,7 +41,7 @@ class ExceptionsTest(unittest.TestCase):
         self.assertEqual(len(exception.args), 1)
 
     def test_exception_constructor_with_valid_dict(self):
-        exception = HPOneViewException({'message': "A message string"})
+        exception = HPEOneViewException({'message': "A message string"})
 
         self.assertEqual(exception.msg, "A message string")
         self.assertEqual(exception.oneview_response, {'message': "A message string"})
@@ -49,7 +49,7 @@ class ExceptionsTest(unittest.TestCase):
         self.assertEqual(exception.args[1], {'message': 'A message string'})
 
     def test_exception_constructor_with_invalid_dict(self):
-        exception = HPOneViewException({'msg': "A message string"})
+        exception = HPEOneViewException({'msg': "A message string"})
 
         self.assertEqual(exception.msg, None)
         self.assertEqual(exception.oneview_response, {'msg': "A message string"})
@@ -57,7 +57,7 @@ class ExceptionsTest(unittest.TestCase):
         self.assertEqual(exception.args[1], {'msg': "A message string"})
 
     def test_exception_constructor_with_invalid_type(self):
-        exception = HPOneViewException(['List, item 1', "List, item 2: A message string"])
+        exception = HPEOneViewException(['List, item 1', "List, item 2: A message string"])
 
         self.assertEqual(exception.msg, None)
         self.assertEqual(exception.oneview_response, ['List, item 1', "List, item 2: A message string"])
@@ -65,25 +65,25 @@ class ExceptionsTest(unittest.TestCase):
         self.assertEqual(exception.args[1], ['List, item 1', "List, item 2: A message string"])
 
     def test_invalid_resource_exception_inheritance(self):
-        exception = HPOneViewInvalidResource({'message': "A message string"})
+        exception = HPEOneViewInvalidResource({'message': "A message string"})
 
-        self.assertIsInstance(exception, HPOneViewException)
+        self.assertIsInstance(exception, HPEOneViewException)
         self.assertEqual(exception.msg, "A message string")
         self.assertEqual(exception.oneview_response, {'message': "A message string"})
         self.assertEqual(exception.args[0], "A message string")
         self.assertEqual(exception.args[1], {'message': 'A message string'})
 
     def test_unknown_type_exception_inheritance_with_string(self):
-        exception = HPOneViewUnknownType("A message string")
+        exception = HPEOneViewUnknownType("A message string")
 
-        self.assertIsInstance(exception, HPOneViewException)
+        self.assertIsInstance(exception, HPEOneViewException)
         self.assertEqual(exception.msg, "A message string")
         self.assertEqual(exception.oneview_response, None)
         self.assertEqual(exception.args[0], "A message string")
         self.assertEqual(len(exception.args), 1)
 
     def test_exception_constructor_with_unicode(self):
-        exception = HPOneViewException(u"A message string")
+        exception = HPEOneViewException(u"A message string")
 
         self.assertEqual(exception.msg, "A message string")
         self.assertEqual(exception.oneview_response, None)
@@ -91,9 +91,9 @@ class ExceptionsTest(unittest.TestCase):
         self.assertEqual(len(exception.args), 1)
 
     def test_task_error_constructor_with_string(self):
-        exception = HPOneViewTaskError("A message string", 100)
+        exception = HPEOneViewTaskError("A message string", 100)
 
-        self.assertIsInstance(exception, HPOneViewException)
+        self.assertIsInstance(exception, HPEOneViewException)
         self.assertEqual(exception.msg, "A message string")
         self.assertEqual(exception.oneview_response, None)
         self.assertEqual(exception.args[0], "A message string")
@@ -101,24 +101,24 @@ class ExceptionsTest(unittest.TestCase):
         self.assertEqual(exception.error_code, 100)
 
     def test_oneview_resource_not_found_inheritance(self):
-        exception = HPOneViewResourceNotFound("The resource was not found!")
+        exception = HPEOneViewResourceNotFound("The resource was not found!")
 
-        self.assertIsInstance(exception, HPOneViewException)
+        self.assertIsInstance(exception, HPEOneViewException)
         self.assertEqual(exception.msg, "The resource was not found!")
         self.assertEqual(exception.oneview_response, None)
         self.assertEqual(exception.args[0], "The resource was not found!")
 
     def test_oneview_value_error_inheritance(self):
-        exception = HPOneViewValueError("The given data is empty!")
+        exception = HPEOneViewValueError("The given data is empty!")
 
-        self.assertIsInstance(exception, HPOneViewException)
+        self.assertIsInstance(exception, HPEOneViewException)
         self.assertEqual(exception.msg, "The given data is empty!")
         self.assertEqual(exception.oneview_response, None)
         self.assertEqual(exception.args[0], "The given data is empty!")
 
-    def test_pickle_HPOneViewException_dict(self):
+    def test_pickle_HPEOneViewException_dict(self):
         message = {"msg": "test message"}
-        exception = HPOneViewException(message)
+        exception = HPEOneViewException(message)
         tempf = tempfile.NamedTemporaryFile(delete=False)
         with tempf as f:
             pickle.dump(exception, f)
@@ -127,11 +127,11 @@ class ExceptionsTest(unittest.TestCase):
             exception = pickle.load(f)
 
         os.remove(tempf.name)
-        self.assertEqual('HPOneViewException', exception.__class__.__name__)
+        self.assertEqual('HPEOneViewException', exception.__class__.__name__)
 
-    def test_pickle_HPOneViewException_message(self):
+    def test_pickle_HPEOneViewException_message(self):
         message = "test message"
-        exception = HPOneViewException(message)
+        exception = HPEOneViewException(message)
         tempf = tempfile.NamedTemporaryFile(delete=False)
         with tempf as f:
             pickle.dump(exception, f)
@@ -140,24 +140,24 @@ class ExceptionsTest(unittest.TestCase):
             exception = pickle.load(f)
 
         os.remove(tempf.name)
-        self.assertEqual('HPOneViewException', exception.__class__.__name__)
+        self.assertEqual('HPEOneViewException', exception.__class__.__name__)
 
     @mock.patch.object(traceback, 'print_exception')
     @mock.patch.object(logging, 'error')
     def test_should_log_message(self, mock_logging_error, mock_traceback):
         message = "test message"
-        exception = HPOneViewException(message)
+        exception = HPEOneViewException(message)
         traceback_ex = None
         handle_exceptions(exception.__class__, exception, traceback_ex, mock_logging_error)
 
-        log_message = "Uncaught Exception: HPOneViewException with message: test message"
+        log_message = "Uncaught Exception: HPEOneViewException with message: test message"
         mock_logging_error.error.assert_called_once_with(log_message)
 
     @mock.patch.object(traceback, 'print_exception')
     @mock.patch.object(logging, 'error')
     def test_should_print_exception(self, mock_logging_error, mock_traceback):
         message = "test message"
-        exception = HPOneViewException(message)
+        exception = HPEOneViewException(message)
         traceback_ex = None
         handle_exceptions(exception.__class__, exception, traceback_ex, mock_logging_error)
 
@@ -167,11 +167,11 @@ class ExceptionsTest(unittest.TestCase):
     @mock.patch.object(logging, 'error')
     def test_should_log_oneview_reponse(self, mock_logging_error, mock_traceback):
         message = {"msg": "test message"}
-        exception = HPOneViewException(message)
+        exception = HPEOneViewException(message)
         traceback_ex = None
         handle_exceptions(exception.__class__, exception, traceback_ex, mock_logging_error)
 
-        log_message = "Uncaught Exception: HPOneViewException with message: \n{'msg': 'test message'}"
+        log_message = "Uncaught Exception: HPEOneViewException with message: \n{'msg': 'test message'}"
         mock_logging_error.error.assert_called_once_with(log_message)
 
     @mock.patch.object(traceback, 'print_exception')

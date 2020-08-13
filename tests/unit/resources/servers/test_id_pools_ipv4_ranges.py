@@ -17,9 +17,9 @@
 import mock
 import unittest
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.servers.id_pools_ipv4_ranges import IdPoolsIpv4Ranges
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.servers.id_pools_ipv4_ranges import IdPoolsIpv4Ranges
 
 
 class TestIdPoolsIpv4Ranges(unittest.TestCase):

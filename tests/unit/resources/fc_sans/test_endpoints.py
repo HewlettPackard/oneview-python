@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.fc_sans.endpoints import Endpoints
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.fc_sans.endpoints import Endpoints
 
 TIMEOUT = -1
 

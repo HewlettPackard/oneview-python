@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.uncategorized.unmanaged_devices import UnmanagedDevices
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.uncategorized.unmanaged_devices import UnmanagedDevices
 
 
 class UnmanagedDevicesTest(TestCase):

@@ -19,8 +19,8 @@ import unittest
 
 import mock
 
-from hpOneView.resources.networking.sas_interconnects import SasInterconnects
-from hpOneView.resources.resource import ResourceHelper, ResourcePatchMixin
+from hpeOneView.resources.networking.sas_interconnects import SasInterconnects
+from hpeOneView.resources.resource import ResourceHelper, ResourcePatchMixin
 
 
 class SasInterconnectsTest(unittest.TestCase):

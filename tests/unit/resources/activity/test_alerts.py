@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.activity.alerts import Alerts
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.activity.alerts import Alerts
+from hpeOneView.resources.resource import ResourceClient
 
 
 class AlertsTest(TestCase):

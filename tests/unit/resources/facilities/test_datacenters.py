@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.facilities.datacenters import Datacenters
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.facilities.datacenters import Datacenters
+from hpeOneView.resources.resource import ResourceClient
 
 
 class DatacenterTest(TestCase):

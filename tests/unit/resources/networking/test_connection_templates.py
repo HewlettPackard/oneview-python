@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.connection_templates import ConnectionTemplates
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.connection_templates import ConnectionTemplates
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class ConnectionTemplatesTest(unittest.TestCase):

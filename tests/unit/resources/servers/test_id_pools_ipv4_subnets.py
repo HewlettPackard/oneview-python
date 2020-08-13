@@ -16,9 +16,9 @@
 ###
 import mock
 import unittest
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
 
 
 class TestIdPoolsIpv4Subnets(unittest.TestCase):

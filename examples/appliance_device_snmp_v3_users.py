@@ -16,7 +16,7 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 # Set api_version to 600, default is 300 and this API has been introduced since API 600.

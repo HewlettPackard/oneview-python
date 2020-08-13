@@ -16,9 +16,9 @@
 ###
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.server_hardware_types import ServerHardwareTypes
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.server_hardware_types import ServerHardwareTypes
+from hpeOneView.resources.resource import Resource, ResourceHelper
 import unittest
 
 

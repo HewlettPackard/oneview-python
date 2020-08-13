@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.storage.sas_logical_jbods import SasLogicalJbods
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.storage.sas_logical_jbods import SasLogicalJbods
 
 
 class SasLogicalJbodsTest(unittest.TestCase):

@@ -18,8 +18,8 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "",
@@ -92,7 +92,7 @@ print("Get power device utilization")
 try:
     power_devices_utilization = oneview_client.power_devices.get_utilization(power_device[0]['uri'])
     pprint(power_devices_utilization)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get power device utilization specifying parameters
@@ -104,7 +104,7 @@ try:
         filter='startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z',
         view='hour')
     pprint(power_devices_utilization)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Remove added power devices

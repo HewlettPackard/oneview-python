@@ -19,10 +19,10 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.enclosures import Enclosures
-from hpOneView.resources.resource import (Resource, ResourceHelper, ResourcePatchMixin,
-                                          ResourceZeroBodyMixin, ResourceUtilizationMixin)
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.enclosures import Enclosures
+from hpeOneView.resources.resource import (Resource, ResourceHelper, ResourcePatchMixin,
+                                           ResourceZeroBodyMixin, ResourceUtilizationMixin)
 
 
 class EnclosuresTest(TestCase):

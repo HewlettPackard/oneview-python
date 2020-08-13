@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.logical_interconnects import LogicalInterconnects
-from hpOneView.resources.resource import ResourcePatchMixin, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.logical_interconnects import LogicalInterconnects
+from hpeOneView.resources.resource import ResourcePatchMixin, ResourceHelper
 
 
 class LogicalInterconnectsTest(unittest.TestCase):

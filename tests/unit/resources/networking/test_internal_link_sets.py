@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.internal_link_sets import InternalLinkSets
-from hpOneView.resources.resource import ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.internal_link_sets import InternalLinkSets
+from hpeOneView.resources.resource import ResourceHelper
 
 INTERNAL_LINK_SETS = [
     {'name': 'OneViewSDK Test Internal Link Set'},

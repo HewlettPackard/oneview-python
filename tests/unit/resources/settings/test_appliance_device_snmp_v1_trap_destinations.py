@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
 
 
 class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):

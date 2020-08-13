@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.image_streamer.resources.artifact_bundles import ArtifactBundles
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourceFileHandlerMixin
+from hpeOneView.connection import connection
+from hpeOneView.image_streamer.resources.artifact_bundles import ArtifactBundles
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourceFileHandlerMixin
 
 
 class ArtifactBundlesTest(TestCase):

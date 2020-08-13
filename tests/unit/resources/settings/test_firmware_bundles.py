@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.settings.firmware_bundles import FirmwareBundles
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
+from hpeOneView.resources.resource import ResourceClient
 
 
 class FirmwareBundlesTest(unittest.TestCase):

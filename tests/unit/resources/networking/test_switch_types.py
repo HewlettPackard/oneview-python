@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.switch_types import SwitchTypes
-from hpOneView.resources.resource import ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.switch_types import SwitchTypes
+from hpeOneView.resources.resource import ResourceHelper
 
 
 class SwitchTypesTest(unittest.TestCase):

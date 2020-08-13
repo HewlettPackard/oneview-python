@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.search.labels import Labels
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.search.labels import Labels
+from hpeOneView.resources.resource import ResourceClient
 
 
 class LabelsTest(unittest.TestCase):

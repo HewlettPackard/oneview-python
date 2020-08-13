@@ -18,8 +18,8 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "<oneview_ip>",
@@ -117,7 +117,7 @@ print("\nGet a snapshot")
 try:
     snapshot = oneview_client.volumes.get_snapshot(snapshot_uri, volume['uri'])
     pprint(snapshot)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 print("\nCreate a new volume from the snapshot")
@@ -138,7 +138,7 @@ from_snapshot_options = {
 try:
     volume_from_snapshot = oneview_client.volumes.create_from_snapshot(from_snapshot_options)
     print("Created volume '{name}': {description}. URI: {uri}".format(**volume_from_snapshot))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get all the attachable volumes which are managed by the appliance

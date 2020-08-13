@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.sas_logical_interconnect_groups import SasLogicalInterconnectGroups
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.sas_logical_interconnect_groups import SasLogicalInterconnectGroups
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class SasLogicalInterconnectGroupsTest(unittest.TestCase):

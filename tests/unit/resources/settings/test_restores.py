@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.resources.settings.restores import Restores
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.settings.restores import Restores
 
 
 class RestoresTest(TestCase):

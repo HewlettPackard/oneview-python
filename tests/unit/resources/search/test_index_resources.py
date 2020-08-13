@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.search.index_resources import IndexResources
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.search.index_resources import IndexResources
+from hpeOneView.resources.resource import ResourceClient
 
 
 class IndexResourcesTest(unittest.TestCase):

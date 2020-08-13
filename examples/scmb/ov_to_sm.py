@@ -16,7 +16,7 @@
 # limitations under the License.
 ###
 
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from base64 import b64encode
 from functools import partial
 from pprint import pprint

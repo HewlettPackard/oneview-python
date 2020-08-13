@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.image_streamer.resources.deployment_groups import DeploymentGroups
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.image_streamer.resources.deployment_groups import DeploymentGroups
+from hpeOneView.resources.resource import ResourceClient
 
 
 class DeploymentGroupsTest(TestCase):

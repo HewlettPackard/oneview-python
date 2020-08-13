@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/hpOneView.svg)](https://badge.fury.io/py/hpeOneView)
+[![PyPI version](https://badge.fury.io/py/hpeOneView.svg)](https://badge.fury.io/py/hpeOneView)
 [![Build Status](https://travis-ci.com/HewlettPackard/oneview-python.svg?branch=master)](https://travis-ci.com/HewlettPackard/oneview-python)
 [![Coverage Status](https://coveralls.io/repos/github/HewlettPackard/oneview-python/badge.svg?branch=master)](https://coveralls.io/github/HewlettPackard/oneview-python?branch=master)
 
@@ -87,7 +87,7 @@ Both installation methods work if you are using virtualenv, which you should be!
 ### From Pypi
 
 ```bash
-$ pip install hpOneView
+$ pip install hpeOneView
 ```
 
 
@@ -309,9 +309,9 @@ export ONEVIEWSDK_CONNECTION_TIMEOUT='<connection time-out in seconds>'
 
 ## Exception handling
 
-All exceptions raised by the OneView Python SDK inherit from HPOneViewException.
+All exceptions raised by the OneView Python SDK inherit from HPEOneViewException.
 
-**HPOneViewException** has the following properties:
+**HPEOneViewException** has the following properties:
 - **msg** - a string containing the error message sent by the OneView REST API;
 - **oneview_response** - contains the entire JSON data dictionary with error details that are returned by the OneView Python SDK. It can be: ```None```.
 
@@ -321,7 +321,7 @@ All exceptions raised by the OneView Python SDK inherit from HPOneViewException.
 try:
     fc_network_client = oneview_client.fc_networks
     fc_network = fc_network_client.get_by_name(name)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
     if e.oneview_response:
     	pprint(e.oneview_response)

@@ -22,7 +22,7 @@ This module demonstrates a Server Profile creation with an associated i3s OS Dep
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "172.16.101.190",

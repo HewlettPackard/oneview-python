@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.facilities.racks import Racks
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.facilities.racks import Racks
+from hpeOneView.resources.resource import ResourceClient
 
 
 class RacksTest(TestCase):

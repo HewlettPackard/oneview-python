@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.connections import Connections
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.connections import Connections
+from hpeOneView.resources.resource import ResourceClient
 
 
 class ConnectionsTest(TestCase):

@@ -19,10 +19,10 @@ import unittest
 from mock import mock, call
 from errno import ETIMEDOUT, ECONNABORTED
 
-from hpOneView.connection import connection
-from hpOneView.resources.task_monitor import TaskMonitor, MSG_UNKNOWN_OBJECT_TYPE, MSG_TASK_TYPE_UNRECONIZED, \
+from hpeOneView.connection import connection
+from hpeOneView.resources.task_monitor import TaskMonitor, MSG_UNKNOWN_OBJECT_TYPE, MSG_TASK_TYPE_UNRECONIZED, \
     MSG_TIMEOUT, MSG_UNKNOWN_EXCEPTION, MSG_INVALID_TASK
-from hpOneView.exceptions import HPOneViewUnknownType, HPOneViewInvalidResource, HPOneViewTimeout, HPOneViewTaskError
+from hpeOneView.exceptions import HPEOneViewUnknownType, HPEOneViewInvalidResource, HPEOneViewTimeout, HPEOneViewTaskError
 
 ERR_MSG = "Message error"
 
@@ -99,7 +99,7 @@ class TaskMonitorTest(unittest.TestCase):
     def test_get_associated_resource_with_task_empty(self):
         try:
             self.task_monitor.get_associated_resource({})
-        except HPOneViewUnknownType as e:
+        except HPEOneViewUnknownType as e:
             self.assertEqual(MSG_INVALID_TASK, e.msg)
         else:
             self.fail()
@@ -107,7 +107,7 @@ class TaskMonitorTest(unittest.TestCase):
     def test_get_associated_resource_with_invalid_task(self):
         try:
             self.task_monitor.get_associated_resource({"category": "networking"})
-        except HPOneViewUnknownType as e:
+        except HPEOneViewUnknownType as e:
             self.assertEqual(MSG_UNKNOWN_OBJECT_TYPE, e.msg)
         else:
             self.fail()
@@ -116,7 +116,7 @@ class TaskMonitorTest(unittest.TestCase):
         try:
             self.task_monitor.get_associated_resource({"category": "tasks",
                                                        "type": "TaskResource"})
-        except HPOneViewInvalidResource as e:
+        except HPEOneViewInvalidResource as e:
             self.assertEqual(MSG_TASK_TYPE_UNRECONIZED % "TaskResource", e.msg)
         else:
             self.fail()
@@ -212,7 +212,7 @@ class TaskMonitorTest(unittest.TestCase):
 
         try:
             self.task_monitor.wait_for_task({"uri": "uri"}, timeout)
-        except HPOneViewTimeout as e:
+        except HPEOneViewTimeout as e:
             self.assertEqual(MSG_TIMEOUT % timeout, e.msg)
         else:
             self.fail()
@@ -230,7 +230,7 @@ class TaskMonitorTest(unittest.TestCase):
 
         try:
             self.task_monitor.wait_for_task({"uri": "uri"}, timeout)
-        except HPOneViewTimeout as e:
+        except HPEOneViewTimeout as e:
             mock_sleep.assert_has_calls(calls)
             self.assertEqual(MSG_TIMEOUT % timeout, e.msg)
         else:
@@ -249,7 +249,7 @@ class TaskMonitorTest(unittest.TestCase):
 
         try:
             self.task_monitor.wait_for_task(task.copy())
-        except HPOneViewTaskError as e:
+        except HPEOneViewTaskError as e:
             self.assertEqual("Error Message", e.msg)
             self.assertEqual(None, e.error_code)
         else:
@@ -268,7 +268,7 @@ class TaskMonitorTest(unittest.TestCase):
 
         try:
             self.task_monitor.wait_for_task(task.copy())
-        except HPOneViewTaskError as e:
+        except HPEOneViewTaskError as e:
             self.assertEqual("Error Message", e.msg)
             self.assertEqual("ProfileAlreadyExistsInServer", e.error_code)
         else:
@@ -277,7 +277,7 @@ class TaskMonitorTest(unittest.TestCase):
     def test_wait_for_task_empty(self):
         try:
             self.task_monitor.wait_for_task({})
-        except HPOneViewUnknownType as e:
+        except HPEOneViewUnknownType as e:
             self.assertEqual(MSG_INVALID_TASK, e.msg)
         else:
             self.fail()
@@ -296,7 +296,7 @@ class TaskMonitorTest(unittest.TestCase):
 
         try:
             self.task_monitor.wait_for_task(task.copy())
-        except HPOneViewTaskError as e:
+        except HPEOneViewTaskError as e:
             self.assertEqual("Failed", e.msg)
         else:
             self.fail()
@@ -314,7 +314,7 @@ class TaskMonitorTest(unittest.TestCase):
 
         try:
             self.task_monitor.wait_for_task(task.copy())
-        except HPOneViewTaskError as e:
+        except HPEOneViewTaskError as e:
             self.assertEqual(MSG_UNKNOWN_EXCEPTION, e.msg)
         else:
             self.fail()

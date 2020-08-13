@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceHelper
-from hpOneView.resources.uncategorized.os_deployment_plans import OsDeploymentPlans
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceHelper
+from hpeOneView.resources.uncategorized.os_deployment_plans import OsDeploymentPlans
 
 
 class OsDeploymentPlansTest(TestCase):

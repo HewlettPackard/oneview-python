@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.activity.events import Events
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.activity.events import Events
+from hpeOneView.resources.resource import ResourceClient
 
 
 class EventsTest(TestCase):

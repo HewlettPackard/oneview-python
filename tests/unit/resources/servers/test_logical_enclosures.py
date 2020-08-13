@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.logical_enclosures import LogicalEnclosures
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.logical_enclosures import LogicalEnclosures
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class LogicalEnclosuresTest(TestCase):

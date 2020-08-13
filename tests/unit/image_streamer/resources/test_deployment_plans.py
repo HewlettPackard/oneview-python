@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.image_streamer.resources.deployment_plans import DeploymentPlans
-from hpOneView.resources.resource import ResourceHelper, Resource
+from hpeOneView.connection import connection
+from hpeOneView.image_streamer.resources.deployment_plans import DeploymentPlans
+from hpeOneView.resources.resource import ResourceHelper, Resource
 
 
 class DeploymentPlansTest(TestCase):

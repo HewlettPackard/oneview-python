@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.activity.tasks import Tasks
-from hpOneView.resources.resource import ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.activity.tasks import Tasks
+from hpeOneView.resources.resource import ResourceHelper
 
 
 class TasksTest(TestCase):

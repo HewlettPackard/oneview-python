@@ -17,9 +17,9 @@
 import mock
 import unittest
 
-from hpOneView.connection import connection
-from hpOneView.resources.settings.versions import Versions
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.settings.versions import Versions
+from hpeOneView.resources.resource import ResourceClient
 
 
 class VersionsTest(unittest.TestCase):

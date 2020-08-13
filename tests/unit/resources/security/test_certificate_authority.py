@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.security.certificate_authority import CertificateAuthority
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.security.certificate_authority import CertificateAuthority
+from hpeOneView.resources.resource import ResourceClient
 
 
 class CertificateAuthorityTest(unittest.TestCase):

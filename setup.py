@@ -19,7 +19,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-setup(name='hpOneView',
+setup(name='hpeOneView',
       version='5.3.0',
       description='HPE OneView Python Library',
       url='https://github.com/HewlettPackard/oneview-python',

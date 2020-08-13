@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.fabrics import Fabrics
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.fabrics import Fabrics
+from hpeOneView.resources.resource import ResourceClient
 
 
 class FabricsTest(unittest.TestCase):

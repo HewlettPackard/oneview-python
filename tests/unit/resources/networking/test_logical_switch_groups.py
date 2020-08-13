@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.logical_switch_groups import LogicalSwitchGroups
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.logical_switch_groups import LogicalSwitchGroups
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class LogicalSwitchGroupsTest(unittest.TestCase):

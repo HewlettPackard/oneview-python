@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -85,7 +85,7 @@ if oneview_client.api_version == 300:
         }
         scopes.update_resource_assignments(scope['uri'], options)
         print("  Done.")
-    except HPOneViewException as e:
+    except HPEOneViewException as e:
         print(e.msg)
 
 # Updates the name and description of a scope assigning and unassigning two ethernet resources
@@ -110,7 +110,7 @@ if oneview_client.api_version >= 500:
         update_description = "Modified scope description"
         edited_scope = scope.patch('replace', '/description', update_description)
         pprint(edited_scope.data)
-    except HPOneViewException as e:
+    except HPEOneViewException as e:
         print(e.msg)
 
 # Delete the scope

@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.storage.storage_systems import StorageSystems
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.storage.storage_systems import StorageSystems
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class StorageSystemsTest(unittest.TestCase):

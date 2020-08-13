@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -55,7 +55,7 @@ try:
     for attachment in volume_attachments_filtered:
         print('\n#### Storage Volume Attachment info:')
         pprint(attachment)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get the list of extra unmanaged storage volumes
@@ -72,7 +72,7 @@ try:
     print("\nRemoves extra presentations from a specified server profile at uri: '{}".format(serverProfileUri))
     volume_attachments.remove_extra_presentations(info)
     print("   Done.")
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 if len(volume_attachments_all) != 0:

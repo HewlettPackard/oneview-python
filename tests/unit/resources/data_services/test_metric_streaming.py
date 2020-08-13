@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.data_services.metric_streaming import MetricStreaming
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.data_services.metric_streaming import MetricStreaming
+from hpeOneView.resources.resource import ResourceClient
 
 
 class MetricStreamingTest(TestCase):

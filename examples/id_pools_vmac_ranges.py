@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -121,7 +121,7 @@ try:
     }
     successfully_collected_ids = oneview_client.id_pools_vmac_ranges.collect(
         information, vmac_range['uri'])
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Disable a vmac range

@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.enclosure_groups import EnclosureGroups
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.enclosure_groups import EnclosureGroups
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class EnclosureGroupsTest(unittest.TestCase):

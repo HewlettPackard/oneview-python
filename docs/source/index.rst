@@ -7,6 +7,6 @@ HPE OneView Python SDK Reference
 =======================================
 
 The table of contents links to the SDK API specification for each resource type in the HPE OneView resource model.
-These API specifications are intended to provide all the details needed to call the HP OneView Python SDK APIs.
+These API specifications are intended to provide all the details needed to call the HPE OneView Python SDK APIs.
 
 * :ref:`modindex`

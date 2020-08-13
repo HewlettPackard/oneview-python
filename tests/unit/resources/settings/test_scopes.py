@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
-from hpOneView.resources.settings.scopes import Scopes
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
+from hpeOneView.resources.settings.scopes import Scopes
 
 
 class ScopesTest(TestCase):

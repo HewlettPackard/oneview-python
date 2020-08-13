@@ -1,4 +1,4 @@
-hpOneView - Examples
+hpeOneView - Examples
 =====================
 
 
@@ -8,7 +8,7 @@ functionality of individual resources.
 
 ### Prerequisites
 
-- hpOneView must be installed 
+- hpeOneView must be installed 
 
 
 ### Configuration

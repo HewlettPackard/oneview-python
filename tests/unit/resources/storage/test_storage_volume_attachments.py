@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.storage.storage_volume_attachments import StorageVolumeAttachments
-from hpOneView.resources.resource import ResourceHelper, Resource
+from hpeOneView.connection import connection
+from hpeOneView.resources.storage.storage_volume_attachments import StorageVolumeAttachments
+from hpeOneView.resources.resource import ResourceHelper, Resource
 
 
 class StorageVolumeAttachmentsTest(unittest.TestCase):

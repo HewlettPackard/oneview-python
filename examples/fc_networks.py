@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 # To run this example fill the ip and the credentials below or use a configuration file
@@ -108,7 +108,7 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
                                          '/scopeUris',
                                          [scope.data['uri']])
         pprint(fc_with_scope)
-    except HPOneViewException, e:
+    except HPEOneViewException, e:
         print(e)
 
 # Delete the created network
