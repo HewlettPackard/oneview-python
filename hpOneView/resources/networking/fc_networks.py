@@ -43,7 +43,7 @@ class FcNetworks(ResourcePatchMixin, Resource):
         '1000': {"type": "fc-networkV4"},
         '1200': {"type": "fc-networkV4"},
         '1600': {"type": "fc-networkV4"},
-        '1800': {"type": "fc-networkv4"}
+        '1800': {"type": "fc-networkV4"}
     }
 
     def __init__(self, connection, data=None):

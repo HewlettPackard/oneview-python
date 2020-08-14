@@ -117,10 +117,9 @@ ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 
 
 class OneViewClient(object):
-    DEFAULT_API_VERSION = 800
 
     def __init__(self, config):
-        self.__connection = connection(config.get('ip'), config.get('api_version', self.DEFAULT_API_VERSION), config.get('ssl_certificate', False),
+        self.__connection = connection(config.get('ip'), config.get('api_version'), config.get('ssl_certificate', False),
                                        config.get('timeout'))
         self.__image_streamer_ip = config.get("image_streamer_ip")
         self.__validate_host()
@@ -237,7 +236,7 @@ class OneViewClient(object):
         """
         ip = os.environ.get('ONEVIEWSDK_IP', '')
         image_streamer_ip = os.environ.get('ONEVIEWSDK_IMAGE_STREAMER_IP', '')
-        api_version = int(os.environ.get('ONEVIEWSDK_API_VERSION', OneViewClient.DEFAULT_API_VERSION))
+        api_version = os.environ.get('ONEVIEWSDK_API_VERSION')
         ssl_certificate = os.environ.get('ONEVIEWSDK_SSL_CERTIFICATE', '')
         username = os.environ.get('ONEVIEWSDK_USERNAME', '')
         auth_login_domain = os.environ.get('ONEVIEWSDK_AUTH_LOGIN_DOMAIN', '')

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,15 +48,10 @@ logger = logging.getLogger(__name__)
 
 
 class connection(object):
-    def __init__(self, applianceIp, api_version=800, sslBundle=False, timeout=None):
+    def __init__(self, applianceIp, api_version=None, sslBundle=False, timeout=None):
         self._session = None
         self._host = applianceIp
         self._cred = None
-        self._apiVersion = int(api_version)
-        self._headers = {
-            'X-API-Version': self._apiVersion,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'}
         self._proxyHost = None
         self._proxyPort = None
         self._doProxy = False
@@ -69,6 +64,20 @@ class connection(object):
         self._numDisplayedRecords = 0
         self._validateVersion = False
         self._timeout = timeout
+        if not api_version:
+            api_version = self.get_default_api_version()
+        self._apiVersion = int(api_version)
+        self._headers = {
+            'X-API-Version': self._apiVersion,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'}
+
+    def get_default_api_version(self):
+        self._headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'}
+        version = self.get(uri['version'])
+        return version['currentVersion']
 
     def validateVersion(self):
         version = self.get(uri['version'])
