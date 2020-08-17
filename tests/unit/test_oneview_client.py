@@ -265,7 +265,6 @@ class OneViewClientTest(unittest.TestCase):
 
         mock_login.assert_called_once_with(dict(userName='admin',
                                                 password='secret123',
-                                                api_version='800',
                                                 authLoginDomain='',
                                                 sessionID=''))
         mock_set_proxy.assert_not_called()
@@ -280,7 +279,6 @@ class OneViewClientTest(unittest.TestCase):
         mock_login.assert_called_once_with(dict(userName='',
                                                 password='',
                                                 authLoginDomain='',
-                                                api_version='800',
                                                 sessionID='123'))
         mock_set_proxy.assert_not_called()
         self.assertEqual(800, oneview_client.connection._apiVersion)
@@ -356,7 +354,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor_with_only_sessionID(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': 800,
+        mock_cls.assert_called_once_with({'api_version': '800',
                                           'proxy': '',
                                           'timeout': None,
                                           'ip': '172.16.100.199',
