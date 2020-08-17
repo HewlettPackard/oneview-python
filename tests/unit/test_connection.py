@@ -109,9 +109,16 @@ class ConnectionTest(unittest.TestCase):
         self.connection.disable_etag_validation()
         self.assertEqual(self.default_headers_with_etag_validation_off, self.connection._headers)
 
-    def test_headers_with_api_version_800(self):
-        self.connection = connection(self.host, 800)
+    @patch.object(connection, 'get')
+    def test_headers_with_api_version_800(self, mock_get):
+        self.connection._apiVersion = None
+        mock_get.side_effect = [{'minimumVersion': 400, 'currentVersion': 1800}]
+        expected_version = self.default_headers.copy()
+        self.assertEqual(expected_headers, 1800)
 
+    def test_headers_with_default_api_version_800(self):
+        self.connection = connection(self.host)
+        self.connection.get_default_api_version()
         expected_headers = self.default_headers.copy()
         expected_headers['X-API-Version'] = 800
         self.assertEqual(expected_headers, self.connection._headers)
