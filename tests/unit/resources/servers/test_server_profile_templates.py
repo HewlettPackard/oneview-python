@@ -30,7 +30,7 @@ class ServerProfileTemplateTest(TestCase):
 
     def setUp(self):
         host = '127.0.0.1'
-        http_connection = connection(host)
+        http_connection = connection(host, 800)
         self._resource = ServerProfileTemplate(http_connection)
         self.uri = "/rest/server-profile-templates/test"
         self._resource.data = {"uri": self.uri}

@@ -28,7 +28,7 @@ class LicensesTest(TestCase):
     DEFAULT_HOST = '127.0.0.1'
 
     def setUp(self):
-        oneview_connection = connection(self.DEFAULT_HOST)
+        oneview_connection = connection(self.DEFAULT_HOST, 800)
         self.resource = Licenses(oneview_connection)
 
     @mock.patch.object(ResourceClient, 'create')

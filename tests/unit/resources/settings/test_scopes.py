@@ -28,7 +28,7 @@ class ScopesTest(TestCase):
     DEFAULT_HOST = '127.0.0.1'
 
     def setUp(self):
-        oneview_connection = connection(self.DEFAULT_HOST)
+        oneview_connection = connection(self.DEFAULT_HOST, 800)
         self.resource = Scopes(oneview_connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')
