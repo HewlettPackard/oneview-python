@@ -129,6 +129,7 @@ class OneViewClientTest(unittest.TestCase):
         super(OneViewClientTest, self).setUp()
 
         config = {"ip": "172.16.102.59",
+                  "api_version": 800,
                   "proxy": "127.0.0.1:3128",
                   "credentials": {
                       "authLoginDomain": "",
@@ -139,6 +140,7 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_raise_error_missing_ip(self):
         config = {"ip": "",
+                  "api_version": 800,
                   "credentials": {
                       "userName": "administrator",
                       "password": ""}}
@@ -150,6 +152,7 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_raise_error_invalid_proxy(self):
         config = {"ip": "172.16.102.59",
+                  "api_version": 800,
                   "proxy": "3128",
                   "credentials": {
                       "authLoginDomain": "",
@@ -168,6 +171,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_json_file(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -185,6 +189,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_json_file_with_sessionID(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -203,6 +208,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_json_file_with_only_sessionID(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "sessionID": "123"
           }
@@ -218,6 +224,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_default_api_version(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -361,6 +368,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_create_image_streamer_client_without_image_streamer_ip(self, mock_login):
 
         config = {"ip": "172.16.102.59",
+                  "api_version": 800,
                   "credentials": {
                       "userName": "administrator",
                       "password": "password"}}
@@ -378,6 +386,7 @@ class OneViewClientTest(unittest.TestCase):
 
         config = {"ip": "172.16.102.59",
                   "image_streamer_ip": "172.16.102.50",
+                  "api_version": 800,
                   "credentials": {
                       "userName": "administrator",
                       "password": "password"}}
