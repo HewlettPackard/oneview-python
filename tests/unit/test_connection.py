@@ -117,6 +117,7 @@ class ConnectionTest(unittest.TestCase):
 
     @patch.object(connection, 'get')
     def test_headers_with_default_api_version_800(self, mock_get):
+        self.connection = connection(self.host)
         self.connection._apiVersion = None
         mock_get.side_effect = [{'minimumVersion': 400, 'currentVersion': 1800}]
         expected_version = self.connection.get_default_api_version()
