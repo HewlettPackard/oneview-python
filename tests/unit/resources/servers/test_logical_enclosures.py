@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatch
 class LogicalEnclosuresTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._logical_enclosures = LogicalEnclosures(self.connection)
         self.uri = "/rest/logical-enclosures/ad28cf21-8b15-4f92-bdcf-51cb2042db32"
         self._logical_enclosures.data = {"uri": self.uri}

@@ -29,7 +29,7 @@ class CertificatesServerTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._certificate_server = CertificatesServer(self.connection)
         self.uri = "/rest/certificates/servers"
         self._certificate_server.data = {"uri": self.uri}

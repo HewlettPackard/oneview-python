@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper
 class SasLogicalInterconnectGroupsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._resource = SasLogicalInterconnectGroups(self.connection)
         self.uri = "/rest/sas-logical-interconnect-groups/3518be0e-17c1-4189-8f81-83f3724f6155"
         self._resource.data = {"uri": self.uri}

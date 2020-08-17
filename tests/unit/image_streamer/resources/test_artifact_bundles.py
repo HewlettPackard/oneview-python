@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper, ResourceFileH
 class ArtifactBundlesTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._artifact_bundles = ArtifactBundles(self.connection)
         self.uri = "/rest/artifact-bundles/test"
         self._artifact_bundles.data = {"uri": self.uri}

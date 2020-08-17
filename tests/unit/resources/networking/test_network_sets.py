@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatch
 class NetworkSetsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._network_sets = NetworkSets(self.connection)
         self._network_sets.data = {'uri': '/rest/network-sets/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
 

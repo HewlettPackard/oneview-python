@@ -27,7 +27,7 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.client = IdPoolsIpv4Subnets(self.connection)
         self.example_uri = "/rest/id-pools/ipv4/subnets/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
 

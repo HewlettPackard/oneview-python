@@ -27,7 +27,7 @@ from hpOneView.resources.facilities.power_devices import PowerDevices
 class PowerDevicesTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._power_devices = PowerDevices(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_utilization')

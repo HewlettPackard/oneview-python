@@ -31,7 +31,7 @@ class TaskMonitorTest(unittest.TestCase):
     def setUp(self):
         super(TaskMonitorTest, self).setUp()
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.task_monitor = TaskMonitor(self.connection)
 
     @mock.patch.object(connection, 'get')

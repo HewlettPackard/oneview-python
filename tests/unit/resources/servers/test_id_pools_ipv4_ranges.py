@@ -29,7 +29,7 @@ class TestIdPoolsIpv4Ranges(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.client = IdPoolsIpv4Ranges(self.connection)
 
     @mock.patch.object(ResourceClient, 'create')

@@ -28,7 +28,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper
 class UplinkSetsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._uplink_sets = UplinkSets(self.connection)
         self._uplink_sets.data = {'uri': '/rest/ul-inksets/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
         self._ethernet_networks = EthernetNetworks(self.connection)

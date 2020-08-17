@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper
 class ConnectionTemplatesTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._connection_templates = ConnectionTemplates(self.connection)
 
     @mock.patch.object(ResourceHelper, 'do_requests_to_getall')

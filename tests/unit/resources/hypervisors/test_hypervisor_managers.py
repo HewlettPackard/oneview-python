@@ -28,7 +28,7 @@ class HypervisorManagersTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._hypervisor_managers = HypervisorManagers(self.connection)
         self.uri = "/rest/hypervisor-managers/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
         self._hypervisor_managers.data = {"uri": self.uri}

@@ -28,7 +28,7 @@ class SwitchTypesTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._switch_types = SwitchTypes(self.connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')

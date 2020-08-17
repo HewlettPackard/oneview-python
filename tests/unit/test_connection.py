@@ -31,7 +31,7 @@ from hpOneView.exceptions import HPOneViewException
 class ConnectionTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.accept_language_header = {
             'Accept-Language': 'en_US'
         }

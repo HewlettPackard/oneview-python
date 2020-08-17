@@ -29,7 +29,7 @@ class TestIdPools(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.client = IdPools(self.connection)
 
     @mock.patch.object(ResourceClient, 'get')

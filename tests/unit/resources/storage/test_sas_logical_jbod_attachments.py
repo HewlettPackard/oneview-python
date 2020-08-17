@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceClient
 class SasLogicalJbodAttachmentsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._sas_logical_jbod_attachments = SasLogicalJbodAttachments(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_all')
