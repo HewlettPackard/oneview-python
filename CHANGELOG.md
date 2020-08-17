@@ -1,3 +1,10 @@
+# 5.4.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+
+#### Major changes
+Refactored base class to take default API version as per provided Oneview appliance.
+
 # 5.3.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
