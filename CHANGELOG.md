@@ -1,3 +1,16 @@
+# 5.4.0 (unreleased)
+#### Breaking
+  Enhancement made in this version breaks the previous version of the SDK.
+  From this version onwards, module name is renamed to hpeOneView and all the oneview libraries and examples will import the hpeOneView module as parent.
+
+  E.g.
+```
+       from hpeOneView.oneview_client import OneViewClient
+
+       oneview_client = OneViewClient(config)              # Create OneView client
+       fc_networks = oneview_client.fc_networks            # Get FCNetowrk resource client
+```
+
 # 5.3.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
