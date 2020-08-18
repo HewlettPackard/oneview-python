@@ -320,7 +320,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': '201',
+        mock_cls.assert_called_once_with({'api_version': 201,
                                           'proxy': '172.16.100.195:9999',
                                           'timeout': '20',
                                           'ip': '172.16.100.199',
@@ -337,7 +337,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor_with_sessionID(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': '201',
+        mock_cls.assert_called_once_with({'api_version': 201,
                                           'proxy': '172.16.100.195:9999',
                                           'timeout': '20',
                                           'ip': '172.16.100.199',
@@ -354,7 +354,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor_with_only_sessionID(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': '800',
+        mock_cls.assert_called_once_with({'api_version': 800,
                                           'proxy': '',
                                           'timeout': None,
                                           'ip': '172.16.100.199',
