@@ -19,6 +19,7 @@ from pprint import pprint
 
 from config_loader import try_load_from_file
 from hpOneView.oneview_client import OneViewClient
+from copy import deepcopy
 
 # To run this example fill the ip and the credentials below or use a configuration file
 config = {
@@ -119,11 +120,11 @@ pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
 print("\nUpdate the purpose attribute from the recently created network")
-ethernet_data = ethernet_network.data
-ethernet_data['purpose'] = 'Management'
-ethernet_network = ethernet_network.update(ethernet_data)
+ethernet_data_copy = deepcopy(ethernet_network.data)
+ethernet_data_copy['purpose'] = 'Management'
+ethernet_network_update = ethernet_network.update(ethernet_data_copy)
 print("Updated ethernet-network '{name}' successfully.\n   uri = '{uri}'\n   with attribute ['purpose': {purpose}]"
-      .format(**ethernet_network.data))
+      .format(**ethernet_network_update.data))
 
 # Get URIs of associated profiles
 print("\nGet associated profiles uri(s)")
