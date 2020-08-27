@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 # You can use username/password or sessionID for authentication.
@@ -48,7 +48,7 @@ try:
     filter = "interconnectUri='/rest/interconnects/794079a2-7eb4-4992-8027-e9743a40f5b0'"
     cons_interconnectUri = oneview_client.connections.get_all(filter=filter)
     pprint(cons_interconnectUri)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get first 10 connections, sorted by name
@@ -62,7 +62,7 @@ try:
     con_byName = oneview_client.connections.get_by(
         'name', "name981375475-1465399560370")
     pprint(con_byName)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 
@@ -72,5 +72,5 @@ try:
     con_byUri = oneview_client.connections.get(
         '/rest/connections/58ffb307-3087-4c9d-8574-44e8a79e0d6e')
     pprint(con_byUri)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import unittest
 
 import mock
 
-from hpOneView.resources.networking.sas_interconnects import SasInterconnects
-from hpOneView.resources.resource import ResourceHelper, ResourcePatchMixin
+from hpeOneView.resources.networking.sas_interconnects import SasInterconnects
+from hpeOneView.resources.resource import ResourceHelper, ResourcePatchMixin
 
 
 class SasInterconnectsTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.ethernet_networks import EthernetNetworks
-from hpOneView.resources.networking.uplink_sets import UplinkSets
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.ethernet_networks import EthernetNetworks
+from hpeOneView.resources.networking.uplink_sets import UplinkSets
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class UplinkSetsTest(unittest.TestCase):

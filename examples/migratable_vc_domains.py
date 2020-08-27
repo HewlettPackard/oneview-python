@@ -15,9 +15,9 @@
 # limitations under the License.
 ###
 
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.resources.servers.migratable_vc_domains import MigratableVcDomains
-from hpOneView.exceptions import HPOneViewTaskError
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.resources.servers.migratable_vc_domains import MigratableVcDomains
+from hpeOneView.exceptions import HPEOneViewTaskError
 from config_loader import try_load_from_file
 from pprint import PrettyPrinter
 
@@ -74,7 +74,7 @@ print("Attempting to migrate enclosure '%s'.  The migration state before is '%s'
 try:
     compatibility_report = oneview_client.migratable_vc_domains.migrate(compatibility_report['uri'])
     print("Complete.  Migration state afterward is '%s'." % compatibility_report['migrationState'])
-except HPOneViewTaskError:
+except HPEOneViewTaskError:
     print("Failure.  The enclosure failed to migrate.  Perhaps there was a critical issue that was unresolved before \
 migrating?")
 

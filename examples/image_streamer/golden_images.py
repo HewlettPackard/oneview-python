@@ -17,7 +17,7 @@
 
 import os
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 EXAMPLE_CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../config.json')
 

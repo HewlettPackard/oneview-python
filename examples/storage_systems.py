@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
@@ -70,7 +70,7 @@ try:
     storage_system = storage_systems.add(options)
     print("\nAdded storage system '%s'.\n   uri = '%s'" %
           (storage_system.data['name'], storage_system.data['uri']))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     storage_system = storage_systems.get_by_hostname(options['hostname'])
     if storage_system:
         print("\nStorage system '%s' was already added.\n   uri = '%s'" %

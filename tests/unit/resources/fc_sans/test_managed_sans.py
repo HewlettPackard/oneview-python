@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.resources.fc_sans.managed_sans import ManagedSANs
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
 
 TIMEOUT = -1
 

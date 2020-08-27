@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -44,7 +44,7 @@ print("Get a specific task")
 try:
     tasks = tasks.get_by_id("36BD6806-71CD-4F1B-AA12-5E3E67379659")
     pprint(tasks.data)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get a tree of tasks with specified filter
@@ -59,5 +59,5 @@ if oneview_client.api_version >= 1200:
         try:
             updated_tasks = tasks.patch('Replace', "isCancellable", True)
             pprint(updated_tasks.data)
-        except HPOneViewException as e:
+        except HPEOneViewException as e:
             print(e.msg)

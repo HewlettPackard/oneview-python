@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.ethernet_networks import EthernetNetworks
-from hpOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.ethernet_networks import EthernetNetworks
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
 
 
 class EthernetNetworksTest(TestCase):

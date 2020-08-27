@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 ###
 import mock
 import unittest
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
 
 
 class TestIdPoolsIpv4Subnets(unittest.TestCase):

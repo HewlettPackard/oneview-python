@@ -17,14 +17,14 @@
 
 from unittest import TestCase
 
-from hpOneView.image_streamer.image_streamer_client import ImageStreamerClient
-from hpOneView.image_streamer.resources.plan_scripts import PlanScripts
-from hpOneView.image_streamer.resources.golden_images import GoldenImages
-from hpOneView.image_streamer.resources.build_plans import BuildPlans
-from hpOneView.image_streamer.resources.os_volumes import OsVolumes
-from hpOneView.image_streamer.resources.deployment_plans import DeploymentPlans
-from hpOneView.image_streamer.resources.artifact_bundles import ArtifactBundles
-from hpOneView.image_streamer.resources.deployment_groups import DeploymentGroups
+from hpeOneView.image_streamer.image_streamer_client import ImageStreamerClient
+from hpeOneView.image_streamer.resources.plan_scripts import PlanScripts
+from hpeOneView.image_streamer.resources.golden_images import GoldenImages
+from hpeOneView.image_streamer.resources.build_plans import BuildPlans
+from hpeOneView.image_streamer.resources.os_volumes import OsVolumes
+from hpeOneView.image_streamer.resources.deployment_plans import DeploymentPlans
+from hpeOneView.image_streamer.resources.artifact_bundles import ArtifactBundles
+from hpeOneView.image_streamer.resources.deployment_groups import DeploymentGroups
 
 
 class ImageStreamerClientTest(TestCase):
