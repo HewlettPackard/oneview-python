@@ -151,7 +151,7 @@
   <h1>Source code for hpOneView.connection</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -199,15 +199,10 @@
 
 
 <div class="viewcode-block" id="connection"><a class="viewcode-back" href="../../hpOneView.html#hpOneView.connection.connection">[docs]</a><span class="k">class</span> <span class="nc">connection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">applianceIp</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">sslBundle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">applianceIp</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sslBundle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">applianceIp</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_apiVersion</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;X-API-Version&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apiVersion</span><span class="p">,</span>
-            <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxyHost</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxyPort</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_doProxy</span> <span class="o">=</span> <span class="kc">False</span>
@@ -220,6 +215,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_numDisplayedRecords</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validateVersion</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">api_version</span><span class="p">:</span>
+            <span class="n">api_version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_default_api_version</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apiVersion</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;X-API-Version&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apiVersion</span><span class="p">,</span>
+            <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+
+<div class="viewcode-block" id="connection.get_default_api_version"><a class="viewcode-back" href="../../hpOneView.html#hpOneView.connection.connection.get_default_api_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_default_api_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">version</span><span class="p">[</span><span class="s1">&#39;currentVersion&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="connection.validateVersion"><a class="viewcode-back" href="../../hpOneView.html#hpOneView.connection.connection.validateVersion">[docs]</a>    <span class="k">def</span> <span class="nf">validateVersion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">])</span>
