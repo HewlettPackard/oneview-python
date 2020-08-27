@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -157,7 +157,7 @@ try:
     print("\nGet storage volume template by id: '{}'".format(template_id))
     volume_template_byid = oneview_client.storage_volume_templates.get(template_id)
     print("   Found '{name}' at uri: {uri}".format(**volume_template_byid))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get storage volume template by uri

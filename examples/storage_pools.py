@@ -15,8 +15,8 @@
 # limitations under the License.
 ###
 
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 from pprint import pprint
 
@@ -136,7 +136,7 @@ if storage_pools_all and storage_pools_all[0]:
         storage_pool.update(s_pool_data)
         print('Updated storage pool description')
 
-    except HPOneViewException as e:
+    except HPEOneViewException as e:
         print(e.msg)
 
 # Remove storage system, if it was added

@@ -18,15 +18,15 @@
 import logging
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 """
-hpOneView do not add any handlers other than NullHandler.
-The configuration of handlers is the prerogative of the developer who uses hpOneView library.
+hpeOneView do not add any handlers other than NullHandler.
+The configuration of handlers is the prerogative of the developer who uses hpeOneView library.
 This example uses a StreamHandler to send the logging output to streams sys.stdout and sys.stderr.
 """
 
-logger = logging.getLogger('hpOneView')
+logger = logging.getLogger('hpeOneView')
 
 handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(name)-12s %(message)s')

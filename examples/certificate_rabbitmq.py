@@ -18,8 +18,8 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "",
@@ -51,7 +51,7 @@ print('Generate a CA Signed Certificate')
 try:
     response = oneview_client.certificate_rabbitmq.generate(certificate_ca_signed_client)
     pprint(response)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print (e.msg)
     if e.oneview_response:
         print e.oneview_response.get('recommendedActions')
@@ -62,7 +62,7 @@ print('\nGenerate a Self Signed Certificate')
 try:
     response = oneview_client.certificate_rabbitmq.generate(certificate_self_signed_client)
     pprint(response)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print (e.msg)
     if e.oneview_response:
         print e.oneview_response.get('recommendedActions')

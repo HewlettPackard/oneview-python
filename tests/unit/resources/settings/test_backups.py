@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.settings.backups import Backups
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.settings.backups import Backups
+from hpeOneView.resources.resource import ResourceClient
 
 
 class BackupsTest(TestCase):

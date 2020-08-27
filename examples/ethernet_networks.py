@@ -18,7 +18,7 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from copy import deepcopy
 
 # To run this example fill the ip and the credentials below or use a configuration file

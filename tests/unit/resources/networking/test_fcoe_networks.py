@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.fcoe_networks import FcoeNetworks
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.fcoe_networks import FcoeNetworks
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class FcoeNetworksTest(TestCase):

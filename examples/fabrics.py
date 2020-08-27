@@ -18,8 +18,8 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "<oneview_ip>",
@@ -52,7 +52,7 @@ try:
     print("\nGet a fabric by id")
     fabrics_byid = oneview_client.fabrics.get(fabric_id)
     pprint(fabrics_byid)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get by name

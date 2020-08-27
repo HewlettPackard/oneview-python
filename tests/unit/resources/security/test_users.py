@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.security.users import Users
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.connection import connection
+from hpeOneView.resources.security.users import Users
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class UsersTest(unittest.TestCase):
@@ -99,7 +99,7 @@ class UsersTest(unittest.TestCase):
     def test_get_by_called_with_something_invalid(self, mock_get):
         try:
             self._users.get_by('test', 'test')
-        except HPOneViewException as exception:
+        except HPEOneViewException as exception:
             self.assertEqual('Only userName, name and role can be queried for this resource.', exception.args[0])
         else:
             self.fail("Expected Exception was not raised")

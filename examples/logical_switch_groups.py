@@ -19,7 +19,7 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 # This resource is only available on C7000 enclosures
 
