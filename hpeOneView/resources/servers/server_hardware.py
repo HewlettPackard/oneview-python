@@ -26,7 +26,7 @@ standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import (Resource, ResourceUtilizationMixin,
-                                          ResourcePatchMixin, ensure_resource_client)
+                                           ResourcePatchMixin, ensure_resource_client)
 
 
 class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):

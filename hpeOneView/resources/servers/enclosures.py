@@ -24,8 +24,8 @@ from future import standard_library
 standard_library.install_aliases()
 
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
-                                          ResourceZeroBodyMixin, ResourceUtilizationMixin,
-                                          ensure_resource_client)
+                                           ResourceZeroBodyMixin, ResourceUtilizationMixin,
+                                           ensure_resource_client)
 
 
 class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationMixin, Resource):

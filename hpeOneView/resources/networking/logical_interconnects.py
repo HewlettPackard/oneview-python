@@ -26,7 +26,7 @@ standard_library.install_aliases()
 
 from hpeOneView.exceptions import HPEOneViewResourceNotFound
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin, merge_resources,
-                                          ensure_resource_client, unavailable_method)
+                                           ensure_resource_client, unavailable_method)
 
 
 class LogicalInterconnects(ResourcePatchMixin, Resource):

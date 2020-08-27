@@ -27,7 +27,7 @@ standard_library.install_aliases()
 from copy import deepcopy
 
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
-                                          ResourceSchemaMixin, ensure_resource_client)
+                                           ResourceSchemaMixin, ensure_resource_client)
 
 
 class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):

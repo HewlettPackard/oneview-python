@@ -980,7 +980,7 @@ class ConnectionTest(unittest.TestCase):
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 400}]
         mock_put.side_effect = HPEOneViewException("Failed")
         self.assertRaises(HPEOneViewException, self.connection.login, {"userName": "administrator",
-                                                                      "password": "", "sessionID": "123"})
+                                                                       "password": "", "sessionID": "123"})
 
     @patch.object(connection, 'get')
     def test_validate_version_exceeding_minimum(self, mock_get):

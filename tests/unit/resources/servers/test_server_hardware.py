@@ -22,8 +22,8 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.servers.server_hardware import ServerHardware
 from hpeOneView.resources.resource import (ResourceHelper,
-                                          ResourceUtilizationMixin,
-                                          ResourcePatchMixin)
+                                           ResourceUtilizationMixin,
+                                           ResourcePatchMixin)
 
 
 class ServerHardwareTest(TestCase):

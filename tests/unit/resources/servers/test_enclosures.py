@@ -22,7 +22,7 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.servers.enclosures import Enclosures
 from hpeOneView.resources.resource import (Resource, ResourceHelper, ResourcePatchMixin,
-                                          ResourceZeroBodyMixin, ResourceUtilizationMixin)
+                                           ResourceZeroBodyMixin, ResourceUtilizationMixin)
 
 
 class EnclosuresTest(TestCase):

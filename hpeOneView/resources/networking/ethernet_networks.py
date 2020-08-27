@@ -26,7 +26,7 @@ standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
-                                          ensure_resource_client)
+                                           ensure_resource_client)
 
 
 class EthernetNetworks(ResourcePatchMixin, Resource):

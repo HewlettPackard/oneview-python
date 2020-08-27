@@ -23,12 +23,12 @@ from tests.test_utils import mock_builtin
 from hpeOneView.connection import connection
 from hpeOneView import exceptions
 from hpeOneView.resources.resource import (ResourceClient, ResourceHelper, ResourceFileHandlerMixin,
-                                          ResourceZeroBodyMixin, ResourcePatchMixin, ResourceUtilizationMixin,
-                                          ResourceSchemaMixin, Resource,
-                                          RESOURCE_CLIENT_INVALID_ID, UNRECOGNIZED_URI, TaskMonitor,
-                                          RESOURCE_CLIENT_TASK_EXPECTED, RESOURCE_ID_OR_URI_REQUIRED,
-                                          transform_list_to_dict, extract_id_from_uri, merge_resources,
-                                          merge_default_values, unavailable_method)
+                                           ResourceZeroBodyMixin, ResourcePatchMixin, ResourceUtilizationMixin,
+                                           ResourceSchemaMixin, Resource,
+                                           RESOURCE_CLIENT_INVALID_ID, UNRECOGNIZED_URI, TaskMonitor,
+                                           RESOURCE_CLIENT_TASK_EXPECTED, RESOURCE_ID_OR_URI_REQUIRED,
+                                           transform_list_to_dict, extract_id_from_uri, merge_resources,
+                                           merge_default_values, unavailable_method)
 
 
 class StubResourceFileHandler(ResourceFileHandlerMixin, Resource):

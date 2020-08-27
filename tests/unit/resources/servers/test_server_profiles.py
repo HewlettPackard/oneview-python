@@ -22,7 +22,7 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.servers.server_profiles import ServerProfiles
 from hpeOneView.resources.resource import (Resource, ResourceHelper,
-                                          ResourcePatchMixin, ResourceSchemaMixin)
+                                           ResourcePatchMixin, ResourceSchemaMixin)
 
 TIMEOUT = -1
 
