@@ -28,7 +28,7 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.__appliance_device_snmp_v1_trap_destinations = ApplianceDeviceSNMPv1TrapDestinations(self.connection)
         self.uri = "/rest/appliance/trap-destinations"
         self.__appliance_device_snmp_v1_trap_destinations.data = {"uri": self.uri}

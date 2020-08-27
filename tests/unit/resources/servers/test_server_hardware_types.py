@@ -26,7 +26,7 @@ class ServerHardwareTypesTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._server_hardware_types = ServerHardwareTypes(self.connection)
         self.uri = "/rest/server-hardware-types/ad28cf21-8b15-4f92-bdcf-51cb2042db32"
         self._server_hardware_types.data = {'uri': self.uri}

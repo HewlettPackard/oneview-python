@@ -28,7 +28,7 @@ class StorageVolumeTemplatesTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._storage_volume_templates = StorageVolumeTemplates(self.connection)
         self._storage_volume_templates.data = {'uri': '/rest/storage-volume-templates/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
 

@@ -1,6 +1,9 @@
-# 5.4.0(Unreleased)
+# 5.4.0(unreleased)
 #### Notes
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+
+#### Major changes
+Refactored base class to take default API version as per provided Oneview appliance.
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.

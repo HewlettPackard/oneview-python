@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceHelper, Resource
 class StorageVolumeAttachmentsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._storage_volume_attachments = StorageVolumeAttachments(self.connection)
         self.uri = '/rest/storage-volume-attachments/ad28cf21-8b15-4f92-bdcf-51cb2042db32'
         self._storage_volume_attachments.data = {'uri': self.uri}

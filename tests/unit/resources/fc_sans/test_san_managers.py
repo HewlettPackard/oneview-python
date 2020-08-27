@@ -50,7 +50,7 @@ PROVIDERS = [
 class SanManagersTest(TestCase):
     def setUp(self):
         host = '127.0.0.1'
-        http_connection = connection(host)
+        http_connection = connection(host, 800)
         self._resource = SanManagers(http_connection)
 
     @mock.patch.object(ResourceClient, 'get_all')

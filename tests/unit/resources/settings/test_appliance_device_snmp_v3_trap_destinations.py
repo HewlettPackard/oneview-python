@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceClient
 class ApplianceDeviceSNMPv3TrapDestinationsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._snmp_v3_trap_dest = ApplianceDeviceSNMPv3TrapDestinations(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_all')

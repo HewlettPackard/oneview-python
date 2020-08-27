@@ -108,7 +108,7 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
                                          '/scopeUris',
                                          [scope.data['uri']])
         pprint(fc_with_scope)
-    except HPOneViewException, e:
+    except HPOneViewException as e:
         print(e)
 
 # Delete the created network

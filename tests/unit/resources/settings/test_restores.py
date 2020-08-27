@@ -27,7 +27,7 @@ from hpOneView.resources.settings.restores import Restores
 class RestoresTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.resource = Restores(self.connection)
 
     @mock.patch.object(ResourceHelper, 'do_get')

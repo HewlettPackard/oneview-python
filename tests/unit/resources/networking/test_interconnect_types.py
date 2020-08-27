@@ -28,7 +28,7 @@ class InterconnectTypesTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._interconnect_types = InterconnectTypes(self.connection)
 
     @mock.patch.object(ResourceHelper, 'do_requests_to_getall')

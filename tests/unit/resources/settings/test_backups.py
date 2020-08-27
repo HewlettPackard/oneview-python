@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceClient
 class BackupsTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._client = Backups(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_collection')

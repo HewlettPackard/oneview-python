@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceClient
 class ApplianceDeviceReadCommunityTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._read_community = ApplianceDeviceReadCommunity(self.connection)
 
     @mock.patch.object(ResourceClient, 'get')

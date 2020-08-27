@@ -31,7 +31,7 @@ class SasLogicalJbodsTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._resource = SasLogicalJbods(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_all')

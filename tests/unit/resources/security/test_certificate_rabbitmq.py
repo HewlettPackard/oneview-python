@@ -27,7 +27,7 @@ from hpOneView.resources.security.certificate_rabbitmq import CertificateRabbitM
 class CertificateRabbitMQTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._certificate_rabbitmq = CertificateRabbitMQ(self.connection)
 
     @mock.patch.object(ResourceClient, 'create')

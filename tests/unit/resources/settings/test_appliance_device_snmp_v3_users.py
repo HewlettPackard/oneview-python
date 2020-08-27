@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceClient
 class ApplianceDeviceSNMPv3UsersTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._snmp_v3_users = ApplianceDeviceSNMPv3Users(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_all')

@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatch
 class LogicalInterconnectGroupsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._lig = LogicalInterconnectGroups(self.connection)
         self.uri = "/rest/logical-interconnect-groups/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
         self._lig.data = {"uri": self.uri}

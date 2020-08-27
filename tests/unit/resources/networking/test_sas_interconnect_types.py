@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceHelper
 class SasInterconnectTypesTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._sas_interconnect_types = SasInterconnectTypes(self.connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')

@@ -29,7 +29,7 @@ class TestIdPoolsRanges(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.id_pool_name = 'vsn'
         self.client = IdPoolsRanges(self.id_pool_name, self.connection)
         self.example_uri = "/rest/id-pools/" + self.id_pool_name + "/ranges/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"

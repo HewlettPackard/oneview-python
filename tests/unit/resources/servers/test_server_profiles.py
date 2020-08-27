@@ -30,7 +30,7 @@ TIMEOUT = -1
 class ServerProfilesTest(TestCase):
     def setUp(self):
         host = '127.0.0.1'
-        http_connection = connection(host)
+        http_connection = connection(host, 800)
         self._resource = ServerProfiles(http_connection)
         self.uri = "/rest/server-profiles/4ff2327f-7638-4b66-ad9d-283d4940a4ae"
         self._resource.data = {"uri": self.uri}

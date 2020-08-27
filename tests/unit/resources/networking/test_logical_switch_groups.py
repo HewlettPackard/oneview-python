@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatch
 class LogicalSwitchGroupsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._lsg = LogicalSwitchGroups(self.connection)
         self.uri = "/rest/logical-switch-groups/dce3fc90-873e-48f7-8340-cc927d625b16"
         self._lsg.data = {"uri": self.uri}

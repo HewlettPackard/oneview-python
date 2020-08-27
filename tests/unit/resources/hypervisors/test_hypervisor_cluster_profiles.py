@@ -28,7 +28,7 @@ class HypervisorClusterProfilesTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._hypervisor_cluster_profiles = HypervisorClusterProfiles(self.connection)
         self.uri = "/rest/hypervisor-cluster-profiles"
         self._hypervisor_cluster_profiles.data = {"uri": self.uri}

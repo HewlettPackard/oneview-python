@@ -27,7 +27,7 @@ from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatch
 class FcoeNetworksTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._fcoe_networks = FcoeNetworks(self.connection)
         self.uri = "/rest/fcoe-networks/3518be0e-17c1-4189-8f81-83f3724f6155"
         self._fcoe_networks.data = {"uri": self.uri}

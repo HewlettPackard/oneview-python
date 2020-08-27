@@ -30,7 +30,7 @@ class OsDeploymentPlansTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._os_deployment_plans = OsDeploymentPlans(self.connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')

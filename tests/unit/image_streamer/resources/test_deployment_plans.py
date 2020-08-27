@@ -27,7 +27,7 @@ from hpOneView.resources.resource import ResourceHelper, Resource
 class DeploymentPlansTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._client = DeploymentPlans(self.connection)
         self.resource_uri = '/rest/deployment-plans/ad28cf21-8b15-4f92-bdcf-51cb2042db32'
         self._client.data = {'uri': self.resource_uri}

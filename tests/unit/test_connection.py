@@ -31,7 +31,7 @@ from hpOneView.exceptions import HPOneViewException
 class ConnectionTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.accept_language_header = {
             'Accept-Language': 'en_US'
         }
@@ -111,10 +111,17 @@ class ConnectionTest(unittest.TestCase):
 
     def test_headers_with_api_version_800(self):
         self.connection = connection(self.host, 800)
-
         expected_headers = self.default_headers.copy()
         expected_headers['X-API-Version'] = 800
         self.assertEqual(expected_headers, self.connection._headers)
+
+    @patch.object(connection, 'get')
+    def test_headers_with_default_api_version_800(self, mock_get):
+        self.connection = connection(self.host)
+        self.connection._apiVersion = None
+        mock_get.side_effect = [{'minimumVersion': 400, 'currentVersion': 1800}]
+        expected_version = self.connection.get_default_api_version()
+        self.assertEqual(expected_version, 1800)
 
     @patch.object(HTTPSConnection, 'request')
     @patch.object(HTTPSConnection, 'getresponse')

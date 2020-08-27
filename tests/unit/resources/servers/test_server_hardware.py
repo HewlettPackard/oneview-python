@@ -29,7 +29,7 @@ from hpOneView.resources.resource import (ResourceHelper,
 class ServerHardwareTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._server_hardware = ServerHardware(self.connection)
         self.uri = "/rest/server-hardware/1224242424"
         self._server_hardware.data = {"uri": self.uri}

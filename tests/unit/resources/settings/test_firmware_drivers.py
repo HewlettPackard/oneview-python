@@ -28,7 +28,7 @@ class FirmwareDriversTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._firmware_drivers = FirmwareDrivers(self.connection)
         self.uri = "/rest/firmware-drivers"
         self._firmware_drivers.data = {"uri": self.uri}
