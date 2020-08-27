@@ -115,7 +115,7 @@ else:
 
 # Create bulk ethernet networks
 print("\nCreate bulk ethernet networks")
-ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk_delete)
+ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
