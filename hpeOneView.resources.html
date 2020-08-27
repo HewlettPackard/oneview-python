@@ -1,0 +1,2018 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hpeOneView.resources package &mdash; HPE OneView Python SDK 5.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> HPE OneView Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">hpeOneView.resources package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.resource">hpeOneView.resources.resource module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.task_monitor">hpeOneView.resources.task_monitor module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HPE OneView Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>hpeOneView.resources package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/hpeOneView.resources.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hpeoneview-resources-package">
+<h1>hpeOneView.resources package<a class="headerlink" href="#hpeoneview-resources-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.activity.html">hpeOneView.resources.activity package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.activity.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.activity.html#module-hpeOneView.resources.activity.alerts">hpeOneView.resources.activity.alerts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.activity.html#module-hpeOneView.resources.activity.events">hpeOneView.resources.activity.events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.activity.html#module-hpeOneView.resources.activity.tasks">hpeOneView.resources.activity.tasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.activity.html#module-hpeOneView.resources.activity">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.data_services.html">hpeOneView.resources.data_services package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.data_services.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.data_services.html#module-hpeOneView.resources.data_services.metric_streaming">hpeOneView.resources.data_services.metric_streaming module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.data_services.html#module-hpeOneView.resources.data_services">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.facilities.html">hpeOneView.resources.facilities package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.facilities.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.facilities.html#module-hpeOneView.resources.facilities.datacenters">hpeOneView.resources.facilities.datacenters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.facilities.html#module-hpeOneView.resources.facilities.power_devices">hpeOneView.resources.facilities.power_devices module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.facilities.html#module-hpeOneView.resources.facilities.racks">hpeOneView.resources.facilities.racks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.facilities.html#module-hpeOneView.resources.facilities">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.fc_sans.html">hpeOneView.resources.fc_sans package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.fc_sans.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.fc_sans.html#module-hpeOneView.resources.fc_sans.endpoints">hpeOneView.resources.fc_sans.endpoints module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.fc_sans.html#module-hpeOneView.resources.fc_sans.managed_sans">hpeOneView.resources.fc_sans.managed_sans module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.fc_sans.html#module-hpeOneView.resources.fc_sans.san_managers">hpeOneView.resources.fc_sans.san_managers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.fc_sans.html#module-hpeOneView.resources.fc_sans">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.hypervisors.html">hpeOneView.resources.hypervisors package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.hypervisors.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.hypervisors.html#module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles">hpeOneView.resources.hypervisors.hypervisor_cluster_profiles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.hypervisors.html#module-hpeOneView.resources.hypervisors.hypervisor_managers">hpeOneView.resources.hypervisors.hypervisor_managers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.hypervisors.html#module-hpeOneView.resources.hypervisors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.networking.html">hpeOneView.resources.networking package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.connection_templates">hpeOneView.resources.networking.connection_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.ethernet_networks">hpeOneView.resources.networking.ethernet_networks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.fabrics">hpeOneView.resources.networking.fabrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.fc_networks">hpeOneView.resources.networking.fc_networks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.fcoe_networks">hpeOneView.resources.networking.fcoe_networks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.interconnect_link_topologies">hpeOneView.resources.networking.interconnect_link_topologies module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.interconnect_types">hpeOneView.resources.networking.interconnect_types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.interconnects">hpeOneView.resources.networking.interconnects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.internal_link_sets">hpeOneView.resources.networking.internal_link_sets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.logical_downlinks">hpeOneView.resources.networking.logical_downlinks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.logical_interconnect_groups">hpeOneView.resources.networking.logical_interconnect_groups module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.logical_interconnects">hpeOneView.resources.networking.logical_interconnects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.logical_switch_groups">hpeOneView.resources.networking.logical_switch_groups module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.logical_switches">hpeOneView.resources.networking.logical_switches module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.network_sets">hpeOneView.resources.networking.network_sets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.sas_interconnect_types">hpeOneView.resources.networking.sas_interconnect_types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.sas_interconnects">hpeOneView.resources.networking.sas_interconnects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.sas_logical_interconnect_groups">hpeOneView.resources.networking.sas_logical_interconnect_groups module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.sas_logical_interconnects">hpeOneView.resources.networking.sas_logical_interconnects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.switch_types">hpeOneView.resources.networking.switch_types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.switches">hpeOneView.resources.networking.switches module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking.uplink_sets">hpeOneView.resources.networking.uplink_sets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.networking.html#module-hpeOneView.resources.networking">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.search.html">hpeOneView.resources.search package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.search.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.search.html#module-hpeOneView.resources.search.index_resources">hpeOneView.resources.search.index_resources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.search.html#module-hpeOneView.resources.search.labels">hpeOneView.resources.search.labels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.search.html#module-hpeOneView.resources.search">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.security.html">hpeOneView.resources.security package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security.certificate_authority">hpeOneView.resources.security.certificate_authority module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security.certificate_rabbitmq">hpeOneView.resources.security.certificate_rabbitmq module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security.certificates_server">hpeOneView.resources.security.certificates_server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security.login_details">hpeOneView.resources.security.login_details module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security.roles">hpeOneView.resources.security.roles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security.users">hpeOneView.resources.security.users module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.security.html#module-hpeOneView.resources.security">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.servers.html">hpeOneView.resources.servers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.connections">hpeOneView.resources.servers.connections module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.enclosure_groups">hpeOneView.resources.servers.enclosure_groups module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.enclosures">hpeOneView.resources.servers.enclosures module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.id_pools">hpeOneView.resources.servers.id_pools module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.id_pools_ipv4_ranges">hpeOneView.resources.servers.id_pools_ipv4_ranges module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.id_pools_ipv4_subnets">hpeOneView.resources.servers.id_pools_ipv4_subnets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.id_pools_ranges">hpeOneView.resources.servers.id_pools_ranges module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.logical_enclosures">hpeOneView.resources.servers.logical_enclosures module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.migratable_vc_domains">hpeOneView.resources.servers.migratable_vc_domains module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.server_hardware">hpeOneView.resources.servers.server_hardware module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.server_hardware_types">hpeOneView.resources.servers.server_hardware_types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.server_profile_templates">hpeOneView.resources.servers.server_profile_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers.server_profiles">hpeOneView.resources.servers.server_profiles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.servers.html#module-hpeOneView.resources.servers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.settings.html">hpeOneView.resources.settings package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.appliance_device_read_community">hpeOneView.resources.settings.appliance_device_read_community module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.appliance_device_snmp_v3_users">hpeOneView.resources.settings.appliance_device_snmp_v3_users module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.appliance_node_information">hpeOneView.resources.settings.appliance_node_information module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">hpeOneView.resources.settings.appliance_time_and_locale_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.backups">hpeOneView.resources.settings.backups module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.firmware_bundles">hpeOneView.resources.settings.firmware_bundles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.firmware_drivers">hpeOneView.resources.settings.firmware_drivers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.licenses">hpeOneView.resources.settings.licenses module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.restores">hpeOneView.resources.settings.restores module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.scopes">hpeOneView.resources.settings.scopes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings.versions">hpeOneView.resources.settings.versions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.settings.html#module-hpeOneView.resources.settings">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.storage.html">hpeOneView.resources.storage package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.drive_enclosures">hpeOneView.resources.storage.drive_enclosures module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.sas_logical_jbod_attachments">hpeOneView.resources.storage.sas_logical_jbod_attachments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.sas_logical_jbods">hpeOneView.resources.storage.sas_logical_jbods module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.storage_pools">hpeOneView.resources.storage.storage_pools module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.storage_systems">hpeOneView.resources.storage.storage_systems module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.storage_volume_attachments">hpeOneView.resources.storage.storage_volume_attachments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.storage_volume_templates">hpeOneView.resources.storage.storage_volume_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage.volumes">hpeOneView.resources.storage.volumes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.storage.html#module-hpeOneView.resources.storage">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpeOneView.resources.uncategorized.html">hpeOneView.resources.uncategorized package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.uncategorized.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.uncategorized.html#module-hpeOneView.resources.uncategorized.os_deployment_plans">hpeOneView.resources.uncategorized.os_deployment_plans module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.uncategorized.html#module-hpeOneView.resources.uncategorized.os_deployment_servers">hpeOneView.resources.uncategorized.os_deployment_servers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.uncategorized.html#module-hpeOneView.resources.uncategorized.unmanaged_devices">hpeOneView.resources.uncategorized.unmanaged_devices module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpeOneView.resources.uncategorized.html#module-hpeOneView.resources.uncategorized">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-hpeOneView.resources.resource">
+<span id="hpeoneview-resources-resource-module"></span><h2>hpeOneView.resources.resource module<a class="headerlink" href="#module-hpeOneView.resources.resource" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.resource.EnsureResourceClient">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">EnsureResourceClient</code><span class="sig-paren">(</span><em>method=None</em>, <em>update_data=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#EnsureResourceClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.EnsureResourceClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Decorator class to update the resource data.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.Resource">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">Resource</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for OneView resources.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>connection</strong> – OneView connection object</li>
+<li><strong>data</strong> – Resource data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.Resource.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {}</em><a class="headerlink" href="#hpeOneView.resources.resource.Resource.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.Resource.UNIQUE_IDENTIFIERS">
+<code class="descname">UNIQUE_IDENTIFIERS</code><em class="property"> = [u'uri', u'name']</em><a class="headerlink" href="#hpeOneView.resources.resource.Resource.UNIQUE_IDENTIFIERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.Resource.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest'</em><a class="headerlink" href="#hpeOneView.resources.resource.Resource.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>uri=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a resource when a request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – Additional fields can be passed to create the resource.</li>
+<li><strong>uri</strong> – Resouce uri</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.Resource.delete">
+<code class="descname">delete</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.resource.Resource.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.ensure_resource_data">
+<code class="descname">ensure_resource_data</code><span class="sig-paren">(</span><em>update_data=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.ensure_resource_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.ensure_resource_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves data from OneView and updates resource object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>update_data</strong> – Flag to update resource data when it is required.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all items according with the given arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no
+filter; all resources are returned.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
+oldest entry first.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of items matching the specified filter.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.get_by">
+<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.get_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the resource by passing a field and its value.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function uses get_all passing a filter.The search is case-insensitive.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> – Field name to filter.</li>
+<li><strong>value</strong> – Value to filter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.get_by_id">
+<code class="descname">get_by_id</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.get_by_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.get_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a resource by its id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – id of Resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource object or None if resource does not exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.get_by_name">
+<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a resource by its name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Resource name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource object or None if resource does not exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.get_by_uri">
+<code class="descname">get_by_uri</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.get_by_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.get_by_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a resource by its URI</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of the resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="hpeOneView.resources.resource.Resource.new">
+<em class="property">classmethod </em><code class="descname">new</code><span class="sig-paren">(</span><em>connection</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new resource object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.Resource.refresh">
+<code class="descname">refresh</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.resource.Resource.refresh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.Resource.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#Resource.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.Resource.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourceClient">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourceClient</code><span class="sig-paren">(</span><em>con</em>, <em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class implements common functions for HpOneView API rest</p>
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.build_query_uri">
+<code class="descname">build_query_uri</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.build_query_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.build_query_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the URI given the parameters.</p>
+<p>More than one request can be send to get the items, regardless the query parameter ‘count’, because the actual
+number of items in the response might differ from the requested count. Some types of resource have a limited
+number of items returned on each call. For those resources, additional calls are made to the API to retrieve
+any other items matching the given filter. The actual number of items can also differ from the requested call
+if the requested number of items would take too long.</p>
+<p>The use of optional parameters for OneView 2.0 is described at:
+<a class="reference external" href="http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/index.html">http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/index.html</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Single quote - “’” - inside a query parameter is not supported by OneView API.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no
+filter; all resources are returned.</li>
+<li><strong>query</strong> – A single query parameter can do what would take multiple parameters or multiple GET requests using
+filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
+oldest entry first.</li>
+<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+predefined view. The default view is expand (show all attributes of the resource and all elements of
+the collections or resources).</li>
+<li><strong>fields</strong> – Name of the fields.</li>
+<li><strong>uri</strong> – A specific URI (optional)</li>
+<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The complete uri</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">uri</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.build_subresource_uri">
+<code class="descname">build_subresource_uri</code><span class="sig-paren">(</span><em>resource_id_or_uri=None</em>, <em>subresource_id_or_uri=None</em>, <em>subresource_path=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.build_subresource_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.build_subresource_uri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.build_uri">
+<code class="descname">build_uri</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.build_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.build_uri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>uri=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>default_values={}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a resource when a request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> – OneView resource dictionary.</li>
+<li><strong>uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+<li><strong>default_values</strong> – <p>Dictionary with default values grouped by OneView API version. This dictionary will be be merged with
+the resource dictionary only if the dictionary does not contain the keys.
+This argument is optional and the default value is an empty dictionary.
+Ex.:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>default_values = {</dt>
+<dd>‘200’: {“type”: “logical-switch-group”},
+‘300’: {“type”: “logical-switch-groupV300”}</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.create_report">
+<code class="descname">create_report</code><span class="sig-paren">(</span><em>uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.create_report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.create_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a report and returns the output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – URI</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.create_with_zero_body">
+<code class="descname">create_with_zero_body</code><span class="sig-paren">(</span><em>uri=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.create_with_zero_body"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.create_with_zero_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a resource when no request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.delete_all">
+<code class="descname">delete_all</code><span class="sig-paren">(</span><em>filter</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.delete_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.delete_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all resources from the appliance that match the provided filter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter</strong> – A general filter/query string to narrow the list of items deleted.</li>
+<li><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors
+on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resources were successfully deleted.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.download">
+<code class="descname">download</code><span class="sig-paren">(</span><em>uri</em>, <em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the contents of the requested URI to a stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – URI</li>
+<li><strong>file_path</strong> – File path destination</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the file was successfully downloaded.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The requested resource.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all items according with the given arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no
+filter; all resources are returned.</li>
+<li><strong>query</strong> – A single query parameter can do what would take multiple parameters or multiple GET requests using
+filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
+oldest entry first.</li>
+<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+predefined view. The default view is expand (show all attributes of the resource and all elements of
+the collections or resources).</li>
+<li><strong>fields</strong> – Name of the fields.</li>
+<li><strong>uri</strong> – A specific URI (optional)</li>
+<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of items matching the specified filter.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get_by">
+<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em>, <em>uri=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function uses get_all passing a filter.</p>
+<p>The search is case-insensitive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> – Field name to filter.</li>
+<li><strong>value</strong> – Value to filter.</li>
+<li><strong>uri</strong> – Resource uri.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get_by_name">
+<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a resource by its name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Resource name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get_collection">
+<code class="descname">get_collection</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>filter=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a collection of resources.</p>
+<p>Use this function when the ‘start’ and ‘count’ parameters are not allowed in the GET call.
+Otherwise, use get_all instead.</p>
+<p>Optional filtering criteria may be specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – General filter/query string.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Collection of the requested resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get_schema">
+<code class="descname">get_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get_schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.get_utilization">
+<code class="descname">get_utilization</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>fields=None</em>, <em>filter=None</em>, <em>refresh=False</em>, <em>view=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.get_utilization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.get_utilization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves historical utilization data for the specified resource, metrics, and time span.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – Resource identification</li>
+<li><strong>fields</strong> – Name of the supported metric(s) to be retrieved in the format METRIC[,METRIC]…
+If unspecified, all metrics supported are returned.</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – <p>Filters should be in the format FILTER_NAME=VALUE[,FILTER_NAME=VALUE]…
+E.g.: ‘startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z’</p>
+<dl class="docutils">
+<dt>startDate</dt>
+<dd>Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
+determined by the endDate minus 24 hours.</dd>
+<dt>endDate</dt>
+<dd>End date of requested starting time range in ISO 8601 format. When omitted, the endDate includes
+the latest data sample available.</dd>
+</dl>
+<p>If an excessive number of samples would otherwise be returned, the results will be segmented. The
+caller is responsible for comparing the returned sliceStartTime with the requested startTime in the
+response. If the sliceStartTime is greater than the oldestSampleTime and the requested start time,
+the caller is responsible for repeating the request with endTime set to sliceStartTime to obtain the
+next segment. This process is repeated until the full data set is retrieved.</p>
+<p>If the resource has no data, the UtilizationData is still returned but will contain no samples and
+sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime will still be set
+appropriately (null if no data is available). If the filter does not happen to overlap the data
+that a resource has, then the metric history service will return null sample values for any
+missing samples.</p>
+</li>
+<li><strong>refresh</strong> – Specifies that if necessary, an additional request will be queued to obtain the most recent
+utilization data from the iLO. The response will not include any refreshed data. To track the
+availability of the newly collected data, monitor the TaskResource identified by the refreshTaskUri
+property in the response. If null, no refresh was queued.</li>
+<li><strong>view</strong> – <p>Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
+resolution in the returned response. Utilization data is automatically purged to stay within storage
+space constraints. Supported views are listed below:</p>
+<dl class="docutils">
+<dt>native</dt>
+<dd>Resolution of the samples returned will be one sample for each 5-minute time period. This is the
+default view and matches the resolution of the data returned by the iLO. Samples at this resolution
+are retained up to one year.</dd>
+<dt>hour</dt>
+<dd>Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
+calculated by averaging the available 5-minute data samples that occurred within the hour, except
+for PeakPower which is calculated by reporting the peak observed 5-minute sample value data during
+the hour. Samples at this resolution are retained up to three years.</dd>
+<dt>day</dt>
+<dd>Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
+24-hour period that starts at midnight GMT regardless of the time zone in which the appliance or
+client is located. Samples are calculated by averaging the available 5-minute data samples that
+occurred during the day, except for PeakPower which is calculated by reporting the peak observed
+5-minute sample value data during the day. Samples at this resolution are retained up to three
+years.</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.merge_default_values">
+<code class="descname">merge_default_values</code><span class="sig-paren">(</span><em>resource</em>, <em>default_values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.merge_default_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.merge_default_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.patch">
+<code class="descname">patch</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>operation</em>, <em>path</em>, <em>value</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.patch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the PATCH to update a resource.</p>
+<p>Only one operation can be performed in each PATCH call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>operation</strong> – Patch operation</li>
+<li><strong>path</strong> – Path</li>
+<li><strong>value</strong> – Value</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.patch_request">
+<code class="descname">patch_request</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>body</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.patch_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.patch_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the PATCH to update a resource.</p>
+<p>Only one operation can be performed in each PATCH call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>body</strong> – Patch request body</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>uri=None</em>, <em>force=False</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>default_values={}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a PUT request to update a resource when a request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> – OneView resource dictionary.</li>
+<li><strong>uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors
+on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+<li><strong>default_values</strong> – <p>Dictionary with default values grouped by OneView API version. This dictionary will be be merged with
+the resource dictionary only if the dictionary does not contain the keys.
+This argument is optional and the default value is an empty dictionary.
+Ex.:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>default_values = {</dt>
+<dd>‘200’: {“type”: “logical-switch-group”},
+‘300’: {“type”: “logical-switch-groupV300”}</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.update_with_zero_body">
+<code class="descname">update_with_zero_body</code><span class="sig-paren">(</span><em>uri</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.update_with_zero_body"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.update_with_zero_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a PUT request to update a resource when no request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceClient.upload">
+<code class="descname">upload</code><span class="sig-paren">(</span><em>file_path</em>, <em>uri=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceClient.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceClient.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a multipart request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file_path</strong> – File to upload.</li>
+<li><strong>uri</strong> – A specific URI (optional).</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Response body.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourceFileHandlerMixin">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourceFileHandlerMixin</code><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceFileHandlerMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceFileHandlerMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceFileHandlerMixin.download">
+<code class="descname">download</code><span class="sig-paren">(</span><em>uri</em>, <em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceFileHandlerMixin.download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceFileHandlerMixin.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the contents of the requested URI to a stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – URI</li>
+<li><strong>file_path</strong> – File path destination</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the file was successfully downloaded.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceFileHandlerMixin.upload">
+<code class="descname">upload</code><span class="sig-paren">(</span><em>file_path</em>, <em>uri=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceFileHandlerMixin.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceFileHandlerMixin.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a multipart request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file_path</strong> – File to upload.</li>
+<li><strong>uri</strong> – A specific URI (optional).</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Response body.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourceHelper">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourceHelper</code><span class="sig-paren">(</span><em>base_uri</em>, <em>connection</em>, <em>task_monitor</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.add_new_fields">
+<code class="descname">add_new_fields</code><span class="sig-paren">(</span><em>data_to_add</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.add_new_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.add_new_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update resource data with new fields.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – resource data</li>
+<li><strong>data_to_update</strong> – dict of data to update resource data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Returnes:</dt>
+<dd>Returnes dict</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.build_query_uri">
+<code class="descname">build_query_uri</code><span class="sig-paren">(</span><em>uri=None</em>, <em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.build_query_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.build_query_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the URI from given parameters.</p>
+<p>More than one request can be send to get the items, regardless the query parameter ‘count’, because the actual
+number of items in the response might differ from the requested count. Some types of resource have a limited
+number of items returned on each call. For those resources, additional calls are made to the API to retrieve
+any other items matching the given filter. The actual number of items can also differ from the requested call
+if the requested number of items would take too long.</p>
+<p>The use of optional parameters for OneView 2.0 is described at:
+<a class="reference external" href="http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/index.html">http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/index.html</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Single quote - “’” - inside a query parameter is not supported by OneView API.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no
+filter; all resources are returned.</li>
+<li><strong>query</strong> – A single query parameter can do what would take multiple parameters or multiple GET requests using
+filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
+oldest entry first.</li>
+<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+predefined view. The default view is expand (show all attributes of the resource and all elements of
+the collections or resources).</li>
+<li><strong>fields</strong> – Name of the fields.</li>
+<li><strong>uri</strong> – A specific URI (optional)</li>
+<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The complete uri</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">uri</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.build_subresource_uri">
+<code class="descname">build_subresource_uri</code><span class="sig-paren">(</span><em>resource_id_or_uri=None</em>, <em>subresource_id_or_uri=None</em>, <em>subresource_path=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.build_subresource_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.build_subresource_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps to build a URI with resource path and its sub resource path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resoure_id_or_uri</strong> – ID/URI of the main resource.</li>
+<li><strong>subresource_id__or_uri</strong> – ID/URI of the sub resource.</li>
+<li><strong>subresource_path</strong> – Sub resource path to be added with the URI.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Returns URI</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.build_uri">
+<code class="descname">build_uri</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.build_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.build_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps to build the URI from resource id and validate the URI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID/URI of the resource.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a valid resource URI</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.build_uri_with_query_string">
+<code class="descname">build_uri_with_query_string</code><span class="sig-paren">(</span><em>kwargs</em>, <em>sufix_path=u''</em>, <em>uri=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.build_uri_with_query_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.build_uri_with_query_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>uri=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a resource when a request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – Additional fields can be passed to create the resource.</li>
+<li><strong>uri</strong> – Resouce uri</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.create_report">
+<code class="descname">create_report</code><span class="sig-paren">(</span><em>uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.create_report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.create_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a report and returns the output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – URI</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>uri</em>, <em>force=False</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes current resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>force</strong> – Flag to delete the resource forcefully, default is False.</li>
+<li><strong>timeout</strong> – Timeout in seconds.</li>
+<li><strong>custom_headers</strong> – Allows to set custom http headers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.delete_all">
+<code class="descname">delete_all</code><span class="sig-paren">(</span><em>filter</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.delete_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.delete_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all resources from the appliance that match the provided filter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter</strong> – A general filter/query string to narrow the list of items deleted.</li>
+<li><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors
+on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resources were successfully deleted.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.do_get">
+<code class="descname">do_get</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.do_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.do_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps to make get requests</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of the resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns the resource data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Returns</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.do_post">
+<code class="descname">do_post</code><span class="sig-paren">(</span><em>uri</em>, <em>resource</em>, <em>timeout</em>, <em>custom_headers</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.do_post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.do_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps to make post requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – URI of  the resource.</li>
+<li><strong>resource</strong> – Resource data to post.</li>
+<li><strong>timeout</strong> – Time out for the request in seconds.</li>
+<li><strong>cutom_headers</strong> – Allows to add custom http headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Retunrs Task object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.do_put">
+<code class="descname">do_put</code><span class="sig-paren">(</span><em>uri</em>, <em>resource</em>, <em>timeout</em>, <em>custom_headers</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.do_put"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.do_put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps to make put requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>uri</strong> – URI of the resource</li>
+<li><strong>timeout</strong> – Time out for the request in seconds.</li>
+<li><strong>custom_headers</strong> – Allows to set custom http headers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Retuns:</dt>
+<dd>Returns Task object</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall">
+<code class="descname">do_requests_to_getall</code><span class="sig-paren">(</span><em>uri</em>, <em>requested_count</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.do_requests_to_getall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helps to make http request for get_all method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method will be checking for the pagination URI in the response
+and make request to pagination URI to get all the resources.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all items according with the given arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no
+filter; all resources are returned.</li>
+<li><strong>query</strong> – A single query parameter can do what would take multiple parameters or multiple GET requests using
+filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
+oldest entry first.</li>
+<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+predefined view. The default view is expand (show all attributes of the resource and all elements of
+the collections or resources).</li>
+<li><strong>fields</strong> – Name of the fields.</li>
+<li><strong>uri</strong> – A specific URI (optional)</li>
+<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of items matching the specified filter.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.get_collection">
+<code class="descname">get_collection</code><span class="sig-paren">(</span><em>uri=None</em>, <em>filter=u''</em>, <em>path=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a collection of resources.</p>
+<p>Use this function when the ‘start’ and ‘count’ parameters are not allowed in the GET call.
+Otherwise, use get_all instead.</p>
+<p>Optional filtering criteria may be specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – General filter/query string.</li>
+<li><strong>path</strong> (<em>str</em>) – path to be added with base URI</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Collection of the requested resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.get_members">
+<code class="descname">get_members</code><span class="sig-paren">(</span><em>mlist</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_members"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_members" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get members from list of resources</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.get_next_page">
+<code class="descname">get_next_page</code><span class="sig-paren">(</span><em>response</em>, <em>items</em>, <em>requested_count</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_next_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_next_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns next page URI.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.make_query_filter">
+<code class="descname">make_query_filter</code><span class="sig-paren">(</span><em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.make_query_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.make_query_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to build filter query parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>uri=None</em>, <em>force=False</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a PUT request to update a resource when a request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> – Data to update the resource.</li>
+<li><strong>uri</strong> – Resource uri</li>
+<li><strong>force</strong> – If set to true, the operation completes despite any problems
+with network connectivity or errors on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows to add custom HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict with the updated resource data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.update_resource_fields">
+<code class="descname">update_resource_fields</code><span class="sig-paren">(</span><em>data</em>, <em>data_to_add</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.update_resource_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.update_resource_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update resource data with new fields.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – resource data</li>
+<li><strong>data_to_update</strong> – dict of data to update resource data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Returnes:</dt>
+<dd>Returnes dict</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.update_with_zero_body">
+<code class="descname">update_with_zero_body</code><span class="sig-paren">(</span><em>uri</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.update_with_zero_body"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.update_with_zero_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a PUT request to update a resource when no request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – Allows to use a different URI other than resource URI</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default.
+The timeout does not abort the operation in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows to set custom HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict with updated resource data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceHelper.validate_resource_uri">
+<code class="descname">validate_resource_uri</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.validate_resource_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.validate_resource_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to validate URI of the resource.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourcePatchMixin">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourcePatchMixin</code><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourcePatchMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourcePatchMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.ResourcePatchMixin.patch">
+<code class="descname">patch</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.resource.ResourcePatchMixin.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourcePatchMixin.patch_request">
+<code class="descname">patch_request</code><span class="sig-paren">(</span><em>uri</em>, <em>body</em>, <em>custom_headers=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourcePatchMixin.patch_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourcePatchMixin.patch_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the PATCH to update a resource.</p>
+<p>Only one operation can be performed in each PATCH call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>body</strong> (<em>list</em>) – Patch request body</li>
+<li><strong>timeout</strong> (<em>int</em>) – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> (<em>dict</em>) – Allows to add custom http headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourceSchemaMixin">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourceSchemaMixin</code><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceSchemaMixin.get_schema">
+<code class="descname">get_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceSchemaMixin.get_schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceSchemaMixin.get_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supports schema requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dict with the schema.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourceUtilizationMixin">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourceUtilizationMixin</code><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceUtilizationMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceUtilizationMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceUtilizationMixin.get_utilization">
+<code class="descname">get_utilization</code><span class="sig-paren">(</span><em>fields=None</em>, <em>filter=None</em>, <em>refresh=False</em>, <em>view=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceUtilizationMixin.get_utilization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceUtilizationMixin.get_utilization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves historical utilization data for the specified resource, metrics, and time span.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fields</strong> – Name of the supported metric(s) to be retrieved in the format METRIC[,METRIC]…
+If unspecified, all metrics supported are returned.</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – <p>Filters should be in the format FILTER_NAME=VALUE[,FILTER_NAME=VALUE]…
+E.g.: ‘startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z’</p>
+<dl class="docutils">
+<dt>startDate</dt>
+<dd>Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
+determined by the endDate minus 24 hours.</dd>
+<dt>endDate</dt>
+<dd>End date of requested starting time range in ISO 8601 format. When omitted, the endDate includes
+the latest data sample available.</dd>
+</dl>
+<p>If an excessive number of samples would otherwise be returned, the results will be segmented. The
+caller is responsible for comparing the returned sliceStartTime with the requested startTime in the
+response. If the sliceStartTime is greater than the oldestSampleTime and the requested start time,
+the caller is responsible for repeating the request with endTime set to sliceStartTime to obtain the
+next segment. This process is repeated until the full data set is retrieved.</p>
+<p>If the resource has no data, the UtilizationData is still returned but will contain no samples and
+sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime will still be set
+appropriately (null if no data is available). If the filter does not happen to overlap the data
+that a resource has, then the metric history service will return null sample values for any
+missing samples.</p>
+</li>
+<li><strong>refresh</strong> – Specifies that if necessary, an additional request will be queued to obtain the most recent
+utilization data from the iLO. The response will not include any refreshed data. To track the
+availability of the newly collected data, monitor the TaskResource identified by the refreshTaskUri
+property in the response. If null, no refresh was queued.</li>
+<li><strong>view</strong> – <p>Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
+resolution in the returned response. Utilization data is automatically purged to stay within storage
+space constraints. Supported views are listed below:</p>
+<dl class="docutils">
+<dt>native</dt>
+<dd>Resolution of the samples returned will be one sample for each 5-minute time period. This is the
+default view and matches the resolution of the data returned by the iLO. Samples at this resolution
+are retained up to one year.</dd>
+<dt>hour</dt>
+<dd>Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
+calculated by averaging the available 5-minute data samples that occurred within the hour, except
+for PeakPower which is calculated by reporting the peak observed 5-minute sample value data during
+the hour. Samples at this resolution are retained up to three years.</dd>
+<dt>day</dt>
+<dd>Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
+24-hour period that starts at midnight GMT regardless of the time zone in which the appliance or
+client is located. Samples are calculated by averaging the available 5-minute data samples that
+occurred during the day, except for PeakPower which is calculated by reporting the peak observed
+5-minute sample value data during the day. Samples at this resolution are retained up to three
+years.</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hpeOneView.resources.resource.ResourceZeroBodyMixin">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ResourceZeroBodyMixin</code><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceZeroBodyMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceZeroBodyMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceZeroBodyMixin.create_with_zero_body">
+<code class="descname">create_with_zero_body</code><span class="sig-paren">(</span><em>uri=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceZeroBodyMixin.create_with_zero_body"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceZeroBodyMixin.create_with_zero_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a POST request to create a resource when no request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.resource.ResourceZeroBodyMixin.update_with_zero_body">
+<code class="descname">update_with_zero_body</code><span class="sig-paren">(</span><em>uri=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceZeroBodyMixin.update_with_zero_body"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceZeroBodyMixin.update_with_zero_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a PUT request to update a resource when no request body is required.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – Allows to use a different URI other than resource URI</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default.
+The timeout does not abort the operation in OneView; it just stops waiting for its completion.</li>
+<li><strong>custom_headers</strong> – Allows to set custom HTTP headers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict with updated resource data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.resource.ensure_resource_client">
+<code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">ensure_resource_client</code><a class="headerlink" href="#hpeOneView.resources.resource.ensure_resource_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#hpeOneView.resources.resource.EnsureResourceClient" title="hpeOneView.resources.resource.EnsureResourceClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.EnsureResourceClient</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hpeOneView.resources.resource.extract_id_from_uri">
+<code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">extract_id_from_uri</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#extract_id_from_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.extract_id_from_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract ID from the end of the URI</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the OneView resources.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The string founded after the last “/”</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hpeOneView.resources.resource.merge_default_values">
+<code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">merge_default_values</code><span class="sig-paren">(</span><em>resource_list</em>, <em>default_values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#merge_default_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.merge_default_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a new list where each item of original resource_list will be merged with the default_values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource_list</strong> – list with items to be merged</li>
+<li><strong>default_values</strong> – properties to be merged with each item list. If the item already contains some property
+the original value will be maintained.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list containing each item merged with default_values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hpeOneView.resources.resource.merge_resources">
+<code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">merge_resources</code><span class="sig-paren">(</span><em>resource1</em>, <em>resource2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#merge_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.merge_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a copy of resource1 with resource2 values and returns the merged dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource1</strong> – original resource</li>
+<li><strong>resource2</strong> – resource to update resource1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">merged resource</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hpeOneView.resources.resource.transform_list_to_dict">
+<code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">transform_list_to_dict</code><span class="sig-paren">(</span><em>list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#transform_list_to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.transform_list_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Transforms a list into a dictionary, putting values as keys</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dictionary built</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="hpeOneView.resources.resource.unavailable_method">
+<code class="descclassname">hpeOneView.resources.resource.</code><code class="descname">unavailable_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#unavailable_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.unavailable_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an exception if method is not available for the resource.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.task_monitor">
+<span id="hpeoneview-resources-task-monitor-module"></span><h2>hpeOneView.resources.task_monitor module<a class="headerlink" href="#module-hpeOneView.resources.task_monitor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.task_monitor.</code><code class="descname">TaskMonitor</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.CONNECTION_FAILURE_ERROR_NUMBERS">
+<code class="descname">CONNECTION_FAILURE_ERROR_NUMBERS</code><em class="property"> = [8, 22, 101, 110, 104, 103, 101, 100, 111]</em><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.CONNECTION_FAILURE_ERROR_NUMBERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.CONNECTION_FAILURE_TIMEOUT">
+<code class="descname">CONNECTION_FAILURE_TIMEOUT</code><em class="property"> = 90</em><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.CONNECTION_FAILURE_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>task</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a task by its uri.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>task</strong> – task dict, must have ‘uri’ key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">task dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.get_associated_resource">
+<code class="descname">get_associated_resource</code><span class="sig-paren">(</span><em>task</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor.get_associated_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.get_associated_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a resource associated with a task.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>task</strong> – task dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">task (updated), the entity found (dict)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.get_completed_task">
+<code class="descname">get_completed_task</code><span class="sig-paren">(</span><em>task</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor.get_completed_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.get_completed_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits until the task is completed and returns the task resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>task</strong> – TaskResource</li>
+<li><strong>timeout</strong> – Timeout in seconds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TaskResource</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.get_current_seconds">
+<em class="property">static </em><code class="descname">get_current_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor.get_current_seconds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.get_current_seconds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.is_task_running">
+<code class="descname">is_task_running</code><span class="sig-paren">(</span><em>task</em>, <em>connection_failure_control=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor.is_task_running"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.is_task_running" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a task is running according to: TASK_PENDING_STATES [‘New’, ‘Starting’,
+‘Pending’, ‘Running’, ‘Suspended’, ‘Stopping’]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>task</strong> (<em>dict</em>) – OneView Task resource.</li>
+<li><strong>connection_failure_control</strong> (<em>dict</em>) – A dictionary instance that contains last_success for error tolerance control.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection_failure_control</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">last_success</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_task_running</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">connection_failure_control</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True when in TASK_PENDING_STATES; False when not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.task_monitor.TaskMonitor.wait_for_task">
+<code class="descname">wait_for_task</code><span class="sig-paren">(</span><em>task</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/task_monitor.html#TaskMonitor.wait_for_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.task_monitor.TaskMonitor.wait_for_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for task execution and return associated resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>task</strong> – task dict</li>
+<li><strong>timeout</strong> – timeout in seconds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Associated resource when creating or updating; True when deleting.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright (C) 2020 Hewlett Packard Enterprise
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

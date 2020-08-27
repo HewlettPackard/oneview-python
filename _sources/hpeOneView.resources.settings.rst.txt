@@ -1,0 +1,118 @@
+hpeOneView.resources.settings package
+=====================================
+
+Submodules
+----------
+
+hpeOneView.resources.settings.appliance\_device\_read\_community module
+-----------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_device_read_community
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.appliance\_device\_snmp\_v1\_trap\_destinations module
+------------------------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.appliance\_device\_snmp\_v3\_trap\_destinations module
+------------------------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.appliance\_device\_snmp\_v3\_users module
+-----------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_device_snmp_v3_users
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.appliance\_node\_information module
+-----------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_node_information
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.appliance\_time\_and\_locale\_configuration module
+--------------------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_time_and_locale_configuration
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.backups module
+--------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.backups
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.firmware\_bundles module
+------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.firmware_bundles
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.firmware\_drivers module
+------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.firmware_drivers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.licenses module
+---------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.licenses
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.restores module
+---------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.restores
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.scopes module
+-------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.scopes
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.settings.versions module
+---------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.versions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: hpeOneView.resources.settings
+    :members:
+    :undoc-members:
+    :show-inheritance:

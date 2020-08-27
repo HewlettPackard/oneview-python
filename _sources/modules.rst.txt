@@ -1,7 +1,7 @@
-hpOneView
-=========
+hpeOneView
+==========
 
 .. toctree::
    :maxdepth: 4
 
-   hpOneView
+   hpeOneView

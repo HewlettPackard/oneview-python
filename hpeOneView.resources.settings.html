@@ -1,0 +1,1415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hpeOneView.resources.settings package &mdash; HPE OneView Python SDK 5.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> HPE OneView Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">hpeOneView.resources.settings package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_read_community">hpeOneView.resources.settings.appliance_device_read_community module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_users">hpeOneView.resources.settings.appliance_device_snmp_v3_users module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_node_information">hpeOneView.resources.settings.appliance_node_information module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">hpeOneView.resources.settings.appliance_time_and_locale_configuration module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.backups">hpeOneView.resources.settings.backups module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.firmware_bundles">hpeOneView.resources.settings.firmware_bundles module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.firmware_drivers">hpeOneView.resources.settings.firmware_drivers module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.licenses">hpeOneView.resources.settings.licenses module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.restores">hpeOneView.resources.settings.restores module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.scopes">hpeOneView.resources.settings.scopes module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.versions">hpeOneView.resources.settings.versions module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HPE OneView Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>hpeOneView.resources.settings package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/hpeOneView.resources.settings.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hpeoneview-resources-settings-package">
+<h1>hpeOneView.resources.settings package<a class="headerlink" href="#hpeoneview-resources-settings-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_device_read_community">
+<span id="hpeoneview-resources-settings-appliance-device-read-community-module"></span><h2>hpeOneView.resources.settings.appliance_device_read_community module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_device_read_community" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_device_read_community.</code><code class="descname">ApplianceDeviceReadCommunity</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_read_community.html#ApplianceDeviceReadCommunity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ApplianceDeviceReadCommunity API client.
+The device read community string is used by the appliance to establish SNMP communication with devices managed by the appliance.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/device-read-community-string'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_read_community.html#ApplianceDeviceReadCommunity.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the global community string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ApplianceDeviceReadCommunity</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_read_community.html#ApplianceDeviceReadCommunity.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_read_community.ApplianceDeviceReadCommunity.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the device read community string.
+This results in an update of the community string on all servers being managed/monitored by this OneView instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated appliance SNMPv1 read community string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations">
+<span id="hpeoneview-resources-settings-appliance-device-snmp-v1-trap-destinations-module"></span><h2>hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.</code><code class="descname">ApplianceDeviceSNMPv1TrapDestinations</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v1_trap_destinations.html#ApplianceDeviceSNMPv1TrapDestinations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>ApplianceDeviceSNMPv1TrapDestinations API client.
+The appliance has the ability to forward events received from monitored or managed
+server hardware to the specified destinations as SNMPv1 traps.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/trap-destinations'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>data</em>, <em>id=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v1_trap_destinations.html#ApplianceDeviceSNMPv1TrapDestinations.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified trap forwarding destination.
+The trap destination associated with the specified id will be created if trap destination with that id does not exists.
+The id can only be an integer greater than 0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>dict</em>) – Object to create.</li>
+<li><strong>id</strong> – id of the resource to be created</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created resource.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.create_validation">
+<code class="descname">create_validation</code><span class="sig-paren">(</span><em>destination</em>, <em>community_string</em>, <em>uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v1_trap_destinations.html#ApplianceDeviceSNMPv1TrapDestinations.create_validation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.create_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate whether a hostname or ip address is a valid trap destination.
+If validation fails, it returns an error identifying the problem that occurred.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>destination</strong> (<em>str</em>) – destination ip address.</li>
+<li><strong>community_string</strong> (<em>str</em>) – </li>
+<li><strong>- uri of the snmpv1 trap destination</strong> (<em>uri</em>) – </li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Returns error message if destination already exists.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations">
+<span id="hpeoneview-resources-settings-appliance-device-snmp-v3-trap-destinations-module"></span><h2>hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.</code><code class="descname">ApplianceDeviceSNMPv3TrapDestinations</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ApplianceDeviceSNMPv3TrapDestinations API client.
+The appliance has the ability to forward events received from monitored or managed server hardware to the specified destinations as SNMPv3 traps.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/snmpv3-trap-forwarding/destinations'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified trap forwarding destination.
+The trap destination associated with the specified id will be created if trap destination with that id does not exists.
+The id can only be an integer greater than 0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created resource.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes SNMPv3 trap forwarding destination based on {Id} only if no User is assigned to it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – dict object to delete</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resource was successfully deleted.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SNMPv3 trap forwarding destination with the specified ID, if it exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of SNMPv3 trap destination.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Appliance SNMPv3 trap destination.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all SNMPv3 trap forwarding destinations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – <p>The number of resources to return. A count of -1 requests all items.</p>
+<p>The actual number of items in the response might differ from the requested
+count if the sum of start and count exceeds the total number of items.</p>
+</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SNMPv3 Trap Destionations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.get_by">
+<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.get_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all SNMPv3 trap forwarding destinations that match the filter.
+The search is case-insensitive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> – field name to filter</li>
+<li><strong>value</strong> – value to filter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SNMPv3 Trap Destionations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_trap_destinations.html#ApplianceDeviceSNMPv3TrapDestinations.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations.ApplianceDeviceSNMPv3TrapDestinations.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates SNMPv3 trap forwarding destination based on Id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> – dict object with changes.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated appliance SNMPv3 trap destinations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_device_snmp_v3_users">
+<span id="hpeoneview-resources-settings-appliance-device-snmp-v3-users-module"></span><h2>hpeOneView.resources.settings.appliance_device_snmp_v3_users module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_users" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_device_snmp_v3_users.</code><code class="descname">ApplianceDeviceSNMPv3Users</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ApplianceDeviceSNMPv3Users API client [Available only since API 600].</p>
+<p>As part of SNMPv3 trap forwarding support, the appliance provides APIs for creating User-based Security Model (USM) and forwarding destinations.
+The following protocols are supported while defining USM.</p>
+<p>Authentication protocols: MD5 / SHA1 / SHA256 / SHA384 / SHA512
+Privacy protocols: AES / DES
+The security levels supported while defining USM are None, Authentication only and both Authentication and Privacy.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/snmpv3-trap-forwarding/users'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new SNMPv3 user.
+This user will be used for sending the SNMPv3 trap to the associated destinations.
+One user can be assigned to multiple destinations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created resource.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an SNMPv3 User based on User Id specified in {Id}.
+The user will be deleted only if it has no associated destinations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – dict object to delete</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resource was successfully deleted.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.delete_all">
+<code class="descname">delete_all</code><span class="sig-paren">(</span><em>filter=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.delete_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.delete_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an SNMPv3 User based on User name specified in filter. The user will be deleted only if it has no associated destinations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>username</strong> – ID or URI of SNMPv3 user.</li>
+<li><strong>filter</strong> – A general filter/query string to narrow the list of items returned.
+The default is no filter - all resources are returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resource was successfully deleted.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SNMPv3 user with the specified ID, if it exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of SNMPv3 user.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Appliance SNMPv3 user.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists all SNMPv3 Users.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – <p>The number of resources to return. A count of -1 requests all items.</p>
+<p>The actual number of items in the response might differ from the requested
+count if the sum of start and count exceeds the total number of items.</p>
+</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SNMPv3 Users.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.get_by">
+<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.get_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all SNMPv3 users that match the filter.
+The search is case-insensitive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> – field name to filter</li>
+<li><strong>value</strong> – value to filter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SNMPv3 Users.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_device_snmp_v3_users.html#ApplianceDeviceSNMPv3Users.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_device_snmp_v3_users.ApplianceDeviceSNMPv3Users.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates SNMPv3 User based on User Id as specified in {Id}</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> – dict object with changes.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated appliance SNMPv3 user.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_node_information">
+<span id="hpeoneview-resources-settings-appliance-node-information-module"></span><h2>hpeOneView.resources.settings.appliance_node_information module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_node_information" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_node_information.</code><code class="descname">ApplianceNodeInformation</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_node_information.html#ApplianceNodeInformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ApplianceNodeInformation API client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/nodeinfo'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.get_status">
+<code class="descname">get_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_node_information.html#ApplianceNodeInformation.get_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.get_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves node’s status information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Node’s status information</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.get_version">
+<code class="descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_node_information.html#ApplianceNodeInformation.get_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.get_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves node’s version information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Node’s version information</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">
+<span id="hpeoneview-resources-settings-appliance-time-and-locale-configuration-module"></span><h2>hpeOneView.resources.settings.appliance_time_and_locale_configuration module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_time_and_locale_configuration.</code><code class="descname">ApplianceTimeAndLocaleConfiguration</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ApplianceTimeAndLocaleConfiguration API client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'TimeAndLocale'}, u'300': {u'type': u'TimeAndLocale'}}</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/configuration/time-locale'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the appliance time and locale configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ApplianceTimeAndLocaleConfiguration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the appliance time and locale configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated appliance time and locale configuration.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.backups">
+<span id="hpeoneview-resources-settings-backups-module"></span><h2>hpeOneView.resources.settings.backups module<a class="headerlink" href="#module-hpeOneView.resources.settings.backups" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.backups.Backups">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.backups.</code><code class="descname">Backups</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Backups API client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.backups.Backups.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/backups'</em><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts backing up the appliance. After completion, the backup file must be downloaded and saved off-appliance.
+Appliance backups can be started at any time, and do not require any special setup to prepare the appliance for
+the backup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Details of the created backup.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.download">
+<code class="descname">download</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads a backup archive previously created on the appliance. Uploaded backup files cannot be downloaded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – ID or URI of the Artifact Bundle.</li>
+<li><strong>file_path</strong> (<em>str</em>) – Destination file path.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Successfully downloaded.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the details of the specified backup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the backup</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Details of the specified backup.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the details for any current appliance backup. Only one backup file is present on the appliance at any
+time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of Backups.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.get_config">
+<code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the details of the backup configuration for the remote server and automatic backup schedule.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the backup</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Details of the backup configuration for the remote server and automatic backup schedule.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.update_config">
+<code class="descname">update_config</code><span class="sig-paren">(</span><em>config</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.update_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.update_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the remote server configuration and the automatic backup schedule for backup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> (<em>dict</em>) – Object to update.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Backup details.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.update_remote_archive">
+<code class="descname">update_remote_archive</code><span class="sig-paren">(</span><em>save_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.update_remote_archive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.update_remote_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a backup of the appliance to a previously-configured remote location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>save_uri</strong> (<em>dict</em>) – The URI for saving the backup to a previously configured location.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Backup details.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.backups.Backups.upload">
+<code class="descname">upload</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/backups.html#Backups.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.backups.Backups.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads an appliance backup file in preparation of a restore. Any existing backup on the appliance is removed.</p>
+<p>After the backup file is uploaded and validated, its details are returned. The URI of the backup can be used to
+start a restore.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – The local backup filepath</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Details of the uploaded backup.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.firmware_bundles">
+<span id="hpeoneview-resources-settings-firmware-bundles-module"></span><h2>hpeOneView.resources.settings.firmware_bundles module<a class="headerlink" href="#module-hpeOneView.resources.settings.firmware_bundles" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.firmware_bundles.</code><code class="descname">FirmwareBundles</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Firmware Bundles API client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/firmware-bundles'</em><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.upload">
+<code class="descname">upload</code><span class="sig-paren">(</span><em>file_path</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload an SPP ISO image file or a hotfix file to the appliance.
+The API supports upload of one hotfix at a time into the system.
+For the successful upload of a hotfix, ensure its original name and extension are not altered.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file_path</strong> – Full path to firmware.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the updated firmware bundle.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.firmware_drivers">
+<span id="hpeoneview-resources-settings-firmware-drivers-module"></span><h2>hpeOneView.resources.settings.firmware_drivers module<a class="headerlink" href="#module-hpeOneView.resources.settings.firmware_drivers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.firmware_drivers.FirmwareDrivers">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.firmware_drivers.</code><code class="descname">FirmwareDrivers</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_drivers.html#FirmwareDrivers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_drivers.FirmwareDrivers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin" title="hpeOneView.resources.resource.ResourceSchemaMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourceSchemaMixin</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>The firmware drivers resource managers provides REST APIs to retrieve the firmware bundle inventory data.
+Note: As per the API docs, ‘type’ field is not present in the firmware drivers POST call. So default values are not added.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.firmware_drivers.FirmwareDrivers.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/firmware-drivers'</em><a class="headerlink" href="#hpeOneView.resources.settings.firmware_drivers.FirmwareDrivers.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.licenses">
+<span id="hpeoneview-resources-settings-licenses-module"></span><h2>hpeOneView.resources.settings.licenses module<a class="headerlink" href="#module-hpeOneView.resources.settings.licenses" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.licenses.Licenses">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.licenses.</code><code class="descname">Licenses</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/licenses.html#Licenses"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Licenses. Gets a list of all license resources that are known by the appliance.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.licenses.Licenses.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'LicenseList'}, u'300': {u'type': u'LicenseList'}, u'500': {u'type': u'LicenseListV500'}, u'600': {u'type': u'LicenseListV500'}}</em><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.licenses.Licenses.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/licenses'</em><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.licenses.Licenses.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/licenses.html#Licenses.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a license to the appliance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created resource.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.licenses.Licenses.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/licenses.html#Licenses.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a License.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> – dict object to delete</li>
+<li><strong>force</strong> – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resource was successfully deleted.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.licenses.Licenses.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/licenses.html#Licenses.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the licenses loaded on the appliance. The collection is based on optional
+sorting and filtering and is constrained by start and count parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – <p>The number of resources to return. A count of -1 requests all items.</p>
+<p>The actual number of items in the response might differ from the requested
+count if the sum of start and count exceeds the total number of items.</p>
+</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of Licenses.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.licenses.Licenses.get_by_id">
+<code class="descname">get_by_id</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/licenses.html#Licenses.get_by_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.licenses.Licenses.get_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the License with the specified ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of License.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The License.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.restores">
+<span id="hpeoneview-resources-settings-restores-module"></span><h2>hpeOneView.resources.settings.restores module<a class="headerlink" href="#module-hpeOneView.resources.settings.restores" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.restores.Restores">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.restores.</code><code class="descname">Restores</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/restores.html#Restores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.restores.Restores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>Restore API client for initiate a restore of an appliance and to get the status of the restore operation.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.restores.Restores.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'RESTOREV1000'}, u'1200': {u'type': u'RESTOREV1000'}, u'1600': {u'type': u'RESTOREV1000'}, u'800': {u'type': u'RESTORE'}}</em><a class="headerlink" href="#hpeOneView.resources.settings.restores.Restores.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.restores.Restores.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/restores'</em><a class="headerlink" href="#hpeOneView.resources.settings.restores.Restores.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.restores.Restores.get_failure">
+<code class="descname">get_failure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/restores.html#Restores.get_failure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.restores.Restores.get_failure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the result of an appliance restore operation after it has completed.</p>
+<p>The restore result remains valid until a user logs in. After a user logs in, the restore result will be reset.
+This rest request will return only the valid result after restore has completed and before a user logs in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Restore Result</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.restores.Restores.restore">
+<code class="descname">restore</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/restores.html#Restores.restore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.restores.Restores.restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a restore operation with the specified backup file. The backup must be uploaded to the appliance
+prior to running this command. Only one restore can run at a time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Config to restore.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Restore.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.scopes">
+<span id="hpeoneview-resources-settings-scopes-module"></span><h2>hpeOneView.resources.settings.scopes module<a class="headerlink" href="#module-hpeOneView.resources.settings.scopes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.scopes.Scopes">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.scopes.</code><code class="descname">Scopes</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a></p>
+<p>Scopes API client.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This resource is available for API version 300 or later.</p>
+</div>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'1000': {u'type': u'ScopeV3'}, u'1200': {u'type': u'ScopeV3'}, u'1600': {u'type': u'ScopeV3'}, u'1800': {u'type': u'ScopeV3'}, u'300': {u'type': u'Scope'}, u'500': {u'type': u'ScopeV2'}, u'800': {u'type': u'ScopeV3'}}</em><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/scopes'</em><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a Scope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Indicates if the resource was successfully deleted.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em>, <em>query=u''</em>, <em>view=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Gets a list of scopes.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</li>
+<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+The actual number of items in the response might differ from the requested
+count if the sum of start and count exceeds the total number of items.</li>
+<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</li>
+<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</li>
+<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</li>
+<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by
+specifying the name of a predefined view. The default view is expand (show all
+attributes of the resource and all elements of collections of resources).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of scopes.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a scope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated scope.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.update_resource_assignments">
+<code class="descname">update_resource_assignments</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>resource_assignments</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.update_resource_assignments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.update_resource_assignments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifies scope membership by adding or removing resource assignments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
+<li><strong>resource_assignments</strong> (<em>dict</em>) – A dict object with a list of resource URIs to be added and a list of resource URIs to be removed.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated resource.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.versions">
+<span id="hpeoneview-resources-settings-versions-module"></span><h2>hpeOneView.resources.settings.versions module<a class="headerlink" href="#module-hpeOneView.resources.settings.versions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.versions.Versions">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.versions.</code><code class="descname">Versions</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/versions.html#Versions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.versions.Versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Version API client. It indicates the range of API versions supported by the appliance.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.versions.Versions.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/version'</em><a class="headerlink" href="#hpeOneView.resources.settings.versions.Versions.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.versions.Versions.get_version">
+<code class="descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/versions.html#Versions.get_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.versions.Versions.get_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the range of possible API versions supported by the appliance.
+The response contains the current version and the minimum version.
+The current version is the recommended version to specify in the REST header.
+The other versions are supported for backward compatibility, but might not support the most current features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The minimum and maximum supported API versions.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.settings" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright (C) 2020 Hewlett Packard Enterprise
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

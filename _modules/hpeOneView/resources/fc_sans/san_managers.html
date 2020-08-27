@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hpeOneView.resources.fc_sans.san_managers &mdash; HPE OneView Python SDK 5.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> HPE OneView Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">HPE OneView Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../hpeOneView.html">hpeOneView</a> &raquo;</li>
+        
+      <li>hpeOneView.resources.fc_sans.san_managers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hpeOneView.resources.fc_sans.san_managers</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">###</span>
+<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">###</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+
+<span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span>
+
+
+<div class="viewcode-block" id="SanManagers"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers">[docs]</a><span class="k">class</span> <span class="nc">SanManagers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    SAN Managers API client.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/fc-sans/device-managers&#39;</span>
+    <span class="n">PROVIDER_URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/fc-sans/providers&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_provider_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PROVIDER_URI</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SanManagers.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the list of registered SAN Managers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start:</span>
+<span class="sd">                The first item to return, using 0-based indexing.</span>
+<span class="sd">                If not specified, the default is 0 - start with the first available item.</span>
+<span class="sd">            count:</span>
+<span class="sd">                The number of resources to return. A count of -1 requests all items. The actual number of items in</span>
+<span class="sd">                the response may differ from the requested count if the sum of start and count exceed the total number</span>
+<span class="sd">                of items.</span>
+<span class="sd">            query:</span>
+<span class="sd">                A general query string to narrow the list of resources returned.</span>
+<span class="sd">                The default is no query - all resources are returned.</span>
+<span class="sd">            sort:</span>
+<span class="sd">                The sort order of the returned data set. By default, the sort order is based</span>
+<span class="sd">                on create time with the oldest entry first.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of SAN managers.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SanManagers.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves a single registered SAN Manager by ID or URI.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id_or_uri: Can be either the SAN Manager resource ID or URI.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: The SAN Manager resource.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_or_uri</span><span class="o">=</span><span class="n">id_or_uri</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SanManagers.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates a registered Device Manager.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            resource (dict): Object to update.</span>
+<span class="sd">            id_or_uri: Can be either the Device manager ID or URI.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: The device manager resource.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">id_or_uri</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SanManagers.add"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">provider_uri_or_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a Device Manager under the specified provider.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            resource (dict): Object to add.</span>
+<span class="sd">            provider_uri_or_id: ID or URI of provider.</span>
+<span class="sd">            timeout:</span>
+<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">                in OneView, just stop waiting for its completion.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Added SAN Manager.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_provider_client</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">provider_uri_or_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/device-managers&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SanManagers.get_provider_uri"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_provider_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_provider_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider_display_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets uri for a specific provider.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            provider_display_name: Display name of the provider.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            uri</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">providers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_provider_client</span><span class="o">.</span><span class="n">get_by</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="n">provider_display_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">providers</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">providers</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="SanManagers.get_default_connection_info"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_default_connection_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_default_connection_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets default connection info for a specific provider.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            provider_name: Name of the provider.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Default connection information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">provider</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_provider_client</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">provider</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">provider</span><span class="p">[</span><span class="s1">&#39;defaultConnectionInfo&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="SanManagers.remove"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Removes a registered SAN Manager.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            resource (dict): Object to delete.</span>
+<span class="sd">            timeout:</span>
+<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">                in OneView; it just stops waiting for its completion.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Indicates if the resource was successfully removed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SanManagers.get_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets a SAN Manager by name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Name of the SAN Manager</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: SAN Manager.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">san_managers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">san_managers</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="SanManagers.get_by_provider_display_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_provider_display_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_provider_display_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider_display_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets a SAN Manager by provider display name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            provider_display_name: Name of the Provider Display Name</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: SAN Manager.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">san_managers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">san_managers</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;providerDisplayName&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">provider_display_name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="kc">None</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright (C) 2020 Hewlett Packard Enterprise
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

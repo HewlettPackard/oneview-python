@@ -1,0 +1,48 @@
+hpeOneView.resources package
+============================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    hpeOneView.resources.activity
+    hpeOneView.resources.data_services
+    hpeOneView.resources.facilities
+    hpeOneView.resources.fc_sans
+    hpeOneView.resources.hypervisors
+    hpeOneView.resources.networking
+    hpeOneView.resources.search
+    hpeOneView.resources.security
+    hpeOneView.resources.servers
+    hpeOneView.resources.settings
+    hpeOneView.resources.storage
+    hpeOneView.resources.uncategorized
+
+Submodules
+----------
+
+hpeOneView.resources.resource module
+------------------------------------
+
+.. automodule:: hpeOneView.resources.resource
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.task\_monitor module
+-----------------------------------------
+
+.. automodule:: hpeOneView.resources.task_monitor
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: hpeOneView.resources
+    :members:
+    :undoc-members:
+    :show-inheritance:

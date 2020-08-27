@@ -1,0 +1,38 @@
+hpeOneView.resources.uncategorized package
+==========================================
+
+Submodules
+----------
+
+hpeOneView.resources.uncategorized.os\_deployment\_plans module
+---------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.uncategorized.os_deployment_plans
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.uncategorized.os\_deployment\_servers module
+-----------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.uncategorized.os_deployment_servers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.uncategorized.unmanaged\_devices module
+------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.uncategorized.unmanaged_devices
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: hpeOneView.resources.uncategorized
+    :members:
+    :undoc-members:
+    :show-inheritance:

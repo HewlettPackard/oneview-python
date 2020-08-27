@@ -1,0 +1,118 @@
+hpeOneView.resources.servers package
+====================================
+
+Submodules
+----------
+
+hpeOneView.resources.servers.connections module
+-----------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.connections
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.enclosure\_groups module
+-----------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.enclosure_groups
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.enclosures module
+----------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.enclosures
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.id\_pools module
+---------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.id_pools
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.id\_pools\_ipv4\_ranges module
+-----------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.id_pools_ipv4_ranges
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.id\_pools\_ipv4\_subnets module
+------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.id_pools_ipv4_subnets
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.id\_pools\_ranges module
+-----------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.id_pools_ranges
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.logical\_enclosures module
+-------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.logical_enclosures
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.migratable\_vc\_domains module
+-----------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.migratable_vc_domains
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.server\_hardware module
+----------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.server_hardware
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.server\_hardware\_types module
+-----------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.server_hardware_types
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.server\_profile\_templates module
+--------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.server_profile_templates
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.servers.server\_profiles module
+----------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.server_profiles
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: hpeOneView.resources.servers
+    :members:
+    :undoc-members:
+    :show-inheritance:

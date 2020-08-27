@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hpeOneView.resources.networking.sas_interconnects &mdash; HPE OneView Python SDK 5.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> HPE OneView Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">HPE OneView Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../hpeOneView.html">hpeOneView</a> &raquo;</li>
+        
+      <li>hpeOneView.resources.networking.sas_interconnects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hpeOneView.resources.networking.sas_interconnects</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">###</span>
+<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">###</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+
+<span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">unavailable_method</span>
+
+
+<div class="viewcode-block" id="SasInterconnects"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.sas_interconnects.SasInterconnects">[docs]</a><span class="k">class</span> <span class="nc">SasInterconnects</span><span class="p">(</span><span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    SAS Interconnects API client.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This resource is only available on HPE Synergy.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/sas-interconnects&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SasInterconnects</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SasInterconnects.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.sas_interconnects.SasInterconnects.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get list of SAS interconnects each with port details.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start:</span>
+<span class="sd">                 The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the</span>
+<span class="sd">                 first available item.</span>
+<span class="sd">            count:</span>
+<span class="sd">                The number of resources to return. A count of -1 requests all items. The actual number of items in</span>
+<span class="sd">                the response may differ from the requested count if the sum of start and count exceeds the total number</span>
+<span class="sd">                of items.</span>
+<span class="sd">            fields:</span>
+<span class="sd">                 Specifies which fields should be returned in the result set.</span>
+<span class="sd">            filter (list or str):</span>
+<span class="sd">                 A general filter/query string to narrow the list of items returned. The default is no filter; all</span>
+<span class="sd">                 resources are returned.</span>
+<span class="sd">            query:</span>
+<span class="sd">                 A general query string to narrow the list of resources returned. The default is no query (all</span>
+<span class="sd">                 resources are returned).</span>
+<span class="sd">            sort:</span>
+<span class="sd">                The sort order of the returned data set. By default, the sort order is based on create time, with the</span>
+<span class="sd">                oldest entry first.</span>
+<span class="sd">            view:</span>
+<span class="sd">                 Returns a specific subset of the attributes of the resource or collection, by specifying the name of a</span>
+<span class="sd">                 predefined view. The default view is expand (show all attributes of the resource and all elements of</span>
+<span class="sd">                 collections of resources).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of SAS interconnects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">,</span>
+                                    <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SasInterconnects.refresh_state"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.sas_interconnects.SasInterconnects.refresh_state">[docs]</a>    <span class="k">def</span> <span class="nf">refresh_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Refresh a SAS Interconnect.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            configuration: Configuration</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: SAS Interconnect</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/refreshState&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="o">=</span><span class="n">configuration</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SasInterconnects.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.sas_interconnects.SasInterconnects.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create method is not available&quot;&quot;&quot;</span>
+        <span class="n">unavailable_method</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SasInterconnects.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.sas_interconnects.SasInterconnects.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delete method is not available&quot;&quot;&quot;</span>
+        <span class="n">unavailable_method</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SasInterconnects.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.sas_interconnects.SasInterconnects.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update method is not available&quot;&quot;&quot;</span>
+        <span class="n">unavailable_method</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright (C) 2020 Hewlett Packard Enterprise
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

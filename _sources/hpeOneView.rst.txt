@@ -1,0 +1,46 @@
+hpeOneView package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    hpeOneView.image_streamer
+    hpeOneView.resources
+
+Submodules
+----------
+
+hpeOneView.connection module
+----------------------------
+
+.. automodule:: hpeOneView.connection
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.exceptions module
+----------------------------
+
+.. automodule:: hpeOneView.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.oneview\_client module
+---------------------------------
+
+.. automodule:: hpeOneView.oneview_client
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: hpeOneView
+    :members:
+    :undoc-members:
+    :show-inheritance:
