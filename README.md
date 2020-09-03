@@ -263,6 +263,7 @@ The API list is as follows:
 - HPE OneView 5.00 API version: `1200`
 - HPE OneView 5.20 API version: `1600`
 - HPE OneView 5.30 API version: `1800`
+- HPE OneView 5.40 API version: `2000`
 
 ### HPE Synergy Image Streamer
 

@@ -95,14 +95,19 @@ print("Found network set by name: '%s'.\n  uri = '%s'" %
 
 # Get network set without Ethernet networks
 print("Get network-set without Ethernet:")
-net_set_without_ethernet = network_set.get_without_ethernet()
-pprint(net_set_without_ethernet)
+if network_set:
+    net_set_without_ethernet = network_set.get_without_ethernet()
+    pprint(net_set_without_ethernet)
+else:
+    print("No network set '%s' found.\n" %
+      (network_set.data['name']))
 
 # Update name of recently created network set
 network_set_update = {'name': 'OneViewSDK Test Network Set Re-named'}
-network_set = network_set.update(network_set_update)
-print("Updated network set '%s' successfully.\n" %
-      (network_set.data['name']))
+if network_set:
+    network_set = network_set.update(network_set_update)
+    print("Updated network set '%s' successfully.\n" %
+        (network_set.data['name']))
 
 # Adds network set to scope defined only for V300 and V500
 if scope_name and 300 <= oneview_client.api_version <= 500:
