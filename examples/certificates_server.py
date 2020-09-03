@@ -51,8 +51,9 @@ certificate_server = oneview_client.certificates_server
 # Fetch server certificate of remote server
 print("\nGet server certificate of remote server by ip address")
 remote_server_cert = certificate_server.get_remote(remote_server_options['name'])
-ca_certificate = remote_server_cert.data['certificateDetails'][0]['base64Data']
-print(ca_certificate)
+if remote_server_cert:
+    ca_certificate = remote_server_cert.data['certificateDetails'][0]['base64Data']
+    print(ca_certificate)
 
 # Fetch certificate by alias name
 print("\nGet server certificate by alias name")
