@@ -18,6 +18,7 @@ Refactored base class to take default API version as per provided Oneview applia
 Removed provision of "type" field as those are optional from API1600
 
 #### Features supported with the current release
+- Enclosures
 - Enclosure Groups
 - Ethernet network
 - FC network

@@ -97,6 +97,7 @@ except HPEOneViewException as e:
     print(e.msg)
 
 # Set the calibrated max power of an unmanaged or unsupported enclosure
+# update_environmental_configuration is available only in C7000
 print("Set the calibrated max power of an unmanaged or unsupported enclosure")
 
 try:
@@ -118,6 +119,7 @@ except HPEOneViewException as e:
     print(e.msg)
 
 # Buid the SSO URL parameters
+# get_sso is available only in C7000
 print("Build the SSO (Single Sign-On) URL parameters for the enclosure")
 try:
     sso_url_parameters = enclosure.get_sso('Active')
