@@ -55,7 +55,8 @@ pprint(server_hardware_type.data, depth=2)
 update = {
     'description': "Updated Description"
 }
-server_hardware_type.update(update)
-print("\nServer Hardware type '{}' updated: \n 'description': '{}'".format(
-    server_hardware_type.data['name'],
-    server_hardware_type.data['description']))
+if server_hardware_type:
+    server_hardware_type.update(update)
+    print("\nServer Hardware type '{}' updated: \n 'description': '{}'".format(
+        server_hardware_type.data['name'],
+        server_hardware_type.data['description']))
