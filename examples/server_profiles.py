@@ -110,7 +110,7 @@ if profile:
 print("\nUpdate the profile configuration from server profile template")
 if profile:
     profile.patch(operation="replace",
-                path="/templateCompliance", value="Compliant")
+                  path="/templateCompliance", value="Compliant")
     pprint(profile.data)
 
 # Server profile compliance preview
