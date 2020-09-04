@@ -114,15 +114,15 @@ if server:
 # Get URL to launch SSO session for iLO web interface
 if server:
     ilo_sso_url = server.get_ilo_sso_url()
-    print("URL to launch a Single Sign-On (SSO) session for the iLO web interface for server at uri:\n",
-            "{}\n   '{}'".format(server.data['uri'], ilo_sso_url))
+    print("URL to launch a Single Sign-On (SSO) session for the iLO web interface for server at uri:\n", 
+    "{}\n   '{}'".format(server.data['uri'], ilo_sso_url))
 
 # Generates a Single Sign-On (SSO) session for the iLO Java Applet console
 # and return URL to launch it
 if server:
     java_remote_console_url = server.get_java_remote_console_url()
     print("URL to launch a Single Sign-On (SSO) session for the iiLO Java Applet console for server at uri:\n",
-            "   {}\n   '{}'".format(server.data['uri'], java_remote_console_url))
+    "   {}\n   '{}'".format(server.data['uri'], java_remote_console_url))
 
 # Update iLO firmware to minimum version required
 if server:
@@ -153,7 +153,7 @@ if server:
 if server:
     remote_console_url = server.get_remote_console_url()
     print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console Application",
-            " for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
+     "for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
 
 if oneview_client.api_version >= 300 and server:
     # These functions are only available for the API version 300 or higher
