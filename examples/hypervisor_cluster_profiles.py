@@ -15,8 +15,8 @@
 # limitations under the License.
 ###
 
-## This example requires a ServerProfileTemplate with name "spt_basic" and HypervisorManager 
-## with name "172.18.13.11"
+# This example requires a ServerProfileTemplate with name "spt_basic" and HypervisorManager 
+# with name "172.18.13.11"
 
 from pprint import pprint
 
