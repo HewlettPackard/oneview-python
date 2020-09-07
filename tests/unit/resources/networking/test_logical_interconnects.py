@@ -383,8 +383,8 @@ class LogicalInterconnectsTest(unittest.TestCase):
                 "/rest/logical-interconnects/d0432852-28a7-4060-ba49-57ca973ef6c2"
             ]
         }
-        resource = resource.copy()
+        expected_uri = '{}/bulk-inconsistency-validation'.format(self.uri)
 
         self._logical_interconnect.bulk_inconsistency_validate(resource)
 
-        mock_post.assert_called_once_with(resource, uri='{}/bulk-inconsistency-validation'.format(self.uri), force=False, timeout=-1)
+        mock_post.assert_called_once_with(expected_uri, resource, -1, None)

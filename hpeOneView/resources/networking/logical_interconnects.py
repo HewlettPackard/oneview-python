@@ -504,7 +504,7 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         return self._helper.update(configuration, uri=uri, force=force, timeout=timeout)
 
     @ensure_resource_client
-    def bulk_inconsistency_validate(self, timeout=-1):
+    def bulk_inconsistency_validate(self, validation_request, timeout=-1):
         """
         Validates the bulk update from group operation and gets the consolidated inconsistency report
 
@@ -516,4 +516,4 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         Returns: Consolidated inconsistency report.
         """
         uri = "{}/bulk-inconsistency-validation".format(self.data["uri"])
-        return self._helper.do_post(uri, None, timeout, None)
+        return self._helper.do_post(uri, validation_request, timeout, None)
