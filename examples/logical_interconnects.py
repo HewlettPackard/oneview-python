@@ -96,8 +96,8 @@ pprint(ethernet_settings)
 
 # Update the Ethernet interconnect settings for the logical interconnect
 ethernet_settings = logical_interconnect.data['ethernetSettings'].copy()
-ethernet_settings['macRefreshInterval'] = 10  ##This attribute is only supported in C7000
-ethernet_settings['stormControlThreshold'] = 15  ##This attribute is supported in Synergy
+ethernet_settings['macRefreshInterval'] = 10  #This attribute is only supported in C7000
+ethernet_settings['stormControlThreshold'] = 15  #This attribute is supported in Synergy
 logical_interconnect_updated = logical_interconnect.update_ethernet_settings(ethernet_settings)
 print("\nUpdated the ethernet settings")
 print(logical_interconnect_updated.data)

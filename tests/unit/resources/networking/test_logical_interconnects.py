@@ -381,7 +381,7 @@ class LogicalInterconnectsTest(unittest.TestCase):
         resource = {
             "logicalInterconnectUris": [
                 "/rest/logical-interconnects/d0432852-28a7-4060-ba49-57ca973ef6c2"
-        ]
+            ]
         }
         resource = resource.copy()
 
