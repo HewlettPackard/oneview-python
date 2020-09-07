@@ -25,8 +25,10 @@ config = {
         "userName": "<username>",
         "password": "<password>"
     }
-    "api_variant": "<api_variant>"
 }
+
+# Specify variant of your appliance to run this example
+api_variant = 'Synergy'
 
 # To run this example, a logical interconnect name is required
 logical_interconnect_name = "testlg1-Renamed Logical Interconnect Group"
@@ -94,8 +96,8 @@ pprint(ethernet_settings)
 
 # Update the Ethernet interconnect settings for the logical interconnect
 ethernet_settings = logical_interconnect.data['ethernetSettings'].copy()
-ethernet_settings['macRefreshInterval'] = 10 #This attribute is only supported in C7000
-ethernet_settings['stormControlThreshold'] = 15 #This attribute is supported in Synergy
+ethernet_settings['macRefreshInterval'] = 10  ##This attribute is only supported in C7000
+ethernet_settings['stormControlThreshold'] = 15  ##This attribute is supported in Synergy
 logical_interconnect_updated = logical_interconnect.update_ethernet_settings(ethernet_settings)
 print("\nUpdated the ethernet settings")
 print(logical_interconnect_updated.data)
@@ -235,7 +237,7 @@ if oneview_client.api_version >= 1600:
     print("\nUpdated IGMP interconnect settings for the logical interconnect successfully")
 
 # Validates the bulk update from group operation and gets the consolidated inconsistency report
-if oneview_client.api_version >= 2000 and oneview_client.api_variant == 'Synergy'
+if oneview_client.api_version >= 2000 and api_variant == 'Synergy':
     print("Validates the bulk update from group operation and gets the consolidated inconsistency report")
     bulk_validate_request = {
         "logicalInterconnectUris": [
