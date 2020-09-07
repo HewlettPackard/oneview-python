@@ -4,7 +4,7 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 
 #### Breaking Changes
   Enhancement made in this version breaks the previous version of the SDK.
-  From this version onwards, module name is renamed to hpeOneView and all the oneview libraries and examples will import the hpeOneView module as parent.
+  From this version onwards, hpOneView module name is renamed to hpeOneView and all the oneview libraries and examples will import the hpeOneView module as parent.
 
   E.g.
 ```
