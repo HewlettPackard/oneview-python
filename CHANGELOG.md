@@ -25,6 +25,7 @@ Removed provision of "type" field as those are optional from API1600
 - FCOE network
 - Logical Enclosures
 - Network set
+- Uplink set
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
