@@ -20,10 +20,10 @@ from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "172.16.102.59",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "administrator",
-        "password": ""
+        "userName": "<username>",
+        "password": "<password>"
     }
 }
 
@@ -189,11 +189,12 @@ pprint(volume_template.data)
 template_id = volume_template.data["uri"].split('/')[-1]
 
 # Update storage volume template
-print("Update '{name}' at uri: {uri}".format(**volume_template.data))
-volume_template_data = volume_template.data.copy()
-volume_template_data['description'] = "updated description"
-volume_template.update(volume_template_data)
-print("   Updated with 'description': '{description}'".format(**volume_template.data))
+if volume_template:
+    print("Update '{name}' at uri: {uri}".format(**volume_template.data))
+    volume_template_data = volume_template.data.copy()
+    volume_template_data['description'] = "updated description"
+    volume_template.update(volume_template_data)
+    print("   Updated with 'description': '{description}'".format(**volume_template.data))
 
 # Get all storage volume templates
 print("Get all storage volume templates")
@@ -202,14 +203,16 @@ for template in volume_templates_all:
     print("   '{name}' at uri: {uri}".format(**template))
 
 # Get storage volume template by uri
-print("Get storage volume template by uri: '{uri}'".format(**volume_template.data))
-volume_template_by_uri = storage_volume_templates.get_by_uri(volume_template.data['uri'])
-print("   Found '{name}' at uri: {uri}".format(**volume_template_by_uri.data))
+if volume_template:
+    print("Get storage volume template by uri: '{uri}'".format(**volume_template.data))
+    volume_template_by_uri = storage_volume_templates.get_by_uri(volume_template.data['uri'])
+    print("   Found '{name}' at uri: {uri}".format(**volume_template_by_uri.data))
 
 # Get storage volume template by name
-print("Get storage volume template by 'name': '{name}'".format(**volume_template.data))
-volume_template_byname = storage_volume_templates.get_by_name(volume_template.data['name'])
-print("   Found '{name}' at uri: {uri}".format(**volume_template_byname.data))
+if volume_template:
+    print("Get storage volume template by 'name': '{name}'".format(**volume_template.data))
+    volume_template_byname = storage_volume_templates.get_by_name(volume_template.data['name'])
+    print("   Found '{name}' at uri: {uri}".format(**volume_template_byname.data))
 
 # Gets the storage templates that are connected on the specified networks
 # scoper_uris and private_allowed_only parameters supported only with API version >= 600
@@ -221,13 +224,15 @@ if oneview_client.api_version >= 600:
 
 # Retrieves all storage systems that is applicable to the storage volume template.
 print("Get storage systems that is applicable to the storage volume template")
-storage_systems = volume_template.get_compatible_systems()
-print(storage_systems)
+if volume_template:
+    storage_systems = volume_template.get_compatible_systems()
+    print(storage_systems)
 
 # Remove storage volume template
 print("Delete storage volume template")
-volume_template.delete()
-print("   Done.")
+if volume_template:
+    volume_template.delete()
+    print("   Done.")
 
 # Remove storage pool
 if storage_pool_added:
