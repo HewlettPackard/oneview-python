@@ -17,7 +17,9 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 Refactored base class to take default API version as per provided Oneview appliance.
 
 #### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
 - Connection Templates
+- Logical Interconnects
 - Logical Interconnect Group
 - Server Profiles
 - Server Profile Templates
