@@ -24,11 +24,11 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 from hpeOneView.exceptions import HPEOneViewException
 
 
-class Users(object):
+class Users(Resource):
     """
     Users API client.
 
@@ -42,54 +42,8 @@ class Users(object):
         '500': {'type': 'UserAndRoles'}
     }
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
-
-    def get_all(self, start=0, count=-1, filter='', sort=''):
-        """
-        Gets a paginated collection of Users. The collection is based on optional
-        sorting and filtering and is constrained by start and count parameters.
-
-        Args:
-            start:
-                The first item to return, using 0-based indexing.
-                If not specified, the default is 0 - start with the first available item.
-            count:
-                The number of resources to return. A count of -1 requests all items.
-
-                The actual number of items in the response might differ from the requested
-                count if the sum of start and count exceeds the total number of items.
-            filter (list or str):
-                A general filter/query string to narrow the list of items returned. The
-                default is no filter; all resources are returned.
-            sort:
-                The sort order of the returned data set. By default, the sort order is based
-                on create time with the oldest entry first.
-
-        Returns:
-            list: A list of Users.
-        """
-        return self._client.get_all(start, count, filter=filter, sort=sort)
-
-    def delete(self, resource, force=False, timeout=-1):
-        """
-        Deletes a User.
-
-        Args:
-            resource: dict object to delete
-            force:
-                 If set to true, the operation completes despite any problems with
-                 network connectivity or errors on the resource itself. The default is false.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            bool: Indicates if the resource was successfully deleted.
-
-        """
-        return self._client.delete(resource, force=force, timeout=timeout)
+    def __init__(self, connection, data=None):
+        super(Users, self).__init__(connection, data)
 
     def create(self, resource, timeout=-1):
         """
@@ -105,44 +59,8 @@ class Users(object):
             dict: Created resource.
 
         """
-        return self._client.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
-
-    def update(self, resource, timeout=-1):
-        """
-        Updates a User.
-
-        Args:
-            resource (dict): Object to update.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            dict: Updated resource.
-
-        """
-        return self._client.update(resource, timeout=timeout, default_values=self.DEFAULT_VALUES, uri=self.URI)
-
-    def get_by(self, field, value):
-        """
-        Gets all Users that match the filter.
-
-        The search is case-insensitive.
-
-        Args:
-            field: Field name to filter. Accepted values: 'name', 'userName', 'role'
-            value: Value to filter.
-
-        Returns:
-            list: A list of Users.
-        """
-        if field == 'userName' or field == 'name':
-            return self._client.get(self.URI + '/' + value)
-        elif field == 'role':
-            value = value.replace(" ", "%20")
-            return self._client.get(self.URI + '/roles/users/' + value)['members']
-        else:
-            raise HPEOneViewException('Only userName, name and role can be queried for this resource.')
+        uri = self.URI
+        return self._helper.create(resource, uri=uri, timeout=timeout)
 
     def validate_user_name(self, user_name, timeout=-1):
         """
@@ -158,7 +76,7 @@ class Users(object):
         Returns: True if user name is in use, False if it is not.
         """
         uri = self.URI + '/validateLoginName/' + user_name
-        return self._client.create_with_zero_body(uri=uri, timeout=timeout)
+        return self._helper.do_post(uri=uri, None, timeout=timeout, None)
 
     def validate_full_name(self, full_name, timeout=-1):
         """
@@ -174,4 +92,18 @@ class Users(object):
         Returns: True if full name is in use, False if it is not.
         """
         uri = self.URI + '/validateUserName/' + full_name
-        return self._client.create_with_zero_body(uri=uri, timeout=timeout)
+        return self._helper.do_post(uri=uri, None, timeout=timeout. None)
+
+    def change_password(self, resource, timeout=-1):
+        """
+        Changes the default administrator's password during first-time appliance setup only.
+
+        Args:
+            resource (dict): Object to change password
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+                OneView, just stops waiting for its completion.
+
+        """
+        uri = self.URI + '/changePassword/'
+        return self._helper.create(resource, uri=uri, timeout=timeout)

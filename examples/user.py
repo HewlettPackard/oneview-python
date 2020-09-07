@@ -18,6 +18,7 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
+from copy import deepcopy
 
 config = {
     "ip": "",
@@ -43,27 +44,39 @@ options = {
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+users = oneview_client.users
 
 # Create a User
-user = oneview_client.users.create(options)
-print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
+user = users.create(options)
+print("Created user '%s' successfully.\n  uri = '%s'\n" % (user.data['userName'], user.data['uri']))
+
+# Change Password
+change_password_request = {
+    "newPassword" : "password123",
+    "oldPassword" : "password1234",
+    "userName" : "user1"
+}
+changePasswordResponse = users.change_password(change_password_request)
+print("Changed Password successfully")
+print(changePasswordResponse)
 
 # Adds different roles to the recently created user
-user = oneview_client.users.get_by('userName', 'testUser')
-print(user)
-print("\n user: %s, roles before update: %s" % (user['userName'], user['roles']))
-user['replaceRoles'] = True
-user['roles'] = ['Infrastructure administrator']
-user = oneview_client.users.update(user)
-print("\n user: %s, roles after update: %s" % (user['userName'], user['roles']))
+user = oneview_client.users.get_by_name(options['userName'])
+print(user.data)
+print("\n user: %s, roles before update: %s" % (user.data['userName'], user.data['roles']))
+user_copy = deepcopy(user.data)
+user_copy['replaceRoles'] = True
+user_copy['roles'] = ['Infrastructure administrator']
+user_update = user.update(user_copy)
+print("\n user: %s, roles after update: %s" % (user_update.data['userName'], user_update.data['roles']))
 
 # Get user by role
-user = oneview_client.users.get_by('role', 'Read only')
-print("Found users by role: '%s'.\n '\n" % (user))
+user = oneview_client.users.get_by_name(options['role'])
+print("Found users by role: '%s'.\n '\n" % (user.data))
 
 # Get user by name
-user = oneview_client.users.get_by('userName', 'testUser')
-print("Found user by name: '%s'. uri = '%s'\n" % (user['userName'], user['uri']))
+user = oneview_client.users.get_by_name(options['userName'])
+print("Found user by name: '%s'. uri = '%s'\n" % (user.data['userName'], user.data['uri']))
 
 # Get all users
 print("Get all users")
