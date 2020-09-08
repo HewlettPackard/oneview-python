@@ -18,8 +18,10 @@ Refactored base class to take default API version as per provided Oneview applia
 
 #### Features supported with the current release
 - Certificates Server
+- Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
+- Restores
 - Scopes
 - Tasks
 

@@ -90,11 +90,11 @@
 |<sub>/rest/fcoe-networks/{id}</sub>                                                      | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/fcoe-networks/bulk-delete</sub>                                               | POST     |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :white_check_mark:   |  :white_check_mark:   |
 |     **Firmware Drivers**
-|<sub>/rest/firmware-drivers</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/firmware-drivers</sub>                                                        | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/firmware-drivers/schema</sub>                                                 | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/firmware-drivers/{id}</sub>                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/firmware-drivers/{id}</sub>                                                   | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/firmware-drivers</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/firmware-drivers</sub>                                                        | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/firmware-drivers/schema</sub>                                                 | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/firmware-drivers/{id}</sub>                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/firmware-drivers/{id}</sub>                                                   | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
 |     **Hypervisor Cluster Profiles**
 |<sub>/rest/hypervisor-cluster-profiles</sub>                                             |POST      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/hypervisor-cluster-profiles</sub>                                             |GET       |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
@@ -211,10 +211,10 @@
 |<sub>/rest/os-deployment-plans/</sub>                                                    | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/os-deployment-plans/{id}</sub>                                                | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Restores**
-|<sub>/rest/restores</sub>                                                                | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/restores/{id}</sub>                                                           | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/restores</sub>                                                                | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/restores/failure</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/restores</sub>                                                                | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/restores/{id}</sub>                                                           | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/restores</sub>                                                                | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/restores/failure</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **SAS Interconnect Types**
 |<sub>/rest/sas-interconnect-types</sub>                                                  | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/sas-interconnect-types/{id}</sub>                                             | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
