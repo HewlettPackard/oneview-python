@@ -116,4 +116,3 @@ class Users(Resource):
             new_resource = None
 
         return new_resource
-

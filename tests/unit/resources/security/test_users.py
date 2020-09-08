@@ -77,6 +77,13 @@ class UsersTest(unittest.TestCase):
         self._users.get_by_userName('testUser')
         mock_get.assert_called_once_with('/rest/users/role/testUser')
 
+    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_by_called_with_userName_with_no_return_value(self, mock_get, mock_get_all):
+        mock_get_all.return_value = None
+        self._users.get_by_userName('testUser')
+        self.assertEqual(mock_get.call_count, 0)
+
     @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_full_name_called_once(self, mock_post):
 
@@ -106,4 +113,3 @@ class UsersTest(unittest.TestCase):
 
         expected_uri = self._users.URI
         mock_put.assert_called_once_with(expected_uri, request, -1, None)
-
