@@ -96,7 +96,9 @@ class Users(Resource):
 
     def change_password(self, resource, timeout=-1):
         """
-        Changes the default administrator's password during first-time appliance setup only.
+        Change one's own password, email, phone numbers, enable/disable, of self with proper privileges
+        by supplying all the values. The 'currentPassword' field must be present with the 'password' field 
+        while changing one's own password. User can not add any permissions or replace permissions to self.
 
         Args:
             resource (dict): Object to change password
@@ -105,5 +107,5 @@ class Users(Resource):
                 OneView, just stops waiting for its completion.
 
         """
-        uri = self.URI + '/changePassword/'
-        return self._helper.create(resource, uri=uri, timeout=timeout)
+        uri = self.URI
+        return self._helper.do_put(uri, resource, timeout, None)
