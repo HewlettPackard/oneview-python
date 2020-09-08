@@ -128,8 +128,6 @@ class Users(Resource):
             uri = self.URI + '/role/' + userName
             self._helper.validate_resource_uri(uri)
             data = self._helper.do_get(uri)
-
-        if data:
             new_resource = self.new(self._connection, data)
         else:
             new_resource = None
@@ -155,8 +153,6 @@ class Users(Resource):
             uri = self.URI + '/roles/users/' + role
             self._helper.validate_resource_uri(uri)
             data = self._helper.do_get(uri)
-
-        if data:
             new_resource = self.new(self._connection, data)
         else:
             new_resource = None
