@@ -124,8 +124,6 @@ class Users(Resource):
 
         result = [x for x in users if x['userName'] == userName]
         resource = result[0] if result else None
-        f = open('test.txt', 'w')
-        f.write(str(resource))
         if resource:
             uri = self.URI + '/role/' + userName
             self._helper.validate_resource_uri(uri)

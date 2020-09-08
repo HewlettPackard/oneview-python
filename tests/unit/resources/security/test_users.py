@@ -73,7 +73,7 @@ class UsersTest(unittest.TestCase):
         self._users.validate_full_name('fullname101')
 
         expected_uri = '/rest/users/validateUserName/fullname101'
-        mock_post.assert_called_once_with(expected_uri, {}, -1, None)
+        mock_post.assert_called_once_with(expected_uri, None, -1, None)
 
     @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_user_name_called_once(self, mock_post):
@@ -81,7 +81,7 @@ class UsersTest(unittest.TestCase):
         self._users.validate_user_name('userName')
 
         expected_uri = '/rest/users/validateLoginName/userName'
-        mock_post.assert_called_once_with(expected_uri, {}, -1, None)
+        mock_post.assert_called_once_with(expected_uri, None, -1, None)
 
     @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'do_put')
