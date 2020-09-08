@@ -25,7 +25,6 @@ standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import Resource
-from hpeOneView.exceptions import HPEOneViewException
 
 
 class Users(Resource):
@@ -97,7 +96,7 @@ class Users(Resource):
     def change_password(self, resource, timeout=-1):
         """
         Change one's own password, email, phone numbers, enable/disable, of self with proper privileges
-        by supplying all the values. The 'currentPassword' field must be present with the 'password' field 
+        by supplying all the values. The 'currentPassword' field must be present with the 'password' field
         while changing one's own password. User can not add any permissions or replace permissions to self.
 
         Args:

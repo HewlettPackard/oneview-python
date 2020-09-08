@@ -22,7 +22,6 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.security.users import Users
 from hpeOneView.resources.resource import Resource, ResourceHelper
-from hpeOneView.exceptions import HPEOneViewException
 
 
 class UsersTest(unittest.TestCase):
@@ -38,7 +37,7 @@ class UsersTest(unittest.TestCase):
 
         self._users.get_all(2, 500, filter, sort)
 
-        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort)
 
     @mock.patch.object(Resource, 'create')
     def test_create_should_use_given_values(self, mock_create):
@@ -55,21 +54,20 @@ class UsersTest(unittest.TestCase):
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
 
-        self._users.create(resource, 30)
-        mock_create.assert_called_once_with(resource_rest_call, timeout=30,
-                                            default_values=self._users.DEFAULT_VALUES)
+        self._users.create(resource, timeout=70)
+        mock_create.assert_called_once_with(resource_rest_call, timeout=70)
 
-    @mock.patch.object(Resource, 'do_get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_by_called_with_userName(self, mock_get):
         self._users.get_by_name('OneViewSDK Test User')
         mock_get.assert_called_once_with('/rest/users/OneViewSDK Test User')
 
-    @mock.patch.object(Resource, 'do_get')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_by_called_with_role(self, mock_get):
         self._users.get_by_role('fakerole')
         mock_get.assert_called_once_with('/rest/users/roles/users/fakerole')
 
-    @mock.patch.object(Resource, 'do_post')
+    @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_full_name_called_once(self, mock_post):
 
         self._users.validate_full_name('fullname101')
@@ -77,7 +75,7 @@ class UsersTest(unittest.TestCase):
         expected_uri = '/rest/users/validateUserName/fullname101'
         mock_post.assert_called_once_with(expected_uri, {}, -1, None)
 
-    @mock.patch.object(Resource, 'do_post')
+    @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_user_name_called_once(self, mock_post):
 
         self._users.validate_user_name('userName')
@@ -93,7 +91,7 @@ class UsersTest(unittest.TestCase):
             "enabled": "true",
             "password": "admin1234",
             "userName": "admin"
-        }           
+        }
         self._users.change_password(request)
 
         expected_uri = '/rest/users/'

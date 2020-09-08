@@ -18,7 +18,6 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
-from copy import deepcopy
 
 config = {
     "ip": "",
@@ -39,8 +38,8 @@ options = {
         {
             'roleName': 'Read only',
             'scopeUri': '/rest/scopes/b7259c1c-c52a-4be3-82de-d50e1730695e',
-            }
-        ],
+        }
+    ],
     'type': 'UserAndPermissions',
     'userName': 'testUser'
 }
@@ -73,7 +72,7 @@ print("Found users by role: '%s'.\n '\n" % (user.data))
 
 # Get user by name
 user = oneview_client.users.get_by_userName(options['userName'])
-print("Found user by uri = '%s'\n" %  user.data['uri'])
+print("Found user by uri = '%s'\n" % user.data['uri'])
 
 # Get all users
 print("Get all users")
