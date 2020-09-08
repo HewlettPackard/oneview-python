@@ -55,8 +55,8 @@ class UsersTest(unittest.TestCase):
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
 
-        self._users.create(resource, timeout=70)
-        mock_create.assert_called_once_with(resource_rest_call, timeout=70, '/rest/users')
+        self._users.create(resource)
+        mock_create.assert_called_once_with(resource_rest_call, -1, '/rest/users')
 
     @mock.patch.object(Resource, 'get_all')
     @mock.patch.object(ResourceHelper, 'do_get')
