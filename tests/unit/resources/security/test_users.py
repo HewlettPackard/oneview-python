@@ -75,7 +75,7 @@ class UsersTest(unittest.TestCase):
             'userName': 'testUser'
         }]
         self._users.get_by_userName('testUser')
-        mock_get.assert_called_once_with('/rest/users/role/OneViewSDK Test User')
+        mock_get.assert_called_once_with('/rest/users/role/testUser')
 
     @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_full_name_called_once(self, mock_post):
@@ -104,5 +104,6 @@ class UsersTest(unittest.TestCase):
         }
         self._users.change_password(request)
 
-        expected_uri = '/rest/users/'
+        expected_uri = self._users.URI
         mock_put.assert_called_once_with(expected_uri, request, -1, None)
+
