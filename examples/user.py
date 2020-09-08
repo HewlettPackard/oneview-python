@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ options = {
             }
         ],
     'type': 'UserAndPermissions',
-    'userName': 'testUser1'
+    'userName': 'testUser'
 }
 
 # Try load config from a file (if there is a config file)
@@ -53,36 +53,36 @@ users = oneview_client.users
 
 # Create a User
 user = users.create(options)
-#print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
+print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
 
 # Change Password
-#change_password_request = {
-#    "currentPassword": "admin12345",
-#    "enabled": "true",
-#    "password": "admin1234",
-#    "userName": "venki"
-#}
-#changePasswordResponse = users.change_password(change_password_request)
-#print("Changed Password successfully")
-#print(changePasswordResponse)
-#
-## Adds different roles to the recently created user
-#user = oneview_client.users.get_by_name(options['userName'])
-#print(user.data)
-#print("\n user: %s, roles before update: %s" % (user.data['userName'], user.data['roles']))
-#user_copy = deepcopy(user.data)
-#user_copy['replaceRoles'] = True
-#user_copy['roles'] = ['Infrastructure administrator']
-#user_update = user.update(user_copy)
-#print("\n user: %s, roles after update: %s" % (user_update.data['userName'], user_update.data['roles']))
-#
-## Get user by role
-#user = oneview_client.users.get_by_name(options['role'])
-#print("Found users by role: '%s'.\n '\n" % (user.data))
-#
-## Get user by name
-#user = oneview_client.users.get_by_name(options['userName'])
-#print("Found user by name: '%s'. uri = '%s'\n" % (user.data['userName'], user.data['uri']))
+change_password_request = {
+   "currentPassword": "admin12345",
+   "enabled": "true",
+   "password": "admin1234",
+   "userName": "venki"
+}
+changePasswordResponse = users.change_password(change_password_request)
+print("Changed Password successfully")
+print(changePasswordResponse)
+
+# Adds different roles to the recently created user
+user = oneview_client.users.get_by_userName(options['userName'])
+print(user)
+print("\n user: %s, roles before update: %s" % (user['userName'], user['roles']))
+user_copy = deepcopy(user)
+user_copy['replaceRoles'] = True
+user_copy['roles'] = ['Infrastructure administrator']
+user_update = user.update(user_copy)
+print("\n user: %s, roles after update: %s" % (user_update['userName'], user_update['roles']))
+
+# Get user by role
+user = oneview_client.users.get_by_role(options['role'])
+print("Found users by role: '%s'.\n '\n" % (user))
+
+# Get user by name
+user = oneview_client.users.get_by_userName(options['userName'])
+print("Found user by name: '%s'. uri = '%s'\n" % (user['userName'], user['uri']))
 
 # Get all users
 print("Get all users")

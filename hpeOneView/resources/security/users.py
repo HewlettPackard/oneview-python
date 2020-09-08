@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -109,3 +109,57 @@ class Users(Resource):
         """
         uri = self.URI
         return self._helper.do_put(uri, resource, timeout, None)
+
+    def get_by_userName(self, userName):
+        """
+        Gets a user by userName.
+
+        Args:
+            name: userName of the user.
+
+        Returns:
+            dict: User.
+        """
+
+        users = self.get_all()
+
+        result = [x for x in users if x['userName'] == userName]
+        resource = result[0] if result else None
+        if resource:
+            uri = "{}/{}".format(self.URI, resource)
+            self._helper.validate_resource_uri(uri)
+            data = self._helper.do_get(uri)
+
+        if data:
+            new_resource = self.new(self._connection, data)
+        else:
+            new_resource = None
+
+        return new_resource
+
+    def get_by_role(self, role):
+        """
+        Gets a user by role.
+
+        Args:
+            name: Role of the user.
+
+        Returns:
+            dict: User.
+        """
+
+        users = self.get_all()
+
+        result = [x for x in users if x['role'] == role]
+        resource = result[0] if result else None
+        if resource:
+            uri = "{}/{}".format(self.URI, resource)
+            self._helper.validate_resource_uri(uri)
+            data = self._helper.do_get(uri)
+
+        if data:
+            new_resource = self.new(self._connection, data)
+        else:
+            new_resource = None
+
+        return new_resource
