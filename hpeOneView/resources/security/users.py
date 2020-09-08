@@ -125,8 +125,10 @@ class Users(Resource):
 
         result = [x for x in users if x['userName'] == userName]
         resource = result[0] if result else None
+        f = open('test.txt', 'w')
+        f.write(str(resource))
         if resource:
-            uri = "{}/{}".format(self.URI, resource)
+            uri = self.URI + '/role/' + userName
             self._helper.validate_resource_uri(uri)
             data = self._helper.do_get(uri)
 
@@ -150,10 +152,10 @@ class Users(Resource):
 
         users = self.get_all()
 
-        result = [x for x in users if x['role'] == role]
+        result = [x for x in users for y in x['permissions'] if y['roleName'] == role]
         resource = result[0] if result else None
         if resource:
-            uri = "{}/{}".format(self.URI, resource)
+            uri = self.URI + '/roles/users/' + role
             self._helper.validate_resource_uri(uri)
             data = self._helper.do_get(uri)
 

@@ -52,37 +52,38 @@ oneview_client = OneViewClient(config)
 users = oneview_client.users
 
 # Create a User
-user = users.create(options)
-print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
-
-# Change Password
-change_password_request = {
-   "currentPassword": "admin12345",
-   "enabled": "true",
-   "password": "admin1234",
-   "userName": "venki"
-}
-changePasswordResponse = users.change_password(change_password_request)
-print("Changed Password successfully")
-print(changePasswordResponse)
+#user = users.create(options)
+#print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
+#
+## Change Password
+#change_password_request = {
+#   "currentPassword": "admin12345",
+#   "enabled": "true",
+#   "password": "admin1234",
+#   "userName": "venki"
+#}
+#changePasswordResponse = users.change_password(change_password_request)
+#print("Changed Password successfully")
+#print(changePasswordResponse)
 
 # Adds different roles to the recently created user
-user = oneview_client.users.get_by_userName(options['userName'])
-print(user)
-print("\n user: %s, roles before update: %s" % (user['userName'], user['roles']))
-user_copy = deepcopy(user)
-user_copy['replaceRoles'] = True
-user_copy['roles'] = ['Infrastructure administrator']
-user_update = user.update(user_copy)
-print("\n user: %s, roles after update: %s" % (user_update['userName'], user_update['roles']))
+#user = oneview_client.users.get_by_userName(options['userName'])
+#print(user)
+#print("\n user: %s, roles before update: %s" % (user['userName'], user['roles']))
+#user_copy = deepcopy(user)
+#user_copy['replaceRoles'] = True
+#user_copy['roles'] = ['Infrastructure administrator']
+#user_update = user.update(user_copy)
+#print("\n user: %s, roles after update: %s" % (user_update['userName'], user_update['roles']))
 
 # Get user by role
-user = oneview_client.users.get_by_role(options['role'])
-print("Found users by role: '%s'.\n '\n" % (user))
+input_role = 'Infrastructure administrator'
+user = oneview_client.users.get_by_role(input_role)
+print("Found users by role: '%s'.\n '\n" % (user.data))
 
 # Get user by name
 user = oneview_client.users.get_by_userName(options['userName'])
-print("Found user by name: '%s'. uri = '%s'\n" % (user['userName'], user['uri']))
+print("Found user by uri = '%s'\n" %  user.data['uri'])
 
 # Get all users
 print("Get all users")
