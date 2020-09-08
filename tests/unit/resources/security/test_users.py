@@ -37,7 +37,7 @@ class UsersTest(unittest.TestCase):
 
         self._users.get_all(2, 500, filter, sort)
 
-        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort)
+        mock_get_all.assert_called_once_with(2, 500, filter, sort)
 
     @mock.patch.object(Resource, 'create')
     def test_create_should_use_given_values(self, mock_create):

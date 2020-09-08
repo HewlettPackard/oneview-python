@@ -56,10 +56,10 @@ print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], use
 
 # Change Password
 change_password_request = {
-  "currentPassword": "admin12345",
-  "enabled": "true",
-  "password": "admin1234",
-  "userName": "admin"
+    "currentPassword": "admin12345",
+    "enabled": "true",
+    "password": "admin1234",
+    "userName": "admin"
 }
 changePasswordResponse = users.change_password(change_password_request)
 print("Changed Password successfully")
