@@ -76,7 +76,7 @@ class Users(Resource):
         Returns: True if user name is in use, False if it is not.
         """
         uri = self.URI + '/validateLoginName/' + user_name
-        return self._helper.do_post(uri=uri, None, timeout=timeout, None)
+        return self._helper.do_post(uri, None, timeout, None)
 
     def validate_full_name(self, full_name, timeout=-1):
         """
@@ -92,7 +92,7 @@ class Users(Resource):
         Returns: True if full name is in use, False if it is not.
         """
         uri = self.URI + '/validateUserName/' + full_name
-        return self._helper.do_post(uri=uri, None, timeout=timeout. None)
+        return self._helper.do_post(uri, None, timeout, None)
 
     def change_password(self, resource, timeout=-1):
         """

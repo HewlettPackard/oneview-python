@@ -35,9 +35,14 @@ options = {
     'mobilePhone': '555-2121',
     'officePhone': '555-1212',
     'password': 'myPass1234',
-    'roles': ['Read only'],
-    'type': 'UserAndRoles',
-    'userName': 'testUser'
+    'permissions': [
+        {
+            'roleName': 'Read only',
+            'scopeUri': '/rest/scopes/b7259c1c-c52a-4be3-82de-d50e1730695e',
+            }
+        ],
+    'type': 'UserAndPermissions',
+    'userName': 'testUser1'
 }
 
 # Try load config from a file (if there is a config file)
@@ -48,36 +53,36 @@ users = oneview_client.users
 
 # Create a User
 user = users.create(options)
-print("Created user '%s' successfully.\n  uri = '%s'\n" % (user.data['userName'], user.data['uri']))
+#print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
 
 # Change Password
-change_password_request = {
-    "currentPassword": "admin12345",
-    "enabled": "true",
-    "password": "admin1234",
-    "userName": "venki"
-}
-changePasswordResponse = users.change_password(change_password_request)
-print("Changed Password successfully")
-print(changePasswordResponse)
-
-# Adds different roles to the recently created user
-user = oneview_client.users.get_by_name(options['userName'])
-print(user.data)
-print("\n user: %s, roles before update: %s" % (user.data['userName'], user.data['roles']))
-user_copy = deepcopy(user.data)
-user_copy['replaceRoles'] = True
-user_copy['roles'] = ['Infrastructure administrator']
-user_update = user.update(user_copy)
-print("\n user: %s, roles after update: %s" % (user_update.data['userName'], user_update.data['roles']))
-
-# Get user by role
-user = oneview_client.users.get_by_name(options['role'])
-print("Found users by role: '%s'.\n '\n" % (user.data))
-
-# Get user by name
-user = oneview_client.users.get_by_name(options['userName'])
-print("Found user by name: '%s'. uri = '%s'\n" % (user.data['userName'], user.data['uri']))
+#change_password_request = {
+#    "currentPassword": "admin12345",
+#    "enabled": "true",
+#    "password": "admin1234",
+#    "userName": "venki"
+#}
+#changePasswordResponse = users.change_password(change_password_request)
+#print("Changed Password successfully")
+#print(changePasswordResponse)
+#
+## Adds different roles to the recently created user
+#user = oneview_client.users.get_by_name(options['userName'])
+#print(user.data)
+#print("\n user: %s, roles before update: %s" % (user.data['userName'], user.data['roles']))
+#user_copy = deepcopy(user.data)
+#user_copy['replaceRoles'] = True
+#user_copy['roles'] = ['Infrastructure administrator']
+#user_update = user.update(user_copy)
+#print("\n user: %s, roles after update: %s" % (user_update.data['userName'], user_update.data['roles']))
+#
+## Get user by role
+#user = oneview_client.users.get_by_name(options['role'])
+#print("Found users by role: '%s'.\n '\n" % (user.data))
+#
+## Get user by name
+#user = oneview_client.users.get_by_name(options['userName'])
+#print("Found user by name: '%s'. uri = '%s'\n" % (user.data['userName'], user.data['uri']))
 
 # Get all users
 print("Get all users")
@@ -93,5 +98,5 @@ bol = oneview_client.users.validate_user_name(options['userName'])
 print("Is user name already in use? %s" % (bol))
 
 # Delete the created user
-oneview_client.users.delete(user)
+user.delete()
 print("\nSuccessfully deleted user")
