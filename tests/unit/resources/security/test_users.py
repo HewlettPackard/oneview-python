@@ -39,8 +39,9 @@ class UsersTest(unittest.TestCase):
 
         mock_get_all.assert_called_once_with(2, 500, filter, sort)
 
+    @mock.patch.object(ResourceHelper, 'do_post')
     @mock.patch.object(Resource, 'create')
-    def test_create_should_use_given_values(self, mock_create):
+    def test_create_should_use_given_values(self, mock_create, mock_post):
         resource = {
             'enabled': 'true',
             'fullName': 'testUser101',
@@ -57,13 +58,17 @@ class UsersTest(unittest.TestCase):
         self._users.create(resource, timeout=70)
         mock_create.assert_called_once_with(resource_rest_call, timeout=70)
 
+    @mock.patch.object(Resource, 'get_all')
     @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_by_called_with_userName(self, mock_get):
+    def test_get_by_called_with_userName(self, mock_get, mock_get_all):
+        mock_get_all.return_value = {}
         self._users.get_by_name('OneViewSDK Test User')
         mock_get.assert_called_once_with('/rest/users/OneViewSDK Test User')
 
+    @mock.patch.object(Resource, 'get_all')
     @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_by_called_with_role(self, mock_get):
+    def test_get_by_called_with_role(self, mock_get, mock_get_all):
+        mock_get_all.return_value = {}
         self._users.get_by_role('fakerole')
         mock_get.assert_called_once_with('/rest/users/roles/users/fakerole')
 
