@@ -15,6 +15,9 @@
 # limitations under the License.
 ###
 
+# This example requires a ServerProfileTemplate with name "spt_basic" and HypervisorManager
+# with name "172.18.13.11"
+
 from pprint import pprint
 
 from config_loader import try_load_from_file
@@ -138,14 +141,17 @@ pprint(cluster_profile_by_uri.data)
 
 # Update the name of recently created hypervisor cluster profile
 data_to_update = {'name': 'Updated cluster'}
-hypervisor_cluster_profile.update(data=data_to_update)
-print("\nUpdated hypervisor cluster profile name - {0} to {1}".format(
-    options['name'], hypervisor_cluster_profile.data['name']))
+if hypervisor_cluster_profile:
+    hypervisor_cluster_profile.update(data=data_to_update)
+    print("\nUpdated hypervisor cluster profile name - {0} to {1}".format(
+        options['name'], hypervisor_cluster_profile.data['name']))
 
 # Get compliance preview of cluster profile
-profile_compliance = hypervisor_cluster_profile.get_compliance_preview()
-print("   - Compliance preview: '{}'".format(profile_compliance))
+if hypervisor_cluster_profile:
+    profile_compliance = hypervisor_cluster_profile.get_compliance_preview()
+    print("   - Compliance preview: '{}'".format(profile_compliance))
 
 # Delete the created hypervisor cluster profile
-hypervisor_cluster_profile.delete(soft_delete=True, force=True)
-print("\nSuccessfully deleted hypervisor cluster profile")
+if hypervisor_cluster_profile:
+    hypervisor_cluster_profile.delete(soft_delete=True, force=True)
+    print("\nSuccessfully deleted hypervisor cluster profile")
