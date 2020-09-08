@@ -44,23 +44,6 @@ class Users(Resource):
     def __init__(self, connection, data=None):
         super(Users, self).__init__(connection, data)
 
-    def create(self, resource, timeout=-1):
-        """
-        Creates a User.
-
-        Args:
-            resource (dict): Object to create.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            dict: Created resource.
-
-        """
-        uri = self.URI
-        return self._helper.create(resource, uri=uri, timeout=timeout)
-
     def validate_user_name(self, user_name, timeout=-1):
         """
         Verifies if a userName is already in use.
@@ -134,27 +117,3 @@ class Users(Resource):
 
         return new_resource
 
-    def get_by_role(self, role):
-        """
-        Gets a user by role.
-
-        Args:
-            name: Role of the user.
-
-        Returns:
-            dict: User.
-        """
-
-        users = self.get_all()
-
-        result = [x for x in users for y in x['permissions'] if y['roleName'] == role]
-        resource = result[0] if result else None
-        if resource:
-            uri = self.URI + '/roles/users/' + role
-            self._helper.validate_resource_uri(uri)
-            data = self._helper.do_get(uri)
-            new_resource = self.new(self._connection, data)
-        else:
-            new_resource = None
-
-        return new_resource

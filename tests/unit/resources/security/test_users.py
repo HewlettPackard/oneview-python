@@ -56,7 +56,7 @@ class UsersTest(unittest.TestCase):
         mock_create.return_value = {}
 
         self._users.create(resource)
-        mock_create.assert_called_once_with(resource_rest_call, -1, '/rest/users')
+        mock_create.assert_called_once_with(resource_rest_call, None, -1, None, False)
 
     @mock.patch.object(Resource, 'get_all')
     @mock.patch.object(ResourceHelper, 'do_get')
@@ -74,27 +74,8 @@ class UsersTest(unittest.TestCase):
             'type': 'UserAndRoles',
             'userName': 'testUser'
         }]
-        self._users.get_by_userName('OneViewSDK Test User')
+        self._users.get_by_userName('testUser')
         mock_get.assert_called_once_with('/rest/users/role/OneViewSDK Test User')
-
-    @mock.patch.object(Resource, 'get_all')
-    @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_by_called_with_role(self, mock_get, mock_get_all):
-        mock_get_all.return_value = [{
-            'enabled': 'true',
-            'fullName': 'testUser101',
-            'mobilePhone': '555-2121',
-            'officePhone': '555-1212',
-            'password': 'myPass1234',
-            'permissions': {
-                "roleName": "Infrastructure administrator",
-                "scopeUri": "/rest/scopes/00bad8f7-1e21-4819-8632-a4c876fcfdd6"
-            },
-            'type': 'UserAndRoles',
-            'userName': 'testUser'
-        }]
-        self._users.get_by_role('fakerole')
-        mock_get.assert_called_once_with('/rest/users/roles/users/fakerole')
 
     @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_full_name_called_once(self, mock_post):

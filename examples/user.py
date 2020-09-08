@@ -52,7 +52,7 @@ users = oneview_client.users
 
 # Create a User
 user = users.create(options)
-print("Created user '%s' successfully.\n  uri = '%s'\n" % (user['userName'], user['uri']))
+print("Created user '%s' successfully.\n  uri = '%s'\n" % (user.data['userName'], user.data['uri']))
 
 # Change Password
 change_password_request = {
@@ -64,11 +64,6 @@ change_password_request = {
 changePasswordResponse = users.change_password(change_password_request)
 print("Changed Password successfully")
 print(changePasswordResponse)
-
-# Get user by role
-input_role = 'Infrastructure administrator'
-user = oneview_client.users.get_by_role(input_role)
-print("Found users by role: '%s'.\n '\n" % (user.data))
 
 # Get user by name
 user = oneview_client.users.get_by_userName(options['userName'])
