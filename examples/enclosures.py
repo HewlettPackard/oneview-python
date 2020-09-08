@@ -37,6 +37,9 @@ config = {
 
 enclosure_name = "Enc"
 
+# Specify variant of your appliance before running this example
+api_variant = "C7000"
+
 # Declare a CA signed certificate file path.
 certificate_file = ""
 
@@ -98,16 +101,17 @@ except HPEOneViewException as e:
 
 # Set the calibrated max power of an unmanaged or unsupported enclosure
 # update_environmental_configuration is available only in C7000
-print("Set the calibrated max power of an unmanaged or unsupported enclosure")
+if api_variant == 'C7000':
+    print("Set the calibrated max power of an unmanaged or unsupported enclosure")
 
-try:
-    configuration = {
-        "calibratedMaxPower": 2500
-    }
-    enclosure_updated_encConf = enclosure.update_environmental_configuration(configuration)
-    print("  Done.")
-except HPEOneViewException as e:
-    print(e.msg)
+    try:
+        configuration = {
+            "calibratedMaxPower": 2500
+        }
+        enclosure_updated_encConf = enclosure.update_environmental_configuration(configuration)
+        print("  Done.")
+    except HPEOneViewException as e:
+        print(e.msg)
 
 # Refresh the enclosure
 print("Refreshing the enclosure")
@@ -120,12 +124,13 @@ except HPEOneViewException as e:
 
 # Buid the SSO URL parameters
 # get_sso is available only in C7000
-print("Build the SSO (Single Sign-On) URL parameters for the enclosure")
-try:
-    sso_url_parameters = enclosure.get_sso('Active')
-    pprint(sso_url_parameters)
-except HPEOneViewException as e:
-    print(e.msg)
+if api_variant == 'C7000':
+    print("Build the SSO (Single Sign-On) URL parameters for the enclosure")
+    try:
+        sso_url_parameters = enclosure.get_sso('Active')
+        pprint(sso_url_parameters)
+    except HPEOneViewException as e:
+        print(e.msg)
 
 # Get Statistics specifying parameters
 print("Get the enclosure statistics")
