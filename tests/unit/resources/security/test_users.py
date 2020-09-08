@@ -80,7 +80,19 @@ class UsersTest(unittest.TestCase):
     @mock.patch.object(Resource, 'get_all')
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_by_called_with_userName_with_no_return_value(self, mock_get, mock_get_all):
-        mock_get_all.return_value = None
+        mock_get_all.return_value = [{
+            'enabled': 'true',
+            'fullName': 'testUser101',
+            'mobilePhone': '555-2121',
+            'officePhone': '555-1212',
+            'password': 'myPass1234',
+            'permissions': {
+                "roleName": "Infrastructure administrator",
+                "scopeUri": "/rest/scopes/00bad8f7-1e21-4819-8632-a4c876fcfdd6"
+            },
+            'type': 'UserAndRoles',
+            'userName': 'testUser1'
+        }]
         self._users.get_by_userName('testUser')
         self.assertEqual(mock_get.call_count, 0)
 

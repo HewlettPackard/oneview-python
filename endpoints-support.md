@@ -346,6 +346,13 @@
 |<sub>/rest/uplink-sets/{id}</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/uplink-sets/{id}</sub>                                                        | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/uplink-sets/{id}</sub>                                                        | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|     **Users**
+|<sub>/rest/users</sub>                                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users</sub>                                                                   | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users</sub>                                                                   | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users/role/{userName}</sub>                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users/validateLoginName/{userName}</sub>                                      | POST   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users/validateUserName/{fullName}</sub>                                       | POST   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
 |     **Volumes**
 |<sub>/rest/storage-volumes</sub>                                                         | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |:white_check_mark:   |:white_check_mark:   |:white_check_mark:   |
 |<sub>/rest/storage-volumes</sub>                                                         | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |:white_check_mark:   |:white_check_mark:   |:white_check_mark:   |
