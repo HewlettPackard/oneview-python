@@ -33,10 +33,13 @@ config = try_load_from_file(config)
 networks = "/rest/fcoe-networks/7f0f74a0-4957-47ac-81c1-f573aa6d83de"
 scope_uris = "/rest/scopes/63d1ca81-95b3-41f1-a1ee-f9e1bc2d635f"
 
+# Gets the first Root Storage Volume Template available to use in options
+root_template = oneview_client.storage_volume_templates.get_all(filter="\"isRoot='True'\"")[0]
+
 # Request body for create operation
 # Supported from API version >= 500
 options = {
-    "rootTemplateUri": "/rest/storage-volume-templates/b8c4489e-4a19-4bfe-857c-aab8006478a7",
+    "rootTemplateUri": "root_template['uri']",
     "properties": {
         "name": {
             "title": "Volume name",
