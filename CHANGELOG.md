@@ -17,10 +17,12 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 Refactored base class to take default API version as per provided Oneview appliance.
 
 #### Features supported with the current release
+- Firmware Drivers
 - Interconnects
 - Interconnect Types
 - Server Hardware
 - Server Hardware Types
+- Restores
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
