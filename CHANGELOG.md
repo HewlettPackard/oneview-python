@@ -1,6 +1,6 @@
 # 5.4.0(unreleased)
 #### Notes
-Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 
 #### Breaking Changes
   Enhancement made in this version breaks the previous version of the SDK.
@@ -19,10 +19,17 @@ Refactored base class to take default API version as per provided Oneview applia
 #### Features supported with the current release
 - Appliance SNMPv1 Trap Destinations
 - Connection Templates
+- Certificates Server
+- Firmware Drivers
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
 - Logical Interconnects
 - Logical Interconnect Group
+- Restores
+- Scopes
 - Server Profiles
 - Server Profile Templates
+- Tasks
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
