@@ -23,10 +23,16 @@ Refactored base class to take default API version as per provided Oneview applia
 - Hypervisor Managers
 - Restores
 - Scopes
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
 - Tasks
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
+
 
 # 5.3.0
 #### Notes
