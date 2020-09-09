@@ -180,7 +180,7 @@
 |<sub>/rest/logical-interconnects/{id}/telemetry-configurations/{tcId}</sub>              | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/telemetry-configurations/{tcId}</sub>              | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/compliance</sub>                                        | POST     |  :heavy_multiplication_x:     | :heavy_multiplication_x:     | :heavy_multiplication_x:  |  :heavy_multiplication_x:   | :heavy_multiplication_x:  | :heavy_multiplication_x:  |
-|<sub>/rest/logical-interconnects/{id}</sub>                                              | PATCH    |  :heavy_minus_sign:  |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:   | :white_check_mark:   || :white_check_mark:   |
+|<sub>/rest/logical-interconnects/{id}</sub>                                              | PATCH    |  :heavy_minus_sign:  |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/{id}/igmpSettings</sub>                                 | GET      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :heavy_minus_sign:   |
 |<sub>/rest/logical-interconnects/{id}/igmpSettings</sub>                                 | PUT      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :heavy_minus_sign:   |
 |     **Logical Switch Groups**
