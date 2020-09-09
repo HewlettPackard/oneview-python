@@ -128,13 +128,15 @@ print("Updated ethernet-network '{name}' successfully.\n   uri = '{uri}'\n   wit
 
 # Get URIs of associated profiles
 print("\nGet associated profiles uri(s)")
-associated_profiles = ethernet_network.get_associated_profiles()
-pprint(associated_profiles)
+if ethernet_network:
+    associated_profiles = ethernet_network.get_associated_profiles()
+    pprint(associated_profiles)
 
 # Get URIs of uplink port group
 print("\nGet uplink port group uri(s)")
-uplink_group_uris = ethernet_network.get_associated_uplink_groups()
-pprint(uplink_group_uris)
+if ethernet_network:
+    uplink_group_uris = ethernet_network.get_associated_uplink_groups()
+    pprint(uplink_group_uris)
 
 # Get the associated uplink set resources
 print("\nGet associated uplink sets")

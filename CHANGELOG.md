@@ -1,6 +1,6 @@
 # 5.4.0(unreleased)
 #### Notes
-Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 
 #### Breaking Changes
   Enhancement made in this version breaks the previous version of the SDK.
@@ -15,17 +15,37 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 
 #### Major changes
 Refactored base class to take default API version as per provided Oneview appliance.
+Removed provision of "type" field as those are optional from API1600
 
 #### Features supported with the current release
+- Certificates Server
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
 - Firmware Drivers
 - Interconnects
 - Interconnect Types
 - Server Hardware
 - Server Hardware Types
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Logical Enclosures
+- Network set
 - Restores
+- Scopes
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
+- Tasks
+- Uplink set
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
+
 
 # 5.3.0
 #### Notes
