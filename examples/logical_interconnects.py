@@ -27,6 +27,9 @@ config = {
     }
 }
 
+# Specify variant of your appliance to run this example
+api_variant = 'Synergy'
+
 # To run this example, a logical interconnect name is required
 logical_interconnect_name = "testlg1-Renamed Logical Interconnect Group"
 
@@ -92,11 +95,15 @@ ethernet_settings = logical_interconnect.get_ethernet_settings()
 pprint(ethernet_settings)
 
 # Update the Ethernet interconnect settings for the logical interconnect
+# macRefreshInterval attribute is supported only in C7000
 ethernet_settings = logical_interconnect.data['ethernetSettings'].copy()
-ethernet_settings['macRefreshInterval'] = 10
+if api_variant == 'C7000':
+    ethernet_settings['macRefreshInterval'] = 10
+else:
+    ethernet_settings['stormControlThreshold'] = 15
 logical_interconnect_updated = logical_interconnect.update_ethernet_settings(ethernet_settings)
 print("\nUpdated the ethernet settings")
-print("  with attribute 'macRefreshInterval' = {macRefreshInterval}".format(**logical_interconnect_updated['ethernetSettings']))
+print(logical_interconnect_updated.data)
 
 # Update the internal networks on the logical interconnect
 ethernet_network_options = {
@@ -231,3 +238,15 @@ if oneview_client.api_version >= 1600:
     igmp_settings_updated = logical_interconnect.update_igmp_settings(igmp_settings)
     pprint(igmp_settings_updated)
     print("\nUpdated IGMP interconnect settings for the logical interconnect successfully")
+
+# Validates the bulk update from group operation and gets the consolidated inconsistency report
+if oneview_client.api_version >= 2000 and api_variant == 'Synergy':
+    print("Validates the bulk update from group operation and gets the consolidated inconsistency report")
+    bulk_validate_request = {
+        "logicalInterconnectUris": [
+            "/rest/logical-interconnects/d0432852-28a7-4060-ba49-57ca973ef6c2"
+        ]
+    }
+    validation_result = logical_interconnect.bulk_inconsistency_validate(bulk_validate_request)
+    pprint(validation_result)
+    print("\nValidated bulk update from group for the logical interconnect successfully")
