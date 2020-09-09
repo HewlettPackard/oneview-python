@@ -15,6 +15,17 @@ Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 
 #### Major changes
 Refactored base class to take default API version as per provided Oneview appliance.
+Removed provision of "type" field as those are optional from API1600
+
+#### Features supported with the current release
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Logical Enclosures
+- Network set
+- Uplink set
 
 #### Features supported with the current release
 - Certificates Server
