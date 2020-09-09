@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-# Below example works till Oneview API version 1600.
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
@@ -36,16 +35,17 @@ interconnect_types = oneview_client.interconnect_types
 
 # Get all supported interconnect types
 print("Get all supported interconnect types")
-interconnect_types = interconnect_types.get_all()
-pprint(interconnect_types, depth=2)
+all_interconnect_types = interconnect_types.get_all()
+pprint(all_interconnect_types, depth=2)
 
 # Get all sorting by name descending
 print("Get all interconnect-types sorting by name")
-interconnect_types_sorted = oneview_client.interconnect_types.get_all(sort='name:descending')
+interconnect_types_sorted = interconnect_types.get_all(sort='name:descending')
 pprint(interconnect_types_sorted, depth=2)
 
 # Get by name
 print("Get an interconnect_type by name")
-name = interconnect_types_sorted[0]["name"]
-interconnect_type_byname = oneview_client.interconnect_types.get_by_name(name)
-pprint(interconnect_type_byname.data, depth=1)
+if interconnect_types_sorted:
+    name = interconnect_types_sorted[0]["name"]
+    interconnect_type_byname = interconnect_types.get_by_name(name)
+    pprint(interconnect_type_byname.data, depth=1)

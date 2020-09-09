@@ -77,26 +77,30 @@ print("Found server '%s' by uri.\n  uri = '%s'" %
 
 # Get Statistics with defaults
 print("Get server-hardware statistics")
-server_utilization = server.get_utilization()
-pprint(server_utilization)
+if server:
+    server_utilization = server.get_utilization()
+    pprint(server_utilization)
 
 # Get Statistics specifying parameters
 print("Get server-hardware statistics specifying parameters")
-server_utilization = server.get_utilization(fields='AveragePower',
-                                            filter='startDate=2016-05-30T03:29:42.000Z',
-                                            view='day')
-pprint(server_utilization)
+if server:
+    server_utilization = server.get_utilization(fields='AveragePower',
+                                                filter='startDate=2016-05-30T03:29:42.000Z',
+                                                view='day')
+    pprint(server_utilization)
 
 # Get list of BIOS/UEFI Values
 print("Get list of BIOS/UEFI Values")
-bios = server.get_bios()
-pprint(bios)
+if server:
+    bios = server.get_bios()
+    pprint(bios)
 
 # Get the settings that describe the environmental configuration of server
 print(
     "Get the settings that describe the environmental configuration of server")
-server_envConf = server.get_environmental_configuration()
-pprint(server_envConf)
+if server:
+    server_envConf = server.get_environmental_configuration()
+    pprint(server_envConf)
 
 # Set the calibrated max power of an unmanaged or unsupported server
 # hardware resource
@@ -104,48 +108,54 @@ print("Set the calibrated max power of an unmanaged or unsupported server hardwa
 configuration = {
     "calibratedMaxPower": 2500
 }
-server_updated_encConf = server.update_environmental_configuration(configuration)
+if server:
+    server_updated_encConf = server.update_environmental_configuration(configuration)
 
 # Get URL to launch SSO session for iLO web interface
-ilo_sso_url = server.get_ilo_sso_url()
-print("URL to launch a Single Sign-On (SSO) session for the iLO web interface for server at uri:\n",
-      "{}\n   '{}'".format(server.data['uri'], ilo_sso_url))
+if server:
+    ilo_sso_url = server.get_ilo_sso_url()
+    print("URL to launch a Single Sign-On (SSO) session for the iLO web interface for server at uri:\n",
+          "{}\n   '{}'".format(server.data['uri'], ilo_sso_url))
 
 # Generates a Single Sign-On (SSO) session for the iLO Java Applet console
 # and return URL to launch it
-java_remote_console_url = server.get_java_remote_console_url()
-print("URL to launch a Single Sign-On (SSO) session for the iiLO Java Applet console for server at uri:\n",
-      "   {}\n   '{}'".format(
-          server.data['uri'], java_remote_console_url))
+if server:
+    java_remote_console_url = server.get_java_remote_console_url()
+    print("URL to launch a Single Sign-On (SSO) session for the iiLO Java Applet console for server at uri:\n",
+          "   {}\n   '{}'".format(server.data['uri'], java_remote_console_url))
 
 # Update iLO firmware to minimum version required
-server.update_mp_firware_version()
-print("Successfully updated iLO firmware on server at\n  uri: '{}'".format(server.data['uri']))
+if server:
+    server.update_mp_firware_version()
+    print("Successfully updated iLO firmware on server at\n  uri: '{}'".format(server.data['uri']))
 
 # Request power operation to change the power state of the physical server.
 configuration = {
     "powerState": "Off",
     "powerControl": "MomentaryPress"
 }
-server_power = server.update_power_state(configuration)
-print("Successfully changed the power state of server '{name}' to '{powerState}'".format(**server_power))
+if server:
+    server_power = server.update_power_state(configuration)
+    print("Successfully changed the power state of server '{name}' to '{powerState}'".format(**server_power))
 
 # Refresh server state
 configuration = {
     "refreshState": "RefreshPending"
 }
-server_refresh = server.refresh_state(configuration)
-print("Successfully refreshed the state of the server at:\n   'uri': '{}'".format(
-      server_refresh['uri']))
+if server:
+    server_refresh = server.refresh_state(configuration)
+    print("Successfully refreshed the state of the server at:\n   'uri': '{}'".format(
+        server_refresh['uri']))
 
 # Get URL to launch SSO session for iLO Integrated Remote Console
 # Application (IRC)
 # You can also specify ip or consoleType if you need, inside function get_remote_console_url()
-remote_console_url = server.get_remote_console_url()
-print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console Application",
-      " for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
+if server:
+    remote_console_url = server.get_remote_console_url()
+    print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console Application",
+          "for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
 
-if oneview_client.api_version >= 300:
+if oneview_client.api_version >= 300 and server:
     # These functions are only available for the API version 300 or higher
 
     # Turn the Server Hardware led light On
@@ -167,7 +177,7 @@ if oneview_client.api_version >= 300:
     p = server_hardwares.get_all_firmwares(filter="serverName='{}'".format(server_name))
     pprint(p)
 
-if oneview_client.api_version >= 500:
+if oneview_client.api_version >= 500 and server:
     # Get information describing an 'SDX' partition including a list of physical server blades represented by a
     # server hardware. Only supported by SDX enclosures.
     print("Get SDX physical server hardware")
@@ -175,7 +185,7 @@ if oneview_client.api_version >= 500:
     pprint(sdx_server)
 
 # This operation works from Oneview API Version 1800.
-if oneview_client.api_version >= 1800:
+if oneview_client.api_version >= 1800 and server:
     # Gets the updated version 2 local storage resource for the server.
     print("Get updated local storage resource of server hardware")
     local_storage = server.get_local_storage()

@@ -18,20 +18,21 @@ Refactored base class to take default API version as per provided Oneview applia
 Removed provision of "type" field as those are optional from API1600
 
 #### Features supported with the current release
+- Certificates Server
 - Enclosures
 - Enclosure Groups
 - Ethernet network
 - FC network
 - FCOE network
-- Logical Enclosures
-- Network set
-- Uplink set
-
-#### Features supported with the current release
-- Certificates Server
 - Firmware Drivers
+- Interconnects
+- Interconnect Types
+- Server Hardware
+- Server Hardware Types
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
+- Logical Enclosures
+- Network set
 - Restores
 - Scopes
 - Storage Pools
@@ -40,6 +41,7 @@ Removed provision of "type" field as those are optional from API1600
 - Storage Volume Attachments
 - Storage Volume 
 - Tasks
+- Uplink set
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
