@@ -247,7 +247,7 @@ class StorageSystemsTest(unittest.TestCase):
 
         result = self._storage_systems.get_by_hostname("20.0.0.0")
         get_all.assert_called_once()
-        self.assertEqual(None, result.data)
+        self.assertEqual(None, result)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_reachable_ports_called_once(self, mock_get):
