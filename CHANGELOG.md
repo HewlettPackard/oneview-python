@@ -27,8 +27,23 @@ Removed provision of "type" field as those are optional from API1600
 - Network set
 - Uplink set
 
+#### Features supported with the current release
+- Certificates Server
+- Firmware Drivers
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Restores
+- Scopes
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
+- Tasks
+
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
+
 
 # 5.3.0
 #### Notes
