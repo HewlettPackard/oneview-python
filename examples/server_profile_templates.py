@@ -70,10 +70,11 @@ if oneview_client.api_version >= 600:
 
 # Get by property
 print("\nGet a list of server profile templates that matches the specified macType")
-template_mac_type = all_templates[1]["macType"]
-templates = profile_templates.get_by('macType', template_mac_type)
-for template in templates:
-    print('  %s' % template['name'])
+if all_templates[1]:
+    template_mac_type = all_templates[1]["macType"]
+    templates = profile_templates.get_by('macType', template_mac_type)
+    for template in templates:
+        print('  %s' % template['name'])
 
 # Get available networks
 print("\nGet available networks")
@@ -99,17 +100,19 @@ else:
 
 # Update bootMode from recently created template
 print("\nUpdate bootMode from recently created template")
-template_to_update = template.data.copy()
-template_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
-template.update(template_to_update)
-pprint(template.data)
+if template:
+    template_to_update = template.data.copy()
+    template_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
+    template.update(template_to_update)
+    pprint(template.data)
 
 # Get new profile
 print("\nGet new profile")
-profile = template.get_new_profile()
-pprint(profile)
+if template:
+    profile = template.get_new_profile()
+    pprint(profile)
 
-if oneview_client.api_version >= 300:
+if oneview_client.api_version >= 300 and template:
     # Get server profile template transformation
     print("\nGet a server profile template transformation")
     hardware = hardware_types.get_by_name(hardware_type_for_transformation)
@@ -121,5 +124,6 @@ if oneview_client.api_version >= 300:
 
 # Delete the created template
 print("\nDelete the created template")
-template.delete()
-print("The template was successfully deleted.")
+if template:
+    template.delete()
+    print("The template was successfully deleted.")
