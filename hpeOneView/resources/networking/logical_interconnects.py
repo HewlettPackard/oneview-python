@@ -502,3 +502,18 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         """
         uri = "{}/igmpSettings".format(self.data["uri"])
         return self._helper.update(configuration, uri=uri, force=force, timeout=timeout)
+
+    @ensure_resource_client
+    def bulk_inconsistency_validate(self, validation_request, timeout=-1):
+        """
+        Validates the bulk update from group operation and gets the consolidated inconsistency report
+
+        Args:
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+                OneView, just stops waiting for its completion.
+
+        Returns: Consolidated inconsistency report.
+        """
+        uri = "{}/bulk-inconsistency-validation".format(self.data["uri"])
+        return self._helper.do_post(uri, validation_request, timeout, None)

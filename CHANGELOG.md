@@ -15,9 +15,11 @@ Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 
 #### Major changes
 Refactored base class to take default API version as per provided Oneview appliance.
-Removed provision of "type" field as those are optional from API1600
+Removed provision of "type" field as those are optional from API1600.
 
 #### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
+- Connection Templates
 - Certificates Server
 - Enclosures
 - Enclosure Groups
@@ -25,16 +27,20 @@ Removed provision of "type" field as those are optional from API1600
 - FC network
 - FCOE network
 - Firmware Drivers
-- Interconnects
-- Interconnect Types
-- Server Hardware
-- Server Hardware Types
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
+- Interconnects
+- Interconnect Types
 - Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
 - Network set
 - Restores
 - Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
 - Storage Pools
 - Storage Systems
 - Storage Templates
@@ -45,7 +51,6 @@ Removed provision of "type" field as those are optional from API1600
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
-
 
 # 5.3.0
 #### Notes
