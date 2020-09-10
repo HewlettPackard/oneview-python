@@ -53,6 +53,7 @@ Removed provision of "type" field as those are optional from API1600.
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
 - [#91](https://github.com/HewlettPackard/oneview-python/issues/91) Change Password Sample?
 
+
 # 5.3.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
