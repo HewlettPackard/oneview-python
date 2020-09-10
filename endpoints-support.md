@@ -341,11 +341,11 @@
 |<sub>/rest/tasks/{id}</sub>                                                              | GET      | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:    |  :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/tasks/{id}</sub>                                                              | PATCH      | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:    |  :white_check_mark:   | :white_check_mark:   |
 |     **Uplink Sets**
-|<sub>/rest/uplink-sets</sub>                                                             | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/uplink-sets</sub>                                                             | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/uplink-sets/{id}</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/uplink-sets/{id}</sub>                                                        | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
-|<sub>/rest/uplink-sets/{id}</sub>                                                        | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/uplink-sets</sub>                                                             | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/uplink-sets</sub>                                                             | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/uplink-sets/{id}</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/uplink-sets/{id}</sub>                                                        | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|<sub>/rest/uplink-sets/{id}</sub>                                                        | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |     **Users**
 |<sub>/rest/users</sub>                                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/users</sub>                                                                   | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |

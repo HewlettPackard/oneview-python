@@ -66,18 +66,18 @@ print("Changed Password successfully")
 print(changePasswordResponse)
 
 # Get user by name
-user = oneview_client.users.get_by_userName(options['userName'])
+user = users.get_by_userName(options['userName'])
 print("Found user by uri = '%s'\n" % user.data['uri'])
 
 # Get all users
 print("Get all users")
-users = oneview_client.users.get_all()
+users = users.get_all()
 pprint(users)
 
 # # Validates if full name is already in use
-bol = oneview_client.users.validate_full_name(options['fullName'])
+bol = users.validate_full_name(options['fullName'])
 print("Is full name already in use? %s" % (bol))
 
 # # Validates if user name is already in use
-bol = oneview_client.users.validate_user_name(options['userName'])
+bol = users.validate_user_name(options['userName'])
 print("Is user name already in use? %s" % (bol))

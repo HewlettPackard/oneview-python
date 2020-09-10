@@ -35,14 +35,11 @@ class Users(Resource):
 
     URI = '/rest/users'
 
-    DEFAULT_VALUES = {
-        '200': {'type': 'UserAndRoles'},
-        '300': {'type': 'UserAndRoles'},
-        '500': {'type': 'UserAndRoles'}
-    }
-
     def __init__(self, connection, data=None):
         super(Users, self).__init__(connection, data)
+        self.__default_values = {
+            'type': 'UserAndRoles'
+        }
 
     def validate_user_name(self, user_name, timeout=-1):
         """
