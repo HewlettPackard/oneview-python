@@ -14,11 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-# Below example works till Oneview API version 1600.
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -74,7 +73,7 @@ print("\nGet the port statistics for downlink port 1 on the interconnect "
 try:
     statistics = interconnect.get_statistics(port_d1["portName"])
     pprint(statistics)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get the subport Statistics from a port of an Interconnects
@@ -84,7 +83,7 @@ try:
     statistics = interconnect.get_subport_statistics(port_d1["portName"],
                                                      port_d1["bayNumber"])
     pprint(statistics)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get by hostName
@@ -92,7 +91,7 @@ print("\nGet an interconnect by hostName")
 try:
     interconnect_by_host = interconnects.get_by('hostName', interconnect.data["hostName"])[0]
     pprint(interconnect_by_host)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get by name
@@ -100,7 +99,7 @@ print("\nGet an interconnect by name")
 try:
     interconnect_by_name = interconnects.get_by_name(interconnect.data["name"])
     pprint(interconnect_by_name.data)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Turn the power off
@@ -113,7 +112,7 @@ try:
         value='Off'
     )
     pprint(interconnect_patch)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Updates an interconnect port.
@@ -124,7 +123,7 @@ try:
 
     updated = interconnect.update_port(port_for_update)
     pprint(updated)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Reset of port protection.
@@ -132,7 +131,7 @@ print("\nTrigger a reset of port protection of the interconnect that matches the
 try:
     result = interconnect.reset_port_protection()
     pprint(result)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get name servers
@@ -141,7 +140,7 @@ print("\nGet the named servers for the interconnect that matches the specified I
 try:
     interconnect_ns = interconnect.get_name_servers()
     pprint(interconnect_ns)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get the interconnect ports.
@@ -154,7 +153,7 @@ try:
     ports = interconnect.get_port(port_d1["portId"])
     pprint(ports)
 
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Updates the interconnect ports.
@@ -167,7 +166,7 @@ try:
     updated_ports = [port for port in updated["ports"] if port["portName"] in names]
 
     pprint(updated_ports)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Updates the interconnect configuration.
@@ -175,7 +174,7 @@ print("\nUpdate the interconnect configuration")
 try:
     updated = interconnect.update_configuration()
     pprint(updated)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Gets the interconnect configuration.
@@ -183,5 +182,5 @@ print("\nGet the interconnect pluggable module information")
 try:
     plug_info = interconnect.get_pluggable_module_information()
     pprint(plug_info)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)

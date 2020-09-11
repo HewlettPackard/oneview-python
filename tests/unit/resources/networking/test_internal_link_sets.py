@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.internal_link_sets import InternalLinkSets
-from hpOneView.resources.resource import ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.internal_link_sets import InternalLinkSets
+from hpeOneView.resources.resource import ResourceHelper
 
 INTERNAL_LINK_SETS = [
     {'name': 'OneViewSDK Test Internal Link Set'},
@@ -34,7 +34,7 @@ INTERNAL_LINK_SETS = [
 class InternalLinkSetsTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._client = InternalLinkSets(self.connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')

@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 # This resource is only available on C7000 enclosures
@@ -49,14 +49,14 @@ print("\nGet a switch statistics:\n")
 try:
     switch_statistics = oneview_client.switches.get_statistics(switch_uri)
     pprint(switch_statistics)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 print("\nGet a switch statistics with portName\n")
 try:
     switch_statistics = oneview_client.switches.get_statistics(switch_uri, "1.2")
     pprint(switch_statistics)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 print("\nGet all switches in domain\n")
@@ -67,35 +67,35 @@ try:
     print("\nGet switch by id\n")
     switch_by_id = oneview_client.switches.get(switch_id)
     pprint(switch_by_id)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 try:
     print("\nGet switch by uri\n")
     switch_by_uri = oneview_client.switches.get(switch_uri)
     pprint(switch_by_uri)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 try:
     print("\nGet environmental configuration of switch by id\n")
     switch_by_id = oneview_client.switches.get_environmental_configuration(switch_id)
     pprint(switch_by_id)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 try:
     print("\nGet environmental configuration of switch by uri\n")
     switch_env_conf = oneview_client.switches.get_environmental_configuration(switch_uri)
     pprint(switch_env_conf)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 try:
     print("\nGet switch by rack name\n")
     switch_by_rack_name = oneview_client.switches.get_by("rackName", "Test Name")
     pprint(switch_by_rack_name)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get scope to be added
@@ -123,7 +123,7 @@ if oneview_client.api_version >= 300:
 
         ports = oneview_client.switches.update_ports(id_or_uri=switch_id, ports=ports_to_update)
         print("  Done.")
-    except HPOneViewException as e:
+    except HPEOneViewException as e:
         print(e.msg)
 
 # Delete the migrated switch
@@ -131,5 +131,5 @@ print("\nDelete a switch:\n")
 try:
     oneview_client.switches.delete(switch_by_id)
     print("Successfully deleted the switch")
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)

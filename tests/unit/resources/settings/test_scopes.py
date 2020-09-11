@@ -19,16 +19,16 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
-from hpOneView.resources.settings.scopes import Scopes
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
+from hpeOneView.resources.settings.scopes import Scopes
 
 
 class ScopesTest(TestCase):
     DEFAULT_HOST = '127.0.0.1'
 
     def setUp(self):
-        oneview_connection = connection(self.DEFAULT_HOST)
+        oneview_connection = connection(self.DEFAULT_HOST, 800)
         self.resource = Scopes(oneview_connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')

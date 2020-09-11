@@ -19,16 +19,16 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceSchemaMixin
-from hpOneView.resources.settings.firmware_drivers import FirmwareDrivers
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
+from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
 
 
 class FirmwareDriversTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._firmware_drivers = FirmwareDrivers(self.connection)
         self.uri = "/rest/firmware-drivers"
         self._firmware_drivers.data = {"uri": self.uri}

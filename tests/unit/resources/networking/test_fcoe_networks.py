@@ -19,15 +19,15 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.fcoe_networks import FcoeNetworks
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.fcoe_networks import FcoeNetworks
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class FcoeNetworksTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._fcoe_networks = FcoeNetworks(self.connection)
         self.uri = "/rest/fcoe-networks/3518be0e-17c1-4189-8f81-83f3724f6155"
         self._fcoe_networks.data = {"uri": self.uri}

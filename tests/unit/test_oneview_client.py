@@ -19,80 +19,82 @@ import io
 import unittest
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.resources.security.certificate_authority import CertificateAuthority
-from hpOneView.resources.data_services.metric_streaming import MetricStreaming
-from hpOneView.resources.facilities.power_devices import PowerDevices
-from hpOneView.resources.facilities.racks import Racks
-from hpOneView.resources.fc_sans.managed_sans import ManagedSANs
-from hpOneView.resources.fc_sans.san_managers import SanManagers
-from hpOneView.resources.fc_sans.endpoints import Endpoints
-from hpOneView.resources.settings.firmware_drivers import FirmwareDrivers
-from hpOneView.resources.settings.backups import Backups
-from hpOneView.resources.settings.restores import Restores
-from hpOneView.resources.settings.scopes import Scopes
-from hpOneView.resources.networking.fc_networks import FcNetworks
-from hpOneView.resources.networking.fcoe_networks import FcoeNetworks
-from hpOneView.resources.networking.interconnect_link_topologies import InterconnectLinkTopologies
-from hpOneView.resources.networking.interconnects import Interconnects
-from hpOneView.resources.networking.logical_interconnect_groups import LogicalInterconnectGroups
-from hpOneView.resources.networking.logical_interconnects import LogicalInterconnects
-from hpOneView.resources.networking.logical_switches import LogicalSwitches
-from hpOneView.resources.networking.logical_switch_groups import LogicalSwitchGroups
-from hpOneView.resources.servers.migratable_vc_domains import MigratableVcDomains
-from hpOneView.resources.networking.uplink_sets import UplinkSets
-from hpOneView.resources.networking.sas_interconnects import SasInterconnects
-from hpOneView.resources.networking.sas_logical_interconnect_groups import SasLogicalInterconnectGroups
-from hpOneView.resources.networking.sas_logical_interconnects import SasLogicalInterconnects
-from hpOneView.resources.networking.sas_interconnect_types import SasInterconnectTypes
-from hpOneView.resources.facilities.datacenters import Datacenters
-from hpOneView.resources.servers.server_profile_templates import ServerProfileTemplate
-from hpOneView.resources.servers.server_profiles import ServerProfiles
-from hpOneView.resources.servers.id_pools import IdPools
-from hpOneView.resources.servers.id_pools_ranges import IdPoolsRanges
-from hpOneView.resources.servers.id_pools_ipv4_ranges import IdPoolsIpv4Ranges
-from hpOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
-from hpOneView.resources.uncategorized.unmanaged_devices import UnmanagedDevices
-from hpOneView.resources.storage.sas_logical_jbods import SasLogicalJbods
-from hpOneView.resources.storage.storage_volume_attachments import StorageVolumeAttachments
-from hpOneView.resources.storage.storage_volume_templates import StorageVolumeTemplates
-from hpOneView.resources.storage.volumes import Volumes
-from hpOneView.resources.storage.drive_enclosures import DriveEnclosures
-from hpOneView.resources.storage.sas_logical_jbod_attachments import SasLogicalJbodAttachments
-from hpOneView.resources.security.login_details import LoginDetails
-from hpOneView.resources.networking.internal_link_sets import InternalLinkSets
-from hpOneView.resources.search.index_resources import IndexResources
-from hpOneView.resources.search.labels import Labels
-from hpOneView.resources.uncategorized.os_deployment_plans import OsDeploymentPlans
-from hpOneView.resources.uncategorized.os_deployment_servers import OsDeploymentServers
-from hpOneView.resources.activity.alerts import Alerts
-from hpOneView.resources.activity.events import Events
-from hpOneView.resources.security.certificate_rabbitmq import CertificateRabbitMQ
-from hpOneView.resources.security.roles import Roles
-from hpOneView.resources.security.users import Users
-from hpOneView.resources.settings.appliance_device_read_community import ApplianceDeviceReadCommunity
-from hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
-from hpOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
-from hpOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
-from hpOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
-from hpOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
-from hpOneView.resources.settings.versions import Versions
+from hpeOneView.connection import connection
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.resources.security.certificate_authority import CertificateAuthority
+from hpeOneView.resources.data_services.metric_streaming import MetricStreaming
+from hpeOneView.resources.facilities.power_devices import PowerDevices
+from hpeOneView.resources.facilities.racks import Racks
+from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
+from hpeOneView.resources.fc_sans.san_managers import SanManagers
+from hpeOneView.resources.fc_sans.endpoints import Endpoints
+from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
+from hpeOneView.resources.settings.backups import Backups
+from hpeOneView.resources.settings.restores import Restores
+from hpeOneView.resources.settings.scopes import Scopes
+from hpeOneView.resources.networking.fc_networks import FcNetworks
+from hpeOneView.resources.networking.fcoe_networks import FcoeNetworks
+from hpeOneView.resources.networking.interconnect_link_topologies import InterconnectLinkTopologies
+from hpeOneView.resources.networking.interconnects import Interconnects
+from hpeOneView.resources.networking.logical_interconnect_groups import LogicalInterconnectGroups
+from hpeOneView.resources.networking.logical_interconnects import LogicalInterconnects
+from hpeOneView.resources.networking.logical_switches import LogicalSwitches
+from hpeOneView.resources.networking.logical_switch_groups import LogicalSwitchGroups
+from hpeOneView.resources.servers.migratable_vc_domains import MigratableVcDomains
+from hpeOneView.resources.networking.uplink_sets import UplinkSets
+from hpeOneView.resources.networking.sas_interconnects import SasInterconnects
+from hpeOneView.resources.networking.sas_logical_interconnect_groups import SasLogicalInterconnectGroups
+from hpeOneView.resources.networking.sas_logical_interconnects import SasLogicalInterconnects
+from hpeOneView.resources.networking.sas_interconnect_types import SasInterconnectTypes
+from hpeOneView.resources.facilities.datacenters import Datacenters
+from hpeOneView.resources.servers.server_profile_templates import ServerProfileTemplate
+from hpeOneView.resources.servers.server_profiles import ServerProfiles
+from hpeOneView.resources.servers.id_pools import IdPools
+from hpeOneView.resources.servers.id_pools_ranges import IdPoolsRanges
+from hpeOneView.resources.servers.id_pools_ipv4_ranges import IdPoolsIpv4Ranges
+from hpeOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
+from hpeOneView.resources.uncategorized.unmanaged_devices import UnmanagedDevices
+from hpeOneView.resources.storage.sas_logical_jbods import SasLogicalJbods
+from hpeOneView.resources.storage.storage_volume_attachments import StorageVolumeAttachments
+from hpeOneView.resources.storage.storage_volume_templates import StorageVolumeTemplates
+from hpeOneView.resources.storage.volumes import Volumes
+from hpeOneView.resources.storage.drive_enclosures import DriveEnclosures
+from hpeOneView.resources.storage.sas_logical_jbod_attachments import SasLogicalJbodAttachments
+from hpeOneView.resources.security.login_details import LoginDetails
+from hpeOneView.resources.networking.internal_link_sets import InternalLinkSets
+from hpeOneView.resources.search.index_resources import IndexResources
+from hpeOneView.resources.search.labels import Labels
+from hpeOneView.resources.uncategorized.os_deployment_plans import OsDeploymentPlans
+from hpeOneView.resources.uncategorized.os_deployment_servers import OsDeploymentServers
+from hpeOneView.resources.activity.alerts import Alerts
+from hpeOneView.resources.activity.events import Events
+from hpeOneView.resources.security.certificate_rabbitmq import CertificateRabbitMQ
+from hpeOneView.resources.security.roles import Roles
+from hpeOneView.resources.security.users import Users
+from hpeOneView.resources.settings.appliance_device_read_community import ApplianceDeviceReadCommunity
+from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
+from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
+from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
+from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
+from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
+from hpeOneView.resources.settings.versions import Versions
 from tests.test_utils import mock_builtin
-from hpOneView.resources.settings.licenses import Licenses
-from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
-from hpOneView.resources.security.certificates_server import CertificatesServer
-from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
+from hpeOneView.resources.settings.licenses import Licenses
+from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
+from hpeOneView.resources.security.certificates_server import CertificatesServer
+from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
     'ONEVIEWSDK_USERNAME': 'admin',
-    'ONEVIEWSDK_PASSWORD': 'secret123'
+    'ONEVIEWSDK_PASSWORD': 'secret123',
+    'ONEVIEWSDK_API_VERSION': '800'
 }
 
 OS_ENVIRON_CONFIG_MINIMAL_WITH_SESSIONID = {
     'ONEVIEWSDK_IP': '172.16.100.199',
-    'ONEVIEWSDK_SESSIONID': '123'
+    'ONEVIEWSDK_SESSIONID': '123',
+    'ONEVIEWSDK_API_VERSION': '800'
 }
 
 OS_ENVIRON_CONFIG_FULL = {
@@ -129,6 +131,7 @@ class OneViewClientTest(unittest.TestCase):
         super(OneViewClientTest, self).setUp()
 
         config = {"ip": "172.16.102.59",
+                  "api_version": 800,
                   "proxy": "127.0.0.1:3128",
                   "credentials": {
                       "authLoginDomain": "",
@@ -139,6 +142,7 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_raise_error_missing_ip(self):
         config = {"ip": "",
+                  "api_version": 800,
                   "credentials": {
                       "userName": "administrator",
                       "password": ""}}
@@ -150,6 +154,7 @@ class OneViewClientTest(unittest.TestCase):
 
     def test_raise_error_invalid_proxy(self):
         config = {"ip": "172.16.102.59",
+                  "api_version": 800,
                   "proxy": "3128",
                   "credentials": {
                       "authLoginDomain": "",
@@ -168,6 +173,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_json_file(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -185,6 +191,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_json_file_with_sessionID(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -203,6 +210,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_json_file_with_only_sessionID(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "sessionID": "123"
           }
@@ -218,6 +226,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_default_api_version(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
+          "api_version": 800,
           "credentials": {
             "userName": "administrator",
             "authLoginDomain": "",
@@ -311,7 +320,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': 201,
+        mock_cls.assert_called_once_with({'api_version': '201',
                                           'proxy': '172.16.100.195:9999',
                                           'timeout': '20',
                                           'ip': '172.16.100.199',
@@ -328,7 +337,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor_with_sessionID(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': 201,
+        mock_cls.assert_called_once_with({'api_version': '201',
                                           'proxy': '172.16.100.195:9999',
                                           'timeout': '20',
                                           'ip': '172.16.100.199',
@@ -345,7 +354,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor_with_only_sessionID(self, mock_cls):
         mock_cls.return_value = None
         OneViewClient.from_environment_variables()
-        mock_cls.assert_called_once_with({'api_version': 800,
+        mock_cls.assert_called_once_with({'api_version': '800',
                                           'proxy': '',
                                           'timeout': None,
                                           'ip': '172.16.100.199',
@@ -361,6 +370,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_create_image_streamer_client_without_image_streamer_ip(self, mock_login):
 
         config = {"ip": "172.16.102.59",
+                  "api_version": 800,
                   "credentials": {
                       "userName": "administrator",
                       "password": "password"}}
@@ -378,6 +388,7 @@ class OneViewClientTest(unittest.TestCase):
 
         config = {"ip": "172.16.102.59",
                   "image_streamer_ip": "172.16.102.50",
+                  "api_version": 800,
                   "credentials": {
                       "userName": "administrator",
                       "password": "password"}}

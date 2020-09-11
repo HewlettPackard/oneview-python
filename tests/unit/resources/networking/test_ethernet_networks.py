@@ -19,15 +19,15 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.ethernet_networks import EthernetNetworks
-from hpOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.ethernet_networks import EthernetNetworks
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
 
 
 class EthernetNetworksTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._ethernet_networks = EthernetNetworks(self.connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')

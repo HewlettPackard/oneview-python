@@ -19,15 +19,15 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.image_streamer.resources.artifact_bundles import ArtifactBundles
-from hpOneView.resources.resource import Resource, ResourceHelper, ResourceFileHandlerMixin
+from hpeOneView.connection import connection
+from hpeOneView.image_streamer.resources.artifact_bundles import ArtifactBundles
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourceFileHandlerMixin
 
 
 class ArtifactBundlesTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._artifact_bundles = ArtifactBundles(self.connection)
         self.uri = "/rest/artifact-bundles/test"
         self._artifact_bundles.data = {"uri": self.uri}

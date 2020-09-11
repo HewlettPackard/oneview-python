@@ -18,8 +18,8 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 
 config = {
     "ip": "<oneview_ip>",
@@ -65,14 +65,14 @@ else:
         options['baselineUri'] = spp['uri']
         print("\nSPP named '{}' found within appliance. Saving for custom SPP.".format(spp['name']))
     except IndexError:
-        raise HPOneViewException('No available SPPs found within appliance. Stopping run.')
+        raise HPEOneViewException('No available SPPs found within appliance. Stopping run.')
 
     try:
         hotfix = firmware_drivers.get_by('bundleType', "Hotfix")[0]
         options['hotfixUris'] = [hotfix['uri']]
         print("\nHotfix named '{}' found within appliance. Saving for custom SPP.".format(hotfix['name']))
     except IndexError:
-        raise HPOneViewException('No available hotfixes found within appliance. Stopping run.')
+        raise HPEOneViewException('No available hotfixes found within appliance. Stopping run.')
 
     # Create the custom SPP
     print("\nCreate the custom SPP '{}'".format(options['customBaselineName']))

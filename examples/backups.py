@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -71,7 +71,7 @@ try:
     config['scheduleTime'] = '23:00'
     updated_config = oneview_client.backups.update_config(config)
     pprint(updated_config)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Save the backup file to a previously-configured remote location
@@ -79,5 +79,5 @@ try:
     print("\n## Save the backup file to a previously-configured remote location")
     backup_details = oneview_client.backups.update_remote_archive(backup_details['saveUri'])
     pprint(backup_details)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)

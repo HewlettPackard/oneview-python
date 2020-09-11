@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "<oneview_ip>",
@@ -94,14 +94,16 @@ for volume in volumes_all:
     print("Name: {name}".format(**volume))
 
 # Find a volume by name
-volume = volumes.get_by_name(new_volume.data['name'])
-print("\nFound a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
+if new_volume:
+    volume = volumes.get_by_name(new_volume.data['name'])
+    print("\nFound a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
 
 # Update the name of the volume recently found to 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
-volume_data = volume.data.copy()
-volume_data['name'] = 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
-volume.update(volume_data)
-print("\nVolume updated successfully.\n  uri = '{uri}'\n  with attribute 'name' = {name}".format(**volume.data))
+if volume:
+    volume_data = volume.data.copy()
+    volume_data['name'] = 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
+    volume.update(volume_data)
+    print("\nVolume updated successfully.\n  uri = '{uri}'\n  with attribute 'name' = {name}".format(**volume.data))
 
 # Find a volume by URI
 volume = volumes.get_by_uri(volume.data["uri"])
@@ -114,29 +116,34 @@ snapshot_options = {
     "name": "Test Snapshot",
     "description": "Description for the snapshot"
 }
-created_snapshot = volume.create_snapshot(snapshot_options)
-print("Created a snapshot for the volume '{name}'".format(**volume.data))
+if volume:
+    created_snapshot = volume.create_snapshot(snapshot_options)
+    print("Created a snapshot for the volume '{name}'".format(**volume.data))
 
 # Get recently created snapshot resource by name
 print("\nGet a snapshot by name")
-print(created_snapshot.data)
-snapshot_by_name = volume.get_snapshot_by_name(created_snapshot.data["name"])
-print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**snapshot_by_name.data))
+if volume and created_snapshot:
+    print(created_snapshot.data)
+    snapshot_by_name = volume.get_snapshot_by_name(created_snapshot.data["name"])
+    print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**snapshot_by_name.data))
 
 # Get recently created snapshot resource by uri
-snapshot_by_uri = volume.get_snapshot_by_uri(created_snapshot.data["uri"])
-print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**snapshot_by_uri.data))
+if volume and created_snapshot:
+    snapshot_by_uri = volume.get_snapshot_by_uri(created_snapshot.data["uri"])
+    print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**snapshot_by_uri.data))
 
 # Get a paginated list of snapshot resources sorting by name ascending
 print("\nGet a list of the first 10 snapshots")
-snapshots = volume.get_snapshots(0, 10, sort='name:ascending')
-for snapshot in snapshots:
-    print('  {name}'.format(**snapshot))
+if volume:
+    snapshots = volume.get_snapshots(0, 10, sort='name:ascending')
+    for snapshot in snapshots:
+        print('  {name}'.format(**snapshot))
 
 # Delete the recently created snapshot resource
 print("\nDelete the recently created snapshot")
-created_snapshot.delete()
-print("Snapshot deleted successfully")
+if created_snapshot:
+    created_snapshot.delete()
+    print("Snapshot deleted successfully")
 
 # Get the list of all extra managed storage volume paths from the appliance
 extra_volumes = volumes.get_extra_managed_storage_volume_paths()
@@ -145,8 +152,9 @@ pprint(extra_volumes)
 
 # Remove extra presentations from the specified volume on the storage system
 print("\nRemove extra presentations from the specified volume on the storage system")
-volume.repair()
-print("  Done.")
+if volume:
+    volume.repair()
+    print("  Done.")
 
 # Get all the attachable volumes which are managed by the appliance
 print("\nGet all the attachable volumes which are managed by the appliance")
@@ -164,8 +172,9 @@ attachable_volumes = volumes.get_attachable_volumes(scope_uris=scope_uris, conne
 pprint(attachable_volumes)
 
 print("\nDelete the recently created volumes")
-new_volume.delete()
-print("The volume, that was previously created with a Storage Pool, was deleted from OneView and storage system")
+if new_volume:
+    new_volume.delete()
+    print("The volume, that was previously created with a Storage Pool, was deleted from OneView and storage system")
 if unmanaged_volume_wwn:
     volume_added_with_wwn.delete(export_only=True)
     print("The volume, that was previously added using the WWN of the volume, was deleted from OneView")

@@ -1,3 +1,59 @@
+# 5.4.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
+
+#### Breaking Changes
+  Enhancement made in this version breaks the previous version of the SDK.
+  From this version onwards, hpOneView module name is renamed to hpeOneView and all the oneview libraries and examples will import the hpeOneView module as parent.
+
+  E.g.
+```
+       from hpeOneView.oneview_client import OneViewClient
+       oneview_client = OneViewClient(config)              # Create OneView client
+       fc_networks = oneview_client.fc_networks            # Get FCNetowrk resource client
+```
+
+#### Major changes
+Refactored base class to take default API version as per provided Oneview appliance.
+Removed provision of "type" field as those are optional from API1600.
+
+#### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
+- Connection Templates
+- Certificates Server
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Drivers
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Interconnects
+- Interconnect Types
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
+- Tasks
+- Uplink set
+
+#### Bug fixes & Enhancements
+- [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
+- [#91](https://github.com/HewlettPackard/oneview-python/issues/91) Change Password Sample?
+
+
 # 5.3.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).

@@ -17,7 +17,7 @@
 
 from pprint import pprint
 
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
@@ -92,8 +92,8 @@ if not logical_enclosure:
     # This method is only available on HPE Synergy.
     logical_enclosure = logical_enclosures.create(options)
     print("Created logical enclosure'%s' successfully.\n  uri = '%s'" % (
-        logical_enclosure['name'],
-        logical_enclosure['uri'])
+        logical_enclosure.data['name'],
+        logical_enclosure.data['uri'])
     )
 
 # Update the logical enclosure name

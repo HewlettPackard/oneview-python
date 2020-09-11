@@ -15,7 +15,7 @@
 # limitations under the License.
 ###
 
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {

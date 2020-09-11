@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.exceptions import HPOneViewException
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
@@ -70,7 +70,7 @@ try:
     storage_system = storage_systems.add(options)
     print("\nAdded storage system '%s'.\n   uri = '%s'" %
           (storage_system.data['name'], storage_system.data['uri']))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     storage_system = storage_systems.get_by_hostname(options['hostname'])
     if storage_system:
         print("\nStorage system '%s' was already added.\n   uri = '%s'" %
@@ -97,18 +97,22 @@ if not storage_sys_data['deviceSpecificAttributes']['managedDomain']:
 
 # Get a list of storage pools
 print("\nGet a list of storage pools managed by storage system")
-storage_pools = storage_system.get_storage_pools()
-pprint(storage_pools)
+if storage_system:
+    storage_pools = storage_system.get_storage_pools()
+    pprint(storage_pools)
 
 print("\nGet all reachable storage ports which are managed by the storage system")
-reachable_ports = storage_system.get_reachable_ports()
-pprint(reachable_ports)
+if storage_system:
+    reachable_ports = storage_system.get_reachable_ports()
+    pprint(reachable_ports)
 
 print("\nGet templates related to a storage system")
-templates = storage_system.get_templates()
-pprint(templates)
+if storage_system:
+    templates = storage_system.get_templates()
+    pprint(templates)
 
 # Remove storage system
 print("\nRemove storage system")
-storage_system.remove()
-print("   Done.")
+if storage_system:
+    storage_system.remove()
+    print("   Done.")

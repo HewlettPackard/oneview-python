@@ -18,7 +18,8 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
+from copy import deepcopy
 
 # To run this example fill the ip and the credentials below or use a configuration file
 config = {
@@ -114,26 +115,28 @@ else:
 
 # Create bulk ethernet networks
 print("\nCreate bulk ethernet networks")
-ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk_delete)
+ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
 print("\nUpdate the purpose attribute from the recently created network")
-ethernet_data = ethernet_network.data
-ethernet_data['purpose'] = 'Management'
-ethernet_network = ethernet_network.update(ethernet_data)
+ethernet_data_copy = deepcopy(ethernet_network.data)
+ethernet_data_copy['purpose'] = 'Management'
+ethernet_network_update = ethernet_network.update(ethernet_data_copy)
 print("Updated ethernet-network '{name}' successfully.\n   uri = '{uri}'\n   with attribute ['purpose': {purpose}]"
-      .format(**ethernet_network.data))
+      .format(**ethernet_network_update.data))
 
 # Get URIs of associated profiles
 print("\nGet associated profiles uri(s)")
-associated_profiles = ethernet_network.get_associated_profiles()
-pprint(associated_profiles)
+if ethernet_network:
+    associated_profiles = ethernet_network.get_associated_profiles()
+    pprint(associated_profiles)
 
 # Get URIs of uplink port group
 print("\nGet uplink port group uri(s)")
-uplink_group_uris = ethernet_network.get_associated_uplink_groups()
-pprint(uplink_group_uris)
+if ethernet_network:
+    uplink_group_uris = ethernet_network.get_associated_uplink_groups()
+    pprint(uplink_group_uris)
 
 # Get the associated uplink set resources
 print("\nGet associated uplink sets")

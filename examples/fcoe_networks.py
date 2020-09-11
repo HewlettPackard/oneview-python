@@ -16,8 +16,9 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
+from copy import deepcopy
 
 # To run this example fill the ip and the credentials below or use a configuration file
 config = {
@@ -81,12 +82,12 @@ else:
     print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network.data['name'], fcoe_network.data['uri']))
 
 # Update autoLoginRedistribution from recently created network
-resource = fcoe_network.data.copy()
+resource = deepcopy(fcoe_network.data)
 resource['status'] = 'Warning'
 resource['name'] = "{}-Renamed".format(options["name"])
-fcoe_network.update(resource)
-print("\nUpdated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network.data['name'], fcoe_network.data['uri']))
-print("  with attribute {'status': %s}" % fcoe_network.data['status'])
+fcoe_network_updated = fcoe_network.update(resource)
+print("\nUpdated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network_updated.data['name'], fcoe_network_updated.data['uri']))
+print("  with attribute {'status': %s}" % fcoe_network_updated.data['status'])
 
 # Get by Uri
 print("\nGet a fcoe-network by uri")

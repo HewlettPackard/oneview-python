@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.storage.drive_enclosures import DriveEnclosures
-from hpOneView.resources.resource import ResourceClient
+from hpeOneView.connection import connection
+from hpeOneView.resources.storage.drive_enclosures import DriveEnclosures
+from hpeOneView.resources.resource import ResourceClient
 
 
 class DriveEnclosuresTest(unittest.TestCase):
@@ -31,7 +31,7 @@ class DriveEnclosuresTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._drive_enclosures = DriveEnclosures(self.connection)
 
     @mock.patch.object(ResourceClient, 'get_all')

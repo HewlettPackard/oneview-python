@@ -16,7 +16,7 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
@@ -59,7 +59,8 @@ pprint(con_template_byname.data)
 
 # Update the connection_template retrieved in the last operation
 print("Update the retrieved connection_template typicalBandwidth")
-template_byname = con_template_byname.data.copy()
-template_byname['bandwidth']['typicalBandwidth'] = 5000
-con_template_updated = con_template_byname.update(template_byname)
-pprint(con_template_updated.data)
+if con_template_byname:
+    template_byname = con_template_byname.data.copy()
+    template_byname['bandwidth']['typicalBandwidth'] = 5000
+    con_template_updated = con_template_byname.update(template_byname)
+    pprint(con_template_updated.data)

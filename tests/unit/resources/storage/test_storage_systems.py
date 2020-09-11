@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,15 +19,15 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.storage.storage_systems import StorageSystems
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.storage.storage_systems import StorageSystems
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class StorageSystemsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._storage_systems = StorageSystems(self.connection)
         self._storage_systems.data = {'uri': '/rest/storage-systems/ad28cf21-8b15-4f92-bdcf-51cb2042db32'}
 
@@ -237,6 +237,17 @@ class StorageSystemsTest(unittest.TestCase):
         self.assertEqual(
             {"hostname": "20.0.0.0",
              "username": "username"}, result.data)
+
+    @mock.patch.object(ResourceHelper, 'get_all')
+    def test_get_by_hostname_with_None_response(self, get_all):
+        get_all.return_value = [
+            {"hostname": "10.0.0.0",
+             "username": "username"}
+        ]
+
+        result = self._storage_systems.get_by_hostname("20.0.0.0")
+        get_all.assert_called_once()
+        self.assertEqual(None, result)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_reachable_ports_called_once(self, mock_get):

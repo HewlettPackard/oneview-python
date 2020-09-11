@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.servers.server_profiles import ServerProfiles
-from hpOneView.resources.resource import (Resource, ResourceHelper,
-                                          ResourcePatchMixin, ResourceSchemaMixin)
+from hpeOneView.connection import connection
+from hpeOneView.resources.servers.server_profiles import ServerProfiles
+from hpeOneView.resources.resource import (Resource, ResourceHelper,
+                                           ResourcePatchMixin, ResourceSchemaMixin)
 
 TIMEOUT = -1
 
@@ -30,7 +30,7 @@ TIMEOUT = -1
 class ServerProfilesTest(TestCase):
     def setUp(self):
         host = '127.0.0.1'
-        http_connection = connection(host)
+        http_connection = connection(host, 800)
         self._resource = ServerProfiles(http_connection)
         self.uri = "/rest/server-profiles/4ff2327f-7638-4b66-ad9d-283d4940a4ae"
         self._resource.data = {"uri": self.uri}

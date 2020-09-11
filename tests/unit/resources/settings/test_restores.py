@@ -19,15 +19,15 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.resources.settings.restores import Restores
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.settings.restores import Restores
 
 
 class RestoresTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.resource = Restores(self.connection)
 
     @mock.patch.object(ResourceHelper, 'do_get')

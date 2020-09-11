@@ -19,16 +19,16 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class HypervisorManagersTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._hypervisor_managers = HypervisorManagers(self.connection)
         self.uri = "/rest/hypervisor-managers/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
         self._hypervisor_managers.data = {"uri": self.uri}

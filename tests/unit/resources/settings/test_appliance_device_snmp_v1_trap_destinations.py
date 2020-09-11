@@ -19,16 +19,16 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
 
 
 class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.__appliance_device_snmp_v1_trap_destinations = ApplianceDeviceSNMPv1TrapDestinations(self.connection)
         self.uri = "/rest/appliance/trap-destinations"
         self.__appliance_device_snmp_v1_trap_destinations.data = {"uri": self.uri}

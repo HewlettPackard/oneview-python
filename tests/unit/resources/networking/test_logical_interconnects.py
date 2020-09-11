@@ -19,15 +19,15 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.logical_interconnects import LogicalInterconnects
-from hpOneView.resources.resource import ResourcePatchMixin, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.logical_interconnects import LogicalInterconnects
+from hpeOneView.resources.resource import ResourcePatchMixin, ResourceHelper
 
 
 class LogicalInterconnectsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._logical_interconnect = LogicalInterconnects(self.connection)
         self.uri = '/rest/logical-interconnects/ad28cf21-8b15-4f92-bdcf-51cb2042db32'
         self._logical_interconnect.data = {
@@ -375,3 +375,16 @@ class LogicalInterconnectsTest(unittest.TestCase):
 
         expected_uri = '{}/igmpSettings'.format(self.uri)
         mock_get.assert_called_once_with(expected_uri)
+
+    @mock.patch.object(ResourceHelper, 'do_post')
+    def test_bulk_inconsistency_validate(self, mock_post):
+        resource = {
+            "logicalInterconnectUris": [
+                "/rest/logical-interconnects/d0432852-28a7-4060-ba49-57ca973ef6c2"
+            ]
+        }
+        expected_uri = '{}/bulk-inconsistency-validation'.format(self.uri)
+
+        self._logical_interconnect.bulk_inconsistency_validate(resource)
+
+        mock_post.assert_called_once_with(expected_uri, resource, -1, None)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 # To run this example fill the ip and the credentials below or use a configuration file
 config = {
@@ -95,30 +95,33 @@ else:
 
 # Update an uplink set
 print("\nUpdate an uplink set")
-uplink_set.data['name'] = 'Renamed Uplink Set Demo'
-uplink_set.update(uplink_set.data)
-print("Updated uplink set name to '{name}' successfully.\n  uri = '{uri}'".format(**uplink_set.data))
+if uplink_set:
+    uplink_set.data['name'] = 'Renamed Uplink Set Demo'
+    uplink_set.update(uplink_set.data)
+    print("Updated uplink set name to '{name}' successfully.\n  uri = '{uri}'".format(**uplink_set.data))
 
 # Add an ethernet network to the uplink set
 # To run this example you must define an ethernet network uri or ID below
-if ethernet_network_name:
+if ethernet_network_name and uplink_set:
     print("\nAdd an ethernet network to the uplink set")
     uplink_added_ethernet = uplink_set.add_ethernet_networks(ethernet_network_name)
     print("The uplink set with name = '{name}' have now the networkUris:\n {networkUris}".format(**uplink_added_ethernet))
 
 # Remove an ethernet network from the uplink set
 # To run this example you must define an ethernet network uri or ID below
-if ethernet_network_name:
+if ethernet_network_name and uplink_set:
     print("\nRemove an ethernet network of the uplink set")
     uplink_removed_ethernet = uplink_set.remove_ethernet_networks(ethernet_network_name)
     print("The uplink set with name = '{name}' have now the networkUris:\n {networkUris}".format(**uplink_removed_ethernet))
 
 # Get the associated ethernet networks of an uplink set
 print("\nGet the associated ethernet networks of the uplink set")
-networks = uplink_set.get_ethernet_networks()
-pprint(networks)
+if uplink_set:
+    networks = uplink_set.get_ethernet_networks()
+    pprint(networks)
 
 # Delete the recently created uplink set
 print("\nDelete the uplink set")
-uplink_set.delete()
-print("Successfully deleted the uplink set")
+if uplink_set:
+    uplink_set.delete()
+    print("Successfully deleted the uplink set")

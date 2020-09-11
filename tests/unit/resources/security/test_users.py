@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,29 +19,29 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.security.users import Users
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.connection import connection
+from hpeOneView.resources.security.users import Users
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class UsersTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._users = Users(self.connection)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(Resource, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
         self._users.get_all(2, 500, filter, sort)
 
-        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(2, 500, filter, sort)
 
-    @mock.patch.object(ResourceClient, 'create')
-    def test_create_should_use_given_values(self, mock_create):
+    @mock.patch.object(ResourceHelper, 'do_post')
+    @mock.patch.object(ResourceHelper, 'create')
+    def test_create_should_use_given_values(self, mock_create, mock_post):
         resource = {
             'enabled': 'true',
             'fullName': 'testUser101',
@@ -55,67 +55,73 @@ class UsersTest(unittest.TestCase):
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
 
-        self._users.create(resource, 30)
-        mock_create.assert_called_once_with(resource_rest_call, timeout=30,
-                                            default_values=self._users.DEFAULT_VALUES)
+        self._users.create(resource)
+        mock_create.assert_called_once_with(resource_rest_call, None, -1, None, False)
 
-    @mock.patch.object(ResourceClient, 'update')
-    def test_update_should_use_given_values(self, mock_update):
-        resource = {
+    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_by_called_with_userName(self, mock_get, mock_get_all):
+        mock_get_all.return_value = [{
             'enabled': 'true',
             'fullName': 'testUser101',
             'mobilePhone': '555-2121',
             'officePhone': '555-1212',
             'password': 'myPass1234',
-            'roles': ['Read only'],
+            'permissions': {
+                "roleName": "Infrastructure administrator",
+                "scopeUri": "/rest/scopes/00bad8f7-1e21-4819-8632-a4c876fcfdd6"
+            },
             'type': 'UserAndRoles',
             'userName': 'testUser'
-        }
-        resource_rest_call = resource.copy()
-        mock_update.return_value = {}
+        }]
+        self._users.get_by_userName('testUser')
+        mock_get.assert_called_once_with('/rest/users/role/testUser')
 
-        self._users.update(resource, 60)
-        mock_update.assert_called_once_with(resource_rest_call, timeout=60,
-                                            default_values=self._users.DEFAULT_VALUES, uri='/rest/users')
+    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_by_called_with_userName_with_no_return_value(self, mock_get, mock_get_all):
+        mock_get_all.return_value = [{
+            'enabled': 'true',
+            'fullName': 'testUser101',
+            'mobilePhone': '555-2121',
+            'officePhone': '555-1212',
+            'password': 'myPass1234',
+            'permissions': {
+                "roleName": "Infrastructure administrator",
+                "scopeUri": "/rest/scopes/00bad8f7-1e21-4819-8632-a4c876fcfdd6"
+            },
+            'type': 'UserAndRoles',
+            'userName': 'testUser1'
+        }]
+        self._users.get_by_userName('testUser')
+        self.assertEqual(mock_get.call_count, 0)
 
-    @mock.patch.object(ResourceClient, 'delete')
-    def test_delete_called_once(self, mock_delete):
-        id = 'fake'
-        self._users.delete(id, force=False, timeout=-1)
-
-        mock_delete.assert_called_once_with(id, force=False, timeout=-1)
-
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_called_once(self, mock_get):
-        self._users.get_by('userName', 'OneViewSDK Test User')
-        mock_get.assert_called_once_with('/rest/users/OneViewSDK Test User')
-
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_called_with_role(self, mock_get):
-        self._users.get_by('role', 'fakerole')
-        mock_get.assert_called_once_with('/rest/users/roles/users/fakerole')
-
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_called_with_something_invalid(self, mock_get):
-        try:
-            self._users.get_by('test', 'test')
-        except HPOneViewException as exception:
-            self.assertEqual('Only userName, name and role can be queried for this resource.', exception.args[0])
-        else:
-            self.fail("Expected Exception was not raised")
-
-    @mock.patch.object(ResourceClient, 'create_with_zero_body')
-    def test_validate_full_name_called_once(self, mock_create_with_zero_body):
+    @mock.patch.object(ResourceHelper, 'do_post')
+    def test_validate_full_name_called_once(self, mock_post):
 
         self._users.validate_full_name('fullname101')
 
         expected_uri = '/rest/users/validateUserName/fullname101'
-        mock_create_with_zero_body.assert_called_once_with(uri=expected_uri, timeout=-1)
+        mock_post.assert_called_once_with(expected_uri, None, -1, None)
 
-    @mock.patch.object(ResourceClient, 'create_with_zero_body')
-    def test_validate_user_name_called_once(self, mock_create_with_zero_body):
+    @mock.patch.object(ResourceHelper, 'do_post')
+    def test_validate_user_name_called_once(self, mock_post):
 
         self._users.validate_user_name('userName')
 
         expected_uri = '/rest/users/validateLoginName/userName'
-        mock_create_with_zero_body.assert_called_once_with(uri=expected_uri, timeout=-1)
+        mock_post.assert_called_once_with(expected_uri, None, -1, None)
+
+    @mock.patch.object(Resource, 'ensure_resource_data')
+    @mock.patch.object(ResourceHelper, 'do_put')
+    def test_change_password(self, mock_put, mock_ensure_resource_data):
+        request = {
+            "currentPassword": "admin12345",
+            "enabled": "true",
+            "password": "admin1234",
+            "userName": "admin"
+        }
+        self._users.change_password(request)
+
+        expected_uri = self._users.URI
+        mock_put.assert_called_once_with(expected_uri, request, -1, None)

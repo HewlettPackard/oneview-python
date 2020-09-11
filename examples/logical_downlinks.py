@@ -16,8 +16,8 @@
 ###
 
 from pprint import pprint
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -42,7 +42,7 @@ try:
     print("\nGet logical downlink by id")
     log_downlink = oneview_client.logical_downlinks.get(logical_downlink_id)
     pprint(log_downlink)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get logical downlink by id without Ethernet networks
@@ -50,7 +50,7 @@ try:
     print("\nGet logical downlink by id without Ethernet networks")
     log_downlink_without_ethernet = oneview_client.logical_downlinks.get_without_ethernet(logical_downlink_id)
     pprint(log_downlink_without_ethernet)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get logical downlink by name
@@ -58,7 +58,7 @@ try:
     print("\nGet logical downlink by name")
     log_downlink_by_name = oneview_client.logical_downlinks.get_by('name', logical_downlink_name)
     pprint(log_downlink_by_name)
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get all logical downlinks

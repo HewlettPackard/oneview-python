@@ -18,7 +18,7 @@
 from pprint import pprint
 
 from config_loader import try_load_from_file
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 
 config = {
     "ip": "<oneview_ip>",
@@ -61,10 +61,11 @@ for profile in all_profiles:
 
 # Get by property
 print("\nGet a list of server profiles that matches the specified macType")
-profile_mac_type = all_profiles[1]["macType"]
-profiles = server_profiles.get_by('macType', profile_mac_type)
-for profile in profiles:
-    print('  %s' % profile['name'])
+if all_profiles[1]:
+    profile_mac_type = all_profiles[1]["macType"]
+    profiles = server_profiles.get_by('macType', profile_mac_type)
+    for profile in profiles:
+        print('  %s' % profile['name'])
 
 # Get by uri
 print("\nGet a server profile by uri")
@@ -99,24 +100,27 @@ else:
 
 # Update bootMode from recently created profile
 print("\nUpdate bootMode from recently created profile")
-profile_to_update = profile.data.copy()
-profile_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
-profile.update(profile_to_update)
-pprint(profile.data)
+if profile:
+    profile_to_update = profile.data.copy()
+    profile_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
+    profile.update(profile_to_update)
+    pprint(profile.data)
 
 # Patch
 print("\nUpdate the profile configuration from server profile template")
-profile.patch(operation="replace",
-              path="/templateCompliance", value="Compliant")
-pprint(profile.data)
+if profile:
+    profile.patch(operation="replace",
+                  path="/templateCompliance", value="Compliant")
+    pprint(profile.data)
 
 # Server profile compliance preview
 print("\nGets the preview of manual and automatic updates required to make the server profile consistent "
       "with its template.")
-schema = profile.get_compliance_preview()
-pprint(schema)
+if profile:
+    schema = profile.get_compliance_preview()
+    pprint(schema)
 
-if oneview_client.api_version <= 500:
+if oneview_client.api_version <= 500 and profile:
     # Retrieve the error or status messages associated with the specified profile
     print("\nList profile status messages associated with a profile")
     messages = profile.get_messages()
@@ -124,18 +128,20 @@ if oneview_client.api_version <= 500:
 
 # Transform an server profile
 print("\nTransform an existing profile by supplying a new server hardware type and/or enclosure group.")
-server_transformed = profile.get_transformation(
-    enclosureGroupUri=enclosure_group.data["uri"],
-    serverHardwareTypeUri=hardware_type.data['uri'])
-pprint(server_transformed)
+if profile:
+    server_transformed = profile.get_transformation(
+        enclosureGroupUri=enclosure_group.data["uri"],
+        serverHardwareTypeUri=hardware_type.data['uri'])
+    pprint(server_transformed)
 
 print("Transformation complete. Updating server profile with the new configuration.")
-profile_updated = profile.update(server_transformed['serverProfile'])
-pprint(profile_updated.data)
+if profile:
+    profile_updated = profile.update(server_transformed['serverProfile'])
+    pprint(profile_updated.data)
 
 # Create a new Server Profile Template based on an existing Server Profile
 # This method i.e., get_new_profile_template works with all the API versions till 1200
-if oneview_client.api_version <= 1200:
+if oneview_client.api_version <= 1200 and profile:
     new_spt = profile.get_new_profile_template()
     print('\nNew SPT generated:')
     pprint(new_spt)
@@ -149,8 +155,9 @@ if oneview_client.api_version <= 1200:
 
 # Delete the created server profile
 print("\nDelete the created server profile")
-profile.delete()
-print("The server profile was successfully deleted.")
+if profile:
+    profile.delete()
+    print("The server profile was successfully deleted.")
 
 # Delete the created server profile template
 if server_template:

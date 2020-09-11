@@ -19,16 +19,16 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
-from hpOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class HypervisorClusterProfilesTest(TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._hypervisor_cluster_profiles = HypervisorClusterProfiles(self.connection)
         self.uri = "/rest/hypervisor-cluster-profiles"
         self._hypervisor_cluster_profiles.data = {"uri": self.uri}

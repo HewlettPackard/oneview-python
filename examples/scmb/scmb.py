@@ -16,7 +16,7 @@
 # limitations under the License.
 ###
 
-from hpOneView.oneview_client import OneViewClient
+from hpeOneView.oneview_client import OneViewClient
 from functools import partial
 
 import amqp

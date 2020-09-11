@@ -19,16 +19,16 @@ import unittest
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.networking.fc_networks import FcNetworks
-from hpOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
+from hpeOneView.connection import connection
+from hpeOneView.resources.networking.fc_networks import FcNetworks
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
 
 
 class FcNetworksTest(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._fc_networks = FcNetworks(self.connection)
 
     @mock.patch.object(Resource, 'get_all')

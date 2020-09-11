@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 ###
 import mock
 
-from hpOneView import HPOneViewValueError
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.servers.id_pools_ranges import IdPoolsRanges
+from hpeOneView import HPEOneViewValueError
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.servers.id_pools_ranges import IdPoolsRanges
 import unittest
 
 
@@ -29,7 +29,7 @@ class TestIdPoolsRanges(unittest.TestCase):
 
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self.id_pool_name = 'vsn'
         self.client = IdPoolsRanges(self.id_pool_name, self.connection)
         self.example_uri = "/rest/id-pools/" + self.id_pool_name + "/ranges/f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
@@ -55,7 +55,7 @@ class TestIdPoolsRanges(unittest.TestCase):
     @mock.patch.object(ResourceClient, '__init__')
     def test_id_pools_ranges_constructor_with_invalid_type(self, mock_rclient):
         mock_rclient.return_value = None
-        self.assertRaises(HPOneViewValueError, IdPoolsRanges, 'invalid', self.connection)
+        self.assertRaises(HPEOneViewValueError, IdPoolsRanges, 'invalid', self.connection)
 
     @mock.patch.object(ResourceClient, 'create')
     def test_create_called_once(self, mock_create):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import ResourceClient
-from hpOneView.resources.fc_sans.san_managers import SanManagers
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.fc_sans.san_managers import SanManagers
 
 TIMEOUT = -1
 
@@ -50,7 +50,7 @@ PROVIDERS = [
 class SanManagersTest(TestCase):
     def setUp(self):
         host = '127.0.0.1'
-        http_connection = connection(host)
+        http_connection = connection(host, 800)
         self._resource = SanManagers(http_connection)
 
     @mock.patch.object(ResourceClient, 'get_all')

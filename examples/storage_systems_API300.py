@@ -17,8 +17,8 @@
 
 from pprint import pprint
 import re
-from hpOneView.oneview_client import OneViewClient
-from hpOneView.exceptions import HPOneViewException
+from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -67,7 +67,7 @@ try:
         storage_system)
     print("\nManaged storage pool '{}' at uri: '{}'".format(storage_system[
           'managedPools'][0]['name'], storage_system['managedPools'][0]['uri']))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Get all managed storage systems
@@ -105,7 +105,7 @@ try:
     storage_system_by_id = oneview_client.storage_systems.get('TXQ1010307')
     print("\nGot storage system by id 'TXQ1010307' at uri '{}'".format(
         storage_system_by_id['uri']))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Add managed ports
@@ -153,7 +153,7 @@ try:
         'TXQ1010307', port_id)
     print("   '{}' at uri: {}".format(
         managed_port_by_id['name'], managed_port_by_id['uri']))
-except HPOneViewException as e:
+except HPEOneViewException as e:
     print(e.msg)
 
 # Remove storage system

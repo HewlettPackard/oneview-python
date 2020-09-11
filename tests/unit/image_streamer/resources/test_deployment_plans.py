@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,15 +19,15 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.image_streamer.resources.deployment_plans import DeploymentPlans
-from hpOneView.resources.resource import ResourceHelper, Resource
+from hpeOneView.connection import connection
+from hpeOneView.image_streamer.resources.deployment_plans import DeploymentPlans
+from hpeOneView.resources.resource import ResourceHelper, Resource
 
 
 class DeploymentPlansTest(TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host)
+        self.connection = connection(self.host, 800)
         self._client = DeploymentPlans(self.connection)
         self.resource_uri = '/rest/deployment-plans/ad28cf21-8b15-4f92-bdcf-51cb2042db32'
         self._client.data = {'uri': self.resource_uri}

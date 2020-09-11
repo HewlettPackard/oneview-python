@@ -19,9 +19,9 @@ from unittest import TestCase
 
 import mock
 
-from hpOneView.connection import connection
-from hpOneView.resources.resource import Resource, ResourceHelper
-from hpOneView.resources.fc_sans.managed_sans import ManagedSANs
+from hpeOneView.connection import connection
+from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
 
 TIMEOUT = -1
 
@@ -29,7 +29,7 @@ TIMEOUT = -1
 class ManagedSANsTest(TestCase):
     def setUp(self):
         host = '127.0.0.1'
-        http_connection = connection(host)
+        http_connection = connection(host, 800)
         self._resource = ManagedSANs(http_connection)
         self.uri = "/rest/fc-sans/managed-sans/280FF951-F007-478F-AC29-E4655FC76DDC"
         self._resource.data = {"uri": self.uri}
