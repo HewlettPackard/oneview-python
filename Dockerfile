@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 # install dependencies to run examples
 RUN python -m pip install --upgrade pip
-RUN pip install hpOneView
+RUN pip install hpeOneView
 
 ADD . oneview/
 
