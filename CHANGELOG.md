@@ -51,6 +51,8 @@ Removed provision of "type" field as those are optional from API1600.
 
 #### Bug fixes & Enhancements
 - [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
+- [#91](https://github.com/HewlettPackard/oneview-python/issues/91) Change Password Sample?
+
 
 # 5.3.0
 #### Notes

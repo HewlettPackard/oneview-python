@@ -181,8 +181,8 @@
 |<sub>/rest/logical-interconnects/{id}/telemetry-configurations/{tcId}</sub>              | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |<sub>/rest/logical-interconnects/compliance</sub>                                        | POST     |  :heavy_multiplication_x:     | :heavy_multiplication_x:     | :heavy_multiplication_x:  |  :heavy_multiplication_x:   | :heavy_multiplication_x:  | :heavy_multiplication_x:  |
 |<sub>/rest/logical-interconnects/{id}</sub>                                              | PATCH    |  :heavy_minus_sign:  |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
-|<sub>/rest/logical-interconnects/{id}/igmpSettings</sub>                                 | GET      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :heavy_minus_sign:   |
-|<sub>/rest/logical-interconnects/{id}/igmpSettings</sub>                                 | PUT      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :heavy_minus_sign:   |
+|<sub>/rest/logical-interconnects/{id}/igmpSettings</sub>                                 | GET      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/logical-interconnects/{id}/igmpSettings</sub>                                 | PUT      |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |
 |     **Logical Switch Groups**
 |<sub>/rest/logical-switch-groups</sub>                                                   | GET      |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:  |
 |<sub>/rest/logical-switch-groups</sub>                                                   |POST      |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:  |
@@ -346,6 +346,13 @@
 |<sub>/rest/uplink-sets/{id}</sub>                                                        | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/uplink-sets/{id}</sub>                                                        | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
 |<sub>/rest/uplink-sets/{id}</sub>                                                        | DELETE   |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   |
+|     **Users**
+|<sub>/rest/users</sub>                                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users</sub>                                                                   | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users</sub>                                                                   | PUT      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users/role/{userName}</sub>                                                   | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users/validateLoginName/{userName}</sub>                                      | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
+|<sub>/rest/users/validateUserName/{fullName}</sub>                                       | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |  :white_check_mark:   |  :white_check_mark:   | :white_check_mark:   |
 |     **Volumes**
 |<sub>/rest/storage-volumes</sub>                                                         | GET      |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |:white_check_mark:   |:white_check_mark:   |:white_check_mark:   |
 |<sub>/rest/storage-volumes</sub>                                                         | POST     |  :white_check_mark:   | :white_check_mark:   | :white_check_mark:   |:white_check_mark:   |:white_check_mark:   |:white_check_mark:   |

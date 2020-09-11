@@ -238,6 +238,17 @@ class StorageSystemsTest(unittest.TestCase):
             {"hostname": "20.0.0.0",
              "username": "username"}, result.data)
 
+    @mock.patch.object(ResourceHelper, 'get_all')
+    def test_get_by_hostname_with_None_response(self, get_all):
+        get_all.return_value = [
+            {"hostname": "10.0.0.0",
+             "username": "username"}
+        ]
+
+        result = self._storage_systems.get_by_hostname("20.0.0.0")
+        get_all.assert_called_once()
+        self.assertEqual(None, result)
+
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_reachable_ports_called_once(self, mock_get):
         reachable_ports_uri = "{}/reachable-ports?start=0&count=-1".format(self._storage_systems.data["uri"])
