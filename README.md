@@ -28,7 +28,7 @@ Please refer to [notes](https://github.com/HewlettPackard/oneview-python/blob/ma
 
 ## Getting Started 
 
-HPE OneView SDK for Python can be installed from [Source](https://github.com/HewlettPackard/oneview-python.git) , [Pypi](https://pypi.org/) and [Docker](https://www.docker.com/) container installation methods.
+HPE OneView SDK for Python can be installed from [Source](https://github.com/HewlettPackard/oneview-python.git) , [Pypi](https://pypi.org/) and [Docker](https://hub.docker.com/) container installation methods.
 
 We also publish oneview-python SDK docker images to [Docker Hub](https://hub.docker.com/r/hewlettpackardenterprise/hpe-oneview-sdk-for-python)
 that comes with an installation of oneview-python SDK.
