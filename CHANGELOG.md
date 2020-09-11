@@ -14,9 +14,9 @@ Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 ```
 
 #### Major changes
-Refactored base class to take default API version as per provided Oneview appliance.
-Removed provision of "type" field as those are optional from API1600.
-Added support for automatic publish of Docker Image when there is a new release in GitHub
+- Refactored base class to take default API version as per provided Oneview appliance.
+- Removed provision of "type" field as those are optional from API1600.
+- Added support for automatic publish of Docker Image when there is a new release in GitHub
 
 #### Features supported with the current release
 - Appliance SNMPv1 Trap Destinations
