@@ -26,7 +26,7 @@ __pycache__
 .ropeproject/
 
 
-# Installer logs
+# Installer log file
 pip-log.txt
 
 # Unit test / coverage reports
