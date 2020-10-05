@@ -15,22 +15,33 @@
 # limitations under the License.
 ###
 
-from unittest import TestCase
+import unittest
 
 import mock
+import sys
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.networking.fcoe_networks import FcoeNetworks
 from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
-class FcoeNetworksTest(TestCase):
+class FcoeNetworksTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
-        self.connection = connection(self.host, 800)
+        self.apiVersion = sys.argv[1]
+        self.connection = connection(self.host, self.apiVersion)
         self._fcoe_networks = FcoeNetworks(self.connection)
         self.uri = "/rest/fcoe-networks/3518be0e-17c1-4189-8f81-83f3724f6155"
         self._fcoe_networks.data = {"uri": self.uri}
+    
+    def runTest(self):
+        self.test_get_all_called_once()
+        self.test_create()
+        self.test_delete_bulk()
+        self.test_update()
+        self.test_delete_called_once()
+        self.test_get_by_called_once()
+        self.test_patch_should_use_user_defined_values()
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
@@ -113,3 +124,5 @@ class FcoeNetworksTest(TestCase):
 
         mock_create.assert_called_once_with(
             resource_rest_call, uri='/rest/fcoe-networks/bulk-delete', timeout=27)
+
+unittest.TextTestRunner().run(FcoeNetworksTest())
