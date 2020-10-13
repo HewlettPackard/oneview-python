@@ -72,11 +72,11 @@ def createStorageSystem():
     if not storage_system:
         print("Create Storage System")
         storage_system = storage_systems.add(options)
-        print("\nAdded storage system '%s'.\n   uri = '%s'" .format(
-              storage_system.data['name'], storage_system.data['uri']))
+        print("\nAdded storage system {}.\n   uri = {}" .format(
+              str(storage_system.data['name']), str(storage_system.data['uri'])))
     else:
-        print("\nStorage system '%s' was already added.\n   uri = '%s'" .format(
-              storage_system.data['name'], storage_system.data['uri']))
+        print("\nStorage system {} was already added.\n   uri = {}" .format(
+              str(storage_system.data['name']), str(storage_system.data['uri'])))
     print(storage_system.data)
     return storage_system
 

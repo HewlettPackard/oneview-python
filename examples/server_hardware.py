@@ -73,8 +73,8 @@ else:
 # Get recently added server hardware resource by uri
 if server:
     server_byId = server_hardwares.get_by_uri(server.data['uri'])
-    print("Found server '%s' by uri.\n  uri = '%s'" .format(
-          server_byId.data['name'], server_byId.data['uri']))
+    print("Found server {} by uri.\n  uri = {}" .format(
+          str(server_byId.data['name']), str(server_byId.data['uri'])))
 
 # Get Statistics with defaults
 print("Get server-hardware statistics")
