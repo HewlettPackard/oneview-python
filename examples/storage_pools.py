@@ -28,14 +28,12 @@ config = {
     }
 }
 
-scope_uris = '/rest/scopes/754e0dce-3cbd-4188-8923-edf86f068bf'
-storage_pool_uris = ['/rest/storage-pools/5F9CA89B-C632-4F09-BC55-A8AA00DA5C4A']
-
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 oneview_client = OneViewClient.from_json_file('config.json')
 storage_systems = oneview_client.storage_systems
 storage_pools = oneview_client.storage_pools
+scopes = oneview_client.scopes
 
 # Find or add storage system
 print("Find or add storage system")
@@ -100,15 +98,19 @@ if oneview_client.api_version <= 300:
         storage_pool_add.remove()
         print("   Done.")
 
+# Create a scope
+print("\n## Create the scope")
+options = {
+    "name": "SampleScope",
+    "description": "Sample Scope description"
+}
+scope = scopes.create(options)
+pprint(scope.data)
+
 # Get all the reachable storage pools filtered by scope uris.
+scope_uris = scope.get_by_uri(scope.data['uri'])
 print("Get all reachable storage pools filtered by scopes")
 reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_uris=scope_uris)
-print(reachable_storage_pools)
-
-# Get all reachable storage pools by passing a set of storage pools uris
-# to exclude those storage pools from scope validation checks.
-print("Get all reachable storage pools by passing a set of storage pool uris to exclude from scope validation.")
-reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_exclusions=storage_pool_uris)
 print(reachable_storage_pools)
 
 # Get all managed storage pools
@@ -116,6 +118,15 @@ print("Get all managed storage pools")
 storage_pools_all = storage_pools.get_all()
 for pool in storage_pools_all:
     print("   '{}' at uri: '{}'".format(pool['name'], pool['uri']))
+
+# Get all reachable storage pools by passing a set of storage pools uris
+# to exclude those storage pools from scope validation checks.
+storage_pools_all = storage_pools.get_all()
+storage_pool_uris = []
+storage_pool_uris.append(storage_pools_all[0]['uri'])
+print("Get all reachable storage pools by passing a set of storage pool uris to exclude from scope validation.")
+reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_exclusions=storage_pool_uris)
+print(reachable_storage_pools)
 
 # Get maximum of 5 storage pools sorted by freeCapacity in descending order.
 print(

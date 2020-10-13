@@ -28,17 +28,22 @@ config = {
     }
 }
 
-# To run all parts of this example, a server profile uri, volume uri, volume attachment id and
-# path id must be defined.
-serverProfileUri = None
-storageVolumeUri = None
-attachment_id = None
-path_id = None
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 volume_attachments = oneview_client.storage_volume_attachments
+volumes = oneview_client.volumes
+server_profiles = oneview_client.server_profiles
+
+# To run all parts of this example, a server profile uri, volume uri, volume attachment id and
+# path id must be defined.
+
+sp = server_profiles.get_by_name('TestSP')
+serverProfileUri = sp.data["uri"]
+
+volume = volumes.get_by_name('ONEVIEW_SDK_TEST_VOLUME_TYPE_1')
+storageVolumeUri = volume.data["uri"]
 
 # Get all volume attachments
 print("\nGet all volume attachments")

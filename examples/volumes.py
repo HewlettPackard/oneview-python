@@ -34,6 +34,7 @@ oneview_client = OneViewClient(config)
 volumes = oneview_client.volumes
 storage_systems = oneview_client.storage_systems
 storage_pools = oneview_client.storage_pools
+storage_volume_templates = oneview_client.storage_volume_templates
 
 # To run this example, you may set a WWN to add a volume using the WWN of the volume (optional)
 unmanaged_volume_wwn = ''
@@ -51,19 +52,21 @@ for sp in storage_pools_all:
 if not storage_pool_available:
     raise ValueError("ERROR: No storage pools found attached to the storage system")
 
+volume_template_byname = storage_volume_templates.get_by_name('test_02')
+
 # Create a volume with a Storage Pool
 print("\nCreate a volume with a specified Storage Pool and Snapshot Pool")
 
 options = {
     "properties": {
-        "storagePool": '/rest/storage-pools/547F8659-BD66-4775-9943-A93C0143AC70',
+        "storagePool": storage_pool[0]['uri'],
         "size": 1024 * 1024 * 1024,  # 1GB
         "isShareable": False,
-        "snapshotPool": '/rest/storage-pools/547F8659-BD66-4775-9943-A93C0143AC70',
+        "snapshotPool": storage_pool[0]['uri'],
         "provisioningType": "Thin",
         "name": "ONEVIEW_SDK_TEST_VOLUME_TYPE_1"
     },
-    "templateUri": "/rest/storage-volume-templates/b8c4489e-4a19-4bfe-857c-aab8006478a7",
+    "templateUri": volume_template_byname.data['uri'],
     "isPermanent": False
 }
 

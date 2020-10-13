@@ -66,17 +66,20 @@ support_host_types = storage_systems.get_host_types()
 pprint(support_host_types)
 
 # Add and update storage system for management
-try:
-    storage_system = storage_systems.add(options)
-    print("\nAdded storage system '%s'.\n   uri = '%s'" %
-          (storage_system.data['name'], storage_system.data['uri']))
-except HPEOneViewException as e:
+def createStorageSystem():
     storage_system = storage_systems.get_by_hostname(options['hostname'])
-    if storage_system:
-        print("\nStorage system '%s' was already added.\n   uri = '%s'" %
-              (storage_system.data['name'], storage_system.data['uri']))
+    if not storage_system:
+        print("Create Storage System")
+        storage_system = storage_systems.add(options)
+        print("\nAdded storage system '%s'.\n   uri = '%s'" %
+            (storage_system.data['name'], storage_system.data['uri']))
     else:
-        print(e.msg)
+        print("\nStorage system '%s' was already added.\n   uri = '%s'" %
+            (storage_system.data['name'], storage_system.data['uri']))
+    print(storage_system.data)
+    return storage_system
+
+storage_system = createStorageSystem()
 
 # Adds managed domains and managed pools to StoreServ storage systems
 # This is a one-time only action, after this you cannot change the managed values
@@ -116,3 +119,6 @@ print("\nRemove storage system")
 if storage_system:
     storage_system.remove()
     print("   Done.")
+
+storage_system_dummy = createStorageSystem()
+print("Created Storage System {}".format(str(storage_system_dummy.data)))

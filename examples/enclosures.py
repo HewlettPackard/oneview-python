@@ -58,6 +58,7 @@ options = {
 # Get Enclosure resource object
 oneview_client = OneViewClient(config)
 enclosure_resource = oneview_client.enclosures
+scopes = oneview_client.scopes
 
 # Get all enclosures
 print("Get all enclosures")
@@ -67,7 +68,7 @@ for enc in enclosures:
 
 enclosure = enclosure_resource.get_by_name(enclosure_name)
 if not enclosure:
-    # Creates an enclosure and reurns created enclosure object
+    # Creates an enclosure and returns created enclosure object
     enclosure = enclosure_resource.add(options)
 print("Enclosure '{name}'.\n  URI = '{uri}'".format(**enclosure.data))
 
@@ -185,10 +186,17 @@ try:
 except HPEOneViewException as e:
     print(e.msg)
 
+print("\n## Create the scope")
+options = {
+    "name": "SampleScopeForTest",
+    "description": "Sample Scope description"
+}
+scope = scopes.create(options)
+
 # Get Enclosure by scope_uris
 if oneview_client.api_version >= 600:
     try:
-        enclosures_by_scope_uris = enclosure.get_all(scope_uris="\"'/rest/scopes/a070577f-0dfa-4b86-ba48-863f3cac291e'\"")
+        enclosures_by_scope_uris = enclosure.get_all(scope_uris=scope.data['uri'])
         if len(enclosures_by_scope_uris) > 0:
             print("Found %d Enclosures" % (len(enclosures_by_scope_uris)))
             i = 0

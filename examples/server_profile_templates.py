@@ -40,7 +40,7 @@ enclosure_groups = oneview_client.enclosure_groups
 # These variables must be defined according with your environment
 server_profile_name = "ProfileTemplate101"
 hardware_type_name = "SY 480 Gen9 1"
-enclosure_group_name = "SYN03_EC"
+enclosure_group_name = "EG"
 hardware_type_for_transformation = "SY 480 Gen9 2"
 enclosure_group_for_transformation = "SYN03_EC"
 
@@ -118,9 +118,11 @@ if oneview_client.api_version >= 300 and template:
     hardware = hardware_types.get_by_name(hardware_type_for_transformation)
     enclosure_group = enclosure_groups.get_by_name(enclosure_group_for_transformation)
 
-    transformation = template.get_transformation(hardware.data["uri"],
-                                                 enclosure_group.data["uri"])
-    pprint(transformation)
+    if hardware and enclosure_group:
+
+        transformation = template.get_transformation(hardware.data["uri"],
+                                                    enclosure_group.data["uri"])
+        pprint(transformation)
 
 # Delete the created template
 print("\nDelete the created template")

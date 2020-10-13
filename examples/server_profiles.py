@@ -39,11 +39,12 @@ profile_templates = oneview_client.server_profile_templates
 enclosure_groups = oneview_client.enclosure_groups
 server_hardware_types = oneview_client.server_hardware_types
 server_hardwares = oneview_client.server_hardware
+scopes = oneview_client.scopes
 
 # To run this sample you must define a server hardware type uri and an enclosure group uri
 profile_template_name = "OneView Test Profile Template"
 profile_name = "OneView Test Profile"
-enclosure_group_name = "SYN03_EC"
+enclosure_group_name = "EG"
 server_hardware_type_name = "SY 480 Gen9 2"
 server_hardware_name = "0000A66102, bay 3"
 # To run the example 'get a specific storage system' you must define a storage system ID
@@ -135,7 +136,7 @@ if profile:
     pprint(server_transformed)
 
 print("Transformation complete. Updating server profile with the new configuration.")
-if profile:
+if profile and server_transformed:
     profile_updated = profile.update(server_transformed['serverProfile'])
     pprint(profile_updated.data)
 
@@ -183,6 +184,13 @@ available_networks = server_profiles.get_available_networks(
     serverHardwareTypeUri=hardware_type.data["uri"], view='Ethernet')
 pprint(available_networks)
 
+print("\n## Create the scope")
+options = {
+    "name": "SampleScopeForTest",
+    "description": "Sample Scope description"
+}
+scope = scopes.create(options)
+
 # Get the all Ethernet networks associated with a server hardware type, enclosure group and scopeuris
 # This method ie., get_available_networks works with all the API versions but the scope_uris param is available
 # with API version 600 and above
@@ -191,7 +199,7 @@ if oneview_client.api_version >= 600:
         enclosureGroupUri=enclosure_group.data["uri"],
         serverHardwareTypeUri=hardware_type.data["uri"],
         view='Ethernet',
-        scope_uris="\"'/rest/scopes/3bb0c754-fd38-45af-be8a-4d4419de06e9'\"")
+        scope_uris=scope.data['uri'])
     if len(available_networks) > 0:
         pprint(available_networks)
     else:

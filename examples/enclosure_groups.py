@@ -33,9 +33,10 @@ config = {
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 enclosure_groups = oneview_client.enclosure_groups
+scopes = oneview_client.scopes
 
 data = {
-    "name": "Enclosure Group 1",
+    "name": "EG",
     "ipAddressingMode": "External",
     "interconnectBayMappings":
         [
@@ -65,9 +66,16 @@ print("Get the ten first Enclosure Groups, sorting by name descending")
 egs = enclosure_groups.get_all(0, 10, sort='name:descending')
 pprint(egs)
 
+print("\n## Create the scope")
+options = {
+    "name": "SampleScopeForTest",
+    "description": "Sample Scope description"
+}
+scope = scopes.create(options)
+
 # Get Enclosure Group by scope_uris
 if oneview_client.api_version >= 600:
-    eg_by_scope_uris = enclosure_groups.get_all(scope_uris="\"'/rest/scopes/cd237b60-09e2-45c4-829e-082e318a6d2a'\"")
+    eg_by_scope_uris = enclosure_groups.get_all(scope_uris=scope.data['uri'])
     if len(eg_by_scope_uris) > 0:
         print("Found Enclosure Group by scope_uris: '%s'.\n  uri = '%s'" % (eg_by_scope_uris[0]['name'], eg_by_scope_uris[0]['uri']))
         pprint(eg_by_scope_uris)
@@ -85,17 +93,21 @@ eg_byuri = enclosure_groups.get_by_uri(egs[0]["uri"])
 pprint(eg_byuri.data)
 
 # Get by name
-enclosure_group = enclosure_groups.get_by_name(data["name"])
-if not enclosure_group:
-    # Create a Enclosure Group
-    print("Create a Enclosure Group")
-    if oneview_client.api_version <= 500:
-        options = {"stackingMode": "Enclosure"}
-        options.update(data)
-        enclosure_group = enclosure_groups.create(options)
-    else:
-        enclosure_group = enclosure_groups.create(data)
-pprint(enclosure_group.data)
+def createEnclosureGroup():
+    enclosure_group = enclosure_groups.get_by_name(data["name"])
+    if not enclosure_group:
+        # Create a Enclosure Group
+        print("Create a Enclosure Group")
+        if oneview_client.api_version <= 500:
+            options = {"stackingMode": "Enclosure"}
+            options.update(data)
+            enclosure_group = enclosure_groups.create(options)
+        else:
+            enclosure_group = enclosure_groups.create(data)
+    pprint(enclosure_group.data)
+    return enclosure_group
+
+enclosure_group = createEnclosureGroup()
 
 # Update an Enclosure Group
 resource = enclosure_group.data.copy()
@@ -120,3 +132,5 @@ print(script)
 print("Delete the created Enclosure Group")
 enclosure_group.delete()
 print("Successfully deleted Enclosure Group")
+
+enclosure_group_dummy = createEnclosureGroup()

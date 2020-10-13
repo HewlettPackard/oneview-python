@@ -114,8 +114,11 @@ else:
     print("Created ethernet-network '{name}' successfully.\n   uri = '{uri}'" .format(**ethernet_network.data))
 
 # Create bulk ethernet networks
+bulkNetworkUris = []
 print("\nCreate bulk ethernet networks")
 ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
+for eth in ethernet_nets_bulk:
+    bulkNetworkUris.append(ethernet_nets_bulk['uri'])
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
@@ -156,9 +159,9 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
 
 # Delete bulk ethernet networks
 if oneview_client.api_version >= 1600:
-    print("\nDelete bulk ethernet networks")
+    options_bulk_delete = dict("networkUris": bulkNetworkUris)
     ethernet_network.delete_bulk(options_bulk_delete)
-    print("Successfully deleted bulk ethernetnetworks")
+    print("Successfully deleted bulk ethernet networks")
 
 # Delete the created network
 print("\nDelete the ethernet network")

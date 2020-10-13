@@ -18,6 +18,7 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
+from copy import deepcopy
 
 config = {
     "ip": "<oneview_ip>",
@@ -34,12 +35,15 @@ oneview_client = OneViewClient(config)
 storage_pools = oneview_client.storage_pools
 storage_systems = oneview_client.storage_systems
 storage_volume_templates = oneview_client.storage_volume_templates
+storage_pools = oneview_client.storage_pools
 
 networks = "/rest/fcoe-networks/7f0f74a0-4957-47ac-81c1-f573aa6d83de"
 scope_uris = "/rest/scopes/63d1ca81-95b3-41f1-a1ee-f9e1bc2d635f"
 
 # Gets the first Root Storage Volume Template available to use in options
 root_template = oneview_client.storage_volume_templates.get_all(filter="\"isRoot='True'\"")[0]
+
+storage_pools_all = storage_pools.get_all()
 
 # Request body for create operation
 # Supported from API version >= 500
@@ -99,7 +103,7 @@ options = {
             "format": "x-uri-reference",
             "required": "true",
             "description": "A common provisioning group URI reference",
-            "default": "/rest/storage-pools/628C1EBD-5BA7-40F2-A856-A93C0143AC73"
+            "default": "storage_pools_all[0]['uri']"
         },
         "snapshotPool": {
             "meta": {
@@ -109,7 +113,7 @@ options = {
             "type": "string",
             "title": "Snapshot Pool",
             "format": "x-uri-reference",
-            "default": "/rest/storage-pools/628C1EBD-5BA7-40F2-A856-A93C0143AC73",
+            "default": "storage_pools_all[0]['uri']",
             "description": "A URI reference to the common provisioning group used to create snapshots"
         },
         "provisioningType": {
@@ -185,9 +189,13 @@ else:
         print("      No available unmanaged storage pools to add")
 
 # Create storage volume template
-print("Create storage volume template")
-volume_template = storage_volume_templates.create(options)
-pprint(volume_template.data)
+def createStorageVolumeTemplate():
+    print("Create storage volume template")
+    volume_template = storage_volume_templates.create(options)
+    pprint(volume_template.data)
+    return volume_template
+
+volume_template = createStorageVolumeTemplate()
 
 template_id = volume_template.data["uri"].split('/')[-1]
 
@@ -248,3 +256,6 @@ if storage_system_added:
     print("Remove recently added storage system")
     storage_system.remove()
     print("   Done.")
+
+volume_template_dummy = createStorageVolumeTemplate()
+print("Created another volume template {}". format(str(volume_template_dummy.data)))

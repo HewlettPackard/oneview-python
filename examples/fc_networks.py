@@ -38,14 +38,6 @@ options = {
     "linkStabilityTime": 30,
 }
 
-options_bulk_delete = {
-    "networkUris": [
-        "/rest/fc-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
-        "/rest/fc-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
-        "/rest/fc-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
-    ]
-}
-
 # Scope name to perform the patch operation
 scope_name = "test_scope"
 
@@ -115,8 +107,26 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
 fc_network.delete()
 print("\nSuccessfully deleted fc-network")
 
+# Creates bulk fc-networks
+for i in range(2):
+    options = {
+        "name": "OneViewSDK Test FC Network" + str(i),
+        "connectionTemplateUri": None,
+        "autoLoginRedistribution": True,
+        "fabricType": "FabricAttach",
+        "linkStabilityTime": 30,
+    }
+    bulk_fc_network = fc_networks.create(data=options)
+    print("\nCreated bulk fc-networks with name: '%s'.\n  uri = '%s'" % (bulk_fc_network.data['name'], bulk_fc_network.data['uri']))
+
 # Delete bulk fcnetworks
 if oneview_client.api_version >= 1600:
+    bulk_network_uris = []
+    for i in range(2):
+        fc_network_name = "OneViewSDK Test FC Network" + str(i)
+        bulk_fc_network = fc_networks.get_by_name(fc_network_name)
+        bulk_network_uris.append(bulk_fc_network.data['uri'])
     print("\nDelete bulk fcnetworks")
+    options_bulk_delete = dict("networkUris": bulk_network_uris)
     fc_network.delete_bulk(options_bulk_delete)
     print("Successfully deleted bulk fcnetworks")

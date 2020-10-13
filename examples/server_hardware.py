@@ -71,9 +71,10 @@ else:
     print("\nCANNOT CREATE MULTIPLE SERVERS! Endpoint supported for REST API Versions 600 and above only.\n")
 
 # Get recently added server hardware resource by uri
-server_byId = server_hardwares.get_by_uri(server.data['uri'])
-print("Found server '%s' by uri.\n  uri = '%s'" %
-      (server_byId.data['name'], server_byId.data['uri']))
+if server:
+    server_byId = server_hardwares.get_by_uri(server.data['uri'])
+    print("Found server '%s' by uri.\n  uri = '%s'" %
+        (server_byId.data['name'], server_byId.data['uri']))
 
 # Get Statistics with defaults
 print("Get server-hardware statistics")
@@ -193,5 +194,6 @@ if oneview_client.api_version >= 1800 and server:
 
 # Remove rack server
 # This operation works till Oneview API Version 500.
-server.remove()
-print("Server removed successfully")
+if oneview_client.api_version <= 500:
+    server.remove()
+    print("Server removed successfully")

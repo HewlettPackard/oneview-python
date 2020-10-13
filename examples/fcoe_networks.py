@@ -36,14 +36,6 @@ options = {
     "connectionTemplateUri": None,
 }
 
-options_bulk_delete = {
-    "networkUris": [
-        "/rest/fcoe-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
-        "/rest/fcoe-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
-        "/rest/fcoe-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
-    ]
-}
-
 # Scope name to perform the patch operation
 scope_name = ""
 
@@ -107,8 +99,24 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
 fcoe_network.delete()
 print("\nSuccessfully deleted fcoe-network")
 
-# Delete bulk fcoe networks
+# Creates bulk fcoe-networks
+for i in range(2):
+    options = {
+        "name": "OneViewSDK Test FCoE Network" + str(i),
+        "vlanId": int("201") + int(i),
+        "connectionTemplateUri": None,
+    }
+    bulk_fcoe_network = fcoe_networks.create(options)
+    print("\nCreated bulk fcoe-networks with name: '%s'.\n  uri = '%s'" % (bulk_fcoe_network.data['name'], bulk_fcoe_network.data['uri']))
+
+# Delete bulk fcoe-networks
 if oneview_client.api_version >= 1600:
-    print("\nDelete bulk fcoe networks")
+    bulk_network_uris = []
+    for i in range(2):
+        fcoe_network_name = "OneViewSDK Test FCoE Network" + str(i)
+        bulk_fcoe_network = fcoe_networks.get_by_name(fcoe_network_name)
+        bulk_network_uris.append(bulk_fcoe_network.data['uri'])
+    print("\nDelete bulk fcoe-networks")
+    options_bulk_delete = dict("networkUris": bulk_network_uris)
     fcoe_network.delete_bulk(options_bulk_delete)
-    print("Successfully deleted bulk fcoe networks")
+    print("Successfully deleted bulk fcoe-networks")
