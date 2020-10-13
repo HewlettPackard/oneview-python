@@ -94,6 +94,7 @@ pprint(eg_byuri.data)
 
 # Get by name
 
+
 def createEnclosureGroup():
     enclosure_group = enclosure_groups.get_by_name(data["name"])
     if not enclosure_group:
@@ -107,6 +108,7 @@ def createEnclosureGroup():
             enclosure_group = enclosure_groups.create(data)
     pprint(enclosure_group.data)
     return enclosure_group
+
 
 enclosure_group = createEnclosureGroup()
 

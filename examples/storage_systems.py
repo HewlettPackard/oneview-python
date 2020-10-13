@@ -66,18 +66,20 @@ pprint(support_host_types)
 
 # Add and update storage system for management
 
+
 def createStorageSystem():
     storage_system = storage_systems.get_by_hostname(options['hostname'])
     if not storage_system:
         print("Create Storage System")
         storage_system = storage_systems.add(options)
-        print("\nAdded storage system '%s'.\n   uri = '%s'" %
-             (storage_system.data['name'], storage_system.data['uri']))
+        print("\nAdded storage system '%s'.\n   uri = '%s'" .format(
+              storage_system.data['name'], storage_system.data['uri']))
     else:
-        print("\nStorage system '%s' was already added.\n   uri = '%s'" %
-             (storage_system.data['name'], storage_system.data['uri']))
+        print("\nStorage system '%s' was already added.\n   uri = '%s'" .format(
+              storage_system.data['name'], storage_system.data['uri']))
     print(storage_system.data)
     return storage_system
+
 
 storage_system = createStorageSystem()
 

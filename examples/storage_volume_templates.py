@@ -196,6 +196,7 @@ def createStorageVolumeTemplate():
     pprint(volume_template.data)
     return volume_template
 
+
 volume_template = createStorageVolumeTemplate()
 
 
