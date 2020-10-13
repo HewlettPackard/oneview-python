@@ -93,6 +93,7 @@ eg_byuri = enclosure_groups.get_by_uri(egs[0]["uri"])
 pprint(eg_byuri.data)
 
 # Get by name
+
 def createEnclosureGroup():
     enclosure_group = enclosure_groups.get_by_name(data["name"])
     if not enclosure_group:
@@ -108,6 +109,7 @@ def createEnclosureGroup():
     return enclosure_group
 
 enclosure_group = createEnclosureGroup()
+
 
 # Update an Enclosure Group
 resource = enclosure_group.data.copy()

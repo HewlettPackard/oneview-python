@@ -74,7 +74,7 @@ else:
 if server:
     server_byId = server_hardwares.get_by_uri(server.data['uri'])
     print("Found server '%s' by uri.\n  uri = '%s'" %
-        (server_byId.data['name'], server_byId.data['uri']))
+         (server_byId.data['name'], server_byId.data['uri']))
 
 # Get Statistics with defaults
 print("Get server-hardware statistics")

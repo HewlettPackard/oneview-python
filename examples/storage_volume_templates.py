@@ -18,7 +18,6 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
-from copy import deepcopy
 
 config = {
     "ip": "<oneview_ip>",
@@ -188,7 +187,9 @@ else:
     else:
         print("      No available unmanaged storage pools to add")
 
+
 # Create storage volume template
+
 def createStorageVolumeTemplate():
     print("Create storage volume template")
     volume_template = storage_volume_templates.create(options)
@@ -196,6 +197,7 @@ def createStorageVolumeTemplate():
     return volume_template
 
 volume_template = createStorageVolumeTemplate()
+
 
 template_id = volume_template.data["uri"].split('/')[-1]
 

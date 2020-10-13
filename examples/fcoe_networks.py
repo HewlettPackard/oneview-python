@@ -117,6 +117,6 @@ if oneview_client.api_version >= 1600:
         bulk_fcoe_network = fcoe_networks.get_by_name(fcoe_network_name)
         bulk_network_uris.append(bulk_fcoe_network.data['uri'])
     print("\nDelete bulk fcoe-networks")
-    options_bulk_delete = dict("networkUris": bulk_network_uris)
+    options_bulk_delete = dict{"networkUris": bulk_network_uris}
     fcoe_network.delete_bulk(options_bulk_delete)
     print("Successfully deleted bulk fcoe-networks")

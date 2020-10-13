@@ -159,7 +159,7 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
 
 # Delete bulk ethernet networks
 if oneview_client.api_version >= 1600:
-    options_bulk_delete = dict("networkUris": bulkNetworkUris)
+    options_bulk_delete = dict{"networkUris": bulkNetworkUris}
     ethernet_network.delete_bulk(options_bulk_delete)
     print("Successfully deleted bulk ethernet networks")
 

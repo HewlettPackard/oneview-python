@@ -121,7 +121,7 @@ if oneview_client.api_version >= 300 and template:
     if hardware and enclosure_group:
 
         transformation = template.get_transformation(hardware.data["uri"],
-                                                    enclosure_group.data["uri"])
+                                                     enclosure_group.data["uri"])
         pprint(transformation)
 
 # Delete the created template

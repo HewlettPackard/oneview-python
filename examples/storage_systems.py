@@ -16,7 +16,6 @@
 ###
 
 from pprint import pprint
-from hpeOneView.exceptions import HPEOneViewException
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
@@ -66,20 +65,22 @@ support_host_types = storage_systems.get_host_types()
 pprint(support_host_types)
 
 # Add and update storage system for management
+
 def createStorageSystem():
     storage_system = storage_systems.get_by_hostname(options['hostname'])
     if not storage_system:
         print("Create Storage System")
         storage_system = storage_systems.add(options)
         print("\nAdded storage system '%s'.\n   uri = '%s'" %
-            (storage_system.data['name'], storage_system.data['uri']))
+             (storage_system.data['name'], storage_system.data['uri']))
     else:
         print("\nStorage system '%s' was already added.\n   uri = '%s'" %
-            (storage_system.data['name'], storage_system.data['uri']))
+             (storage_system.data['name'], storage_system.data['uri']))
     print(storage_system.data)
     return storage_system
 
 storage_system = createStorageSystem()
+
 
 # Adds managed domains and managed pools to StoreServ storage systems
 # This is a one-time only action, after this you cannot change the managed values
