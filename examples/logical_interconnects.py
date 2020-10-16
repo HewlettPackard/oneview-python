@@ -180,9 +180,9 @@ pprint(monitor_configuration)
 print("\nUpdate the port monitor configuration of a logical interconnect")
 monitor_configuration['enablePortMonitor'] = True
 
-#logical_interconnect_updated = logical_interconnect.update_port_monitor(monitor_configuration)
-#print("  Updated port monitor at uri: {uri}\n  with 'enablePortMonitor': '{enablePortMonitor}'".format(
-#      **logical_interconnect_updated['portMonitor']))
+# logical_interconnect_updated = logical_interconnect.update_port_monitor(monitor_configuration)
+# print("  Updated port monitor at uri: {uri}\n  with 'enablePortMonitor': '{enablePortMonitor}'".format(
+#       **logical_interconnect_updated['portMonitor']))
 
 # Update the configuration on the logical interconnect
 print("\nUpdate the configuration on the logical interconnect")
