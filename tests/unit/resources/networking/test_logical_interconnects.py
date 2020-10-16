@@ -383,7 +383,7 @@ class LogicalInterconnectsTest(unittest.TestCase):
                 "/rest/logical-interconnects/d0432852-28a7-4060-ba49-57ca973ef6c2"
             ]
         }
-        expected_uri = '{}/bulk-inconsistency-validation'.format(self.uri)
+        expected_uri = '/rest/logical-interconnects/bulk-inconsistency-validation'
 
         self._logical_interconnect.bulk_inconsistency_validate(resource)
 

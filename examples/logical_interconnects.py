@@ -31,7 +31,7 @@ config = {
 api_variant = 'Synergy'
 
 # To run this example, a logical interconnect name is required
-logical_interconnect_name = "testlg1-Renamed Logical Interconnect Group"
+logical_interconnect_name = "LE-LIG"
 
 # To install the firmware driver, a firmware driver name is required
 firmware_driver_name = "HPE Synergy Custom SPP 2018110 2019 02 15, 2019.02.15.00"
@@ -46,6 +46,10 @@ scope_name = "test"
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 logical_interconnects = oneview_client.logical_interconnects
+firmware_drivers = oneview_client.firmware_drivers
+scopes = oneview_client.scopes
+ethernet_networks = oneview_client.ethernet_networks
+interconnects = oneview_client.interconnects
 
 # Get all logical interconnects
 print("\nGet all logical interconnects")
@@ -55,7 +59,7 @@ for logical_interconnect in all_logical_interconnects:
 
 # Get installed firmware
 print("\nGet the installed firmware for a logical interconnect that matches the specified name.")
-firmwares = oneview_client.firmware_drivers.get_by('name', firmware_driver_name)
+firmwares = firmware_drivers.get_by('name', firmware_driver_name)
 firmware = firmwares[0] if firmwares else None
 
 print("\nGet the enclosure that matches the specified name.")
@@ -64,8 +68,8 @@ enclosure = enclosures.data if enclosures else None
 
 # Get a logical interconnect by name
 logical_interconnect = logical_interconnects.get_by_name(logical_interconnect_name)
-print("\nFound logical interconnect by name {name}.\n URI: {uri}".format(**logical_interconnect.data))
-print(logical_interconnect.data)
+if logical_interconnect:
+    print("\nFound logical interconnect by name {name}.\n URI: {uri}".format(**logical_interconnect.data))
 
 # Install the firmware to a logical interconnect
 if firmware:
@@ -79,15 +83,15 @@ if firmware:
 
 # Get scope to be added
 print("\nGet the scope that matches the specified name.")
-scope = oneview_client.scopes.get_by_name(scope_name)
+scope = scopes.get_by_name(scope_name)
 
 # Performs a patch operation
 # This operation is not supported in API version 200 and 600.
 if scope and oneview_client.api_version not in [200, 600]:
-    print("\nPatches the logical interconnect adding one scope to it")
+    print("\nPatches the logical interconnect to refresh state")
     logical_interconnect.patch('replace',
-                               '/scopeUris',
-                               [scope.data['uri']])
+                               '/state',
+                               'Refresh')
     pprint(logical_interconnect.data)
 
 print("\nGet the Ethernet interconnect settings for the logical interconnect")
@@ -103,7 +107,7 @@ else:
     ethernet_settings['stormControlThreshold'] = 15
 logical_interconnect_updated = logical_interconnect.update_ethernet_settings(ethernet_settings)
 print("\nUpdated the ethernet settings")
-print(logical_interconnect_updated.data)
+print(logical_interconnect_updated)
 
 # Update the internal networks on the logical interconnect
 ethernet_network_options = {
@@ -115,9 +119,9 @@ ethernet_network_options = {
     "privateNetwork": False,
     "connectionTemplateUri": None,
 }
-ethernet_network = oneview_client.ethernet_networks.get_by_name(ethernet_network_options['name'])
+ethernet_network = ethernet_networks.get_by_name(ethernet_network_options['name'])
 if not ethernet_network:
-    ethernet_network = oneview_client.ethernet_networks.create(ethernet_network_options)
+    ethernet_network = ethernet_networks.create(ethernet_network_options)
 
 logical_interconnect_updated = logical_interconnect.update_internal_networks([ethernet_network.data['uri']])
 print("\nUpdated internal networks on the logical interconnect")
@@ -175,9 +179,10 @@ pprint(monitor_configuration)
 # Update port monitor configuration of a logical interconnect
 print("\nUpdate the port monitor configuration of a logical interconnect")
 monitor_configuration['enablePortMonitor'] = True
-logical_interconnect_updated = logical_interconnect.update_port_monitor(monitor_configuration)
-print("  Updated port monitor at uri: {uri}\n  with 'enablePortMonitor': '{enablePortMonitor}'".format(
-      **logical_interconnect_updated['portMonitor']))
+
+#logical_interconnect_updated = logical_interconnect.update_port_monitor(monitor_configuration)
+#print("  Updated port monitor at uri: {uri}\n  with 'enablePortMonitor': '{enablePortMonitor}'".format(
+#      **logical_interconnect_updated['portMonitor']))
 
 # Update the configuration on the logical interconnect
 print("\nUpdate the configuration on the logical interconnect")
@@ -244,7 +249,7 @@ if oneview_client.api_version >= 2000 and api_variant == 'Synergy':
     print("Validates the bulk update from group operation and gets the consolidated inconsistency report")
     bulk_validate_request = {
         "logicalInterconnectUris": [
-            "/rest/logical-interconnects/d0432852-28a7-4060-ba49-57ca973ef6c2"
+            logical_interconnect.data['uri']
         ]
     }
     validation_result = logical_interconnect.bulk_inconsistency_validate(bulk_validate_request)
