@@ -118,7 +118,7 @@ bulkNetworkUris = []
 print("\nCreate bulk ethernet networks")
 ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
 for eth in ethernet_nets_bulk:
-    bulkNetworkUris.append(ethernet_nets_bulk['uri'])
+    bulkNetworkUris.append(eth['uri'])
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
