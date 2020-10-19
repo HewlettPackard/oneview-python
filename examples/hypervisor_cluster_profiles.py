@@ -15,7 +15,7 @@
 # limitations under the License.
 ###
 
-# This example requires a ServerProfileTemplate with name "spt_basic" and HypervisorManager
+# This example requires a ServerProfileTemplate with name "spt_hcp" and HypervisorManager
 # with name "172.18.13.11"
 
 from pprint import pprint
@@ -31,6 +31,9 @@ config = {
     }
 }
 
+hypervisor_manager = "172.18.13.11"
+spt_name = "spt_hcp"  #spt with os deployment plan and one mgmt connection
+
 options = {
     "name": "Test_cluster_profile",
     "description": "test cluster",
@@ -43,7 +46,7 @@ options = {
         "virtualSwitchType": "Standard"
     },
     "hypervisorHostProfileTemplate": {
-        "serverProfileTemplateUri": "spt_basic",
+        "serverProfileTemplateUri": spt_name,
         "deploymentPlan": {
             "serverPassword": "test",
             "deploymentCustomArgs": []
@@ -60,14 +63,14 @@ options = {
         }
     },
     "mgmtIpSettingsOverride": None,
-    "hypervisorManagerUri": "172.18.13.11",
+    "hypervisorManagerUri": hypervisor_manager,
     "path": "DC1",
     "initialScopeUris": []
 }
 
 vswitch_options = {
-    "hypervisorManagerUri": "172.18.13.11",
-    "serverProfileTemplateUri": "spt_basic"
+    "hypervisorManagerUri": hypervisor_manager,
+    "serverProfileTemplateUri": spt_name
 }
 
 # Try load config from a file (if there is a config file)

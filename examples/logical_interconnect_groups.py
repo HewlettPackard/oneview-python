@@ -38,8 +38,8 @@ scopes = oneview_client.scopes
 ethernet_networks = oneview_client.ethernet_networks
 
 # Define the scope name to add the logical interconnect group to it
-iscsi_network = "iscsi_nw" # iscsi network for image streamer uplinkset
-mgmt_untagged = "mgmt" # untagged managament network
+iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
+mgmt_untagged = "mgmt"  # untagged managament network
 scope_name = "test_scope"
 interconnect_type_name1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
 interconnect_type_name2 = "Synergy 10Gb Interconnect Link Module"
