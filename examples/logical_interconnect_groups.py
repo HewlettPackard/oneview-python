@@ -35,8 +35,11 @@ oneview_client = OneViewClient(config)
 logical_interconnect_groups = oneview_client.logical_interconnect_groups
 interconnect_types = oneview_client.interconnect_types
 scopes = oneview_client.scopes
+ethernet_networks = oneview_client.ethernet_networks
 
 # Define the scope name to add the logical interconnect group to it
+iscsi_network = "iscsi_nw" # iscsi network for image streamer uplinkset
+mgmt_untagged = "mgmt" # untagged managament network
 scope_name = "test_scope"
 interconnect_type_name1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
 interconnect_type_name2 = "Synergy 10Gb Interconnect Link Module"
@@ -46,10 +49,14 @@ interconnect_type_name2 = "Synergy 10Gb Interconnect Link Module"
 # Note: If this type does not exist, select another name
 interconnect_type_1 = interconnect_types.get_by_name(interconnect_type_name1)
 interconnect_type_2 = interconnect_types.get_by_name(interconnect_type_name2)
-if interconnect_type_1:
-    interconnect_type1_uri = interconnect_type_1.data["uri"]
-if interconnect_type_2:
-    interconnect_type2_uri = interconnect_type_2.data["uri"]
+interconnect_type1_uri = interconnect_type_1.data["uri"]
+interconnect_type2_uri = interconnect_type_2.data["uri"]
+
+# Get the ethernet network uri by name
+eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
+iscsi_network_uri = eth_nw1.data['uri']
+eth_nw2 =  ethernet_networks.get_by_name(mgmt_untagged)
+mgmt_untagged_uri = eth_nw2.data['uri']
 
 # Create scope
 scope_options = {
@@ -168,9 +175,7 @@ options = {
     },
     "uplinkSets": [
         {
-            "networkUris": [
-                "/rest/ethernet-networks/87650354-afb2-49b8-adc2-edd759ddd5d2"
-            ],
+            "networkNames": [iscsi_network_uri],
             "mode": "Auto",
             "logicalPortConfigInfos": [
                 {
@@ -255,9 +260,7 @@ options = {
             "name": "deploy"
         },
         {
-            "networkUris": [
-                "/rest/ethernet-networks/26cb6480-23d0-4391-b481-ae524dd54f67"
-            ],
+            "networkNames": [mgmt_untagged_uri],
             "mode": "Auto",
             "logicalPortConfigInfos": [
                 {
