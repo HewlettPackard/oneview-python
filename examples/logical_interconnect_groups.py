@@ -55,7 +55,7 @@ interconnect_type2_uri = interconnect_type_2.data["uri"]
 # Get the ethernet network uri by name
 eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
 iscsi_network_uri = eth_nw1.data['uri']
-eth_nw2 =  ethernet_networks.get_by_name(mgmt_untagged)
+eth_nw2 = ethernet_networks.get_by_name(mgmt_untagged)
 mgmt_untagged_uri = eth_nw2.data['uri']
 
 # Create scope

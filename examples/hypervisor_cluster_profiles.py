@@ -32,7 +32,7 @@ config = {
 }
 
 hypervisor_manager = "172.18.13.11"
-spt_name = "spt_hcp"  #spt with os deployment plan and one mgmt connection
+spt_name = "spt_hcp"  # spt with os deployment plan and one mgmt connection
 
 options = {
     "name": "Test_cluster_profile",
