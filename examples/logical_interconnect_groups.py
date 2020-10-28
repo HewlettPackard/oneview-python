@@ -36,10 +36,12 @@ logical_interconnect_groups = oneview_client.logical_interconnect_groups
 interconnect_types = oneview_client.interconnect_types
 scopes = oneview_client.scopes
 ethernet_networks = oneview_client.ethernet_networks
+fc_networks = oneview_client.fc_networks
 
 # Define the scope name to add the logical interconnect group to it
 iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
-mgmt_untagged = "mgmt"  # untagged managament network
+mgmt_untagged = "mgmt_nw"  # untagged managament network
+fc_fabric = "FC_fabric_nw"  # Fabric attach FC network
 scope_name = "test_scope"
 interconnect_type_name1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
 interconnect_type_name2 = "Synergy 10Gb Interconnect Link Module"
@@ -57,6 +59,8 @@ eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
 iscsi_network_uri = eth_nw1.data['uri']
 eth_nw2 = ethernet_networks.get_by_name(mgmt_untagged)
 mgmt_untagged_uri = eth_nw2.data['uri']
+fc_nw = fc_networks.get_by_name(fc_fabric)
+fc_network_uri = fc_nw.data['uri']
 
 # Create scope
 scope_options = {
@@ -174,6 +178,55 @@ options = {
         ]
     },
     "uplinkSets": [
+        {
+            "networkType": "FibreChannel",
+            "networkNames": [fc_network_uri],
+            "mode": "Auto",
+            "name": "FC_fabric",
+            "logicalPortConfigInfos": [
+                {
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "type": "Bay",
+                                "relativeValue": 3
+                            },
+                            {
+                                "type": "Enclosure",
+                                "relativeValue": 1
+                            },
+                            {
+                                "type": "Port",
+                                "relativeValue": 68
+                            }
+                        ]
+                    },
+                    "desiredSpeed": "Auto",
+                    "desiredFecMode": "Auto"
+                },
+                {
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "type": "Bay",
+                                "relativeValue": 3
+                            },
+                            {
+                                "type": "Enclosure",
+                                "relativeValue": 1
+                            },
+                            {
+                                "type": "Port",
+                                "relativeValue": 73
+                            }
+                        ]
+                    },
+                    "desiredSpeed": "Auto",
+                    "desiredFecMode": "Auto"
+                }
+            ],
+            "ethernetNetworkType": "NotApplicable",
+        },
         {
             "networkNames": [iscsi_network_uri],
             "mode": "Auto",

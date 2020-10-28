@@ -128,6 +128,6 @@ if oneview_client.api_version >= 1600:
     print("Successfully deleted bulk fc-networks")
 
 # Automation tasks for FC networks
-fc_network_body['name'] = "FC_fabric"
+fc_network_body['name'] = "FC_fabric_nw"
 fc_network = fc_networks.create(data=fc_network_body)
 print("\nCreated fc-networks with name: '%s'.\n  uri = '%s'" % (fc_network.data['name'], fc_network.data['uri']))
