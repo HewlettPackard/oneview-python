@@ -34,31 +34,35 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 enclosure_groups = oneview_client.enclosure_groups
 scopes = oneview_client.scopes
+logical_interconnect_groups = oneview_client.logical_interconnect_groups
 
-data = {
-    "name": "EG",
+lig_name = 'LIG'
+lig_uri = logical_interconnect_groups.get_by_name(lig_name).data['uri']
+
+lig_options = {
+    "name": "EG-test",
+    "interconnectBayMappings": [
+        {
+            "interconnectBay": 3,
+            "logicalInterconnectGroupUri": lig_uri
+        },
+        {
+            "interconnectBay": 6,
+            "logicalInterconnectGroupUri": lig_uri
+        }
+    ],
     "ipAddressingMode": "External",
-    "interconnectBayMappings":
-        [
-            {
-                "interconnectBay": 1,
-            },
-            {
-                "interconnectBay": 2,
-            },
-            {
-                "interconnectBay": 3,
-            },
-            {
-                "interconnectBay": 4,
-            },
-            {
-                "interconnectBay": 5,
-            },
-            {
-                "interconnectBay": 6,
-            }
-        ]
+    "ipRangeUris": [],
+    "ipv6AddressingMode":" External",
+    "ipv6RangeUris": [],
+    "enclosureCount": 3,
+    "osDeploymentSettings": {
+        "manageOSDeployment": True,
+        "deploymentModeSettings": {
+            "deploymentMode": "Internal",
+            "deploymentNetworkUri": None
+        }
+    }
 }
 
 # Get the first 10 records, sorting by name descending
@@ -67,11 +71,11 @@ egs = enclosure_groups.get_all(0, 10, sort='name:descending')
 pprint(egs)
 
 print("\n## Create the scope")
-options = {
+scope_options = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-scope = scopes.create(options)
+scope = scopes.create(scope_options)
 
 # Get Enclosure Group by scope_uris
 if oneview_client.api_version >= 600:
@@ -94,21 +98,19 @@ pprint(eg_byuri.data)
 
 # Get by name
 
-
 def createEnclosureGroup():
-    enclosure_group = enclosure_groups.get_by_name(data["name"])
+    enclosure_group = enclosure_groups.get_by_name(lig_options["name"])
     if not enclosure_group:
         # Create a Enclosure Group
         print("Create a Enclosure Group")
         if oneview_client.api_version <= 500:
             options = {"stackingMode": "Enclosure"}
-            options.update(data)
+            options.update(lig_options)
             enclosure_group = enclosure_groups.create(options)
         else:
-            enclosure_group = enclosure_groups.create(data)
+            enclosure_group = enclosure_groups.create(lig_options)
     pprint(enclosure_group.data)
     return enclosure_group
-
 
 enclosure_group = createEnclosureGroup()
 
@@ -137,4 +139,5 @@ print("Delete the created Enclosure Group")
 enclosure_group.delete()
 print("Successfully deleted Enclosure Group")
 
+# Create EG for automation
 enclosure_group_dummy = createEnclosureGroup()
