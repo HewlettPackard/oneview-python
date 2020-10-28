@@ -89,3 +89,8 @@ print("  with attribute 'displayName': {}".format(hypervisor_manager.data['displ
 # Delete the created hypervisor manager
 hypervisor_manager.delete()
 print("\nSuccessfully deleted hypervisor manager")
+
+# Create a HypervisorManager for automation
+hypervisor_manager = hypervisor_managers.create(data=options)
+print("\nCreated a hypervisor-manager with name: {}.\n  uri = {}".format(hypervisor_manager.data['name'], hypervisor_manager.data['uri']))
+

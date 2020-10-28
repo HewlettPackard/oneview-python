@@ -34,10 +34,27 @@ oneview_client = OneViewClient(config)
 scopes = oneview_client.scopes
 ethernet_networks = oneview_client.ethernet_networks
 
+bulk_ethernet = {
+    "vlanIdRange": "1-3",
+    "purpose": "General",
+    "namePrefix": "TestNetwork",
+    "smartLink": False,
+    "privateNetwork": False,
+    "bandwidth": {
+        "maximumBandwidth": 10000,
+        "typicalBandwidth": 2000
+    }
+}
+
+# Create bulk ethernet networks
+bulkNetworkUris = []
+print("\nCreate bulk ethernet networks")
+ethernet_nets_bulk = ethernet_networks.create_bulk(bulk_ethernet)
+
 # Set the URI of existent resources to be added/removed to/from the scope
-resource_uri_1 = ethernet_networks.get_by('name', 'TestNetwork_1')[0]['uri']
-resource_uri_2 = ethernet_networks.get_by('name', 'TestNetwork_2')[0]['uri']
-resource_uri_3 = ethernet_networks.get_by('name', 'TestNetwork_3')[0]['uri']
+resource_uri_1 = ethernet_networks.get_by_name('TestNetwork_1').data['uri']
+resource_uri_2 = ethernet_networks.get_by_name('TestNetwork_2').data['uri']
+resource_uri_3 = ethernet_networks.get_by_name('TestNetwork_3').data['uri']
 
 # Create a scope
 print("\n## Create the scope")

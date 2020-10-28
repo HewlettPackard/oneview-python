@@ -40,7 +40,7 @@ tasks_limited = tasks.get_all(0, 5)
 pprint(tasks_limited)
 
 # Get a specific task by id
-component = tasks_limited.data["uri"].split('/')[-1]
+component = tasks_limited[0]["uri"].split('/')[-1]
 print("Get a specific task")
 try:
     tasks = tasks.get_by_id(component)
@@ -54,7 +54,7 @@ tasks_filtered = tasks.get_all(filter="\"taskState='Completed'\"", view="tree", 
 pprint(tasks_filtered)
 
 # Performs a patch operation
-component = tasks_limited.data["uri"].split('/')[-1]
+component = tasks_limited[0]["uri"].split('/')[-1]
 if oneview_client.api_version >= 1200:
     task = tasks.get_by_id(component)
     if task.data.get('isCancellable') and task.data['isCancellable'] is False:

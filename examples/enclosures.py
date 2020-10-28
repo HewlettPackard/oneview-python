@@ -35,10 +35,10 @@ config = {
     "enclosure_password": "",
 }
 
-enclosure_name = "Enc"
+enclosure_name = "0000A66101"
 
 # Specify variant of your appliance before running this example
-api_variant = "C7000"
+api_variant = "Synergy"
 
 # Declare a CA signed certificate file path.
 certificate_file = ""
@@ -79,10 +79,16 @@ enclosure = enclosure_resource.get_by_uri(uri)
 pprint(enclosure.data)
 
 # Update name of the newly added enclosure
-update_name = "Enc-Updated"
+update_name = enclosure_name + "-Updated"
 print("Updating the enclosure with name " + update_name)
 headers = {'If-Match': '*'}
 enclosure.patch('replace', '/name', update_name, custom_headers=headers)
+print("  Done.\n  URI = '{uri}', name = {name}".format(**enclosure.data))
+
+# Revert the name of the enclosure
+print("Reverting the enclosure name " + enclosure_name)
+headers = {'If-Match': '*'}
+enclosure.patch('replace', '/name', enclosure_name, custom_headers=headers)
 print("  Done.\n  URI = '{uri}', name = {name}".format(**enclosure.data))
 
 # Update configuration
@@ -144,7 +150,11 @@ except HPEOneViewException as e:
     print(e.msg)
 
 # Create a Certificate Signing Request (CSR) for the enclosure.
-bay_number = 1  # Required for C7000 enclosure
+if api_variant == 'C7000':
+    bay_number = 1  # Required for C7000 enclosure
+else:
+    bay_number = None
+
 csr_data = {
     "type": "CertificateDtoV2",
     "organization": "organization",
@@ -173,8 +183,7 @@ except HPEOneViewException as e:
 try:
     # Certificate has to be signed by CA before running the task.
     certificate_file = "enclosure.csr"
-    with open(certificate_file, "r") as file_object:
-        certificate = file_object.read()
+    certificate = open(certificate_file).read()
 
     certificate_data = {
         "type": "CertificateDataV2",
@@ -185,6 +194,8 @@ try:
     print("Imported Signed Certificate  to the enclosure.")
 except HPEOneViewException as e:
     print(e.msg)
+except FileNotFoundError as e:
+    print(e)
 
 print("\n## Create the scope")
 options = {
@@ -205,10 +216,15 @@ if oneview_client.api_version >= 600:
                 i += 1
             pprint(enclosures_by_scope_uris)
         else:
-            print("No Enclosures Group found.")
+            print("No Enclosures found with scope.")
     except HPEOneViewException as e:
         print(e.msg)
 
-# Remove the recently added enclosure
-enclosure.remove()
-print("Enclosure removed successfully")
+# Delete the scope
+scope.delete()
+print("\n## Scope deleted successfully.")
+
+if api_variant == 'C7000':
+    # Remove the recently added enclosure
+    enclosure.remove()
+    print("Enclosure removed successfully")

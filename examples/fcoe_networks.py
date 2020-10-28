@@ -43,6 +43,7 @@ scope_name = ""
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 fcoe_networks = oneview_client.fcoe_networks
+scopes = oneview_client.scopes
 
 # Get all, with defaults
 print("\nGet all fcoe-networks")
@@ -89,7 +90,7 @@ pprint(fcoe_nets_by_uri.data)
 # Adds FCOE network to scope defined only for V300 and V500
 if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
-    scope = oneview_client.scopes.get_by_name(scope_name)
+    scope = scopes.get_by_name(scope_name)
     fcoe_with_scope = fcoe_network.patch('replace',
                                          '/scopeUris',
                                          [scope.data['uri']])
@@ -100,7 +101,7 @@ fcoe_network.delete()
 print("\nSuccessfully deleted fcoe-network")
 
 # Creates bulk fcoe-networks
-for i in range(2):
+for i in range(4):
     options = {
         "name": "OneViewSDK Test FCoE Network" + str(i),
         "vlanId": int("201") + int(i),
@@ -112,7 +113,7 @@ for i in range(2):
 # Delete bulk fcoe-networks
 if oneview_client.api_version >= 1600:
     bulk_network_uris = []
-    for i in range(2):
+    for i in range(4):
         fcoe_network_name = "OneViewSDK Test FCoE Network" + str(i)
         bulk_fcoe_network = fcoe_networks.get_by_name(fcoe_network_name)
         bulk_network_uris.append(bulk_fcoe_network.data['uri'])
