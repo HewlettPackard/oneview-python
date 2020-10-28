@@ -31,6 +31,7 @@ config = {
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
+api_variant = 'Synergy'
 oneview_client = OneViewClient(config)
 enclosure_groups = oneview_client.enclosure_groups
 scopes = oneview_client.scopes
@@ -40,7 +41,7 @@ lig_name = 'LIG'
 lig_uri = logical_interconnect_groups.get_by_name(lig_name).data['uri']
 
 lig_options = {
-    "name": "EG-test",
+    "name": "EG",
     "interconnectBayMappings": [
         {
             "interconnectBay": 3,
@@ -53,7 +54,7 @@ lig_options = {
     ],
     "ipAddressingMode": "External",
     "ipRangeUris": [],
-    "ipv6AddressingMode":" External",
+    "ipv6AddressingMode": "External",
     "ipv6RangeUris": [],
     "enclosureCount": 3,
     "osDeploymentSettings": {
@@ -75,7 +76,9 @@ scope_options = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-scope = scopes.create(scope_options)
+scope = scopes.get_by_name(scope_options['name'])
+if not scope:
+    scope = scopes.create(scope_options)
 
 # Get Enclosure Group by scope_uris
 if oneview_client.api_version >= 600:
@@ -109,35 +112,36 @@ def createEnclosureGroup():
             enclosure_group = enclosure_groups.create(options)
         else:
             enclosure_group = enclosure_groups.create(lig_options)
-    pprint(enclosure_group.data)
+    print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
     return enclosure_group
 
 enclosure_group = createEnclosureGroup()
 
 
 # Update an Enclosure Group
-resource = enclosure_group.data.copy()
-resource["name"] = "Renamed Enclosure Group"
+resource = { "name": "Renamed EG" }
+print("Renaming the enclosure Group")
 enclosure_group.update(resource)
 pprint(enclosure_group.data)
 
 # Update an Enclosure Group Script
-# update_script is available for API version 300 in Synergy and in all versions in C7000
-print("Update an Enclosure Group Script")
-script = "#TEST COMMAND"
-update_script_result = enclosure_group.update_script(script)
-pprint(update_script_result)
+if api_variant == 'C7000':
+    # update_script is available for API version 300 in Synergy and in all versions in C7000
+    print("Update an Enclosure Group Script")
+    script = "#TEST COMMAND"
+    update_script_result = enclosure_group.update_script(script)
+    pprint(update_script_result)
 
-# Gets the configuration script of a Enclosure Group
-# get_script is available for API version 300 in Synergy and in all versions in C7000
-print("Gets the configuration script of an Enclosure Group")
-script = enclosure_group.get_script()
-print(script)
+    # Gets the configuration script of a Enclosure Group
+    # get_script is available for API version 300 in Synergy and in all versions in C7000
+    print("Gets the configuration script of an Enclosure Group")
+    script = enclosure_group.get_script()
+    print(script)
 
 # Delete an Enclosure Group
 print("Delete the created Enclosure Group")
 enclosure_group.delete()
 print("Successfully deleted Enclosure Group")
-
+scope.delete()
 # Create EG for automation
 enclosure_group_dummy = createEnclosureGroup()
