@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -34,178 +34,302 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 logical_interconnect_groups = oneview_client.logical_interconnect_groups
 interconnect_types = oneview_client.interconnect_types
+scopes = oneview_client.scopes
+ethernet_networks = oneview_client.ethernet_networks
 
 # Define the scope name to add the logical interconnect group to it
-scope_name = ""
+iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
+mgmt_untagged = "mgmt"  # untagged managament network
+scope_name = "test_scope"
+interconnect_type_name1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
+interconnect_type_name2 = "Synergy 10Gb Interconnect Link Module"
 
-interconnect_type_name = "Synergy 10Gb Interconnect Link Module"
 # Get the interconnect type by name and using the uri in the values for the fields
 # "permittedInterconnectTypeUri" and create a Logical Interconnect Group.
 # Note: If this type does not exist, select another name
-interconnect_type = oneview_client.interconnect_types.get_by_name(interconnect_type_name)
-if interconnect_type:
-    pprint(interconnect_type.data)
-    interconnect_type_url = interconnect_type.data["uri"]
+interconnect_type_1 = interconnect_types.get_by_name(interconnect_type_name1)
+interconnect_type_2 = interconnect_types.get_by_name(interconnect_type_name2)
+interconnect_type1_uri = interconnect_type_1.data["uri"]
+interconnect_type2_uri = interconnect_type_2.data["uri"]
 
+# Get the ethernet network uri by name
+eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
+iscsi_network_uri = eth_nw1.data['uri']
+eth_nw2 = ethernet_networks.get_by_name(mgmt_untagged)
+mgmt_untagged_uri = eth_nw2.data['uri']
+
+# Create scope
+scope_options = {
+    "name": scope_name,
+    "description": "Sample Scope description"
+}
+scope = scopes.get_by_name(scope_options["name"])
+if scope:
+    print("Scope '{}' already exists".format(scope_name))
+else:
+    print("Creating the scope '{}'".format(scope_name))
+    scope = scopes.create(scope_options)
+
+# LIG payload
 options = {
-    "category": None,
-    "created": None,
-    "description": None,
-    "eTag": None,
-    "uplinkSets": [],
-    "modified": None,
-    "name": "OneView Test Logical Interconnect Group",
-    "state": "Active",
-    "status": None,
-    "enclosureType": "C7000",
+    "name": "LIG",
     "interconnectMapTemplate": {
         "interconnectMapEntryTemplates": [
             {
-                "logicalDownlinkUri": None,
                 "logicalLocation": {
                     "locationEntries": [
                         {
-                            "relativeValue": "1",
-                            "type": "Bay"
+                            "type": "Bay",
+                            "relativeValue": 3
                         },
                         {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
+                            "type": "Enclosure",
+                            "relativeValue": 1
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type_url
+                "permittedInterconnectTypeUri": interconnect_type1_uri,
+                "enclosureIndex": 1
             },
             {
-                "logicalDownlinkUri": None,
                 "logicalLocation": {
                     "locationEntries": [
                         {
-                            "relativeValue": "2",
-                            "type": "Bay"
+                            "type": "Bay",
+                            "relativeValue": 6
                         },
                         {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
+                            "type": "Enclosure",
+                            "relativeValue": 2
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type_url
+                "permittedInterconnectTypeUri": interconnect_type1_uri,
+                "enclosureIndex": 2
             },
             {
-                "logicalDownlinkUri": None,
                 "logicalLocation": {
                     "locationEntries": [
                         {
-                            "relativeValue": 3,
-                            "type": "Bay"
+                            "type": "Bay",
+                            "relativeValue": 6
                         },
                         {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
+                            "type": "Enclosure",
+                            "relativeValue": 1
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": None
+                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "enclosureIndex": 1
             },
             {
-                "logicalDownlinkUri": None,
                 "logicalLocation": {
                     "locationEntries": [
                         {
-                            "relativeValue": 4,
-                            "type": "Bay"
+                            "type": "Bay",
+                            "relativeValue": 3
                         },
                         {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
-                        }]
-                },
-                "permittedInterconnectTypeUri": None
-            },
-            {
-                "logicalDownlinkUri": None,
-                "logicalLocation": {
-                    "locationEntries": [
-                        {
-                            "relativeValue": 5,
-                            "type": "Bay"
-                        },
-                        {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
+                            "type": "Enclosure",
+                            "relativeValue": 2
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": None
+                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "enclosureIndex": 2
             },
             {
-                "logicalDownlinkUri": None,
                 "logicalLocation": {
                     "locationEntries": [
                         {
-                            "relativeValue": 6,
-                            "type": "Bay"
+                            "type": "Bay",
+                            "relativeValue": 3
                         },
                         {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
+                            "type": "Enclosure",
+                            "relativeValue": 3
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": None
+                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "enclosureIndex": 3
             },
             {
-                "logicalDownlinkUri": None,
                 "logicalLocation": {
                     "locationEntries": [
                         {
-                            "relativeValue": 7,
-                            "type": "Bay"
+                            "type": "Bay",
+                            "relativeValue": 6
                         },
                         {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
+                            "type": "Enclosure",
+                            "relativeValue": 3
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": None
-            },
-            {
-                "logicalDownlinkUri": None,
-                "logicalLocation": {
-                    "locationEntries": [
-                        {
-                            "relativeValue": 8,
-                            "type": "Bay"
-                        },
-                        {
-                            "relativeValue": 1,
-                            "type": "Enclosure"
-                        }
-                    ]
-                },
-                "permittedInterconnectTypeUri": None
+                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "enclosureIndex": 3
             }
         ]
-    }
+    },
+    "uplinkSets": [
+        {
+            "networkNames": [iscsi_network_uri],
+            "mode": "Auto",
+            "logicalPortConfigInfos": [
+                {
+                    "desiredSpeed": "Auto",
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "relativeValue": 82,
+                                "type": "Port"
+                            },
+                            {
+                                "relativeValue": 3,
+                                "type": "Bay"
+                            },
+                            {
+                                "relativeValue": 1,
+                                "type": "Enclosure"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "desiredSpeed": "Auto",
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "relativeValue": 87,
+                                "type": "Port"
+                            },
+                            {
+                                "relativeValue": 3,
+                                "type": "Bay"
+                            },
+                            {
+                                "relativeValue": 1,
+                                "type": "Enclosure"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "desiredSpeed": "Auto",
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "relativeValue": 82,
+                                "type": "Port"
+                            },
+                            {
+                                "relativeValue": 6,
+                                "type": "Bay"
+                            },
+                            {
+                                "relativeValue": 2,
+                                "type": "Enclosure"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "desiredSpeed": "Auto",
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "relativeValue": 88,
+                                "type": "Port"
+                            },
+                            {
+                                "relativeValue": 6,
+                                "type": "Bay"
+                            },
+                            {
+                                "relativeValue": 2,
+                                "type": "Enclosure"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "networkType": "Ethernet",
+            "ethernetNetworkType": "ImageStreamer",
+            "name": "deploy"
+        },
+        {
+            "networkNames": [mgmt_untagged_uri],
+            "mode": "Auto",
+            "logicalPortConfigInfos": [
+                {
+                    "desiredSpeed": "Auto",
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "type": "Bay",
+                                "relativeValue": 3
+                            },
+                            {
+                                "type": "Port",
+                                "relativeValue": 62
+                            },
+                            {
+                                "type": "Enclosure",
+                                "relativeValue": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "desiredSpeed": "Auto",
+                    "logicalLocation": {
+                        "locationEntries": [
+                            {
+                                "type": "Bay",
+                                "relativeValue": 6
+                            },
+                            {
+                                "type": "Port",
+                                "relativeValue": 62
+                            },
+                            {
+                                "type": "Enclosure",
+                                "relativeValue": 2
+                            }
+                        ]
+                    }
+                }
+            ],
+            "networkType": "Ethernet",
+            "ethernetNetworkType": "Untagged",
+            "name": "mgmt"
+        }
+    ],
+    "enclosureType": "SY12000",
+    "enclosureIndexes": [1, 2, 3],
+    "interconnectBaySet": "3",
+    "redundancyType": "HighlyAvailable"
 }
 
 # Get all, with defaults
 print("Get all Logical Interconnect Groups")
 ligs = logical_interconnect_groups.get_all()
-pprint(ligs)
+for lig in ligs:
+    print(" - {}".format(lig['name']))
 
 # Get by uri
 print("Get a Logical Interconnect Group by uri")
-lig_byuri = logical_interconnect_groups.get_by_uri(ligs[0]["uri"])
-pprint(lig_byuri.data)
+lig_by_uri = logical_interconnect_groups.get_by_uri(ligs[0]["uri"])
+pprint(lig_by_uri.data)
 
 # Get the first 10 records, sorting by name descending, filtering by name
 print("Get the first Logical Interconnect Groups, sorting by name descending, filtering by name")
 ligs = logical_interconnect_groups.get_all(
     0, 10, sort='name:descending', filter="\"'name'='OneView Test Logical Interconnect Group'\"")
-pprint(ligs)
+for lig in ligs:
+    print(" - {}".format(lig['name']))
 
 # Get Logical Interconnect Group by property
 lig = logical_interconnect_groups.get_by('name', 'LIG')[0]
@@ -213,14 +337,11 @@ print("Found lig by name: '%s'.\n  uri = '%s'" % (lig['name'], lig['uri']))
 
 # Get Logical Interconnect Group by scope_uris
 if oneview_client.api_version >= 600:
-    lig_by_scope_uris = logical_interconnect_groups.get_all(scope_uris="\"'/rest/scopes/3bb0c754-fd38-45af-be8a-4d4419de06e9'\"")
+    lig_by_scope_uris = logical_interconnect_groups.get_all(scope_uris=scope.data['uri'])
     if len(lig_by_scope_uris) > 0:
-        print("Found %d Logical Interconnect Groups" % (len(lig_by_scope_uris)))
-        i = 0
-        while i < len(lig_by_scope_uris):
-            print("Found Logical Interconnect Group by scope_uris: '%s'.\n  uri = '%s'" % (lig_by_scope_uris[i]['name'], lig_by_scope_uris[i]['uri']))
-            i += 1
-        pprint(lig_by_scope_uris)
+        print("Found {} Logical Interconnect Groups".format(len(lig_by_scope_uris)))
+        for lig_scope in lig_by_scope_uris:
+            print("Found Logical Interconnect Group by scope_uris: '{}'.\n  uri = '{}'".format(lig_scope['name'], lig_scope['uri']))
     else:
         print("No Logical Interconnect Group found.")
 
@@ -230,7 +351,7 @@ if not lig:
     # Create a logical interconnect group
     print("Create a logical interconnect group")
     lig = logical_interconnect_groups.create(options)
-    pprint(lig.data)
+    print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))
 
 # Update a logical interconnect group
 print("Update a logical interconnect group")
@@ -263,3 +384,8 @@ pprint(lig_settings)
 print("Delete the created logical interconnect group")
 lig.delete()
 print("Successfully deleted logical interconnect group")
+
+# Create a logical interconnect group as a pre-requisite for LE creation
+print("Create a logical interconnect group as a pre-requisite for LE creation")
+lig = logical_interconnect_groups.create(options)
+print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))

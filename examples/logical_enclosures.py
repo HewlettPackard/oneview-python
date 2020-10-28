@@ -35,15 +35,33 @@ oneview_client = OneViewClient(config)
 enclosure_groups = oneview_client.enclosure_groups
 enclosures = oneview_client.enclosures
 logical_enclosures = oneview_client.logical_enclosures
+scopes = oneview_client.scopes
+firmware_drivers = oneview_client.firmware_drivers
 
 # The valid enclosure URIs need to be inserted sorted by URI
 # The number of enclosure URIs must be equal to the enclosure count in the enclosure group
 options = dict(
     enclosureUris=[],
-    enclosureGroupUri="",
+    enclosureGroupUri="EG",
     forceInstallFirmware=False,
-    name="LogicalEnclosure2"
+    name="LE"
 )
+
+variant = 'synergy'
+scope_name = 'test_scope'
+firmware_driver_name = "SPP_2018_06_20180709_for_HPE_Synergy_Z7550-96524"
+
+# Create scope
+scope_options = {
+    "name": scope_name,
+    "description": "Sample Scope description"
+}
+scope = scopes.get_by_name(scope_name)
+if scope:
+    print("Scope '{}' already exists".format(scope_name))
+else:
+    print(" Creating the scope '{}'".format(scope_name))
+    scope = scopes.create(scope_options)
 
 # Get all logical enclosures
 print("Get all logical enclosures")
@@ -65,7 +83,7 @@ if logical_enclosure_all:
 
 # Get Logical Enclosure by scope_uris
 if oneview_client.api_version >= 600:
-    le_by_scope_uris = logical_enclosures.get_all(scope_uris="\"'/rest/scopes/cd237b60-09e2-45c4-829e-082e318a6d2a'\"")
+    le_by_scope_uris = logical_enclosures.get_all(scope_uris=scope.data['uri'])
     if len(le_by_scope_uris) > 0:
         print("Got Logical Enclosure by scope_uris: '%s'.\n  uri = '%s'" % (le_by_scope_uris[0]['name'], le_by_scope_uris[0]['uri']))
         pprint(le_by_scope_uris)
@@ -75,11 +93,10 @@ if oneview_client.api_version >= 600:
 # Get Logical Enclosure by name
 logical_enclosure = logical_enclosures.get_by_name(options["name"])
 if not logical_enclosure:
-    # Get enclosure group for creating logical enclosure
-    enclosure_groups_all = enclosure_groups.get_all()
-    first_enclosure_groups = enclosure_groups_all[0]
-    options["enclosureGroupUri"] = first_enclosure_groups["uri"]
-    enclosure_count = first_enclosure_groups["enclosureCount"]
+    # Get enclosure group uri for creating logical enclosure
+    enclosure_group = enclosure_groups.get_by_name(options['enclosureGroupUri'])
+    options["enclosureGroupUri"] = enclosure_group.data["uri"]
+    enclosure_count = enclosure_group["enclosureCount"]
 
     # Get enclosures
     enclosures_all = enclosures.get_all()
@@ -121,10 +138,11 @@ print("   Done.")
 
 # Update and get script
 # This method is available for API version 300 in synergy and in all API versions in c7000
-print("Update script")
-script = "# TEST COMMAND"
-logical_enclosure_updated = logical_enclosure.update_script(logical_enclosure.data['uri'], script)
-print("   updated script: '{}'".format(logical_enclosure.get_script()))
+if variant == 'synergy' and oneview_client.api_version == 300:
+    print("Update script")
+    script = "# TEST COMMAND"
+    logical_enclosure_updated = logical_enclosure.update_script(logical_enclosure.data['uri'], script)
+    print("   updated script: '{}'".format(logical_enclosure.get_script()))
 
 # Create support dumps
 print("Generate support dump")
@@ -137,19 +155,24 @@ support_dump = logical_enclosure.generate_support_dump(info)
 print("   Done")
 
 # update from group
-print("Update from group")
-logical_enclosure_updated = logical_enclosure.update_from_group()
-print("   Done")
+try:
+    print("Update from group")
+    logical_enclosure_updated = logical_enclosure.update_from_group()
+    print("   Done")
+except Exception as e:
+    print(e)
 
+# Replace firmware of LE
+firmware_driver = firmware_drivers.get_by('name', firmware_driver_name)
 if oneview_client.api_version >= 300:
-    if logical_enclosure:
+    if logical_enclosure and len(firmware_driver) != 0:
         print("Update firmware for a logical enclosure with the logical-interconnect validation set as true.")
 
         logical_enclosure_updated = logical_enclosure.patch(
             operation="replace",
             path="/firmware",
             value={
-                "firmwareBaselineUri": "/rest/firmware-drivers/SPP_2018_06_20180709_for_HPE_Synergy_Z7550-96524",
+                "firmwareBaselineUri": firmware_driver[0]['uri'],
                 "firmwareUpdateOn": "EnclosureOnly",
                 "forceInstallFirmware": "true",
                 "validateIfLIFirmwareUpdateIsNonDisruptive": "true",
@@ -160,7 +183,7 @@ if oneview_client.api_version >= 300:
         )
         pprint(logical_enclosure_updated.data)
 
-# Delete the logical enclosure created
+# Delete the logical enclosure created (commented this to achieve continuty of automation script execution)
 # This method is only available on HPE Synergy.
-logical_enclosure.delete()
-print("Delete logical enclosure")
+# logical_enclosure.delete()
+# print("Delete logical enclosure")

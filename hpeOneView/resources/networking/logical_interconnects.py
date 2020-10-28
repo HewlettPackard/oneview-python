@@ -515,5 +515,5 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         Returns: Consolidated inconsistency report.
         """
-        uri = "{}/bulk-inconsistency-validation".format(self.data["uri"])
+        uri = "{}/bulk-inconsistency-validation".format(self.URI)
         return self._helper.do_post(uri, validation_request, timeout, None)
