@@ -180,7 +180,7 @@ options = {
     "uplinkSets": [
         {
             "networkType": "FibreChannel",
-            "networkNames": [fc_network_uri],
+            "networkUris": [fc_network_uri],
             "mode": "Auto",
             "name": "FC_fabric",
             "logicalPortConfigInfos": [
@@ -228,7 +228,7 @@ options = {
             "ethernetNetworkType": "NotApplicable",
         },
         {
-            "networkNames": [iscsi_network_uri],
+            "networkUris": [iscsi_network_uri],
             "mode": "Auto",
             "logicalPortConfigInfos": [
                 {
@@ -313,7 +313,7 @@ options = {
             "name": "deploy"
         },
         {
-            "networkNames": [mgmt_untagged_uri],
+            "networkUris": [mgmt_untagged_uri],
             "mode": "Auto",
             "logicalPortConfigInfos": [
                 {
@@ -438,7 +438,7 @@ print("Delete the created logical interconnect group")
 lig.delete()
 print("Successfully deleted logical interconnect group")
 
-# Create a logical interconnect group as a pre-requisite for LE creation
+# Create a logical interconnect group for automation
 print("Create a logical interconnect group as a pre-requisite for LE creation")
 lig = logical_interconnect_groups.create(options)
 print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))

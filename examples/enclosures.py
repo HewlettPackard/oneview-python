@@ -194,7 +194,7 @@ try:
     print("Imported Signed Certificate  to the enclosure.")
 except HPEOneViewException as e:
     print(e.msg)
-except FileNotFoundError as e:
+except Exception as e:
     print(e)
 
 print("\n## Create the scope")
