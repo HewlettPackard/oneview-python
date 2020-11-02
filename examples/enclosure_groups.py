@@ -41,7 +41,7 @@ lig_name = 'LIG'
 lig_uri = logical_interconnect_groups.get_by_name(lig_name).data['uri']
 
 lig_options = {
-    "name": "EG",
+    "name": "EG-test",
     "interconnectBayMappings": [
         {
             "interconnectBay": 3,
@@ -101,6 +101,7 @@ pprint(eg_byuri.data)
 
 # Get by name
 
+
 def createEnclosureGroup():
     enclosure_group = enclosure_groups.get_by_name(lig_options["name"])
     if not enclosure_group:
@@ -115,11 +116,12 @@ def createEnclosureGroup():
     print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
     return enclosure_group
 
+
 enclosure_group = createEnclosureGroup()
 
 
 # Update an Enclosure Group
-resource = { "name": "Renamed EG" }
+resource = {"name": "Renamed EG"}
 print("Renaming the enclosure Group")
 enclosure_group.update(resource)
 pprint(enclosure_group.data)
@@ -143,5 +145,6 @@ print("Delete the created Enclosure Group")
 enclosure_group.delete()
 print("Successfully deleted Enclosure Group")
 scope.delete()
+
 # Create EG for automation
 enclosure_group_dummy = createEnclosureGroup()
