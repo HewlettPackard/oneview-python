@@ -36,11 +36,9 @@ class EnclosureGroups(Resource):
     URI = '/rest/enclosure-groups'
 
     DEFAULT_VALUES = {
-        '800': {"type": "EnclosureGroupV7"},
+        '800':  {"type": "EnclosureGroupV7"},
         '1000': {"type": "EnclosureGroupV7"},
-        '1200': {"type": "EnclosureGroupV8"},
-        '1600': {"type": "EnclosureGroupV8"},
-        '1800': {"type": "EnclosureGroupV8"}
+        '1200': {"type": "EnclosureGroupV8"}
     }
 
     def __init__(self, connection, data=None):
