@@ -104,13 +104,14 @@ options = {
     "name": "SampleScope",
     "description": "Sample Scope description"
 }
-scope = scopes.create(options)
+scope = scopes.get_by_name(options['name'])
+if not scope:
+    scope = scopes.create(options)
 pprint(scope.data)
 
 # Get all the reachable storage pools filtered by scope uris.
-scope_uris = scope.get_by_uri(scope.data['uri'])
 print("Get all reachable storage pools filtered by scopes")
-reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_uris=scope_uris)
+reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_uris=scope.data['uri'])
 print(reachable_storage_pools)
 
 # Get all managed storage pools
@@ -150,8 +151,9 @@ if storage_pools_all and storage_pools_all[0]:
     except HPEOneViewException as e:
         print(e.msg)
 
+# comment the below example to support automation dependency
 # Remove storage system, if it was added
-if storage_system_added:
-    print("Remove recently added storage system")
-    s_system.remove()
-    print("Done.")
+# if storage_system_added:
+#     print("Remove recently added storage system")
+#     s_system.remove()
+#     print("Done.")

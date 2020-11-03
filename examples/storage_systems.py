@@ -78,28 +78,28 @@ def createStorageSystem():
         print("\nStorage system {} was already added.\n   uri = {}" .format(
               str(storage_system.data['name']), str(storage_system.data['uri'])))
     print(storage_system.data)
+
+    # Adds managed domains and managed pools to StoreServ storage systems
+    # This is a one-time only action, after this you cannot change the managed values
+    storage_sys_data = storage_system.data.copy()
+    if not storage_sys_data['deviceSpecificAttributes']['managedDomain']:
+        storage_sys_data['deviceSpecificAttributes']['managedDomain'] = storage_sys_data[
+            'deviceSpecificAttributes']['discoveredDomains'][0]
+        for pool in storage_sys_data['deviceSpecificAttributes']['discoveredPools']:
+            if pool['domain'] == storage_sys_data['deviceSpecificAttributes']['managedDomain']:
+                pool_to_manage = pool
+                storage_sys_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
+                pprint(pool_to_manage)
+                break
+        storage_sys_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
+        storage_system.update(storage_sys_data)
+        print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
+              storage_system.data['deviceSpecificAttributes']['managedDomain']))
     return storage_system
 
 
 storage_system = createStorageSystem()
 
-
-# Adds managed domains and managed pools to StoreServ storage systems
-# This is a one-time only action, after this you cannot change the managed values
-storage_sys_data = storage_system.data.copy()
-if not storage_sys_data['deviceSpecificAttributes']['managedDomain']:
-    storage_sys_data['deviceSpecificAttributes']['managedDomain'] = storage_sys_data[
-        'deviceSpecificAttributes']['discoveredDomains'][0]
-    for pool in storage_sys_data['deviceSpecificAttributes']['discoveredPools']:
-        if pool['domain'] == storage_sys_data['deviceSpecificAttributes']['managedDomain']:
-            pool_to_manage = pool
-            storage_sys_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
-            pprint(pool_to_manage)
-            break
-    storage_sys_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
-    storage_system.update(storage_sys_data)
-    print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
-          storage_system.data['deviceSpecificAttributes']['managedDomain']))
 
 # Get a list of storage pools
 print("\nGet a list of storage pools managed by storage system")

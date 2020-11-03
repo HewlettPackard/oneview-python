@@ -40,8 +40,8 @@ logical_interconnect_groups = oneview_client.logical_interconnect_groups
 lig_name = 'LIG'
 lig_uri = logical_interconnect_groups.get_by_name(lig_name).data['uri']
 
-lig_options = {
-    "name": "EG-test",
+eg_options = {
+    "name": "EG",
     "interconnectBayMappings": [
         {
             "interconnectBay": 3,
@@ -103,16 +103,16 @@ pprint(eg_byuri.data)
 
 
 def createEnclosureGroup():
-    enclosure_group = enclosure_groups.get_by_name(lig_options["name"])
+    enclosure_group = enclosure_groups.get_by_name(eg_options["name"])
     if not enclosure_group:
         # Create a Enclosure Group
         print("Create a Enclosure Group")
         if oneview_client.api_version <= 500:
             options = {"stackingMode": "Enclosure"}
-            options.update(lig_options)
+            options.update(eg_options)
             enclosure_group = enclosure_groups.create(options)
         else:
-            enclosure_group = enclosure_groups.create(lig_options)
+            enclosure_group = enclosure_groups.create(eg_options)
     print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
     return enclosure_group
 
@@ -147,4 +147,6 @@ print("Successfully deleted Enclosure Group")
 scope.delete()
 
 # Create EG for automation
-enclosure_group_dummy = createEnclosureGroup()
+createEnclosureGroup()
+eg_options['name'] = "EG-2"
+createEnclosureGroup()

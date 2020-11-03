@@ -17,6 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -30,6 +31,7 @@ config = {
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
+variant = 'Synergy'
 options = {
     "hostname": config['server_hostname'],
     "username": config['server_username'],
@@ -49,7 +51,7 @@ for serv in server_hardware_all:
     print('  %s' % serv['name'])
 
 server = server_hardwares.get_by_name(server_name)
-if not server:
+if not server and variant == 'C7000':
     # Create a rack-mount server
     # This is only supported on appliance which support rack mounted servers
     server = server_hardwares.add(options)
@@ -57,7 +59,7 @@ if not server:
 
 # Create Multiple rack-mount servers
 # This is only supported on appliance which support rack mounted servers
-if oneview_client.api_version >= 600:
+if oneview_client.api_version >= 600 and variant == 'C7000':
     options_to_add_multiple_server = {
         "mpHostsAndRanges": config['server_mpHostsAndRanges'],
         "username": config['server_username'],
@@ -68,7 +70,7 @@ if oneview_client.api_version >= 600:
     multiple_server = server_hardwares.add_multiple_servers(options_to_add_multiple_server)
     pprint(multiple_server.data)
 else:
-    print("\nCANNOT CREATE MULTIPLE SERVERS! Endpoint supported for REST API Versions 600 and above only.\n")
+    print("\nCANNOT CREATE MULTIPLE SERVERS! Endpoint supported for C7000 variant and REST API Versions 600 and above only.\n")
 
 # Get recently added server hardware resource by uri
 if server:
@@ -109,7 +111,7 @@ print("Set the calibrated max power of an unmanaged or unsupported server hardwa
 configuration = {
     "calibratedMaxPower": 2500
 }
-if server:
+if server and server.data['state'] == 'Unmanaged':
     server_updated_encConf = server.update_environmental_configuration(configuration)
 
 # Get URL to launch SSO session for iLO web interface
@@ -178,7 +180,7 @@ if oneview_client.api_version >= 300 and server:
     p = server_hardwares.get_all_firmwares(filter="serverName='{}'".format(server_name))
     pprint(p)
 
-if oneview_client.api_version >= 500 and server:
+if oneview_client.api_version >= 500 and server and server.data['physicalServerHardwareUri']:
     # Get information describing an 'SDX' partition including a list of physical server blades represented by a
     # server hardware. Only supported by SDX enclosures.
     print("Get SDX physical server hardware")
@@ -187,13 +189,16 @@ if oneview_client.api_version >= 500 and server:
 
 # This operation works from Oneview API Version 1800.
 if oneview_client.api_version >= 1800 and server:
-    # Gets the updated version 2 local storage resource for the server.
-    print("Get updated local storage resource of server hardware")
-    local_storage = server.get_local_storage()
-    pprint(local_storage)
+    try:
+        # Gets the updated version 2 local storage resource for the server.
+        print("Get updated local storage resource of server hardware")
+        local_storage = server.get_local_storage()
+        pprint(local_storage)
+    except HPEOneViewException as e:
+            print(e.msg)
 
 # Remove rack server
 # This operation works till Oneview API Version 500.
-if oneview_client.api_version <= 500:
+if oneview_client.api_version <= 500 and varinat == 'C7000':
     server.remove()
     print("Server removed successfully")

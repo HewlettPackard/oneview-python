@@ -32,16 +32,20 @@ config = {
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 volumes = oneview_client.volumes
+fc_networks = oneview_client.fc_networks
 storage_systems = oneview_client.storage_systems
 storage_pools = oneview_client.storage_pools
 storage_volume_templates = oneview_client.storage_volume_templates
+scopes = oneview_client.scopes
 
 # To run this example, you may set a WWN to add a volume using the WWN of the volume (optional)
 unmanaged_volume_wwn = ''
+scope_name = 'SampleScope'
 
 # Defines the storage system and the storage pool which are provided to create the volumes
 storage_system = storage_systems.get_all()[0]
-storage_pools_all = storage_pools.get_all()
+fc_network_uri = fc_networks.get_all()[0]['uri']
+storage_pools_all = storage_pools.get_all(filter="\"'isManaged'='True'\"")
 storage_pool_available = False
 
 for sp in storage_pools_all:
@@ -52,21 +56,21 @@ for sp in storage_pools_all:
 if not storage_pool_available:
     raise ValueError("ERROR: No storage pools found attached to the storage system")
 
-volume_template_byname = storage_volume_templates.get_by_name('test_02')
+volume_template = storage_volume_templates.get_all()[0]
 
 # Create a volume with a Storage Pool
 print("\nCreate a volume with a specified Storage Pool and Snapshot Pool")
 
 options = {
     "properties": {
-        "storagePool": storage_pool[0]['uri'],
+        "storagePool": storage_pool['uri'],
         "size": 1024 * 1024 * 1024,  # 1GB
         "isShareable": False,
-        "snapshotPool": storage_pool[0]['uri'],
+        "snapshotPool": storage_pool['uri'],
         "provisioningType": "Thin",
-        "name": "ONEVIEW_SDK_TEST_VOLUME_TYPE_1"
+        "name": "Test_volume"
     },
-    "templateUri": volume_template_byname.data['uri'],
+    "templateUri": volume_template['uri'],
     "isPermanent": False
 }
 
@@ -165,11 +169,9 @@ attachable_volumes = volumes.get_attachable_volumes()
 pprint(attachable_volumes)
 
 print("\nGet the attachable volumes which are managed by the appliance with scopes and connections")
-scope_uris = '/rest/scopes/e4a23533-9a72-4375-8cd3-a523016df852'
+scope_uris = scopes.get_by_name(scope_name).data['uri']
 
-connections = [{'networkUri': '/rest/fc-networks/90bd0f63-3aab-49e2-a45f-a52500b46616',
-                'proxyName': '20:19:50:EB:1A:0F:0E:B6', 'initiatorName': '10:00:62:01:F8:70:00:0E'},
-               {'networkUri': '/rest/fc-networks/8acd0f62-1aab-49e2-a45a-d22500b4acdb',
+connections = [{'networkUri': fc_network_uri,
                 'proxyName': '20:18:40:EB:1A:0F:0E:C7', 'initiatorName': '10:00:72:01:F8:70:00:0F'}]
 attachable_volumes = volumes.get_attachable_volumes(scope_uris=scope_uris, connections=connections)
 pprint(attachable_volumes)
@@ -181,3 +183,7 @@ if new_volume:
 if unmanaged_volume_wwn:
     volume_added_with_wwn.delete(export_only=True)
     print("The volume, that was previously added using the WWN of the volume, was deleted from OneView")
+
+# Create volume for automation
+new_volume = volumes.create(options)
+print("Created volume '{}' with uri '{}'".format(new_volume.data['name'], new_volume.data['uri']))

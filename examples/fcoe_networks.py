@@ -121,3 +121,8 @@ if oneview_client.api_version >= 1600:
     options_bulk_delete = {"networkUris": bulk_network_uris}
     fcoe_network.delete_bulk(options_bulk_delete)
     print("Successfully deleted bulk fcoe-networks")
+
+# Create a FCoE Network for automation
+options['name'] = "Test_fcoeNetwork"
+fcoe_network = fcoe_networks.create(options)
+print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network.data['name'], fcoe_network.data['uri']))
