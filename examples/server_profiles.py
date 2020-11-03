@@ -42,11 +42,11 @@ server_hardwares = oneview_client.server_hardware
 scopes = oneview_client.scopes
 
 # To run this sample you must define a server hardware type uri and an enclosure group uri
-profile_template_name = "OneView Test Profile Template"
-profile_name = "OneView Test Profile"
+profile_template_name = "ProfileTemplate-1"
+profile_name = "TestProfile"
 enclosure_group_name = "EG"
-server_hardware_type_name = "SY 480 Gen9 2"
-server_hardware_name = "0000A66102, bay 3"
+server_hardware_type_name = "SY 480 Gen9 1"
+server_hardware_name = "0000A66102, bay 5"
 # To run the example 'get a specific storage system' you must define a storage system ID
 storage_system_id = None
 
@@ -62,23 +62,18 @@ for profile in all_profiles:
 
 # Get by property
 print("\nGet a list of server profiles that matches the specified macType")
-if all_profiles[1]:
-    profile_mac_type = all_profiles[1]["macType"]
+if all_profiles:
+    profile_mac_type = all_profiles[0]["macType"]
     profiles = server_profiles.get_by('macType', profile_mac_type)
     for profile in profiles:
         print('  %s' % profile['name'])
-
-# Get by uri
-print("\nGet a server profile by uri")
-profile = server_profiles.get_by_uri(all_profiles[0]['uri'])
-pprint(profile.data)
 
 # Get by name
 print("\nGet a server profile by name")
 profile = server_profiles.get_by_name(profile_name)
 
 if profile:
-    pprint(profile)
+    print("Found profile with name '{}' and uri '{}'".format(profile.data['name'], profile.data['uri']))
 else:
     server_template = profile_templates.get_by_name(profile_template_name)
     if not server_template:
@@ -88,16 +83,22 @@ else:
             serverHardwareTypeUri=hardware_type.data["uri"],
             enclosureGroupUri=enclosure_group.data["uri"]))
 
-    # Create a server profile
-    print("\nCreate a basic connection-less assigned server profile")
     basic_profile_options = dict(
         name=profile_name,
         serverProfileTemplateUri=server_template.data["uri"],
         serverHardwareTypeUri=hardware_type.data["uri"],
         enclosureGroupUri=enclosure_group.data["uri"]
     )
+
+    # Create a server profile
+    print("\nCreate a basic connection-less assigned server profile")
     profile = server_profiles.create(basic_profile_options)
-    pprint(profile.data)
+    print("Created profile with name '{}' and uri '{}'".format(profile.data['name'], profile.data['uri']))
+
+# Get by uri
+print("\nGet a server profile by uri")
+profile = server_profiles.get_by_uri(profile.data['uri'])
+pprint(profile.data)
 
 # Update bootMode from recently created profile
 print("\nUpdate bootMode from recently created profile")
@@ -107,19 +108,19 @@ if profile:
     profile.update(profile_to_update)
     pprint(profile.data)
 
-# Patch
-print("\nUpdate the profile configuration from server profile template")
-if profile:
-    profile.patch(operation="replace",
-                  path="/templateCompliance", value="Compliant")
-    pprint(profile.data)
-
 # Server profile compliance preview
 print("\nGets the preview of manual and automatic updates required to make the server profile consistent "
       "with its template.")
 if profile:
     schema = profile.get_compliance_preview()
     pprint(schema)
+
+# Patch
+print("\nUpdate the profile configuration from server profile template")
+if profile:
+    profile.patch(operation="replace",
+                  path="/templateCompliance", value="Compliant")
+    pprint(profile.data)
 
 if oneview_client.api_version <= 500 and profile:
     # Retrieve the error or status messages associated with the specified profile
@@ -160,11 +161,6 @@ if profile:
     profile.delete()
     print("The server profile was successfully deleted.")
 
-# Delete the created server profile template
-if server_template:
-    server_template.delete()
-    print("The server profile template was successfully deleted")
-
 # Get profile ports
 print("\nRetrieve the port model associated with a server hardware type and enclosure group")
 profile_ports = server_profiles.get_profile_ports(enclosureGroupUri=enclosure_group.data["uri"],
@@ -185,11 +181,13 @@ available_networks = server_profiles.get_available_networks(
 pprint(available_networks)
 
 print("\n## Create the scope")
-options = {
+scope_options = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-scope = scopes.create(options)
+scope = scopes.get_by_name(scope_options['name'])
+if not scope:
+    scope = scopes.create(scope_options)
 
 # Get the all Ethernet networks associated with a server hardware type, enclosure group and scopeuris
 # This method ie., get_available_networks works with all the API versions but the scope_uris param is available
@@ -251,3 +249,15 @@ server_profiles.create(dict(
 ))
 server_profiles.delete_all(filter="name='Profile fake'")
 print("The server profiles were successfully deleted.")
+
+# Create a server profile for automation
+print("\nCreate a basic connection-less assigned server profile")
+profile = server_profiles.create(basic_profile_options)
+print("Created profile with name '{}' and uri '{}'".format(profile.data['name'], profile.data['uri']))
+
+# Make SP compliant with SPT
+print("\nUpdate the profile configuration from server profile template")
+if profile:
+    profile.patch(operation="replace",
+                  path="/templateCompliance", value="Compliant")
+    pprint(profile.data)
