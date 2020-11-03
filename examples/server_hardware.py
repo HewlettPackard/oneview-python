@@ -195,10 +195,10 @@ if oneview_client.api_version >= 1800 and server:
         local_storage = server.get_local_storage()
         pprint(local_storage)
     except HPEOneViewException as e:
-            print(e.msg)
+        print(e.msg)
 
 # Remove rack server
 # This operation works till Oneview API Version 500.
-if oneview_client.api_version <= 500 and varinat == 'C7000':
+if oneview_client.api_version <= 500 and variant == 'C7000':
     server.remove()
     print("Server removed successfully")
