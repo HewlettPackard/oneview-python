@@ -36,12 +36,12 @@ volume_attachments = oneview_client.storage_volume_attachments
 volumes = oneview_client.volumes
 server_profiles = oneview_client.server_profiles
 
-#variable definitions
+# variable definitions
 sp_name = "TestProfile"
 volume_name = "Test_volume"
+
 # To run all parts of this example, a server profile uri, volume uri, volume attachment id and
 # path id must be defined.
-
 serverProfileUri = server_profiles.get_by_name(sp_name).data['uri']
 storageVolumeUri = volumes.get_by_name(volume_name).data['uri']
 
