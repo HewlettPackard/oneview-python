@@ -46,7 +46,7 @@ enclosure_group_name = "EG"
 hardware_type_for_transformation = "SY 480 Gen9 2"
 enclosure_group_for_transformation = "EG-2"
 scope_name = "SampleScope"
-mgmt_nw_name = "mgmt_untagged"
+mgmt_nw_name = "mgmt_nw"
 
 hardware_type = hardware_types.get_by_name(hardware_type_name)
 enclosure_group = enclosure_groups.get_by_name(enclosure_group_name)

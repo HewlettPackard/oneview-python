@@ -74,8 +74,14 @@ options = {
     "isPermanent": False
 }
 
-new_volume = volumes.create(options)
-pprint(new_volume.data)
+# Find a volume by name
+volume = volumes.get_by_name(options['properties']['name'])
+
+if not volume:
+    volume = volumes.create(options)
+    print("\nCreated a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
+else:
+    print("\nFound a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
 
 # Add a volume for management by the appliance using the WWN of the volume
 if unmanaged_volume_wwn:
@@ -97,15 +103,10 @@ if unmanaged_volume_wwn:
 # Get all managed volumes
 print("\nGet a list of all managed volumes")
 volumes_all = volumes.get_all()
-for volume in volumes_all:
-    print("Name: {name}".format(**volume))
+for volume_each in volumes_all:
+    print("Name: {name}".format(**volume_each))
 
-# Find a volume by name
-if new_volume:
-    volume = volumes.get_by_name(new_volume.data['name'])
-    print("\nFound a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
-
-# Update the name of the volume recently found to 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
+# Update the name of the volume recently found to 'Test_volume'
 if volume:
     volume_data = volume.data.copy()
     volume_data['name'] = 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
@@ -177,8 +178,8 @@ attachable_volumes = volumes.get_attachable_volumes(scope_uris=scope_uris, conne
 pprint(attachable_volumes)
 
 print("\nDelete the recently created volumes")
-if new_volume:
-    new_volume.delete()
+if volume:
+    volume.delete()
     print("The volume, that was previously created with a Storage Pool, was deleted from OneView and storage system")
 if unmanaged_volume_wwn:
     volume_added_with_wwn.delete(export_only=True)
