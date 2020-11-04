@@ -18,6 +18,7 @@
 from pprint import pprint
 
 from hpeOneView.oneview_client import OneViewClient
+from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -108,11 +109,14 @@ if not logical_enclosure:
 
     # Create a logical enclosure
     # This method is only available on HPE Synergy.
-    logical_enclosure = logical_enclosures.create(options)
-    print("Created logical enclosure'%s' successfully.\n  uri = '%s'" % (
-        logical_enclosure.data['name'],
-        logical_enclosure.data['uri'])
-    )
+    try:
+        logical_enclosure = logical_enclosures.create(options)
+        print("Created logical enclosure'%s' successfully.\n  uri = '%s'" % (
+            logical_enclosure.data['name'],
+            logical_enclosure.data['uri'])
+        )
+    except HPEOneViewException as e:
+        print(e.msg)
 
 # Update the logical enclosure name
 print("Update the logical enclosure to have a name of '%s'" %
