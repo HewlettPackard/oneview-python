@@ -366,11 +366,19 @@ options = {
     "redundancyType": "HighlyAvailable"
 }
 
+# Get logical interconnect group by name
+lig = logical_interconnect_groups.get_by_name(options["name"])
+if not lig:
+    # Create a logical interconnect group
+    print("Create a logical interconnect group")
+    lig = logical_interconnect_groups.create(options)
+    print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))
+
 # Get all, with defaults
 print("Get all Logical Interconnect Groups")
 ligs = logical_interconnect_groups.get_all()
-for lig in ligs:
-    print(" - {}".format(lig['name']))
+for lig_each in ligs:
+    print(" - {}".format(lig_each['name']))
 
 # Get by uri
 print("Get a Logical Interconnect Group by uri")
@@ -381,12 +389,12 @@ pprint(lig_by_uri.data)
 print("Get the first Logical Interconnect Groups, sorting by name descending, filtering by name")
 ligs = logical_interconnect_groups.get_all(
     0, 10, sort='name:descending', filter="\"'name'='OneView Test Logical Interconnect Group'\"")
-for lig in ligs:
-    print(" - {}".format(lig['name']))
+for lig_each in ligs:
+    print(" - {}".format(lig_each['name']))
 
 # Get Logical Interconnect Group by property
-lig = logical_interconnect_groups.get_by('name', 'LIG')[0]
-print("Found lig by name: '%s'.\n  uri = '%s'" % (lig['name'], lig['uri']))
+lig_prop = logical_interconnect_groups.get_by('name', 'LIG')[0]
+print("Found lig by name: '%s'.\n  uri = '%s'" % (lig_prop['name'], lig_prop['uri']))
 
 # Get Logical Interconnect Group by scope_uris
 if oneview_client.api_version >= 600:
@@ -397,14 +405,6 @@ if oneview_client.api_version >= 600:
             print("Found Logical Interconnect Group by scope_uris: '{}'.\n  uri = '{}'".format(lig_scope['name'], lig_scope['uri']))
     else:
         print("No Logical Interconnect Group found.")
-
-# Get logical interconnect group by name
-lig = logical_interconnect_groups.get_by_name(options["name"])
-if not lig:
-    # Create a logical interconnect group
-    print("Create a logical interconnect group")
-    lig = logical_interconnect_groups.create(options)
-    print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))
 
 # Update a logical interconnect group
 print("Update a logical interconnect group")

@@ -86,6 +86,8 @@ server_certificate.delete()
 print("\nSuccessfully deleted server certificate")
 
 # Create server certificate for automation
+options['certificateDetails'][0]['base64Data'] = ca_certificate
+options['certificateDetails'][0]['type'] = remote_server_cert.data['certificateDetails'][0]['type']
 server_certificate = certificate_server.create(data=options)
 print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
       server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
