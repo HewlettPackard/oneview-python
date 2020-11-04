@@ -1,6 +1,6 @@
 # 5.5.0
 #### Notes
-Extends support of the SDK to OneView REST API version 2200 (OneView v5.50).
+Extends support of the SDK to OneView REST API version 2200 (OneView v5.50) and ImageStreamer REST API version 2000 (I3S v5.40).
 
 #### Bug fixes & Enhancements
 - [#103] (https://github.com/HewlettPackard/oneview-python/issues/103) enclosure_groups.create() Does not take valid data and returns JSON error.
