@@ -1,9 +1,41 @@
-# 5.5.0(Unreleased)
+# 5.5.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2200 (OneView v5.50).
 
 #### Bug fixes & Enhancements
 - [#103] (https://github.com/HewlettPackard/oneview-python/issues/103) enclosure_groups.create() Does not take valid data and returns JSON error.
+
+#### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
+- Certificates Server
+- Connection Templates
+- Enclosures
+- Enclosure Groups
+- Ethernet Network
+- FC Network
+- FCoE Network
+- Firmware Drivers
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Interconnect Types
+- Interconnects
+- Logical Enclosures
+- Logical Interconnect Groups
+- Logical Interconnects
+- Network Sets
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profile Templates
+- Server Profiles
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volumes
+- Tasks
+- Uplink Sets
 
 # 5.4.0
 #### Notes
