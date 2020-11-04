@@ -29,4 +29,5 @@ setup(name='hpeOneView',
       license='Apache',
       packages=find_packages(exclude=['examples*', 'tests*']),
       keywords=['oneview', 'hpe'],
+      long_description_content_type="text/markdown",
       install_requires=['future>=0.15.2'])
