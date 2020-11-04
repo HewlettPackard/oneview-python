@@ -65,18 +65,6 @@ oneview_client = OneViewClient(config)
 ethernet_networks = oneview_client.ethernet_networks
 scopes = oneview_client.scopes
 
-# Get all, with defaults
-print("\nGet all ethernet-networks")
-ethernet_nets = ethernet_networks.get_all()
-for net in ethernet_nets:
-    print("   '{name}' at uri: '{uri}'".format(**net))
-
-# Get by Uri
-print("\nGet an ethernet-network by uri")
-ethernet_network_uri = ethernet_nets[0]['uri']
-ethernet_nets_by_uri = ethernet_networks.get_by_uri(ethernet_network_uri)
-pprint(ethernet_nets_by_uri.data)
-
 # Filter by name
 print("\nGet all ethernet-networks filtering by name")
 ethernet_nets_filtered = ethernet_networks.get_all(
@@ -114,6 +102,18 @@ ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
 for eth in ethernet_nets_bulk:
     bulkNetworkUris.append(eth['uri'])
 pprint(ethernet_nets_bulk)
+
+# Get all, with defaults
+print("\nGet all ethernet-networks")
+ethernet_nets = ethernet_networks.get_all()
+for net in ethernet_nets:
+    print("   '{name}' at uri: '{uri}'".format(**net))
+
+# Get by Uri
+print("\nGet an ethernet-network by uri")
+ethernet_network_uri = ethernet_nets[0]['uri']
+ethernet_nets_by_uri = ethernet_networks.get_by_uri(ethernet_network_uri)
+pprint(ethernet_nets_by_uri.data)
 
 # Update purpose recently created network
 print("\nUpdate the purpose attribute from the recently created network")

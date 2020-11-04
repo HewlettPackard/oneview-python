@@ -89,6 +89,19 @@ if oneview_client.api_version >= 600:
     else:
         print("No Enclosure Group found.")
 
+# Get by name
+enclosure_group = enclosure_groups.get_by_name(eg_options["name"])
+if not enclosure_group:
+    # Create a Enclosure Group
+    print("Create a Enclosure Group")
+    if oneview_client.api_version <= 500:
+        options = {"stackingMode": "Enclosure"}
+        options.update(eg_options)
+        enclosure_group = enclosure_groups.create(options)
+    else:
+        enclosure_group = enclosure_groups.create(eg_options)
+print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
+
 # Get all, with default
 print("Get all Enclosure Groups")
 egs = enclosure_groups.get_all()
@@ -98,27 +111,6 @@ pprint(egs)
 print("Get an Enclosure Group by uri")
 eg_byuri = enclosure_groups.get_by_uri(egs[0]["uri"])
 pprint(eg_byuri.data)
-
-# Get by name
-
-
-def createEnclosureGroup():
-    enclosure_group = enclosure_groups.get_by_name(eg_options["name"])
-    if not enclosure_group:
-        # Create a Enclosure Group
-        print("Create a Enclosure Group")
-        if oneview_client.api_version <= 500:
-            options = {"stackingMode": "Enclosure"}
-            options.update(eg_options)
-            enclosure_group = enclosure_groups.create(options)
-        else:
-            enclosure_group = enclosure_groups.create(eg_options)
-    print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
-    return enclosure_group
-
-
-enclosure_group = createEnclosureGroup()
-
 
 # Update an Enclosure Group
 resource = {"name": "Renamed EG"}
@@ -146,7 +138,10 @@ enclosure_group.delete()
 print("Successfully deleted Enclosure Group")
 scope.delete()
 
-# Create EG for automation
-createEnclosureGroup()
+# Create EG & EG-2 for automation
+enclosure_group = enclosure_groups.create(eg_options)
+print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
+
 eg_options['name'] = "EG-2"
-createEnclosureGroup()
+enclosure_group = enclosure_groups.create(eg_options)
+print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))

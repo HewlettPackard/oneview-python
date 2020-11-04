@@ -2,8 +2,8 @@
 
 ## Build Status 
 
-| 5.40 Branch   | 5.30 Branch   | 5.20 Branch   | 5.00 Branch   |
-| ------------- |:-------------:| -------------:| -------------:|
+| 5.50 Branch   | 5.40 Branch   | 5.30 Branch   | 5.20 Branch   | 5.00 Branch   |
+| ------------- |:-------------:| -------------:| -------------:| -------------:|
 | ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)
 
 
@@ -22,7 +22,7 @@ Latest version of the OneView Python [SDK Documentation](https://hewlettpackard.
 
 ## What's New
 
-HPE OneView Python library extends support of the SDK to OneView REST API version 2000 (OneView v5.40)
+HPE OneView Python library extends support of the SDK to OneView REST API version 2200 (OneView v5.50)
 
 Please refer to [notes](https://github.com/HewlettPackard/oneview-python/blob/master/CHANGELOG.md) for more information on the changes , features supported and issues fixed in this version
 
@@ -73,10 +73,10 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
    The Docker Store image tag consist of two sections: <sdk_version-OV_version>
 
    Download and store a local copy of hpe-oneview-sdk-for-python and use it as a Docker image. <br />
-   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2
+   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.5.0-OV5.5
 
    Run docker commands and this will in turn create sh session where you can create files, issue commands and execute the tests <br />
-   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.2.0-OV5.2 /bin/sh
+   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.5.0-OV5.5 /bin/sh
    
 ## Configuration
 
