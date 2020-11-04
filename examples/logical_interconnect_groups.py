@@ -44,7 +44,7 @@ mgmt_untagged = "mgmt_nw"  # untagged managament network
 fc_fabric = "FC_fabric_nw"  # Fabric attach FC network
 scope_name = "test_scope"
 interconnect_type_name1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
-interconnect_type_name2 = "Synergy 10Gb Interconnect Link Module"
+interconnect_type_name2 = "Synergy 20Gb Interconnect Link Module"
 
 # Get the interconnect type by name and using the uri in the values for the fields
 # "permittedInterconnectTypeUri" and create a Logical Interconnect Group.

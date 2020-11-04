@@ -96,7 +96,7 @@ if not logical_enclosure:
     # Get enclosure group uri for creating logical enclosure
     enclosure_group = enclosure_groups.get_by_name(options['enclosureGroupUri'])
     options["enclosureGroupUri"] = enclosure_group.data["uri"]
-    enclosure_count = enclosure_group["enclosureCount"]
+    enclosure_count = enclosure_group.data["enclosureCount"]
 
     # Get enclosures
     enclosures_all = enclosures.get_all()
@@ -104,6 +104,7 @@ if not logical_enclosure:
     for i in range(0, enclosure_count):
         enclosure_uris.append(enclosures_all[i]["uri"])
     options["enclosureUris"] = sorted(enclosure_uris)
+    print(options)
 
     # Create a logical enclosure
     # This method is only available on HPE Synergy.
