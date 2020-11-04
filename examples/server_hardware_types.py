@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,12 +36,14 @@ server_hardware_types = oneview_client.server_hardware_types
 # Get the first 10 records, sorting by name descending
 print("\nGet the first 10 server hardware types, sorting by name descending, filtering by name")
 server_hardware_types_all = server_hardware_types.get_all(0, 10, sort='name:descending')
-pprint(server_hardware_types_all, depth=2)
+for sht in server_hardware_types_all:
+    print(" - {}".format(sht['name']))
 
 # Get all, with defaults
 print("\nGet all server hardware types")
 server_hardware_types_all = server_hardware_types.get_all()
-pprint(server_hardware_types_all, depth=3)
+for sht in server_hardware_types_all:
+    print(" - {}".format(sht['name']))
 
 # Get by uri
 print("\nGet a Server Hardware Type by uri")

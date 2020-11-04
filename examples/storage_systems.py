@@ -16,7 +16,6 @@
 ###
 
 from pprint import pprint
-from hpeOneView.exceptions import HPEOneViewException
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
@@ -66,34 +65,41 @@ support_host_types = storage_systems.get_host_types()
 pprint(support_host_types)
 
 # Add and update storage system for management
-try:
-    storage_system = storage_systems.add(options)
-    print("\nAdded storage system '%s'.\n   uri = '%s'" %
-          (storage_system.data['name'], storage_system.data['uri']))
-except HPEOneViewException as e:
-    storage_system = storage_systems.get_by_hostname(options['hostname'])
-    if storage_system:
-        print("\nStorage system '%s' was already added.\n   uri = '%s'" %
-              (storage_system.data['name'], storage_system.data['uri']))
-    else:
-        print(e.msg)
 
-# Adds managed domains and managed pools to StoreServ storage systems
-# This is a one-time only action, after this you cannot change the managed values
-storage_sys_data = storage_system.data.copy()
-if not storage_sys_data['deviceSpecificAttributes']['managedDomain']:
-    storage_sys_data['deviceSpecificAttributes']['managedDomain'] = storage_sys_data[
-        'deviceSpecificAttributes']['discoveredDomains'][0]
-    for pool in storage_sys_data['deviceSpecificAttributes']['discoveredPools']:
-        if pool['domain'] == storage_sys_data['deviceSpecificAttributes']['managedDomain']:
-            pool_to_manage = pool
-            storage_sys_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
-            pprint(pool_to_manage)
-            break
-    storage_sys_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
-    storage_system.update(storage_sys_data)
-    print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
-          storage_system.data['deviceSpecificAttributes']['managedDomain']))
+
+def createStorageSystem():
+    storage_system = storage_systems.get_by_hostname(options['hostname'])
+    if not storage_system:
+        print("Create Storage System")
+        storage_system = storage_systems.add(options)
+        print("\nAdded storage system {}.\n   uri = {}" .format(
+              str(storage_system.data['name']), str(storage_system.data['uri'])))
+    else:
+        print("\nStorage system {} was already added.\n   uri = {}" .format(
+              str(storage_system.data['name']), str(storage_system.data['uri'])))
+    print(storage_system.data)
+
+    # Adds managed domains and managed pools to StoreServ storage systems
+    # This is a one-time only action, after this you cannot change the managed values
+    storage_sys_data = storage_system.data.copy()
+    if not storage_sys_data['deviceSpecificAttributes']['managedDomain']:
+        storage_sys_data['deviceSpecificAttributes']['managedDomain'] = storage_sys_data[
+            'deviceSpecificAttributes']['discoveredDomains'][0]
+        for pool in storage_sys_data['deviceSpecificAttributes']['discoveredPools']:
+            if pool['domain'] == storage_sys_data['deviceSpecificAttributes']['managedDomain']:
+                pool_to_manage = pool
+                storage_sys_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
+                pprint(pool_to_manage)
+                break
+        storage_sys_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
+        storage_system.update(storage_sys_data)
+        print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
+              storage_system.data['deviceSpecificAttributes']['managedDomain']))
+    return storage_system
+
+
+storage_system = createStorageSystem()
+
 
 # Get a list of storage pools
 print("\nGet a list of storage pools managed by storage system")
@@ -116,3 +122,6 @@ print("\nRemove storage system")
 if storage_system:
     storage_system.remove()
     print("   Done.")
+
+storage_system_dummy = createStorageSystem()
+print("Created Storage System {}".format(str(storage_system_dummy.data)))

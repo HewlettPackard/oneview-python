@@ -36,16 +36,43 @@ profile_templates = oneview_client.server_profile_templates
 # Dependency resources
 hardware_types = oneview_client.server_hardware_types
 enclosure_groups = oneview_client.enclosure_groups
+scopes = oneview_client.scopes
+ethernet_networks = oneview_client.ethernet_networks
 
 # These variables must be defined according with your environment
-server_profile_name = "ProfileTemplate101"
+server_profile_name = "ProfileTemplate-1"
 hardware_type_name = "SY 480 Gen9 1"
-enclosure_group_name = "SYN03_EC"
+enclosure_group_name = "EG"
 hardware_type_for_transformation = "SY 480 Gen9 2"
-enclosure_group_for_transformation = "SYN03_EC"
+enclosure_group_for_transformation = "EG-2"
+scope_name = "SampleScope"
+mgmt_nw_name = "mgmt_untagged"
 
 hardware_type = hardware_types.get_by_name(hardware_type_name)
 enclosure_group = enclosure_groups.get_by_name(enclosure_group_name)
+scope_uri = scopes.get_by_name(scope_name).data['uri']
+mgmt_nw_uri = ethernet_networks.get_by_name(mgmt_nw_name).data['uri']
+
+# SPT payload
+basic_template_options = {
+    "name": server_profile_name,
+    "serverHardwareTypeUri": hardware_type.data["uri"],
+    "enclosureGroupUri": enclosure_group.data["uri"],
+    "connectionSettings": {
+        "connections": [
+            {
+                "id": 1,
+                "name": "mgmt_nw",
+                "functionType": "Ethernet",
+                "portId": "Auto",
+                "requestedMbps": "2500",
+                "networkUri": mgmt_nw_uri,
+            }
+        ],
+        "manageConnections": True,
+        "complianceControl": "Checked"
+    }
+}
 
 # Get all
 print("\nGet list of all server profile templates")
@@ -55,8 +82,7 @@ for template in all_templates:
 
 # Get Server Profile Template by scope_uris
 if oneview_client.api_version >= 600:
-    server_profile_templates_by_scope_uris = profile_templates.get_all(
-        scope_uris="\"'/rest/scopes/3bb0c754-fd38-45af-be8a-4d4419de06e9'\"")
+    server_profile_templates_by_scope_uris = profile_templates.get_all(scope_uris=scope_uri)
     if len(server_profile_templates_by_scope_uris) > 0:
         print("Found %d Server profile Templates" % (len(server_profile_templates_by_scope_uris)))
         i = 0
@@ -70,8 +96,8 @@ if oneview_client.api_version >= 600:
 
 # Get by property
 print("\nGet a list of server profile templates that matches the specified macType")
-if all_templates[1]:
-    template_mac_type = all_templates[1]["macType"]
+if all_templates:
+    template_mac_type = all_templates[0]["macType"]
     templates = profile_templates.get_by('macType', template_mac_type)
     for template in templates:
         print('  %s' % template['name'])
@@ -90,11 +116,6 @@ if template:
 else:
     # Create a server profile template
     print("Create a basic connection-less server profile template ")
-    basic_template_options = dict(
-        name=server_profile_name,
-        serverHardwareTypeUri=hardware_type.data["uri"],
-        enclosureGroupUri=enclosure_group.data["uri"]
-    )
     template = profile_templates.create(basic_template_options)
     pprint(template.data)
 
@@ -118,12 +139,19 @@ if oneview_client.api_version >= 300 and template:
     hardware = hardware_types.get_by_name(hardware_type_for_transformation)
     enclosure_group = enclosure_groups.get_by_name(enclosure_group_for_transformation)
 
-    transformation = template.get_transformation(hardware.data["uri"],
-                                                 enclosure_group.data["uri"])
-    pprint(transformation)
+    if hardware and enclosure_group:
+
+        transformation = template.get_transformation(hardware.data["uri"],
+                                                     enclosure_group.data["uri"])
+        pprint(transformation)
 
 # Delete the created template
 print("\nDelete the created template")
 if template:
     template.delete()
     print("The template was successfully deleted.")
+
+# Create a server profile template for automation
+print("Create a basic connection-less server profile template ")
+template = profile_templates.create(basic_template_options)
+pprint(template.data)

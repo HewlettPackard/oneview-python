@@ -53,13 +53,6 @@ options_bulk = {
     }
 }
 
-options_bulk_delete = {
-    "networkUris": [
-        "/rest/ethernet-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
-        "/rest/ethernet-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
-        "/rest/ethernet-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
-    ]
-}
 
 # Scope name to perform the patch operation
 scope_name = ""
@@ -70,6 +63,7 @@ config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
 ethernet_networks = oneview_client.ethernet_networks
+scopes = oneview_client.scopes
 
 # Get all, with defaults
 print("\nGet all ethernet-networks")
@@ -104,18 +98,21 @@ for net in ethernet_nets_limited:
 
 # Find network by name
 print("\nFind network by name")
-ethernet_network = oneview_client.ethernet_networks.get_by_name(ethernet_name)
+ethernet_network = ethernet_networks.get_by_name(ethernet_name)
 if ethernet_network:
     print("Found ethernet-network by name: '{name}'.\n   uri = '{uri}'" .format(**ethernet_network.data))
 else:
     # Create an ethernet Network
     print("\nCreate an ethernet network")
-    ethernet_network = oneview_client.ethernet_networks.create(options)
+    ethernet_network = ethernet_networks.create(options)
     print("Created ethernet-network '{name}' successfully.\n   uri = '{uri}'" .format(**ethernet_network.data))
 
 # Create bulk ethernet networks
+bulkNetworkUris = []
 print("\nCreate bulk ethernet networks")
 ethernet_nets_bulk = ethernet_networks.create_bulk(options_bulk)
+for eth in ethernet_nets_bulk:
+    bulkNetworkUris.append(eth['uri'])
 pprint(ethernet_nets_bulk)
 
 # Update purpose recently created network
@@ -148,7 +145,7 @@ for uri in uplink_group_uris:
 # Adds Ethernet network to scope defined only for V300 and V500
 if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
-    scope = oneview_client.scopes.get_by_name(scope_name)
+    scope = scopes.get_by_name(scope_name)
     ethernet_with_scope = ethernet_network.patch('replace',
                                                  '/scopeUris',
                                                  [scope.data['uri']])
@@ -156,11 +153,39 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
 
 # Delete bulk ethernet networks
 if oneview_client.api_version >= 1600:
-    print("\nDelete bulk ethernet networks")
+    options_bulk_delete = {"networkUris": bulkNetworkUris}
     ethernet_network.delete_bulk(options_bulk_delete)
-    print("Successfully deleted bulk ethernetnetworks")
+    print("Successfully deleted bulk ethernet networks")
 
 # Delete the created network
 print("\nDelete the ethernet network")
 ethernet_network.delete()
 print("Successfully deleted ethernet-network")
+
+# Create networks for automation 'mgmt_nw' and 'iscsi_nw'
+mgmt_subnet = '10.1.0.0'
+iscsi_subnet = '192.168.10.0'
+all_subnets = oneview_client.id_pools_ipv4_subnets.get_all()
+
+for subnet in all_subnets:
+    if subnet['networkId'] == mgmt_subnet:
+        mgmt_subnet_uri = subnet['uri']
+    if subnet['networkId'] == iscsi_subnet:
+        iscsi_subnet_uri = subnet['uri']
+
+mgmt_network_body = options.copy()
+mgmt_network_body['name'] = 'mgmt_nw'
+mgmt_network_body['ethernetNetworkType'] = "Untagged"
+mgmt_network_body['purpose'] = "Management"
+mgmt_network_body['subnetUri'] = mgmt_subnet_uri
+management_network = ethernet_networks.create(mgmt_network_body)
+print("Created ethernet-network '{name}' successfully.\n   uri = '{uri}'" .format(**management_network.data))
+
+iscsi_network_body = options.copy()
+iscsi_network_body['name'] = 'iscsi_nw'
+iscsi_network_body['ethernetNetworkType'] = "Tagged"
+iscsi_network_body['vlanId'] = 1209
+iscsi_network_body['purpose'] = "ISCSI"
+iscsi_network_body['subnetUri'] = iscsi_subnet_uri
+iscsi_network = ethernet_networks.create(iscsi_network_body)
+print("Created ethernet-network '{name}' successfully.\n   uri = '{uri}'" .format(**iscsi_network.data))

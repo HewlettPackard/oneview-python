@@ -36,14 +36,6 @@ options = {
     "connectionTemplateUri": None,
 }
 
-options_bulk_delete = {
-    "networkUris": [
-        "/rest/fcoe-networks/e2f0031b-52bd-4223-9ac1-d91cb519d548",
-        "/rest/fcoe-networks/f2f0031b-52bd-4223-9ac1-d91cb519d549",
-        "/rest/fcoe-networks/02f0031b-52bd-4223-9ac1-d91cb519d54a"
-    ]
-}
-
 # Scope name to perform the patch operation
 scope_name = ""
 
@@ -51,6 +43,7 @@ scope_name = ""
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 fcoe_networks = oneview_client.fcoe_networks
+scopes = oneview_client.scopes
 
 # Get all, with defaults
 print("\nGet all fcoe-networks")
@@ -97,7 +90,7 @@ pprint(fcoe_nets_by_uri.data)
 # Adds FCOE network to scope defined only for V300 and V500
 if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network to it")
-    scope = oneview_client.scopes.get_by_name(scope_name)
+    scope = scopes.get_by_name(scope_name)
     fcoe_with_scope = fcoe_network.patch('replace',
                                          '/scopeUris',
                                          [scope.data['uri']])
@@ -107,8 +100,29 @@ if scope_name and 300 <= oneview_client.api_version <= 500:
 fcoe_network.delete()
 print("\nSuccessfully deleted fcoe-network")
 
-# Delete bulk fcoe networks
+# Creates bulk fcoe-networks
+for i in range(4):
+    options = {
+        "name": "OneViewSDK Test FCoE Network" + str(i),
+        "vlanId": int("201") + int(i),
+        "connectionTemplateUri": None,
+    }
+    bulk_fcoe_network = fcoe_networks.create(options)
+    print("\nCreated bulk fcoe-networks with name: '%s'.\n  uri = '%s'" % (bulk_fcoe_network.data['name'], bulk_fcoe_network.data['uri']))
+
+# Delete bulk fcoe-networks
 if oneview_client.api_version >= 1600:
-    print("\nDelete bulk fcoe networks")
+    bulk_network_uris = []
+    for i in range(4):
+        fcoe_network_name = "OneViewSDK Test FCoE Network" + str(i)
+        bulk_fcoe_network = fcoe_networks.get_by_name(fcoe_network_name)
+        bulk_network_uris.append(bulk_fcoe_network.data['uri'])
+    print("\nDelete bulk fcoe-networks")
+    options_bulk_delete = {"networkUris": bulk_network_uris}
     fcoe_network.delete_bulk(options_bulk_delete)
-    print("Successfully deleted bulk fcoe networks")
+    print("Successfully deleted bulk fcoe-networks")
+
+# Create a FCoE Network for automation
+options['name'] = "Test_fcoeNetwork"
+fcoe_network = fcoe_networks.create(options)
+print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network.data['name'], fcoe_network.data['uri']))

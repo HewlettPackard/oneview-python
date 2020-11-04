@@ -84,3 +84,8 @@ print("\nUpdated server certificate {} successfully.\n".format(
 # Delete the added server certificate
 server_certificate.delete()
 print("\nSuccessfully deleted server certificate")
+
+# Create server certificate for automation
+server_certificate = certificate_server.create(data=options)
+print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
+      server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))

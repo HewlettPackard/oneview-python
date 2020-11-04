@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -63,6 +63,7 @@ oneview_client = OneViewClient(config)
 
 ethernet_networks = oneview_client.ethernet_networks
 network_sets = oneview_client.network_sets
+scopes = oneview_client.scopes
 
 # Get all network sets
 print("Get all network sets")
@@ -110,7 +111,7 @@ if network_set:
 # Adds network set to scope defined only for V300 and V500
 if scope_name and 300 <= oneview_client.api_version <= 500:
     print("\nGet scope then add the network set to it")
-    scope = oneview_client.scopes.get_by_name(scope_name)
+    scope = scopes.get_by_name(scope_name)
     net_set_with_scope = network_sets.patch('replace',
                                             '/scopeUris',
                                             [scope.data['uri']])

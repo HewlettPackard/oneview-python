@@ -40,9 +40,10 @@ tasks_limited = tasks.get_all(0, 5)
 pprint(tasks_limited)
 
 # Get a specific task by id
+component = tasks_limited[0]["uri"].split('/')[-1]
 print("Get a specific task")
 try:
-    tasks = tasks.get_by_id("36BD6806-71CD-4F1B-AA12-5E3E67379659")
+    tasks = tasks.get_by_id(component)
     pprint(tasks.data)
 except HPEOneViewException as e:
     print(e.msg)
@@ -53,8 +54,9 @@ tasks_filtered = tasks.get_all(filter="\"taskState='Completed'\"", view="tree", 
 pprint(tasks_filtered)
 
 # Performs a patch operation
+component = tasks_limited[0]["uri"].split('/')[-1]
 if oneview_client.api_version >= 1200:
-    task = tasks.get_by_id("36BD6806-71CD-4F1B-AA12-5E3E67379659")
+    task = tasks.get_by_id(component)
     if task.data.get('isCancellable') and task.data['isCancellable'] is False:
         try:
             updated_tasks = tasks.patch('Replace', "isCancellable", True)

@@ -39,20 +39,13 @@ uplink_sets = oneview_client.uplink_sets
 
 # To run this example you can define an logical interconnect uri (logicalInterconnectUri), ethernet network uri
 # and ethernet name or the example will attempt to retrieve those automatically from the appliance.
-logical_interconnect_uri = None
-ethernet_network_uri = None
-ethernet_network_name = None
+ethernet_network_name = 'OneViewSDK Test Ethernet Network on Logical Interconnect'
 
 # Attempting to get first LI and Ethernet uri and use them for this example
-if logical_interconnect_uri is None:
-    logical_interconnect_uri = oneview_client.logical_interconnects.get_all()[0]['uri']
-if ethernet_network_uri is None:
-    enet = oneview_client.ethernet_networks.get_all()
-    ethernet_network_uri = enet[0]['uri']
+logical_interconnect_uri = oneview_client.logical_interconnects.get_all()[0]['uri']
 
-    # Ethernet name to test add/remove of network uris
-    if not ethernet_network_name:
-        ethernet_network_name = enet[1]['name']
+enet = oneview_client.ethernet_networks.get_by_name(ethernet_network_name)
+ethernet_network_uri = enet.data['uri']
 
 options = {
     "name": "Uplink Set Demo",

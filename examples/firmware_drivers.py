@@ -54,7 +54,8 @@ pprint(firmware_schema)
 
 # Get a firmware by name
 print("\nGet firmware by name.")
-firmware_driver = firmware_drivers.get_by_name(firmware_name)
+if all_firmwares:
+    firmware_driver = firmware_drivers.get_by_name(all_firmwares[0]['name'])
 
 if firmware_driver:
     print("Found a firmware by name: '{}'.\n  uri = '{}'".format(firmware_driver.data['name'], firmware_driver.data['uri']))

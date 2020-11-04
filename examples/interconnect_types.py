@@ -34,14 +34,16 @@ oneview_client = OneViewClient(config)
 interconnect_types = oneview_client.interconnect_types
 
 # Get all supported interconnect types
-print("Get all supported interconnect types")
+print(">>> Get all supported interconnect types")
 all_interconnect_types = interconnect_types.get_all()
-pprint(all_interconnect_types, depth=2)
+for interconn in all_interconnect_types:
+    print(" - {}".format(interconn['name']))
 
 # Get all sorting by name descending
-print("Get all interconnect-types sorting by name")
+print(">>> Get all interconnect-types sorting by name")
 interconnect_types_sorted = interconnect_types.get_all(sort='name:descending')
-pprint(interconnect_types_sorted, depth=2)
+for interconn in interconnect_types_sorted:
+    print(" - {}".format(interconn['name']))
 
 # Get by name
 print("Get an interconnect_type by name")

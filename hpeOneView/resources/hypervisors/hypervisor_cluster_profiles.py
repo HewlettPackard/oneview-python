@@ -32,6 +32,9 @@ class HypervisorClusterProfiles(Resource):
     The cluster profile resource manager REST APIs to create, retrieve, modify and delete hypervisor cluster profiles.
     """
     URI = '/rest/hypervisor-cluster-profiles'
+    DEFAULT_VALUES = {
+        '2200': {'type': 'HypervisorClusterProfileV4'}
+    }
 
     def __init__(self, connection, data=None):
         super(HypervisorClusterProfiles, self).__init__(connection, data)
