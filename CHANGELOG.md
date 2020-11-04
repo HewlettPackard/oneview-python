@@ -7,8 +7,10 @@ Extends support of the SDK to OneView REST API version 2200 (OneView v5.50).
 
 #### Features supported with the current release
 - Appliance SNMPv1 Trap Destinations
+- Artifact Bundles
 - Certificates Server
 - Connection Templates
+- Deployment plan
 - Enclosures
 - Enclosure Groups
 - Ethernet Network
