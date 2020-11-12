@@ -206,6 +206,9 @@ class OneViewClient(object):
         self.__hypervisor_managers = None
         self.__certificates_server = None
 
+    def __del__(self):
+        self.__connection.logout(verbose=True)
+
     @classmethod
     def from_json_file(cls, file_name):
         """
