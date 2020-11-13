@@ -193,16 +193,9 @@ else:
 
 
 # Create storage volume template
-
-def createStorageVolumeTemplate():
-    print("Create storage volume template")
-    volume_template = storage_volume_templates.create(options)
-    pprint(volume_template.data)
-    return volume_template
-
-
-volume_template = createStorageVolumeTemplate()
-
+print("Create storage volume template")
+volume_template = storage_volume_templates.create(options)
+pprint(volume_template.data)
 
 template_id = volume_template.data["uri"].split('/')[-1]
 
@@ -252,5 +245,7 @@ if volume_template:
     volume_template.delete()
     print("   Done.")
 
-volume_template_dummy = createStorageVolumeTemplate()
-print("Created another volume template {}". format(str(volume_template_dummy.data)))
+# Create storage volume template for automation
+print("Create storage volume template")
+volume_template = storage_volume_templates.create(options)
+pprint(volume_template.data)
