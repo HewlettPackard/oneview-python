@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,11 +24,11 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 from urllib.parse import quote
 
 
-class IndexResources(object):
+class IndexResources(Resource):
     """
     Index Resources API client.
 
@@ -36,9 +36,8 @@ class IndexResources(object):
 
     URI = '/rest/index/resources'
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(IndexResources, self).__init__(connection, data)
 
     def get_all(self, category='', count=-1, fields='', filter='', padding=0, query='', reference_uri='',
                 sort='', start=0, user_query='', view=''):
@@ -82,33 +81,29 @@ class IndexResources(object):
         uri = self.URI + '?'
 
         uri += self.__list_or_str_to_query(category, 'category')
-        uri += self.__list_or_str_to_query(fields, 'fields')
-        uri += self.__list_or_str_to_query(filter, 'filter')
         uri += self.__list_or_str_to_query(padding, 'padding')
-        uri += self.__list_or_str_to_query(query, 'query')
         uri += self.__list_or_str_to_query(reference_uri, 'referenceUri')
-        uri += self.__list_or_str_to_query(sort, 'sort')
         uri += self.__list_or_str_to_query(user_query, 'userQuery')
-        uri += self.__list_or_str_to_query(view, 'view')
 
         uri = uri.replace('?&', '?')
 
-        return self._client.get_all(start=start, count=count, uri=uri)
+        return self._helper.get_all(start=start, count=count, fields=fields, filter=filter, query=query, sort=sort, view=view, uri=uri)
 
-    def get(self, uri):
+    def get_by_uri(self, resource_uri):
         """
-        Gets an index resource by URI.
+        Retrieves the index resources of specified resource.
 
         Args:
-            uri: The resource URI.
+            resource_uri: Uri of specified resource
 
-        Returns:
-            dict: The index resource.
+        Return:
+            dict: index resources associated with specified resource
         """
-        uri = self.URI + uri
-        return self._client.get(uri)
+        uri = "{0}{1}".format(self.URI, resource_uri)
+        return super(IndexResources, self).get_by_uri(uri)
 
-    def get_aggregated(self, attribute, category, child_limit=6, filter='', query='', user_query=''):
+
+    def get_aggregated(self, attribute, category, child_limit=6, filter='', query='', user_query='', attribute_query='', scope_query=''):
         """
         Gets a list of index resources based on optional sorting and filtering and is constrained by start
         and count parameters.
@@ -129,6 +124,12 @@ class IndexResources(object):
             user_query (str):
                 Free text Query string to search the resources.
                 This will match the string in any field that is indexed.
+            attribute_query (list or str):
+                attributeQuery is used along with query parameter to filter out the details by attributes.
+                One or more attributeQuery should be used.
+            scope_query (str):
+                ScopeQuery is used to filter the dashboard view by scope.
+                ScopeQuery can be a single scope or a valid scope expression.
 
         Returns:
             list: An aggregated list of index resources.
@@ -142,10 +143,12 @@ class IndexResources(object):
         uri += self.__list_or_str_to_query(filter, 'filter')
         uri += self.__list_or_str_to_query(query, 'query')
         uri += self.__list_or_str_to_query(user_query, 'userQuery')
+        uri += self.__list_or_str_to_query(attribute_query, 'attributeQuery')
+        uri += self.__list_or_str_to_query(scope_query, 'scopeQuery')
 
         uri = uri.replace('?&', '?')
 
-        return self._client.get(uri)
+        return super(IndexResources, self).get_by_uri(uri)
 
     def __list_or_str_to_query(self, list_or_str, field_name):
         formated_query = ''
