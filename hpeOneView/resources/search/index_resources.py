@@ -102,7 +102,6 @@ class IndexResources(Resource):
         uri = "{0}{1}".format(self.URI, resource_uri)
         return super(IndexResources, self).get_by_uri(uri)
 
-
     def get_aggregated(self, attribute, category, child_limit=6, filter='', query='', user_query='', attribute_query='', scope_query=''):
         """
         Gets a list of index resources based on optional sorting and filtering and is constrained by start
