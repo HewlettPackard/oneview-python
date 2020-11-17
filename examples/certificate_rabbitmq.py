@@ -52,9 +52,9 @@ try:
     response = oneview_client.certificate_rabbitmq.generate(certificate_ca_signed_client)
     pprint(response)
 except HPEOneViewException as e:
-    print (e.msg)
+    print(e.msg)
     if e.oneview_response:
-        print e.oneview_response.get('recommendedActions')
+        print(e.oneview_response.get('recommendedActions'))
 
 
 # Generate a Self Signed Certificate
@@ -63,7 +63,7 @@ try:
     response = oneview_client.certificate_rabbitmq.generate(certificate_self_signed_client)
     pprint(response)
 except HPEOneViewException as e:
-    print (e.msg)
+    print(e.msg)
     if e.oneview_response:
         print e.oneview_response.get('recommendedActions')
 

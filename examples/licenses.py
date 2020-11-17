@@ -53,14 +53,14 @@ pprint(licenses)
 
 # Get License by ID
 uri = license['uri']
-print uri
+print(uri)
 print("\n License fetched by ID is: \n")
 license = oneview_client.licenses.get_by_id(uri)
 pprint(license)
 
 # Delete License by ID
-print ("\n\n   ********** Delete the license by ID:  **********")
-print uri
+print("\n\n   ********** Delete the license by ID:  **********")
+print(uri)
 oneview_client.licenses.delete(uri)
 
 print("\n Check if the license is Deleted: \n")
