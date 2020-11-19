@@ -82,6 +82,13 @@ class ScopesTest(TestCase):
         self.resource.get_by_name('test-scope')
         mock_get_by.assert_called_once_with('name', 'test-scope')
 
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_resource_assignments_with_uri_called_once(self, mock_get):
+        expected_uri = '/rest/scopes/resources/rest/test/1'
+
+        self.resource.get_scope_resource('/rest/test/1')
+        mock_get.assert_called_once_with(expected_uri)
+
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_update_resource_assignments_called_once(self, mock_patch_request):
         uri = '/rest/scopes/11c466d1-0ade-4aae-8317-2fb20b6ef3f2'

@@ -25,6 +25,22 @@ from future import standard_library
 standard_library.install_aliases()
 
 from hpeOneView.resources.resource import Resource, ResourcePatchMixin
+from hpeOneView.resources.search.index_resources import IndexResources
+
+
+category_list = ['connection-templates', 'ethernet-networks', 'enclosures', 'enclosure-groups', 
+                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles', 
+                 'hypervisor-managers', 'interconnects', 'logical-enclosures', 'logical-interconnect-groups', 
+                 'logical-interconnects', 'network-sets', 'os-deployment-plans', 'scopes', 'server-hardware', 
+                 'server-profile-templates', 'server-profiles', 'storage-pools', 'storage-volume-sets', 
+                 'storage-volume-templates', 'storage-volumes']
+
+def get_resources_associated_with_scope(connection, scope_uri):
+    index_resource = IndexResources(connection)
+    query_string = "scopeUris='{}'".format(scope_uri)
+    all_index_resources = index_resource.get_all(category=category_list, query=query_string)
+    response = [dict_response['uri'] for dict_response in all_index_resources]
+    return response
 
 
 class Scopes(Resource, ResourcePatchMixin):
@@ -81,6 +97,38 @@ class Scopes(Resource, ResourcePatchMixin):
         """
         return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, view=view)
 
+    def get_by_uri(self, uri):
+        """
+        Retrieves the specified scope resource by uri.
+
+        Args:
+            uri: Uri of specified scope resource
+
+        Return:
+            dict: Get response of specified scope resource.
+        """
+        response = super(Scopes, self).get_by_uri(uri)
+        if response:
+            resource_list = get_resources_associated_with_scope(self._connection, response.data['uri'])
+            response.data['addedResourceUris'] = resource_list
+        return response
+
+    def get_by_name(self, name):
+        """
+        Retrieves the specified scope resource by name.
+
+        Args:
+            name: name of specified scope resource
+
+        Return:
+            dict: Get response of specified scope resource.
+        """
+        response = super(Scopes, self).get_by_name(name)
+        if response:
+            resource_list = get_resources_associated_with_scope(self._connection, response.data['uri'])
+            response.data['addedResourceUris'] = resource_list
+        return response
+
     def update(self, resource, timeout=-1):
         """
         Updates a scope.
@@ -113,6 +161,19 @@ class Scopes(Resource, ResourcePatchMixin):
         """
         headers = {'If-Match': '*'}
         return super(Scopes, self).delete(timeout=timeout, custom_headers=headers)
+
+    def get_scope_resource(self, resource_uri):
+        """
+        Gets a resource's scope, containing a list of the scopes to which the resource is assigned.
+
+        Args:
+            resource_uri: Uri of the resource
+
+        Return:
+            dict: Gets the scope assignments for a specified resource.
+        """
+        uri = "{0}/resources{1}".format(self.URI, resource_uri)
+        return super(Scopes, self).get_by_uri(uri)
 
     # This function will work till API version 300
     def update_resource_assignments(self, id_or_uri, resource_assignments, timeout=-1):
