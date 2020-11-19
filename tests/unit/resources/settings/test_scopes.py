@@ -32,7 +32,6 @@ class ScopesTest(TestCase):
         self.oneview_connection = connection(self.DEFAULT_HOST, 800)
         self.resource = Scopes(self.oneview_connection)
         self.indexresource = IndexResources(self.oneview_connection)
-        self.resource.data = {'uri': 'uri1'}
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all(self, mock_get_all):
@@ -95,6 +94,12 @@ class ScopesTest(TestCase):
         result = self.resource.get_by_name('test').data
         mock_get_name.assert_called_once_with('test')
         self.assertEqual(result['addedResourceUris'], ['uri1', 'uri2'])
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_scopes_assigned_with_resource_uri_called_once(self, mock_get):
+        uri = '/rest/scopes/resources/rest/test/1'
+        self.resource.get_scope_resource('/rest/test/1')
+        mock_get.assert_called_once_with(uri)
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_update_resource_assignments_called_once(self, mock_patch_request):
