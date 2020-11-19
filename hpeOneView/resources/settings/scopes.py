@@ -28,12 +28,13 @@ from hpeOneView.resources.resource import Resource, ResourcePatchMixin
 from hpeOneView.resources.search.index_resources import IndexResources
 
 
-category_list = ['connection-templates', 'ethernet-networks', 'enclosures', 'enclosure-groups', 
-                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles', 
-                 'hypervisor-managers', 'interconnects', 'logical-enclosures', 'logical-interconnect-groups', 
-                 'logical-interconnects', 'network-sets', 'os-deployment-plans', 'scopes', 'server-hardware', 
-                 'server-profile-templates', 'server-profiles', 'storage-pools', 'storage-volume-sets', 
+category_list = ['connection-templates', 'ethernet-networks', 'enclosures', 'enclosure-groups',
+                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles',
+                 'hypervisor-managers', 'interconnects', 'logical-enclosures', 'logical-interconnect-groups',
+                 'logical-interconnects', 'network-sets', 'os-deployment-plans', 'scopes', 'server-hardware',
+                 'server-profile-templates', 'server-profiles', 'storage-pools', 'storage-volume-sets',
                  'storage-volume-templates', 'storage-volumes']
+
 
 def get_resources_associated_with_scope(connection, scope_uri):
     index_resource = IndexResources(connection)
