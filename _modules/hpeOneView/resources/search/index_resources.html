@@ -151,7 +151,7 @@
   <h1>Source code for hpeOneView.resources.search.index_resources</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -175,11 +175,11 @@
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
 <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
 
 
-<div class="viewcode-block" id="IndexResources"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources">[docs]</a><span class="k">class</span> <span class="nc">IndexResources</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexResources"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources">[docs]</a><span class="k">class</span> <span class="nc">IndexResources</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Index Resources API client.</span>
 
@@ -187,9 +187,8 @@
 
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/index/resources&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IndexResources</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="IndexResources.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">reference_uri</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                 <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">user_query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -233,33 +232,28 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span>
 
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="nb">filter</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">)</span>
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">padding</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">)</span>
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">reference_uri</span><span class="p">,</span> <span class="s1">&#39;referenceUri&#39;</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">sort</span><span class="p">,</span> <span class="s1">&#39;sort&#39;</span><span class="p">)</span>
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">user_query</span><span class="p">,</span> <span class="s1">&#39;userQuery&#39;</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">)</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IndexResources.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexResources.get_by_uri"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources.get_by_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_uri</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets an index resource by URI.</span>
+<span class="sd">        Retrieves the index resources of specified resource.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri: The resource URI.</span>
+<span class="sd">            resource_uri: Uri of specified resource</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: The index resource.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            dict: index resources associated with specified resource</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="n">uri</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">resource_uri</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndexResources</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IndexResources.get_aggregated"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources.get_aggregated">[docs]</a>    <span class="k">def</span> <span class="nf">get_aggregated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">child_limit</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">user_query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexResources.get_aggregated"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.index_resources.IndexResources.get_aggregated">[docs]</a>    <span class="k">def</span> <span class="nf">get_aggregated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">child_limit</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">user_query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">attribute_query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a list of index resources based on optional sorting and filtering and is constrained by start</span>
 <span class="sd">        and count parameters.</span>
@@ -280,6 +274,12 @@
 <span class="sd">            user_query (str):</span>
 <span class="sd">                Free text Query string to search the resources.</span>
 <span class="sd">                This will match the string in any field that is indexed.</span>
+<span class="sd">            attribute_query (list or str):</span>
+<span class="sd">                attributeQuery is used along with query parameter to filter out the details by attributes.</span>
+<span class="sd">                One or more attributeQuery should be used.</span>
+<span class="sd">            scope_query (str):</span>
+<span class="sd">                ScopeQuery is used to filter the dashboard view by scope.</span>
+<span class="sd">                ScopeQuery can be a single scope or a valid scope expression.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: An aggregated list of index resources.</span>
@@ -293,10 +293,12 @@
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="nb">filter</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">)</span>
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">)</span>
         <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">user_query</span><span class="p">,</span> <span class="s1">&#39;userQuery&#39;</span><span class="p">)</span>
+        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">attribute_query</span><span class="p">,</span> <span class="s1">&#39;attributeQuery&#39;</span><span class="p">)</span>
+        <span class="n">uri</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__list_or_str_to_query</span><span class="p">(</span><span class="n">scope_query</span><span class="p">,</span> <span class="s1">&#39;scopeQuery&#39;</span><span class="p">)</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndexResources</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__list_or_str_to_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_or_str</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
         <span class="n">formated_query</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>

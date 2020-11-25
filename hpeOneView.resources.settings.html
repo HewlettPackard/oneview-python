@@ -1281,6 +1281,60 @@ attributes of the resource and all elements of collections of resources).</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.get_by_name">
+<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the specified scope resource by name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – name of specified scope resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Get response of specified scope resource.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.get_by_uri">
+<code class="descname">get_by_uri</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.get_by_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.get_by_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the specified scope resource by uri.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – Uri of specified scope resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Get response of specified scope resource.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.scopes.Scopes.get_scope_resource">
+<code class="descname">get_scope_resource</code><span class="sig-paren">(</span><em>resource_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.get_scope_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.get_scope_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a resource’s scope, containing a list of the scopes to which the resource is assigned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resource_uri</strong> – Uri of the resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Gets the scope assignments for a specified resource.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="hpeOneView.resources.settings.scopes.Scopes.update">
 <code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#Scopes.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.Scopes.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates a scope.</p>
@@ -1332,6 +1386,11 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="function">
+<dt id="hpeOneView.resources.settings.scopes.get_resources_associated_with_scope">
+<code class="descclassname">hpeOneView.resources.settings.scopes.</code><code class="descname">get_resources_associated_with_scope</code><span class="sig-paren">(</span><em>connection</em>, <em>scope_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/scopes.html#get_resources_associated_with_scope"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.scopes.get_resources_associated_with_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-hpeOneView.resources.settings.versions">

@@ -1141,9 +1141,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            IndexResources:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_resources</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__index_resources</span> <span class="o">=</span> <span class="n">IndexResources</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__index_resources</span>
+        <span class="k">return</span> <span class="n">IndexResources</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">alerts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
