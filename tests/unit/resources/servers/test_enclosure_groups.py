@@ -107,6 +107,13 @@ class EnclosureGroupsTest(unittest.TestCase):
 
         mock_update.assert_called_once_with(eg_expected, self.uri, False, -1, None)
 
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_script(self, mock_get):
+        uri_rest_call = '{}/script'.format(self.uri)
+
+        self.client.get_script()
+        mock_get.assert_called_once_with(uri_rest_call)
+
     @mock.patch.object(ResourceHelper, 'update')
     def test_update_script_by_uri_called_once(self, mock_update):
         script_body = "#TEST COMMAND"

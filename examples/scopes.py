@@ -56,13 +56,17 @@ resource_uri_1 = ethernet_networks.get_by_name('TestNetwork_1').data['uri']
 resource_uri_2 = ethernet_networks.get_by_name('TestNetwork_2').data['uri']
 resource_uri_3 = ethernet_networks.get_by_name('TestNetwork_3').data['uri']
 
-# Create a scope
-print("\n## Create the scope")
 options = {
     "name": "SampleScope",
     "description": "Sample Scope description"
 }
-scope = scopes.create(options)
+# Find scope by name
+print("\n## Getting the scope by name")
+scope = scopes.get_by_name(options['name'])
+if not scope:
+    # Create a scope
+    print("\n## Create the scope")
+    scope = scopes.create(options)
 pprint(scope.data)
 
 # Update the name of the scope
@@ -72,18 +76,16 @@ resource['name'] = "SampleScopeRenamed"
 scope.update(resource)
 print("\n## scope updated successfully")
 
-# Find the recently created scope by name
-scope_by_name = scope.get_by_name('SampleScopeRenamed')
-print("\n## Found scope by name: '%s' " % scope_by_name.data['name'])
-
 # Find the recently created scope by URI
+print("\n## Find scope by URI")
 scope_by_uri = scope.get_by_uri(scope.data['uri'])
-print("\n## Found scope by name: '%s' " % scope_by_uri.data['name'])
+pprint(scope_by_uri.data)
 
 # Get all scopes
 print("\n## Get all Scopes")
 all_scopes = scope.get_all()
-pprint(all_scopes)
+for elem in all_scopes:
+    print(" - {}".format(elem['name']))
 
 # Update the scope resource assignments (Available only in API300)
 if oneview_client.api_version == 300:
@@ -105,7 +107,7 @@ if oneview_client.api_version == 300:
     except HPEOneViewException as e:
         print(e.msg)
 
-# Updates the name and description of a scope assigning and unassigning two ethernet resources
+# Updates the name and description of a scope assigning and unassigning ethernet resources
 # (Available only from API500)
 if oneview_client.api_version >= 500:
     try:
@@ -113,7 +115,20 @@ if oneview_client.api_version >= 500:
         edited_scope = scope.patch('add', '/addedResourceUris/-', resource_uri_1)
         pprint(edited_scope.data)
 
-        print("\n## Patch the scope removing the two previously added resource uris")
+        edited_scope = scope.patch('add', '/addedResourceUris/-', resource_uri_2)
+        pprint(edited_scope.data)
+
+        # Find the recently created scope by name
+        print("\n## Find scope by name")
+        scope_by_name = scope.get_by_name(scope.data['name'])
+        pprint(scope_by_name.data)
+
+        # Get the resource assignments of scope
+        print("\n## Find resource assignments to scope")
+        scope_assigned_resource = scopes.get_scope_resource(resource_uri_1)
+        pprint(scope_assigned_resource.data)
+
+        print("\n## Patch the scope removing one of the previously added resource uris")
         resource_list = [resource_uri_1]
         edited_scope = scope.patch('replace', '/removedResourceUris', resource_list)
         pprint(edited_scope.data)
@@ -129,6 +144,11 @@ if oneview_client.api_version >= 500:
         pprint(edited_scope.data)
     except HPEOneViewException as e:
         print(e.msg)
+
+# Get the resource assignments of scope when unassigned
+print("\n## Find resource assignments to scope when resource unassigned")
+scope_assigned_resource = scopes.get_scope_resource(resource_uri_1)
+pprint(scope_assigned_resource.data)
 
 # Delete the scope
 scope.delete()

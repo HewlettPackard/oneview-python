@@ -845,9 +845,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_index_resources_has_right_type(self):
         self.assertIsInstance(self._oneview.index_resources, IndexResources)
 
-    def test_lazy_loading_index_resources(self):
+    def test_index_resources_client(self):
         index_resources = self._oneview.index_resources
-        self.assertEqual(index_resources, self._oneview.index_resources)
+        self.assertNotEqual(index_resources, self._oneview.index_resources)
 
     def test_labels_has_right_type(self):
         self.assertIsInstance(self._oneview.labels, Labels)

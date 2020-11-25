@@ -15,16 +15,15 @@
 # limitations under the License.
 ###
 
-import unittest
-
+from unittest import TestCase
 import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.search.index_resources import IndexResources
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
-class IndexResourcesTest(unittest.TestCase):
+class IndexResourcesTest(TestCase):
 
     INDEX_RESOURCE = dict(
         uri="/rest/index/resources/rest/resource/uri",
@@ -43,42 +42,39 @@ class IndexResourcesTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
         self.connection = connection(self.host, 800)
-        self._resource = IndexResources(self.connection)
+        self._indexresource = IndexResources(self.connection)
 
-    @mock.patch.object(ResourceClient, 'get_all', return_value=dict(members='test'))
+    @mock.patch.object(ResourceHelper, 'get_all', return_value=dict(members='test'))
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
-        expected_uri = '/rest/index/resources?filter=name=TestName&sort=name:ascending'
+        expected_uri = '/rest/index/resources?'
 
-        self._resource.get_all(start=2, count=500, filter=filter, sort=sort)
-        mock_get_all.assert_called_once_with(start=2, count=500, uri=expected_uri)
+        self._indexresource.get_all(start=2, count=500, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(start=2, count=500, filter=filter, fields='', query='', view='', sort=sort, uri=expected_uri)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once_without_results(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
-        expected_uri = '/rest/index/resources?filter=name=TestName&sort=name:ascending'
-        self._resource.get_all(start=2, count=500, filter=filter, sort=sort)
-        mock_get_all.assert_called_once_with(start=2, count=500, uri=expected_uri)
+        expected_uri = '/rest/index/resources?'
+        self._indexresource.get_all(start=2, count=500, filter=filter, sort=sort)
+        mock_get_all.assert_called_once_with(start=2, count=500, filter=filter, fields='', query='', view='', sort=sort, uri=expected_uri)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_called_once(self, mock_get):
-        index_uri = "/rest/server-hardwares/fake"
-        expected_call_uri = "/rest/index/resources/rest/server-hardwares/fake"
-        self._resource.get(index_uri)
-        mock_get.assert_called_once_with(expected_call_uri)
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_uri_called_once(self, mock_get_by_uri):
 
-    @mock.patch.object(ResourceClient, 'get')
+        expected_uri = '/rest/index/resources/rest/server-hardware/1'
+
+        self._indexresource.get_by_uri('/rest/server-hardware/1')
+        mock_get_by_uri.assert_called_once_with(expected_uri)
+
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_aggregated_called_once(self, mock_get_aggregated):
 
         expected_uri = '/rest/index/resources/aggregated?attribute=Model&attribute=State&category=server-hardware&childLimit=6'
 
-        self._resource.get_aggregated(['Model', 'State'], 'server-hardware')
+        self._indexresource.get_aggregated(['Model', 'State'], 'server-hardware')
         mock_get_aggregated.assert_called_once_with(expected_uri)
-
-
-if __name__ == '__main__':
-    unittest.main()

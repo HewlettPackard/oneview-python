@@ -22,14 +22,16 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
 from hpeOneView.resources.settings.scopes import Scopes
+from hpeOneView.resources.search.index_resources import IndexResources
 
 
 class ScopesTest(TestCase):
     DEFAULT_HOST = '127.0.0.1'
 
     def setUp(self):
-        oneview_connection = connection(self.DEFAULT_HOST, 800)
-        self.resource = Scopes(oneview_connection)
+        self.oneview_connection = connection(self.DEFAULT_HOST, 800)
+        self.resource = Scopes(self.oneview_connection)
+        self.indexresource = IndexResources(self.oneview_connection)
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all(self, mock_get_all):
@@ -71,16 +73,33 @@ class ScopesTest(TestCase):
         mock_delete.assert_called_once_with(timeout=-1, custom_headers={'If-Match': '*'})
 
     @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_with_uri_called_once(self, mock_get):
+    @mock.patch.object(IndexResources, 'get_all')
+    def test_get_with_uri_called_once(self, mock_get_resources, mock_get):
         uri = '/rest/scopes/3518be0e-17c1-4189-8f81-83f3724f6155'
-
-        self.resource.get_by_uri(uri)
+        mock_get_resources.return_value = [{'uri': 'uri1'}, {'uri': 'uri2'}]
+        fake_obj = mock.Mock()
+        fake_obj.data = {'uri': 'uri1'}
+        mock_get.return_value = fake_obj
+        result = self.resource.get_by_uri(uri).data
         mock_get.assert_called_once_with(uri)
+        self.assertEqual(result['addedResourceUris'], ['uri1', 'uri2'])
 
-    @mock.patch.object(Resource, 'get_by')
-    def test_get_by_name_called_once(self, mock_get_by):
-        self.resource.get_by_name('test-scope')
-        mock_get_by.assert_called_once_with('name', 'test-scope')
+    @mock.patch.object(Resource, 'get_by_name')
+    @mock.patch.object(IndexResources, 'get_all')
+    def test_get_by_name_called_once(self, mock_get_resources, mock_get_name):
+        mock_get_resources.return_value = [{'uri': 'uri1'}, {'uri': 'uri2'}]
+        fake_obj = mock.Mock()
+        fake_obj.data = {'uri': 'uri1'}
+        mock_get_name.return_value = fake_obj
+        result = self.resource.get_by_name('test').data
+        mock_get_name.assert_called_once_with('test')
+        self.assertEqual(result['addedResourceUris'], ['uri1', 'uri2'])
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_scopes_assigned_with_resource_uri_called_once(self, mock_get):
+        uri = '/rest/scopes/resources/rest/test/1'
+        self.resource.get_scope_resource('/rest/test/1')
+        mock_get.assert_called_once_with(uri)
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_update_resource_assignments_called_once(self, mock_patch_request):

@@ -990,9 +990,7 @@ class OneViewClient(object):
         Returns:
             IndexResources:
         """
-        if not self.__index_resources:
-            self.__index_resources = IndexResources(self.__connection)
-        return self.__index_resources
+        return IndexResources(self.__connection)
 
     @property
     def alerts(self):
