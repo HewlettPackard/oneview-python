@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,15 +32,16 @@ config = {
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+certificate_authority = oneview_client.certificate_authority
 
 # Retrieve Internal CA Certificate
 print('Get the internal Certificate Authority:')
-certificate = oneview_client.certificate_authority.get()
+certificate = certificate_authority.get_all()
 pprint(certificate)
 
 # Retrieve Certificate Revocation List
 print("Getting the Certificate Revocation List")
-certificate_visual_content = oneview_client.certificate_authority.get_crl()
+certificate_visual_content = certificate_authority.get_crl()
 pprint(certificate_visual_content)
 
 # Revoke Internal CA Signed Certificate

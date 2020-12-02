@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,28 +24,53 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
-class CertificateAuthority(object):
+class CertificateAuthority(Resource):
     """
     Certificate Authority API client.
     """
 
     URI = '/rest/certificates/ca'
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(CertificateAuthority, self).__init__(connection, data)
 
-    def get(self):
+    def create(self, data=None, parent_task='', timeout=-1):
         """
-        Retrieves the certificate of the internal CA in the form of a string.
+        Imports an external CA root certificate or CA certificate chain into the appliance trust store.
+        Same CA certificate will not be allowed to be imported into the appliance trust store.
+
+        Args:
+            data: Fields passed to create the resource.
+            parent_task: The parentTask can be passed only if auth header has either a valid trusted token
+                         or a valid combined token consisting of a trusted token.
+            timeout: Timeout in seconds. Wait for task completion by default.
 
         Returns:
-            str: The Internal CA Certificate.
+            dict: response body of imported CA Certificate.
         """
-        return self._client.get(self.URI)
+        if parent_task:
+            uri_create = "{}?parentTask={}".format(self.URI, parent_task)
+        else:
+            uri_create = self.URI
+
+        return super(CertificateAuthority, self).create(data, uri=uri_create, timeout=timeout)
+
+    def get_all(self, filter='', cert_details=True):
+        """
+        Retrieves all the CA certificates.
+
+        Args:
+            filter: Filter based on a specific value. Supported filter is filter=certType:INTERNAL
+            cert_details: If this is set to true the api returns all the CA certificates with full certificate details
+
+        Returns:
+            list: List of all CA Certificate.
+        """
+        custom_headers = {'If-Req-CertDetails': cert_details}
+        return super(CertificateAuthority, self).get_all(filter=filter, custom_headers=custom_headers)
 
     def get_crl(self):
         """
@@ -55,21 +80,31 @@ class CertificateAuthority(object):
         Returns:
             str: The Certificate Revocation List
         """
-        crl_url = self.URI + "/crl"
-        return self._client.get(crl_url)
+        uri_crl = self.URI + "/crl"
+        return super(CertificateAuthority, self).get_by_uri(uri_crl)
 
-    def delete(self, alias_name, timeout=-1):
+    def get_by_aliasname(self, alias_name):
         """
-        Revokes a certificate signed by the internal CA. If client certificate to be revoked is RabbitMQ_readonly,
-        then the internal CA root certificate, RabbitMQ client certificate and RabbitMQ server certificate will be
-        regenerated. This will invalidate the previous version of RabbitMQ client certificate and the RabbitMQ server
-        will be restarted to read the latest certificates.
+        Returns the collection having CA certificates
 
         Args:
-            alias_name (str): Alias name.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
+            alias_name: alias name of CA certificate
+
+        Returns:
+            dict: The Certificate details by certificate authority alias name
         """
-        uri = self.URI + "/" + alias_name
-        return self._client.delete(uri, timeout=timeout)
+        uri = "{}/{}".format(self.URI, alias_name)
+        return super(CertificateAuthority, self).get_by_uri(uri)
+
+    def get_crl_by_aliasname(self, alias_name):
+        """
+        Downloads the CRL file associated with the given certificate authority alias name.
+
+        Args:
+            alias_name: alias name of CA certificate
+
+        Returns:
+            str: The Certificate Revocation List by certificate authority alias name
+        """
+        uri = "{}/{}/crl".format(self.URI, alias_name)
+        return super(CertificateAuthority, self).get_by_uri(uri)
