@@ -581,28 +581,28 @@ class ResourceTest(BaseTest):
               "&sort=name%3Aascending".format(resource_uri=self.URI)
 
         self.assertEqual([{"member": "member"}], result)
-        mock_get.assert_called_once_with(uri)
+        mock_get.assert_called_once_with(uri, custom_headers=None)
 
     @mock.patch.object(connection, "get")
     def test_get_all_with_defaults(self, mock_get):
         self.resource_client.get_all()
         uri = "{resource_uri}?start=0&count=-1".format(resource_uri=self.URI)
 
-        mock_get.assert_called_once_with(uri)
+        mock_get.assert_called_once_with(uri, custom_headers=None)
 
     @mock.patch.object(connection, "get")
     def test_get_all_with_custom_uri(self, mock_get):
         self.resource_helper.get_all(uri="/rest/testuri/12467836/subresources")
         uri = "/rest/testuri/12467836/subresources?start=0&count=-1"
 
-        mock_get.assert_called_once_with(uri)
+        mock_get.assert_called_once_with(uri, custom_headers=None)
 
     @mock.patch.object(connection, "get")
     def test_get_all_with_custom_uri_and_query_string(self, mock_get):
         self.resource_helper.get_all(uri="/rest/testuri/12467836/subresources?param=value")
 
         uri = "/rest/testuri/12467836/subresources?param=value&start=0&count=-1"
-        mock_get.assert_called_once_with(uri)
+        mock_get.assert_called_once_with(uri, custom_headers=None)
 
     @mock.patch.object(connection, "get")
     def test_get_all_with_different_resource_uri_should_fail(self, mock_get):
@@ -627,7 +627,7 @@ class ResourceTest(BaseTest):
 
         self.resource_client.get_all()
 
-        expected_calls = [call(uri_list[0]), call(uri_list[1]), call(uri_list[2])]
+        expected_calls = [call(uri_list[0], custom_headers=None), call(uri_list[1], custom_headers=None), call(uri_list[2], custom_headers=None)]
         self.assertEqual(mock_get.call_args_list, expected_calls)
 
     @mock.patch.object(connection, "get")
@@ -644,7 +644,7 @@ class ResourceTest(BaseTest):
 
         self.resource_client.get_all(count=15)
 
-        expected_calls = [call(uri_list[0]), call(uri_list[1]), call(uri_list[2])]
+        expected_calls = [call(uri_list[0], custom_headers=None), call(uri_list[1], custom_headers=None), call(uri_list[2], custom_headers=None)]
         self.assertEqual(mock_get.call_args_list, expected_calls)
 
     @mock.patch.object(connection, "get")
@@ -699,7 +699,7 @@ class ResourceTest(BaseTest):
 
         self.resource_client.get_all(count=3)
 
-        mock_get.assert_called_once_with(uri_list[0])
+        mock_get.assert_called_once_with(uri_list[0], custom_headers=None)
 
     @mock.patch.object(connection, "get")
     def test_get_all_should_stop_requests_when_next_page_is_equal_to_current_page(self, mock_get):
@@ -715,7 +715,7 @@ class ResourceTest(BaseTest):
         result = self.resource_client.get_all()
 
         self.assertSequenceEqual(result, members)
-        mock_get.assert_called_once_with(uri)
+        mock_get.assert_called_once_with(uri, custom_headers=None)
 
     @mock.patch.object(connection, "get")
     def test_get_all_should_return_empty_list_when_response_has_no_items(self, mock_get):

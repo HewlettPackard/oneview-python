@@ -37,7 +37,8 @@ class ConnectionTemplatesTest(unittest.TestCase):
 
         self._connection_templates.get_all(2, 500, filter=filter, sort=sort)
 
-        mock_get_all.assert_called_once_with('/rest/connection-templates?start=2&count=500&filter=name%3DTestName&sort=name%3Aascending', 500)
+        mock_get_all.assert_called_once_with(
+            '/rest/connection-templates?start=2&count=500&filter=name%3DTestName&sort=name%3Aascending', 500, custom_headers=None)
 
     @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):

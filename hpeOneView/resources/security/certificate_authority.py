@@ -70,7 +70,7 @@ class CertificateAuthority(Resource):
             list: List of all CA Certificate.
         """
         custom_headers = {'If-Req-CertDetails': cert_details}
-        return super(CertificateAuthority, self).get_all(filter=filter, custom_headers=custom_headers)
+        return self._helper.get_all(filter=filter, custom_headers=custom_headers)
 
     def get_crl(self):
         """

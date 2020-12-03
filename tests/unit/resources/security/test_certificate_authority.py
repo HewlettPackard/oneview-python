@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.security.certificate_authority import CertificateAuthority
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class CertificateAuthorityTest(unittest.TestCase):
@@ -56,12 +56,12 @@ class CertificateAuthorityTest(unittest.TestCase):
         self._certificates.create(resource, 'parent1')
         mock_create.assert_called_once_with(resource_rest_call, uri=uri, timeout=-1)
 
-    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_with_filter(self, mock_get_all):
         self._certificates.get_all(filter='name=TestName', cert_details=False)
         mock_get_all.assert_called_once_with(custom_headers={'If-Req-CertDetails': False}, filter='name=TestName')
 
-    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         self._certificates.get_all()
         mock_get_all.assert_called_once_with(custom_headers={'If-Req-CertDetails': True}, filter='')
