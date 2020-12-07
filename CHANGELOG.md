@@ -1,3 +1,8 @@
+
+# 5.5.1
+#### Bug fixes & Enhancements
+- [#110] (https://github.com/HewlettPackard/oneview-python/issues/110) certificate_authority.get() does not return certificate string
+
 # 5.5.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2200 (OneView v5.50) and ImageStreamer REST API version 2000 (I3S v5.40).
