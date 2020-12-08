@@ -151,7 +151,7 @@
   <h1>Source code for hpeOneView.resources.security.certificate_authority</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -175,28 +175,53 @@
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
 
 
-<div class="viewcode-block" id="CertificateAuthority"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority">[docs]</a><span class="k">class</span> <span class="nc">CertificateAuthority</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateAuthority"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority">[docs]</a><span class="k">class</span> <span class="nc">CertificateAuthority</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Certificate Authority API client.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/certificates/ca&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="CertificateAuthority.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateAuthority.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parent_task</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Retrieves the certificate of the internal CA in the form of a string.</span>
+<span class="sd">        Imports an external CA root certificate or CA certificate chain into the appliance trust store.</span>
+<span class="sd">        Same CA certificate will not be allowed to be imported into the appliance trust store.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: Fields passed to create the resource.</span>
+<span class="sd">            parent_task: The parentTask can be passed only if auth header has either a valid trusted token</span>
+<span class="sd">                         or a valid combined token consisting of a trusted token.</span>
+<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            str: The Internal CA Certificate.</span>
+<span class="sd">            dict: response body of imported CA Certificate.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">parent_task</span><span class="p">:</span>
+            <span class="n">uri_create</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">?parentTask=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">parent_task</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">uri_create</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri_create</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CertificateAuthority.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cert_details</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves all the CA certificates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filter: Filter based on a specific value. Supported filter is filter=certType:INTERNAL</span>
+<span class="sd">            cert_details: If this is set to true the api returns all the CA certificates with full certificate details</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: List of all CA Certificate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">custom_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;If-Req-CertDetails&#39;</span><span class="p">:</span> <span class="n">cert_details</span><span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CertificateAuthority.get_crl"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl">[docs]</a>    <span class="k">def</span> <span class="nf">get_crl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -206,24 +231,34 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: The Certificate Revocation List</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">crl_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s2">&quot;/crl&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">crl_url</span><span class="p">)</span></div>
+        <span class="n">uri_crl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s2">&quot;/crl&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri_crl</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificateAuthority.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateAuthority.get_by_aliasname"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_aliasname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Revokes a certificate signed by the internal CA. If client certificate to be revoked is RabbitMQ_readonly,</span>
-<span class="sd">        then the internal CA root certificate, RabbitMQ client certificate and RabbitMQ server certificate will be</span>
-<span class="sd">        regenerated. This will invalidate the previous version of RabbitMQ client certificate and the RabbitMQ server</span>
-<span class="sd">        will be restarted to read the latest certificates.</span>
+<span class="sd">        Returns the collection having CA certificates</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            alias_name (str): Alias name.</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView, just stop waiting for its completion.</span>
+<span class="sd">            alias_name: alias name of CA certificate</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: The Certificate details by certificate authority alias name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">alias_name</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div></div>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CertificateAuthority.get_crl_by_aliasname"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname">[docs]</a>    <span class="k">def</span> <span class="nf">get_crl_by_aliasname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Downloads the CRL file associated with the given certificate authority alias name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            alias_name: alias name of CA certificate</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The Certificate Revocation List by certificate authority alias name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/crl&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

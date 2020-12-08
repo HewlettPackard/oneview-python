@@ -1388,7 +1388,7 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall">
-<code class="descname">do_requests_to_getall</code><span class="sig-paren">(</span><em>uri</em>, <em>requested_count</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.do_requests_to_getall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall" title="Permalink to this definition">¶</a></dt>
+<code class="descname">do_requests_to_getall</code><span class="sig-paren">(</span><em>uri</em>, <em>requested_count</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.do_requests_to_getall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helps to make http request for get_all method.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1399,7 +1399,7 @@ and make request to pagination URI to get all the resources.</p>
 
 <dl class="method">
 <dt id="hpeOneView.resources.resource.ResourceHelper.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_all" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all items according with the given arguments.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1422,6 +1422,7 @@ the collections or resources).</li>
 <li><strong>uri</strong> – A specific URI (optional)</li>
 <li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
 which they are assigned.</li>
+<li><strong>custom_headers</strong> – custom headers</li>
 </ul>
 </td>
 </tr>

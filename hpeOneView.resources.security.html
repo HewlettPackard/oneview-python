@@ -170,8 +170,8 @@
 <span id="hpeoneview-resources-security-certificate-authority-module"></span><h2>hpeOneView.resources.security.certificate_authority module<a class="headerlink" href="#module-hpeOneView.resources.security.certificate_authority" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.certificate_authority.</code><code class="descname">CertificateAuthority</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.certificate_authority.</code><code class="descname">CertificateAuthority</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
 <p>Certificate Authority API client.</p>
 <dl class="attribute">
 <dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.URI">
@@ -179,21 +179,26 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>alias_name</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Revokes a certificate signed by the internal CA. If client certificate to be revoked is RabbitMQ_readonly,
-then the internal CA root certificate, RabbitMQ client certificate and RabbitMQ server certificate will be
-regenerated. This will invalidate the previous version of RabbitMQ client certificate and the RabbitMQ server
-will be restarted to read the latest certificates.</p>
+<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>parent_task=u''</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports an external CA root certificate or CA certificate chain into the appliance trust store.
+Same CA certificate will not be allowed to be imported into the appliance trust store.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>alias_name</strong> (<em>str</em>) – Alias name.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stop waiting for its completion.</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – Fields passed to create the resource.</li>
+<li><strong>parent_task</strong> – The parentTask can be passed only if auth header has either a valid trusted token
+or a valid combined token consisting of a trusted token.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">response body of imported CA Certificate.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
 </td>
 </tr>
 </tbody>
@@ -201,16 +206,42 @@ in OneView, just stop waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get">
-<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieves the certificate of the internal CA in the form of a string.</p>
+<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>filter=u''</em>, <em>cert_details=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all the CA certificates.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The Internal CA Certificate.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter</strong> – Filter based on a specific value. Supported filter is filter=certType:INTERNAL</li>
+<li><strong>cert_details</strong> – If this is set to true the api returns all the CA certificates with full certificate details</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of all CA Certificate.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname">
+<code class="descname">get_by_aliasname</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_by_aliasname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection having CA certificates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> – alias name of CA certificate</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The Certificate details by certificate authority alias name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -228,6 +259,24 @@ of a string.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The Certificate Revocation List</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname">
+<code class="descname">get_crl_by_aliasname</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_crl_by_aliasname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the CRL file associated with the given certificate authority alias name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> – alias name of CA certificate</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The Certificate Revocation List by certificate authority alias name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
