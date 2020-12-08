@@ -496,12 +496,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_certificate_authority_has_right_type(self):
         self.assertIsInstance(self._oneview.certificate_authority, CertificateAuthority)
 
-    def test_certificate_authority_has_value(self):
-        self.assertIsNotNone(self._oneview.certificate_authority)
-
-    def test_lazy_loading_certificate_authority(self):
+    def test_certificate_authority_client(self):
         certificates = self._oneview.certificate_authority
-        self.assertEqual(certificates, self._oneview.certificate_authority)
+        self.assertNotEqual(certificates, self._oneview.certificate_authority)
 
     def test_lazy_loading_connections(self):
         connections = self._oneview.connections

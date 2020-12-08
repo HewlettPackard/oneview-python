@@ -322,9 +322,7 @@ class OneViewClient(object):
         Returns:
             CertificateAuthority:
         """
-        if not self.__certificate_authority:
-            self.__certificate_authority = CertificateAuthority(self.__connection)
-        return self.__certificate_authority
+        return CertificateAuthority(self.__connection)
 
     @property
     def connections(self):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,23 +32,26 @@ config = {
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+certificate_authority = oneview_client.certificate_authority
 
 # Retrieve Internal CA Certificate
-print('Get the internal Certificate Authority:')
-certificate = oneview_client.certificate_authority.get()
-pprint(certificate)
+print("\n\nGet all the internal Certificate Authorities:\n")
+certificates_all = certificate_authority.get_all(cert_details=False)
+print(certificates_all)
+
+# Retrieve Internal CA Certificate with certificate details
+print("\n\nGet the certificate details of internal Certificate Authority:\n")
+certificate = certificate_authority.get_all()
+for cert in certificate:
+    if cert['certificateDetails']['aliasName'] == 'localhostSelfSignedCertificate':
+        print(cert['certificateDetails']['base64Data'])
 
 # Retrieve Certificate Revocation List
-print("Getting the Certificate Revocation List")
-certificate_visual_content = oneview_client.certificate_authority.get_crl()
-pprint(certificate_visual_content)
+print("\n\nGetting the Certificate Revocation List:\n")
+certificate_visual_content = certificate_authority.get_crl()
+pprint(certificate_visual_content.data)
 
 # Revoke Internal CA Signed Certificate
-print("Revoking Internal CA Signed Certificate")
-success = oneview_client.certificate_authority.delete("default")
-print(success)
-
-# Regenerate Certificates
-print("Regenerating Certificates")
-success = oneview_client.certificate_authority.delete("rabbitmq_readonly")
-print(success)
+print("\n\nRevoking Internal CA Signed Certificate\n")
+# success = certificate_authority.delete("default")
+# print(success)

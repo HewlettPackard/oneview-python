@@ -341,8 +341,8 @@ class connection(object):
     ###########################################################################
     # Utility functions for making requests - the HTTP verbs
     ###########################################################################
-    def get(self, uri):
-        resp, body = self.do_http('GET', uri, '')
+    def get(self, uri, custom_headers=None):
+        resp, body = self.do_http('GET', uri, '', custom_headers=custom_headers)
         if resp.status >= 400:
             raise HPEOneViewException(body)
         if resp.status == 302:

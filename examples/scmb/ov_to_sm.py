@@ -239,10 +239,14 @@ def acceptEULA(oneview_client):
 
 
 def getCertCa(oneview_client):
-    cert = oneview_client.certificate_authority.get()
+    ca_cert = oneview_client.certificate_authority
+    ca_all = ca_cert.get_all()
     ca = open('caroot.pem', 'w+')
-    ca.write(cert)
-    ca.close()
+    for certs in ca_all:
+        if certs['certificateDetails']['aliasName'] == 'localhostSelfSignedCertificate':
+            cert = certs['certificateDetails']['base64Data']
+            ca.write(cert)
+            ca.close()
 
 
 def genRabbitCa(oneview_client):

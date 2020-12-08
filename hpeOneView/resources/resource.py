@@ -341,7 +341,7 @@ class ResourceHelper(object):
         self._connection = connection
         self._task_monitor = task_monitor
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris=''):
+    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris='', custom_headers=None):
         """Gets all items according with the given arguments.
 
         Args:
@@ -365,6 +365,7 @@ class ResourceHelper(object):
             scope_uris:
                 An expression to restrict the resources returned according to the scopes to
                 which they are assigned.
+            custom_headers: custom headers
 
         Returns:
              list: A list of items matching the specified filter.
@@ -384,7 +385,7 @@ class ResourceHelper(object):
 
         logger.debug('Getting all resources with uri: {0}'.format(uri))
 
-        return self.do_requests_to_getall(uri, count)
+        return self.do_requests_to_getall(uri, count, custom_headers=custom_headers)
 
     def delete_all(self, filter, force=False, timeout=-1):
         """
@@ -701,7 +702,7 @@ class ResourceHelper(object):
 
         return data
 
-    def do_requests_to_getall(self, uri, requested_count):
+    def do_requests_to_getall(self, uri, requested_count, custom_headers=None):
         """Helps to make http request for get_all method.
 
         Note:
@@ -711,7 +712,7 @@ class ResourceHelper(object):
         items = []
         while uri:
             logger.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
-            response = self._connection.get(uri)
+            response = self._connection.get(uri, custom_headers=custom_headers)
             members = self.get_members(response)
             items += members
 
