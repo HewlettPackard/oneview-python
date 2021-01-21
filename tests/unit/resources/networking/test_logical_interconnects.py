@@ -388,3 +388,12 @@ class LogicalInterconnectsTest(unittest.TestCase):
         self._logical_interconnect.bulk_inconsistency_validate(resource)
 
         mock_post.assert_called_once_with(expected_uri, resource, -1, None)
+
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_port_flap_settings(self, mock_update):
+        configuration = {"portFlapThresholdPerInterval": 3}
+        configuration_rest_call = configuration.copy()
+
+        self._logical_interconnect.update_port_flap_settings(configuration)
+
+        mock_update.assert_called_once_with(configuration_rest_call, uri='{}/portFlapSettings'.format(self.uri), force=False, timeout=-1)
