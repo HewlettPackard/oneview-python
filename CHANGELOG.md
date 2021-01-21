@@ -1,5 +1,4 @@
-
-# 5.5.1
+# 5.6.0 (unreleased)
 #### Bug fixes & Enhancements
 - [#110] (https://github.com/HewlettPackard/oneview-python/issues/110) certificate_authority.get() does not return certificate string
 

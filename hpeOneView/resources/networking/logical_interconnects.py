@@ -517,3 +517,21 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         """
         uri = "{}/bulk-inconsistency-validation".format(self.URI)
         return self._helper.do_post(uri, validation_request, timeout, None)
+
+    @ensure_resource_client
+    def update_port_flap_settings(self, configuration, force=False, timeout=-1):
+        """
+        Updates the port flap interconnect settings for the logical interconnect.
+
+        Args:
+            configuration:  Port flap settings.
+            force: If set to true, the operation completes despite any problems with network connectivity or errors
+                on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+
+        Returns:
+            dict: Logical Interconnect.
+        """
+        uri = "{}/portFlapSettings".format(self.data["uri"])
+        return self._helper.update(configuration, uri=uri, force=force, timeout=timeout)
