@@ -1,7 +1,42 @@
+# 5.6.0 (unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 2400 (OneView v5.60).
 
-# 5.5.1
 #### Bug fixes & Enhancements
 - [#110] (https://github.com/HewlettPackard/oneview-python/issues/110) certificate_authority.get() does not return certificate string
+
+#### Features supported with the current release
+- Appliance SNMPv1 Trap Destinations
+- Connection Templates
+- Certificates Server
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Drivers
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Interconnects
+- Interconnect Types
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- OS Deployment Plans
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
+- Tasks
+- Uplink set
 
 # 5.5.0
 #### Notes

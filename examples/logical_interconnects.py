@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -243,6 +243,15 @@ if oneview_client.api_version >= 1600:
     igmp_settings_updated = logical_interconnect.update_igmp_settings(igmp_settings)
     pprint(igmp_settings_updated)
     print("\nUpdated IGMP interconnect settings for the logical interconnect successfully")
+
+# Updates port flap settings for the logical interconnect.
+if oneview_client.api_version >= 2400:
+    print("\nUpdates port flap settings for the logical interconnect")
+    port_flap_settings = logical_interconnect.data['portFlapProtection'].copy()
+    port_flap_settings['portFlapThresholdPerInterval'] = 5
+    port_flap_settings_updated = logical_interconnect.update_port_flap_settings(port_flap_settings)
+    pprint(port_flap_settings_updated)
+    print("\nUpdated port flap settings for the logical interconnect successfully")
 
 # Validates the bulk update from group operation and gets the consolidated inconsistency report
 if oneview_client.api_version >= 2000 and api_variant == 'Synergy':

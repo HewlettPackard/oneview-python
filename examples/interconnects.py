@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -111,7 +111,7 @@ try:
         path='/powerState',
         value='Off'
     )
-    pprint(interconnect_patch)
+    pprint(interconnect_patch.data)
 except HPEOneViewException as e:
     print(e.msg)
 
@@ -157,7 +157,7 @@ except HPEOneViewException as e:
     print(e.msg)
 
 # Updates the interconnect ports.
-print("\nUpdate the interconnect ports")
+print("\nUpdate the interconnect ports again")
 try:
     updated = interconnect.update_ports(ports_for_update)
 
@@ -182,5 +182,18 @@ print("\nGet the interconnect pluggable module information")
 try:
     plug_info = interconnect.get_pluggable_module_information()
     pprint(plug_info)
+except HPEOneViewException as e:
+    print(e.msg)
+
+# Turn the power on
+print("\nTurn the power on and the UID light to 'On' for interconnect " +
+      "that matches the specified ID")
+try:
+    interconnect_patch = interconnect.patch(
+        operation='replace',
+        path='/powerState',
+        value='On'
+    )
+    pprint(interconnect_patch.data)
 except HPEOneViewException as e:
     print(e.msg)
