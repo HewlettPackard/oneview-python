@@ -32,3 +32,4 @@ RUN DEBIAN_FRONTEND=noninteractive \
     rm -rf /var/cache/apt/archives/* /var/cache/apt/lists/* /tmp/* /root/cache/.
 
 CMD ["/bin/bash"]
+

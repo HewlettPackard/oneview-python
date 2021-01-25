@@ -25,7 +25,6 @@ __pycache__
 # Rope
 .ropeproject/
 
-
 # Installer log file
 pip-log.txt
 
