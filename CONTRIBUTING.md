@@ -1,5 +1,4 @@
 # Contribution Guide
-
 We welcome and encourage community contributions to oneview-python.
 
 ## Contributing
