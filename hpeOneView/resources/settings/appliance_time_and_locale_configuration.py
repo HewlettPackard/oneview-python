@@ -27,7 +27,7 @@ standard_library.install_aliases()
 from hpeOneView.resources.resource import ResourceClient
 
 
-class ApplianceTimeAndLocaleConfiguration(object):
+class ApplianceTimeAndLocaleConfiguration(ResourceClient):
     """
     ApplianceTimeAndLocaleConfiguration API client.
 
@@ -40,7 +40,7 @@ class ApplianceTimeAndLocaleConfiguration(object):
     }
 
     def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
+        super(ApplianceTimeAndLocaleConfiguration, self).__init__(con, self.URI)
 
     def get(self):
         """
@@ -49,7 +49,7 @@ class ApplianceTimeAndLocaleConfiguration(object):
         Returns:
             dict: ApplianceTimeAndLocaleConfiguration
         """
-        return self._client.get(self.URI)
+        return super(ApplianceTimeAndLocaleConfiguration, self).get(self.URI)
 
     def update(self, resource, timeout=-1):
         """
@@ -65,4 +65,4 @@ class ApplianceTimeAndLocaleConfiguration(object):
             dict: Updated appliance time and locale configuration.
 
         """
-        return self._client.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
+        return self.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
