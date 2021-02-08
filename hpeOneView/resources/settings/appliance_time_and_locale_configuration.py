@@ -37,5 +37,5 @@ class ApplianceTimeAndLocaleConfiguration(Resource):
     def __init__(self, connection, data=None):
         super(ApplianceTimeAndLocaleConfiguration, self).__init__(connection, data)
         self.__default_values = {
-           "type": "TimeAndLocale"
+            "type": "TimeAndLocale"
         }
