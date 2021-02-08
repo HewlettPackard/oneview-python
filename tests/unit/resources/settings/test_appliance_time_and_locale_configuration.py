@@ -30,7 +30,7 @@ class ApplianceTimeAndLocaleConfigurationTest(unittest.TestCase):
         self.connection = connection(self.host, 800)
         self._time_and_locale = ApplianceTimeAndLocaleConfiguration(self.connection)
         self.uri = "/rest/appliance/configuration/time-locale"
-        self._time_and_locale.data ={"uri":self.uri}
+        self._time_and_locale.data = {"uri": self.uri}
 
     @mock.patch.object(Resource, 'get_all')
     def test_get_called_once(self, mock_get):
@@ -47,6 +47,5 @@ class ApplianceTimeAndLocaleConfigurationTest(unittest.TestCase):
             'timezone': 'UTC',
             'uri': None
         }
-        self._time_and_locale.create(resource,timeout=-1)
+        self._time_and_locale.create(resource, timeout=-1)
         mock_create.assert_called_once_with(resource, timeout=-1)
-

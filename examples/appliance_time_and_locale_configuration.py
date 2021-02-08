@@ -30,7 +30,7 @@ config = {
 options = {
     "locale": "en_US.UTF-8",
     "timezone": "UTC",
-    "ntpServers" : ["127.0.0.1"],
+    "ntpServers": ["127.0.0.1"],
 }
 
 

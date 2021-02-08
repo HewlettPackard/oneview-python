@@ -34,8 +34,8 @@ class ApplianceTimeAndLocaleConfiguration(Resource):
     """
     URI = '/rest/appliance/configuration/time-locale'
 
-    def __init__(self, connection, data = None):
+    def __init__(self, connection, data=None):
         super(ApplianceTimeAndLocaleConfiguration, self).__init__(connection, data)
         self.__default_values = {
-		"type": "TimeAndLocale"
-	}
+           "type": "TimeAndLocale"
+        }
