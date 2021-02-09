@@ -1,3 +1,10 @@
+# 5.6.1 (unreleased)
+#### Notes
+This release extends support to below features for API Version 2400
+
+#### Features supported
+- Appliance Time and Locale Configuration
+
 # 5.6.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2400 (OneView v5.60).

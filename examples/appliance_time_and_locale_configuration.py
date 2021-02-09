@@ -47,7 +47,7 @@ if time_and_locale:
 else:
     # Create a time and locale with the options provided
     time_and_locale = time_and_locales.create(data=options)
-    print("\nCreated appliance time and locale configurations successfully!")
+    print("\n## Created appliance time and locale configurations successfully!")
     pprint(time_and_locale.data)
 
 time_and_locale = time_and_locale.data
@@ -58,7 +58,7 @@ time_and_locale['locale'] = 'zh_CN.UTF-8'
 # Remove the date and time, we do not want to update it manually
 time_and_locale.pop('dateTime')
 time_and_locale = time_and_locales.create(data=time_and_locale)
-print("\n## Updated appliance time and locale configurations successfully!")
+print("\n## Created appliance time and locale configurations successfully!")
 pprint(time_and_locale.data)
 # Note: Changing the locale will only be fully effective after resetting the appliance
 
