@@ -1208,12 +1208,13 @@ class OneViewClient(object):
             Hypervisor Cluster Profiles:
         """
         return HypervisorClusterProfiles(self.__connection)
+
     @property
     def appliance_configuration_timeconfig(self):
         """
-        Gets the ApplianceConfigurationTimeConfig API client.
+        Gets the ApplianceConfigurationTimeconfig API client.
 
         Returns:
-            ApplianceConfigurationTimeConfig:
+            ApplianceConfigurationTimeconfig:
         """
         return ApplianceConfigurationTimeconfig(self.__connection)
