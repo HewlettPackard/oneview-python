@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -83,6 +83,7 @@ from hpeOneView.resources.settings.licenses import Licenses
 from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
 from hpeOneView.resources.security.certificates_server import CertificatesServer
 from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
+from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
@@ -971,3 +972,10 @@ class OneViewClientTest(unittest.TestCase):
     def test_hypervisor_cluster_profiles_client(self):
         HypervisorClusterProfiles = self._oneview.hypervisor_cluster_profiles
         self.assertNotEqual(HypervisorClusterProfiles, self._oneview.hypervisor_cluster_profiles)
+
+    def test_appliance_configuration_timeconfig_has_right_type(self):
+        self.assertIsInstance(self._oneview.appliance_configuration_timeconfig, ApplianceConfigurationTimeconfig)
+
+    def test_appliance_configuration_timeconfig_client(self):
+        ApplianceConfigurationTimeconfig = self._oneview.appliance_configuration_timeconfig
+        self.assertNotEqual(ApplianceConfigurationTimeconfig, self._oneview.appliance_configuration_timeconfig)

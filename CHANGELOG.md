@@ -1,8 +1,9 @@
 # 5.6.1 (unreleased)
 #### Notes
-This release extends support to below features for API Version 2400
+Extends support to below features for REST API version 2400.
 
 #### Features supported
+- Appliance Configuration Timeconfig
 - Appliance Time and Locale Configuration
 
 # 5.6.0
