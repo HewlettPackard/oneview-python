@@ -35,7 +35,7 @@ jobs:
       with:
         target_branch: gh-pages
         keep_history: true
-        committer: pdl-oneview-sdk@hpe.com
+        committer: venkatesh.ravula1992@gmail.com
         build_dir: docs/build/html/.
       env:
         GITHUB_TOKEN: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
