@@ -35,7 +35,6 @@ jobs:
       with:
         target_branch: gh-pages
         keep_history: true
-        committer: oneview-pythonsdk@hpe.com
         build_dir: docs/build/html/.
       env:
         GITHUB_TOKEN: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
