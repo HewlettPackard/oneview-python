@@ -110,6 +110,7 @@ from hpeOneView.resources.settings.versions import Versions
 from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
 from hpeOneView.resources.security.certificates_server import CertificatesServer
 from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
+from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 ONEVIEW_CLIENT_INVALID_I3S_IP = 'Image streamer ip address is missing'
@@ -205,6 +206,7 @@ class OneViewClient(object):
         self.__licenses = None
         self.__hypervisor_managers = None
         self.__certificates_server = None
+        self.__appliance_configuration_timeconfig = None
 
     @classmethod
     def from_json_file(cls, file_name):
@@ -1206,3 +1208,13 @@ class OneViewClient(object):
             Hypervisor Cluster Profiles:
         """
         return HypervisorClusterProfiles(self.__connection)
+
+    @property
+    def appliance_configuration_timeconfig(self):
+        """
+        Gets the ApplianceConfigurationTimeconfig API client.
+
+        Returns:
+            ApplianceConfigurationTimeconfig:
+        """
+        return ApplianceConfigurationTimeconfig(self.__connection)

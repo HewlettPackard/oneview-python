@@ -1,3 +1,10 @@
+# 5.6.1 (unreleased)
+#### Notes
+Extends support to below features for REST API version 2400.
+
+#### Features supported
+- Appliance Configuration Timeconfig
+
 # 5.6.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2400 (OneView v5.60).
