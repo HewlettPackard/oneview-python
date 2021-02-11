@@ -4,6 +4,14 @@ hpeOneView.resources.settings package
 Submodules
 ----------
 
+hpeOneView.resources.settings.appliance\_configuration\_timeconfig module
+-------------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_configuration_timeconfig
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.settings.appliance\_device\_read\_community module
 -----------------------------------------------------------------------
 
