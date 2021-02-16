@@ -44,9 +44,10 @@ jobs:
     - name: coveralls
       uses: AndreMiras/coveralls-python-action@develop
       with:
-        github-token: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
+        github-token: ${{ secrets.COVERALLS_TOKEN }}
         parallel: true
         flag-name: 'Unit Test'
+        debug: true
 
   coveralls_finish:
     needs: tox_test
@@ -56,4 +57,4 @@ jobs:
       uses: AndreMiras/coveralls-python-action@develop
       with:
         parallel-finished: true
-        github-token: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
+        github-token: ${{ secrets.COVERALLS_TOKEN }}
