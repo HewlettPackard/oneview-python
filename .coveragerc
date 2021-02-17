@@ -1,0 +1,6 @@
+[run]
+relative_files = True
+
+[report]
+exclude_lines =
+    ^\s*\@property\n\s*def .*:$
