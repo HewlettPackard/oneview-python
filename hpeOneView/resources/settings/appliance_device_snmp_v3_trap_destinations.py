@@ -109,3 +109,4 @@ class ApplianceDeviceSNMPv3TrapDestinations(Resource):
             list: A list of SNMPv3 Trap Destionations.
         """
         return self._helper.get_all(start, count, filter=filter, sort=sort, query=query)
+

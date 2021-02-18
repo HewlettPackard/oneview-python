@@ -61,15 +61,15 @@ class ApplianceDeviceSNMPv3TrapDestinationsTest(unittest.TestCase):
             'port': 162,
             'userId': '6b9c6f7b-7a24-4514-b9c9-0c31e086c170'
         }
-   
+
         resource_validation = {
             'destinationAddress': '1.1.1.1',
         }
-   
+
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
         mock_create_validation.return_value = {}
-   
+
         self._snmp_v3_trap_dest.create(resource)
         mock_create_validation.assert_called_once_with(resource_validation, uri=validation_uri, timeout=-1)
         mock_create.assert_called_once_with(resource_rest_call, uri=self.uri, timeout=-1)
