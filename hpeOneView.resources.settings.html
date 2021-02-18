@@ -96,6 +96,7 @@
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_users">hpeOneView.resources.settings.appliance_device_snmp_v3_users module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_node_information">hpeOneView.resources.settings.appliance_node_information module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_ssh_access">hpeOneView.resources.settings.appliance_ssh_access module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">hpeOneView.resources.settings.appliance_time_and_locale_configuration module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.backups">hpeOneView.resources.settings.backups module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.firmware_bundles">hpeOneView.resources.settings.firmware_bundles module</a></li>
@@ -735,17 +736,83 @@ in OneView, just stop waiting for its completion.</li>
 </dd></dl>
 
 </div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_ssh_access">
+<span id="hpeoneview-resources-settings-appliance-ssh-access-module"></span><h2>hpeOneView.resources.settings.appliance_ssh_access module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_ssh_access" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_ssh_access.ApplianceSshAccess">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_ssh_access.</code><code class="descname">ApplianceSshAccess</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_ssh_access.html#ApplianceSshAccess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_ssh_access.ApplianceSshAccess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>ApplianceSshAccess API Client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_ssh_access.ApplianceSshAccess.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/ssh-access'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_ssh_access.ApplianceSshAccess.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_ssh_access.ApplianceSshAccess.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_ssh_access.html#ApplianceSshAccess.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_ssh_access.ApplianceSshAccess.get_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">
 <span id="hpeoneview-resources-settings-appliance-time-and-locale-configuration-module"></span><h2>hpeOneView.resources.settings.appliance_time_and_locale_configuration module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_time_and_locale_configuration.</code><code class="descname">ApplianceTimeAndLocaleConfiguration</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_time_and_locale_configuration.</code><code class="descname">ApplianceTimeAndLocaleConfiguration</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>ApplianceTimeAndLocaleConfiguration API client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.DEFAULT_VALUES">
+<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'TimeAndLocale'}, u'300': {u'type': u'TimeAndLocale'}}</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/appliance/configuration/time-locale'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the appliance time and locale configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ApplianceTimeAndLocaleConfiguration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_time_and_locale_configuration.html#ApplianceTimeAndLocaleConfiguration.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the appliance time and locale configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated appliance time and locale configuration.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
