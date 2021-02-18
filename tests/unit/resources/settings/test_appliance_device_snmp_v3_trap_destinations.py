@@ -34,13 +34,16 @@ class ApplianceDeviceSNMPv3TrapDestinationsTest(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
-        self._snmp_v3_trap_dest.get_all()
-        mock_get_all.assert_called_once_with(0, -1, filter='', sort='', query='')
+        filter = 'name=TestName'
+        sort = 'name:ascending'
+        query = 'query'
+        self._snmp_v3_trap_dest.get_all(2, 500, filter=filter, sort=sort, query=query)
+        mock_get_all.assert_called_once_with(2, 500, filter=filter, sort=sort, query=query)
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once_with_default(self, mock_get_all):
         self._snmp_v3_trap_dest.get_all()
-        mock_get_all.assert_called_once_with()
+        mock_get_all.assert_called_once_with(0, -1, filter='', sort='', query='')
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_uri_called_once(self, mock_get_by_uri):
@@ -48,40 +51,28 @@ class ApplianceDeviceSNMPv3TrapDestinationsTest(unittest.TestCase):
         self._snmp_v3_trap_dest.get_by_uri(uri)
         mock_get_by_uri.assert_called_once_with(uri)
 
-    # @mock.patch.object(ResourceHelper, 'create')
-    # @mock.patch.object(Resource, 'create')
-    # def test_create_called_once(self, mock_create, mock_create_validation):
-    #     create_uri = "{}/1".format(self.uri)
-    #     validation_uri = "{}/validation".format(self.uri)
-    #     resource = {
-    #         'type': 'Destination',
-    #         'destinationAddress': '1.1.1.1',
-    #         'port': 162,
-    #         'userId': '6b9c6f7b-7a24-4514-b9c9-0c31e086c170'
-    #     }
-    #
-    #     resource_validation = {
-    #         'destinationAddress': '1.1.1.1',
-    #     }
-    #
-    #     resource_rest_call = resource.copy()
-    #     mock_create.return_value = {}
-    #     mock_create_validation.return_value = {}
-    #
-    #     self._snmp_v3_trap_dest.create(resource)
-    #     mock_create_validation.assert_called_once_with(resource_validation, uri=validation_uri, timeout=-1)
-    #     mock_create.assert_called_once_with(resource_rest_call, uri=create_uri, timeout=-1)
-
+    @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(Resource, 'create')
-    def test_create_called_once(self, mock_create):
+    def test_create_called_once(self, mock_create, mock_create_validation):
+        validation_uri = "{}/validation".format(self.uri)
         resource = {
             'type': 'Destination',
             'destinationAddress': '1.1.1.1',
             'port': 162,
             'userId': '6b9c6f7b-7a24-4514-b9c9-0c31e086c170'
         }
+   
+        resource_validation = {
+            'destinationAddress': '1.1.1.1',
+        }
+   
+        resource_rest_call = resource.copy()
+        mock_create.return_value = {}
+        mock_create_validation.return_value = {}
+   
         self._snmp_v3_trap_dest.create(resource)
-        mock_create.assert_called_once_with(resource, timeout=-1)
+        mock_create_validation.assert_called_once_with(resource_validation, uri=validation_uri, timeout=-1)
+        mock_create.assert_called_once_with(resource_rest_call, uri=self.uri, timeout=-1)
 
     @mock.patch.object(ResourceHelper, 'create')
     def test_create_validation_called_once(self, mock_create_validation):
