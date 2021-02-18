@@ -916,9 +916,9 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_device_snmp_v3_trap_destinations,
                               ApplianceDeviceSNMPv3TrapDestinations)
 
-    def test_lazy_loading_appliance_device_device_snmp_v3_trap_destinations(self):
+    def test_appliance_device_device_snmp_v3_trap_destinations_client(self):
         appliance_device_snmp_v3_trap_destinations = self._oneview.appliance_device_snmp_v3_trap_destinations
-        self.assertEqual(appliance_device_snmp_v3_trap_destinations, self._oneview.appliance_device_snmp_v3_trap_destinations)
+        self.assertNotEqual(appliance_device_snmp_v3_trap_destinations, self._oneview.appliance_device_snmp_v3_trap_destinations)
 
     def test_appliance_device_device_snmp_v3_users_has_right_type(self):
         self.assertIsInstance(self._oneview.appliance_device_snmp_v3_users,
