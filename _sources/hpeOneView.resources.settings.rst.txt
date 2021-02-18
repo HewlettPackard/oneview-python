@@ -52,14 +52,6 @@ hpeOneView.resources.settings.appliance\_node\_information module
     :undoc-members:
     :show-inheritance:
 
-hpeOneView.resources.settings.appliance\_ssh\_access module
------------------------------------------------------------
-
-.. automodule:: hpeOneView.resources.settings.appliance_ssh_access
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 hpeOneView.resources.settings.appliance\_time\_and\_locale\_configuration module
 --------------------------------------------------------------------------------
 
