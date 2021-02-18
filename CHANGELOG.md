@@ -4,6 +4,7 @@ Extends support to below features for REST API version 2400.
 
 #### Features supported
 - Appliance Configuration Timeconfig
+- Appliance SNMPv3 Trap Destinations
 
 # 5.6.0
 #### Notes
