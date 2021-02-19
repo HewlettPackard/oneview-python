@@ -30,7 +30,7 @@ jobs:
       run: tox
 
     - name: Deploy to GitHub Pages
-      if: success() && python-version == '3.6'
+      if: success()
       uses: crazy-max/ghaction-github-pages@v2
       with:
         target_branch: gh-pages
