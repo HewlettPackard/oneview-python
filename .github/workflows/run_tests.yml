@@ -26,27 +26,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
 
-#    - name: Run tox tests
-#      run: tox
+    - name: Run tox tests
+      run: tox
 
-    - name: Build and Deploy
-      uses: JacksonMaxfield/github-pages-deploy-action-python@master
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        keep_history: true
+        build_dir: docs/build/html/.
       env:
-        BASE_BRANCH: master
-        BRANCH: gh-pages
-        FOLDER: docs/build/html/.
-        BUILD_SCRIPT: tox
         GITHUB_TOKEN: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
-
-#    - name: Deploy to GitHub Pages
-#      if: success()
-#      uses: crazy-max/ghaction-github-pages@v2
-#      with:
-#        target_branch: gh-pages
-#        keep_history: true
-#        build_dir: docs/build/html/.
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
 
     - name: coveralls
       uses: AndreMiras/coveralls-python-action@develop
