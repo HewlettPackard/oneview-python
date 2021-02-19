@@ -35,13 +35,16 @@ options = {
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 ssh_access = oneview_client.appliance_ssh_access
+
 # Get the SSH access configuration for the appliance.
 ssh_config = ssh_access.get_all()
 print("\nGot SSH access configuration successfully!")
 pprint(ssh_config.data)
+
 # Set the SSH access configuration for the appliance as False.
 ssh_config = ssh_config.update(data=options)
 print("\nUpdated SSH access configuration successfully!")
+
 # Set the SSH access configuration for the appliance as True.
 options["allowSshAccess"] = True
 ssh_config = ssh_config.update(data=options)

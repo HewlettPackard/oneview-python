@@ -38,4 +38,4 @@ class ApplianceSshAccess(Resource):
         self.__default_values = {'type': 'SshAccess'}
 
     def get_all(self):
-        return self.get_by_uri(self.URI)
+        return super(ApplianceSshAccess, self).get_by_uri(self.URI)
