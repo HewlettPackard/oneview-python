@@ -84,6 +84,7 @@ from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManag
 from hpeOneView.resources.security.certificates_server import CertificatesServer
 from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
+from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
@@ -979,3 +980,10 @@ class OneViewClientTest(unittest.TestCase):
     def test_appliance_configuration_timeconfig_client(self):
         ApplianceConfigurationTimeconfig = self._oneview.appliance_configuration_timeconfig
         self.assertNotEqual(ApplianceConfigurationTimeconfig, self._oneview.appliance_configuration_timeconfig)
+
+    def test_appliance_ssh_access_has_right_type(self):
+        self.assertIsInstance(self._oneview.appliance_ssh_access, ApplianceSshAccess)
+
+    def test_appliance_ssh_access_client(self):
+        ApplianceSshAccess = self._oneview.appliance_configuration_timeconfig
+        self.assertNotEqual(ApplianceSshAccess, self._oneview.appliance_ssh_access)
