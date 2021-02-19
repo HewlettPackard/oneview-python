@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from testingexamples.config_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 config = {
     "ip": "<oneview_ip>",
