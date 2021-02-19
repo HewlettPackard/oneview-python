@@ -941,9 +941,9 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_time_and_locale_configuration,
                               ApplianceTimeAndLocaleConfiguration)
 
-    def test_lazy_loading_appliance_time_and_locale_configuration(self):
+    def test_appliance_time_and_locale_configuration_client(self):
         appliance_time_and_locale_configuration = self._oneview.appliance_time_and_locale_configuration
-        self.assertEqual(appliance_time_and_locale_configuration, self._oneview.appliance_time_and_locale_configuration)
+        self.assertNotEqual(appliance_time_and_locale_configuration, self._oneview.appliance_time_and_locale_configuration)
 
     def test_should_get_appliance_current_version_and_minimum_version(self):
         self.assertIsInstance(self._oneview.versions,
