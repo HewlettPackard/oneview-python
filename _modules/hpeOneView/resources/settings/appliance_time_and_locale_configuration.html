@@ -156,7 +156,7 @@
   <h1>Source code for hpeOneView.resources.settings.appliance_time_and_locale_configuration</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -180,48 +180,21 @@
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
 
 
-<div class="viewcode-block" id="ApplianceTimeAndLocaleConfiguration"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration">[docs]</a><span class="k">class</span> <span class="nc">ApplianceTimeAndLocaleConfiguration</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ApplianceTimeAndLocaleConfiguration"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration">[docs]</a><span class="k">class</span> <span class="nc">ApplianceTimeAndLocaleConfiguration</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ApplianceTimeAndLocaleConfiguration API client.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/appliance/configuration/time-locale&#39;</span>
 
-    <span class="n">DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;TimeAndLocale&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;300&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;TimeAndLocale&quot;</span><span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
-
-<div class="viewcode-block" id="ApplianceTimeAndLocaleConfiguration.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets the appliance time and locale configuration.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: ApplianceTimeAndLocaleConfiguration</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ApplianceTimeAndLocaleConfiguration.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_time_and_locale_configuration.ApplianceTimeAndLocaleConfiguration.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Updates the appliance time and locale configuration.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            resource (dict): Object to update.</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView, just stop waiting for its completion.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: Updated appliance time and locale configuration.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_VALUES</span><span class="p">)</span></div></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ApplianceTimeAndLocaleConfiguration</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__default_values</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;TimeAndLocale&quot;</span>
+        <span class="p">}</span></div>
 </pre></div>
 
            </div>
