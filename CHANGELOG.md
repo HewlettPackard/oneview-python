@@ -4,6 +4,7 @@ Extends support to below features for REST API version 2400.
 
 #### Features supported
 - Appliance Configuration Timeconfig
+- Appliance Time and Locale Configuration
 - ID Pool IPv4 Range
 
 # 5.6.0

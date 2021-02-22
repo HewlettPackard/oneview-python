@@ -1129,9 +1129,7 @@ class OneViewClient(object):
         Returns:
             ApplianceTimeAndLocaleConfiguration:
         """
-        if not self.__appliance_time_and_locale_configuration:
-            self.__appliance_time_and_locale_configuration = ApplianceTimeAndLocaleConfiguration(self.__connection)
-        return self.__appliance_time_and_locale_configuration
+        return ApplianceTimeAndLocaleConfiguration(self.__connection)
 
     @property
     def versions(self):
