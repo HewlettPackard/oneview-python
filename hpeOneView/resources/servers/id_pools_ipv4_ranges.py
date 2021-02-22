@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,45 +42,45 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
 
         Args:
             information (dict): Information to update.
-            id_or_uri: ID or URI of range.
+            uri: URI of range.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated IPv4 range.
         """
-        return self._helper.update(information, uri, timeout=timeout) 
+        return self._helper.update(information, uri, timeout=timeout)
 
     def allocator(self, information, uri, timeout=-1):
         """
-        Enables or disables an IPv4 range.
+        Allocates a set of IDs from an IPv4 range.
 
         Args:
             information (dict): Information to update.
-            id_or_uri: ID or URI of range.
+            id_or_uri: URI of range.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
-            dict: Updated IPv4 range.
+            dict: The allocator returned contains the list of IDs successfully allocated.
         """
-        uri  = uri + "/allocator"
+        uri = uri + "/allocator"
         return self._helper.update(information, uri, timeout=timeout)
 
     def collector(self, information, uri, timeout=-1):
         """
-        Enables or disables an IPv4 range.
+        Collects a set of IDs back to an IPv4 range.
 
         Args:
             information (dict): Information to update.
-            id_or_uri: ID or URI of range.
+            id_or_uri: URI of range.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
-            dict: Updated IPv4 range.
+            dict: The collector returned contains the list of IDs successfully collected.
         """
-        uri  = uri + "/collector"
+        uri = uri + "/collector"
         return self._helper.update(information, uri, timeout=timeout)
 
     def get_allocated_fragments(self, uri, count=-1, start=0):
@@ -88,8 +88,8 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         Gets all fragments that have been allocated in range.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
             count:
                  The number of resources to return. A count of -1 requests all items. The actual number of items in
                  the response may differ from the requested count if the sum of start and count exceed the total number
@@ -109,8 +109,8 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         Gets all free fragments in an IPv4 range.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
             count:
                  The number of resources to return. A count of -1 requests all items. The actual number of items in
                  the response may differ from the requested count if the sum of start and count exceed the total number

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,16 +19,16 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
+# Try load config from a file (if there is a config file)
 config = {
-    "ip": "10.1.20.50",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
+        "userName": "<username>",
+        "password": "<password>"
     },
-    "api_version": 1600,
+    "api_version": "<api_version>"
 }
 
-# Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
@@ -37,9 +37,9 @@ options = {
     "type": "Range",
     "name": "IPv4",
     "rangeCategory": "Custom",
-    "startAddress": "192.168.1.53",
-    "endAddress": "192.168.1.56",
-    "subnetUri": "/rest/id-pools/ipv4/subnets/8e382eba-6731-4980-88de-ef1278eaf8d6"
+    "startAddress": "",
+    "endAddress": "",
+    "subnetUri": ""
 }
 
 
@@ -48,15 +48,15 @@ option = {
     "name": "IPv4",
     "startStopFragments": [
         {
-            "startAddress": "192.168.1.53",
-            "endAddress": "192.168.1.56"
+            "startAddress": "",
+            "endAddress": ""
         },
         {
-            "startAddress": "192.168.1.57",
-            "endAddress": "192.168.1.59"
+            "startAddress": "",
+            "endAddress": ""
         }
     ],
-    "subnetUri": "/rest/id-pools/ipv4/subnets/8e382eba-6731-4980-88de-ef1278eaf8d6"
+    "subnetUri": ""
 }
 
 id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
@@ -90,18 +90,18 @@ ipv4_range = ipv4Range.enable(
     },
     ipv4_range.data['uri'])
 print(" IPv4 range enabled successfully.")
-'''
-print("Allocates a set of IDs from an IPv4 range. The maximum number of IDs in a request is 100. The allocator returned contains the list of IDs successfully allocated. Associate the IPv4 address range with a resource before requesting IDs from it.")
+
+print("Allocates a set of IDs from an IPv4 range. The maximum number of IDs in a request is 100.")
+print("The allocator returned contains the list of IDs successfully allocated. Associate the IPv4 address range with a resource before requesting IDs from it.")
 
 ipv4_range = ipv4Range.allocator({
-    "count" :7,
+    "count": 7,
     "idList": [
-        "10.1.20.54", 
-        "10.1.20.60",
+        "",
+        "",
     ]
-    }, ipv4_range['uri'])
+}, ipv4_range['uri'])
 print("Allocated set of ID to ipv4 Range")
-'''
 
 print("\n Get all allocated fragments in IPv4 range")
 allocated_fragments = ipv4Range.get_allocated_fragments(ipv4_range['uri'])
@@ -125,10 +125,8 @@ print(" Successfully deleted IPv4 range")
 print("Collects a set of IDs back to an IPv4 range.")
 ipv4_range = ipv4Range.collector({
     "idList": [
-        "10.1.20.53", 
-        "10.1.20.60",
+        "",
+        "",
     ]
-    }, "/rest/id-pools/ipv4/ranges/337273f1-a39b-461b-918a-c9ea46cbe154")
+}, "id_ip4_range_uri")
 print(ipv4_range)
-
-
