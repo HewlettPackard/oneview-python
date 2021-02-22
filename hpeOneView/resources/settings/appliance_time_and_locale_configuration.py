@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,45 +24,18 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
-class ApplianceTimeAndLocaleConfiguration(object):
+class ApplianceTimeAndLocaleConfiguration(Resource):
     """
     ApplianceTimeAndLocaleConfiguration API client.
 
     """
     URI = '/rest/appliance/configuration/time-locale'
 
-    DEFAULT_VALUES = {
-        '200': {"type": "TimeAndLocale"},
-        '300': {"type": "TimeAndLocale"}
-    }
-
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
-
-    def get(self):
-        """
-        Gets the appliance time and locale configuration.
-
-        Returns:
-            dict: ApplianceTimeAndLocaleConfiguration
-        """
-        return self._client.get(self.URI)
-
-    def update(self, resource, timeout=-1):
-        """
-        Updates the appliance time and locale configuration.
-
-        Args:
-            resource (dict): Object to update.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            dict: Updated appliance time and locale configuration.
-
-        """
-        return self._client.create(resource, timeout=timeout, default_values=self.DEFAULT_VALUES)
+    def __init__(self, connection, data=None):
+        super(ApplianceTimeAndLocaleConfiguration, self).__init__(connection, data)
+        self.__default_values = {
+            "type": "TimeAndLocale"
+        }
