@@ -985,5 +985,5 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_ssh_access, ApplianceSshAccess)
 
     def test_appliance_ssh_access_client(self):
-        ApplianceSshAccess = self._oneview.appliance_configuration_timeconfig
+        ApplianceSshAccess = self._oneview.appliance_ssh_access
         self.assertNotEqual(ApplianceSshAccess, self._oneview.appliance_ssh_access)
