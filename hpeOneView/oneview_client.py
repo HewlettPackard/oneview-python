@@ -497,9 +497,10 @@ class OneViewClient(object):
         Returns:
             IdPoolsIpv4Ranges:
         """
-        if not self.__id_pools_ipv4_ranges:
+        '''if not self.__id_pools_ipv4_ranges:
             self.__id_pools_ipv4_ranges = IdPoolsIpv4Ranges(self.__connection)
-        return self.__id_pools_ipv4_ranges
+        return self.__id_pools_ipv4_ranges'''
+        return IdPoolsIpv4Ranges(self.__connection)
 
     @property
     def id_pools_ipv4_subnets(self):
