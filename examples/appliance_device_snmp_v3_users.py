@@ -21,17 +21,17 @@ from config_loader import try_load_from_file
 
 # Set api_version to 600, default is 300 and this API has been introduced since API 600.
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "10.1.20.12",
     "credentials": {
-        "userName": "<username>",
-        "password": "<password>"
+        "userName": "Administrator",
+        "password": "admin123"
     },
-    "api_version": 600
+    "api_version": 2200
 }
 
 options = {
     "type": "Users",
-    "userName": "user1",
+    "userName": "user123456",
     "securityLevel": "Authentication and privacy",
     "authenticationProtocol": "SHA512",
     "authenticationPassphrase": "authPass",
@@ -46,7 +46,7 @@ oneview_client = OneViewClient(config)
 
 # Add appliance device SNMP v3 users
 snmp_v3_user = oneview_client.appliance_device_snmp_v3_users.create(options)
-snmp_v3_user_uri = snmp_v3_user['uri']
+snmp_v3_user_uri = snmp_v3_user.data['uri']
 print("\n## Create appliance SNMP v3 user successfully!")
 pprint(snmp_v3_user)
 
@@ -60,17 +60,16 @@ snmp_v3_users = snmp_v3_users_list.pop()
 
 # Get by URI
 print("Find an SNMP v3 user by URI")
-snmp_v3_user = oneview_client.appliance_device_snmp_v3_users.get(snmp_v3_user_uri)
+snmp_v3_user = oneview_client.appliance_device_snmp_v3_users.get_by_uri(snmp_v3_user_uri)
 pprint(snmp_v3_user)
 
-# Change appliance device SNMP v3 users
-snmp_v3_user['authenticationPassphrase'] = "newAuthPass"
-snmp_v3_user['privacyPassphrase'] = "8765432187654321"
-snmp_v3_user = oneview_client.appliance_device_snmp_v3_users.update(snmp_v3_user)
-print("\n## Update appliance SNMP v3 user successfully!")
-pprint(snmp_v3_user)
+
+snmpv3_data = {"authenticationPassphrase": "newAuthPass","privacyPassphrase":"8765432187654321" }
+snmp_v3_user = snmp_v3_user.update(snmpv3_data)
+print("\n## Update appliance SNMPv3 User successfully!")
+pprint(snmp_v3_user.data)
 
 # Delete Created Entry
-del_result = oneview_client.appliance_device_snmp_v3_users.delete(snmp_v3_user)
+snmp_v3_user.delete(snmp_v3_user)
 print("\n## Delete appliance SNMP v3 user successfully!")
-pprint(del_result)
+
