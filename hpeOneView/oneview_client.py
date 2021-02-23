@@ -1094,9 +1094,7 @@ class OneViewClient(object):
         Returns:
             ApplianceDeviceSNMPv3TrapDestinations:
         """
-        if not self.__appliance_device_snmp_v3_trap_destinations:
-            self.__appliance_device_snmp_v3_trap_destinations = ApplianceDeviceSNMPv3TrapDestinations(self.__connection)
-        return self.__appliance_device_snmp_v3_trap_destinations
+        return ApplianceDeviceSNMPv3TrapDestinations(self.__connection)
 
     @property
     def appliance_device_snmp_v3_users(self):
