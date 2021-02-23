@@ -41,7 +41,7 @@ class ApplianceDeviceSNMPv3Users(Resource):
     """
     URI = '/rest/appliance/snmpv3-trap-forwarding/users'
 
-    def __init__(self,connection, data=None):
+    def __init__(self, connection, data=None):
         super(ApplianceDeviceSNMPv3Users, self).__init__(connection, data)
 
     def create(self, data, timeout=-1):
@@ -60,14 +60,12 @@ class ApplianceDeviceSNMPv3Users(Resource):
             dict: Created resource.
 
         """
-        
+
         return super(ApplianceDeviceSNMPv3Users, self).create(data, uri=self.URI, timeout=timeout)
-        
 
     def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """
         Lists all SNMPv3 Users.
-
         Args:
             start:
                 The first item to return, using 0-based indexing.
