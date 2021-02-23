@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -1092,9 +1092,7 @@ class OneViewClient(object):
         Returns:
             ApplianceDeviceSNMPv3TrapDestinations:
         """
-        if not self.__appliance_device_snmp_v3_trap_destinations:
-            self.__appliance_device_snmp_v3_trap_destinations = ApplianceDeviceSNMPv3TrapDestinations(self.__connection)
-        return self.__appliance_device_snmp_v3_trap_destinations
+        return ApplianceDeviceSNMPv3TrapDestinations(self.__connection)
 
     @property
     def appliance_device_snmp_v3_users(self):
