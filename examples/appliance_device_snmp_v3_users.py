@@ -21,12 +21,12 @@ from config_loader import try_load_from_file
 
 # Set api_version to 600, default is 300 and this API has been introduced since API 600.
 config = {
-    "ip": "10.1.20.12",
+    "ip": "",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
+        "userName": "",
+        "password": ""
     },
-    "api_version": 2200
+    "api_version": 
 }
 
 options = {
