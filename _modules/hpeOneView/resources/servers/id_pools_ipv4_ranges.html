@@ -156,7 +156,7 @@
   <h1>Source code for hpeOneView.resources.servers.id_pools_ipv4_ranges</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -180,72 +180,106 @@
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceSchemaMixin</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span>
 
 
-<div class="viewcode-block" id="IdPoolsIpv4Ranges"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges">[docs]</a><span class="k">class</span> <span class="nc">IdPoolsIpv4Ranges</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceSchemaMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPoolsIpv4Ranges"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges">[docs]</a><span class="k">class</span> <span class="nc">IdPoolsIpv4Ranges</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ID pools IPv4 ranges resource provides a Client API for managing IPv4 ranges.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/id-pools/ipv4/ranges&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">IdPoolsIpv4Ranges</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
 
-<div class="viewcode-block" id="IdPoolsIpv4Ranges.enable"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.enable">[docs]</a>    <span class="k">def</span> <span class="nf">enable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an IPv4 range.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            resource (dict): Object to create</span>
+<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">                in OneView; it just stops waiting for its completion.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Created range.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets an IPv4 range by ID or URI.</span>
+
+<span class="sd">        Using the allocator and collector associated with the range, IDs may be allocated from or collected back to the</span>
+<span class="sd">        range.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id_or_uri: Can be either the range ID or URI.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Range</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.enable"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.enable">[docs]</a>    <span class="k">def</span> <span class="nf">enable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Enables or disables an IPv4 range.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            information (dict): Information to update.</span>
-<span class="sd">            uri: URI of range.</span>
+<span class="sd">            id_or_uri: ID or URI of range.</span>
 <span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Updated IPv4 range.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPoolsIpv4Ranges.allocator"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.allocator">[docs]</a>    <span class="k">def</span> <span class="nf">allocator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Allocates a set of IDs from an IPv4 range.</span>
+<span class="sd">        Edit an IPv4 Range.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            information (dict): Information to update.</span>
-<span class="sd">            id_or_uri: URI of range.</span>
 <span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: The allocator returned contains the list of IDs successfully allocated.</span>
+<span class="sd">            dict: Updated IPv4 range.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="s2">&quot;/allocator&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPoolsIpv4Ranges.collector"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.collector">[docs]</a>    <span class="k">def</span> <span class="nf">collector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Collects a set of IDs back to an IPv4 range.</span>
+<span class="sd">        Deletes an IPv4 range.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            information (dict): Information to update.</span>
-<span class="sd">            id_or_uri: URI of range.</span>
-<span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
+<span class="sd">            resource (dict):</span>
+<span class="sd">                Object to delete</span>
+<span class="sd">            force (bool):</span>
+<span class="sd">                If set to true, the operation completes despite any problems with</span>
+<span class="sd">                network connectivity or errors on the resource itself. The default is false.</span>
+<span class="sd">            timeout:</span>
+<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: The collector returned contains the list of IDs successfully collected.</span>
+<span class="sd">            bool: Indicates if the resource was successfully deleted.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="s2">&quot;/collector&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPoolsIpv4Ranges.get_allocated_fragments"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.get_allocated_fragments">[docs]</a>    <span class="k">def</span> <span class="nf">get_allocated_fragments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.get_allocated_fragments"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.get_allocated_fragments">[docs]</a>    <span class="k">def</span> <span class="nf">get_allocated_fragments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all fragments that have been allocated in range.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range.</span>
+<span class="sd">            id_or_uri:</span>
+<span class="sd">                ID or URI of range.</span>
 <span class="sd">            count:</span>
 <span class="sd">                 The number of resources to return. A count of -1 requests all items. The actual number of items in</span>
 <span class="sd">                 the response may differ from the requested count if the sum of start and count exceed the total number</span>
@@ -257,16 +291,16 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list with the allocated fragements.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="s2">&quot;/allocated-fragments?start=</span><span class="si">{0}</span><span class="s2">&amp;count=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/allocated-fragments?start=</span><span class="si">{0}</span><span class="s2">&amp;count=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPoolsIpv4Ranges.get_free_fragments"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.get_free_fragments">[docs]</a>    <span class="k">def</span> <span class="nf">get_free_fragments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPoolsIpv4Ranges.get_free_fragments"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_ranges.IdPoolsIpv4Ranges.get_free_fragments">[docs]</a>    <span class="k">def</span> <span class="nf">get_free_fragments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all free fragments in an IPv4 range.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range.</span>
+<span class="sd">            id_or_uri:</span>
+<span class="sd">                ID or URI of range.</span>
 <span class="sd">            count:</span>
 <span class="sd">                 The number of resources to return. A count of -1 requests all items. The actual number of items in</span>
 <span class="sd">                 the response may differ from the requested count if the sum of start and count exceed the total number</span>
@@ -278,8 +312,8 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list with the free fragments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="s2">&quot;/free-fragments?start=</span><span class="si">{0}</span><span class="s2">&amp;count=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/free-fragments?start=</span><span class="si">{0}</span><span class="s2">&amp;count=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

@@ -156,7 +156,7 @@
   <h1>Source code for hpeOneView.oneview_client</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -267,6 +267,7 @@
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.security.certificates_server</span> <span class="kn">import</span> <span class="n">CertificatesServer</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.hypervisors.hypervisor_cluster_profiles</span> <span class="kn">import</span> <span class="n">HypervisorClusterProfiles</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.settings.appliance_configuration_timeconfig</span> <span class="kn">import</span> <span class="n">ApplianceConfigurationTimeconfig</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.settings.appliance_ssh_access</span> <span class="kn">import</span> <span class="n">ApplianceSshAccess</span>
 
 <span class="n">ONEVIEW_CLIENT_INVALID_PROXY</span> <span class="o">=</span> <span class="s1">&#39;Invalid Proxy format&#39;</span>
 <span class="n">ONEVIEW_CLIENT_INVALID_I3S_IP</span> <span class="o">=</span> <span class="s1">&#39;Image streamer ip address is missing&#39;</span>
@@ -363,6 +364,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__hypervisor_managers</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__certificates_server</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__appliance_configuration_timeconfig</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__appliance_ssh_access</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="OneViewClient.from_json_file"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.oneview_client.OneViewClient.from_json_file">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_json_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
@@ -653,7 +655,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            IdPoolsIpv4Ranges:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">IdPoolsIpv4Ranges</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_ipv4_ranges</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_ipv4_ranges</span> <span class="o">=</span> <span class="n">IdPoolsIpv4Ranges</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_ipv4_ranges</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_ipv4_subnets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1246,9 +1250,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            ApplianceDeviceSNMPv3TrapDestinations:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appliance_device_snmp_v3_trap_destinations</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__appliance_device_snmp_v3_trap_destinations</span> <span class="o">=</span> <span class="n">ApplianceDeviceSNMPv3TrapDestinations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appliance_device_snmp_v3_trap_destinations</span>
+        <span class="k">return</span> <span class="n">ApplianceDeviceSNMPv3TrapDestinations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_device_snmp_v3_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1369,7 +1371,17 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            ApplianceConfigurationTimeconfig:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">ApplianceConfigurationTimeconfig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">ApplianceConfigurationTimeconfig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">appliance_ssh_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the ApplianceSshAccess API client.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ApplianceSshAccess:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ApplianceSshAccess</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
