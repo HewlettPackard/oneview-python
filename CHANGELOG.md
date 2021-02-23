@@ -6,8 +6,8 @@ Extends support to below features for REST API version 2400.
 - Appliance Configuration Timeconfig
 - Appliance SNMPv3 Trap Destinations
 - Appliance SNMPv3  Users
-- Appliance Time and Locale Configuration
 - Appliance SSH Access
+- Appliance Time and Locale Configuration
 
 # 5.6.0
 #### Notes
