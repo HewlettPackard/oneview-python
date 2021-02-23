@@ -41,11 +41,8 @@ class ApplianceDeviceSNMPv3Users(Resource):
     """
     URI = '/rest/appliance/snmpv3-trap-forwarding/users'
 
-    # def __init__(self, con):
-    #     self._client = ResourceClient(con, self.URI)
-
-    def __init__(self,connection,data=None):
-        super(ApplianceDeviceSNMPv3Users,self).__init__(connection,data)
+    def __init__(self,connection, data=None):
+        super(ApplianceDeviceSNMPv3Users, self).__init__(connection, data)
 
     def create(self, data, timeout=-1):
         """
@@ -63,10 +60,9 @@ class ApplianceDeviceSNMPv3Users(Resource):
             dict: Created resource.
 
         """
-        #existing_destinations = data.pop('existingDestinations', None)
-        #self.create_validation(data['destinationAddress'], existing_destinations)
+        
         return super(ApplianceDeviceSNMPv3Users, self).create(data, uri=self.URI, timeout=timeout)
-        #return self._client.create(resource, timeout=timeout)
+        
 
     def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """

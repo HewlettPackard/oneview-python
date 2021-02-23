@@ -64,12 +64,11 @@ snmp_v3_user = oneview_client.appliance_device_snmp_v3_users.get_by_uri(snmp_v3_
 pprint(snmp_v3_user)
 
 
-snmpv3_data = {"authenticationPassphrase": "newAuthPass","privacyPassphrase":"8765432187654321" }
+snmpv3_data = {"authenticationPassphrase": "newAuthPass", "privacyPassphrase": "8765432187654321"}
 snmp_v3_user = snmp_v3_user.update(snmpv3_data)
 print("\n## Update appliance SNMPv3 User successfully!")
 pprint(snmp_v3_user.data)
 
 # Delete Created Entry
-snmp_v3_user.delete(snmp_v3_user)
+snmp_v3_user.delete()
 print("\n## Delete appliance SNMP v3 user successfully!")
-

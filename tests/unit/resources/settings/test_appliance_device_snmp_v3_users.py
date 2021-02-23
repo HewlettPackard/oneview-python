@@ -70,17 +70,17 @@ class ApplianceDeviceSNMPv3UsersTest(unittest.TestCase):
         self._snmp_v3_users.get_by('0ca1b9e9-3c30-405f-b450-abd36730aa38')
 
         mock_get.assert_called_once_with('0ca1b9e9-3c30-405f-b450-abd36730aa38')
-    
+
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_with_uri_called_once(self, mock_get):
         uri = '/rest/appliance/snmpv3-trap-forwarding/users/0ca1b9e9-3c30-405f-b450-abd36730aa38'
         self._snmp_v3_users.get_by_uri(uri)
 
         mock_get.assert_called_once_with(uri)
-    
-    @mock.patch.object(Resource, 'ensure_resource_data')   
+
+    @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'update')
-    def test_update_called_once(self, mock_update,mock_ensure_client):
+    def test_update_called_once(self, mock_update, mock_ensure_client):
         resource = {
             'authenticationPassphrase': 'newAuthPass',
             'privacyPassphrase': 8765432187654321,
@@ -93,4 +93,3 @@ class ApplianceDeviceSNMPv3UsersTest(unittest.TestCase):
     def test_delete_called_once(self, mock_create):
         self._snmp_v3_users.delete()
         mock_create.assert_called_once_with()
-        
