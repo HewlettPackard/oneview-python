@@ -21,12 +21,12 @@ from config_loader import try_load_from_file
 
 # Set api_version to 600, default is 300 and this API has been introduced since API 600.
 config = {
-    "ip": "",
+    "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "",
-        "password": ""
+        "userName": "<username>",
+        "password": "<password>"
     },
-    "api_version": 
+    "api_version":600
 }
 
 options = {
