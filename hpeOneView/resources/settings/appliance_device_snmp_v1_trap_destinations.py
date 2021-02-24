@@ -38,6 +38,17 @@ class ApplianceDeviceSNMPv1TrapDestinations(Resource):
     def __init__(self, connection, data=None):
         super(ApplianceDeviceSNMPv1TrapDestinations, self).__init__(connection, data)
 
+    def get_by_name(self, destination_address):
+        """Retrieves a resource by its destination.
+
+        Args:
+            destination_address: Resource destination address.
+
+        Returns:
+            Resource object or None if resource does not exist.
+        """
+        return super(ApplianceDeviceSNMPv1TrapDestinations, self).get_by_field('destination', destination_address)
+
     def create_validation(self, destination, community_string, uri, timeout=-1):
         """
         Validate whether a hostname or ip address is a valid trap destination.

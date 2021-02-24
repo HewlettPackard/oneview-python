@@ -51,6 +51,11 @@ snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.create(options)
 print("\n Created appliance SNMP v1 trap destination successfully!")
 pprint(snmp_v1_trap.data)
 
+# Get by name
+print("\n## Find an SNMPv1 trap destination by name")
+snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.get_by_name(snmp_v1_trap.data['destination'])
+pprint(snmp_v1_trap.data)
+
 # Add appliance device SNMP v1 Trap Destination with ID
 trap_id = 9
 options['destination'] = destination_ip

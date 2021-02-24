@@ -52,6 +52,11 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
         self.__appliance_device_snmp_v1_trap_destinations.get_by_uri(uri)
         mock_get_by_uri.assert_called_once_with(uri)
 
+    @mock.patch.object(Resource, 'get_by_field')
+    def test_get_by_uri_called_once(self, mock_get_by_field):
+        self.__appliance_device_snmp_v1_trap_destinations.get_by_name('test')
+        mock_get_by_field.assert_called_once_with('destination', 'test')
+
     @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):
         traps = [{'communityString': 'test', 'destination': '1.1.1.1'}, {'communityString': 'public', 'destination': '1.2.3.4'}]
