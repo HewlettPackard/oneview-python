@@ -44,24 +44,24 @@ class ApplianceDeviceSNMPv3Users(Resource):
     def __init__(self, connection, data=None):
         super(ApplianceDeviceSNMPv3Users, self).__init__(connection, data)
 
-    def create(self, data, timeout=-1):
-        """
-        Creates a new SNMPv3 user.
-        This user will be used for sending the SNMPv3 trap to the associated destinations.
-        One user can be assigned to multiple destinations.
+    # def create(self, data, timeout=-1):
+    #     """
+    #     Creates a new SNMPv3 user.
+    #     This user will be used for sending the SNMPv3 trap to the associated destinations.
+    #     One user can be assigned to multiple destinations.
 
-        Args:
-            resource (dict): Object to create.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
+    #     Args:
+    #         resource (dict): Object to create.
+    #         timeout:
+    #             Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+    #             in OneView, just stop waiting for its completion.
 
-        Returns:
-            dict: Created resource.
+    #     Returns:
+    #         dict: Created resource.
 
-        """
+    #     """
 
-        return super(ApplianceDeviceSNMPv3Users, self).create(data, uri=self.URI, timeout=timeout)
+    #     return super(ApplianceDeviceSNMPv3Users, self).create(data, uri=self.URI, timeout=timeout)
 
     def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """
