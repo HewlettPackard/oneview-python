@@ -51,6 +51,11 @@ snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.create(options)
 print("\n## Created appliance SNMPv3 trap destination successfully!")
 pprint(snmp_v3_trap.data)
 
+# Get by name
+print("\n## Find an SNMPv3 trap destination by name")
+snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.get_by_name(snmp_v3_trap.data['destinationAddress'])
+pprint(snmp_v3_trap.data)
+
 # Get by URI
 print("\n## Find an SNMPv3 trap destination by URI")
 snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.get_by_uri(snmp_v3_trap.data['uri'])

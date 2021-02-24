@@ -266,6 +266,24 @@ class Resource(object):
             new_resource = None
         return new_resource
 
+    def get_by_field(self, field, value):
+        """Retrieves a resource by its field.
+
+        Args:
+            field: Resource field name.
+            value: Resource field value.
+
+        Returns:
+            Resource object or None if resource does not exist.
+        """
+        result = self.get_by(field, value)
+        if result:
+            data = result[0]
+            new_resource = self.new(self._connection, data)
+        else:
+            new_resource = None
+        return new_resource
+
     def get_by_uri(self, uri):
         """Retrieves a resource by its URI
 

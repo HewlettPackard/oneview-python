@@ -82,6 +82,17 @@ class ApplianceDeviceSNMPv3TrapDestinations(Resource):
         self.create_validation(data['destinationAddress'], existing_destinations)
         return super(ApplianceDeviceSNMPv3TrapDestinations, self).create(data, uri=self.URI, timeout=timeout)
 
+    def get_by_name(self, destination_address):
+        """Retrieves a resource by its DestinationAddress.
+
+        Args:
+            destination_address: Resource DestinationAddress.
+
+        Returns:
+            Resource object or None if resource does not exist.
+        """
+        return super(ApplianceDeviceSNMPv3TrapDestinations, self).get_by_field('destinationAddress', destination_address)
+
     def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """
         Retrieves all SNMPv3 trap forwarding destinations.
