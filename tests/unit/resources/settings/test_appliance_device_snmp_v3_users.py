@@ -63,7 +63,7 @@ class ApplianceDeviceSNMPv3UsersTest(unittest.TestCase):
             'privacyPassphrase': '1234567812345678'
         }
         self._snmp_v3_users.create(resource)
-        mock_create.assert_called_once_with(resource, uri=self.uri, timeout=-1)
+        mock_create.assert_called_once_with(resource)
 
     @mock.patch.object(Resource, 'get_by')
     def test_get_called_once(self, mock_get):
@@ -77,6 +77,11 @@ class ApplianceDeviceSNMPv3UsersTest(unittest.TestCase):
         self._snmp_v3_users.get_by_uri(uri)
 
         mock_get.assert_called_once_with(uri)
+    
+    @mock.patch.object(Resource, 'get_by_field')
+    def test_get_by_name_called_once(self, mock_get_by_field):
+        self._snmp_v3_users.get_by_name('testUser1')
+        mock_get_by_field.assert_called_once_with('userName', 'testUser1')
 
     @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'update')

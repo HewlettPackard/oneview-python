@@ -31,7 +31,7 @@ config = {
 
 options = {
     "type": "Users",
-    "userName": "user123456",
+    "userName": "user1239",
     "securityLevel": "Authentication and privacy",
     "authenticationProtocol": "SHA512",
     "authenticationPassphrase": "authPass",
@@ -59,12 +59,17 @@ pprint(snmp_v3_users_list)
 # Get first element of the List
 snmp_v3_users = snmp_v3_users_list.pop()
 
+# Get by name
+print("\n## Find an SNMPv3 Users by username")
+snmp_v3_user = appliance_device_snmp_v3_users.get_by_name(snmp_v3_user.data['userName'])
+pprint(snmp_v3_user.data)
+
 # Get by URI
 print("Find an SNMP v3 user by URI")
 snmp_v3_user = appliance_device_snmp_v3_users.get_by_uri(snmp_v3_user_uri)
 pprint(snmp_v3_user.data)
 
-
+# hange appliance device SNMP v3 Users
 snmpv3_data = {"authenticationPassphrase": "newAuthPass", "privacyPassphrase": "8765432187654321"}
 snmp_v3_user = snmp_v3_user.update(snmpv3_data)
 print("\n## Update appliance SNMPv3 User successfully!")
