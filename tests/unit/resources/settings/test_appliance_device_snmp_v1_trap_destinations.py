@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,6 +51,11 @@ class ApplianceDeviceSNMPv1TrapDestinationsTest(TestCase):
         uri = "/rest/appliance/trap-destinations/1"
         self.__appliance_device_snmp_v1_trap_destinations.get_by_uri(uri)
         mock_get_by_uri.assert_called_once_with(uri)
+
+    @mock.patch.object(Resource, 'get_by_field')
+    def test_get_by_name_called_once(self, mock_get_by_field):
+        self.__appliance_device_snmp_v1_trap_destinations.get_by_name('test')
+        mock_get_by_field.assert_called_once_with('destination', 'test')
 
     @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):

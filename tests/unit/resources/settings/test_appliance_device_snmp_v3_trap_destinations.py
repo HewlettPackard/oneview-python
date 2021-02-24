@@ -51,6 +51,11 @@ class ApplianceDeviceSNMPv3TrapDestinationsTest(unittest.TestCase):
         self._snmp_v3_trap_dest.get_by_uri(uri)
         mock_get_by_uri.assert_called_once_with(uri)
 
+    @mock.patch.object(Resource, 'get_by_field')
+    def test_get_by_name_called_once(self, mock_get_by_field):
+        self._snmp_v3_trap_dest.get_by_name('test')
+        mock_get_by_field.assert_called_once_with('destinationAddress', 'test')
+
     @mock.patch.object(ResourceHelper, 'create')
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create, mock_create_validation):
