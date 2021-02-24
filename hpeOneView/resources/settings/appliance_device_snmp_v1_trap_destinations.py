@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,6 +37,17 @@ class ApplianceDeviceSNMPv1TrapDestinations(Resource):
 
     def __init__(self, connection, data=None):
         super(ApplianceDeviceSNMPv1TrapDestinations, self).__init__(connection, data)
+
+    def get_by_name(self, destination_address):
+        """Retrieves a resource by its destination.
+
+        Args:
+            destination_address: Resource destination address.
+
+        Returns:
+            Resource object or None if resource does not exist.
+        """
+        return super(ApplianceDeviceSNMPv1TrapDestinations, self).get_by_field('destination', destination_address)
 
     def create_validation(self, destination, community_string, uri, timeout=-1):
         """

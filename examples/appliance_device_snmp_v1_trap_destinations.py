@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ config = {
 }
 
 options = {
-    "destination": "1.1.1.1",
+    "destination": "1.1.1.2",
     "communityString": "testOne",
     "port": 162
 }
@@ -49,6 +49,11 @@ for snmp_trap in snmp_v1_trap_all:
 # Add appliance device SNMP v1 Trap Destination
 snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.create(options)
 print("\n Created appliance SNMP v1 trap destination successfully!")
+pprint(snmp_v1_trap.data)
+
+# Get by name
+print("\n## Find an SNMPv1 trap destination by name")
+snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.get_by_name(snmp_v1_trap.data['destination'])
 pprint(snmp_v1_trap.data)
 
 # Add appliance device SNMP v1 Trap Destination with ID

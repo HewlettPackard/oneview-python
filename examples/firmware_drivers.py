@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,10 +32,8 @@ config = {
 # NOTE: This example requires a SPP and a hotfix inside the appliance.
 
 options = {
-    "customBaselineName": "FirmwareDriver1_Example",
+    "customBaselineName": "custom_bundle",
 }
-
-firmware_name = "HPE Synergy Custom SPP 2019031"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -55,14 +53,14 @@ pprint(firmware_schema)
 # Get a firmware by name
 print("\nGet firmware by name.")
 if all_firmwares:
-    firmware_driver = firmware_drivers.get_by_name(all_firmwares[0]['name'])
+    firmware_driver = firmware_drivers.get_by_name(options["customBaselineName"])
 
 if firmware_driver:
-    print("Found a firmware by name: '{}'.\n  uri = '{}'".format(firmware_driver.data['name'], firmware_driver.data['uri']))
+    print("\nFound a firmware by name: '{}'.\n  uri = '{}'".format(firmware_driver.data['name'], firmware_driver.data['uri']))
 else:
     # Getting a SPP and a hotfix from within the Appliance to use in the custom SPP creation.
     try:
-        spp = firmware_drivers.get_by('bundleType', "SPP")[0]
+        spp = firmware_drivers.get_by('bundleType', "ServicePack")[0]
         options['baselineUri'] = spp['uri']
         print("\nSPP named '{}' found within appliance. Saving for custom SPP.".format(spp['name']))
     except IndexError:
@@ -78,7 +76,7 @@ else:
     # Create the custom SPP
     print("\nCreate the custom SPP '{}'".format(options['customBaselineName']))
     firmware_driver = firmware_drivers.create(options)
-    print("  Custom SPP '%s' created successfully" % options['customBaselineName'])
+    print("\nCustom SPP '%s' created successfully" % options['customBaselineName'])
 
 # Get by Uri
 print("\nGet firmware resource by URI.")
@@ -87,4 +85,4 @@ pprint(firmware_data.data)
 
 # Remove the firmware driver
 firmware_driver.delete()
-print("  Custom SPP '{}' deleted successfully".format(firmware_driver.data['name']))
+print("\nCustom SPP '{}' deleted successfully".format(firmware_driver.data['name']))
