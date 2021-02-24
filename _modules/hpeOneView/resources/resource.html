@@ -422,6 +422,24 @@
             <span class="n">new_resource</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">new_resource</span></div>
 
+<div class="viewcode-block" id="Resource.get_by_field"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_field">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieves a resource by its field.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            field: Resource field name.</span>
+<span class="sd">            value: Resource field value.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Resource object or None if resource does not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">new_resource</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_resource</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">new_resource</span></div>
+
 <div class="viewcode-block" id="Resource.get_by_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieves a resource by its URI</span>
 
