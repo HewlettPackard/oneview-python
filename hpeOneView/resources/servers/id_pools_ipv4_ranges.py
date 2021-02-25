@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,106 +24,72 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 
 
-class IdPoolsIpv4Ranges(object):
+class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
     """
     The ID pools IPv4 ranges resource provides a Client API for managing IPv4 ranges.
     """
     URI = '/rest/id-pools/ipv4/ranges'
 
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(IdPoolsIpv4Ranges, self).__init__(connection, data)
 
-    def create(self, resource, timeout=-1):
-        """
-        Creates an IPv4 range.
-
-        Args:
-            resource (dict): Object to create
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Created range.
-        """
-        return self._client.create(resource, timeout=timeout)
-
-    def get(self, id_or_uri):
-        """
-        Gets an IPv4 range by ID or URI.
-
-        Using the allocator and collector associated with the range, IDs may be allocated from or collected back to the
-        range.
-
-        Args:
-            id_or_uri: Can be either the range ID or URI.
-
-        Returns:
-            dict: Range
-        """
-        return self._client.get(id_or_uri)
-
-    def enable(self, information, id_or_uri, timeout=-1):
+    def enable(self, information, uri, timeout=-1):
         """
         Enables or disables an IPv4 range.
 
         Args:
             information (dict): Information to update.
-            id_or_uri: ID or URI of range.
+            uri: URI of range.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated IPv4 range.
         """
+        return self._helper.update(information, uri, timeout=timeout)
 
-        uri = self._client.build_uri(id_or_uri)
-
-        return self._client.update(information, uri, timeout=timeout)
-
-    def update(self, information, timeout=-1):
+    def update_allocator(self, information, uri, timeout=-1):
         """
-        Edit an IPv4 Range.
+        Allocates a set of IDs from an IPv4 range.
 
         Args:
             information (dict): Information to update.
+            id_or_uri: URI of range.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
-            dict: Updated IPv4 range.
+            dict: The allocator returned contains the list of IDs successfully allocated.
         """
+        uri = uri + "/allocator"
+        return self._helper.update(information, uri, timeout=timeout)
 
-        return self._client.update(information, timeout=timeout)
-
-    def delete(self, resource, force=False, timeout=-1):
+    def update_collector(self, information, uri, timeout=-1):
         """
-        Deletes an IPv4 range.
+        Collects a set of IDs back to an IPv4 range.
 
         Args:
-            resource (dict):
-                Object to delete
-            force (bool):
-                If set to true, the operation completes despite any problems with
-                network connectivity or errors on the resource itself. The default is false.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+            information (dict): Information to update.
+            id_or_uri: URI of range.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
-            bool: Indicates if the resource was successfully deleted.
+            dict: The collector returned contains the list of IDs successfully collected.
         """
-        return self._client.delete(resource, force=force, timeout=timeout)
+        uri = uri + "/collector"
+        return self._helper.update(information, uri, timeout=timeout)
 
-    def get_allocated_fragments(self, id_or_uri, count=-1, start=0):
+    def get_allocated_fragments(self, uri, count=-1, start=0):
         """
         Gets all fragments that have been allocated in range.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
             count:
                  The number of resources to return. A count of -1 requests all items. The actual number of items in
                  the response may differ from the requested count if the sum of start and count exceed the total number
@@ -135,16 +101,16 @@ class IdPoolsIpv4Ranges(object):
         Returns:
             list: A list with the allocated fragements.
         """
-        uri = self._client.build_uri(id_or_uri) + "/allocated-fragments?start={0}&count={1}".format(start, count)
-        return self._client.get_collection(uri)
+        uri = uri + "/allocated-fragments?start={0}&count={1}".format(start, count)
+        return self._helper.get_collection(uri)
 
-    def get_free_fragments(self, id_or_uri, count=-1, start=0):
+    def get_free_fragments(self, uri, count=-1, start=0):
         """
         Gets all free fragments in an IPv4 range.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
             count:
                  The number of resources to return. A count of -1 requests all items. The actual number of items in
                  the response may differ from the requested count if the sum of start and count exceed the total number
@@ -156,5 +122,5 @@ class IdPoolsIpv4Ranges(object):
         Returns:
             list: A list with the free fragments.
         """
-        uri = self._client.build_uri(id_or_uri) + "/free-fragments?start={0}&count={1}".format(start, count)
-        return self._client.get_collection(uri)
+        uri = uri + "/free-fragments?start={0}&count={1}".format(start, count)
+        return self._helper.get_collection(uri)
