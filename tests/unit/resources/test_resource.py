@@ -960,6 +960,18 @@ class ResourceTest(BaseTest):
         self.assertIsNone(response)
         mock_get_by.assert_called_once_with("name", "Resource Name,")
 
+    @mock.patch.object(Resource, "get_by")
+    def test_get_by_field_with_result(self, mock_get_by):
+        self.resource_client.get_by_field("field", "value")
+        mock_get_by.assert_called_once_with("field", "value")
+
+    @mock.patch.object(Resource, "get_by")
+    def test_get_by_field_without_result(self, mock_get_by):
+        mock_get_by.return_value = []
+        response = self.resource_client.get_by_field("field", "value")
+        self.assertIsNone(response)
+        mock_get_by.assert_called_once_with("field", "value")
+
     @mock.patch.object(connection, "get")
     def test_get_by_uri(self, mock_get):
         self.resource_client.get_by_uri("/rest/testuri")

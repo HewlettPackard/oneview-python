@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,55 +19,81 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-
 from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
-class ApplianceDeviceSNMPv3TrapDestinations(object):
+class ApplianceDeviceSNMPv3TrapDestinations(Resource):
     """
     ApplianceDeviceSNMPv3TrapDestinations API client.
     The appliance has the ability to forward events received from monitored or managed server hardware to the specified destinations as SNMPv3 traps.
     """
     URI = '/rest/appliance/snmpv3-trap-forwarding/destinations'
 
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(ApplianceDeviceSNMPv3TrapDestinations, self).__init__(connection, data)
 
-    def create(self, resource, timeout=-1):
+    def create_validation(self, destination_address, existing_destinations=None, timeout=-1):
         """
-        Adds the specified trap forwarding destination.
-        The trap destination associated with the specified id will be created if trap destination with that id does not exists.
-        The id can only be an integer greater than 0.
+        Validate whether a host name or IP address is valid and does not already exist.
+        Supplying invalid destination address results in failure.
 
         Args:
-            resource (dict): Object to create.
+            destination_address (str): destination ip address.
+            existing_destinations (list) - An array of IP address or host name of the existing trap destinations.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView, just stop waiting for its completion.
 
-        Returns:
+        Return:
+            Returns error message if provides invalid destination address.
+
+        """
+        data = dict(
+            destinationAddress=destination_address
+        )
+
+        if existing_destinations:
+            data['existingDestinations'] = existing_destinations
+
+        validation_uri = "{}/validation".format(self.URI)
+        return self._helper.create(data, uri=validation_uri, timeout=timeout)
+
+    def create(self, data, timeout=-1):
+        """
+        Creates a new SNMPv3 trap forwarding destination.
+        Traps will be forwarded to this destination only if the SNMPv3 user is associated with it.
+        Only one user can be assigned to a destination at any time.
+
+        Args:
+            data (dict): Object to create.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView, just stop waiting for its completion.
+
+        Return:
             dict: Created resource.
 
         """
-        return self._client.create(resource, timeout=timeout)
+        existing_destinations = data.pop('existingDestinations', None)
+        self.create_validation(data['destinationAddress'], existing_destinations)
+        return super(ApplianceDeviceSNMPv3TrapDestinations, self).create(data, uri=self.URI, timeout=timeout)
 
-    def get(self, id_or_uri):
-        """
-        Returns the SNMPv3 trap forwarding destination with the specified ID, if it exists.
+    def get_by_name(self, destination_address):
+        """Retrieves a resource by its DestinationAddress.
 
         Args:
-            id_or_uri: ID or URI of SNMPv3 trap destination.
+            destination_address: Resource DestinationAddress.
 
         Returns:
-            dict: Appliance SNMPv3 trap destination.
+            Resource object or None if resource does not exist.
         """
-        return self._client.get(id_or_uri)
+        return super(ApplianceDeviceSNMPv3TrapDestinations, self).get_by_field('destinationAddress', destination_address)
 
-    def get_all(self, start=0, count=-1, filter='', sort=''):
+    def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """
         Retrieves all SNMPv3 trap forwarding destinations.
 
@@ -86,53 +112,11 @@ class ApplianceDeviceSNMPv3TrapDestinations(object):
             sort:
                 The sort order of the returned data set. By default, the sort order is based
                 on create time with the oldest entry first.
+            query:
+                A general query string to narrow the list of resources returned.
+                The default is no query - all resources are returned.
 
         Returns:
             list: A list of SNMPv3 Trap Destionations.
         """
-        return self._client.get_all(start, count, filter=filter, sort=sort)
-
-    def get_by(self, field, value):
-        """
-        Gets all SNMPv3 trap forwarding destinations that match the filter.
-        The search is case-insensitive.
-
-        Args:
-            field: field name to filter
-            value: value to filter
-
-        Returns:
-            list: A list of SNMPv3 Trap Destionations.
-        """
-        return self._client.get_by(field, value)
-
-    def delete(self, id_or_uri, timeout=-1):
-        """
-        Deletes SNMPv3 trap forwarding destination based on {Id} only if no User is assigned to it.
-
-        Args:
-            id_or_uri: dict object to delete
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            bool: Indicates if the resource was successfully deleted.
-
-        """
-        return self._client.delete(id_or_uri, timeout=timeout)
-
-    def update(self, resource, timeout=-1):
-        """
-        Updates SNMPv3 trap forwarding destination based on Id.
-
-        Args:
-            resource: dict object with changes.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            dict: Updated appliance SNMPv3 trap destinations.
-        """
-        return self._client.update(resource, timeout=timeout)
+        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query)
