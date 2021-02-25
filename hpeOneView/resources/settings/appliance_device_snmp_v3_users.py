@@ -51,7 +51,7 @@ class ApplianceDeviceSNMPv3Users(Resource):
         Returns:
             Resource object or None if resource does not exist.
         """
-        return super(ApplianceDeviceSNMPv3Users, self).get_by_field('userName', user_name)\
+        return super(ApplianceDeviceSNMPv3Users, self).get_by_field('userName', user_name)
 
     def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """
