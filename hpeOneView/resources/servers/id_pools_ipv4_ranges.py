@@ -51,7 +51,7 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         """
         return self._helper.update(information, uri, timeout=timeout)
 
-    def allocator(self, information, uri, timeout=-1):
+    def update_allocator(self, information, uri, timeout=-1):
         """
         Allocates a set of IDs from an IPv4 range.
 
@@ -67,7 +67,7 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         uri = uri + "/allocator"
         return self._helper.update(information, uri, timeout=timeout)
 
-    def collector(self, information, uri, timeout=-1):
+    def update_collector(self, information, uri, timeout=-1):
         """
         Collects a set of IDs back to an IPv4 range.
 

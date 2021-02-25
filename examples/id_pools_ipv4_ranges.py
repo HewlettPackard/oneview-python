@@ -94,7 +94,7 @@ print(" IPv4 range enabled successfully.")
 print("Allocates a set of IDs from an IPv4 range. The maximum number of IDs in a request is 100.")
 print("The allocator returned contains the list of IDs successfully allocated. Associate the IPv4 address range with a resource before requesting IDs from it.")
 
-ipv4_range = ipv4Range.allocator({
+ipv4_range = ipv4Range.update_allocator({
     "count": 7,
     "idList": [
         "",
@@ -123,7 +123,7 @@ ipv4Range.delete()
 print(" Successfully deleted IPv4 range")
 
 print("Collects a set of IDs back to an IPv4 range.")
-ipv4_range = ipv4Range.collector({
+ipv4_range = ipv4Range.update_collector({
     "idList": [
         "",
         "",

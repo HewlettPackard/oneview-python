@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ class TestIdPoolsIpv4Ranges(unittest.TestCase):
             ]
         }
         mock_update.return_value = {}
-        self._ipv4_range.allocator(payload.copy(), self.example_uri)
+        self._ipv4_range.update_allocator(payload.copy(), self.example_uri)
         allocator_uri = self.example_uri + "/allocator"
         mock_update.assert_called_once_with(payload.copy(), allocator_uri, timeout=-1)
 
@@ -78,7 +78,7 @@ class TestIdPoolsIpv4Ranges(unittest.TestCase):
             ]
         }
         mock_update.return_value = {}
-        self._ipv4_range.collector(payload.copy(), self.example_uri)
+        self._ipv4_range.update_collector(payload.copy(), self.example_uri)
         collector_uri = self.example_uri + "/collector"
         mock_update.assert_called_once_with(payload.copy(), collector_uri, timeout=-1)
 
