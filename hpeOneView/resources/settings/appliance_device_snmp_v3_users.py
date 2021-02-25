@@ -43,7 +43,7 @@ class ApplianceDeviceSNMPv3Users(Resource):
 
     def __init__(self, connection, data=None):
         super(ApplianceDeviceSNMPv3Users, self).__init__(connection, data)
-    
+
     def get_by_name(self, user_name):
         """Retrieves a resource by its username.
         Args:
@@ -51,7 +51,7 @@ class ApplianceDeviceSNMPv3Users(Resource):
         Returns:
             Resource object or None if resource does not exist.
         """
-        return super(ApplianceDeviceSNMPv3Users, self).get_by_field('userName', user_name)    
+        return super(ApplianceDeviceSNMPv3Users, self).get_by_field('userName', user_name)\
 
     def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """

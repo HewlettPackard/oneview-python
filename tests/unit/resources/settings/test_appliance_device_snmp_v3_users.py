@@ -77,7 +77,7 @@ class ApplianceDeviceSNMPv3UsersTest(unittest.TestCase):
         self._snmp_v3_users.get_by_uri(uri)
 
         mock_get.assert_called_once_with(uri)
-    
+
     @mock.patch.object(Resource, 'get_by_field')
     def test_get_by_name_called_once(self, mock_get_by_field):
         self._snmp_v3_users.get_by_name('testUser1')
