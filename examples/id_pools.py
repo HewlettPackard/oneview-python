@@ -41,27 +41,27 @@ pool_type_ipv4 = 'ipv4'
 id_pools = oneview_client.id_pools
 print("\n Gets schema: ")
 schema = id_pools.schema()
-pprint(schema)
+pprint(schema.data)
 
 print("\n Gets the Pool: " + pool_type_vsn)
 id_pool = id_pools.get_pool_type(pool_type_vsn)
-pprint(id_pool)
+pprint(id_pool.data)
 
 print("\n Gets the Pool: " + pool_type_vwwn)
 id_pool = id_pools.get_pool_type(pool_type_vwwn)
-pprint(id_pool)
+pprint(id_pool.data)
 
 print("\n Gets the Pool: " + pool_type_ipv4)
 id_pool = id_pools.get_pool_type(pool_type_ipv4)
-pprint(id_pool)
+pprint(id_pool.data)
 
 print("\n Gets the Pool: " + pool_type_vmac)
 id_pool = id_pools.get_pool_type(pool_type_vmac)
-pprint(id_pool)
+pprint(id_pool.data)
 
 print("\n Enable the Id Pool")
 data = {
-    "rangeUris": id_pool['rangeUris'],
+    "rangeUris": id_pool.data['rangeUris'],
     "type": "Pool",
     "enabled": True
 }
@@ -70,7 +70,7 @@ print(" Id Pool Updated")
 
 print("\n Generates a random range")
 rnd_range = id_pools.generate(pool_type_vsn)
-pprint(rnd_range)
+pprint(rnd_range.data)
 
 print("\n Allocates a set of IDs from a pool")
 allocated_ids = id_pools.allocate({"count": 10}, pool_type_vsn)
@@ -78,7 +78,7 @@ pprint(allocated_ids)
 
 print("\n Checks the range availability in the Id pool")
 range_availability = id_pools.get_check_range_availability(pool_type_vsn, allocated_ids['idList'])
-pprint(range_availability)
+pprint(range_availability.data)
 
 print("\n Validates a set of user specified IDs to reserve in the pool")
 ids = [str(x)[:-3] + '200' for x in allocated_ids['idList']]
@@ -87,7 +87,7 @@ pprint(validated)
 
 print("\n Validates an Id Pool")
 get_validate = id_pools.validate_id_pool(pool_type_ipv4, ['172.18.9.11'])
-pprint(get_validate)
+pprint(get_validate.data)
 
 print("\n Collect a set of IDs back to Id Pool")
 try:

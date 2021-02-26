@@ -35,16 +35,6 @@ class IdPools(Resource, ResourceSchemaMixin):
     def __init__(self, connection, data=None):
         super(IdPools, self).__init__(connection, data)
 
-    def get(self):
-        """
-        Gets a pool.
-        Args:
-            id_or_uri: Can be either the range ID or URI.
-        Returns:
-            dict: Pool resource.
-        """
-        return self._helper.do_get(self.URI)
-
     def schema(self):
         """
         Gets schema of ID pools and returns it
@@ -55,9 +45,10 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing the schema.
         """
-        return self._helper.do_get(self.URI + "/schema")
+        uri = self._helper.build_uri("schema")
+        return super(IdPools, self).get_by_uri(uri=uri)
 
-    def get_pool_type(self, uri):
+    def get_pool_type(self, pool_type):
         """
         Gets a pool along with the list of ranges present in it
 
@@ -67,10 +58,10 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
           dict: List of ranges
         """
-        uri = self._helper.build_uri(uri)
-        return self._helper.do_get(uri)
+        uri = self._helper.build_uri(pool_type)
+        return super(IdPools, self).get_by_uri(uri=uri)
 
-    def update_pool_type(self, data, uri, timeout=-1):
+    def update_pool_type(self, data, pool_type, timeout=-1):
         """
         Enables or disables the pool
 
@@ -80,11 +71,10 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: Updated Resource.
         """
-        uri = self._helper.build_uri(uri)
-        print(uri)
+        uri = self._helper.build_uri(pool_type)
         return self._helper.update(data, uri, timeout=timeout)
 
-    def validate_id_pool(self, uri, ids_pools):
+    def validate_id_pool(self, pool_type, ids_pools):
         """
         Validates an ID pool.
 
@@ -97,10 +87,10 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(uri) + "/validate?idList=" + "&idList=".join(ids_pools)
-        return self._helper.do_get(uri)
+        uri = self._helper.build_uri(pool_type) + "/validate?idList=" + "&idList=".join(ids_pools)
+        return super(IdPools, self).get_by_uri(uri=uri)
 
-    def validate(self, information, uri, timeout=-1):
+    def validate(self, information, pool_type, timeout=-1):
         """
         Validates a set of user specified IDs to reserve in the pool.
 
@@ -118,10 +108,10 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(uri) + "/validate"
+        uri = self._helper.build_uri(pool_type) + "/validate"
         return self._helper.update(information, uri, timeout=timeout)
 
-    def allocate(self, information, uri, timeout=-1):
+    def allocate(self, information, pool_type, timeout=-1):
         """
         Allocates a set of IDs from range.
 
@@ -139,11 +129,11 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(uri) + "/allocator"
+        uri = self._helper.build_uri(pool_type) + "/allocator"
 
         return self._helper.update(information, uri, timeout=timeout)
 
-    def collect(self, information, uri, timeout=-1):
+    def collect(self, information, pool_type, timeout=-1):
         """
         Collects one or more IDs to be returned to a pool.
 
@@ -159,11 +149,11 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: Collector containing list of collected IDs successfully collected.
         """
-        uri = self._helper.build_uri(uri) + "/collector"
+        uri = self._helper.build_uri(pool_type) + "/collector"
 
         return self._helper.update(information, uri, timeout=timeout)
 
-    def get_check_range_availability(self, uri, ids_pools):
+    def get_check_range_availability(self, pool_type, ids_pools):
         """
         Checks the range availability in the ID pool.
 
@@ -176,10 +166,10 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(uri) + "/checkrangeavailability?idList=" + "&idList=".join(ids_pools)
-        return self._helper.do_get(uri)
+        uri = self._helper.build_uri(pool_type) + "/checkrangeavailability?idList=" + "&idList=".join(ids_pools)
+        return super(IdPools, self).get_by_uri(uri=uri)
 
-    def generate(self, uri):
+    def generate(self, pool_type):
         """
         Generates and returns a random range.
 
@@ -190,5 +180,5 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(uri) + "/generate"
-        return self._helper.do_get(uri)
+        uri = self._helper.build_uri(pool_type) + "/generate"
+        return super(IdPools, self).get_by_uri(uri=uri)

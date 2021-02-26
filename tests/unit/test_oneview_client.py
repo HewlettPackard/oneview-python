@@ -557,7 +557,7 @@ class OneViewClientTest(unittest.TestCase):
     def test_id_pools_has_right_type(self):
         self.assertIsInstance(self._oneview.id_pools, IdPools)
 
-    def test_id_pools_lazy_loading(self):
+    def test_id_pools_client(self):
         id_pools = self._oneview.id_pools
         self.assertNotEqual(id_pools, self._oneview.id_pools)
 
