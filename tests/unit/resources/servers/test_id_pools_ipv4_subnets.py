@@ -17,7 +17,7 @@
 import mock
 import unittest
 from hpeOneView.connection import connection
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourceHelper
 from hpeOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
 
 
