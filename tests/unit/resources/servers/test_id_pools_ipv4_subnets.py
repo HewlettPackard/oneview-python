@@ -52,10 +52,10 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
         self.client.update(self.resource_info.copy())
         update.assert_called_once_with(self.resource_info.copy(), self.example_uri, timeout=-1)
 
-    @mock.patch.object(ResourceHelper, 'get_all')
+    @mock.patch.object(Resource, 'get_all')
     def test_get_allocated_fragments_called_once_with_defaults(self, mock_get):
         self.client.get_all(self.example_uri)
-        mock_get.assert_called_once_with(count=-1, filter='', sort='', self.example_uri)
+        mock_get.assert_called_once_with(self.example_uri)
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
