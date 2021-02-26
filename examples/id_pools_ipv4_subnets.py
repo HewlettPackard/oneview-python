@@ -20,10 +20,10 @@ from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "",
+    "ip": "10.1.19.120",
     "credentials": {
-        "userName": "administrator",
-        "password": ""
+        "userName": "Administrator",
+        "password": "admin123"
     }
 }
 
@@ -42,22 +42,36 @@ options = {
     "dnsServers": ["10.10.10.215"]
 }
 
+id_pools_ipv4_subnets = oneview_client.id_pools_ipv4_subnets
+
 print('\n Create IPv4 subnet for id pools')
-ipv4_subnet = oneview_client.id_pools_ipv4_subnets.create(options)
+ipv4_subnet = id_pools_ipv4_subnets.create(options)
 pprint(ipv4_subnet)
 
 print('\n Update IPv4 subnet for id pools')
 ipv4_subnet['name'] = 'Changed Name'
-ipv4_subnet = oneview_client.id_pools_ipv4_subnets.update(ipv4_subnet)
+ipv4_subnet = id_pools_ipv4_subnets.update(ipv4_subnet)
 
 print('\n Get IPv4 subnet by uri')
-ipv4_subnet_byuri = oneview_client.id_pools_ipv4_subnets.get(ipv4_subnet['uri'])
+ipv4_subnet_byuri = id_pools_ipv4_subnets.get(ipv4_subnet['uri'])
 pprint(ipv4_subnet_byuri)
 
 print('\n Get all IPv4 subnet')
-all_subnets = oneview_client.id_pools_ipv4_subnets.get_all()
+all_subnets = id_pools_ipv4_subnets.get_all()
 pprint(all_subnets)
 
+subnet_id = ipv4_subnet['allocatorUri'].split('/')[-2]
+print("\n Allocates a set of IDs from a pool")
+allocated_ids = id_pools_ipv4_subnets.allocate({"count": 10}, subnet_id)
+pprint(allocated_ids)
+
+print("\n Collect a set of IDs back to Id Pool")
+try:
+    collected_ids = id_pools_ipv4_subnets.collect({"idList": allocated_ids['idList']}, subnet_id)
+    pprint(collected_ids)
+except HPEOneViewException as e:
+    print(e.msg)
+
 print('\n Delete IPv4 subnet')
-oneview_client.id_pools_ipv4_subnets.delete(ipv4_subnet)
+id_pools_ipv4_subnets.delete(ipv4_subnet)
 print(" Successfully deleted IPv4 subnet")

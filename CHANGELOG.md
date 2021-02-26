@@ -9,6 +9,7 @@ Extends support to below features for REST API version 2400.
 - Appliance SSH Access
 - Appliance Time and Locale Configuration
 - ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
 
 
 # 5.6.0

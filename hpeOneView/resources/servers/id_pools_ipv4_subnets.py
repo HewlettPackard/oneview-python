@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,18 +23,18 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 
 
-class IdPoolsIpv4Subnets(object):
+class IdPoolsIpv4Subnets(Resource, ResourceSchemaMixin):
     """
     The ID pools IPv4 subnets resource provides a Client API for managing IPv4 subnets.
     """
 
     URI = '/rest/id-pools/ipv4/subnets'
 
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(IdPoolsIpv4Subnets, self).__init__(connection, data)
 
     def create(self, resource, timeout=-1):
         """
@@ -48,7 +48,7 @@ class IdPoolsIpv4Subnets(object):
         Returns:
             dict: Created subnet.
         """
-        return self._client.create(resource, timeout=timeout)
+        return self._helper.create(resource, timeout=timeout)
 
     def get_all(self, start=0, count=-1, filter='', sort=''):
         """
@@ -73,7 +73,7 @@ class IdPoolsIpv4Subnets(object):
         Returns:
             list: A list of IPV4 Subnet resources.
         """
-        return self._client.get_all(start, count, filter=filter, sort=sort)
+        return self._helper.get_all(start, count, filter=filter, sort=sort)
 
     def get(self, id_or_uri):
         """
@@ -88,7 +88,7 @@ class IdPoolsIpv4Subnets(object):
         Returns:
             dict: IPv4 subnet.
         """
-        return self._client.get(id_or_uri)
+        return self._helper.do_get(id_or_uri)
 
     def update(self, resource, timeout=-1):
         """
@@ -103,7 +103,7 @@ class IdPoolsIpv4Subnets(object):
             dict: Updated resource.
         """
 
-        return self._client.update(resource, timeout=timeout)
+        return self._helper.update(resource, timeout=timeout)
 
     def delete(self, resource, force=False, timeout=-1):
         """
@@ -122,4 +122,41 @@ class IdPoolsIpv4Subnets(object):
         Returns:
             bool: Indicates if the resource was successfully deleted.
         """
-        return self._client.delete(resource, force=force, timeout=timeout)
+        return self._helper.delete(resource, force=force, timeout=timeout)
+   
+    def allocate(self, information, uri, timeout=-1):
+        """
+        Allocates a set of IDs from range.
+        The allocator returned contains the list of IDs successfully allocated.
+        Args:
+            information (dict):
+                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
+            uri:
+                URI of vSN range.
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+        Returns:
+            dict: A dict containing a list with IDs.
+        """
+        uri = self._helper.build_uri(uri) + '/allocator'
+        print(uri)
+        return self._helper.update(information, uri, timeout=timeout)
+
+    def collect(self, information, uri, timeout=-1):
+        """
+        Collects one or more IDs to be returned to a pool.
+        Args:
+            information (dict):
+                The list of IDs to be collected
+            uri:
+                URI of range
+            timeout:
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                in OneView; it just stops waiting for its completion.
+        Returns:
+            dict: Collector containing list of collected IDs successfully collected.
+        """
+        uri = self._helper.build_uri(uri) + '/collector'
+        print(uri)
+        return self._helper.update(information, uri, timeout=timeout)
