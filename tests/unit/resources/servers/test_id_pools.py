@@ -18,7 +18,7 @@ import mock
 import unittest
 
 from hpeOneView.connection import connection
-from hpeOneView.resources.resource import ResourceHelper
+from hpeOneView.resources.resource import Resource, ResourceHelper
 from hpeOneView.resources.servers.id_pools import IdPools
 
 

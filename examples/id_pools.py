@@ -60,10 +60,10 @@ id_pool = id_pools.get_pool_type(pool_type_vmac)
 pprint(id_pool)
 
 print("\n Enable the Id Pool")
-data = { "rangeUris": id_pool['rangeUris'],
+data = {"rangeUris": id_pool['rangeUris'],
          "type": "Pool",
          "enabled": True
-       }
+}
 id_pool = id_pools.update_pool_type(data, pool_type_vmac)
 print(" Id Pool Updated")
 
@@ -80,19 +80,17 @@ range_availability = id_pools.get_check_range_availability(pool_type_vsn, alloca
 pprint(range_availability)
 
 print("\n Validates a set of user specified IDs to reserve in the pool")
-ids = [ str(x)[:-3] + '200' for x in allocated_ids['idList']]
+ids = [str(x)[:-3] + '200' for x in allocated_ids['idList']]
 validated = id_pools.validate({'idList': ids}, pool_type_vsn)
 pprint(validated)
 
 print("\n Validates an Id Pool")
-get_validate = id_pools.validate_id_pool(pool_type_ipv4,
-                                                        ['172.18.9.11'])
+get_validate = id_pools.validate_id_pool(pool_type_ipv4, ['172.18.9.11'])
 pprint(get_validate)
 
 print("\n Collect a set of IDs back to Id Pool")
 try:
-    collected_ids = id_pools.collect({"idList": allocated_ids['idList']},
-                                                    pool_type_vsn)
+    collected_ids = id_pools.collect({"idList": allocated_ids['idList']}, pool_type_vsn)
     pprint(collected_ids)
 except HPEOneViewException as e:
     print(e.msg)
