@@ -33,18 +33,18 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'create')
     def test_create_called_once(self, mock_create):
-        self.client.create(self.resource_info)
+        self.client.create(self.resource_info, timeout=-1)
         mock_create.assert_called_once_with(self.resource_info, timeout=-1)
 
-    @mock.patch.object(ResourceHelper, 'do_get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_id_called_once(self, mock_get):
         id_pools_subnet_id = "f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
         self.client.get(id_pools_subnet_id)
         mock_get.assert_called_once_with(id_pools_subnet_id)
 
-    @mock.patch.object(ResourceHelper, 'do_get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_uri_called_once(self, mock_get):
-        self.client.get(self.example_uri)
+        self.client.get_by_uri(self.example_uri)
         mock_get.assert_called_once_with(self.example_uri)
 
     @mock.patch.object(ResourceHelper, 'update')
@@ -54,7 +54,7 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_allocated_fragments_called_once_with_defaults(self, mock_get):
-        self.client.get_all(self.example_uri)
+        self.client.get_all(self.example_uri, -1, filter='', sort='')
         mock_get.assert_called_once_with(self.example_uri, -1, filter='', sort='')
 
     @mock.patch.object(ResourceHelper, 'delete')
