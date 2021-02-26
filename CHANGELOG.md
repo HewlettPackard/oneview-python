@@ -8,6 +8,7 @@ Extends support to below features for REST API version 2400.
 - Appliance SNMPv3  Users
 - Appliance SSH Access
 - Appliance Time and Locale Configuration
+- ID Pools
 - ID Pool IPv4 Range
 - ID Pool IPv4 Subnets
 
