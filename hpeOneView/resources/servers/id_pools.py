@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,64 +23,73 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 
-
-class IdPools(object):
+class IdPools(Resource, ResourceSchemaMixin):
     """
     Class for Id Pools API client.
     """
     URI = '/rest/id-pools'
 
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(IdPools, self).__init__(connection, data)
 
-    def get(self, id_or_uri):
+    def schema(self):
         """
-        Gets a pool.
+        Gets schema of ID pools and returns it
 
         Args:
-            id_or_uri: Can be either the range ID or URI.
-
+            uri:
+                URI of range.
         Returns:
-            dict: Pool resource.
+            dict: A dict containing the schema.
         """
-        return self._client.get(id_or_uri)
+        return self._helper.do_get(self.URI + "/schema")
 
-    def enable(self, information, id_or_uri, timeout=-1):
+    def get_pool_type(self, uri):
         """
-        Enables or disables a pool.
+        Gets a pool along with the list of ranges present in it
 
         Args:
-            information (dict): Information to update.
-            id_or_uri: ID or URI of range.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+          uri: URI of range
 
         Returns:
-            dict: Updated resource.
+          dict: List of ranges
         """
+        uri = self._helper.build_uri(uri)
+        return self._helper.do_get(uri)
 
-        uri = self._client.build_uri(id_or_uri)
-        return self._client.update(information, uri, timeout=timeout)
+    def update_pool_type(self, data, uri, timeout=-1):
+        """
+        Enables or disables the pool
 
-    def validate_id_pool(self, id_or_uri, ids_pools):
+        Args:
+            uri: URI of range.
+
+        Returns:
+            dict: Updated Resource.
+        """
+        uri = self._helper.build_uri(uri)
+        print(uri)
+        return self._helper.update(data, uri, timeout=timeout)
+
+    def validate_id_pool(self, uri, ids_pools):
         """
         Validates an ID pool.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
             ids_pools (list):
                 List of Id Pools.
 
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._client.build_uri(id_or_uri) + "/validate?idList=" + "&idList=".join(ids_pools)
-        return self._client.get(uri)
+        uri = self._helper.build_uri(uri) + "/validate?idList=" + "&idList=".join(ids_pools)
+        return self._helper.do_get(uri)
 
-    def validate(self, information, id_or_uri, timeout=-1):
+    def validate(self, information, uri, timeout=-1):
         """
         Validates a set of user specified IDs to reserve in the pool.
 
@@ -89,8 +98,8 @@ class IdPools(object):
         Args:
             information (dict):
                 Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
-            id_or_uri:
-                ID or URI of vSN range.
+            uri:
+                URI of vSN range.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -98,10 +107,10 @@ class IdPools(object):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._client.build_uri(id_or_uri) + "/validate"
-        return self._client.update(information, uri, timeout=timeout)
+        uri = self._helper.build_uri(uri) + "/validate"
+        return self._helper.update(information, uri, timeout=timeout)
 
-    def allocate(self, information, id_or_uri, timeout=-1):
+    def allocate(self, information, uri, timeout=-1):
         """
         Allocates a set of IDs from range.
 
@@ -110,8 +119,8 @@ class IdPools(object):
         Args:
             information (dict):
                 Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
-            id_or_uri:
-                ID or URI of vSN range.
+            uri:
+                URI of vSN range.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -119,19 +128,19 @@ class IdPools(object):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._client.build_uri(id_or_uri) + "/allocator"
+        uri = self._helper.build_uri(uri) + "/allocator"
 
-        return self._client.update(information, uri, timeout=timeout)
+        return self._helper.update(information, uri, timeout=timeout)
 
-    def collect(self, information, id_or_uri, timeout=-1):
+    def collect(self, information, uri, timeout=-1):
         """
         Collects one or more IDs to be returned to a pool.
 
         Args:
             information (dict):
                 The list of IDs to be collected
-            id_or_uri:
-                ID or URI of range
+            uri:
+                URI of range
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -139,37 +148,36 @@ class IdPools(object):
         Returns:
             dict: Collector containing list of collected IDs successfully collected.
         """
-        uri = self._client.build_uri(id_or_uri) + "/collector"
+        uri = self._helper.build_uri(uri) + "/collector"
 
-        return self._client.update(information, uri, timeout=timeout)
+        return self._helper.update(information, uri, timeout=timeout)
 
-    def get_check_range_availability(self, id_or_uri, ids_pools):
+    def get_check_range_availability(self, uri, ids_pools):
         """
         Checks the range availability in the ID pool.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
             ids_pools (list):
                 List of Id Pools.
 
         Returns:
             dict: A dict containing a list with IDs.
         """
+        uri = self._helper.build_uri(uri) + "/checkrangeavailability?idList=" + "&idList=".join(ids_pools)
+        return self._helper.do_get(uri)
 
-        uri = self._client.build_uri(id_or_uri) + "/checkrangeavailability?idList=" + "&idList=".join(ids_pools)
-        return self._client.get(uri)
-
-    def generate(self, id_or_uri):
+    def generate(self, uri):
         """
         Generates and returns a random range.
 
         Args:
-            id_or_uri:
-                ID or URI of range.
+            uri:
+                URI of range.
 
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._client.build_uri(id_or_uri) + "/generate"
-        return self._client.get(uri)
+        uri = self._helper.build_uri(uri) + "/generate"
+        return self._helper.do_get(uri)
