@@ -46,7 +46,7 @@ class IdPools(Resource, ResourceSchemaMixin):
             dict: A dict containing the schema.
         """
         uri = self._helper.build_uri("schema")
-        return super(IdPools, self).get_by_uri(uri=uri)
+        return super(IdPools, self).get_by_uri(uri)
 
     def get_pool_type(self, pool_type):
         """
@@ -59,7 +59,7 @@ class IdPools(Resource, ResourceSchemaMixin):
           dict: List of ranges
         """
         uri = self._helper.build_uri(pool_type)
-        return super(IdPools, self).get_by_uri(uri=uri)
+        return super(IdPools, self).get_by_uri(uri)
 
     def update_pool_type(self, data, pool_type, timeout=-1):
         """
@@ -88,7 +88,7 @@ class IdPools(Resource, ResourceSchemaMixin):
             dict: A dict containing a list with IDs.
         """
         uri = self._helper.build_uri(pool_type) + "/validate?idList=" + "&idList=".join(ids_pools)
-        return super(IdPools, self).get_by_uri(uri=uri)
+        return super(IdPools, self).get_by_uri(uri)
 
     def validate(self, information, pool_type, timeout=-1):
         """
@@ -167,7 +167,7 @@ class IdPools(Resource, ResourceSchemaMixin):
             dict: A dict containing a list with IDs.
         """
         uri = self._helper.build_uri(pool_type) + "/checkrangeavailability?idList=" + "&idList=".join(ids_pools)
-        return super(IdPools, self).get_by_uri(uri=uri)
+        return super(IdPools, self).get_by_uri(uri)
 
     def generate(self, pool_type):
         """
@@ -181,4 +181,4 @@ class IdPools(Resource, ResourceSchemaMixin):
             dict: A dict containing a list with IDs.
         """
         uri = self._helper.build_uri(pool_type) + "/generate"
-        return super(IdPools, self).get_by_uri(uri=uri)
+        return super(IdPools, self).get_by_uri(uri)
