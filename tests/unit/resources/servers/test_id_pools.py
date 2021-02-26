@@ -25,6 +25,7 @@ from hpeOneView.resources.servers.id_pools import IdPools
 class TestIdPools(unittest.TestCase):
     resource_info = {'type': 'Range',
                      'name': 'No name'}
+    uri  = "/rest/id-pools"
     example_uri = "/rest/id-pools/ipv4"
 
     def setUp(self):
@@ -35,23 +36,23 @@ class TestIdPools(unittest.TestCase):
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_called_once_by_id(self, mock_get):
         id_pools_range_id = "f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
-        self.client.get_by_uri(id_pools_range_id)
+        self.client.do_get(id_pools_range_id)
         mock_get.assert_called_once_with(id_pools_range_id)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_called_once_by_uri(self, mock_get):
-        self.client.get_by_uri(self.example_uri)
-        mock_get.assert_called_once_with(self.example_uri)
+        self.client.do_get(self.uri)
+        mock_get.assert_called_once_with(self.uri)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_schema_called_once_by_uri(self, mock_get):
         self.client.get_schema()
-        mock_get.assert_called_once_with(self.example_uri + '/schema')
+        mock_get.assert_called_once_with(self.uri + '/schema')
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_pool_type_called_once_by_uri(self, mock_get):
         self.client.get_pool_type(self.example_uri)
-        mock_get.assert_called_once_with(self.resource_info.copy(), self.example_uri)
+        mock_get.assert_called_once_with(self.example_uri)
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_generate_called_once(self, mock_get):
@@ -74,7 +75,7 @@ class TestIdPools(unittest.TestCase):
         self.client.update_pool_type(self.resource_info.copy(), self.example_uri)
         update.assert_called_once_with(self.resource_info.copy(), self.example_uri, timeout=-1)
 
-    @mock.patch.object(Resource, 'get_by_uri')
+    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_check_range_availability_called_once_with_defaults(self, mock_get):
         self.client.get_check_range_availability(self.example_uri, ['VCGYOAA023',
                                                                     'VCGYOAA024'])
