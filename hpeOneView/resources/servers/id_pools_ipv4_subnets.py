@@ -36,127 +36,37 @@ class IdPoolsIpv4Subnets(Resource, ResourceSchemaMixin):
     def __init__(self, connection, data=None):
         super(IdPoolsIpv4Subnets, self).__init__(connection, data)
 
-    def create(self, resource, timeout=-1):
-        """
-        Creates subnet.
-
-        Args:
-            resource (dict): Object to create
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Created subnet.
-        """
-        return self._helper.create(resource, timeout=timeout)
-
-    def get_all(self, start=0, count=-1, filter='', sort=''):
-        """
-        Gets a list of IPV4 Subnet resources. Returns a list of resources based on optional sorting and filtering,
-        and constrained by start and count parameters.
-
-        Args:
-            start:
-                The first item to return, using 0-based indexing.
-                If not specified, the default is 0 - start with the first available item.
-            count:
-                The number of resources to return. A count of -1 requests all items.
-                The actual number of items in the response might differ from the requested
-                count if the sum of start and count exceeds the total number of items.
-            filter (list or str):
-                A general filter/query string to narrow the list of items returned. The
-                default is no filter; all resources are returned.
-            sort:
-                The sort order of the returned data set. By default, the sort order is based
-                on create time with the oldest entry first.
-
-        Returns:
-            list: A list of IPV4 Subnet resources.
-        """
-        return self._helper.get_all(start, count, filter=filter, sort=sort)
-
-    def get(self, id_or_uri):
-        """
-        Gets an IPv4 subnet.
-
-        Using the allocator and collector associated with the subnet, IDs may be allocated from or collected back to the
-        subnet.
-
-        Args:
-            id_or_uri: Can be either the subnet ID or URI.
-
-        Returns:
-            dict: IPv4 subnet.
-        """
-        return self._helper.do_get(id_or_uri)
-
-    def update(self, resource, timeout=-1):
-        """
-        Update the resource.
-
-        Args:
-            resource (dict): Information to update.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            dict: Updated resource.
-        """
-
-        return self._helper.update(resource, timeout=timeout)
-
-    def delete(self, resource, force=False, timeout=-1):
-        """
-        Deletes the IPv4 subnet.
-
-        Args:
-            resource (dict):
-                Object to delete
-            force (bool):
-                If set to true, the operation completes despite any problems with
-                network connectivity or errors on the resource itself. The default is false.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
-
-        Returns:
-            bool: Indicates if the resource was successfully deleted.
-        """
-        return self._helper.delete(resource, force=force, timeout=timeout)
-
-    def allocate(self, information, uri, timeout=-1):
+    def allocate(self, information, subnet_id, timeout=-1):
         """
         Allocates a set of IDs from range.
         The allocator returned contains the list of IDs successfully allocated.
         Args:
             information (dict):
                 Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
-            uri:
-                URI of vSN range.
+            subnet_id:
+                IPv4 subnet id.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(uri) + '/allocator'
-        print(uri)
+        uri = self._helper.build_uri(subnet_id) + '/allocator'
         return self._helper.update(information, uri, timeout=timeout)
 
-    def collect(self, information, uri, timeout=-1):
+    def collect(self, information, subnet_id, timeout=-1):
         """
         Collects one or more IDs to be returned to a pool.
         Args:
             information (dict):
                 The list of IDs to be collected
-            uri:
-                URI of range
+            subnet_id:
+                IPv4 subnet id
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
         Returns:
             dict: Collector containing list of collected IDs successfully collected.
         """
-        uri = self._helper.build_uri(uri) + '/collector'
-        print(uri)
+        uri = self._helper.build_uri(subnet_id) + '/collector'
         return self._helper.update(information, uri, timeout=timeout)
