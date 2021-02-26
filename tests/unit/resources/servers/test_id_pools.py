@@ -35,7 +35,7 @@ class TestIdPools(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_called_once_by_uri(self, mock_get):
-        self.client.get(self.uri)
+        self.client.get()
         mock_get.assert_called_once_with(self.uri)
 
     @mock.patch.object(ResourceHelper, 'do_get')
