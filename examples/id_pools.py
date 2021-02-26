@@ -60,9 +60,10 @@ id_pool = id_pools.get_pool_type(pool_type_vmac)
 pprint(id_pool)
 
 print("\n Enable the Id Pool")
-data = {"rangeUris": id_pool['rangeUris'],
-         "type": "Pool",
-         "enabled": True
+data = {
+    "rangeUris": id_pool['rangeUris'],
+    "type": "Pool",
+    "enabled": True
 }
 id_pool = id_pools.update_pool_type(data, pool_type_vmac)
 print(" Id Pool Updated")
