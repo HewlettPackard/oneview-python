@@ -34,14 +34,8 @@ class TestIdPools(unittest.TestCase):
         self.client = IdPools(self.connection)
 
     @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_called_once_by_id(self, mock_get):
-        id_pools_range_id = "f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
-        self.client.do_get(id_pools_range_id)
-        mock_get.assert_called_once_with(id_pools_range_id)
-
-    @mock.patch.object(ResourceHelper, 'do_get')
     def test_get_called_once_by_uri(self, mock_get):
-        self.client.do_get(self.uri)
+        self.client.get(self.uri)
         mock_get.assert_called_once_with(self.uri)
 
     @mock.patch.object(ResourceHelper, 'do_get')

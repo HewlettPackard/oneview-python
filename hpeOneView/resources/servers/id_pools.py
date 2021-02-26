@@ -35,6 +35,16 @@ class IdPools(Resource, ResourceSchemaMixin):
     def __init__(self, connection, data=None):
         super(IdPools, self).__init__(connection, data)
 
+    def get(self):
+        """
+        Gets a pool.
+        Args:
+            id_or_uri: Can be either the range ID or URI.
+        Returns:
+            dict: Pool resource.
+        """
+        return self._helper.do_get(self.URI)
+
     def schema(self):
         """
         Gets schema of ID pools and returns it
