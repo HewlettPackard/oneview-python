@@ -665,9 +665,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            IdPoolsIpv4Subnets:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_ipv4_subnets</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_ipv4_subnets</span> <span class="o">=</span> <span class="n">IdPoolsIpv4Subnets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_ipv4_subnets</span>
+        <span class="k">return</span> <span class="n">IdPoolsIpv4Subnets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -677,7 +675,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            IdPools:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">IdPools</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools</span> <span class="o">=</span> <span class="n">IdPools</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">switches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
