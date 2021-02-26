@@ -501,8 +501,8 @@ in OneView; it just stops waiting for its completion.</td>
 <span id="hpeoneview-resources-servers-id-pools-module"></span><h2>hpeOneView.resources.servers.id_pools module<a class="headerlink" href="#module-hpeOneView.resources.servers.id_pools" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.servers.id_pools.</code><code class="descname">IdPools</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.servers.id_pools.</code><code class="descname">IdPools</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin" title="hpeOneView.resources.resource.ResourceSchemaMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourceSchemaMixin</span></code></a></p>
 <p>Class for Id Pools API client.</p>
 <dl class="attribute">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.URI">
@@ -511,7 +511,7 @@ in OneView; it just stops waiting for its completion.</td>
 
 <dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.allocate">
-<code class="descname">allocate</code><span class="sig-paren">(</span><em>information</em>, <em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.allocate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.allocate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">allocate</code><span class="sig-paren">(</span><em>information</em>, <em>pool_type</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.allocate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.allocate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allocates a set of IDs from range.</p>
 <p>The allocator returned contains the list of IDs successfully allocated.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -520,7 +520,7 @@ in OneView; it just stops waiting for its completion.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>information</strong> (<em>dict</em>) – Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</li>
-<li><strong>id_or_uri</strong> – ID or URI of vSN range.</li>
+<li><strong>uri</strong> – URI of vSN range.</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
@@ -538,7 +538,7 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.collect">
-<code class="descname">collect</code><span class="sig-paren">(</span><em>information</em>, <em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.collect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">collect</code><span class="sig-paren">(</span><em>information</em>, <em>pool_type</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.collect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Collects one or more IDs to be returned to a pool.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -546,7 +546,7 @@ in OneView; it just stops waiting for its completion.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>information</strong> (<em>dict</em>) – The list of IDs to be collected</li>
-<li><strong>id_or_uri</strong> – ID or URI of range</li>
+<li><strong>uri</strong> – URI of range</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
@@ -563,40 +563,14 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpeOneView.resources.servers.id_pools.IdPools.enable">
-<code class="descname">enable</code><span class="sig-paren">(</span><em>information</em>, <em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.enable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.enable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enables or disables a pool.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>information</strong> (<em>dict</em>) – Information to update.</li>
-<li><strong>id_or_uri</strong> – ID or URI of range.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.generate">
-<code class="descname">generate</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.generate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.generate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">generate</code><span class="sig-paren">(</span><em>pool_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.generate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates and returns a random range.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of range.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict containing a list with IDs.</td>
 </tr>
@@ -607,33 +581,15 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="hpeOneView.resources.servers.id_pools.IdPools.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a pool.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the range ID or URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Pool resource.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.get_check_range_availability">
-<code class="descname">get_check_range_availability</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>ids_pools</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.get_check_range_availability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.get_check_range_availability" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_check_range_availability</code><span class="sig-paren">(</span><em>pool_type</em>, <em>ids_pools</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.get_check_range_availability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.get_check_range_availability" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks the range availability in the ID pool.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – ID or URI of range.</li>
+<li><strong>uri</strong> – URI of range.</li>
 <li><strong>ids_pools</strong> (<em>list</em>) – List of Id Pools.</li>
 </ul>
 </td>
@@ -649,8 +605,62 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="hpeOneView.resources.servers.id_pools.IdPools.get_pool_type">
+<code class="descname">get_pool_type</code><span class="sig-paren">(</span><em>pool_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.get_pool_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.get_pool_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a pool along with the list of ranges present in it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of ranges</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.id_pools.IdPools.schema">
+<code class="descname">schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets schema of ID pools and returns it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict containing the schema.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.id_pools.IdPools.update_pool_type">
+<code class="descname">update_pool_type</code><span class="sig-paren">(</span><em>data</em>, <em>pool_type</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.update_pool_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.update_pool_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables or disables the pool</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Updated Resource.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.validate">
-<code class="descname">validate</code><span class="sig-paren">(</span><em>information</em>, <em>id_or_uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.validate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validate</code><span class="sig-paren">(</span><em>information</em>, <em>pool_type</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validates a set of user specified IDs to reserve in the pool.</p>
 <p>This API can be used to check if the specified IDs can be allocated.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -659,7 +669,7 @@ in OneView; it just stops waiting for its completion.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>information</strong> (<em>dict</em>) – Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</li>
-<li><strong>id_or_uri</strong> – ID or URI of vSN range.</li>
+<li><strong>uri</strong> – URI of vSN range.</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
@@ -677,14 +687,14 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools.IdPools.validate_id_pool">
-<code class="descname">validate_id_pool</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>ids_pools</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.validate_id_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.validate_id_pool" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validate_id_pool</code><span class="sig-paren">(</span><em>pool_type</em>, <em>ids_pools</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.validate_id_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.validate_id_pool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validates an ID pool.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – ID or URI of range.</li>
+<li><strong>uri</strong> – URI of range.</li>
 <li><strong>ids_pools</strong> (<em>list</em>) – List of Id Pools.</li>
 </ul>
 </td>
@@ -855,58 +865,13 @@ in OneView; it just stops waiting for its completion.</li>
 <span id="hpeoneview-resources-servers-id-pools-ipv4-subnets-module"></span><h2>hpeOneView.resources.servers.id_pools_ipv4_subnets module<a class="headerlink" href="#module-hpeOneView.resources.servers.id_pools_ipv4_subnets" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.servers.id_pools_ipv4_subnets.</code><code class="descname">IdPoolsIpv4Subnets</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools_ipv4_subnets.html#IdPoolsIpv4Subnets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin" title="hpeOneView.resources.resource.ResourceSchemaMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourceSchemaMixin</span></code></a></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.servers.id_pools_ipv4_subnets.</code><code class="descname">IdPoolsIpv4Subnets</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools_ipv4_subnets.html#IdPoolsIpv4Subnets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The ID pools IPv4 subnets resource provides a Client API for managing IPv4 subnets.</p>
 <dl class="attribute">
 <dt id="hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/id-pools/ipv4/subnets'</em><a class="headerlink" href="#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.allocate">
-<code class="descname">allocate</code><span class="sig-paren">(</span><em>information</em>, <em>uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools_ipv4_subnets.html#IdPoolsIpv4Subnets.allocate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.allocate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Allocates a set of IDs from range.
-The allocator returned contains the list of IDs successfully allocated.
-:param information: Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
-:type information: dict
-:param uri: URI of vSN range.
-:param timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</p>
-<blockquote>
-<div>in OneView; it just stops waiting for its completion.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dict containing a list with IDs.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.collect">
-<code class="descname">collect</code><span class="sig-paren">(</span><em>information</em>, <em>uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools_ipv4_subnets.html#IdPoolsIpv4Subnets.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.collect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Collects one or more IDs to be returned to a pool.
-:param information: The list of IDs to be collected
-:type information: dict
-:param uri: URI of range
-:param timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</p>
-<blockquote>
-<div>in OneView; it just stops waiting for its completion.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Collector containing list of collected IDs successfully collected.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <dl class="method">
 <dt id="hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.create">
