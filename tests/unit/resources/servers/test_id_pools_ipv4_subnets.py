@@ -33,13 +33,13 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'create')
     def test_create_called_once(self, mock_create):
-        self.client.create(self.resource_info, timeout=-1)
-        mock_create.assert_called_once_with(self.resource_info, timeout=-1)
+        self.client.create(self.resource_info)
+        mock_create.assert_called_once_with(self.resource_info, None, -1, None, False)
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_id_called_once(self, mock_get):
         id_pools_subnet_id = "f0a0a113-ec97-41b4-83ce-d7c92b900e7c"
-        self.client.get(id_pools_subnet_id)
+        self.client.get_by_uri(id_pools_subnet_id)
         mock_get.assert_called_once_with(id_pools_subnet_id)
 
     @mock.patch.object(Resource, 'get_by_uri')
@@ -47,25 +47,25 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
         self.client.get_by_uri(self.example_uri)
         mock_get.assert_called_once_with(self.example_uri)
 
-    @mock.patch.object(ResourceHelper, 'update')
+    @mock.patch.object(Resource, 'update')
     def test_enable_called_once(self, update):
         self.client.update(self.resource_info.copy())
-        update.assert_called_once_with(self.resource_info.copy(), timeout=-1)
+        update.assert_called_once_with(self.resource_info.copy(), self.example_uri, timeout=-1)
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_allocated_fragments_called_once_with_defaults(self, mock_get):
-        self.client.get_all(self.example_uri, -1, filter='', sort='')
-        mock_get.assert_called_once_with(self.example_uri, -1, filter='', sort='')
+        self.client.get_all(self.example_uri)
+        mock_get.assert_called_once_with(count=-1, filter='', sort='', self.example_uri)
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
-        self.client.delete({'uri': '/rest/uri'}, force=True, timeout=50)
-        mock_delete.assert_called_once_with({'uri': '/rest/uri'}, force=True, timeout=50)
+        self.client.delete(self.example_uri, force=True, timeout=50)
+        mock_delete.assert_called_once_with(self.example_uri, force=True, timeout=50)
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once_with_defaults(self, mock_delete):
-        self.client.delete({'uri': '/rest/uri'})
-        mock_delete.assert_called_once_with({'uri': '/rest/uri'}, force=False, timeout=-1)
+        self.client.delete(self.example_uri)
+        mock_delete.assert_called_once_with(self.example_uri, force=False, timeout=-1)
 
     @mock.patch.object(ResourceHelper, 'update')
     def test_allocate_called_once(self, mock_update):
