@@ -123,7 +123,7 @@ class IdPoolsIpv4Subnets(Resource, ResourceSchemaMixin):
             bool: Indicates if the resource was successfully deleted.
         """
         return self._helper.delete(resource, force=force, timeout=timeout)
-   
+
     def allocate(self, information, uri, timeout=-1):
         """
         Allocates a set of IDs from range.
