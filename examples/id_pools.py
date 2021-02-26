@@ -40,8 +40,8 @@ pool_type_ipv4 = 'ipv4'
 
 id_pools = oneview_client.id_pools
 print("\n Gets schema: ")
-schema = id_pools.schema()
-pprint(schema.data)
+schema = id_pools.get_schema()
+pprint(schema)
 
 print("\n Gets the Pool: " + pool_type_vsn)
 id_pool = id_pools.get_pool_type(pool_type_vsn)

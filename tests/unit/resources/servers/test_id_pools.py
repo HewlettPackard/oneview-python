@@ -18,7 +18,7 @@ import mock
 import unittest
 
 from hpeOneView.connection import connection
-from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourceSchemaMixin
 from hpeOneView.resources.servers.id_pools import IdPools
 
 
@@ -33,9 +33,9 @@ class TestIdPools(unittest.TestCase):
         self.connection = connection(self.host, 800)
         self.client = IdPools(self.connection)
 
-    @mock.patch.object(Resource, 'get_by_uri')
+    @mock.patch.object(ResourceSchemaMixin, 'get_schema')
     def test_get_schema_called_once_by_uri(self, mock_get):
-        self.client.schema()
+        self.client.get_schema()
         mock_get.assert_called_once_with(self.uri + '/schema')
 
     @mock.patch.object(Resource, 'get_by_uri')

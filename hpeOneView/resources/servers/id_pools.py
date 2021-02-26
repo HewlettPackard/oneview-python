@@ -35,25 +35,12 @@ class IdPools(Resource, ResourceSchemaMixin):
     def __init__(self, connection, data=None):
         super(IdPools, self).__init__(connection, data)
 
-    def schema(self):
-        """
-        Gets schema of ID pools and returns it
-
-        Args:
-            uri:
-                URI of range.
-        Returns:
-            dict: A dict containing the schema.
-        """
-        uri = self._helper.build_uri("schema")
-        return super(IdPools, self).get_by_uri(uri)
-
     def get_pool_type(self, pool_type):
         """
         Gets a pool along with the list of ranges present in it
 
         Args:
-          uri: URI of range
+          pool_type: Id pool type
 
         Returns:
           dict: List of ranges
@@ -66,7 +53,7 @@ class IdPools(Resource, ResourceSchemaMixin):
         Enables or disables the pool
 
         Args:
-            uri: URI of range.
+          pool_type: Id pool type
 
         Returns:
             dict: Updated Resource.
@@ -79,8 +66,8 @@ class IdPools(Resource, ResourceSchemaMixin):
         Validates an ID pool.
 
         Args:
-            uri:
-                URI of range.
+            pool_type: Id pool type
+
             ids_pools (list):
                 List of Id Pools.
 
@@ -99,8 +86,9 @@ class IdPools(Resource, ResourceSchemaMixin):
         Args:
             information (dict):
                 Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
-            uri:
-                URI of vSN range.
+
+            pool_type: Id pool type
+
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -120,8 +108,9 @@ class IdPools(Resource, ResourceSchemaMixin):
         Args:
             information (dict):
                 Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
-            uri:
-                URI of vSN range.
+
+            pool_type: Id pool type
+
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -140,8 +129,9 @@ class IdPools(Resource, ResourceSchemaMixin):
         Args:
             information (dict):
                 The list of IDs to be collected
-            uri:
-                URI of range
+
+            pool_type: Id pool type
+
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
@@ -158,8 +148,8 @@ class IdPools(Resource, ResourceSchemaMixin):
         Checks the range availability in the ID pool.
 
         Args:
-            uri:
-                URI of range.
+            pool_type: Id pool type
+
             ids_pools (list):
                 List of Id Pools.
 
@@ -174,8 +164,7 @@ class IdPools(Resource, ResourceSchemaMixin):
         Generates and returns a random range.
 
         Args:
-            uri:
-                URI of range.
+            pool_type: Id pool type
 
         Returns:
             dict: A dict containing a list with IDs.
