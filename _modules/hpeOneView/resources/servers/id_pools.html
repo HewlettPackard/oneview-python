@@ -191,25 +191,12 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">IdPools</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="IdPools.schema"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.schema">[docs]</a>    <span class="k">def</span> <span class="nf">schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets schema of ID pools and returns it</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range.</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: A dict containing the schema.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IdPools</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="IdPools.get_pool_type"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.get_pool_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_pool_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a pool along with the list of ranges present in it</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">          uri: URI of range</span>
+<span class="sd">          pool_type: Id pool type</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">          dict: List of ranges</span>
@@ -222,7 +209,7 @@
 <span class="sd">        Enables or disables the pool</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri: URI of range.</span>
+<span class="sd">          pool_type: Id pool type</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Updated Resource.</span>
@@ -235,8 +222,8 @@
 <span class="sd">        Validates an ID pool.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range.</span>
+<span class="sd">            pool_type: Id pool type</span>
+
 <span class="sd">            ids_pools (list):</span>
 <span class="sd">                List of Id Pools.</span>
 
@@ -255,8 +242,9 @@
 <span class="sd">        Args:</span>
 <span class="sd">            information (dict):</span>
 <span class="sd">                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of vSN range.</span>
+
+<span class="sd">            pool_type: Id pool type</span>
+
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
@@ -276,8 +264,9 @@
 <span class="sd">        Args:</span>
 <span class="sd">            information (dict):</span>
 <span class="sd">                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of vSN range.</span>
+
+<span class="sd">            pool_type: Id pool type</span>
+
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
@@ -296,8 +285,9 @@
 <span class="sd">        Args:</span>
 <span class="sd">            information (dict):</span>
 <span class="sd">                The list of IDs to be collected</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range</span>
+
+<span class="sd">            pool_type: Id pool type</span>
+
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
@@ -314,8 +304,8 @@
 <span class="sd">        Checks the range availability in the ID pool.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range.</span>
+<span class="sd">            pool_type: Id pool type</span>
+
 <span class="sd">            ids_pools (list):</span>
 <span class="sd">                List of Id Pools.</span>
 
@@ -330,8 +320,7 @@
 <span class="sd">        Generates and returns a random range.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            uri:</span>
-<span class="sd">                URI of range.</span>
+<span class="sd">            pool_type: Id pool type</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: A dict containing a list with IDs.</span>

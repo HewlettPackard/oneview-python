@@ -520,7 +520,7 @@ in OneView; it just stops waiting for its completion.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>information</strong> (<em>dict</em>) – Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</li>
-<li><strong>uri</strong> – URI of vSN range.</li>
+<li><strong>pool_type</strong> – Id pool type</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
@@ -546,7 +546,7 @@ in OneView; it just stops waiting for its completion.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>information</strong> (<em>dict</em>) – The list of IDs to be collected</li>
-<li><strong>uri</strong> – URI of range</li>
+<li><strong>pool_type</strong> – Id pool type</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
@@ -570,7 +570,7 @@ in OneView; it just stops waiting for its completion.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pool_type</strong> – Id pool type</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict containing a list with IDs.</td>
 </tr>
@@ -589,7 +589,7 @@ in OneView; it just stops waiting for its completion.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>uri</strong> – URI of range.</li>
+<li><strong>pool_type</strong> – Id pool type</li>
 <li><strong>ids_pools</strong> (<em>list</em>) – List of Id Pools.</li>
 </ul>
 </td>
@@ -612,27 +612,9 @@ in OneView; it just stops waiting for its completion.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pool_type</strong> – Id pool type</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of ranges</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.servers.id_pools.IdPools.schema">
-<code class="descname">schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/id_pools.html#IdPools.schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.id_pools.IdPools.schema" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets schema of ID pools and returns it</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict containing the schema.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
@@ -648,7 +630,7 @@ in OneView; it just stops waiting for its completion.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – URI of range.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pool_type</strong> – Id pool type</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Updated Resource.</td>
 </tr>
@@ -669,7 +651,7 @@ in OneView; it just stops waiting for its completion.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>information</strong> (<em>dict</em>) – Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</li>
-<li><strong>uri</strong> – URI of vSN range.</li>
+<li><strong>pool_type</strong> – Id pool type</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
@@ -694,7 +676,7 @@ in OneView; it just stops waiting for its completion.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>uri</strong> – URI of range.</li>
+<li><strong>pool_type</strong> – Id pool type</li>
 <li><strong>ids_pools</strong> (<em>list</em>) – List of Id Pools.</li>
 </ul>
 </td>
