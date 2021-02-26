@@ -34,7 +34,7 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
         self.client.create(self.resource_info)
-        mock_create.assert_called_once_with(self.resource_info, None, -1, None, False)
+        mock_create.assert_called_once_with(self.resource_info)
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_id_called_once(self, mock_get):
@@ -67,12 +67,12 @@ class TestIdPoolsIpv4Subnets(unittest.TestCase):
         self.client.delete()
         mock_delete.assert_called_once_with()
 
-    @mock.patch.object(Resource, 'update')
+    @mock.patch.object(ResourceHelper, 'update')
     def test_allocate_called_once(self, mock_update):
         self.client.allocate(self.resource_info.copy(), self.example_uri)
         mock_update.assert_called_once_with(self.resource_info.copy(), self.example_uri + "/allocator", timeout=-1)
 
-    @mock.patch.object(Resource, 'update')
+    @mock.patch.object(ResourceHelper, 'update')
     def test_collect_called_once(self, update):
         self.client.collect(self.resource_info.copy(), self.example_uri)
         update.assert_called_once_with(self.resource_info.copy(), self.example_uri + "/collector", timeout=-1)

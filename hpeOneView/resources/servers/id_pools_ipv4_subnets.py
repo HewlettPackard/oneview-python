@@ -23,10 +23,10 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
+from hpeOneView.resources.resource import Resource
 
 
-class IdPoolsIpv4Subnets(Resource, ResourceSchemaMixin):
+class IdPoolsIpv4Subnets(Resource):
     """
     The ID pools IPv4 subnets resource provides a Client API for managing IPv4 subnets.
     """
