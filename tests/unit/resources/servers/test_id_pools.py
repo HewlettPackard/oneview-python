@@ -18,14 +18,14 @@ import mock
 import unittest
 
 from hpeOneView.connection import connection
-from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.resource import ResourceHelper
 from hpeOneView.resources.servers.id_pools import IdPools
 
 
 class TestIdPools(unittest.TestCase):
     resource_info = {'type': 'Range',
                      'name': 'No name'}
-    uri  = "/rest/id-pools"
+    uri = "/rest/id-pools"
     example_uri = "/rest/id-pools/ipv4"
 
     def setUp(self):
