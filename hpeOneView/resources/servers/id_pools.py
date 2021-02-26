@@ -53,6 +53,7 @@ class IdPools(Resource, ResourceSchemaMixin):
         Enables or disables the pool
 
         Args:
+          data: List of ID ranges
           pool_type: Id pool type
 
         Returns:
