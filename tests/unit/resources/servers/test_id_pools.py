@@ -35,7 +35,7 @@ class TestIdPools(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_schema_called_once_by_uri(self, mock_get):
-        self.client.get_schema()
+        self.client.schema()
         mock_get.assert_called_once_with(self.uri + '/schema')
 
     @mock.patch.object(Resource, 'get_by_uri')
