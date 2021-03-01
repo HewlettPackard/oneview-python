@@ -32,10 +32,10 @@ class ApplianceTimeAndLocaleConfigurationTest(unittest.TestCase):
         self.uri = "/rest/appliance/configuration/time-locale"
         self._time_and_locale.data = {"uri": self.uri}
 
-    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_called_once(self, mock_get):
         self._time_and_locale.get_all()
-        mock_get.assert_called_once_with()
+        mock_get.assert_called_once_with('/rest/appliance/configuration/time-locale')
 
     @mock.patch.object(Resource, 'create')
     def test_update_called_once(self, mock_create):
