@@ -39,3 +39,6 @@ class ApplianceTimeAndLocaleConfiguration(Resource):
         self.__default_values = {
             "type": "TimeAndLocale"
         }
+
+    def get_all(self):
+        return super(ApplianceTimeAndLocaleConfiguration, self).get_by_uri(self.URI)
