@@ -266,6 +266,7 @@ class Resource(object):
             new_resource = None
         return new_resource
 
+    # Sometimes get_all() with filters are not returning correct values, so added this method to overcome that issue
     def get_by_field(self, field, value):
         """Retrieves a resource by its field.
 
@@ -276,7 +277,15 @@ class Resource(object):
         Returns:
             Resource object or None if resource does not exist.
         """
-        result = self.get_by(field, value)
+        if not field:
+            logger.exception(RESOURCE_CLIENT_INVALID_FIELD)
+            raise ValueError(RESOURCE_CLIENT_INVALID_FIELD)
+
+        results = self.get_all()
+
+        # This filter only work for the first level
+        result = [item for item in results if str(item.get(field, "")).lower() == value.lower()]
+
         if result:
             data = result[0]
             new_resource = self.new(self._connection, data)
