@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ options = {
     'permissions': [
         {
             'roleName': 'Read only',
-            'scopeUri': '/rest/scopes/b7259c1c-c52a-4be3-82de-d50e1730695e',
+            'scopeUri': '/rest/scopes/6a6bb53c-5502-4f89-8573-cd1fb5b02a54',
         }
     ],
     'type': 'UserAndPermissions',
@@ -56,10 +56,10 @@ print("Created user '%s' successfully.\n  uri = '%s'\n" % (user.data['userName']
 
 # Change Password
 change_password_request = {
-    "currentPassword": "admin12345",
+    "currentPassword": "myPass1234",
     "enabled": "true",
     "password": "admin1234",
-    "userName": "admin"
+    "userName": "testUser"
 }
 changePasswordResponse = users.change_password(change_password_request)
 print("Changed Password successfully")
@@ -71,8 +71,8 @@ print("Found user by uri = '%s'\n" % user.data['uri'])
 
 # Get all users
 print("Get all users")
-users = users.get_all()
-pprint(users)
+all_users = users.get_all()
+pprint(all_users)
 
 # # Validates if full name is already in use
 bol = users.validate_full_name(options['fullName'])
