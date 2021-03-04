@@ -41,10 +41,9 @@ time_and_locales = oneview_client.appliance_time_and_locale_configuration
 
 # Lists the appliance time and locale configuration
 time_and_locale = time_and_locales.get_all()
-time_and_locale = time_and_locale.data
 if time_and_locale:
     print("\n## Got appliance time and locale configurations successfully!")
-    pprint(time_and_locale)
+    pprint(time_and_locale.data)
 else:
     # Create a time and locale with the options provided
     time_and_locale = time_and_locales.create(data=options)
