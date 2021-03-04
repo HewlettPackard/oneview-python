@@ -1,6 +1,6 @@
 # 6.0.0 (unreleased)
 #### Notes
-Extends support of the SDK to OneView REST API version 2600 (OneView v6.00).
+Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and ImageStreamer REST API version 2010 (I3S v6.00).
 
 #### Features supported
 - Appliance Configuration Timeconfig
@@ -9,8 +9,10 @@ Extends support of the SDK to OneView REST API version 2600 (OneView v6.00).
 - Appliance SNMPv3 Users
 - Appliance SSH Access
 - Appliance Time and Locale Configuration
+- Artifact Bundles
 - Connection Templates
 - Certificates Server
+- Deployment Plans
 - Enclosures
 - Enclosure Groups
 - Ethernet network

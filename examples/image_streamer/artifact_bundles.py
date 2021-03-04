@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ EXAMPLE_CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../config.json')
 oneview_client = OneViewClient.from_json_file(EXAMPLE_CONFIG_FILE)
 image_streamer_client = oneview_client.create_image_streamer_client()
 artifact_bundles = image_streamer_client.artifact_bundles
+build_plans = image_streamer_client.build_plans
+deployment_groups = image_streamer_client.deployment_groups
 
 artifact_bundles_to_be_created = {
     "name": "Artifact Bundles Test",
@@ -39,6 +41,18 @@ artifact_bundles_to_be_created = {
 artifact_bundles_deployment_group = {
     "deploymentGroupURI": "/rest/deployment-groups/2117634b-d911-4673-98ac-1a7e19f3b40f"
 }
+
+# Get all deployment groups
+all_dp_groups = deployment_groups.get_all()
+dp_group_uri = all_dp_groups[0]['uri']
+
+# Get all build plans
+all_bps = build_plans.get_all()
+bp_uri = all_bps[0]['uri']
+
+# set the uri in payload
+artifact_bundles_deployment_group["deploymentGroupURI"] = dp_group_uri
+artifact_bundles_to_be_created["buildPlans"][0]["resourceUri"] = bp_uri
 
 artifact_bundle_file_path = {
     "download": "./artifact_bundle.zip",
