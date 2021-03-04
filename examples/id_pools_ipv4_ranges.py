@@ -34,7 +34,6 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 
 options = {
-    "type": "Range",
     "name": "IPv4",
     "rangeCategory": "Custom",
     "startAddress": "",
@@ -44,22 +43,22 @@ options = {
 
 
 option = {
-    "type": "Range",
     "name": "IPv4",
     "startStopFragments": [
         {
-            "startAddress": "",
-            "endAddress": ""
-        },
-        {
-            "startAddress": "",
-            "endAddress": ""
+            "startAddress": "<start_ip>",
+            "endAddress": "<end_ip>"
         }
     ],
-    "subnetUri": ""
+    "subnetUri": "<network_id>"
 }
 
 id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
+id_pool_ipv4_subnet = oneview_client.id_pools_ipv4_subnets
+
+subnet_uri = id_pool_ipv4_subnet.get_by_field('networkId', option['subnetUri'])
+if subnet_uri:
+    option["subnetUri"] = subnet_uri.data['uri']
 
 print("\n Create an IPv4 Range for id pools")
 if oneview_client.api_version > 1000:
@@ -94,13 +93,14 @@ print(" IPv4 range enabled successfully.")
 print("Allocates a set of IDs from an IPv4 range. The maximum number of IDs in a request is 100.")
 print("The allocator returned contains the list of IDs successfully allocated. Associate the IPv4 address range with a resource before requesting IDs from it.")
 
-ipv4_range = ipv4Range.update_allocator({
+ipv4_range_updated = ipv4Range.update_allocator({
     "count": 7,
     "idList": [
         "",
         "",
     ]
 }, ipv4_range['uri'])
+pprint(ipv4_range_updated)
 print("Allocated set of ID to ipv4 Range")
 
 print("\n Get all allocated fragments in IPv4 range")
@@ -128,5 +128,5 @@ ipv4_range = ipv4Range.update_collector({
         "",
         "",
     ]
-}, "id_ip4_range_uri")
+}, ipv4_range['uri'])
 print(ipv4_range)

@@ -35,6 +35,7 @@ class IdPoolsIpv4Subnets(Resource):
 
     def __init__(self, connection, data=None):
         super(IdPoolsIpv4Subnets, self).__init__(connection, data)
+        self.__default_values = {'type': 'Subnet'}
 
     def allocate(self, information, subnet_id, timeout=-1):
         """

@@ -35,6 +35,7 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
 
     def __init__(self, connection, data=None):
         super(IdPoolsIpv4Ranges, self).__init__(connection, data)
+        self.__default_values = {'type': 'Range'}
 
     def enable(self, information, uri, timeout=-1):
         """
