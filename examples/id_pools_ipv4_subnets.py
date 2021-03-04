@@ -92,4 +92,3 @@ iscsi_options = {
 print('\n Create IPv4 subnet for iscsi')
 ipv4_subnet = id_pools_ipv4_subnets.create(iscsi_options)
 pprint(ipv4_subnet.data)
-

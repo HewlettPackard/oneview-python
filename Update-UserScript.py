@@ -1,4 +1,4 @@
-##############################################################################
+###############################################################################
 # (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # File Name: Update-UserScript.py
@@ -9,7 +9,7 @@
 # parse a user script and update all legacy hpeOneView brand names from
 # hpOneView to hpeOneView, and any reference to HPOneView to HPEOneView.
 #
-##############################################################################
+###############################################################################
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

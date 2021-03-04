@@ -2,9 +2,10 @@
 
 ## Build Status 
 
-| 5.60 Branch   | 5.50 Branch   | 5.40 Branch   | 5.30 Branch   |
-| ------------: |:-------------:| -------------:| -------------:|
-| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)|
+OV Version | 6.00 | 5.60 | 5.50 | 5.40 |
+| ------------- |:-------------:| -------------:| -------------:| -------------:|
+SDK Version/Tag | [v6.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.0.0) | [v5.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.6.0) | [v5.5.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.5.0) | [v5.4.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.4.0) |
+Build Status | ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)|
 
 
 ## Introduction
@@ -73,10 +74,10 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
    The Docker Store image tag consist of two sections: <sdk_version-OV_version>
 
    Download and store a local copy of hpe-oneview-sdk-for-python and use it as a Docker image. <br />
-   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.6.0-OV5.6
+   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.0.0-OV6.0
 
    Run docker commands and this will in turn create sh session where you can create files, issue commands and execute the tests <br />
-   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v5.6.0-OV5.6 /bin/sh
+   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.0.0-OV6.0 /bin/sh
    
 ## Configuration
 
