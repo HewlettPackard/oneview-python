@@ -44,7 +44,8 @@ appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users
 snmp_users = appliance_device_snmp_v3_users.get_all()
 snmp_userId = snmp_users[0]['id']
 
-options['userId'] = snmp_userId # Adding userId to snmpv3 users payload
+# Adding userId to snmpv3 users payload
+options['userId'] = snmp_userId
 
 # Lists the appliance device SNMP v3 Trap Destination
 print("\n## Get list of appliance SNMPv3 trap destination")
