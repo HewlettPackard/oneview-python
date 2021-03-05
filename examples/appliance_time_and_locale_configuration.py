@@ -60,9 +60,16 @@ time_and_locale.pop('dateTime')
 time_and_locale = time_and_locales.create(data=time_and_locale)
 print("\n## Created appliance time and locale configurations successfully!")
 pprint(time_and_locale.data)
-# Note: Changing the locale will only be fully effective after resetting the appliance
+# Note: Changing the time and locale will only be fully effective after resetting the appliance.
+# Until then we cannot run the below create function
 
-# Revert the changes made
-time_and_locale = time_and_locales.create(data=options)
-print("\n## Reverted appliance time and locale configurations successfully!")
-pprint(time_and_locale.data)
+'''
+try:
+    # Revert the changes made
+    time_and_locale = time_and_locales.create(data=options)
+    print("\n## Reverted appliance time and locale configurations successfully!")
+    pprint(time_and_locale.data)
+except HPEOneViewTaskError:
+    print("\n## Appliance will be rebooted to make the changes made previously.")
+
+'''
