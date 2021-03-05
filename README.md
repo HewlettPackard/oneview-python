@@ -23,7 +23,7 @@ Latest version of the OneView Python [SDK Documentation](https://hewlettpackard.
 
 ## What's New
 
-HPE OneView Python library extends support of the SDK to OneView REST API version 2400 (OneView v5.60)
+HPE OneView Python library extends support of the SDK to OneView REST API version 2600 (OneView v6.00)
 
 Please refer to [notes](https://github.com/HewlettPackard/oneview-python/blob/master/CHANGELOG.md) for more information on the changes , features supported and issues fixed in this version
 
