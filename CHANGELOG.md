@@ -1,17 +1,49 @@
-# 5.6.1 (unreleased)
+# 6.0.0 (unreleased)
 #### Notes
-Extends support to below features for REST API version 2400.
+Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and ImageStreamer REST API version 2010 (I3S v6.00).
 
 #### Features supported
 - Appliance Configuration Timeconfig
+- Appliance SNMPv1 Trap Destinations
 - Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3  Users
+- Appliance SNMPv3 Users
 - Appliance SSH Access
 - Appliance Time and Locale Configuration
+- Artifact Bundles
+- Certificates Server
+- Connection Templates
+- Deployment Plans
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Drivers
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
 - ID Pools
 - ID Pool IPv4 Range
 - ID Pool IPv4 Subnets
-
+- Interconnects
+- Interconnect Types
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- OS Deployment Plans
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
+- Tasks
+- Uplink set
 
 # 5.6.0
 #### Notes

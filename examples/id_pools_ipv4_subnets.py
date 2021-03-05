@@ -34,37 +34,39 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 
 options = {
-    "type": "Subnet",
     "name": "IPv4Subnet",
-    "networkId": '10.10.1.0',
+    "networkId": '192.169.1.0',
     "subnetmask": "255.255.255.0",
-    "gateway": "10.10.1.1",
+    "gateway": "192.169.1.1",
     "domain": "example.com",
-    "dnsServers": ["10.10.10.215"]
+    "dnsServers": ["192.169.1.215"]
 }
 
 id_pools_ipv4_subnets = oneview_client.id_pools_ipv4_subnets
 
 print('\n Create IPv4 subnet for id pools')
 ipv4_subnet = id_pools_ipv4_subnets.create(options)
-pprint(ipv4_subnet)
+pprint(ipv4_subnet.data)
 
 print('\n Update IPv4 subnet for id pools')
-ipv4_subnet['name'] = 'Changed Name'
-ipv4_subnet = id_pools_ipv4_subnets.update(ipv4_subnet)
+updated_data = {'name': 'Changed Name'}
+ipv4_subnet = ipv4_subnet.update(updated_data)
 
 print('\n Get IPv4 subnet by uri')
-ipv4_subnet_byuri = id_pools_ipv4_subnets.get(ipv4_subnet['uri'])
-pprint(ipv4_subnet_byuri)
+ipv4_subnet_byuri = id_pools_ipv4_subnets.get_by_uri(ipv4_subnet.data['uri'])
+pprint(ipv4_subnet_byuri.data)
 
 print('\n Get all IPv4 subnet')
 all_subnets = id_pools_ipv4_subnets.get_all()
 pprint(all_subnets)
 
-subnet_id = ipv4_subnet['allocatorUri'].split('/')[-2]
+subnet_id = ipv4_subnet.data['allocatorUri'].split('/')[-2]
 print("\n Allocates a set of IDs from a pool")
-allocated_ids = id_pools_ipv4_subnets.allocate({"count": 10}, subnet_id)
-pprint(allocated_ids)
+try:
+    allocated_ids = id_pools_ipv4_subnets.allocate({"count": 10}, subnet_id)
+    pprint(allocated_ids)
+except HPEOneViewException as e:
+    print(e.msg)
 
 print("\n Collect a set of IDs back to Id Pool")
 try:
@@ -74,5 +76,19 @@ except HPEOneViewException as e:
     print(e.msg)
 
 print('\n Delete IPv4 subnet')
-id_pools_ipv4_subnets.delete(ipv4_subnet)
+ipv4_subnet.delete()
 print(" Successfully deleted IPv4 subnet")
+
+# Create iscsi subnet for automation purpose
+
+iscsi_options = {
+    "name": "iscsi_Subnet",
+    "networkId": '192.168.10.0',
+    "subnetmask": "255.255.255.0",
+    "gateway": "192.168.10.1",
+    "domain": "iscsi.com",
+}
+
+print('\n Create IPv4 subnet for iscsi')
+ipv4_subnet = id_pools_ipv4_subnets.create(iscsi_options)
+pprint(ipv4_subnet.data)

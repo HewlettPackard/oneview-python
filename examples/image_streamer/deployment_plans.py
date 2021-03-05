@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ EXAMPLE_CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../config.json')
 oneview_client = OneViewClient.from_json_file(EXAMPLE_CONFIG_FILE)
 image_streamer_client = oneview_client.create_image_streamer_client()
 deployment_plans = image_streamer_client.deployment_plans
+build_plans = image_streamer_client.build_plans
 
 # To run this example set a valid Build Plan URI
 deployment_plan_information = {
@@ -32,6 +33,13 @@ deployment_plan_information = {
     "hpProvided": "false",
     "oeBuildPlanURI": "/rest/build-plans/134b7e3f-4305-47c4-8d15-44d265697bf0",
 }
+
+# Get all build plans
+all_build_plans = build_plans.get_all()
+bp_uri = all_build_plans[0]['uri']
+
+# set the "oeBuildPlanURI" in deployment plan payload
+deployment_plan_information['oeBuildPlanURI'] = bp_uri
 
 if oneview_client.api_version >= 500:
     deployment_plan_information["type"] = "OEDeploymentPlanV5"
