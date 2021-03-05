@@ -10,8 +10,8 @@ Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and 
 - Appliance SSH Access
 - Appliance Time and Locale Configuration
 - Artifact Bundles
-- Connection Templates
 - Certificates Server
+- Connection Templates
 - Deployment Plans
 - Enclosures
 - Enclosure Groups

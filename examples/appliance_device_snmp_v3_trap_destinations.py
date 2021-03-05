@@ -30,7 +30,6 @@ config = {
 options = {
     "type": "Destination",
     "destinationAddress": "1.1.1.1",
-    "userId": "",
     "port": 162,
     "existingDestinations": ['2.3.2.3']
 }
@@ -44,7 +43,8 @@ appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users
 # Get all snmpv3 users
 snmp_users = appliance_device_snmp_v3_users.get_all()
 snmp_userId = snmp_users[0]['id']
-options['userId'] = snmp_userId
+
+options['userId'] = snmp_userId # Adding userId to snmpv3 users payload
 
 # Lists the appliance device SNMP v3 Trap Destination
 print("\n## Get list of appliance SNMPv3 trap destination")
