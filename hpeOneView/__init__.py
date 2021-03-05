@@ -14,12 +14,12 @@ from future import standard_library
 standard_library.install_aliases()
 
 __title__ = 'hpeOneView'
-__version__ = '5.6.0'
+__version__ = '6.0.0'
 __copyright__ = '(C) Copyright (2012-2021) Hewlett Packard Enterprise Development LP'
 __license__ = 'Apache'
 
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
