@@ -1,4 +1,4 @@
-# 6.0.0 (unreleased)
+# 6.0.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and ImageStreamer REST API version 2010 (I3S v6.00).
 
