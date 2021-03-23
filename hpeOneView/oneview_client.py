@@ -974,9 +974,10 @@ class OneViewClient(object):
         Returns:
             Labels:
         """
-        if not self.__labels:
+        '''if not self.__labels:
             self.__labels = Labels(self.__connection)
-        return self.__labels
+        return self.__labels'''
+        return Labels(self.__connection)
 
     @property
     def index_resources(self):

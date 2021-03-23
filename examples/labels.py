@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,10 +20,10 @@ from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "172.16.102.59",
+    "ip": "10.1.20.1",
     "credentials": {
-        "userName": "administrator",
-        "password": ""
+        "userName": "Administrator",
+        "password": "admin123"
     }
 }
 
@@ -31,45 +31,41 @@ config = {
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+label = oneview_client.labels
 
-resource_uri = "/rest/enclosures/09SGH100X6J1"
+resource_uri = "/rest/enclosures/0000000000A66102"
 
 print("\nSet the labels assigned to a resource")
 labels_to_create = dict(
     resourceUri=resource_uri,
-    labels=["labelSample2", "enclosureDemo"]
+    labels=["labelSample", "enclosureDemo"]
 )
 
-resource_labels = oneview_client.labels.create(labels_to_create)
+resource_labels = label.create(labels_to_create)
 pprint(resource_labels)
+
+print("\nGet all labels")
+all_labels = label.get_all()
+pprint(all_labels)
+
+print("\nGet a label by uri")
+label_uri = all_labels[0]["uri"]
+label_by_uri = label.get_by_uri(label_uri)
+pprint(label_by_uri.data)
+
+print("\nGet all the labels for the resource %s" % resource_uri)
+labels_by_resource = label.get_by_resource(resource_uri)
+pprint(labels_by_resource.data)
 
 print("\nUpdate the resource labels")
 labels_to_update = dict(
-    uri="/rest/labels/resources/" + resource_uri,
-    resourceUri=resource_uri,
-    type="ResourceLabels",
     labels=[
         dict(name="new label"),
-        dict(name="enclosureDemo")
+        dict(name="enclosureDemo1")
     ]
 )
-updated_resource_labels = oneview_client.labels.update(labels_to_update)
-pprint(updated_resource_labels)
-
-print("\nGet all labels")
-all_labels = oneview_client.labels.get_all()
-pprint(all_labels)
-
-label_uri = all_labels[0]["uri"]
-
-print("\nGet a label by uri")
-label_by_uri = oneview_client.labels.get(label_uri)
-pprint(label_by_uri)
-
-print("\nGet all the labels for the resource %s" % resource_uri)
-labels_by_resource = oneview_client.labels.get_by_resource(resource_uri)
-pprint(labels_by_resource)
+updated_resource_labels = labels_by_resource.update(labels_to_update)
+pprint(updated_resource_labels.data)
 
 print("\nDelete all the labels for a resource")
-oneview_client.labels.delete(dict(uri="/rest/labels/resources/" + resource_uri))
-print("Done!")
+labels_by_resource.delete()
