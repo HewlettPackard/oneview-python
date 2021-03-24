@@ -48,8 +48,13 @@ print("\nGet all labels")
 all_labels = label.get_all()
 pprint(all_labels)
 
-print("\nGet a label by uri")
+label_name = all_labels[0]["name"]
+print("\nGet a label by name: ", label_name)
+label_by_name = label.get_by_name(label_name)
+pprint(label_by_name.data)
+
 label_uri = all_labels[0]["uri"]
+print("\nGet a label by uri: ", label_uri)
 label_by_uri = label.get_by_uri(label_uri)
 pprint(label_by_uri.data)
 
@@ -69,3 +74,4 @@ pprint(updated_resource_labels.data)
 
 print("\nDelete all the labels for a resource")
 labels_by_resource.delete()
+
