@@ -47,6 +47,10 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10)
 - Tasks
 - Uplink set
 
+#### Bug fixes & Enhancements
+- [#139] (https://github.com/HewlettPackard/oneview-python/issues/139) Hardware needs attachment to existing SCOPE and PROFILE
+- [#140] (https://github.com/HewlettPackard/oneview-python/issues/140) Detach a profile from the hardware resource
+
 # 6.0.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and ImageStreamer REST API version 2010 (I3S v6.00).
