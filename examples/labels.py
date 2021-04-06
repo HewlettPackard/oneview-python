@@ -20,10 +20,10 @@ from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 config = {
-    "ip": "10.1.20.1",
+    "ip": "",
     "credentials": {
-        "userName": "Administrator",
-        "password": "admin123"
+        "userName": "",
+        "password": ""
     }
 }
 
