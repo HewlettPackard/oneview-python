@@ -1165,7 +1165,7 @@ in OneView; it just stops waiting for its completion.</li>
 
 <dl class="method">
 <dt id="hpeOneView.resources.resource.ResourceHelper.build_query_uri">
-<code class="descname">build_query_uri</code><span class="sig-paren">(</span><em>uri=None</em>, <em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.build_query_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.build_query_uri" title="Permalink to this definition">¶</a></dt>
+<code class="descname">build_query_uri</code><span class="sig-paren">(</span><em>uri=None</em>, <em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>scope_uris=u''</em>, <em>name_prefix=u''</em>, <em>category=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.build_query_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.build_query_uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds the URI from given parameters.</p>
 <p>More than one request can be send to get the items, regardless the query parameter ‘count’, because the actual
 number of items in the response might differ from the requested count. Some types of resource have a limited
@@ -1199,6 +1199,7 @@ the collections or resources).</li>
 <li><strong>uri</strong> – A specific URI (optional)</li>
 <li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
 which they are assigned.</li>
+<li><strong>name_prefix</strong> – Filters the resource returned by the given prefix.</li>
 </ul>
 </td>
 </tr>
@@ -1427,7 +1428,7 @@ and make request to pagination URI to get all the resources.</p>
 
 <dl class="method">
 <dt id="hpeOneView.resources.resource.ResourceHelper.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_all" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>uri=None</em>, <em>scope_uris=u''</em>, <em>custom_headers=None</em>, <em>name_prefix=u''</em>, <em>category=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/resource.html#ResourceHelper.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.resource.ResourceHelper.get_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all items according with the given arguments.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
