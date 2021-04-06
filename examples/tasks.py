@@ -20,11 +20,19 @@ from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
+# config = {
+#     "ip": "",
+#     "credentials": {
+#         "userName": "",
+#         "password": ""
+#     }
+# }
+
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "ai-cicvc2-tbird-021.vse.rdlabs.hpecorp.net",
     "credentials": {
-        "userName": "<username>",
-        "password": "<password>"
+        "userName": "Administrator",
+        "password": "hpvse123"
     }
 }
 
@@ -51,6 +59,16 @@ except HPEOneViewException as e:
 # Get a tree of tasks with specified filter
 print("Get a tree of tasks")
 tasks_filtered = tasks.get_all(filter="\"taskState='Completed'\"", view="tree", count=10)
+pprint(tasks_filtered)
+
+# Get an aggregate tree of tasks with specified filter
+print("Get a aggregate tree")
+tasks_filtered = tasks.get_all(filter="\"taskState='Completed'\"", view="aggregatedTree", childLimit=2, topCount=2)
+pprint(tasks_filtered)
+
+# Get a flat tree of tasks with specified filter
+print("Get a flat tree")
+tasks_filtered = tasks.get_all(view="flat-tree", start=0, count=1, filter="status=Warning OR status=OK")
 pprint(tasks_filtered)
 
 # Performs a patch operation
