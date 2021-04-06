@@ -40,12 +40,11 @@ labels_to_create = dict(
     resourceUri=resource_uri,
     labels=["labelSample", "enclosureDemo"]
 )
-
 resource_labels = label.create(labels_to_create)
-pprint(resource_labels)
+pprint(resource_labels.data)
 
 print("\nGet all labels")
-all_labels = label.get_all()
+all_labels = label.get_all(category=['fc-networks', 'enclosures'], name_prefix="label")
 pprint(all_labels)
 
 label_name = all_labels[0]["name"]
@@ -65,7 +64,7 @@ pprint(labels_by_resource.data)
 print("\nUpdate the resource labels")
 labels_to_update = dict(
     labels=[
-        dict(name="new label"),
+        dict(name="renamed label", uri=labels_by_resource.data['labels'][0]['uri']),
         dict(name="enclosureDemo1")
     ]
 )
@@ -74,4 +73,3 @@ pprint(updated_resource_labels.data)
 
 print("\nDelete all the labels for a resource")
 labels_by_resource.delete()
-

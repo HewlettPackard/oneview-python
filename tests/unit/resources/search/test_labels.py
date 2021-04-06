@@ -47,12 +47,15 @@ class LabelsTest(unittest.TestCase):
         self.uri = "/rest/labels/2"
         self._labels.data = {"uri": self.uri}
 
-    @mock.patch.object(Resource, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
-        self._labels.get_all(2, 500, filter, sort)
-        mock_get_all.assert_called_once_with(2, 500, filter, sort)
+        name_prefix = 'test'
+        category = ['enclosures', 'fc-networks']
+        self._labels.get_all(start=2, count=500, filter=filter, sort=sort, name_prefix=name_prefix, category=category)
+        mock_get_all.assert_called_once_with(category=['enclosures', 'fc-networks'], count=500, fields='',
+                                             filter='name=TestName', name_prefix='test', sort='name:ascending', start=2, view='')
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_called_once(self, mock_get):

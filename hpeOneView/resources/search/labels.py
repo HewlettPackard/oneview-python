@@ -51,7 +51,9 @@ class Labels(Resource):
             dict: Resource Labels
         """
         uri = self.URI + self.RESOURCES_PATH
-        return self._helper.create(resource, uri=uri, timeout=timeout)
+        resource_data = self._helper.create(resource, uri=uri, timeout=timeout)
+        new_resource = self.new(self._connection, resource_data)
+        return new_resource
 
     def get_by_resource(self, resource_uri):
         """
@@ -65,3 +67,23 @@ class Labels(Resource):
         """
         uri = self.URI + self.RESOURCES_PATH + '/' + resource_uri
         return self.get_by_uri(uri)
+
+    def get_all(self, count=-1, sort='', start=0, view='', fields='', filter='', name_prefix='', category=[]):
+        """
+        Gets all items according with the given arguments.
+        Args:
+            start: The first item to return, using 0-based indexing.
+                If not specified, the default is 0 - start with the first available item.
+            count: The number of resources to return. A count of -1 requests all items (default).
+            sort: The sort order of the returned data set. By default, the sort order is based on create time with the
+                oldest entry first.
+            view:
+                Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+                predefined view. The default view is expand (show all attributes of the resource and all elements of
+                the collections or resources).
+            fields:
+                Name of the fields.
+        Returns:
+             list: A list of items matching the specified filter.
+        """
+        return self._helper.get_all(count=count, sort=sort, start=start, view=view, fields=fields, filter=filter, name_prefix=name_prefix, category=category)
