@@ -38,7 +38,7 @@ class Tasks(ResourcePatchMixin, Resource):
     def __init__(self, connection, data=None):
         super(Tasks, self).__init__(connection, data)
 
-    def get_all(self, start=0, count=-1, fields='', filter='', query='', sort='', view=''):
+    def get_all(self, start=0, count=-1, fields='', filter='', query='', sort='', view='', topCount=0,childLimit=0 ):
         """
         Gets all the tasks based upon filters provided.
 
@@ -72,5 +72,6 @@ class Tasks(ResourcePatchMixin, Resource):
         Returns:
             list: A list of tasks.
         """
+        print("hello123")
         return self._helper.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view,
-                                    fields=fields)
+                                    fields=fields, childLimit=childLimit, topCount=topCount)

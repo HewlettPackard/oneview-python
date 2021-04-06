@@ -40,4 +40,4 @@ class TasksTest(TestCase):
         mock_get.assert_called_once_with(count=-1, fields='parentTaskUri,owner,name',
                                          filter='"taskState=\'Running\'&filter=associatedResource'
                                                 '.resourceCatgory=\'appliance\'"',
-                                         query='', sort='name:ascending', start=0, view='day')
+                                         query='', sort='name:ascending', start=0, view='day', topCount=0, childLimit=0)

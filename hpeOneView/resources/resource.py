@@ -368,7 +368,7 @@ class ResourceHelper(object):
         self._connection = connection
         self._task_monitor = task_monitor
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris='', custom_headers=None):
+    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='',childLimit=0, topCount=0, fields='', uri=None, scope_uris='', custom_headers=None):
         """Gets all items according with the given arguments.
 
         Args:
@@ -408,7 +408,9 @@ class ResourceHelper(object):
                                    sort=sort,
                                    view=view,
                                    fields=fields,
-                                   scope_uris=scope_uris)
+                                   scope_uris=scope_uris,
+                                   childLimit=childLimit,
+                                   topCount=topCount)
 
         logger.debug('Getting all resources with uri: {0}'.format(uri))
 
@@ -574,7 +576,7 @@ class ResourceHelper(object):
 
         return self.get_members(response)
 
-    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris=''):
+    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='',view='', fields='', scope_uris='', childLimit=0, topCount=0):
         """Builds the URI from given parameters.
 
         More than one request can be send to get the items, regardless the query parameter 'count', because the actual
@@ -627,6 +629,12 @@ class ResourceHelper(object):
 
         if scope_uris:
             scope_uris = "&scopeUris=" + quote(scope_uris)
+
+        if childLimit:
+            childLimit = "&childLimit="+ str(childLimit)
+
+        if topCount:
+            topCount = "&topCount="+ str(topCount)
 
         path = uri if uri else self._base_uri
 
