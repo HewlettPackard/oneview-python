@@ -37,7 +37,7 @@ for os_volume in os_volumes:
     pprint(os_volume)
 
 # Get the OS Volume id
-os_volumes_information['id']= os_volumes[0]['uri'].split('/')[-1]
+os_volumes_information['id'] = os_volumes[0]['uri'].split('/')[-1]
 
 # Get the OS Volume by ID
 print("\nGet the OS Volumes by ID")
