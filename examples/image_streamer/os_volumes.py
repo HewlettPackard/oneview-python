@@ -37,13 +37,13 @@ for os_volume in os_volumes:
     pprint(os_volume)
 
 # Get the OS Volume id
-os_volumes_information['id'] = os_volumes[0]['uri'].split('/')[-1]
+if os_volumes:
+    os_volumes_information['id'] = os_volumes[0]['uri'].split('/')[-1]
 
 # Get the OS Volume by ID
 print("\nGet the OS Volumes by ID")
 os_volume = image_streamer_client.os_volumes.get(os_volumes_information['id'])
 pprint(os_volume)
-
 
 # Get the OS Volume by Name
 print("\nGet the OS Volumes by Name")
