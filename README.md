@@ -23,7 +23,7 @@ Latest version of the OneView Python [SDK Documentation](https://hewlettpackard.
 
 ## What's New
 
-HPE OneView Python library extends support of the SDK to OneView REST API version 2600 (OneView v6.00)
+HPE OneView Python library extends support of the SDK to OneView REST API version 2800 (OneView v6.10)
 
 Please refer to [notes](https://github.com/HewlettPackard/oneview-python/blob/master/CHANGELOG.md) for more information on the changes , features supported and issues fixed in this version
 
@@ -74,10 +74,10 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
    The Docker Store image tag consist of two sections: <sdk_version-OV_version>
 
    Download and store a local copy of hpe-oneview-sdk-for-python and use it as a Docker image. <br />
-   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.0.0-OV6.0
+   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.1.0-OV6.1
 
    Run docker commands and this will in turn create sh session where you can create files, issue commands and execute the tests <br />
-   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.0.0-OV6.0 /bin/sh
+   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.1.0-OV6.1 /bin/sh
    
 ## Configuration
 

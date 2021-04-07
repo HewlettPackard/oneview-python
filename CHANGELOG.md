@@ -1,6 +1,59 @@
-# 6.1.0
-#### Major Changes
-Added support to Label resource
+# 6.1.0 (unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and ImageStreamer REST API version 2020 (I3S v6.10).
+
+#### Features supported
+
+- Appliance Configuration Timeconfig
+- Appliance SNMPv1 Trap Destinations
+- Appliance SNMPv3 Trap Destinations
+- Appliance SNMPv3 Users
+- Appliance SSH Access
+- Appliance Time and Locale Configuration
+- Artifact Bundles
+- Certificates Server
+- Connection Templates
+- Deployment Plans
+- Deployment Groups
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Drivers
+- Golden Images
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- ID Pools
+- ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
+- Interconnects
+- Interconnect Types
+- Lables
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- OS Build Plans
+- OS Deployment Plans
+- OS Volumes
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume 
+- Tasks
+- Uplink set
+
+#### Bug fixes & Enhancements
+- [#139] (https://github.com/HewlettPackard/oneview-python/issues/139) Hardware needs attachment to existing SCOPE and PROFILE
+- [#140] (https://github.com/HewlettPackard/oneview-python/issues/140) Detach a profile from the hardware resource
 
 # 6.0.0
 #### Notes

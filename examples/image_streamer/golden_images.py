@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,14 +25,18 @@ oneview_client = OneViewClient.from_json_file(EXAMPLE_CONFIG_FILE)
 
 image_streamer_client = oneview_client.create_image_streamer_client()
 
+# Get the OS volume and build plan uri
+osvolume_uri = image_streamer_client.os_volumes.get_all()[0]['uri']
+buildplan_uri = image_streamer_client.build_plans.get_all(filter='oeBuildPlanType=capture')[0]['uri']
+
 # You must set a valid osVolumeURI and buildPlanUri
 golden_image_information = {
     "type": "GoldenImage",
     "name": "Demo Golden Image Creation",
     "description": "Test",
     "imageCapture": "true",
-    "osVolumeURI": "/rest/os-volumes/45909d53-36e5-48dc-869e-9a769847a81b",
-    "buildPlanUri": "/rest/build-plans/3a5ea44b-2497-4906-ad68-ed457579c91e"
+    "osVolumeURI": osvolume_uri,
+    "buildPlanUri": buildplan_uri
 }
 
 golden_image_upload = {
