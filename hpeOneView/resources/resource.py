@@ -580,7 +580,8 @@ class ResourceHelper(object):
 
         return self.get_members(response)
 
-    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris='', name_prefix='', category=[], childLimit=0, topCount=0):
+    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris='',
+                        name_prefix='', category=[], childLimit=0, topCount=0):
 
         """Builds the URI from given parameters.
 
@@ -643,7 +644,7 @@ class ResourceHelper(object):
         if category:
             for cat in category:
                 categories = categories + "&category=" + quote(cat)
-        
+
         if childLimit:
             childLimit = "&childLimit=" + str(childLimit)
 
