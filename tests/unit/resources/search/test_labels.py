@@ -70,7 +70,7 @@ class LabelsTest(unittest.TestCase):
         expected_uri = '/rest/labels/resources/' + resource_uri
         mock_get.assert_called_once_with(expected_uri)
 
-    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
         resource = dict(
             resourceUri="/rest/enclosures/09SGH100X6J1",

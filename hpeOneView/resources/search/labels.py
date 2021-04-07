@@ -51,9 +51,7 @@ class Labels(Resource):
             dict: Resource Labels
         """
         uri = self.URI + self.RESOURCES_PATH
-        resource_data = self._helper.create(resource, uri=uri, timeout=timeout)
-        new_resource = self.new(self._connection, resource_data)
-        return new_resource
+        return super(Labels, self).create(resource, uri=uri, timeout=timeout)
 
     def get_by_resource(self, resource_uri):
         """
@@ -66,7 +64,7 @@ class Labels(Resource):
             dict: Resource Labels
         """
         uri = self.URI + self.RESOURCES_PATH + '/' + resource_uri
-        return self.get_by_uri(uri)
+        return super(Labels, self).get_by_uri(uri)
 
     def get_all(self, count=-1, sort='', start=0, view='', fields='', filter='', name_prefix='', category=[]):
         """
