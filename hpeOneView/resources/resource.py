@@ -368,8 +368,9 @@ class ResourceHelper(object):
         self._connection = connection
         self._task_monitor = task_monitor
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', childLimit=0, topCount=0,
-                fields='', uri=None, scope_uris='', custom_headers=None):
+    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris='', custom_headers=None,
+                name_prefix='', category=[], childLimit=0, topCount=0,):
+
         """Gets all items according with the given arguments.
 
         Args:
@@ -410,6 +411,8 @@ class ResourceHelper(object):
                                    view=view,
                                    fields=fields,
                                    scope_uris=scope_uris,
+                                   name_prefix=name_prefix,
+                                   category=category,
                                    childLimit=childLimit,
                                    topCount=topCount)
 
@@ -577,7 +580,8 @@ class ResourceHelper(object):
 
         return self.get_members(response)
 
-    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris='', childLimit=0, topCount=0):
+    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris='', name_prefix='', category=[], childLimit=0, topCount=0):
+
         """Builds the URI from given parameters.
 
         More than one request can be send to get the items, regardless the query parameter 'count', because the actual
@@ -609,6 +613,7 @@ class ResourceHelper(object):
             uri: A specific URI (optional)
             scope_uris: An expression to restrict the resources returned according to the scopes to
                 which they are assigned.
+            name_prefix: Filters the resource returned by the given prefix.
 
         Returns:
             uri: The complete uri
@@ -631,6 +636,14 @@ class ResourceHelper(object):
         if scope_uris:
             scope_uris = "&scopeUris=" + quote(scope_uris)
 
+        if name_prefix:
+            name_prefix = "&namePrefix=" + quote(name_prefix)
+
+        categories = ''
+        if category:
+            for cat in category:
+                categories = categories + "&category=" + quote(cat)
+        
         if childLimit:
             childLimit = "&childLimit=" + str(childLimit)
 
@@ -643,8 +656,8 @@ class ResourceHelper(object):
 
         symbol = '?' if '?' not in path else '&'
 
-        uri = "{0}{1}start={2}&count={3}{4}{5}{6}{7}{8}{9}".format(path, symbol, start, count, filter, query, sort,
-                                                                   view, fields, scope_uris)
+        uri = "{0}{1}start={2}&count={3}{4}{5}{6}{7}{8}{9}{10}{11}".format(path, symbol, start, count, filter, query, sort,
+                                                                           view, fields, scope_uris, name_prefix, categories)
         return uri
 
     def build_uri_with_query_string(self, kwargs, sufix_path='', uri=None):

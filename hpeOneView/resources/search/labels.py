@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,10 +25,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
-class Labels(object):
+class Labels(Resource):
     """
     Labels API client.
 
@@ -37,46 +37,21 @@ class Labels(object):
     URI = '/rest/labels'
     RESOURCES_PATH = '/resources'
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(Labels, self).__init__(connection, data)
 
-    def get_all(self, start=0, count=-1, filter='', sort=''):
+    def create(self, resource, timeout=-1):
         """
-        Gets a list of labels based on optional sorting and filtering and is constrained by start
-        and count parameters.
+        Set all the labels for a resource.
 
         Args:
-            start:
-                The first item to return, using 0-based indexing.
-                If not specified, the default is 0 - start with the first available item.
-            count:
-                The number of resources to return. A count of -1 requests all items.
-                The actual number of items in the response might differ from the requested
-                count if the sum of start and count exceeds the total number of items.
-            filter (list or str):
-                A general filter/query string to narrow the list of items returned. The
-                default is no filter; all resources are returned.
-            sort:
-                The sort order of the returned data set. By default, the sort order is based
-                on create time with the oldest entry first.
+            resource: The object containing the resource URI and a list of labels
 
         Returns:
-            list: A list of labels.
+            dict: Resource Labels
         """
-        return self._client.get_all(start=start, count=count, filter=filter, sort=sort)
-
-    def get(self, id_or_uri):
-        """
-        Gets a label by ID or URI.
-
-        Args:
-            id_or_uri: Can be either the label ID or the label URI.
-
-        Returns:
-            dict: The label.
-        """
-        return self._client.get(id_or_uri=id_or_uri)
+        uri = self.URI + self.RESOURCES_PATH
+        return super(Labels, self).create(resource, uri=uri, timeout=timeout)
 
     def get_by_resource(self, resource_uri):
         """
@@ -89,41 +64,24 @@ class Labels(object):
             dict: Resource Labels
         """
         uri = self.URI + self.RESOURCES_PATH + '/' + resource_uri
-        return self._client.get(id_or_uri=uri)
+        return super(Labels, self).get_by_uri(uri)
 
-    def create(self, resource):
+    def get_all(self, count=-1, sort='', start=0, view='', fields='', filter='', name_prefix='', category=[]):
         """
-        Set all the labels for a resource.
-
+        Gets all items according with the given arguments.
         Args:
-            resource: The object containing the resource URI and a list of labels
-
+            start: The first item to return, using 0-based indexing.
+                If not specified, the default is 0 - start with the first available item.
+            count: The number of resources to return. A count of -1 requests all items (default).
+            sort: The sort order of the returned data set. By default, the sort order is based on create time with the
+                oldest entry first.
+            view:
+                Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+                predefined view. The default view is expand (show all attributes of the resource and all elements of
+                the collections or resources).
+            fields:
+                Name of the fields.
         Returns:
-            dict: Resource Labels
+             list: A list of items matching the specified filter.
         """
-        uri = self.URI + self.RESOURCES_PATH
-        return self._client.create(resource=resource, uri=uri)
-
-    def update(self, resource):
-        """
-        Set all the labels for a resource.
-
-        Args:
-            resource (dict): Object to update.
-
-        Returns:
-            dict: Resource Labels
-        """
-        return self._client.update(resource=resource)
-
-    def delete(self, resource, timeout=-1):
-        """
-        Delete all the labels for a resource.
-
-        Args:
-            resource (dict): Object to delete.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-        """
-        self._client.delete(resource=resource, timeout=timeout)
+        return self._helper.get_all(count=count, sort=sort, start=start, view=view, fields=fields, filter=filter, name_prefix=name_prefix, category=category)

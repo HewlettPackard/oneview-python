@@ -848,12 +848,18 @@ class OneViewClientTest(unittest.TestCase):
         index_resources = self._oneview.index_resources
         self.assertNotEqual(index_resources, self._oneview.index_resources)
 
-    def test_labels_has_right_type(self):
+    """def test_labels_has_right_type(self):
         self.assertIsInstance(self._oneview.labels, Labels)
 
     def test_lazy_loading_labels(self):
         labels = self._oneview.labels
-        self.assertEqual(labels, self._oneview.labels)
+        self.assertEqual(labels, self._oneview.labels)"""
+
+    def test_labels_has_right_type(self):
+        self.assertIsInstance(self._oneview.labels, Labels)
+
+    def test_labels_has_value(self):
+        self.assertIsNotNone(self._oneview.labels)
 
     def test_alerts_has_right_type(self):
         self.assertIsInstance(self._oneview.alerts, Alerts)

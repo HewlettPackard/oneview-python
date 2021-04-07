@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.search.labels import Labels
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class LabelsTest(unittest.TestCase):
@@ -43,48 +43,49 @@ class LabelsTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
         self.connection = connection(self.host, 800)
-        self._resource = Labels(self.connection)
+        self._labels = Labels(self.connection)
+        self.uri = "/rest/labels/2"
+        self._labels.data = {"uri": self.uri}
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
+        name_prefix = 'test'
+        category = ['enclosures', 'fc-networks']
+        self._labels.get_all(start=2, count=500, filter=filter, sort=sort, name_prefix=name_prefix, category=category)
+        mock_get_all.assert_called_once_with(category=['enclosures', 'fc-networks'], count=500, fields='',
+                                             filter='name=TestName', name_prefix='test', sort='name:ascending', start=2, view='')
 
-        self._resource.get_all(2, 500, filter, sort)
-        mock_get_all.assert_called_once_with(start=2, count=500, filter=filter, sort=sort)
-
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_called_once(self, mock_get):
         label_uri = "/rest/labels/2"
-        self._resource.get(id_or_uri=label_uri)
-        mock_get.assert_called_once_with(id_or_uri=label_uri)
+        self._labels.get_by_uri(label_uri)
+        mock_get.assert_called_once_with(label_uri)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_resource(self, mock_get):
         resource_uri = "/rest/enclosures/09SGH100X6J1"
-        self._resource.get_by_resource(resource_uri=resource_uri)
+        self._labels.get_by_resource(resource_uri)
+        expected_uri = '/rest/labels/resources/' + resource_uri
+        mock_get.assert_called_once_with(expected_uri)
 
-        expected_uri = Labels.URI + Labels.RESOURCES_PATH + '/' + resource_uri
-        mock_get.assert_called_once_with(id_or_uri=expected_uri)
-
-    @mock.patch.object(ResourceClient, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
         resource = dict(
             resourceUri="/rest/enclosures/09SGH100X6J1",
             labels=["labelSample2", "enclosureDemo"]
         )
+        self._labels.create(resource, timeout=30)
+        expected_uri = '/rest/labels/resources'
+        mock_create.assert_called_once_with(resource, timeout=30, uri=expected_uri)
 
-        self._resource.create(resource=resource)
-
-        expected_uri = Labels.URI + Labels.RESOURCES_PATH
-        mock_create.assert_called_once_with(uri=expected_uri, resource=resource)
-
-    @mock.patch.object(ResourceClient, 'update')
+    @mock.patch.object(Resource, 'update')
     def test_update_called_once(self, mock_update):
-        self._resource.update(resource=self.RESOURCE_LABEL)
+        self._labels.update(resource=self.RESOURCE_LABEL)
         mock_update.assert_called_once_with(resource=self.RESOURCE_LABEL)
 
-    @mock.patch.object(ResourceClient, 'delete')
+    @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
-        self._resource.delete(resource=self.RESOURCE_LABEL)
-        mock_delete.assert_called_once_with(resource=self.RESOURCE_LABEL, timeout=-1)
+        self._labels.delete(resource=self.RESOURCE_LABEL)
+        mock_delete.assert_called_once_with(resource=self.RESOURCE_LABEL)

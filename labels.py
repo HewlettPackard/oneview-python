@@ -17,18 +17,18 @@
 from pprint import pprint
 
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+
 
 config = {
-    "ip": "",
+    "ip": "10.1.19.147",
     "credentials": {
-        "userName": "",
-        "password": ""
+        "userName": "Administrator",
+        "password": "admin123"
     }
 }
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+
 
 oneview_client = OneViewClient(config)
 label = oneview_client.labels
