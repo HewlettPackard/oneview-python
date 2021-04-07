@@ -20,19 +20,11 @@ from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
-# config = {
-#     "ip": "",
-#     "credentials": {
-#         "userName": "",
-#         "password": ""
-#     }
-# }
-
 config = {
-    "ip": "ai-cicvc2-tbird-021.vse.rdlabs.hpecorp.net",
+    "ip": "",
     "credentials": {
-        "userName": "Administrator",
-        "password": "hpvse123"
+        "userName": "",
+        "password": ""
     }
 }
 
