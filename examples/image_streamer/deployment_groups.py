@@ -27,7 +27,6 @@ image_streamer_client = oneview_client.create_image_streamer_client()
 
 deployment_groups_information = {
     "name": "OSS",
-    "id": "57f2d803-9c11-4f9a-bc02-71804a0fcc3e"
 }
 
 
@@ -37,6 +36,8 @@ deployment_groups = image_streamer_client.deployment_groups.get_all()
 for deployment_group in deployment_groups:
     pprint(deployment_group)
 
+# Get the ID of Deployment Group
+deployment_groups_information['id'] = deployment_groups[0]['uri'].split('/')[-1]
 
 # Get the Deployment Group by ID
 print("\nGet the Deployment Group by ID")

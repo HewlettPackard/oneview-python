@@ -14,12 +14,14 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Certificates Server
 - Connection Templates
 - Deployment Plans
+- Deployment Groups
 - Enclosures
 - Enclosure Groups
 - Ethernet network
 - FC network
 - FCOE network
 - Firmware Drivers
+- Golden Images
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 - ID Pools
@@ -32,7 +34,9 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Logical Interconnects
 - Logical Interconnect Group
 - Network set
+- OS Build Plans
 - OS Deployment Plans
+- OS Volumes
 - Restores
 - Scopes
 - Server Hardware
