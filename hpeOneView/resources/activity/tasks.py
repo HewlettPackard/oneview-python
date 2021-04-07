@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -68,6 +68,11 @@ class Tasks(ResourcePatchMixin, Resource):
                  Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
                  predefined view. The default view is expand (show all attributes of the resource and all elements of
                  collections of resources).
+            childLimit:
+                 Total number of associated resources in an aggregated manner. Default value is 10.
+            topCount:
+                 Total number of immediate children the task should send back. Otherwise, the task sends back the
+                 aggregated view of the tree. Default value is 3.
 
         Returns:
             list: A list of tasks.
