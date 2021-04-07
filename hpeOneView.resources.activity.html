@@ -481,7 +481,7 @@ collections of resources).</li>
 
 <dl class="method">
 <dt id="hpeOneView.resources.activity.tasks.Tasks.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>fields=u''</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.get_all" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>fields=u''</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>topCount=0</em>, <em>childLimit=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.get_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all the tasks based upon filters provided.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -507,6 +507,9 @@ oldest entry first.</li>
 <li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
 predefined view. The default view is expand (show all attributes of the resource and all elements of
 collections of resources).</li>
+<li><strong>childLimit</strong> – Total number of associated resources in an aggregated manner. Default value is 10.</li>
+<li><strong>topCount</strong> – Total number of immediate children the task should send back. Otherwise, the task sends back the
+aggregated view of the tree. Default value is 3.</li>
 </ul>
 </td>
 </tr>
