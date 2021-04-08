@@ -1,7 +1,6 @@
 [run]
 relative_files = True
 
-
 [report]
 exclude_lines =
     ^\s*def [a-z0-9_]*\(self\):

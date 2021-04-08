@@ -35,7 +35,7 @@ deployment_plan_information = {
 }
 
 # Get all build plans
-all_build_plans = build_plans.get_all()
+all_build_plans = build_plans.get_all(filter='oeBuildPlanType=capture')
 bp_uri = all_build_plans[0]['uri']
 
 # set the "oeBuildPlanURI" in deployment plan payload
