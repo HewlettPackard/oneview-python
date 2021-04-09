@@ -2,10 +2,10 @@
 
 ## Build Status 
 
-OV Version | 6.00 | 5.60 | 5.50 | 5.40 |
-| ------------- |:-------------:| -------------:| -------------:| -------------:|
-SDK Version/Tag | [v6.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.0.0) | [v5.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.6.0) | [v5.5.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.5.0) | [v5.4.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.4.0) |
-Build Status | ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)| ![Build status](https://ci.appveyor.com/api/projects/status/u84505l6syp70013?svg=true)|
+OV Version | 6.10 | 6.00 | 5.60 | 5.50 |
+| ------------- |:-------------:| :-------------:| -------------:| -------------:|
+SDK Version/Tag | [v6.1.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.1.0) | [v6.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.0.0) | [v5.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.6.0) | [v5.5.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.5.0) |
+Build Status | [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://github.com/HewlettPackard/oneview-python/actions/runs/726148134)| [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://github.com/HewlettPackard/oneview-python/actions/runs/623585124)| [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://travis-ci.com/github/HewlettPackard/oneview-python/builds/214352373)| [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)]( https://travis-ci.com/github/HewlettPackard/oneview-python/builds/198224416)|
 
 
 ## Introduction
