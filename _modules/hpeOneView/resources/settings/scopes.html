@@ -156,7 +156,7 @@
   <h1>Source code for hpeOneView.resources.settings.scopes</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -184,12 +184,13 @@
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.search.index_resources</span> <span class="kn">import</span> <span class="n">IndexResources</span>
 
 
-<span class="n">category_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;connection-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;ethernet-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosure-groups&#39;</span><span class="p">,</span>
+<span class="n">category_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;connection-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;drive-enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;ethernet-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosure-groups&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;fc-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;fcoe-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;firmware-bundles&#39;</span><span class="p">,</span> <span class="s1">&#39;hypervisor-cluster-profiles&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;hypervisor-managers&#39;</span><span class="p">,</span> <span class="s1">&#39;interconnects&#39;</span><span class="p">,</span> <span class="s1">&#39;logical-enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;logical-interconnect-groups&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;logical-interconnects&#39;</span><span class="p">,</span> <span class="s1">&#39;network-sets&#39;</span><span class="p">,</span> <span class="s1">&#39;os-deployment-plans&#39;</span><span class="p">,</span> <span class="s1">&#39;scopes&#39;</span><span class="p">,</span> <span class="s1">&#39;server-hardware&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;server-profile-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;server-profiles&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-pools&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-sets&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;storage-volume-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volumes&#39;</span><span class="p">]</span>
+                 <span class="s1">&#39;hypervisor-host-profiles&#39;</span><span class="p">,</span> <span class="s1">&#39;hypervisor-managers&#39;</span><span class="p">,</span> <span class="s1">&#39;interconnects&#39;</span><span class="p">,</span> <span class="s1">&#39;logical-enclosures&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;logical-interconnect-groups&#39;</span><span class="p">,</span> <span class="s1">&#39;logical-interconnects&#39;</span><span class="p">,</span> <span class="s1">&#39;network-sets&#39;</span><span class="p">,</span> <span class="s1">&#39;os-deployment-plans&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;sas-interconnects&#39;</span><span class="p">,</span> <span class="s1">&#39;sas-logical-interconnect-groups&#39;</span><span class="p">,</span> <span class="s1">&#39;sas-logical-interconnects&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;sas-logical-jbods&#39;</span><span class="p">,</span> <span class="s1">&#39;scopes&#39;</span><span class="p">,</span> <span class="s1">&#39;server-hardware&#39;</span><span class="p">,</span> <span class="s1">&#39;server-profile-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;server-profiles&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;storage-pools&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-sets&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volumes&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="get_resources_associated_with_scope"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.get_resources_associated_with_scope">[docs]</a><span class="k">def</span> <span class="nf">get_resources_associated_with_scope</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">scope_uri</span><span class="p">):</span>
