@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,12 +28,13 @@ from hpeOneView.resources.resource import Resource, ResourcePatchMixin
 from hpeOneView.resources.search.index_resources import IndexResources
 
 
-category_list = ['connection-templates', 'ethernet-networks', 'enclosures', 'enclosure-groups',
-                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles',
-                 'hypervisor-managers', 'interconnects', 'logical-enclosures', 'logical-interconnect-groups',
-                 'logical-interconnects', 'network-sets', 'os-deployment-plans', 'scopes', 'server-hardware',
-                 'server-profile-templates', 'server-profiles', 'storage-pools', 'storage-volume-sets',
-                 'storage-volume-templates', 'storage-volumes']
+category_list = ['connection-templates', 'drive-enclosures', 'ethernet-networks', 'enclosures', 'enclosure-groups',
+                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles', 
+                 'hypervisor-host-profiles', 'hypervisor-managers', 'interconnects', 'logical-enclosures', 
+                 'logical-interconnect-groups', 'logical-interconnects', 'network-sets', 'os-deployment-plans', 
+                 'sas-interconnects', 'sas-logical-interconnect-groups', 'sas-logical-interconnects', 
+                 'sas-logical-jbods', 'scopes', 'server-hardware', 'server-profile-templates', 'server-profiles', 
+                 'storage-pools', 'storage-volume-sets', 'storage-volume-templates', 'storage-volumes']
 
 
 def get_resources_associated_with_scope(connection, scope_uri):
