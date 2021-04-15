@@ -2,6 +2,11 @@
 #### Notes
 Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and ImageStreamer REST API version 2020 (I3S v6.10).
 
+#### Bug fixes & Enhancements
+- [#139] (https://github.com/HewlettPackard/oneview-python/issues/139) Hardware needs attachment to existing SCOPE and PROFILE
+- [#140] (https://github.com/HewlettPackard/oneview-python/issues/140) Detach a profile from the hardware resource
+- [#145] (https://github.com/HewlettPackard/oneview-python/issues/145) get_by_uri() method in scope is not listing few category resources like drive-enclosures & sas-interconnects
+
 #### Features supported
 
 - Appliance Configuration Timeconfig
@@ -50,10 +55,6 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Storage Volume 
 - Tasks
 - Uplink set
-
-#### Bug fixes & Enhancements
-- [#139] (https://github.com/HewlettPackard/oneview-python/issues/139) Hardware needs attachment to existing SCOPE and PROFILE
-- [#140] (https://github.com/HewlettPackard/oneview-python/issues/140) Detach a profile from the hardware resource
 
 # 6.0.0
 #### Notes
