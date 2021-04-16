@@ -32,6 +32,7 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - ID Pools
 - ID Pool IPv4 Range
 - ID Pool IPv4 Subnets
+- Index Resources
 - Interconnects
 - Interconnect Types
 - Lables
@@ -55,6 +56,7 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Storage Volume 
 - Tasks
 - Uplink set
+- Version
 
 # 6.0.0
 #### Notes
