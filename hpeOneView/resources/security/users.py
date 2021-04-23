@@ -113,7 +113,7 @@ class Users(Resource):
             new_resource = None
 
         return new_resource
-    
+
     def get_by_userName(self, name):
         """
         Gets a complete json body for username
@@ -125,12 +125,12 @@ class Users(Resource):
            dict: User
         """
 
-        uri = self.URI + '/'+name
+        uri = self.URI + '/' + name
         data = self._helper.do_get(uri)
         new_resource = self.new(self._connection, data)
-        
+
         return new_resource
-    
+
     def get_user_by_role(self, rolename):
         """
         Gets all the users associated with this role
@@ -153,7 +153,7 @@ class Users(Resource):
 
     def create_multiple_user(self, user, timeout=-1):
         """
-        Create a multiple user 
+        Create a multiple user
 
         Agrs:
           user: multiple user
@@ -253,7 +253,7 @@ class Users(Resource):
 
         for i in range(0, len(data)):
             uri = uri + '(loginname=\'{}\')'.format(data[i])
-            if i == len(data)-1:
+            if i == len(data) - 1:
                 break
             uri = uri + quote(' or ')
         print(uri)

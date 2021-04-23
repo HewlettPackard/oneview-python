@@ -46,36 +46,37 @@ options = {
 }
 
 multi_users = [
-{
-    'emailAddress': 'testUser@example.com',
-    'enabled': 'true',
-    'fullName': 'testUser101',
-    'mobilePhone': '555-2121',
-    'officePhone': '555-1212',
-    'password': 'myPass1234',
-    'permissions': [
-        {
-            'roleName': 'Read only',
-        }
-    ],
-    'type': 'UserAndPermissions',
-    'userName': 'testUser1'
-},
-{
-    'emailAddress': 'testUser@example.com',
-    'enabled': 'true',
-    'fullName': 'testUser101',
-    'mobilePhone': '555-2121',
-    'officePhone': '555-1212',
-    'password': 'myPass1234',
-    'permissions': [
-        {
-            'roleName': 'Read only',
-        }
-    ],
-    'type': 'UserAndPermissions',
-    'userName': 'testUser2'
-}]
+    {
+        'emailAddress': 'testUser@example.com',
+        'enabled': 'true',
+        'fullName': 'testUser101',
+        'mobilePhone': '555-2121',
+        'officePhone': '555-1212',
+        'password': 'myPass1234',
+        'permissions': [
+            {
+                'roleName': 'Read only',
+            }
+        ],
+        'type': 'UserAndPermissions',
+        'userName': 'testUser1'
+    },
+    {
+        'emailAddress': 'testUser@example.com',
+        'enabled': 'true',
+        'fullName': 'testUser101',
+        'mobilePhone': '555-2121',
+        'officePhone': '555-1212',
+        'password': 'myPass1234',
+        'permissions': [
+            {
+                'roleName': 'Read only',
+            }
+        ],
+        'type': 'UserAndPermissions',
+        'userName': 'testUser2'
+    }
+]
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
