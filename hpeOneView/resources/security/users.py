@@ -86,7 +86,7 @@ class Users(Resource):
                 OneView, just stops waiting for its completion.
 
         """
-        uri = self.URI+'/changePassword'
+        uri = self.URI + '/changePassword'
         return self._helper.do_put(uri, resource, timeout, None)
 
     def get_role_by_userName(self, userName):
@@ -125,7 +125,7 @@ class Users(Resource):
            dict: User
         """
 
-        uri = self.URI+'/'+name
+        uri = self.URI + '/'+name
         data = self._helper.do_get(uri)
         new_resource = self.new(self._connection, data)
         
@@ -142,7 +142,7 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self.URI+'/roles/users/'+rolename
+        uri = self.URI + '/roles/users/' + rolename
         encoded_uri = quote(uri)
         data = self._helper.do_get(encoded_uri)
         result = []
@@ -162,10 +162,10 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self.URI+'?multiResource=true'
+        uri = self.URI + '?multiResource=true'
         return self._helper.do_post(uri, user, timeout, None)
 
-    def update(self, data=None, timeout=-1, custom_headers=None, force=False):         
+    def update(self, data=None, timeout=-1, custom_headers=None, force=False):
         """
         Makes a PUT request to update a resource when a request body is required.
 
@@ -175,7 +175,7 @@ class Users(Resource):
                 in OneView; it just stops waiting for its completion.
             custom_headers: Allows to add custom HTTP headers.
             force: Force the update operation.
-        
+
         Returns:
             A dict with the updated resource data.
         """
@@ -200,7 +200,7 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self.URI+'/'+username+'/roles?multiResource=true'
+        uri = self.URI + '/' + username + '/roles?multiResource=true'
         print(uri)
         return self._helper.do_post(uri, data, -1, None)
 
@@ -211,13 +211,13 @@ class Users(Resource):
         Agrs:
           username: username of the user
           data: roles to be updated
-        
+
         Return:
           dict: User
 
         """
 
-        uri = self.URI+'/'+username+'/roles?multiResource=true'
+        uri = self.URI + '/' + username + '/roles?multiResource=true'
         return self._helper.do_put(uri, data, -1, None)
 
     def remove_role_from_username(self, username, rolename):
@@ -233,7 +233,7 @@ class Users(Resource):
         """
 
         rolename = quote(rolename)
-        uri = self.URI+'/roles?filter'+'="userName=\'{}\'"&filter="roleName=\'{}\'"'.format(username, rolename)
+        uri = self.URI + '/roles?filter' + '="userName=\'{}\'"&filter="roleName=\'{}\'"'.format(username, rolename)
         print(uri)
         return self._helper.delete(uri, False, -1, None)
 
@@ -246,20 +246,20 @@ class Users(Resource):
 
         Returns:
           None
-        
+
         """
 
-        uri = self.URI+'?&query='
-        
+        uri = self.URI + '?&query='
+
         for i in range(0, len(data)):
-            uri = uri+'(loginname=\'{}\')'.format(data[i])
+            uri = uri + '(loginname=\'{}\')'.format(data[i])
             if i == len(data)-1:
                 break
-            uri = uri+quote(' or ')
+            uri = uri + quote(' or ')
         print(uri)
         self._helper.delete(uri, timeout=-1,
-                                   custom_headers=None, force=False)
-    
+                            custom_headers=None, force=False)
+
     def change_administrator_password(self, new_password):
         """
         Change the password for the administrator
@@ -271,5 +271,5 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self.URI+'/administrator/resetPassword'
+        uri = self.URI + '/administrator/resetPassword'
         return self._helper.do_put(uri, new_password, -1, None)

@@ -45,7 +45,8 @@ options = {
     'userName': 'testUser'
 }
 
-multi_users = [{
+multi_users = [
+{
     'emailAddress': 'testUser@example.com',
     'enabled': 'true',
     'fullName': 'testUser101',
@@ -101,7 +102,7 @@ print(updated_user.data)
 # Add role to userName
 role_options = [
     {
-        "roleName" : "Backup administrator"
+        "roleName": "Backup administrator"
     }
 ]
 role = users.add_role_to_userName("testUser1", role_options)
@@ -111,10 +112,10 @@ print(role)
 # Update role to userName (it will replace entrie role with specified role)
 role_options = [
     {
-        "roleName" : "Scope administrator"
+        "roleName": "Scope administrator"
     },
     {
-        "roleName" : "Backup administrator"
+        "roleName": "Backup administrator"
     }
 ]
 
@@ -136,20 +137,20 @@ print("Get all users")
 all_users = users.get_all()
 pprint(all_users)
 
-# # Validates if full name is already in use
+# Validates if full name is already in use
 bol = users.validate_full_name(options['fullName'])
 print("Is full name already in use? %s" % (bol))
 
-# # Validates if user name is already in use
+# Validates if user name is already in use
 bol = users.validate_user_name(options['userName'])
 print("Is user name already in use? %s" % (bol))
 
-## Get the user's role list
+# Get the user's role list
 rolelist = users.get_role_by_userName("testUser")
 print(">> Got all the roles for the users")
 print(rolelist.data)
 
-## Get by role
+# Get by role
 role = users.get_user_by_role("Infrastructure administrator")
 print(">> Got the users by role name\n")
 print(role)
