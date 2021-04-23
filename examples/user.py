@@ -19,6 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
+
 config = {
     "ip": "",
     "credentials": {
@@ -36,14 +37,44 @@ options = {
     'password': 'myPass1234',
     'permissions': [
         {
-            'roleName': 'Read only',
-            'scopeUri': '/rest/scopes/6a6bb53c-5502-4f89-8573-cd1fb5b02a54',
+            'roleName': 'Infrastructure administrator',
+            'scopeUri': '/rest/scopes/98010084-5687-4540-9219-479169feefbd'
         }
     ],
     'type': 'UserAndPermissions',
     'userName': 'testUser'
 }
 
+multi_users = [{
+    'emailAddress': 'testUser@example.com',
+    'enabled': 'true',
+    'fullName': 'testUser101',
+    'mobilePhone': '555-2121',
+    'officePhone': '555-1212',
+    'password': 'myPass1234',
+    'permissions': [
+        {
+            'roleName': 'Read only',
+        }
+    ],
+    'type': 'UserAndPermissions',
+    'userName': 'testUser1'
+},
+{
+    'emailAddress': 'testUser@example.com',
+    'enabled': 'true',
+    'fullName': 'testUser101',
+    'mobilePhone': '555-2121',
+    'officePhone': '555-1212',
+    'password': 'myPass1234',
+    'permissions': [
+        {
+            'roleName': 'Read only',
+        }
+    ],
+    'type': 'UserAndPermissions',
+    'userName': 'testUser2'
+}]
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
@@ -53,17 +84,48 @@ users = oneview_client.users
 # Create a User
 user = users.create(options)
 print("Created user '%s' successfully.\n  uri = '%s'\n" % (user.data['userName'], user.data['uri']))
+print(user.data)
 
-# Change Password
-change_password_request = {
-    "currentPassword": "myPass1234",
-    "enabled": "true",
-    "password": "admin1234",
-    "userName": "testUser"
-}
-changePasswordResponse = users.change_password(change_password_request)
-print("Changed Password successfully")
-print(changePasswordResponse)
+# Create a Multiple Users
+multi_user = users.create_multiple_user(multi_users)
+print("Created multiple users successfully.\n")
+print(multi_user)
+
+# Updata the user
+data = user.data.copy()
+data["password"] = "change1234"
+updated_user = user.update(data)
+print("The users is updated successfully....\n")
+print(updated_user.data)
+
+# Add role to userName
+role_options = [
+    {
+        "roleName" : "Backup administrator"
+    }
+]
+role = users.add_role_to_userName("testUser1", role_options)
+print("Successfully added new role to existing one....\n")
+print(role)
+
+# Update role to userName (it will replace entrie role with specified role)
+role_options = [
+    {
+        "roleName" : "Scope administrator"
+    },
+    {
+        "roleName" : "Backup administrator"
+    }
+]
+
+role = users.update_role_to_userName("testUser1", role_options)
+print("Successfully updated the role to the username....\n")
+print(role)
+
+# Remove a role from the user
+role = users.remove_role_from_username("testUser1", "Scope administrator")
+print("Removed role from the user successfully...\n")
+print(role)
 
 # Get user by name
 user = users.get_by_userName(options['userName'])
@@ -81,3 +143,41 @@ print("Is full name already in use? %s" % (bol))
 # # Validates if user name is already in use
 bol = users.validate_user_name(options['userName'])
 print("Is user name already in use? %s" % (bol))
+
+## Get the user's role list
+rolelist = users.get_role_by_userName("testUser")
+print(">> Got all the roles for the users")
+print(rolelist.data)
+
+## Get by role
+role = users.get_user_by_role("Infrastructure administrator")
+print(">> Got the users by role name\n")
+print(role)
+
+# Remove single user
+user_to_delete = users.get_by_userName("testUser")
+user_to_delete.delete()
+print("Successfully deleted the testuser2 user.....\n")
+
+# Remove Multiple users
+user_name = ["testUser1", "testUser2"]
+users.delete_multiple_user(user_name)
+print("Deleted multiple users successfully...\n")
+
+# Reset the administrator password from the local kiosk/console
+password = {
+    "newPassword": "admin123"
+}
+change_admin_password = users.change_administrator_password(password)
+print("Changed the administrator password successfully.\n")
+print(change_admin_password)
+
+# Change Password only during the initial setup of the appliance.
+change_password_request = {
+    "oldPassword": "myPass1234",
+    "newPassword": "admin1234",
+    "userName": "testUser1"
+}
+changePasswordResponse = users.change_password(change_password_request)
+print("Changed Password successfully")
+print(changePasswordResponse)
