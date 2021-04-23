@@ -84,7 +84,8 @@ class Tasks(ResourcePatchMixin, Resource):
 
     def patch(self, uri, timeout=-1):
         """
-        Modifies scope membership by adding or removing resource assignments.
+        Sets the state of task to cancelling only if IsCancellable is set to true for the task and its children or
+        children are in terminal state.
 
         Args:
             uri: URI of task resource.
