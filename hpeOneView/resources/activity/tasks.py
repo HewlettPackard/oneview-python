@@ -21,11 +21,13 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from future import standard_library
+import json
 
 standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import Resource, ResourcePatchMixin
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class Tasks(ResourcePatchMixin, Resource):
@@ -80,7 +82,7 @@ class Tasks(ResourcePatchMixin, Resource):
         return self._helper.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view,
                                     fields=fields, childLimit=childLimit, topCount=topCount)
 
-    def patch(self, uri):
+    def patch(self, uri, timeout=-1):
         """
         Modifies scope membership by adding or removing resource assignments.
 
@@ -93,4 +95,17 @@ class Tasks(ResourcePatchMixin, Resource):
             dict: Updated resource.
         """
         resp, body = self._connection.do_http('PATCH', path=uri, body=None)
+
+        if resp.status >= 400:
+            raise HPEOneViewException(body)
+        elif resp.status == 304:
+            if body and not isinstance(body, dict):
+                try:
+                    body = json.loads(body)
+                except Exception:
+                    pass
+        elif resp.status == 202:
+            task = self._connection.__get_task_from_response(resp, body)
+            return self._task_monitor.wait_for_task(task, timeout)
+
         return body
