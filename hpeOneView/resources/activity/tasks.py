@@ -80,17 +80,17 @@ class Tasks(ResourcePatchMixin, Resource):
         return self._helper.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view,
                                     fields=fields, childLimit=childLimit, topCount=topCount)
 
-    def patch(self):
+    def patch(self, uri):
         """
         Modifies scope membership by adding or removing resource assignments.
 
         Args:
-            id_or_uri: Can be either the resource ID or the resource URI.
+            uri: URI of task resource.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated resource.
         """
-        uri = self.data['uri']
-        return super(Tasks, self).patch_request(uri, "", timeout=timeout)
+        resp, body = self._connection.do_http('PATCH', path=uri, body=None)
+        return body
