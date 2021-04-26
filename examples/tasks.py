@@ -64,12 +64,8 @@ tasks_filtered = tasks.get_all(view="flat-tree", start=0, count=1, filter="statu
 pprint(tasks_filtered)
 
 # Performs a patch operation
-component = tasks_limited[0]["uri"].split('/')[-1]
 if oneview_client.api_version >= 1200:
-    task = tasks.get_by_id(component)
-    if task.data.get('isCancellable') and task.data['isCancellable'] is False:
-        try:
-            updated_tasks = tasks.patch('Replace', "isCancellable", True)
-            pprint(updated_tasks.data)
-        except HPEOneViewException as e:
-            print(e.msg)
+    tasks_filtered = tasks.get_all(filter=["\"taskState='Running'\"", "\"isCancellable='true'\""])
+    task_uri = tasks_filtered[0]['uri']
+    response = tasks.patch(task_uri)
+    print(response)
