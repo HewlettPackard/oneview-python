@@ -175,4 +175,3 @@ change_password_request = {
 changePasswordResponse = users.change_password(change_password_request)
 print("Changed Password successfully")
 print(changePasswordResponse)
-
