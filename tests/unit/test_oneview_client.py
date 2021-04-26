@@ -899,9 +899,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_users_has_right_type(self):
         self.assertIsInstance(self._oneview.users, Users)
 
-    def test_lazy_loading_users(self):
+    def test_users_client(self):
         user = self._oneview.users
-        self.assertEqual(user, self._oneview.users)
+        self.assertNotEqual(user, self._oneview.users)
 
     def test_appliance_device_read_community_has_right_type(self):
         self.assertIsInstance(self._oneview.appliance_device_read_community,

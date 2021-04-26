@@ -38,7 +38,7 @@ options = {
     'permissions': [
         {
             'roleName': 'Infrastructure administrator',
-            'scopeUri': '/rest/scopes/98010084-5687-4540-9219-479169feefbd'
+            'scopeUri': '/rest/scopes/6cf6d4da-1b5e-4322-9dff-6ef545ad700f'
         }
     ],
     'type': 'UserAndPermissions',
@@ -149,7 +149,7 @@ print("Is user name already in use? %s" % (bol))
 # Get the user's role list
 rolelist = users.get_role_by_userName("testUser")
 print(">> Got all the roles for the users")
-print(rolelist.data)
+print(rolelist)
 
 # Get by role
 role = users.get_user_by_role("Infrastructure administrator")
@@ -166,20 +166,13 @@ user_name = ["testUser1", "testUser2"]
 users.delete_multiple_user(user_name)
 print("Deleted multiple users successfully...\n")
 
-# Reset the administrator password from the local kiosk/console
-password = {
-    "newPassword": "admin123"
-}
-change_admin_password = users.change_administrator_password(password)
-print("Changed the administrator password successfully.\n")
-print(change_admin_password)
-
 # Change Password only during the initial setup of the appliance.
 change_password_request = {
-    "oldPassword": "myPass1234",
+    "oldPassword": "mypass1234",
     "newPassword": "admin1234",
-    "userName": "testUser1"
+    "userName": "testUser3"
 }
 changePasswordResponse = users.change_password(change_password_request)
 print("Changed Password successfully")
 print(changePasswordResponse)
+

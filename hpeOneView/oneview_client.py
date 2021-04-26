@@ -1052,9 +1052,7 @@ class OneViewClient(object):
         Returns:
             Users:
         """
-        if not self.__users:
-            self.__users = Users(self.__connection)
-        return self.__users
+        return Users(self.__connection)
 
     @property
     def appliance_device_read_community(self):

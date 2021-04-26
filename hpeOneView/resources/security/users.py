@@ -87,7 +87,7 @@ class Users(Resource):
 
         """
         uri = self.URI + '/changePassword'
-        return self._helper.do_put(uri, resource, timeout, None)
+        return self._helper.do_post(uri, resource, timeout, None)
 
     def get_role_by_userName(self, userName):
         """
@@ -108,11 +108,8 @@ class Users(Resource):
             uri = self.URI + '/role/' + userName
             self._helper.validate_resource_uri(uri)
             data = self._helper.do_get(uri)
-            new_resource = self.new(self._connection, data)
-        else:
-            new_resource = None
-
-        return new_resource
+            result = data['members']
+            return result
 
     def get_by_userName(self, name):
         """
@@ -142,9 +139,9 @@ class Users(Resource):
           dict: User
         """
 
+        rolename = quote(rolename)
         uri = self.URI + '/roles/users/' + rolename
-        encoded_uri = quote(uri)
-        data = self._helper.do_get(encoded_uri)
+        data = self._helper.do_get(uri)
         result = []
         for i in range(0, len(data['members'])):
             result.append(data["members"][i])
@@ -201,7 +198,6 @@ class Users(Resource):
         """
 
         uri = self.URI + '/' + username + '/roles?multiResource=true'
-        print(uri)
         return self._helper.do_post(uri, data, -1, None)
 
     def update_role_to_userName(self, username, data):
@@ -234,7 +230,6 @@ class Users(Resource):
 
         rolename = quote(rolename)
         uri = self.URI + '/roles?filter' + '="userName=\'{}\'"&filter="roleName=\'{}\'"'.format(username, rolename)
-        print(uri)
         return self._helper.delete(uri, False, -1, None)
 
     def delete_multiple_user(self, data):
@@ -249,27 +244,11 @@ class Users(Resource):
 
         """
 
-        uri = self.URI + '?&query='
+        uri = self.URI + '?query='
 
         for i in range(0, len(data)):
             uri = uri + '(loginname=\'{}\')'.format(data[i])
             if i == len(data) - 1:
                 break
             uri = uri + quote(' or ')
-        print(uri)
-        self._helper.delete(uri, timeout=-1,
-                            custom_headers=None, force=False)
-
-    def change_administrator_password(self, new_password):
-        """
-        Change the password for the administrator
-
-        Args:
-          new_password: Password to be changed
-
-        Return:
-          dict: User
-        """
-
-        uri = self.URI + '/administrator/resetPassword'
-        return self._helper.do_put(uri, new_password, -1, None)
+        self._helper.delete(uri, False, -1, None)
