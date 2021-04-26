@@ -37,7 +37,7 @@ class FirmwareDrivers(ResourceSchemaMixin, Resource):
     def __init__(self, connection, data=None):
         super(FirmwareDrivers, self).__init__(connection, data)
 
-    def get_by_name(self, name, version=""):
+    def get_by_name(self, name, version=None):
         """
         Retrieves the specified firmware driver resource by name and version.
 
@@ -51,8 +51,9 @@ class FirmwareDrivers(ResourceSchemaMixin, Resource):
         results = super(FirmwareDrivers, self).get_all()
 
         # filter by name and version(optional)
-        result_name = [item for item in results if str(item.get('name', "")).lower() == name.lower()]
-        result = [item for item in result_name if str(item.get('version', "")).lower() == version.lower()]
+        result = [item for item in results if str(item.get('name', "")).lower() == name.lower()]
+        if version:
+            result = [item for item in result if str(item.get('version', "")).lower() == version.lower()]
 
         if result:
             data = result[0]

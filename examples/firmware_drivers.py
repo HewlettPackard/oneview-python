@@ -32,8 +32,9 @@ config = {
 # NOTE: This example requires a SPP and a hotfix inside the appliance.
 
 options = {
-    "customBaselineName": "custom_bundle",
+    "customBaselineName": "Service Pack for Synergy",
 }
+version = "SY-2021.02.01"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -50,10 +51,10 @@ for firmware in all_firmwares:
 firmware_schema = firmware_drivers.get_schema()
 pprint(firmware_schema)
 
-# Get a firmware by name
+# Get a firmware by name (version is optional)
 print("\nGet firmware by name.")
 if all_firmwares:
-    firmware_driver = firmware_drivers.get_by_name(options["customBaselineName"])
+    firmware_driver = firmware_drivers.get_by_name(options["customBaselineName"], version)
 
 if firmware_driver:
     print("\nFound a firmware by name: '{}'.\n  uri = '{}'".format(firmware_driver.data['name'], firmware_driver.data['uri']))
