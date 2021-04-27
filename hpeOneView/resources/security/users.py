@@ -48,7 +48,7 @@ class Users(Resource):
         Verifies if a userName is already in use.
 
         Args:
-            user_name:
+            user_name (str):
                 The userName to be verified.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
@@ -64,7 +64,7 @@ class Users(Resource):
         Verifies if a fullName is already in use.
 
         Args:
-            full_name:
+            full_name (str):
                 The fullName to be verified.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
@@ -94,10 +94,10 @@ class Users(Resource):
         Gets a user by userName.
 
         Args:
-            name: userName of the user.
+            name (str): userName of the user.
 
         Returns:
-            dict: User
+            dict object: User
         """
 
         users = self.get_all()
@@ -117,10 +117,10 @@ class Users(Resource):
         Gets a complete json body for username
 
         Args:
-          name: userName of the user
+          name (str): userName of the user
 
         Returns:
-           dict: User
+           dict object: User
         """
 
         uri = self._helper.build_uri(name)
@@ -131,10 +131,10 @@ class Users(Resource):
         Gets all the users associated with this role
 
         Args:
-          rolename: rolename of the user
+          rolename (str): rolename of the user
 
         Returns:
-          dict: User
+          list: User
         """
 
         rolename = quote(rolename)
@@ -146,26 +146,26 @@ class Users(Resource):
 
         return result
 
-    def create_multiple_user(self, user):
+    def create_multiple_user(self, data):
         """
         Create a multiple user
 
         Agrs:
-          user: multiple user
+          data (list): multiple user
 
         Returns:
-          dict: User
+          dict object: User
         """
 
         uri = self.URI + '?multiResource=true'
-        return self.create(user, uri)
+        return self.create(data, uri)
 
     def update(self, data=None, timeout=-1, custom_headers=None, force=False):
         """
         Makes a PUT request to update a resource when a request body is required.
 
         Args:
-            data: Data to update the resource.
+            data (dict): Data to update the resource.
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
             custom_headers: Allows to add custom HTTP headers.
@@ -187,11 +187,11 @@ class Users(Resource):
         Add roles to a given user name
 
         Args:
-          username: userName of the user
-          data: roles to be added
+          username (str): userName of the user
+          data (list): roles to be added
 
         Returns:
-          dict: User
+          dict object: User
         """
 
         uri = self.URI + '/' + username + '/roles?multiResource=true'
@@ -202,12 +202,11 @@ class Users(Resource):
         Update roles to a given user name
 
         Agrs:
-          username: username of the user
-          data: roles to be updated
+          username (str): username of the user
+          data (list): roles to be updated
 
         Return:
           dict: User
-
         """
 
         uri = self.URI + '/' + username + '/roles?multiResource=true'
@@ -218,11 +217,11 @@ class Users(Resource):
         Removes a specified role from the username
 
         Args:
-          username: username of the user
-          rolename: role to be removed from user
+          username (str): username of the user
+          rolename (str): role to be removed from user
 
         Return:
-          dict: User
+          boolean
         """
 
         rolename = quote(rolename)
@@ -234,11 +233,10 @@ class Users(Resource):
         Delete the multiple users
 
         Args:
-          data: List of users to be deleted
+          data (list): List of users to be deleted
 
         Returns:
           None
-
         """
 
         uri = self.URI + '?query='
