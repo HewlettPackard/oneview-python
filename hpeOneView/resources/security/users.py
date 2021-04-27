@@ -160,7 +160,7 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self._helper.build_uri('?multiResource=true')
+        uri = self.URI + '?multiResource=true')
         return self._helper.create(user, uri)
 
     def update(self, data=None, timeout=-1, custom_headers=None, force=False):
@@ -245,7 +245,7 @@ class Users(Resource):
 
         """
 
-        uri = self._helper.build_uri('?query=')
+        uri = self.URI + '?query='
 
         for i in range(0, len(data)):
             uri = uri + '(loginname=\'{}\')'.format(data[i])

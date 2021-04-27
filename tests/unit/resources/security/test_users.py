@@ -76,7 +76,7 @@ class UsersTest(unittest.TestCase):
         mock_get.return_value = response
         result = self._users.get_by_userName('testUser')
         mock_get.assert_called_once_with('/rest/users/testUser')
-        self.assertEqual(result.data, response)
+        self.assertEqual(result, response)
 
     @mock.patch.object(ResourceHelper, 'do_post')
     def test_validate_full_name_called_once(self, mock_post):
