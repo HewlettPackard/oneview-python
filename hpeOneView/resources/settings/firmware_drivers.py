@@ -51,7 +51,7 @@ class FirmwareDrivers(ResourceSchemaMixin, Resource):
         results = super(FirmwareDrivers, self).get_all()
 
         # filter by name and version(optional)
-        result = [item for item in results if str(item.get('name', "")).lower() == name.lower()]
+        result = [item for item in results if item.get('name', "").lower() == name.lower()]
         if version:
             result = [item for item in result if str(item.get('version', "")).lower() == version.lower()]
 
