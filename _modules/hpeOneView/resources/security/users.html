@@ -245,7 +245,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="s1">&#39;changePassword&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Users.get_role_by_userName"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.get_role_by_userName">[docs]</a>    <span class="k">def</span> <span class="nf">get_role_by_userName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userName</span><span class="p">):</span>
+<div class="viewcode-block" id="Users.get_role_associated_with_userName"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.get_role_associated_with_userName">[docs]</a>    <span class="k">def</span> <span class="nf">get_role_associated_with_userName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userName</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a user by userName.</span>
 
@@ -262,7 +262,6 @@
         <span class="n">resource</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">resource</span><span class="p">:</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/role/&#39;</span> <span class="o">+</span> <span class="n">userName</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">validate_resource_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">result</span>
@@ -281,9 +280,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-        <span class="n">new_resource</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">new_resource</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.get_user_by_role"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.get_user_by_role">[docs]</a>    <span class="k">def</span> <span class="nf">get_user_by_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rolename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -333,12 +330,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            A dict with the updated resource data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span>
 
         <span class="n">resource</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="n">resource</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
