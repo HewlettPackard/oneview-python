@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -60,13 +60,21 @@ class FirmwareDriversTest(TestCase):
         mock_get_by.assert_called_once_with("type", 'SPP')
         self.assertEqual(result, drivers)
 
-    @mock.patch.object(Resource, 'get_by')
+    @mock.patch.object(Resource, 'get_all')
     def test_get_by_name_called_once(self, mock_get_by_name):
         drivers = [{'name': 'name1', 'type': 'SPP'}, {'name': 'name2', 'type': 'HotFix'}]
         mock_get_by_name.return_value = drivers
         result = self._firmware_drivers.get_by_name("name1")
-        mock_get_by_name.assert_called_once_with("name", "name1")
+        mock_get_by_name.assert_called_once_with()
         self.assertEqual(result.data['type'], 'SPP')
+
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_by_name_called_once_with_version(self, mock_get_by_name):
+        drivers = [{'name': 'name1', 'type': 'SPP', 'version': '1.1'}, {'name': 'name2', 'type': 'HotFix', 'version': '1.2'}]
+        mock_get_by_name.return_value = drivers
+        result = self._firmware_drivers.get_by_name("name2", "1.2")
+        mock_get_by_name.assert_called_once_with()
+        self.assertEqual(result.data['type'], 'HotFix')
 
     @mock.patch.object(ResourceSchemaMixin, 'get_schema')
     def test_get_schema(self, mock_get_schema):
