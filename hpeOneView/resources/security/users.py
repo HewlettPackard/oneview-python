@@ -75,7 +75,7 @@ class Users(Resource):
         uri = self.URI + '/validateUserName/' + full_name
         return self._helper.do_post(uri, None, timeout, None)
 
-    def change_password(self, resource, timeout=-1):
+    def change_password(self, resource):
         """
         Change one's own password
 
@@ -86,8 +86,8 @@ class Users(Resource):
                 OneView, just stops waiting for its completion.
 
         """
-        uri = self.URI + '/changePassword'
-        return self._helper.do_post(uri, resource, timeout, None)
+        uri = self._helper.build_uri('changePassword')
+        return self._helper.create(resource, uri)
 
     def get_role_by_userName(self, userName):
         """
@@ -110,6 +110,8 @@ class Users(Resource):
             data = self._helper.do_get(uri)
             result = data['members']
             return result
+        else:
+            return None
 
     def get_by_userName(self, name):
         """
@@ -122,9 +124,8 @@ class Users(Resource):
            dict: User
         """
 
-        uri = self.URI + '/' + name
-        data = self._helper.do_get(uri)
-        new_resource = self.new(self._connection, data)
+        uri = self._helper.build_uri(name)
+        new_resource = self.get_by_uri(uri)
 
         return new_resource
 
@@ -148,7 +149,7 @@ class Users(Resource):
 
         return result
 
-    def create_multiple_user(self, user, timeout=-1):
+    def create_multiple_user(self, user):
         """
         Create a multiple user
 
@@ -159,8 +160,8 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self.URI + '?multiResource=true'
-        return self._helper.do_post(uri, user, timeout, None)
+        uri = self._helper.build_uri('?multiResource=true')
+        return self._helper.create(user, uri)
 
     def update(self, data=None, timeout=-1, custom_headers=None, force=False):
         """
@@ -198,7 +199,7 @@ class Users(Resource):
         """
 
         uri = self.URI + '/' + username + '/roles?multiResource=true'
-        return self._helper.do_post(uri, data, -1, None)
+        return self._helper.create(data, uri)
 
     def update_role_to_userName(self, username, data):
         """
@@ -214,7 +215,7 @@ class Users(Resource):
         """
 
         uri = self.URI + '/' + username + '/roles?multiResource=true'
-        return self._helper.do_put(uri, data, -1, None)
+        return self._helper.update(data, uri)
 
     def remove_role_from_username(self, username, rolename):
         """
@@ -230,7 +231,7 @@ class Users(Resource):
 
         rolename = quote(rolename)
         uri = self.URI + '/roles?filter' + '="userName=\'{}\'"&filter="roleName=\'{}\'"'.format(username, rolename)
-        return self._helper.delete(uri, False, -1, None)
+        return self._helper.delete(uri)
 
     def delete_multiple_user(self, data):
         """
@@ -244,11 +245,11 @@ class Users(Resource):
 
         """
 
-        uri = self.URI + '?query='
+        uri = self._helper.build_uri('?query=')
 
         for i in range(0, len(data)):
             uri = uri + '(loginname=\'{}\')'.format(data[i])
             if i == len(data) - 1:
                 break
             uri = uri + quote(' or ')
-        self._helper.delete(uri, False, -1, None)
+        self._helper.delete(uri)
