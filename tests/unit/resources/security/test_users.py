@@ -308,7 +308,7 @@ class UsersTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_all')
     @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_role_by_userName(self, mock_get, mock_get_all):
+    def test_get_role_associated_with_userName(self, mock_get, mock_get_all):
         mock_get_all.return_value = [{"userName": "testUser"}]
         role_list = {
             "category": "roles",
@@ -333,12 +333,12 @@ class UsersTest(unittest.TestCase):
             "uri": "/rest/users/role/administrator?count=50&start=0"
         }
         mock_get.return_value.data = role_list
-        result = self._users.get_role_by_userName("testUser")
+        result = self._users.get_role_associated_with_userName("testUser")
         mock_get.assert_called_once_with("/rest/users/role/testUser")
         self.assertEqual(result, role_list['members'])
 
     @mock.patch.object(Resource, 'get_all')
-    def test_get_role_by_userName_does_not_exit(self, mock_get_all):
+    def test_get_role_associated_with_userName_does_not_exit(self, mock_get_all):
         mock_get_all.return_value = [{"userName": "testUser"}]
-        result = self._users.get_role_by_userName("testUser1")
+        result = self._users.get_role_associated_with_userName("testUser1")
         self.assertEqual(result, None)

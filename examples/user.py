@@ -159,7 +159,7 @@ bol = users.validate_user_name(options['userName'])
 print("Is user name already in use? %s" % (bol.data))
 
 # Get the user's role list
-rolelist = users.get_role_by_userName("testUser")
+rolelist = users.get_role_associated_with_userName("testUser")
 print("\n>> Got all the roles for the users\n")
 print(rolelist)
 

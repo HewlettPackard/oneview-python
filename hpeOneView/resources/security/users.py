@@ -89,7 +89,7 @@ class Users(Resource):
         uri = self._helper.build_uri('changePassword')
         return self._helper.create(resource, uri)
 
-    def get_role_by_userName(self, userName):
+    def get_role_associated_with_userName(self, userName):
         """
         Gets a user by userName.
 
@@ -106,7 +106,6 @@ class Users(Resource):
         resource = result[0] if result else None
         if resource:
             uri = self.URI + '/role/' + userName
-            self._helper.validate_resource_uri(uri)
             data = self.get_by_uri(uri).data
             result = data['members']
             return result
@@ -125,9 +124,7 @@ class Users(Resource):
         """
 
         uri = self._helper.build_uri(name)
-        new_resource = self.get_by_uri(uri)
-
-        return new_resource
+        return self.get_by_uri(uri)
 
     def get_user_by_role(self, rolename):
         """
@@ -177,12 +174,11 @@ class Users(Resource):
         Returns:
             A dict with the updated resource data.
         """
-        uri = self.URI
 
         resource = deepcopy(self.data)
         resource.update(data)
 
-        self.data = self._helper.update(resource, uri, force, timeout, custom_headers)
+        self.data = self._helper.update(resource, self.URI, force, timeout, custom_headers)
 
         return self
 
