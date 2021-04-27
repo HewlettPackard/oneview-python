@@ -103,7 +103,7 @@ print(user.data)
 # Create a Multiple Users
 multi_user = users.create_multiple_user(multi_users)
 print("\nCreated multiple users successfully.\n")
-print(multi_user)
+print(multi_user.data)
 
 # Updata the user
 data = user.data.copy()
@@ -120,7 +120,7 @@ role_options = [
 ]
 role = users.add_role_to_userName("testUser1", role_options)
 print("\nSuccessfully added new role to existing one....\n")
-print(role)
+print(role.data)
 
 # Update role to userName (it will replace entrie role with specified role)
 role_options = [
@@ -152,11 +152,11 @@ pprint(all_users)
 
 # Validates if full name is already in use
 bol = users.validate_full_name(options['fullName'])
-print("Is full name already in use? %s" % (bol))
+print("Is full name already in use? %s" % (bol.data))
 
 # Validates if user name is already in use
 bol = users.validate_user_name(options['userName'])
-print("Is user name already in use? %s" % (bol))
+print("Is user name already in use? %s" % (bol.data))
 
 # Get the user's role list
 rolelist = users.get_role_by_userName("testUser")

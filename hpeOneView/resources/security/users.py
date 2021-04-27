@@ -57,7 +57,7 @@ class Users(Resource):
         Returns: True if user name is in use, False if it is not.
         """
         uri = self.URI + '/validateLoginName/' + user_name
-        return self._helper.do_post(uri, None, timeout, None)
+        return self.create(uri=uri)
 
     def validate_full_name(self, full_name, timeout=-1):
         """
@@ -73,7 +73,7 @@ class Users(Resource):
         Returns: True if full name is in use, False if it is not.
         """
         uri = self.URI + '/validateUserName/' + full_name
-        return self._helper.do_post(uri, None, timeout, None)
+        return self.create(uri=uri)
 
     def change_password(self, resource):
         """
@@ -107,7 +107,7 @@ class Users(Resource):
         if resource:
             uri = self.URI + '/role/' + userName
             self._helper.validate_resource_uri(uri)
-            data = self._helper.do_get(uri)
+            data = self.get_by_uri(uri).data
             result = data['members']
             return result
         else:
@@ -142,7 +142,7 @@ class Users(Resource):
 
         rolename = quote(rolename)
         uri = self.URI + '/roles/users/' + rolename
-        data = self._helper.do_get(uri)
+        data = self.get_by_uri(uri).data
         result = []
         for i in range(0, len(data['members'])):
             result.append(data["members"][i])
@@ -161,7 +161,7 @@ class Users(Resource):
         """
 
         uri = self.URI + '?multiResource=true'
-        return self._helper.create(user, uri)
+        return self.create(user, uri)
 
     def update(self, data=None, timeout=-1, custom_headers=None, force=False):
         """
@@ -199,7 +199,7 @@ class Users(Resource):
         """
 
         uri = self.URI + '/' + username + '/roles?multiResource=true'
-        return self._helper.create(data, uri)
+        return self.create(data, uri)
 
     def update_role_to_userName(self, username, data):
         """

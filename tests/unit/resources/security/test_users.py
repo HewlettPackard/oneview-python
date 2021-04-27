@@ -78,23 +78,23 @@ class UsersTest(unittest.TestCase):
         mock_get.assert_called_once_with('/rest/users/testUser')
         self.assertEqual(result, response)
 
-    @mock.patch.object(ResourceHelper, 'do_post')
+    @mock.patch.object(Resource, 'create')
     def test_validate_full_name_called_once(self, mock_post):
 
         self._users.validate_full_name('fullname101')
 
         expected_uri = '/rest/users/validateUserName/fullname101'
-        mock_post.assert_called_once_with(expected_uri, None, -1, None)
+        mock_post.assert_called_once_with(uri=expected_uri)
 
-    @mock.patch.object(ResourceHelper, 'do_post')
+    @mock.patch.object(Resource, 'create')
     def test_validate_user_name_called_once(self, mock_post):
 
         self._users.validate_user_name('userName')
 
         expected_uri = '/rest/users/validateLoginName/userName'
-        mock_post.assert_called_once_with(expected_uri, None, -1, None)
+        mock_post.assert_called_once_with(uri=expected_uri)
 
-    @mock.patch.object(ResourceHelper, 'do_get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_user_by_role(self, mock_get):
         response = {
             "category": "roles",
@@ -118,12 +118,12 @@ class UsersTest(unittest.TestCase):
             "type": "RoleNameDtoCollectionV2",
             "uri": "/rest/users/role/administrator?count=50&start=0"
         }
-        mock_get.return_value = response
+        mock_get.return_value.data = response
         result = self._users.get_user_by_role("Infrastructure administrator")
         mock_get.assert_called_once_with("/rest/users/roles/users/Infrastructure%20administrator")
         self.assertEqual(result, response['members'])
 
-    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_create_multiple_user(self, mock_post):
         response = [
             {
@@ -169,10 +169,10 @@ class UsersTest(unittest.TestCase):
                 "userName": "testUser2"
             }
         ]
-        mock_post.return_value = response
+        mock_post.return_value.data = response
         result = self._users.create_multiple_user(["testUser1", "testUser2"])
         mock_post.assert_called_once_with(["testUser1", "testUser2"], '/rest/users?multiResource=true')
-        self.assertEqual(result, response)
+        self.assertEqual(result.data, response)
 
     @mock.patch.object(ResourceHelper, 'update')
     def test_update(self, mock_update):
@@ -205,7 +205,7 @@ class UsersTest(unittest.TestCase):
         mock_update.assert_called_once_with(response, "/rest/users", False, -1, None)
         self.assertEqual(result.data, response)
 
-    @mock.patch.object(ResourceHelper, 'create')
+    @mock.patch.object(Resource, 'create')
     def test_add_role_to_userName(self, mock_post):
         response = [
             {
@@ -235,10 +235,10 @@ class UsersTest(unittest.TestCase):
                 "roleName": "Read only"
             }
         ]
-        mock_post.return_value = response
+        mock_post.return_value.data = response
         result = self._users.add_role_to_userName("testUser", request)
         mock_post.assert_called_once_with(request, "/rest/users/testUser/roles?multiResource=true")
-        self.assertEqual(response, result)
+        self.assertEqual(response, result.data)
 
     @mock.patch.object(ResourceHelper, 'update')
     def test_update_role_to_userName(self, mock_put):
@@ -307,7 +307,7 @@ class UsersTest(unittest.TestCase):
         self.assertEqual(result, response)
 
     @mock.patch.object(Resource, 'get_all')
-    @mock.patch.object(ResourceHelper, 'do_get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_role_by_userName(self, mock_get, mock_get_all):
         mock_get_all.return_value = [{"userName": "testUser"}]
         role_list = {
@@ -332,14 +332,13 @@ class UsersTest(unittest.TestCase):
             "type": "RoleNameDtoCollectionV2",
             "uri": "/rest/users/role/administrator?count=50&start=0"
         }
-        mock_get.return_value = role_list
+        mock_get.return_value.data = role_list
         result = self._users.get_role_by_userName("testUser")
         mock_get.assert_called_once_with("/rest/users/role/testUser")
         self.assertEqual(result, role_list['members'])
 
     @mock.patch.object(Resource, 'get_all')
-    @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_role_by_userName_does_not_exit(self, mock_get, mock_get_all):
+    def test_get_role_by_userName_does_not_exit(self, mock_get_all):
         mock_get_all.return_value = [{"userName": "testUser"}]
         result = self._users.get_role_by_userName("testUser1")
         self.assertEqual(result, None)
