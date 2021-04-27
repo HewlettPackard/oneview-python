@@ -160,7 +160,7 @@ class Users(Resource):
           dict: User
         """
 
-        uri = self.URI + '?multiResource=true')
+        uri = self.URI + '?multiResource=true'
         return self._helper.create(user, uri)
 
     def update(self, data=None, timeout=-1, custom_headers=None, force=False):
