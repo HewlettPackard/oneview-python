@@ -204,7 +204,7 @@
 <span class="sd">        Verifies if a userName is already in use.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            user_name:</span>
+<span class="sd">            user_name (str):</span>
 <span class="sd">                The userName to be verified.</span>
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in</span>
@@ -220,7 +220,7 @@
 <span class="sd">        Verifies if a fullName is already in use.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            full_name:</span>
+<span class="sd">            full_name (str):</span>
 <span class="sd">                The fullName to be verified.</span>
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in</span>
@@ -250,10 +250,10 @@
 <span class="sd">        Gets a user by userName.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name: userName of the user.</span>
+<span class="sd">            name (str): userName of the user.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: User</span>
+<span class="sd">            dict object: User</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">users</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
@@ -273,10 +273,10 @@
 <span class="sd">        Gets a complete json body for username</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">          name: userName of the user</span>
+<span class="sd">          name (str): userName of the user</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">           dict: User</span>
+<span class="sd">           dict object: User</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -287,10 +287,10 @@
 <span class="sd">        Gets all the users associated with this role</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">          rolename: rolename of the user</span>
+<span class="sd">          rolename (str): rolename of the user</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">          dict: User</span>
+<span class="sd">          list: User</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">rolename</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">rolename</span><span class="p">)</span>
@@ -302,26 +302,26 @@
 
         <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="Users.create_multiple_user"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.create_multiple_user">[docs]</a>    <span class="k">def</span> <span class="nf">create_multiple_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+<div class="viewcode-block" id="Users.create_multiple_user"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.create_multiple_user">[docs]</a>    <span class="k">def</span> <span class="nf">create_multiple_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a multiple user</span>
 
 <span class="sd">        Agrs:</span>
-<span class="sd">          user: multiple user</span>
+<span class="sd">          data (list): multiple user</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">          dict: User</span>
+<span class="sd">          dict object: User</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;?multiResource=true&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a PUT request to update a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            data: Data to update the resource.</span>
+<span class="sd">            data (dict): Data to update the resource.</span>
 <span class="sd">            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
 <span class="sd">                in OneView; it just stops waiting for its completion.</span>
 <span class="sd">            custom_headers: Allows to add custom HTTP headers.</span>
@@ -343,11 +343,11 @@
 <span class="sd">        Add roles to a given user name</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">          username: userName of the user</span>
-<span class="sd">          data: roles to be added</span>
+<span class="sd">          username (str): userName of the user</span>
+<span class="sd">          data (list): roles to be added</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">          dict: User</span>
+<span class="sd">          dict object: User</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;/roles?multiResource=true&#39;</span>
@@ -358,12 +358,11 @@
 <span class="sd">        Update roles to a given user name</span>
 
 <span class="sd">        Agrs:</span>
-<span class="sd">          username: username of the user</span>
-<span class="sd">          data: roles to be updated</span>
+<span class="sd">          username (str): username of the user</span>
+<span class="sd">          data (list): roles to be updated</span>
 
 <span class="sd">        Return:</span>
 <span class="sd">          dict: User</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;/roles?multiResource=true&#39;</span>
@@ -374,11 +373,11 @@
 <span class="sd">        Removes a specified role from the username</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">          username: username of the user</span>
-<span class="sd">          rolename: role to be removed from user</span>
+<span class="sd">          username (str): username of the user</span>
+<span class="sd">          rolename (str): role to be removed from user</span>
 
 <span class="sd">        Return:</span>
-<span class="sd">          dict: User</span>
+<span class="sd">          boolean</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">rolename</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">rolename</span><span class="p">)</span>
@@ -390,11 +389,10 @@
 <span class="sd">        Delete the multiple users</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">          data: List of users to be deleted</span>
+<span class="sd">          data (list): List of users to be deleted</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">          None</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;?query=&#39;</span>
