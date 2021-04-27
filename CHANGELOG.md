@@ -56,6 +56,7 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Storage Volume 
 - Tasks
 - Uplink set
+- Users
 - Version
 
 # 6.0.0
