@@ -27,6 +27,7 @@ standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import Resource
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class Users(Resource):
@@ -124,7 +125,12 @@ class Users(Resource):
         """
 
         uri = self._helper.build_uri(name)
-        return self.get_by_uri(uri)
+        try:
+            resource = self.get_by_uri(uri)
+        except HPEOneViewException:
+            resource = None
+        
+        return resource
 
     def get_user_by_role(self, rolename):
         """

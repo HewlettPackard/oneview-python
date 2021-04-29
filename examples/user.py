@@ -143,7 +143,8 @@ print(role)
 
 # Get user by name
 user = users.get_by_userName(options['userName'])
-print("\nFound user by uri = '%s'\n" % user.data['uri'])
+if user:
+    print("\nFound user by uri = '%s'\n" % user.data['uri'])
 
 # Get all users
 print("\nGet all users")
@@ -170,8 +171,9 @@ print(role)
 
 # Remove single user
 user_to_delete = users.get_by_userName("testUser")
-user_to_delete.delete()
-print("\nSuccessfully deleted the testuser2 user.....\n")
+if user_to_delete:
+    user_to_delete.delete()
+    print("\nSuccessfully deleted the testuser2 user.....\n")
 
 # Remove Multiple users
 user_name = ["testUser1", "testUser2"]
