@@ -129,7 +129,7 @@ class Users(Resource):
             resource = self.get_by_uri(uri)
         except HPEOneViewException:
             resource = None
-        
+
         return resource
 
     def get_user_by_role(self, rolename):
