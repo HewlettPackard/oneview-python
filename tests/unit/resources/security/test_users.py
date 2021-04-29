@@ -22,6 +22,7 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.security.users import Users
 from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class UsersTest(unittest.TestCase):
