@@ -374,20 +374,20 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;/roles?multiResource=true&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Users.remove_role_from_username"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.remove_role_from_username">[docs]</a>    <span class="k">def</span> <span class="nf">remove_role_from_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">rolename</span><span class="p">):</span>
+<div class="viewcode-block" id="Users.remove_role_from_username"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.remove_role_from_username">[docs]</a>    <span class="k">def</span> <span class="nf">remove_role_from_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes a specified role from the username</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">          username (str): username of the user</span>
-<span class="sd">          rolename (str): role to be removed from user</span>
+<span class="sd">          data (str/list): list role to be removed from user</span>
 
 <span class="sd">        Return:</span>
 <span class="sd">          boolean</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">rolename</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">rolename</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/roles?filter&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&quot;userName=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1">&quot;&amp;filter=&quot;roleName=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">rolename</span><span class="p">)</span>
+        <span class="n">rolelist_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_filter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/roles?filter&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&quot;userName=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">rolelist_query</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.delete_multiple_user"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.delete_multiple_user">[docs]</a>    <span class="k">def</span> <span class="nf">delete_multiple_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
@@ -408,7 +408,19 @@
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">break</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Users.query_filter"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.query_filter">[docs]</a>    <span class="k">def</span> <span class="nf">query_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
+
+        <span class="n">formated_filter</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">base_query</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&amp;filter=</span><span class="se">\&quot;</span><span class="s2">roleName=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;\&quot;</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
+                <span class="n">formated_filter</span> <span class="o">+=</span> <span class="n">base_query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">quote</span><span class="p">(</span><span class="n">role</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">formated_filter</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">base_query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">quote</span><span class="p">(</span><span class="n">filters</span><span class="p">))</span></div></div>
 </pre></div>
 
            </div>
