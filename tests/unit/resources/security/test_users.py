@@ -276,6 +276,13 @@ class UsersTest(unittest.TestCase):
     @mock.patch.object(ResourceHelper, 'delete')
     def test_remove_role_to_userName(self, mock_delete):
         mock_delete.return_value = True
+        self._users.remove_role_from_username("testUser", ["Read only"])
+        uri = "/rest/users/roles?filter=\"userName='testUser'\"&filter=\"roleName='Read%20only'\""
+        mock_delete.assert_called_once_with(uri)
+
+    @mock.patch.object(ResourceHelper, 'delete')
+    def test_remove_role_to_userName_with_string(self, mock_delete):
+        mock_delete.return_value = True
         self._users.remove_role_from_username("testUser", "Read only")
         uri = "/rest/users/roles?filter=\"userName='testUser'\"&filter=\"roleName='Read%20only'\""
         mock_delete.assert_called_once_with(uri)

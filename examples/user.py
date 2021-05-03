@@ -129,6 +129,9 @@ role_options = [
     },
     {
         "roleName": "Backup administrator"
+    },
+    {
+        "roleName": "Infrastructure administrator"
     }
 ]
 
@@ -136,8 +139,9 @@ role = users.update_role_to_userName("testUser1", role_options)
 print("\nSuccessfully updated the role to the username....\n")
 print(role)
 
-# Remove a role from the user
-role = users.remove_role_from_username("testUser1", "Scope administrator")
+# Remove mulitple role from the user
+# If a single role is to be removed, just specifiy ["role_name"] or "role_name" instead of list.
+role = users.remove_role_from_username("testUser1", ["Scope administrator", "Backup administrator"])
 print("\nRemoved role from the user successfully...\n")
 print(role)
 
