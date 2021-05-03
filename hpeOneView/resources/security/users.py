@@ -260,8 +260,8 @@ class Users(Resource):
         base_query = "\"&filter=\"roleName=\'{}\'\""
         if isinstance(filters, list):
             for role in filters:
-                formated_filter += base_query.format(quote(role))            
+                formated_filter += base_query.format(quote(role))
             return formated_filter
-        
+
         if isinstance(filters, str):
             return base_query.format(quote(filters))
