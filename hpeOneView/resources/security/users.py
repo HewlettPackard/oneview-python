@@ -27,6 +27,7 @@ standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import Resource
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class Users(Resource):
@@ -124,7 +125,12 @@ class Users(Resource):
         """
 
         uri = self._helper.build_uri(name)
-        return self.get_by_uri(uri)
+        try:
+            resource = self.get_by_uri(uri)
+        except HPEOneViewException:
+            resource = None
+
+        return resource
 
     def get_user_by_role(self, rolename):
         """
@@ -212,20 +218,20 @@ class Users(Resource):
         uri = self.URI + '/' + username + '/roles?multiResource=true'
         return self._helper.update(data, uri)
 
-    def remove_role_from_username(self, username, rolename):
+    def remove_role_from_username(self, username, data):
         """
         Removes a specified role from the username
 
         Args:
           username (str): username of the user
-          rolename (str): role to be removed from user
+          data (str/list): list role to be removed from user
 
         Return:
           boolean
         """
 
-        rolename = quote(rolename)
-        uri = self.URI + '/roles?filter' + '="userName=\'{}\'"&filter="roleName=\'{}\'"'.format(username, rolename)
+        rolelist_query = self.query_filter(data)
+        uri = self.URI + '/roles?filter' + '="userName=\'{}\'{}'.format(username, rolelist_query)
         return self._helper.delete(uri)
 
     def delete_multiple_user(self, data):
@@ -247,3 +253,15 @@ class Users(Resource):
                 break
             uri = uri + quote(' or ')
         self._helper.delete(uri)
+
+    def query_filter(self, filters):
+
+        formated_filter = ''
+        base_query = "\"&filter=\"roleName=\'{}\'\""
+        if isinstance(filters, list):
+            for role in filters:
+                formated_filter += base_query.format(quote(role))
+            return formated_filter
+
+        if isinstance(filters, str):
+            return base_query.format(quote(filters))

@@ -129,6 +129,9 @@ role_options = [
     },
     {
         "roleName": "Backup administrator"
+    },
+    {
+        "roleName": "Infrastructure administrator"
     }
 ]
 
@@ -136,14 +139,16 @@ role = users.update_role_to_userName("testUser1", role_options)
 print("\nSuccessfully updated the role to the username....\n")
 print(role)
 
-# Remove a role from the user
-role = users.remove_role_from_username("testUser1", "Scope administrator")
+# Remove mulitple role from the user
+# If a single role is to be removed, just specifiy ["role_name"] or "role_name" instead of list.
+role = users.remove_role_from_username("testUser1", ["Scope administrator", "Backup administrator"])
 print("\nRemoved role from the user successfully...\n")
 print(role)
 
 # Get user by name
 user = users.get_by_userName(options['userName'])
-print("\nFound user by uri = '%s'\n" % user.data['uri'])
+if user:
+    print("\nFound user by uri = '%s'\n" % user.data['uri'])
 
 # Get all users
 print("\nGet all users")
@@ -170,8 +175,9 @@ print(role)
 
 # Remove single user
 user_to_delete = users.get_by_userName("testUser")
-user_to_delete.delete()
-print("\nSuccessfully deleted the testuser2 user.....\n")
+if user_to_delete:
+    user_to_delete.delete()
+    print("\nSuccessfully deleted the testuser2 user.....\n")
 
 # Remove Multiple users
 user_name = ["testUser1", "testUser2"]
