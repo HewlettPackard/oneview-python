@@ -61,6 +61,10 @@ print("\nGet all the labels for the resource %s" % resource_uri)
 labels_by_resource = label.get_by_resource(resource_uri)
 pprint(labels_by_resource.data)
 
+print("\nGets all resources assigned with label name: "), all_labels[0]["name"]
+assigned_resources = label.get_assigned_resources(all_labels[0]["name"])
+pprint(assigned_resources)
+
 print("\nUpdate the resource labels")
 labels_to_update = dict(
     labels=[

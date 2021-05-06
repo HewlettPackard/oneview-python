@@ -26,6 +26,23 @@ standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.search.index_resources import IndexResources
+
+category_list = ['connection-templates', 'drive-enclosures', 'ethernet-networks', 'enclosures', 'enclosure-groups',
+                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles',
+                 'hypervisor-host-profiles', 'hypervisor-managers', 'interconnects', 'logical-enclosures',
+                 'logical-interconnect-groups', 'logical-interconnects', 'network-sets', 'os-deployment-plans',
+                 'sas-interconnects', 'sas-logical-interconnect-groups', 'sas-logical-interconnects',
+                 'sas-logical-jbods', 'scopes', 'server-hardware', 'server-profile-templates', 'server-profiles',
+                 'storage-pools', 'storage-volume-sets', 'storage-volume-templates', 'storage-volumes']
+
+
+def get_resources_associated_with_label(connection, label):
+    index_resource = IndexResources(connection)
+    query_string = "labels='{}'".format(label)
+    all_index_resources = index_resource.get_all(category=category_list, query=query_string)
+    response = [dict_response['uri'] for dict_response in all_index_resources]
+    return response
 
 
 class Labels(Resource):
@@ -39,6 +56,22 @@ class Labels(Resource):
 
     def __init__(self, connection, data=None):
         super(Labels, self).__init__(connection, data)
+
+    def get_assigned_resources(self, name):
+        """
+        Retrieves the assigned resource of a label by name.
+
+        Args:
+            name: name of the label.
+
+        Returns:
+          Dict:  Get assigned resources of specified label resource.
+        """
+        response = super(Labels, self).get_by_name(name)
+        if response:
+            resources_list = get_resources_associated_with_label(self._connection, name)
+            assigned_resource = dict(name=name, assignedResourceUris=resources_list)
+        return assigned_resource
 
     def create(self, resource, timeout=-1):
         """
