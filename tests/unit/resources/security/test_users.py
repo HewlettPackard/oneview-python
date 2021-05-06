@@ -22,6 +22,7 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.security.users import Users
 from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.exceptions import HPEOneViewException
 
 
 class UsersTest(unittest.TestCase):
@@ -77,6 +78,12 @@ class UsersTest(unittest.TestCase):
         result = self._users.get_by_userName('testUser')
         mock_get.assert_called_once_with('/rest/users/testUser')
         self.assertEqual(result, response)
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_called_with_userName_with_exception(self, mock_get):
+        mock_get.side_effect = HPEOneViewException("username is not found")
+        result = self._users.get_by_userName('testUser')
+        self.assertIsNone(result)
 
     @mock.patch.object(Resource, 'create')
     def test_validate_full_name_called_once(self, mock_post):
@@ -268,6 +275,13 @@ class UsersTest(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_remove_role_to_userName(self, mock_delete):
+        mock_delete.return_value = True
+        self._users.remove_role_from_username("testUser", ["Read only"])
+        uri = "/rest/users/roles?filter=\"userName='testUser'\"&filter=\"roleName='Read%20only'\""
+        mock_delete.assert_called_once_with(uri)
+
+    @mock.patch.object(ResourceHelper, 'delete')
+    def test_remove_role_to_userName_with_string(self, mock_delete):
         mock_delete.return_value = True
         self._users.remove_role_from_username("testUser", "Read only")
         uri = "/rest/users/roles?filter=\"userName='testUser'\"&filter=\"roleName='Read%20only'\""
