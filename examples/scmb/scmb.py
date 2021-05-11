@@ -24,6 +24,7 @@ import amqp.spec
 import datetime
 import json
 import ssl
+from builtins import open
 
 
 def callback(channel, msg):
@@ -94,9 +95,9 @@ def recv(host, route):
 
     # Checking whether the file is present or not
     try:
-        client_file = open("client.pem")
-        key_file = open("key.pem")
-    except FileNotFoundError:
+        open("client.pem")
+        open("key.pem")
+    except IOError:
         print("\nThe required key files is not present.\n")
         print("Add -d at the end of the argument passed.\n")
         return
