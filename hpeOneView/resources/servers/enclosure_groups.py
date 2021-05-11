@@ -35,9 +35,6 @@ class EnclosureGroups(Resource):
     """
     URI = '/rest/enclosure-groups'
 
-    DEFAULT_VALUES = {
-    }
-
     def __init__(self, connection, data=None):
         super(EnclosureGroups, self).__init__(connection, data)
 
