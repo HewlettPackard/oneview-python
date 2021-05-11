@@ -88,10 +88,17 @@ def recv(host, route):
     ssl_options = ({'ca_certs': 'caroot.pem',
                     'certfile': 'client.pem',
                     'keyfile': 'key.pem',
-                    'cert_reqs': ssl.CERT_REQUIRED,
-                    'ssl_version': ssl.PROTOCOL_TLSv1_1,
+                    'cert_reqs': ssl.CERT_NONE,
+                    'ssl_version': ssl.PROTOCOL_TLSv1_2,
                     'server_side': False})
 
+    # Checking whether the file is present or not
+    try:
+        client_file = open("client.pem")
+    except FileNotFoundError:
+        print("\nThe required key files is not present.\n")
+        print("Add -d at the end of the argument passed.\n")
+    
     # Connect to RabbitMQ
     conn = amqp.Connection(dest, login_method='EXTERNAL', ssl=ssl_options)
     conn.connect()
@@ -122,11 +129,12 @@ def acceptEULA(oneview_client):
 
 def getCertCa(oneview_client):
     ca_cert = oneview_client.certificate_authority
-    ca_all = ca_cert.get_all()
-    ca = open('caroot.pem', 'w+')
-    for certs in ca_all:
-        if certs['certificateDetails']['aliasName'] == 'localhostSelfSignedCertificate':
-            cert = certs['certificateDetails']['base64Data']
+    ca_all = ca_cert.get_all(filter='certType:INTERNAL')
+    if ca_all[0]:
+        ca = open('caroot.pem', 'w+')
+        ca_all = ca_all[0]
+        if ca_all['certificateDetails']['base64Data']:
+            cert = ca_all['certificateDetails']['base64Data']
             ca.write(cert)
             ca.close()
 
