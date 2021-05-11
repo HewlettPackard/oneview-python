@@ -95,13 +95,16 @@ def recv(host, route):
     # Checking whether the file is present or not
     try:
         client_file = open("client.pem")
+        key_file = open("key.pem")
     except FileNotFoundError:
         print("\nThe required key files is not present.\n")
         print("Add -d at the end of the argument passed.\n")
-    
+        return
+
     # Connect to RabbitMQ
     conn = amqp.Connection(dest, login_method='EXTERNAL', ssl=ssl_options)
     conn.connect()
+    print("\nConnection Successful.\n")
 
     ch = conn.channel()
     qname, _, _ = ch.queue_declare()
