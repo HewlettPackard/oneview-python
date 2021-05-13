@@ -16,7 +16,6 @@
 # limitations under the License.
 ###
 
-from typing import final
 from hpeOneView.oneview_client import OneViewClient
 from functools import partial
 
@@ -26,7 +25,6 @@ import datetime
 import json
 import ssl
 import sys
-import os
 from builtins import open
 
 
@@ -108,7 +106,7 @@ def recv(host, route):
     # Connect to RabbitMQ
     conn = amqp.Connection(dest, login_method='EXTERNAL', ssl=ssl_options)
     conn.connect()
-    print("\nConnection Successful.\n")
+    print("\nConnection Successful. Press ctrl+c or del key to exit the connection.\n")
 
     ch = conn.channel()
     qname, _, _ = ch.queue_declare()
@@ -120,14 +118,11 @@ def recv(host, route):
         try:
             ch.wait(amqp.spec.Queue.BindOk)
         except KeyboardInterrupt:
-            print("Interrupted.\n")
-            try:
-                sys.exit(0)
-            except SystemExit:
-                ch.close()
-                conn.close()
-                print("Successfully closed the connections.")
-                os._exit(0)
+            print("\nInterrupted.\n")
+            ch.close()
+            conn.close()
+            print("Successfully closed the connections.")
+            sys.exit(0)
 
 
 def acceptEULA(oneview_client):
@@ -153,7 +148,7 @@ def getCertCa(oneview_client):
             ca.write(cert)
             ca.close()
         else:
-            print("Invalid Certificate Details.")
+            print("\nInvalid Certificate Details.\n")
 
 
 def genRabbitCa(oneview_client):
@@ -172,7 +167,7 @@ def getRabbitKp(oneview_client):
     ca = open('key.pem', 'w+')
     ca.write(cert['base64SSLKeyData'])
     ca.close()
-    print("Downloaded the Required certificates successfully.\n")
+    print("\nDownloaded the Required certificates successfully.\n")
 
 
 def main():
@@ -221,9 +216,7 @@ def main():
 
 
 if __name__ == '__main__':
-    import sys
     import argparse
-
     sys.exit(main())
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
