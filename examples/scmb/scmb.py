@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 # limitations under the License.
 ###
 
+from typing import final
 from hpeOneView.oneview_client import OneViewClient
 from functools import partial
 
@@ -24,6 +25,8 @@ import amqp.spec
 import datetime
 import json
 import ssl
+import sys
+import os
 from builtins import open
 
 
@@ -112,12 +115,19 @@ def recv(host, route):
     ch.queue_bind(qname, EXCHANGE_NAME, route)
     ch.basic_consume(qname, callback=partial(callback, ch))
 
-    # Start listening for messages
+    # Start listening for messages and to exit the loop press ctrl+c.
     while ch.callbacks:
-        ch.wait(amqp.spec.Queue.BindOk)
-
-    ch.close()
-    conn.close()
+        try:
+            ch.wait(amqp.spec.Queue.BindOk)
+        except KeyboardInterrupt:
+            print("Interrupted.\n")
+            try:
+                sys.exit(0)
+            except SystemExit:
+                ch.close()
+                conn.close()
+                print("Successfully closed the connections.")
+                os._exit(0)
 
 
 def acceptEULA(oneview_client):
@@ -137,10 +147,13 @@ def getCertCa(oneview_client):
     if ca_all[0]:
         ca = open('caroot.pem', 'w+')
         ca_all = ca_all[0]
-        if ca_all['certificateDetails']['base64Data']:
+        # Check whether certificate details are present.
+        if ca_all['certificateDetails'] and ca_all['certificateDetails']['base64Data']:
             cert = ca_all['certificateDetails']['base64Data']
             ca.write(cert)
             ca.close()
+        else:
+            print("Invalid Certificate Details.")
 
 
 def genRabbitCa(oneview_client):
@@ -159,6 +172,7 @@ def getRabbitKp(oneview_client):
     ca = open('key.pem', 'w+')
     ca.write(cert['base64SSLKeyData'])
     ca.close()
+    print("Downloaded the Required certificates successfully.\n")
 
 
 def main():
