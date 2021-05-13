@@ -22,6 +22,7 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.search.labels import Labels
 from hpeOneView.resources.resource import Resource, ResourceHelper
+from hpeOneView.resources.search.index_resources import IndexResources
 
 
 class LabelsTest(unittest.TestCase):
@@ -84,6 +85,17 @@ class LabelsTest(unittest.TestCase):
     def test_update_called_once(self, mock_update):
         self._labels.update(resource=self.RESOURCE_LABEL)
         mock_update.assert_called_once_with(resource=self.RESOURCE_LABEL)
+
+    @mock.patch.object(Resource, 'get_by_name')
+    @mock.patch.object(IndexResources, 'get_all')
+    def test_get_assigned_resources_called_once(self, mock_get_resources, mock_get_name):
+        mock_get_resources.return_value = [{'uri': 'uri1'}, {'uri': 'uri2'}]
+        fake_obj = mock.Mock()
+        fake_obj.data = {'uri': 'uri1'}
+        mock_get_name.return_value = fake_obj
+        result = self._labels.get_assigned_resources('test')
+        mock_get_name.assert_called_once_with('test')
+        self.assertEqual(result, {'assignedResourceUris': ['uri1', 'uri2'], 'name': 'test'})
 
     @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
