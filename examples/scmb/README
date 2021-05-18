@@ -43,6 +43,10 @@ script.
 For Example: assuming, you have a brand new HPE OneView appliance invocation
 would be similar to this:
 
+# Ensure the amqp  library installed
+
+  pip install amqp
+
 # Generate the RabbitMQ keypair on the appliance
 
   ./scmb.py -a [HPE OneView Appliance IP] -u Administrator -p MyPass -g

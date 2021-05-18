@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import amqp.spec
 import datetime
 import json
 import ssl
+import sys
+from builtins import open
 
 
 def callback(channel, msg):
@@ -88,25 +90,39 @@ def recv(host, route):
     ssl_options = ({'ca_certs': 'caroot.pem',
                     'certfile': 'client.pem',
                     'keyfile': 'key.pem',
-                    'cert_reqs': ssl.CERT_REQUIRED,
-                    'ssl_version': ssl.PROTOCOL_TLSv1_1,
+                    'cert_reqs': ssl.CERT_NONE,
+                    'ssl_version': ssl.PROTOCOL_TLSv1_2,
                     'server_side': False})
+
+    # Checking whether the file is present or not
+    try:
+        open("client.pem")
+        open("key.pem")
+    except IOError:
+        print("\nThe required key files is not present.\n")
+        print("Add -d at the end of the argument passed.\n")
+        return
 
     # Connect to RabbitMQ
     conn = amqp.Connection(dest, login_method='EXTERNAL', ssl=ssl_options)
     conn.connect()
+    print("\nConnection Successful. Press ctrl+c or del key to exit the connection.\n")
 
     ch = conn.channel()
     qname, _, _ = ch.queue_declare()
     ch.queue_bind(qname, EXCHANGE_NAME, route)
     ch.basic_consume(qname, callback=partial(callback, ch))
 
-    # Start listening for messages
+    # Start listening for messages and to exit the loop press ctrl+c.
     while ch.callbacks:
-        ch.wait(amqp.spec.Queue.BindOk)
-
-    ch.close()
-    conn.close()
+        try:
+            ch.wait(amqp.spec.Queue.BindOk)
+        except KeyboardInterrupt:
+            print("\nInterrupted.\n")
+            ch.close()
+            conn.close()
+            print("Successfully closed the connections.")
+            sys.exit(0)
 
 
 def acceptEULA(oneview_client):
@@ -122,13 +138,17 @@ def acceptEULA(oneview_client):
 
 def getCertCa(oneview_client):
     ca_cert = oneview_client.certificate_authority
-    ca_all = ca_cert.get_all()
-    ca = open('caroot.pem', 'w+')
-    for certs in ca_all:
-        if certs['certificateDetails']['aliasName'] == 'localhostSelfSignedCertificate':
-            cert = certs['certificateDetails']['base64Data']
+    ca_all = ca_cert.get_all(filter='certType:INTERNAL')
+    if ca_all:
+        ca = open('caroot.pem', 'w+')
+        ca_all = ca_all[0]
+        # Check whether certificate details are present.
+        if ca_all['certificateDetails'] and ca_all['certificateDetails']['base64Data']:
+            cert = ca_all['certificateDetails']['base64Data']
             ca.write(cert)
             ca.close()
+        else:
+            print("\nInvalid Certificate Details.\n")
 
 
 def genRabbitCa(oneview_client):
@@ -147,6 +167,7 @@ def getRabbitKp(oneview_client):
     ca = open('key.pem', 'w+')
     ca.write(cert['base64SSLKeyData'])
     ca.close()
+    print("\nDownloaded the Required certificates successfully.\n")
 
 
 def main():
@@ -195,9 +216,7 @@ def main():
 
 
 if __name__ == '__main__':
-    import sys
     import argparse
-
     sys.exit(main())
 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
