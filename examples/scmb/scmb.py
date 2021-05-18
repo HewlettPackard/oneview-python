@@ -139,7 +139,7 @@ def acceptEULA(oneview_client):
 def getCertCa(oneview_client):
     ca_cert = oneview_client.certificate_authority
     ca_all = ca_cert.get_all(filter='certType:INTERNAL')
-    if ca_all[0]:
+    if ca_all:
         ca = open('caroot.pem', 'w+')
         ca_all = ca_all[0]
         # Check whether certificate details are present.
