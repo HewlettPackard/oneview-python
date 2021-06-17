@@ -32,7 +32,7 @@ class ApplianceNodeInformation(object):
     ApplianceNodeInformation API client.
 
     """
-    URI = '/rest/appliance/nodeinfo'
+    URI = '/rest/appliance'
 
     def __init__(self, con):
         self._client = ResourceClient(con, self.URI)
@@ -44,7 +44,7 @@ class ApplianceNodeInformation(object):
         Returns:
             dict: Node's status information
         """
-        uri = self.URI + '/status'
+        uri = self.URI + '/nodeinfo/status'
         return self._client.get(uri)
 
     def get_version(self):
@@ -54,5 +54,25 @@ class ApplianceNodeInformation(object):
         Returns:
             dict: Node's version information
         """
-        uri = self.URI + '/version'
+        uri = self.URI + '/nodeinfo/version'
+        return self._client.get(uri)
+
+    def get_ha_info(self):
+        """
+        Retrieves the node's HA status information
+
+        Returns:
+            dict: Node's High Availability information
+        """
+        uri = self.URI + '/ha-nodes'
+        return self._client.get(uri)
+
+    def get_health_status(self):
+        """
+        Retrieves the node's health status information
+
+        Returns:
+            dict: Node's health status information
+        """
+        uri = self.URI + '/health-status'
         return self._client.get(uri)
