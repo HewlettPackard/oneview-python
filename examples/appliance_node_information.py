@@ -41,3 +41,9 @@ pprint(node_status)
 print("\nGet node version information from appliance\n")
 node_version = oneview_client.appliance_node_information.get_version()
 pprint(node_version)
+
+print("Get appliances High Availability information\n")
+ha_info = oneview_client.appliance_node_information.get_ha_info()
+
+print("Get appliance node health status\n")
+health_status = oneview_client.appliance_node_information.get_health_status()
