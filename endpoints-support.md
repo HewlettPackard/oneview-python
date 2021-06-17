@@ -20,6 +20,9 @@
 
 | Endpoints                                                                               | Verb              |  V800                 | V1000               | V1200                | V1600               | V1800               | V2000               | V2200               | V2400               | V2600               | V2800               |
 | --------------------------------------------------------------------------------------- | ------------------ |  :------------------: | :------------------:| :------------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+| **Applliance Node Information**
+|<sub>/rest/appliance/health_status</sub> | GET | | | :white_check_mark: | :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: | 
+|<sub>/rest/appliance/ha-nodes</sub> | GET | | | :white_check_mark: | :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: |  :white_check_mark: | 
 |     **Appliance Configuration Timeconfig**
 |<sub>/rest/appliance/configuration/timeconfig/locales</sub>                              |GET       |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   |  :heavy_minus_sign:   |  :heavy_minus_sign:   | :heavy_minus_sign:   | :heavy_minus_sign:   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:  |
 |     **Appliance SNMPv1 Trap Destinations**
