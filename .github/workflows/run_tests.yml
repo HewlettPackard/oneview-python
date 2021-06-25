@@ -60,7 +60,7 @@ jobs:
         keep_history: true
         build_dir: docs/build/html/.
       env:
-        GITHUB_TOKEN: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: coveralls
       uses: AndreMiras/coveralls-python-action@develop
