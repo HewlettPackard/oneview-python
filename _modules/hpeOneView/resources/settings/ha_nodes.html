@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>hpeOneView.resources.settings.appliance_health_status &mdash; HPE OneView Python SDK 6.1.0 documentation</title>
+  <title>hpeOneView.resources.settings.ha_nodes &mdash; HPE OneView Python SDK 6.1.0 documentation</title>
   
 
   
@@ -138,7 +138,7 @@
         
           <li><a href="../../../hpeOneView.html">hpeOneView</a> &raquo;</li>
         
-      <li>hpeOneView.resources.settings.appliance_health_status</li>
+      <li>hpeOneView.resources.settings.ha_nodes</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -153,7 +153,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for hpeOneView.resources.settings.appliance_health_status</h1><div class="highlight"><pre>
+  <h1>Source code for hpeOneView.resources.settings.ha_nodes</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
 <span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
@@ -180,27 +180,23 @@
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">unavailable_method</span>
 
 
-<div class="viewcode-block" id="ApplianceHealthStatus"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus">[docs]</a><span class="k">class</span> <span class="nc">ApplianceHealthStatus</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="HANodes"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.ha_nodes.HANodes">[docs]</a><span class="k">class</span> <span class="nc">HANodes</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves the health information from the appliance.</span>
+<span class="sd">    HA Nodes resources represent the individual members used to provide</span>
+<span class="sd">    high-availability for the management appliance cluster.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/appliance/health-status&#39;</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/appliance/ha-nodes&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ApplianceHealthStatus</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HANodes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ApplianceHealthStatus.get_health_status"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.get_health_status">[docs]</a>    <span class="k">def</span> <span class="nf">get_health_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Retrieves appliance health status</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: appliance health status</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ApplianceHealthStatus</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="HANodes.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.ha_nodes.HANodes.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create method is not available&quot;&quot;&quot;</span>
+        <span class="n">unavailable_method</span><span class="p">()</span></div></div>
 </pre></div>
 
            </div>

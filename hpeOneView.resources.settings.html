@@ -102,6 +102,7 @@
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.backups">hpeOneView.resources.settings.backups module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.firmware_bundles">hpeOneView.resources.settings.firmware_bundles module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.firmware_drivers">hpeOneView.resources.settings.firmware_drivers module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.ha_nodes">hpeOneView.resources.settings.ha_nodes module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.licenses">hpeOneView.resources.settings.licenses module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.restores">hpeOneView.resources.settings.restores module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.scopes">hpeOneView.resources.settings.scopes module</a></li>
@@ -531,7 +532,7 @@ on create time with the oldest entry first.</li>
 <dt id="hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus">
 <em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_health_status.</code><code class="descname">ApplianceHealthStatus</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_health_status.html#ApplianceHealthStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
-<p>ApplianceHealthStatus API client.</p>
+<p>Retrieves the health information from the appliance.</p>
 <dl class="attribute">
 <dt id="hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/appliance/health-status'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.URI" title="Permalink to this definition">¶</a></dt>
@@ -562,7 +563,8 @@ on create time with the oldest entry first.</li>
 <dt id="hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation">
 <em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_node_information.</code><code class="descname">ApplianceNodeInformation</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_node_information.html#ApplianceNodeInformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
-<p>ApplianceNodeInformation API client.</p>
+<p>The nodeinfo resource manager provides REST APIs to
+retrieve information about the nodes of the appliance.</p>
 <dl class="attribute">
 <dt id="hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/appliance/nodeinfo'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_node_information.ApplianceNodeInformation.URI" title="Permalink to this definition">¶</a></dt>
@@ -903,6 +905,28 @@ Note: As per the API docs, ‘type’ field is not present in the firmware drive
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.ha_nodes">
+<span id="hpeoneview-resources-settings-ha-nodes-module"></span><h2>hpeOneView.resources.settings.ha_nodes module<a class="headerlink" href="#module-hpeOneView.resources.settings.ha_nodes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.ha_nodes.HANodes">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.ha_nodes.</code><code class="descname">HANodes</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/ha_nodes.html#HANodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.ha_nodes.HANodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a></p>
+<p>HA Nodes resources represent the individual members used to provide
+high-availability for the management appliance cluster.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.ha_nodes.HANodes.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/ha-nodes'</em><a class="headerlink" href="#hpeOneView.resources.settings.ha_nodes.HANodes.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.ha_nodes.HANodes.create">
+<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/ha_nodes.html#HANodes.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.ha_nodes.HANodes.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create method is not available</p>
 </dd></dl>
 
 </dd></dl>

@@ -100,6 +100,14 @@ hpeOneView.resources.settings.firmware\_drivers module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.settings.ha\_nodes module
+----------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.ha_nodes
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.settings.licenses module
 ---------------------------------------------
 
