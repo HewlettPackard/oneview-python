@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.settings.ha_nodes import HANodes
-from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ResourceHelper
+from hpeOneView.resources.resource import Resource
 
 
 class HANodesTest(unittest.TestCase):
