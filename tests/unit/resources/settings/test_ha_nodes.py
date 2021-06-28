@@ -41,36 +41,6 @@ class HANodesTest(unittest.TestCase):
         self._ha_nodes.get_all()
         mock_get_all.assert_called_once_with()
 
-    @mock.patch.object(Resource, 'ensure_resource_data')
-    @mock.patch.object(ResourceHelper, 'update')
-    def test_update_called_once_with_default(self, mock_update, mock_ensure_client):
-        resource = {
-            "name": "enc101 appliance bay 1",
-            "oldUri": "/rest/appliance/ha-nodes/1",
-            "role": "Standby"
-        }
-        self._ha_nodes.update(resource)
-        mock_update.assert_called_once_with(resource, self.uri, False, -1, None)
-
-    @mock.patch.object(ResourcePatchMixin, 'patch_request')
-    def test_patch_called_once(self, mock_patch):
-        uri = '/rest/appliance/ha-nodes/1'
-
-        resource = {
-            "operation": "replace", "path": "/role", "value": "Standby"
-        }
-        self._ha_nodes.patch("replace", "/role", "Standby")
-        mock_patch.assert_called_once_with(
-            self.uri, body=[resource], custom_headers=None, timeout=-1)
-
-    @mock.patch.object(ResourcePatchMixin, 'patch_request')
-    def test_patch(self, mock_pacth):
-        self._resource.patch("replace", "/templateCompliance", "Compliant")
-        mock_pacth.assert_called_once_with(self.uri, body=[{'path': '/templateCompliance',
-                                                            'op': 'replace',
-                                                            'value': 'Compliant'}],
-                                           custom_headers=None, timeout=-1)
-
     @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
         self._ha_nodes.delete()
