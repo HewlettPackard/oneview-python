@@ -106,6 +106,7 @@ from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
 from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
+from hpeOneView.resources.settings.ha_nodes import HANodes
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
 from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
@@ -211,6 +212,7 @@ class OneViewClient(object):
         self.__certificates_server = None
         self.__appliance_configuration_timeconfig = None
         self.__appliance_ssh_access = None
+        self.__ha_nodes = None
 
     @classmethod
     def from_json_file(cls, file_name):
@@ -1117,6 +1119,16 @@ class OneViewClient(object):
             ApplianceHealthStatus:
         """
         return ApplianceHealthStatus(self.__connection)
+
+    @property
+    def ha_nodes(self):
+        """
+        Gets the HANodes API client.
+
+        Returns:
+            HANodes:
+        """
+        return HANodes(self.__connection)
 
     @property
     def appliance_time_and_locale_configuration(self):

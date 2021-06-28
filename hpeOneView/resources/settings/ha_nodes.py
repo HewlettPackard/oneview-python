@@ -24,24 +24,20 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, unavailable_method
 
 
-class ApplianceHealthStatus(Resource):
+class HANodes(Resource, ResourcePatchMixin):
     """
-    Retrieves the health information from the appliance.
+    HA Nodes resources represent the individual members used to provide
+    high-availability for the management appliance cluster.
 
     """
-    URI = '/rest/appliance/health-status'
+    URI = '/rest/appliance/ha-nodes'
 
     def __init__(self, connection, data=None):
-        super(ApplianceHealthStatus, self).__init__(connection, data)
+        super(HANodes, self).__init__(connection, data)
 
-    def get_health_status(self):
-        """
-        Retrieves appliance health status
-
-        Returns:
-            dict: appliance health status
-        """
-        return super(ApplianceHealthStatus, self).get_by_uri(self.URI)
+    def create(self):
+        """Create method is not available"""
+        unavailable_method()

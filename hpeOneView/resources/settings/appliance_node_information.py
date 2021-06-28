@@ -29,7 +29,8 @@ from hpeOneView.resources.resource import Resource
 
 class ApplianceNodeInformation(Resource):
     """
-    ApplianceNodeInformation API client.
+    The nodeinfo resource manager provides REST APIs to
+    retrieve information about the nodes of the appliance.
 
     """
     URI = '/rest/appliance/nodeinfo'
