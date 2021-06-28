@@ -105,6 +105,7 @@ from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
+from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
 from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
@@ -201,6 +202,7 @@ class OneViewClient(object):
         self.__appliance_device_snmp_v3_users = None
         self.__appliance_time_and_locale_configuration = None
         self.__appliance_node_information = None
+        self.__appliance_health_status = None
         self.__versions = None
         self.__backups = None
         self.__login_details = None
@@ -1105,6 +1107,16 @@ class OneViewClient(object):
             ApplianceNodeInformation:
         """
         return ApplianceNodeInformation(self.__connection)
+
+    @property
+    def appliance_health_status(self):
+        """
+        Gets the ApplianceHealthStatus API client.
+
+        Returns:
+            ApplianceHealthStatus:
+        """
+        return ApplianceHealthStatus(self.__connection)
 
     @property
     def appliance_time_and_locale_configuration(self):

@@ -7,6 +7,7 @@ Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 
 #### Features supported
 - Appliance Node Information
+- Appliance Health Status
 
 # 6.1.0
 #### Notes
