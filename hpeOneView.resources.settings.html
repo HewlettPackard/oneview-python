@@ -95,6 +95,7 @@
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations">hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_users">hpeOneView.resources.settings.appliance_device_snmp_v3_users module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_health_status">hpeOneView.resources.settings.appliance_health_status module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_node_information">hpeOneView.resources.settings.appliance_node_information module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_ssh_access">hpeOneView.resources.settings.appliance_ssh_access module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">hpeOneView.resources.settings.appliance_time_and_locale_configuration module</a></li>
@@ -516,6 +517,37 @@ on create time with the oldest entry first.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Resource object or None if resource does not exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_health_status">
+<span id="hpeoneview-resources-settings-appliance-health-status-module"></span><h2>hpeOneView.resources.settings.appliance_health_status module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_health_status" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_health_status.</code><code class="descname">ApplianceHealthStatus</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_health_status.html#ApplianceHealthStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>ApplianceHealthStatus API client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/health-status'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.get_health_status">
+<code class="descname">get_health_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_health_status.html#ApplianceHealthStatus.get_health_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_health_status.ApplianceHealthStatus.get_health_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves appliance health status</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">appliance health status</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>

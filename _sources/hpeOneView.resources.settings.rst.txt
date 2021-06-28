@@ -44,6 +44,14 @@ hpeOneView.resources.settings.appliance\_device\_snmp\_v3\_users module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.settings.appliance\_health\_status module
+--------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_health_status
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.settings.appliance\_node\_information module
 -----------------------------------------------------------------
 
