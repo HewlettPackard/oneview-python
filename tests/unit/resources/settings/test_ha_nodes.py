@@ -33,7 +33,7 @@ class HANodesTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_ha_nodes_called_once(self, mock_get):
-        self._ha_nodes.get_by_uri()
+        self._ha_nodes.get_by_uri('/rest/appliance/ha-nodes')
         mock_get.assert_called_once_with('/rest/appliance/ha-nodes')
 
     @mock.patch.object(Resource, 'get_all')
