@@ -53,13 +53,13 @@ jobs:
       run: tox
 
     - name: Deploy to GitHub Pages
-     if: success()
-     uses: crazy-max/ghaction-github-pages@v2
-     with:
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
        target_branch: gh-pages
        keep_history: true
        build_dir: docs/build/html/.
-     env:
+      env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: coveralls
