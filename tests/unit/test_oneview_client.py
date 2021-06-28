@@ -931,17 +931,16 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_device_snmp_v3_users,
                               ApplianceDeviceSNMPv3Users)
 
-    def test_lazy_loading_appliance_device_device_snmp_v3_users(self):
+    def test_appliance_device_device_snmp_v3_users(self):
         appliance_device_snmp_v3_users = self._oneview.appliance_device_snmp_v3_users
-        self.assertEqual(appliance_device_snmp_v3_users, self._oneview.appliance_device_snmp_v3_users)
+        self.assertNotEqual(appliance_device_snmp_v3_users, self._oneview.appliance_device_snmp_v3_users)
 
     def test_appliance_node_information_has_right_type(self):
-        self.assertIsInstance(self._oneview.appliance_node_information,
-                              ApplianceNodeInformation)
+        self.assertIsInstance(self._oneview.appliance_node_information, ApplianceNodeInformation)
 
     def test_lazy_loading_appliance_node_information(self):
         appliance_node_information = self._oneview.appliance_node_information
-        self.assertEqual(appliance_node_information, self._oneview.appliance_node_information)
+        self.assertNotEqual(appliance_node_information, self._oneview.appliance_node_information)
 
     def test_appliance_time_and_locale_configuration_has_right_type(self):
         self.assertIsInstance(self._oneview.appliance_time_and_locale_configuration,

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
 class ApplianceTimeAndLocaleConfigurationTest(unittest.TestCase):
@@ -30,12 +30,12 @@ class ApplianceTimeAndLocaleConfigurationTest(unittest.TestCase):
         self.connection = connection(self.host, 800)
         self._node_information = ApplianceNodeInformation(self.connection)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_status_called_once(self, mock_get):
         self._node_information.get_status()
         mock_get.assert_called_once_with('/rest/appliance/nodeinfo/status')
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_version_called_once(self, mock_get):
         self._node_information.get_version()
         mock_get.assert_called_once_with('/rest/appliance/nodeinfo/version')

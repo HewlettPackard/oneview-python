@@ -1094,9 +1094,7 @@ class OneViewClient(object):
         Returns:
             ApplianceDeviceSNMPv3Users:
         """
-        if not self.__appliance_device_snmp_v3_users:
-            self.__appliance_device_snmp_v3_users = ApplianceDeviceSNMPv3Users(self.__connection)
-        return self.__appliance_device_snmp_v3_users
+        return ApplianceDeviceSNMPv3Users(self.__connection)
 
     @property
     def appliance_node_information(self):
@@ -1106,9 +1104,7 @@ class OneViewClient(object):
         Returns:
             ApplianceNodeInformation:
         """
-        if not self.__appliance_node_information:
-            self.__appliance_node_information = ApplianceNodeInformation(self.__connection)
-        return self.__appliance_node_information
+        return ApplianceNodeInformation(self.__connection)
 
     @property
     def appliance_time_and_locale_configuration(self):

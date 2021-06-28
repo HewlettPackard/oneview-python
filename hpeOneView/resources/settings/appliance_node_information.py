@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,18 +24,18 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
-class ApplianceNodeInformation(object):
+class ApplianceNodeInformation(Resource):
     """
     ApplianceNodeInformation API client.
 
     """
     URI = '/rest/appliance/nodeinfo'
 
-    def __init__(self, con):
-        self._client = ResourceClient(con, self.URI)
+    def __init__(self, connection, data=None):
+        super(ApplianceNodeInformation, self).__init__(connection, data)
 
     def get_status(self):
         """
@@ -45,7 +45,7 @@ class ApplianceNodeInformation(object):
             dict: Node's status information
         """
         uri = self.URI + '/status'
-        return self._client.get(uri)
+        return super(ApplianceNodeInformation, self).get_by_uri(uri)
 
     def get_version(self):
         """
@@ -55,4 +55,4 @@ class ApplianceNodeInformation(object):
             dict: Node's version information
         """
         uri = self.URI + '/version'
-        return self._client.get(uri)
+        return super(ApplianceNodeInformation, self).get_by_uri(uri)
