@@ -43,15 +43,15 @@ print("\nGet HA node by uri from appliance\n")
 node_by_uri = ha_nodes.get_by_uri(all_nodes[0]['uri'])
 pprint(node_by_uri.data)
 
-# update description of HA node
-data = {'description': 'updated node'}
-ha_node = ha_nodes.update(data)
+# update role of HA node
+data = {'role': 'Standby'}
+ha_node = node_by_uri.update(data)
 print("\n## Update HA node successfully!")
 pprint(ha_node.data)
 
-# Patch update
+# Patch update role
 print("\nUpdate the HA node using patch")
-ha_node.patch(operation="replace", path="/role", value="Standby")
+ha_node.patch(operation="replace", path="/role", value="Active")
 pprint(ha_node.data)
 
 # Delete HA node
