@@ -47,7 +47,6 @@ if snmp_users:
     snmp_userId = snmp_users[0]['id']
     # Adding userId to snmpv3 users payload
     options['userId'] = snmp_userId
-    
     # Add appliance device SNMP v3 Trap Destination
     snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.create(options)
     print("\n## Created appliance SNMPv3 trap destination successfully!")
