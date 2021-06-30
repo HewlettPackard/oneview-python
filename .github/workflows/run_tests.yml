@@ -52,22 +52,15 @@ jobs:
     - name: Run tox tests
       run: tox
 
-#     - name: Deploy to GitHub Pages
-#       if: success()
-#       uses: crazy-max/ghaction-github-pages@v2
-#       with:
-#         target_branch: gh-pages
-#         keep_history: true
-#         build_dir: docs/build/html/.
-#       env:
-#         GH_PAT: ${{ secrets.ONEVIEW_DEPLOY_TOKEN }}
-
-    - name: Deploy to GitHub pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/build/html/.
-        keep_files: true
+       target_branch: gh-pages
+       keep_history: true
+       build_dir: docs/build/html/.
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: coveralls
       uses: AndreMiras/coveralls-python-action@develop

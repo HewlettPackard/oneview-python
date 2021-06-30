@@ -1,3 +1,15 @@
+# 6.2.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
+
+#### Bug fixes & Enhancements
+- [#157] (https://github.com/HewlettPackard/oneview-python/issues/157) Add appliance ha-nodes endpoint to sdk
+
+#### Features supported
+- Appliance Node Information
+- Appliance Health Status
+- HA Nodes
+
 # 6.1.0
 #### Notes
 Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and ImageStreamer REST API version 2020 (I3S v6.10).

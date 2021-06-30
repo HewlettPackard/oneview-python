@@ -76,6 +76,7 @@ from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
+from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
 from tests.test_utils import mock_builtin
@@ -931,17 +932,23 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_device_snmp_v3_users,
                               ApplianceDeviceSNMPv3Users)
 
-    def test_lazy_loading_appliance_device_device_snmp_v3_users(self):
+    def test_appliance_device_device_snmp_v3_users(self):
         appliance_device_snmp_v3_users = self._oneview.appliance_device_snmp_v3_users
-        self.assertEqual(appliance_device_snmp_v3_users, self._oneview.appliance_device_snmp_v3_users)
+        self.assertNotEqual(appliance_device_snmp_v3_users, self._oneview.appliance_device_snmp_v3_users)
 
     def test_appliance_node_information_has_right_type(self):
-        self.assertIsInstance(self._oneview.appliance_node_information,
-                              ApplianceNodeInformation)
+        self.assertIsInstance(self._oneview.appliance_node_information, ApplianceNodeInformation)
 
-    def test_lazy_loading_appliance_node_information(self):
+    def test_appliance_node_information(self):
         appliance_node_information = self._oneview.appliance_node_information
-        self.assertEqual(appliance_node_information, self._oneview.appliance_node_information)
+        self.assertNotEqual(appliance_node_information, self._oneview.appliance_node_information)
+
+    def test_appliance_health_status_has_right_type(self):
+        self.assertIsInstance(self._oneview.appliance_health_status, ApplianceHealthStatus)
+
+    def test_appliance_health_status(self):
+        appliance_health_status = self._oneview.appliance_health_status
+        self.assertNotEqual(appliance_health_status, self._oneview.appliance_health_status)
 
     def test_appliance_time_and_locale_configuration_has_right_type(self):
         self.assertIsInstance(self._oneview.appliance_time_and_locale_configuration,

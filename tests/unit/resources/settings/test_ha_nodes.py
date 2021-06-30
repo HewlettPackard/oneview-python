@@ -20,22 +20,28 @@ import unittest
 import mock
 
 from hpeOneView.connection import connection
-from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
+from hpeOneView.resources.settings.ha_nodes import HANodes
 from hpeOneView.resources.resource import Resource
 
 
-class ApplianceNodeInformationTest(unittest.TestCase):
+class HANodesTest(unittest.TestCase):
     def setUp(self):
         self.host = '127.0.0.1'
         self.connection = connection(self.host, 800)
-        self._node_information = ApplianceNodeInformation(self.connection)
+        self.uri = "/rest/appliance/ha-nodes"
+        self._ha_nodes = HANodes(self.connection)
 
     @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_status_called_once(self, mock_get):
-        self._node_information.get_status()
-        mock_get.assert_called_once_with('/rest/appliance/nodeinfo/status')
+    def test_get_ha_nodes_called_once(self, mock_get):
+        self._ha_nodes.get_by_uri('/rest/appliance/ha-nodes')
+        mock_get.assert_called_once_with('/rest/appliance/ha-nodes')
 
-    @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_version_called_once(self, mock_get):
-        self._node_information.get_version()
-        mock_get.assert_called_once_with('/rest/appliance/nodeinfo/version')
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_all_called_once_with_default(self, mock_get_all):
+        self._ha_nodes.get_all()
+        mock_get_all.assert_called_once_with()
+
+    @mock.patch.object(Resource, 'delete')
+    def test_delete_called_once(self, mock_delete):
+        self._ha_nodes.delete()
+        mock_delete.assert_called_once_with()
