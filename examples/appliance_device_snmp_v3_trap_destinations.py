@@ -41,22 +41,24 @@ appliance_device_snmp_v3_trap_destinations = oneview_client.appliance_device_snm
 appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users
 
 # Get all snmpv3 users
+# snmp v3 user must be there to create this
 snmp_users = appliance_device_snmp_v3_users.get_all()
-snmp_userId = snmp_users[0]['id']
+if snmp_users:
+    snmp_userId = snmp_users[0]['id']
+    # Adding userId to snmpv3 users payload
+    options['userId'] = snmp_userId
+    
+    # Add appliance device SNMP v3 Trap Destination
+    snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.create(options)
+    print("\n## Created appliance SNMPv3 trap destination successfully!")
+    pprint(snmp_v3_trap.data)
 
-# Adding userId to snmpv3 users payload
-options['userId'] = snmp_userId
 
 # Lists the appliance device SNMP v3 Trap Destination
 print("\n## Get list of appliance SNMPv3 trap destination")
 snmp_v3_trap_all = appliance_device_snmp_v3_trap_destinations.get_all()
 for snmp_trap in snmp_v3_trap_all:
     print('  - {}: {}'.format(snmp_trap['destinationAddress'], snmp_trap['uri']))
-
-# Add appliance device SNMP v3 Trap Destination
-snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.create(options)
-print("\n## Created appliance SNMPv3 trap destination successfully!")
-pprint(snmp_v3_trap.data)
 
 # Get by name
 print("\n## Find an SNMPv3 trap destination by name")

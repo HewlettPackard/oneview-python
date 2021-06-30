@@ -35,14 +35,15 @@ oneview_client = OneViewClient(config)
 
 options = {
     "name": "IPv4Subnet",
-    "networkId": '192.169.1.0',
-    "subnetmask": "255.255.255.0",
-    "gateway": "192.169.1.1",
+    "networkId": config['subnet_networkid'],
+    "subnetmask": config['subnet_mask'],
+    "gateway": config['subnet_gateway'],
     "domain": "example.com",
-    "dnsServers": ["192.169.1.215"]
+    "dnsServers": []
 }
 
 id_pools_ipv4_subnets = oneview_client.id_pools_ipv4_subnets
+ethernet_networks = oneview_client.ethernet_networks
 
 print('\n Create IPv4 subnet for id pools')
 ipv4_subnet = id_pools_ipv4_subnets.create(options)
@@ -60,10 +61,38 @@ print('\n Get all IPv4 subnet')
 all_subnets = id_pools_ipv4_subnets.get_all()
 pprint(all_subnets)
 
+print('\nAssociate Subnet with Ethernet for ID allocation')
+options = {
+    "name": "SubnetEthernet",
+    "vlanId": 209,
+    "ethernetNetworkType": "Tagged",
+    "purpose": "General",
+    "smartLink": False,
+    "privateNetwork": False,
+    "connectionTemplateUri": None,
+    "subnetUri": ipv4_subnet.data['uri']
+}
+
+ethernet_network = ethernet_networks.create(options)
+
+print('\nCreate Range with set of IDs')
+option = {
+    "name": "IPv4",
+    "startStopFragments": [
+        {
+            "startAddress": config['range_start_address'],
+            "endAddress": config['range_end_address']
+        }
+    ],
+    "subnetUri": ipv4_subnet.data['uri']
+}
+id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
+ipv4_range = id_pool_ipv4_range.create(option).data
+
 subnet_id = ipv4_subnet.data['allocatorUri'].split('/')[-2]
 print("\n Allocates a set of IDs from a pool")
 try:
-    allocated_ids = id_pools_ipv4_subnets.allocate({"count": 10}, subnet_id)
+    allocated_ids = id_pools_ipv4_subnets.allocate({"count": 2}, subnet_id)
     pprint(allocated_ids)
 except HPEOneViewException as e:
     print(e.msg)
@@ -75,20 +104,9 @@ try:
 except HPEOneViewException as e:
     print(e.msg)
 
+print('\nDelete assocaited resource before deleting subnet')
+ethernet_network.delete()
+
 print('\n Delete IPv4 subnet')
 ipv4_subnet.delete()
 print(" Successfully deleted IPv4 subnet")
-
-# Create iscsi subnet for automation purpose
-
-iscsi_options = {
-    "name": "iscsi_Subnet",
-    "networkId": '192.168.10.0',
-    "subnetmask": "255.255.255.0",
-    "gateway": "192.168.10.1",
-    "domain": "iscsi.com",
-}
-
-print('\n Create IPv4 subnet for iscsi')
-ipv4_subnet = id_pools_ipv4_subnets.create(iscsi_options)
-pprint(ipv4_subnet.data)

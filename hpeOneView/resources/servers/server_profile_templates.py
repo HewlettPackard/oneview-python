@@ -25,10 +25,10 @@ standard_library.install_aliases()
 
 from copy import deepcopy
 
-from hpeOneView.resources.resource import Resource, ensure_resource_client
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ensure_resource_client
 
 
-class ServerProfileTemplate(Resource):
+class ServerProfileTemplate(Resource, ResourcePatchMixin):
     """
     The server profile template resource provides methods to create, retrieve, modify, and delete server
     profile templates.
