@@ -44,14 +44,6 @@ hpeOneView.resources.settings.appliance\_device\_snmp\_v3\_users module
     :undoc-members:
     :show-inheritance:
 
-hpeOneView.resources.settings.appliance\_health\_status module
---------------------------------------------------------------
-
-.. automodule:: hpeOneView.resources.settings.appliance_health_status
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 hpeOneView.resources.settings.appliance\_node\_information module
 -----------------------------------------------------------------
 
@@ -96,14 +88,6 @@ hpeOneView.resources.settings.firmware\_drivers module
 ------------------------------------------------------
 
 .. automodule:: hpeOneView.resources.settings.firmware_drivers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-hpeOneView.resources.settings.ha\_nodes module
-----------------------------------------------
-
-.. automodule:: hpeOneView.resources.settings.ha_nodes
     :members:
     :undoc-members:
     :show-inheritance:

@@ -181,10 +181,10 @@
 
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ensure_resource_client</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">ensure_resource_client</span>
 
 
-<div class="viewcode-block" id="ServerProfileTemplate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_profile_templates.ServerProfileTemplate">[docs]</a><span class="k">class</span> <span class="nc">ServerProfileTemplate</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerProfileTemplate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_profile_templates.ServerProfileTemplate">[docs]</a><span class="k">class</span> <span class="nc">ServerProfileTemplate</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The server profile template resource provides methods to create, retrieve, modify, and delete server</span>
 <span class="sd">    profile templates.</span>
