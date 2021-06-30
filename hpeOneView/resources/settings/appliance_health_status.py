@@ -27,33 +27,21 @@ standard_library.install_aliases()
 from hpeOneView.resources.resource import Resource
 
 
-class ApplianceNodeInformation(Resource):
+class ApplianceHealthStatus(Resource):
     """
-    The nodeinfo resource manager provides REST APIs to
-    retrieve information about the nodes of the appliance.
+    Retrieves the health information from the appliance.
 
     """
-    URI = '/rest/appliance/nodeinfo'
+    URI = '/rest/appliance/health-status'
 
     def __init__(self, connection, data=None):
-        super(ApplianceNodeInformation, self).__init__(connection, data)
+        super(ApplianceHealthStatus, self).__init__(connection, data)
 
-    def get_status(self):
+    def get_health_status(self):
         """
-        Retrieves node's status information
-
-        Returns:
-            dict: Node's status information
-        """
-        uri = self.URI + '/status'
-        return super(ApplianceNodeInformation, self).get_by_uri(uri)
-
-    def get_version(self):
-        """
-        Retrieves node's version information
+        Retrieves appliance health status
 
         Returns:
-            dict: Node's version information
+            dict: appliance health status
         """
-        uri = self.URI + '/version'
-        return super(ApplianceNodeInformation, self).get_by_uri(uri)
+        return super(ApplianceHealthStatus, self).get_by_uri(self.URI)

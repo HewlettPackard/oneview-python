@@ -24,36 +24,20 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, unavailable_method
 
 
-class ApplianceNodeInformation(Resource):
+class HANodes(Resource, ResourcePatchMixin):
     """
-    The nodeinfo resource manager provides REST APIs to
-    retrieve information about the nodes of the appliance.
+    HA Nodes resources represent the individual members used to provide
+    high-availability for the management appliance cluster.
 
     """
-    URI = '/rest/appliance/nodeinfo'
+    URI = '/rest/appliance/ha-nodes'
 
     def __init__(self, connection, data=None):
-        super(ApplianceNodeInformation, self).__init__(connection, data)
+        super(HANodes, self).__init__(connection, data)
 
-    def get_status(self):
-        """
-        Retrieves node's status information
-
-        Returns:
-            dict: Node's status information
-        """
-        uri = self.URI + '/status'
-        return super(ApplianceNodeInformation, self).get_by_uri(uri)
-
-    def get_version(self):
-        """
-        Retrieves node's version information
-
-        Returns:
-            dict: Node's version information
-        """
-        uri = self.URI + '/version'
-        return super(ApplianceNodeInformation, self).get_by_uri(uri)
+    def create(self):
+        """Create method is not available"""
+        unavailable_method()

@@ -105,6 +105,8 @@ from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
+from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
+from hpeOneView.resources.settings.ha_nodes import HANodes
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
 from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
@@ -201,6 +203,7 @@ class OneViewClient(object):
         self.__appliance_device_snmp_v3_users = None
         self.__appliance_time_and_locale_configuration = None
         self.__appliance_node_information = None
+        self.__appliance_health_status = None
         self.__versions = None
         self.__backups = None
         self.__login_details = None
@@ -209,6 +212,7 @@ class OneViewClient(object):
         self.__certificates_server = None
         self.__appliance_configuration_timeconfig = None
         self.__appliance_ssh_access = None
+        self.__ha_nodes = None
 
     @classmethod
     def from_json_file(cls, file_name):
@@ -1094,9 +1098,7 @@ class OneViewClient(object):
         Returns:
             ApplianceDeviceSNMPv3Users:
         """
-        if not self.__appliance_device_snmp_v3_users:
-            self.__appliance_device_snmp_v3_users = ApplianceDeviceSNMPv3Users(self.__connection)
-        return self.__appliance_device_snmp_v3_users
+        return ApplianceDeviceSNMPv3Users(self.__connection)
 
     @property
     def appliance_node_information(self):
@@ -1106,9 +1108,27 @@ class OneViewClient(object):
         Returns:
             ApplianceNodeInformation:
         """
-        if not self.__appliance_node_information:
-            self.__appliance_node_information = ApplianceNodeInformation(self.__connection)
-        return self.__appliance_node_information
+        return ApplianceNodeInformation(self.__connection)
+
+    @property
+    def appliance_health_status(self):
+        """
+        Gets the ApplianceHealthStatus API client.
+
+        Returns:
+            ApplianceHealthStatus:
+        """
+        return ApplianceHealthStatus(self.__connection)
+
+    @property
+    def ha_nodes(self):
+        """
+        Gets the HANodes API client.
+
+        Returns:
+            HANodes:
+        """
+        return HANodes(self.__connection)
 
     @property
     def appliance_time_and_locale_configuration(self):

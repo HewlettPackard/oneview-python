@@ -2,8 +2,13 @@
 #### Notes
 Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 
+#### Bug fixes & Enhancements
+- [#157] (https://github.com/HewlettPackard/oneview-python/issues/157) Add appliance ha-nodes endpoint to sdk
+
 ##### Features supported with the current release
 - Appliance Configuration Timeconfig
+- Appliance Health Status
+- Appliance Node Information
 - Appliance SNMPv1 Trap Destinations
 - Appliance SNMPv3 Trap Destinations
 - Appliance SNMPv3 Users
@@ -16,6 +21,7 @@ Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 - FC network
 - FCOE network
 - Firmware Drivers
+- HA Nodes
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 - ID Pools
