@@ -129,7 +129,7 @@ if template:
 
 # Patch operation to refresh the template
 print("\nUpdate the template configuration with RefreshPending")
-if oneview_client.api_version >= 3000 and template:
+if oneview_client.api_version >= 1800 and template:
     template.patch(operation="replace", path="/refreshState", value="RefreshPending")
     pprint(template.data)
 
