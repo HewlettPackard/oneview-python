@@ -46,7 +46,7 @@ enclosure_group_name = "EG"
 hardware_type_for_transformation = "SY 480 Gen9 2"
 enclosure_group_for_transformation = "EG-2"
 scope_name = "SampleScope"
-mgmt_nw_name = "mgmt_nw"
+mgmt_nw_name = "mgmt"
 
 hardware_type = hardware_types.get_by_name(hardware_type_name)
 enclosure_group = enclosure_groups.get_by_name(enclosure_group_name)
@@ -125,6 +125,12 @@ if template:
     template_to_update = template.data.copy()
     template_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
     template.update(template_to_update)
+    pprint(template.data)
+
+# Patch operation to refresh the template
+print("\nUpdate the template configuration with RefreshPending")
+if oneview_client.api_version >= 1800 and template:
+    template.patch(operation="replace", path="/refreshState", value="RefreshPending")
     pprint(template.data)
 
 # Get new profile

@@ -1,7 +1,7 @@
 {
   "ip": "",
   "image_streamer_ip": "",
-  "api_version": 800,
+  "api_version": 3000,
   "ssl_certificate": "",
   "credentials": {
     "userName": "",
@@ -22,5 +22,10 @@
   "storage_system_password": "",
   "power_device_hostname": "",
   "power_device_username": "",
-  "power_device_password": ""
+  "power_device_password": "",
+  "subnet_networkid": "",
+  "subnet_mask": "",
+  "subnet_gateway": "",
+  "range_start_address": "",
+  "range_end_address": ""
 }

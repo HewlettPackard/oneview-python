@@ -78,3 +78,9 @@ pprint(snmp_v3_user.data)
 # Delete Created Entry
 snmp_v3_user.delete()
 print("\n## Delete appliance SNMP v3 user successfully!")
+
+# Add appliance device SNMP v3 users for Automation
+snmp_v3_user = appliance_device_snmp_v3_users.create(options)
+snmp_v3_user_uri = snmp_v3_user.data['uri']
+print("\n## Created appliance SNMP v3 user")
+pprint(snmp_v3_user.data)
