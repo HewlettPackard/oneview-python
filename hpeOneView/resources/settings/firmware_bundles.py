@@ -55,4 +55,3 @@ class FirmwareBundles(ResourceFileHandlerMixin, Resource):
         """
         uri = self.URI + "/addCompsig"
         return super(FirmwareBundles, self).upload(file_path, uri, timeout)
-

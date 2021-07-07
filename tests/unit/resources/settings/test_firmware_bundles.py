@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
-from hpeOneView.resources.resource import ResourceFileHandlerMixin, Resource
+from hpeOneView.resources.resource import ResourceFileHandlerMixin
 
 
 class FirmwareBundlesTest(unittest.TestCase):
