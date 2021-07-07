@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,14 +29,29 @@ config = {
 }
 
 # To run this example you must define a path to a valid file
-firmware_path = "<path_to_firmware_bundle>"
+spp_path = "<path_to_firmware_bundle>"
+hotfix_path = "<path_to_hotfix_file>"
+compsig_path = "<path_to_compsig_file>"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
+firmware_bundles = oneview_client.firmware_bundles
 
 # Upload a firmware bundle
 print("\nUpload a firmware bundle")
-firmware_bundle_information = oneview_client.firmware_bundles.upload(file_path=firmware_path)
+firmware_bundle_information = firmware_bundles.upload(file_path=firmware_path)
 print("\n Upload successful! Firmware information returned: \n")
 pprint(firmware_bundle_information)
+
+# Upload a hotfix
+print("\nUpload a hotfix")
+hotfix_information = firmware_bundles.upload(file_path=hotfix_path)
+print("\n Upload successful! Hotfix information returned: \n")
+pprint(hotfix_information)
+
+# Upload a compsig to hotfix
+print("\nUpload a compsig to hotfix")
+compsig_information = firmware_bundles.upload_compsig(file_path=compsig_path)
+print("\n Upload successful! CompSig information returned: \n")
+pprint(compsig_information)
