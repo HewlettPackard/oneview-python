@@ -29,9 +29,9 @@ config = {
 }
 
 # To run this example you must define a path to a valid file
-spp_path = "<path_to_firmware_bundle>"
-hotfix_path = "<path_to_hotfix_file>"
-compsig_path = "<path_to_compsig_file>"
+spp_path = "<spp_path>"
+hotfix_path = "<hotfix_path>"
+compsig_path = "<compsig_path"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -40,7 +40,7 @@ firmware_bundles = oneview_client.firmware_bundles
 
 # Upload a firmware bundle
 print("\nUpload a firmware bundle")
-firmware_bundle_information = firmware_bundles.upload(file_path=firmware_path)
+firmware_bundle_information = firmware_bundles.upload(file_path=spp_path)
 print("\n Upload successful! Firmware information returned: \n")
 pprint(firmware_bundle_information)
 

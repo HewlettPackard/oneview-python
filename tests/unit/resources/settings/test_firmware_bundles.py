@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
-from hpeOneView.resources.resource import ResourceFileHandlerMixin
+from hpeOneView.resources.resource import ResourceFileHandlerMixin, Resource
 
 
 class FirmwareBundlesTest(unittest.TestCase):
@@ -32,13 +32,13 @@ class FirmwareBundlesTest(unittest.TestCase):
         self._firmware_bundles = FirmwareBundles(self.connection)
 
     @mock.patch.object(ResourceFileHandlerMixin, 'upload')
-    def test_upload(self, mock_upload):
+    def test_upload_firmware(self, mock_upload):
         firmware_path = "test/SPPgen9snap6.2015_0405.81.iso"
         self._firmware_bundles.upload(firmware_path)
         mock_upload.assert_called_once_with(firmware_path)
 
     @mock.patch.object(ResourceFileHandlerMixin, 'upload')
-    def test_upload(self, mock_upload):
+    def test_upload_compsig(self, mock_upload):
         sigfile = "test.sig"
         uri = self.uri + "/addCompsig"
         self._firmware_bundles.upload_compsig(sigfile)

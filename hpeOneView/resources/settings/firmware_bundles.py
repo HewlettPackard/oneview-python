@@ -25,10 +25,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import ResourceFileHandlerMixin
+from hpeOneView.resources.resource import ResourceFileHandlerMixin, Resource
 
 
-class FirmwareBundles(ResourceFileHandlerMixin):
+class FirmwareBundles(ResourceFileHandlerMixin, Resource):
     """
     The firmware-bundles resource provides REST APIs for uploading
     firmware ServicePack files or hotfixes to the CI appliance.
@@ -55,3 +55,4 @@ class FirmwareBundles(ResourceFileHandlerMixin):
         """
         uri = self.URI + "/addCompsig"
         return super(FirmwareBundles, self).upload(file_path, uri, timeout)
+
