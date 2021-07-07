@@ -106,6 +106,7 @@ from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
 from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
+from hpeOneView.resources.settings.appliance_proxy_configuration import ApplianceProxyConfiguration
 from hpeOneView.resources.settings.ha_nodes import HANodes
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
@@ -204,6 +205,7 @@ class OneViewClient(object):
         self.__appliance_time_and_locale_configuration = None
         self.__appliance_node_information = None
         self.__appliance_health_status = None
+        self.__appliance_proxy_configuration = None
         self.__versions = None
         self.__backups = None
         self.__login_details = None
@@ -1119,6 +1121,16 @@ class OneViewClient(object):
             ApplianceHealthStatus:
         """
         return ApplianceHealthStatus(self.__connection)
+
+    @property
+    def appliance_proxy_configuration(self):
+        """
+        Gets the ApplianceProxyConfiguration API client.
+
+        Returns:
+            ApplianceProxyConfiguration:
+        """
+        return ApplianceProxyConfiguration(self.__connection)
 
     @property
     def ha_nodes(self):
