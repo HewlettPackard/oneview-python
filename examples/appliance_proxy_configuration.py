@@ -35,11 +35,11 @@ proxy = oneview_client.appliance_proxy_configuration
 # Configure proxy with HTTP protocol
 print("\nCreating proxy with HTTP:\n")
 proxy_config = {
-        "server": "16.88.85.10",
-        "port": 8080,
-        "username": "dcsproxy",
-        "password": "dcs",
-        "communicationProtocol":"HTTP"
+    "server": "<server_ip>",
+    "port": 443,
+    "username": "<username>",
+    "password": "<password>",
+    "communicationProtocol": "HTTP"
 }
 
 new_proxy = proxy.create(proxy_config)
@@ -55,4 +55,3 @@ pprint(proxy_info.data)
 print("\nDelete Proxy")
 proxy.delete
 print("Proxy deleted successfully")
-

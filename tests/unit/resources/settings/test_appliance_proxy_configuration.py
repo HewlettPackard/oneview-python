@@ -25,12 +25,11 @@ from hpeOneView.resources.resource import Resource
 
 
 class ApplianceProxyConfigurationTest(unittest.TestCase):
-    resource_info = { "server": "1.1.1.1",
-                      "port":443,
-                      "username":"aaaa",
-                      "password":"test",
-                      "communicationProtocol":"HTTP"
-    }
+    resource_info = {"server": "1.1.1.1",
+                     "port": 443,
+                     "username": "aaaa",
+                     "password": "test",
+                     "communicationProtocol": "HTTP"}
 
     def setUp(self):
         self.host = '127.0.0.1'
@@ -44,7 +43,7 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
-        self.client.create(self.resource_info)
+        self._proxy.create(self.resource_info)
         mock_create.assert_called_once_with(self.resource_info)
 
     @mock.patch.object(Resource, 'delete')

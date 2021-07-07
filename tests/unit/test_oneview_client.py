@@ -1006,6 +1006,5 @@ class OneViewClientTest(unittest.TestCase):
         self.assertIsInstance(self._oneview.appliance_proxy_configuration, ApplianceProxyConfiguration)
 
     def test_appliance_proxy_configuration_client(self):
-        AppliancProxyConfiguration = self._oneview.appliance_proxy_configuration
+        ApplianceProxyConfiguration = self._oneview.appliance_proxy_configuration
         self.assertNotEqual(ApplianceProxyConfiguration, self._oneview.appliance_proxy_configuration)
-
