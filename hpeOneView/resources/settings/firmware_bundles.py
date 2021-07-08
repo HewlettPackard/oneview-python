@@ -21,11 +21,14 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from future import standard_library
+from os.path import basename
+import re
 
 standard_library.install_aliases()
 
 
 from hpeOneView.resources.resource import ResourceFileHandlerMixin, Resource
+from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
 
 
 class FirmwareBundles(ResourceFileHandlerMixin, Resource):
@@ -55,3 +58,19 @@ class FirmwareBundles(ResourceFileHandlerMixin, Resource):
         """
         uri = self.URI + "/addCompsig"
         return super(FirmwareBundles, self).upload(file_path, uri, timeout)
+
+    def get_by_name(self, name):
+        """
+        Retrieves the specified firmware bundle resource by name.
+
+        Args:
+            name: name of specified firmware bundle resource
+
+        Return:
+            dict: Get response of specified firmware bundle resource.
+        """
+        filename = re.sub(r'\.(\d)', r'_\1', basename(name))
+        name = filename.split('.')[0]
+
+        firmware = FirmwareDrivers(self._connection)
+        return firmware.get_by_field('resourceId', name)
