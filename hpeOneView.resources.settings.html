@@ -97,6 +97,7 @@
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_device_snmp_v3_users">hpeOneView.resources.settings.appliance_device_snmp_v3_users module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_health_status">hpeOneView.resources.settings.appliance_health_status module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_node_information">hpeOneView.resources.settings.appliance_node_information module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_proxy_configuration">hpeOneView.resources.settings.appliance_proxy_configuration module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_ssh_access">hpeOneView.resources.settings.appliance_ssh_access module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.appliance_time_and_locale_configuration">hpeOneView.resources.settings.appliance_time_and_locale_configuration module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.settings.backups">hpeOneView.resources.settings.backups module</a></li>
@@ -605,6 +606,37 @@ retrieve information about the nodes of the appliance.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-hpeOneView.resources.settings.appliance_proxy_configuration">
+<span id="hpeoneview-resources-settings-appliance-proxy-configuration-module"></span><h2>hpeOneView.resources.settings.appliance_proxy_configuration module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_proxy_configuration" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.settings.appliance_proxy_configuration.ApplianceProxyConfiguration">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.appliance_proxy_configuration.</code><code class="descname">ApplianceProxyConfiguration</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_proxy_configuration.html#ApplianceProxyConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_proxy_configuration.ApplianceProxyConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>ApplianceProxyConfig API Client.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.settings.appliance_proxy_configuration.ApplianceProxyConfiguration.URI">
+<code class="descname">URI</code><em class="property"> = u'/rest/appliance/proxy-config'</em><a class="headerlink" href="#hpeOneView.resources.settings.appliance_proxy_configuration.ApplianceProxyConfiguration.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.settings.appliance_proxy_configuration.ApplianceProxyConfiguration.get_proxy_config">
+<code class="descname">get_proxy_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/appliance_proxy_configuration.html#ApplianceProxyConfiguration.get_proxy_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.appliance_proxy_configuration.ApplianceProxyConfiguration.get_proxy_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves appliance proxy configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">appliance proxy configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-hpeOneView.resources.settings.appliance_ssh_access">
 <span id="hpeoneview-resources-settings-appliance-ssh-access-module"></span><h2>hpeOneView.resources.settings.appliance_ssh_access module<a class="headerlink" href="#module-hpeOneView.resources.settings.appliance_ssh_access" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -832,52 +864,32 @@ start a restore.</p>
 <span id="hpeoneview-resources-settings-firmware-bundles-module"></span><h2>hpeOneView.resources.settings.firmware_bundles module<a class="headerlink" href="#module-hpeOneView.resources.settings.firmware_bundles" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.firmware_bundles.</code><code class="descname">FirmwareBundles</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin" title="hpeOneView.resources.resource.ResourceFileHandlerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourceFileHandlerMixin</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
-<p>The firmware-bundles resource provides REST APIs for uploading
-firmware ServicePack files or hotfixes to the CI appliance.</p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.settings.firmware_bundles.</code><code class="descname">FirmwareBundles</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Firmware Bundles API client.</p>
 <dl class="attribute">
 <dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/firmware-bundles'</em><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.get_by_name">
-<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.get_by_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieves the specified firmware bundle resource by name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – name of specified firmware bundle resource</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Get response of specified firmware bundle resource.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.upload_compsig">
-<code class="descname">upload_compsig</code><span class="sig-paren">(</span><em>file_path</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles.upload_compsig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.upload_compsig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Upload a compsig file for Gen10 and above hotfixes to the appliance.
-The uploaded signature file name will be encoded to a URI safe value.
-The API supports upload of one compsig at a time into the system.
-For the successful upload of a compsig, ensure its original name and extension are not altered.</p>
+<dt id="hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.upload">
+<code class="descname">upload</code><span class="sig-paren">(</span><em>file_path</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/settings/firmware_bundles.html#FirmwareBundles.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.settings.firmware_bundles.FirmwareBundles.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload an SPP ISO image file or a hotfix file to the appliance.
+The API supports upload of one hotfix at a time into the system.
+For the successful upload of a hotfix, ensure its original name and extension are not altered.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>file_path</strong> – Full path to compsig file.</li>
+<li><strong>file_path</strong> – Full path to firmware.</li>
 <li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
 in OneView; it just stops waiting for its completion.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the added compsig file.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the updated firmware bundle.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
