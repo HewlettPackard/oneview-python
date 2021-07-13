@@ -1,11 +1,11 @@
-# 6.2.1(unreleased)
+# 6.3.0(unreleased)
 #### Notes
 Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 
 ##### Features supported with the current release
 - Firmware Bundles
 
-# 6.2.0(unreleased)
+# 6.2.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 
