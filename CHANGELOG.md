@@ -5,7 +5,7 @@ Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
 ##### Features supported with the current release
 - Appliance Proxy Configuration
 
-# 6.2.0(unreleased)
+# 6.2.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 
