@@ -60,6 +60,14 @@ hpeOneView.resources.settings.appliance\_node\_information module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.settings.appliance\_proxy\_configuration module
+--------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_proxy_configuration
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.settings.appliance\_ssh\_access module
 -----------------------------------------------------------
 
