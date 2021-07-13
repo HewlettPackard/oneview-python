@@ -36,12 +36,3 @@ class ApplianceProxyConfiguration(Resource):
 
     def __init__(self, connection, data=None):
         super(ApplianceProxyConfiguration, self).__init__(connection, data)
-
-    def get_proxy_config(self):
-        """
-        Retrieves appliance proxy configuration
-
-        Returns:
-            dict: appliance proxy configuration
-        """
-        return super(ApplianceProxyConfiguration, self).get_by_uri(self.URI)

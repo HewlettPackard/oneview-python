@@ -30,6 +30,7 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
                      "username": "aaaa",
                      "password": "test",
                      "communicationProtocol": "HTTP"}
+    uri = '/rest/appliance/proxy-config'
 
     def setUp(self):
         self.host = '127.0.0.1'
@@ -38,8 +39,8 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_proxy_config_called_once(self, mock_get):
-        self._proxy.get_proxy_config()
-        mock_get.assert_called_once_with('/rest/appliance/proxy-config')
+        self._proxy.get_by_uri(self.uri)
+        mock_get.assert_called_once_with(self.uri)
 
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
