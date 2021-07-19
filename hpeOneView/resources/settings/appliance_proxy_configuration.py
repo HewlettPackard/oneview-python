@@ -36,3 +36,6 @@ class ApplianceProxyConfiguration(Resource):
 
     def __init__(self, connection, data=None):
         super(ApplianceProxyConfiguration, self).__init__(connection, data)
+
+    def get_all(self):
+        return super(ApplianceProxyConfiguration, self).get_by_uri(self.URI)
