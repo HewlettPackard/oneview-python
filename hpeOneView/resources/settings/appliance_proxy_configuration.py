@@ -56,4 +56,3 @@ class ApplianceProxyConfiguration(Resource):
             else:
                 new_resource = None
         return new_resource
-
