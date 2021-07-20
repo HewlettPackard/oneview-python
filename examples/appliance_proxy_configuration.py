@@ -37,10 +37,10 @@ proxy = oneview_client.appliance_proxy_configuration
 # Configure proxy with HTTP protocol
 print("\nCreating proxy with HTTP:\n")
 proxy_config = {
-    "server": "16.85.88.10",
-    "port": 8080,
-    "username": "dcs",
-    "password": "dcs",
+    "server": "<server_ip>",
+    "port": 443,
+    "username": "<username>",
+    "password": "<password>",
     "communicationProtocol": "HTTP"
 }
 

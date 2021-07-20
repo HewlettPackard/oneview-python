@@ -29,6 +29,7 @@ from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
 from hpeOneView.resources.fc_sans.san_managers import SanManagers
 from hpeOneView.resources.fc_sans.endpoints import Endpoints
 from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
+from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
 from hpeOneView.resources.settings.backups import Backups
 from hpeOneView.resources.settings.restores import Restores
 from hpeOneView.resources.settings.scopes import Scopes
@@ -593,9 +594,12 @@ class OneViewClientTest(unittest.TestCase):
         firmware_drivers = self._oneview.firmware_drivers
         self.assertNotEqual(firmware_drivers, self._oneview.firmware_drivers)
 
-    def test_lazy_loading_firmware_bundles(self):
+    def test_firmware_bundles_has_right_type(self):
+        self.assertIsInstance(self._oneview.firmware_bundles, FirmwareBundles)
+
+    def test_firmware_bundles_client(self):
         firmware_bundles = self._oneview.firmware_bundles
-        self.assertEqual(firmware_bundles, self._oneview.firmware_bundles)
+        self.assertNotEqual(firmware_bundles, self._oneview.firmware_bundles)
 
     def test_migratable_vc_domains_has_right_type(self):
         self.assertIsInstance(self._oneview.migratable_vc_domains, MigratableVcDomains)
