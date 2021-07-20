@@ -42,10 +42,10 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
         self._proxy.get_by_uri(self.uri)
         mock_get.assert_called_once_with(self.uri)
 
-    @mock.patch.object(Resource, 'get_by_field')
-    def test_get_by_proxy_called_once(self, mock_get_by_field):
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_by_proxy_called_once(self, mock_get_all):
         self._proxy.get_by_proxy('1.1.1.1')
-        mock_get_by_field.assert_called_once_with('server', '1.1.1.1')
+        mock_get_all.assert_called_once_with('server', '1.1.1.1')
 
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
