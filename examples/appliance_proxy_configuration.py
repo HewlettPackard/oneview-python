@@ -50,7 +50,7 @@ print("Proxy created successfully\n")
 
 # Get proxy configuration from appliance
 print("\nGet proxy configuration from appliance:\n ")
-proxy_info = proxy.get_by_uri(uri)
+proxy_info = proxy.get_by_proxy(proxy_config["server"])
 pprint(proxy_info.data)
 
 # Delete proxy configured on the appliance

@@ -36,3 +36,23 @@ class ApplianceProxyConfiguration(Resource):
 
     def __init__(self, connection, data=None):
         super(ApplianceProxyConfiguration, self).__init__(connection, data)
+
+    def get_all(self):
+        return super(ApplianceProxyConfiguration, self).get_by_uri(self.URI)
+
+    def get_by_proxy(self, proxy_ip):
+        """Retrieves a resource by proxy server ip.
+
+        Args:
+            proxy_ip: Ip address of the proxy
+
+        Returns:
+            Resource object or None if resource does not exist.
+        """
+        results = self.get_all().data
+        if results:
+            if str(results.get("server", "")).lower() == proxy_ip.lower():
+                new_resource = self.new(self._connection, results)
+            else:
+                new_resource = None
+        return new_resource
