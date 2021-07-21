@@ -38,14 +38,9 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
         self._proxy = ApplianceProxyConfiguration(self.connection)
 
     @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_proxy_config_called_once(self, mock_get):
+    def test_get_by_proxy_called_once(self, mock_get):
         self._proxy.get_by_uri(self.uri)
         mock_get.assert_called_once_with(self.uri)
-
-    @mock.patch.object(Resource, 'get_all')
-    def test_get_by_proxy_called_once(self, mock_get):
-        self._proxy.get_all()
-        mock_get.assert_called_once_with(self.resource_info)
 
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
@@ -54,5 +49,5 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
-        self._proxy.delete(self.uri)
+        self._proxy.delete()
         mock_delete.assert_called_once_with(self.uri)
