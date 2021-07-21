@@ -24,10 +24,10 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
-class ApplianceProxyConfiguration(Resource):
+class ApplianceProxyConfiguration(Resource, ResourceHelper):
     """
     ApplianceProxyConfig API Client.
 
@@ -58,5 +58,4 @@ class ApplianceProxyConfiguration(Resource):
         return new_resource
 
     def delete(self):
-        self.data['uri'] = self.URI
-        return super(ApplianceProxyConfiguration, self).delete()
+        return self._helper.delete(self.URI)
