@@ -57,3 +57,6 @@ class ApplianceProxyConfiguration(Resource):
                 new_resource = None
         return new_resource
 
+    def delete(self):
+        self.data['uri'] = self.URI
+        return super(ApplianceProxyConfiguration, self).delete()

@@ -55,5 +55,5 @@ pprint(proxy_info.data)
 
 # Delete proxy configured on the appliance
 print("\nDelete Proxy")
-proxy.delete
+proxy.delete()
 print("Proxy deleted successfully")
