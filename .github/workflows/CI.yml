@@ -24,10 +24,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
 
-    - name: Analysing the code with pylint
-      run: |
-        pip install pylint
-        pylint $(git ls-files '*.py')
+    # - name: Analysing the code with pylint
+    #   run: |
+    #     pip install pylint
+    #     pylint $(git ls-files '*.py')
 
     - name: Run unit tests using tox
       run: tox
@@ -53,10 +53,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
 
-    - name: Analysing the code with pylint
-      run: |
-        pip install pylint
-        pylint $(git ls-files '*.py')
+    # - name: Analysing the code with pylint
+    #   run: |
+    #     pip install pylint
+    #     pylint $(git ls-files '*.py')
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp-mail.outlook.com
+        server_port: 993
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        subject: Github Actions job result
+        body: Build job of ${{github.repository}} Failed!
+        to: bala-sai-harika.chebrolu@hpe.com
+        from: bala-sai-harika.chebrolu@hpe.com
 
     - name: Run unit tests using tox
       run: tox
