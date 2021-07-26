@@ -55,3 +55,22 @@ jobs:
 
     - name: Push the tagged Docker image
       run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV6.2
+
+    - name: Send mail notifier about status of pipeline
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp-mail.outlook.com
+        server_port: 587
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        subject: OneViewSDK Daily Deployment Results – ${{job.status}}
+        body: |
+          Hi All,
+          OneViewSDK daily deployment on build 6.20.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.
+          link: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+          
+          Thanks,
+          OneView SDK Deployment Automation
+        to: bala-sai-harika.chebrolu@hpe.com
+        from: github-actions
+        priority: high
