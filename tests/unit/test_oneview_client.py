@@ -1013,3 +1013,10 @@ class OneViewClientTest(unittest.TestCase):
     def test_appliance_proxy_configuration_client(self):
         ApplianceProxyConfiguration = self._oneview.appliance_proxy_configuration
         self.assertNotEqual(ApplianceProxyConfiguration, self._oneview.appliance_proxy_configuration)
+
+    def test_appliance_network_interfaces_has_right_type(self):
+        self.assertIsInstance(self._oneview.appliance_network_interfaces, ApplianceNetworkInterfaces)
+
+    def test_appliance_network_interfaces_client(self):
+        ApplianceNetworkInterfaces = self._oneview.appliance_network_interfaces
+        self.assertNotEqual(ApplianceNetworkInterfaces, self._oneview.appliance_network_interfaces)
