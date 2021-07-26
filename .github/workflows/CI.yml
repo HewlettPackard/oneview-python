@@ -69,12 +69,13 @@ jobs:
         body: |
           Hi All,
           OneViewSDK daily deployment on build 6.30.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.
-          
+          link: ${{ EVENT_PAYLOAD.check_run.url }}
           
           Thanks,
-          OneView SDK Deployment Automation 
+          OneView SDK Deployment Automation
         to: bala-sai-harika.chebrolu@hpe.com
         from: github-actions
+        priority: high
 
     - name: Run unit tests using tox
       run: tox
