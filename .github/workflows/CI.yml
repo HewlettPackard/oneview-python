@@ -57,14 +57,15 @@ jobs:
     #   run: |
     #     pip install pylint
     #     pylint $(git ls-files '*.py')
-    - name: Send mail
+
+    - name: Send mail notifier about status of pipeline
       uses: dawidd6/action-send-mail@v2
       with:
         server_address: smtp-mail.outlook.com
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: Github Actions job result
+        subject: OneViewSDK Daily Deployment Results – ${{job.status}} 
         body: Build job of ${{github.repository}} Failed!
         to: bala-sai-harika.chebrolu@hpe.com
         from: bala-sai-harika.chebrolu@hpe.com
