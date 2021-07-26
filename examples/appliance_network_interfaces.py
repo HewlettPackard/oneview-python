@@ -46,18 +46,18 @@ print("\nCreate network interface on the appliance:\n")
 ni_details = {"applianceNetworks": [{
               "interfaceName": "Appliance test",
               "device": "eth0",
-              "macAddress": "00:50:56:98:f1:3e",
+              "macAddress": "00:11:22:33:ff:3e",
               "ipv4Type": "STATIC",
               "ipv6Type": "UNCONFIGURE",
               "hostname": "test.com",
-              "app1Ipv4Addr": "10.1.19.124",
-              "app2Ipv4Addr": "10.1.19.123",
-              "virtIpv4Addr": "10.1.19.120",
-              "ipv4Subnet": "255.255.192.0",
-              "ipv4Gateway": "10.1.0.1",
+              "app1Ipv4Addr": "<ip_address1>",
+              "app2Ipv4Addr": "<ip_address2>",
+              "virtIpv4Addr": "<ip_address>",
+              "ipv4Subnet": "<subnet_id>",
+              "ipv4Gateway": "<gateway>",
               "ipv4NameServers": [
-                  "16.110.135.51",
-                  "16.110.135.52"
+                  "<dns1>",
+                  "<dns2>"
               ]}]}
 
 new_network_interface = network_interface.create(ni_details)

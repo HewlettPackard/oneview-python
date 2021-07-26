@@ -63,10 +63,10 @@ class ApplianceNetworkInterfacesTest(unittest.TestCase):
     def test_get_by_id_called_once(self, mock_get):
         mac_id = '00:50:56:98:f1:3e'
         self._network_interface.get_by_id(mac_id)
-        mock_get.assert_called_once_with()
+        mock_get.assert_called_once_with(mac_id)
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_mac_address_called_once(self, mock_get):
         uri = self.uri + '/mac-addresses'
         self._network_interface.get_by_uri(uri)
-        mock_get.assert_called_once_with()
+        mock_get.assert_called_once_with(uri)
