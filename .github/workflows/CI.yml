@@ -69,7 +69,7 @@ jobs:
         body: |
           Hi All,
           OneViewSDK daily deployment on build 6.30.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.
-          link: ${{GITHUB_SERVER_URL}}/${{GITHUB_REPOSITORY}}/actions/runs/${{GITHUB_RUN_ID}}
+          link: https://github.com/${github.repository}/actions/runs/${github.run_id}
           
           Thanks,
           OneView SDK Deployment Automation
