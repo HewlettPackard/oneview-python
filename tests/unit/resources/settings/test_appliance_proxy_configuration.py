@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.settings.appliance_proxy_configuration import ApplianceProxyConfiguration
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class ApplianceProxyConfigurationTest(unittest.TestCase):
@@ -38,7 +38,7 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
         self._proxy = ApplianceProxyConfiguration(self.connection)
 
     @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_proxy_config_called_once(self, mock_get):
+    def test_get_by_proxy_called_once(self, mock_get):
         self._proxy.get_by_uri(self.uri)
         mock_get.assert_called_once_with(self.uri)
 
@@ -47,7 +47,7 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
         self._proxy.create(self.resource_info)
         mock_create.assert_called_once_with(self.resource_info)
 
-    @mock.patch.object(Resource, 'delete')
+    @mock.patch.object(ResourceHelper, 'delete')
     def test_delete_called_once(self, mock_delete):
         self._proxy.delete()
-        mock_delete.assert_called_once_with()
+        mock_delete.assert_called_once_with(self.uri)

@@ -24,10 +24,10 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
-class ApplianceProxyConfiguration(Resource):
+class ApplianceProxyConfiguration(Resource, ResourceHelper):
     """
     ApplianceProxyConfig API Client.
 
@@ -39,3 +39,23 @@ class ApplianceProxyConfiguration(Resource):
 
     def get_all(self):
         return super(ApplianceProxyConfiguration, self).get_by_uri(self.URI)
+
+    def get_by_proxy(self, proxy_ip):
+        """Retrieves a resource by proxy server ip.
+
+        Args:
+            proxy_ip: Ip address of the proxy
+
+        Returns:
+            Resource object or None if resource does not exist.
+        """
+        results = self.get_all().data
+        if results:
+            if str(results.get("server", "")).lower() == proxy_ip.lower():
+                new_resource = self.new(self._connection, results)
+            else:
+                new_resource = None
+        return new_resource
+
+    def delete(self):
+        return self._helper.delete(self.URI)
