@@ -58,6 +58,13 @@ jobs:
     #     pip install pylint
     #     pylint $(git ls-files '*.py')
 
+    - name: Setup variable to lookup for github workflow URL
+      uses: actions/github-script@v1
+      with:
+        script: |
+          MY_MESSAGE="https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo $MY_MESSAGE
+
     - name: Send mail notifier about status of pipeline
       uses: dawidd6/action-send-mail@v2
       with:
@@ -69,13 +76,13 @@ jobs:
         body: |
           Hi All,
           OneViewSDK daily deployment on build 6.30.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.
-          link: GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          GitHub_Workflow_Url=MY_MESSAGE
           
           
           Thanks,
           OneView SDK Deployment Automation 
         to: bala-sai-harika.chebrolu@hpe.com
-        from: bala-sai-harika.chebrolu@hpe.com
+        from: github-actions
 
     - name: Run unit tests using tox
       run: tox
