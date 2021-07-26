@@ -24,13 +24,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
 
-    - name: Run unit tests using tox
-      run: tox
-
     - name: Analysing the code with pylint
       run: |
         pip install pylint
-        pylint `ls -R|grep .py$|xargs`
+        pylint $(git ls-files '*.py')
+
+    - name: Run unit tests using tox
+      run: tox
 
   Build_and_publish:
     name: Run tox (${{ matrix.python_version }})
@@ -56,7 +56,7 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pip install pylint
-        pylint `ls -R|grep .py$|xargs`
+        pylint $(git ls-files '*.py')
 
     - name: Run unit tests using tox
       run: tox
