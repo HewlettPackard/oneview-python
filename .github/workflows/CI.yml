@@ -73,7 +73,6 @@ jobs:
           
           Thanks,
           OneView SDK Deployment Automation 
-          GitHub_Workflow_url: ${{ EVENT_PAYLOAD.check_run.url }}
         to: bala-sai-harika.chebrolu@hpe.com
         from: github-actions
 
