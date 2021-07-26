@@ -52,6 +52,14 @@ hpeOneView.resources.settings.appliance\_health\_status module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.settings.appliance\_network\_interfaces module
+-------------------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.appliance_network_interfaces
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.settings.appliance\_node\_information module
 -----------------------------------------------------------------
 
