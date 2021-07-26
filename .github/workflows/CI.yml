@@ -65,8 +65,15 @@ jobs:
         server_port: 587
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
-        subject: OneViewSDK Daily Deployment Results – ${{job.status}} 
-        body: Build job of ${{github.repository}} Failed!
+        subject: OneViewSDK Daily Deployment Results – ${{job.status}}
+        body: |
+          Hi All,
+          OneView daily testing on build 6.30.00-0445130 is considered a PASS for Synergy Composer and VM appliances.
+          link: GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID}
+          
+          
+          Thanks,
+          OneView SDK Deployment Automation 
         to: bala-sai-harika.chebrolu@hpe.com
         from: bala-sai-harika.chebrolu@hpe.com
 
