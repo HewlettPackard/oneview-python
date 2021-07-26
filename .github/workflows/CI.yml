@@ -66,13 +66,6 @@ jobs:
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
         subject: OneViewSDK Daily Deployment Results – ${{job.status}}
-        # html_body: |
-        #   <!DOCTYPE html>
-        #   <html>
-        #   <body>
-        #   <p>Hi All, <br /><br /> OneViewSDK daily deployment on build 6.30.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.  <br /><br /><b>URL</b> - {{ EVENT_PAYLOAD.check_run.url }}  <br /><br />Thanks,  <br /><br />  OneView SDK Deployment Automation <br /><br /> </p>' 
-        #   </body>
-        #   </html>
         body: |
           Hi All,
           OneViewSDK daily deployment on build 6.30.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.
