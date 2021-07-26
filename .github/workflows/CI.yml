@@ -28,6 +28,11 @@ jobs:
     - name: Run unit tests using tox
       run: tox
 
+    - name: Analysing the code with pylint
+      run: |
+        pip install pylint
+        pylint `ls -R|grep .py$|xargs`
+
   Build_and_publish:
     name: Run tox (${{ matrix.python_version }})
     strategy:
