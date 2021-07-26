@@ -68,7 +68,7 @@ jobs:
         subject: OneViewSDK Daily Deployment Results – ${{job.status}}
         body: |
           Hi All,
-          OneView daily testing on build 6.30.00-0445130 is considered a PASS for Synergy Composer and VM appliances.
+          OneViewSDK daily deployment on build 6.30.00 is considered a ${{job.status}} for Synergy Composer and VM appliances.
           link: GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID}
           
           
