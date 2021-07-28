@@ -40,7 +40,7 @@ class ApplianceNetworkInterfaces(Resource):
     def get_all(self):
         return super(ApplianceNetworkInterfaces, self).get_by_uri(self.URI)
 
-    def get_by_mac_address(self):
+    def get_all_mac_address(self):
         """
         Gets unconfigured network interfaces on the appliance.
         Returns:
@@ -49,3 +49,18 @@ class ApplianceNetworkInterfaces(Resource):
         uri = self._helper.build_uri('mac-addresses')
         mac_addresses = super(ApplianceNetworkInterfaces, self).get_by_uri(uri)
         return mac_addresses.data['members']
+
+    def get_by_mac_address(self, mac_address):
+        """
+        Gets the network interface by the macAddress.
+        Returns:
+            dict: Network interface with the given macAddress on the appliance.
+        """
+
+        resources = self.get_all().data["applianceNetworks"]
+        for resource in resources:
+            if resource['macAddress'].lower() == mac_address.lower():
+                new_resource = self.new(self._connection, resource)
+            else:
+                new_resource = None
+        return new_resource

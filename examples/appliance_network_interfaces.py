@@ -91,10 +91,10 @@ print("\nNetwork Interface updated successfully")
 # Get network configuration by the mac address
 print("\nGet network interface details from appliance:\n ")
 if network_interfaces:
-    network_interface_by_mac = network_interface.get_by_id(network_interfaces[0]['macAddress'])
+    network_interface_by_mac = network_interface.get_by_mac_address(network_interfaces[0]['macAddress'])
     pprint(network_interface_by_mac.data)
 
 # Get unconfigured network interfaces on the appliance
 print("\nGet unconfigured network interfaces from appliance:\n ")
-network_interface_unconfigured = network_interface.get_by_mac_address()
+network_interface_unconfigured = network_interface.get_all_mac_address()
 pprint(network_interface_unconfigured)
