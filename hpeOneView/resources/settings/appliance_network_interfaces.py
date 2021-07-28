@@ -47,4 +47,5 @@ class ApplianceNetworkInterfaces(Resource):
             dict: Unconfigured network interfaces on the appliance.
         """
         uri = self._helper.build_uri('mac-addresses')
-        return super(ApplianceNetworkInterfaces, self).get_by_uri(uri)
+        mac_addresses = super(ApplianceNetworkInterfaces, self).get_by_uri(uri)
+        return mac_addresses.data['members']
