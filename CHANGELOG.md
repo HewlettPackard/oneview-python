@@ -3,6 +3,7 @@
 Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
 
 ##### Features supported with the current release
+- Appliance Network Interfaces
 - Appliance Proxy Configuration
 - Firmware Bundles
 
