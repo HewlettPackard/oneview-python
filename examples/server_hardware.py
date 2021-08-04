@@ -58,13 +58,13 @@ if server_hardware_all:
 
 # Create a rack-mount server
 # This is only supported on appliance which support rack mounted servers
-if variant is not 'Synergy':
+if variant != 'Synergy':
     added_server = server_hardwares.add(options)
     print("Added rack mount server '%s'.\n  uri = '%s'" % (added_server.data['name'], added_server.data['uri']))
 
 # Create Multiple rack-mount servers
 # This is only supported on appliance which support rack mounted servers
-if variant is not 'Synergy':
+if variant != 'Synergy':
     options_to_add_multiple_server = {
         "mpHostsAndRanges": config['server_mpHostsAndRanges'],
         "username": config['server_username'],
@@ -213,7 +213,7 @@ if server_can_be_deleted:
 
 # Remove rack server
 # This is only supported on appliance which support rack mounted servers
-if variant is not 'Synergy' and removed_server:
+if variant != 'Synergy' and removed_server:
     try:
         removed_server.remove()
         print("Server removed successfully")
