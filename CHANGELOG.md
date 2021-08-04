@@ -2,6 +2,9 @@
 #### Notes
 Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
 
+#### Bug fixes & Enhancements
+- [#173] (https://github.com/HewlettPackard/oneview-python/issues/73) is this a typo https://github.com/HewlettPackard/oneview-python/blob/master/examples/server_hardware.py#L200-201
+
 ##### Features supported with the current release
 - Appliance Network Interfaces
 - Appliance Proxy Configuration
