@@ -37,11 +37,11 @@ class ApplianceNetworkInterfacesTest(unittest.TestCase):
                      "virtIpv4Addr": "1.1.1.2",
                      "ipv4Subnet": "255.255.0.0",
                      "ipv4Gateway": "1.1.1.5",
-                     "members": [],
                      "ipv4NameServers": [
                          "10.10.10.11",
                          "10.10.10.12"
-                     ]}]}
+                     ]}],
+                     "members": []}
 
     uri = '/rest/appliance/network-interfaces'
 
