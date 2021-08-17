@@ -57,9 +57,13 @@ class ServerProfileTemplateTest(TestCase):
     @mock.patch.object(ResourceHelper, 'create')
     def test_create_with_no_template(self, mock_create):
         template = {}
+
+        expected_template = template.copy()
+        default_values = self._resource._get_default_values()
+        expected_template.update(default_values)
         self._resource.create(template, timeout=TIMEOUT)
         mock_create.assert_called_once_with(
-            template, None, -1, force=True
+            expected_template, None, -1, force=True
         )
 
     @mock.patch.object(Resource, 'ensure_resource_data')

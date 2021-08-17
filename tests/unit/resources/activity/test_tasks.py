@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.activity.tasks import Tasks
-from hpeOneView.resources.resource import ResourceHelper
+from hpeOneView.resources.resource import (ResourceHelper, TaskMonitor)
 
 
 class TasksTest(TestCase):
@@ -41,3 +41,20 @@ class TasksTest(TestCase):
                                          filter='"taskState=\'Running\'&filter=associatedResource'
                                                 '.resourceCatgory=\'appliance\'"',
                                          query='', sort='name:ascending', start=0, view='day', topCount=0, childLimit=0)
+
+    @mock.patch.object(TaskMonitor, "wait_for_task")
+    @mock.patch.object(connection, "__get_task_from_response")
+    @mock.patch.object(connection, "do_http")
+    def test_patch_request_with_status_202(self, mock_do_http, mock_get_task, mock_wait4task):
+        fake_associated_resurce = mock.Mock()
+        mockedResponse = type('mockResponse', (), {'status': 202})()
+        mockedTaskBody = {'category': 'tasks'}
+
+        mock_do_http.return_value = (mockedResponse, mockedTaskBody)
+        mock_get_task.return_value = mockedTaskBody
+        mock_wait4task.return_value = fake_associated_resurce
+        mock_do_http.assert_once_called_with('PATCH', '/uri')
+        mock_get_task.assert_once_called_with(mockedResponse, mockedTaskBody)
+        mock_wait4task.assert_called_once()
+        return_patch_request = self._tasks.patch('/uri')
+        self.assertEqual(return_patch_request, fake_associated_resurce)
