@@ -18,7 +18,7 @@
 from hpeOneView.exceptions import HPEOneViewException
 from unittest import TestCase
 
-import mock
+import mock, json
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.activity.tasks import Tasks
@@ -52,7 +52,6 @@ class TasksTest(TestCase):
 
         mock_do_http.return_value = (mockedResponse, mockedTaskBody)
         mock_wait4task.return_value = fake_associated_resource
-        mock_wait4task.assert_called_once()
         return_patch_request = self._tasks.patch('/uri')
         self.assertEqual(return_patch_request, fake_associated_resource)
 
@@ -65,8 +64,19 @@ class TasksTest(TestCase):
 
         mock_do_http.return_value = (mockedResponse, mockedTaskBody)
         mock_wait4task.return_value = fake_associated_resource
-        mock_wait4task.assert_called_once()
         try:
             self._tasks.patch('/uri')
         except HPEOneViewException as e:
             self.assertEqual(e.msg, mockedTaskBody)
+
+    @mock.patch(json, "loads")
+    @mock.patch.object(connection, "do_http")
+    def test_patch_request_with_status_304(self, mock_do_http, mock_json_load):
+        fake_associated_resource = mock.Mock()
+        mockedResponse = type('mockResponse', (), {'status': 202})()
+        mockedTaskBody = {'category': 'tasks'}
+        mock_json_load.return_value = mockedTaskBody
+
+        mock_do_http.return_value = (mockedResponse, mockedTaskBody)
+        return_patch_request = self._tasks.patch('/uri')
+        self.assertEqual(return_patch_request, mockedTaskBody)
