@@ -541,6 +541,13 @@ class ResourceTest(BaseTest):
         self.assertRaises(exceptions.HPEOneViewMissingUniqueIdentifiers,
                           self.resource_client.ensure_resource_data)
 
+    def test_add_new_fields(self):
+        data_to_add = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
+        data = {"server_ip": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
+        new_data = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test", "server_ip": "1.1.1.1"}
+        returned_data = self.resource_helper.add_new_fields(data, data_to_add)
+        self.assertEqual(returned_data, new_data)
+
     @mock.patch.object(ResourceHelper, "do_get")
     def test_ensure_resource_raise_resource_not_found_exception_with_uri(self, mock_do_get):
         self.resource_client.data = {"uri": "/uri/test"}
@@ -2514,10 +2521,3 @@ class ResourceClientTest(unittest.TestCase):
         uri = '/rest/plan-scripts/3518be0e-17c1-4189-8f81-83f3724f6155/otherthing'
         extracted_id = extract_id_from_uri(uri)
         self.assertEqual(extracted_id, 'otherthing')
-
-    def test_add_new_fields(self):
-        data_to_add = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
-        data = {"server_ip": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
-        new_data = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test", "server_ip": "1.1.1.1"}
-        returned_data = self.resource_helper.add_new_fields(data, data_to_add)
-        self.assertEqual(returned_data, new_data)
