@@ -54,6 +54,14 @@ class ServerProfileTemplateTest(TestCase):
             template, None, -1, force=True
         )
 
+    @mock.patch.object(ResourceHelper, 'create')
+    def test_create_with_no_template(self, mock_create):
+        template = {}
+        self._resource.create(template, timeout=TIMEOUT)
+        mock_create.assert_called_once_with(
+            template, None, -1, force=True
+        )
+
     @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'update')
     def test_update(self, mock_update, mock_ensure_client):
