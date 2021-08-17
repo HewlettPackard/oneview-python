@@ -653,7 +653,7 @@ class ConnectionTest(unittest.TestCase):
         self.connection.post_multipart(uri='/rest/resources/',
                                        fields=None,
                                        files="/a/path/filename.zip",
-                                       baseName="archive.zip", verbose=True)
+                                       baseName="archive.zip")
 
         internal_conn = self.connection.get_connection.return_value
         internal_conn.putrequest.assert_called_once_with('POST', '/rest/resources/')
