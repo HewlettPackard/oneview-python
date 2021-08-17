@@ -885,7 +885,6 @@ class ResourceTest(BaseTest):
         self.assertEqual(self.response_body, self.resource_client.data)
         mock_put.assert_called_once_with(uri, expected, custom_headers=None)
 
-
     @mock.patch.object(Resource, "ensure_resource_data")
     @mock.patch.object(connection, "put")
     def test_update_without_uri_with_force(self, mock_put, mock_ensure_resource):
@@ -2523,6 +2522,3 @@ class ResourceClientTest(unittest.TestCase):
         new_data = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test", "server_ip": "1.1.1.1"}
         returned_data = self.resource_client.add_new_fields(data, data_to_add)
         self.assertEqual(returned_data, new_data)
-
-    def test
-
