@@ -158,7 +158,7 @@ class VolumesTest(unittest.TestCase):
         uri = "/rest/storage-volumes/f0a0a113-ec97-41b4-83ce-d7c92b900e7c/snapshots/23"
         self._volumes.get_snapshot_by_uri(uri)
 
-        mock_get_by_uri.assert_called_once_with("uri", uri)
+        mock_get_by_uri.assert_called_once_with(uri)
 
     @mock.patch.object(Resource, 'get_by')
     def test_get_snapshot_by_name_called_once(self, mock_get_by):

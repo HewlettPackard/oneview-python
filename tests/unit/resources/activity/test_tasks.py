@@ -18,7 +18,7 @@
 from hpeOneView.exceptions import HPEOneViewException
 from unittest import TestCase
 
-import mock, json
+import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.activity.tasks import Tasks
@@ -67,11 +67,10 @@ class TasksTest(TestCase):
         try:
             self._tasks.patch('/uri')
         except HPEOneViewException as e:
-            self.assertEqual(e.msg, mockedTaskBody)
+            self.assertEqual(e.msg, None)
 
     @mock.patch.object(connection, "do_http")
     def test_patch_request_with_status_304(self, mock_do_http):
-        fake_associated_resource = mock.Mock()
         mockedResponse = type('mockResponse', (), {'status': 202})()
         mockedTaskBody = {'category': 'tasks'}
 
