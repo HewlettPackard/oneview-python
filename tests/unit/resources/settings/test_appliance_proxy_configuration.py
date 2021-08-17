@@ -39,7 +39,7 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_proxy_called_once(self, mock_get):
-        proxy_resource = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"} 
+        proxy_resource = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
         mock_get.return_value.data = proxy_resource
         self._proxy.get_by_proxy('1.1.1.1')
 
