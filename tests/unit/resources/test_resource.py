@@ -22,7 +22,7 @@ from mock import call
 from tests.test_utils import mock_builtin
 from hpeOneView.connection import connection
 from hpeOneView import exceptions
-from hpeOneView.resources.resource import (RESOURCE_CLIENT_INVALID_FIELD, ResourceClient, ResourceHelper, ResourceFileHandlerMixin,
+from hpeOneView.resources.resource import (ResourceClient, ResourceHelper, ResourceFileHandlerMixin,
                                            ResourceZeroBodyMixin, ResourcePatchMixin, ResourceUtilizationMixin,
                                            ResourceSchemaMixin, Resource,
                                            RESOURCE_CLIENT_INVALID_ID, UNRECOGNIZED_URI, TaskMonitor,
@@ -888,16 +888,16 @@ class ResourceTest(BaseTest):
     @mock.patch.object(Resource, "ensure_resource_data")
     @mock.patch.object(connection, "put")
     def test_update_without_uri_with_force(self, mock_put, mock_ensure_resource):
-        uri = "/rest/testuri?force=True"
-        dict_to_update = {"name": "test", "type": "typeV300"}
+        uri = "/rest/testuri"
+        dict_to_update = {"name": "test", "type": "typeV300", "uri":uri}
         self.resource_client.data = {'uri': uri}
-        expected = {"name": "test", "type": "typeV300", "uri": uri}
+        expected_uri = "/rest/testuri?force=True"
 
         mock_put.return_value = None, self.response_body
-        self.resource_client.update(dict_to_update, uri=None, force=True)
+        self.resource_helper.update(dict_to_update, force=True)
 
         self.assertEqual(self.response_body, self.resource_client.data)
-        mock_put.assert_called_once_with(uri, expected, custom_headers=None)
+        mock_put.assert_called_once_with(expected_uri, dict_to_update, custom_headers=None)
 
     @mock.patch.object(Resource, "ensure_resource_data")
     @mock.patch.object(connection, "put")
@@ -1000,14 +1000,14 @@ class ResourceTest(BaseTest):
 
     @mock.patch.object(Resource, 'get_all')
     def test_get_by_field_with_result(self, mock_get_all):
-        mock_get_all.return_value = {"name": "MyFibreNetwork", "port": "443", "username": "aaaa", "password": "test"}
+        mock_get_all.return_value = [{"name": "MyFibreNetwork", "port": "443", "username": "aaaa", "password": "test"}]
         self.resource_client.get_by_field('name', 'MyFibreNetwork')
         mock_get_all.assert_called_once_with()
 
     @mock.patch.object(Resource, 'get_all')
     def test_get_by_null_field(self, mock_get_all):
         try:
-            self.resource_client.get_by_field()
+            self.resource_client.get_by_field(None, 'value')
         except ValueError as e:
             self.assertEqual(RESOURCE_CLIENT_INVALID_ID, e.args[0])
 
@@ -1531,7 +1531,7 @@ class ResourceClientTest(unittest.TestCase):
     @mock.patch.object(Resource, 'get_all')
     def test_get_by_null_field(self, mock_get_all):
         try:
-            self.resource_client.get_by()
+            self.resource_client.get_by(None, 'value')
         except ValueError as e:
             self.assertEqual(RESOURCE_CLIENT_INVALID_ID, e.args[0])
 
@@ -2520,5 +2520,5 @@ class ResourceClientTest(unittest.TestCase):
         data_to_add = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
         data = {"server_ip": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
         new_data = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test", "server_ip": "1.1.1.1"}
-        returned_data = self.resource_client.add_new_fields(data, data_to_add)
+        returned_data = self.resource_helper.add_new_fields(data, data_to_add)
         self.assertEqual(returned_data, new_data)
