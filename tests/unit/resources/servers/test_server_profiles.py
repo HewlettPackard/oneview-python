@@ -63,9 +63,7 @@ class ServerProfilesTest(TestCase):
         expected_template.update(default_values)
 
         self._resource.create(template, timeout=TIMEOUT)
-        mock_create.assert_called_once_with(
-            expected_template, None, -1, force=''
-        )
+        mock_create.assert_called_once_with(expected_template, force='', timeout=TIMEOUT)
 
     @mock.patch.object(Resource, 'ensure_resource_data')
     @mock.patch.object(ResourceHelper, 'update')

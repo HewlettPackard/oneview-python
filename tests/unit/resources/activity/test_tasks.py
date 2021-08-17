@@ -52,7 +52,6 @@ class TasksTest(TestCase):
 
         mock_do_http.return_value = (mockedResponse, mockedTaskBody)
         mock_wait4task.return_value = fake_associated_resource
-        mock_do_http.assert_once_called_with('PATCH', '/uri')
         mock_wait4task.assert_called_once()
         return_patch_request = self._tasks.patch('/uri')
         self.assertEqual(return_patch_request, fake_associated_resource)
@@ -66,7 +65,6 @@ class TasksTest(TestCase):
 
         mock_do_http.return_value = (mockedResponse, mockedTaskBody)
         mock_wait4task.return_value = fake_associated_resource
-        mock_do_http.assert_once_called_with('PATCH', '/uri')
         mock_wait4task.assert_called_once()
         try:
             self._tasks.patch('/uri')

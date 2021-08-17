@@ -39,8 +39,16 @@ class ApplianceProxyConfigurationTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_by_proxy_called_once(self, mock_get):
-        self._proxy.get_by_uri(self.uri)
+        mock_get.return_value = self.resource_info
         mock_get.assert_called_once_with(self.uri)
+        self._proxy.get_by_proxy('1.1.1.1')
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_proxy_called_once_with_new_proxy(self, mock_get):
+        mock_get.return_value = self.resource_info
+        mock_get.assert_called_once_with(self.uri)
+        new_resource = self._proxy.get_by_proxy('1.1.1.2')
+        self.assertEqual(new_resource, None)
 
     @mock.patch.object(Resource, 'create')
     def test_create_called_once(self, mock_create):
