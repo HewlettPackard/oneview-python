@@ -653,7 +653,7 @@ class ConnectionTest(unittest.TestCase):
         self.connection.post_multipart(uri='/rest/resources/',
                                        fields=None,
                                        files="/a/path/filename.zip",
-                                       baseName="archive.zip")
+                                       baseName="archive.zip", True)
 
         internal_conn = self.connection.get_connection.return_value
         internal_conn.putrequest.assert_called_once_with('POST', '/rest/resources/')
@@ -924,7 +924,7 @@ class ConnectionTest(unittest.TestCase):
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
         mock_post.return_value = {'cat': 'task'}, {'sessionID': '123'}
 
-        self.connection.login({})
+        self.connection.login({}, True)
 
         self.assertEqual(self.connection.get_session_id(), '123')
         self.assertEqual(self.connection.get_session(), True)
@@ -1005,6 +1005,32 @@ class ConnectionTest(unittest.TestCase):
         mock_open.side_effect = [mock_in, mock_out]
 
         self.connection.encode_multipart_formdata('', "/a/path/filename.zip", 'filename.zip')
+
+        mock_open.assert_has_calls([call('/a/path/filename.zip', 'rb'),
+                                    call('/a/path/filename.zip.b64', 'wb')])
+
+        mock_out.write.assert_has_calls(
+            [call(bytearray(b'------------ThIs_Is_tHe_bouNdaRY_$\r\n')),
+             call(bytearray(
+                 b'Content-Disposition: form-data; name="file"; filename="filename.zip"\r\n')),
+             call(bytearray(b'Content-Type: application/octet-stream\r\n')),
+             call(bytearray(b'\r\n')),
+             call(bytearray(b'\r\n')),
+             call(bytearray(b'------------ThIs_Is_tHe_bouNdaRY_$--\r\n')),
+             call(bytearray(b'\r\n'))])
+
+        mock_in.close.assert_called_once()
+        mock_out.close.assert_called_once()
+
+    @patch.object(shutil, 'copyfileobj')
+    @patch.object(connection, '_open')
+    def test_encode_multipart_formdata_with_true_verbose(self, mock_open, mock_copyfileobj):
+        mock_in = Mock()
+        mock_out = Mock()
+
+        mock_open.side_effect = [mock_in, mock_out]
+
+        self.connection.encode_multipart_formdata('', "/a/path/filename.zip", 'filename.zip', True)
 
         mock_open.assert_has_calls([call('/a/path/filename.zip', 'rb'),
                                     call('/a/path/filename.zip.b64', 'wb')])

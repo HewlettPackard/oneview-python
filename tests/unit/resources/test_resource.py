@@ -22,7 +22,7 @@ from mock import call
 from tests.test_utils import mock_builtin
 from hpeOneView.connection import connection
 from hpeOneView import exceptions
-from hpeOneView.resources.resource import (ResourceClient, ResourceHelper, ResourceFileHandlerMixin,
+from hpeOneView.resources.resource import (RESOURCE_CLIENT_INVALID_FIELD, ResourceClient, ResourceHelper, ResourceFileHandlerMixin,
                                            ResourceZeroBodyMixin, ResourcePatchMixin, ResourceUtilizationMixin,
                                            ResourceSchemaMixin, Resource,
                                            RESOURCE_CLIENT_INVALID_ID, UNRECOGNIZED_URI, TaskMonitor,
@@ -305,6 +305,15 @@ class ResourceZeroBodyMixinTest(BaseTest):
         self.resource_client.URI = "/rest/enclosures"
         result = self.resource_client.update_with_zero_body(
             "/rest/enclosures/09USE133E5H4/configuration", timeout=-1)
+
+        self.assertEqual(result, self.response_body)
+
+    @mock.patch.object(connection, "put")
+    def test_update_with_zero_body_without_uri(self, mock_put):
+        mock_put.return_value = None, self.response_body
+        self.resource_client.URI = "/rest/enclosures"
+        result = self.resource_client.update_with_zero_body(
+            "", timeout=-1)
 
         self.assertEqual(result, self.response_body)
 
@@ -750,6 +759,16 @@ class ResourceTest(BaseTest):
         mock_post.assert_called_once_with(self.URI, expected_dict, custom_headers=None)
 
     @mock.patch.object(connection, "post")
+    def test_create_uri_force(self, mock_post):
+        create_uri = "/rest/testuri?force=True"
+        dict_to_create = {"resource_name": "a name"}
+        mock_post.return_value = {}, {}
+        expected_dict = {"resource_name": "a name", "type": self.TYPE_V300}
+
+        self.resource_client.create(dict_to_create, timeout=-1, force=True)
+        mock_post.assert_called_once_with(create_uri, expected_dict, custom_headers=None)
+
+    @mock.patch.object(connection, "post")
     def test_create_with_api_version_200(self, mock_post):
         dict_to_create = {"resource_name": "a name"}
         mock_post.return_value = {}, {}
@@ -866,6 +885,21 @@ class ResourceTest(BaseTest):
         self.assertEqual(self.response_body, self.resource_client.data)
         mock_put.assert_called_once_with(uri, expected, custom_headers=None)
 
+
+    @mock.patch.object(Resource, "ensure_resource_data")
+    @mock.patch.object(connection, "put")
+    def test_update_without_uri_with_force(self, mock_put, mock_ensure_resource):
+        uri = "/rest/testuri?force=True"
+        dict_to_update = {"name": "test", "type": "typeV300"}
+        self.resource_client.data = {'uri': uri}
+        expected = {"name": "test", "type": "typeV300", "uri": uri}
+
+        mock_put.return_value = None, self.response_body
+        self.resource_client.update(dict_to_update, uri=None, force=True)
+
+        self.assertEqual(self.response_body, self.resource_client.data)
+        mock_put.assert_called_once_with(uri, expected, custom_headers=None)
+
     @mock.patch.object(Resource, "ensure_resource_data")
     @mock.patch.object(connection, "put")
     def test_update_with_custom_headers(self, mock_put, mock_ensure_resource):
@@ -965,10 +999,30 @@ class ResourceTest(BaseTest):
         self.resource_client.get_by_field('name', 'MyFibreNetwork')
         mock_get_all.assert_called_once_with()
 
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_by_field_with_result(self, mock_get_all):
+        mock_get_all.return_value = {"name": "MyFibreNetwork", "port": "443", "username": "aaaa", "password": "test"}
+        self.resource_client.get_by_field('name', 'MyFibreNetwork')
+        mock_get_all.assert_called_once_with()
+
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_by_null_field(self, mock_get_all):
+        try:
+            self.resource_client.get_by_field()
+        except ValueError as e:
+            self.assertEqual(RESOURCE_CLIENT_INVALID_ID, e.args[0])
+
     @mock.patch.object(connection, "get")
     def test_get_by_uri(self, mock_get):
         self.resource_client.get_by_uri("/rest/testuri")
         mock_get.assert_called_once_with('/rest/testuri')
+
+    @mock.patch.object(connection, "get")
+    def test_get_by_uri_with_no_data(self, mock_get):
+        mock_get.return_value = None
+        new_resource = self.resource_client.get_by_uri("/rest/testuri")
+        mock_get.assert_called_once_with('/rest/testuri')
+        self.assertEqual(new_resource, None)
 
     @mock.patch.object(connection, "get")
     def test_get_by_id_with_result(self, mock_get):
@@ -1474,6 +1528,13 @@ class ResourceClientTest(unittest.TestCase):
     def test_get_by_property(self, mock_get_all):
         self.resource_client.get_by('name', 'MyFibreNetwork')
         mock_get_all.assert_called_once_with(filter="\"name='MyFibreNetwork'\"", uri='/rest/testuri')
+
+    @mock.patch.object(Resource, 'get_all')
+    def test_get_by_null_field(self, mock_get_all):
+        try:
+            self.resource_client.get_by()
+        except ValueError as e:
+            self.assertEqual(RESOURCE_CLIENT_INVALID_ID, e.args[0])
 
     @mock.patch.object(ResourceClient, 'get_all')
     def test_get_by_with_incorrect_result_autofix(self, mock_get_all):
@@ -2455,3 +2516,13 @@ class ResourceClientTest(unittest.TestCase):
         uri = '/rest/plan-scripts/3518be0e-17c1-4189-8f81-83f3724f6155/otherthing'
         extracted_id = extract_id_from_uri(uri)
         self.assertEqual(extracted_id, 'otherthing')
+
+    def test_add_new_fields(self):
+        data_to_add = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
+        data = {"server_ip": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test"}
+        new_data = {"server": "1.1.1.1", "port": "443", "username": "aaaa", "password": "test", "server_ip": "1.1.1.1"}
+        returned_data = self.resource_client.add_new_fields(data, data_to_add)
+        self.assertEqual(returned_data, new_data)
+
+    def test
+
