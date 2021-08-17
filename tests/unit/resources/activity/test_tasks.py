@@ -69,11 +69,11 @@ class TasksTest(TestCase):
         except HPEOneViewException as e:
             self.assertEqual(e.msg, None)
 
-    # @mock.patch.object(connection, "do_http")
-    # def test_patch_request_with_status_304(self, mock_do_http):
-    #     mockedResponse = type('mockResponse', (), {'status': 202})()
-    #     mockedTaskBody = {'category': 'tasks'}
+    @mock.patch.object(connection, "do_http")
+    def test_patch_request_with_status_304(self, mock_do_http):
+        mockedResponse = type('mockResponse', (), {'status': 304})()
+        mockedTaskBody = {'category': 'tasks'}
 
-    #     mock_do_http.return_value = (mockedResponse, mockedTaskBody)
-    #     return_patch_request = self._tasks.patch('/uri')
-    #     self.assertEqual(return_patch_request, mockedTaskBody)
+        mock_do_http.return_value = (mockedResponse, mockedTaskBody)
+        return_patch_request = self._tasks.patch('/uri')
+        self.assertEqual(return_patch_request, mockedTaskBody)

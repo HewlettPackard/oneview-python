@@ -451,5 +451,5 @@ class TaskMonitorTest(unittest.TestCase):
     @mock.patch('time.time')
     def test_get_current_seconds(self, mock_time):
         mock_time.return_value = 120
-        current_seconds = self.task_monitor.get_current_seconds()
+        current_seconds = TaskMonitor.get_current_seconds()
         self.assertEqual(current_seconds, 120)

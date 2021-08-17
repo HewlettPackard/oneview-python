@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.resource import ResourceHelper, Resource
-from hpeOneView.resources.storage.volumes import Volumes
+from hpeOneView.resources.storage.volumes import VolumeSnapshots, Volumes
 
 
 class VolumesTest(unittest.TestCase):
@@ -87,8 +87,10 @@ class VolumesTest(unittest.TestCase):
         mock_update.assert_called_once_with(resource_rest_call,
                                             self.resource_uri, True, -1, None)
 
+    @mock.patch(VolumeSnapshots, 'delete')
     @mock.patch.object(ResourceHelper, 'delete')
-    def test_delete_by_id_called_once(self, mock_delete):
+    def test_delete_by_id_called_once(self, mock_delete, mock_snapshot_delete):
+        mock_snapshot_delete.return_value = None
         self._volumes.delete(force=False, timeout=-1)
 
         expected_headers = {"If-Match": '*'}

@@ -88,7 +88,8 @@ class ServerProfileTemplateTest(TestCase):
         self._resource.get_new_profile()
         mock_get.assert_called_once_with(expected_uri)
 
-    @mock.patch.object(ResourceHelper, 'do_get')
+    @mock.patch.object(Resource, 'ensure_resource_data')
+    @mock.patch.object(ResourceHelper, 'do_get', mock_ensure_client)
     def test_get_transformation(self, mock_get):
         enclosure_group_uri = "/rest/enclosure-groups/bb1fbca0-2289-4b75-adbb-0564cdc4995d"
         server_hardware_type_uri = "/rest/server-hardware-types/34A3A0B2-66C7-4657-995E-60895C1F8F96"
