@@ -40,7 +40,8 @@ class ApplianceNetworkInterfacesTest(unittest.TestCase):
                      "ipv4NameServers": [
                          "10.10.10.11",
                          "10.10.10.12"
-                     ]}]}
+                     ]}],
+                     "members": []}
 
     uri = '/rest/appliance/network-interfaces'
 
@@ -51,21 +52,24 @@ class ApplianceNetworkInterfacesTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_all_called_once(self, mock_get):
-        self._network_interface.get_by_uri(self.uri)
-        mock_get.assert_called_once_with(self.uri)
-
-    @mock.patch.object(Resource, 'create')
-    def test_create_called_once(self, mock_create):
-        self._network_interface.create(self.resource_info)
-        mock_create.assert_called_once_with(self.resource_info)
-
-    @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_by_mac_address_called_once(self, mock_get):
-        self._network_interface.get_by_uri(self.uri)
+        self._network_interface.get_all()
         mock_get.assert_called_once_with(self.uri)
 
     @mock.patch.object(Resource, 'get_by_uri')
-    def test_get_all_mac_address_called_once(self, mock_get):
+    def test_get_by_mac_address_called_with_known_mac_address(self, mock_get_by_uri):
+        mock_get_by_uri.return_value.data = self.resource_info
+        self._network_interface.get_by_mac_address('00:50:56:98:f1:3e')
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_mac_address_called_with_unknown_mac_address(self, mock_get_by_uri):
+        mock_get_by_uri.return_value.data = self.resource_info
+        new_resource = self._network_interface.get_by_mac_address('00:50:56:98:f1:31')
+        self.assertEqual(new_resource, None)
+
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_all_mac_address_called_once(self, mock_get_by_uri):
+        mock_get_by_uri.return_value.data = self.resource_info
         uri = self.uri + '/mac-addresses'
-        self._network_interface.get_by_uri(uri)
-        mock_get.assert_called_once_with(uri)
+        response = self._network_interface.get_all_mac_address()
+        mock_get_by_uri.assert_called_once_with(uri)
+        self.assertEqual(response, self.resource_info['members'])
