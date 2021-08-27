@@ -160,7 +160,9 @@ class VolumesTest(unittest.TestCase):
         }
 
         uri = "/rest/storage-volumes/f0a0a113-ec97-41b4-83ce-d7c92b900e7c/snapshots/23"
-        mock_get_by_uri.return_value.data = resource
+        obj = mock.Mock()
+        obj.data = resource
+        mock_get_by_uri.return_value = obj
         returned_volume_object = self._volumes.get_snapshot_by_uri(uri)
         mock_get_by_uri.return_value.data = resource
 
