@@ -163,11 +163,10 @@ class VolumesTest(unittest.TestCase):
         obj = mock.Mock()
         obj.data = resource
         mock_get_by_uri.return_value = obj
-        returned_volume_object = self._volumes.get_snapshot_by_uri(uri)
-        mock_get_by_uri.return_value.data = resource
+        self._volumes.get_snapshot_by_uri(uri)
 
         mock_get_by_uri.assert_called_once_with(uri)
-        self.assertEqual(returned_volume_object, resource)
+        self.assertEqual(self._volumes.get_snapshot_by_uri(uri), obj)
 
     @mock.patch.object(Resource, 'get_by')
     def test_get_snapshot_by_name_called_once(self, mock_get_by):
