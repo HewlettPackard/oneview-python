@@ -155,10 +155,17 @@ class VolumesTest(unittest.TestCase):
 
     @mock.patch.object(Resource, 'get_by_uri')
     def test_get_snapshot_by_uri_called_once(self, mock_get_by_uri):
+        resource = {
+            'name': 'OneViewSDK Test Snapshot',
+        }
+
         uri = "/rest/storage-volumes/f0a0a113-ec97-41b4-83ce-d7c92b900e7c/snapshots/23"
-        self._volumes.get_snapshot_by_uri(uri)
+        mock_get_by_uri.return_value.data = resource
+        returned_volume_object = self._volumes.get_snapshot_by_uri(uri)
+        mock_get_by_uri.return_value.data = resource
 
         mock_get_by_uri.assert_called_once_with(uri)
+        self.assertEqual(returned_volume_object, resource)
 
     @mock.patch.object(Resource, 'get_by')
     def test_get_snapshot_by_name_called_once(self, mock_get_by):
