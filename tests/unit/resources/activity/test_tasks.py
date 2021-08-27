@@ -43,18 +43,6 @@ class TasksTest(TestCase):
                                                 '.resourceCatgory=\'appliance\'"',
                                          query='', sort='name:ascending', start=0, view='day', topCount=0, childLimit=0)
 
-    # @mock.patch.object(TaskMonitor, "wait_for_task")
-    # @mock.patch.object(connection, "do_http")
-    # def test_patch_request_with_status_202(self, mock_do_http, mock_wait4task):
-    #     fake_associated_resource = mock.Mock()
-    #     mockedResponse = type('mockResponse', (), {'status': 202})()
-    #     mockedTaskBody = {'category': 'tasks'}
-
-    #     mock_do_http.return_value = (mockedResponse, mockedTaskBody)
-    #     mock_wait4task.return_value = fake_associated_resource
-    #     return_patch_request = self._tasks.patch('/uri')
-    #     self.assertEqual(return_patch_request, fake_associated_resource)
-
     @mock.patch.object(TaskMonitor, "wait_for_task")
     @mock.patch.object(connection, "do_http")
     def test_patch_request_with_status_400(self, mock_do_http, mock_wait4task):
