@@ -1,7 +1,6 @@
 name: python CI
 
-on:
-- pull_request
+on: [push, pull_request]
 
 jobs:
   tox_test:
@@ -25,7 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
 
-    - name: Run tox tests
+    # - name: Analysing the code with pylint
+    #   run: |
+    #     pip install pylint
+    #     pylint $(git ls-files '*.py')
+
+    - name: Run unit tests using tox
       run: tox
 
   Build_and_publish:
@@ -49,20 +53,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
 
-    - name: Run tox tests
+    # - name: Analysing the code with pylint
+    #   run: |
+    #     pip install pylint
+    #     pylint $(git ls-files '*.py')
+
+    - name: Run unit tests using tox
       run: tox
 
-    - name: Deploy to GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v2
-      with:
-       target_branch: gh-pages
-       keep_history: true
-       build_dir: docs/build/html/.
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: coveralls
+    - name: Check coverage
       uses: AndreMiras/coveralls-python-action@develop
       with:
         github-token: ${{ secrets.COVERALLS_TOKEN }}
