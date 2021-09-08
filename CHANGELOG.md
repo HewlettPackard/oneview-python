@@ -6,9 +6,53 @@ Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
 - [#173] (https://github.com/HewlettPackard/oneview-python/issues/73) is this a typo https://github.com/HewlettPackard/oneview-python/blob/master/examples/server_hardware.py#L200-201
 
 ##### Features supported with the current release
+- Appliance Configuration Timeconfig
+- Appliance Health Status
 - Appliance Network Interfaces
+- Appliance Node Information
 - Appliance Proxy Configuration
+- Appliance SNMPv1 Trap Destinations
+- Appliance SNMPv3 Trap Destinations
+- Appliance SNMPv3 Users
+- Appliance SSH Access
+- Appliance Time and Locale Configuration
+- Connection Templates
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
 - Firmware Bundles
+- Firmware Drivers
+- HA Nodes
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- ID Pools
+- ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
+- Index Resources
+- Interconnects
+- Interconnect Types
+- Labels 
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume
+- Tasks
+- Uplink set
+- Users
+- Version
 
 # 6.2.0
 #### Notes
