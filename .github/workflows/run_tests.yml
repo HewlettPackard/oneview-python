@@ -61,10 +61,23 @@ jobs:
        build_dir: docs/build/html/.
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       
+    - name: Upload Coverage
+      run: |
+        pip3 install coveralls
+        cd tests && coveralls --service=github
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COVERALLS_FLAG_NAME: 'Unit Test'
+        COVERALLS_PARALLEL: true
 
-    - name: coveralls
-      uses: AndreMiras/coveralls-python-action@develop
-      with:
-        github-token: ${{ secrets.COVERALLS_TOKEN }}
-        flag-name: 'Unit Test'
-        debug: true
+  coveralls:
+    runs-on: ubuntu-20.04
+    name: Finish coverage
+    needs: tox_test
+    container: python:3-slim # just need a simple python container to finish the coverage
+    steps:
+      - name: Coveralls finish
+        run: pip install coveralls && coveralls --finish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
