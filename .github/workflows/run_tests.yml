@@ -65,6 +65,6 @@ jobs:
     - name: coveralls
       uses: AndreMiras/coveralls-python-action@develop
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.COVERALLS_TOKEN }}
         flag-name: 'Unit Test'
         debug: true
