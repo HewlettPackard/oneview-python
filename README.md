@@ -5,7 +5,7 @@
 OV Version | 6.30 | 6.20 | 6.10 | 6.00 | 5.60 | 
 | ------------- |:-------------:| :-------------:| :-------------:| :-------------:| :-------------:|
 SDK Version/Tag |[v6.3.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.3.0) |[v6.2.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.2.0) | [v6.1.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.1.0) | [v6.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.0.0) | [v5.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.6.0) | 
-Build Status | [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://github.com/HewlettPackard/oneview-python/runs/3524286157) | [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://github.com/HewlettPackard/oneview-python/actions/runs/986745563)| [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://github.com/HewlettPackard/oneview-python/actions/runs/726148134)| [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://github.com/HewlettPackard/oneview-python/actions/runs/623585124)| [![Build status](https://action-badges.now.sh/JasonEtco/action-badges)](https://travis-ci.com/github/HewlettPackard/oneview-python/builds/214352373)|
+Build Status | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/runs/3524286157) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/986745563)| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/726148134)| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/623585124)| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://travis-ci.com/github/HewlettPackard/oneview-python/builds/214352373)|
 
 
 ## Introduction
@@ -75,14 +75,11 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
    ```
    Now you can run any of the example in this directory:
    Run the container, passing in your credentials to OneView and specifying which example recipe to run. <br />
-   -v : The volume on which repo code is mounted <br />
-   Replace "connection_templates" with the name of the example you'd like to run <br />
-   Replace "pwd" with the path of the example file you'd like to run. <br />
+   `-v`: The volume on which repo code is mounted <br />
+   Replace `connection_templates` with the name of the example you'd like to run <br />
+   Replace `pwd` with the path of the example file you'd like to run. <br />
    ```bash
-   $ docker run -it --rm \ -v $(pwd)/:/root/oneview/ 
-   ```
-   ```python
-   $ python examples/connection_templates.py
+   $ docker run -it --rm \ -v $(pwd)/:/root/oneview/ python examples/connection_templates.py
    ```
    
    ## Running Examples with published docker image
@@ -112,7 +109,8 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
 
   Once you have created the JSON file, you can initialize the OneViewClient:
 
-  oneview_client = OneViewClient.from_json_file('/path/config.json') <br />
+   ```oneview_client = OneViewClient.from_json_file('/path/config.json')``` <br />
+   
   :lock: Tip: Check the file permissions because the password is stored in clear-text.
 
   ### Environment Variables:
@@ -126,7 +124,7 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
   ```
   Or sessionID 
   ```bash
-   export ONEVIEWSDK_SESSIONID='123' <br />
+   export ONEVIEWSDK_SESSIONID='123'
    ```
     
   Once you have defined the environment variables, you can initialize the OneViewClient using the following code snippet:
