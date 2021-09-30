@@ -85,6 +85,7 @@ from hpeOneView.resources.storage.drive_enclosures import DriveEnclosures
 from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
 from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
 from hpeOneView.resources.settings.backups import Backups
+from hpeOneView.resources.settings.repositories import Repositories
 from hpeOneView.resources.storage.volumes import Volumes
 from hpeOneView.resources.storage.sas_logical_jbod_attachments import SasLogicalJbodAttachments
 from hpeOneView.resources.networking.uplink_sets import UplinkSets
@@ -135,6 +136,7 @@ class OneViewClient(object):
         self.__connections = None
         self.__connection_templates = None
         self.__fc_networks = None
+        self.__repositories = None
         self.__fcoe_networks = None
         self.__ethernet_networks = None
         self.__fabrics = None
@@ -1258,3 +1260,13 @@ class OneViewClient(object):
             ApplianceSshAccess:
         """
         return ApplianceSshAccess(self.__connection)
+
+    @property
+    def repositories(self):
+        """
+        Gets the Repositories API client.
+
+        Returns:
+            Repositories:
+        """
+        return Repositories(self.__connection)
