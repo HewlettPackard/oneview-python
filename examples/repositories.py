@@ -29,13 +29,17 @@ config = {
     "api_version": "<api_version>"
 }
 
+remote_server_options = {
+    "name": "172.18.13.11",
+}
+
 options = {
     "repositoryName": "Repo_Name",
     "userName": "Admin",
     "password": "*******",
     "repositoryURI": "https://172.20.3.65/repositoryFolder",
     "repositoryType": "FirmwareExternalRepo",
-    "base64data": "{certificate of the repository web server}"
+    "base64data": ""
 }
 
 # Try load config from a file (if there is a config file)
@@ -43,6 +47,7 @@ config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
 repositories = oneview_client.repositories
+certificate_server = oneview_client.certificates_server
 
 # Get all, with defaults
 print("\nGet all repositories")
@@ -66,13 +71,19 @@ print(repos_sorted)
 
 if repo:
     print("\nFound repo by name: '%s'.\n  uri = '%s'" % (repo.data['name'], repo.data['uri']))
-else:
-    # Create a Repository with the options provided
-    try:
-        repo = repositories.create(data=options)
-        print("\nCreated a repo with name: '%s'.\n  uri = '%s'" % (repo.data['name'], repo.data['uri']))
-    except HPEOneViewException as e:
-        print("Exception {} occurred while creating repository".format(str(e)))
+
+# Create a Repository with the options provided
+try:
+    print("\nGet server certificate of remote server by ip address")
+    remote_server_cert = certificate_server.get_remote(remote_server_options['name'])
+    if remote_server_cert:
+        ca_certificate = remote_server_cert.data['certificateDetails'][0]['base64Data']
+        print(ca_certificate)
+        options['base64Data'] = ca_certificate
+    created_repo = repositories.create(data=options)
+    print("\nCreated a repo with name: '%s'.\n  uri = '%s'" % (created_repo.data['name'], created_repo.data['uri']))
+except HPEOneViewException as e:
+    print("Exception {} occurred while creating repository".format(str(e)))
 
 # Get by repositoryId
 print("\nGet a repo by id")
@@ -82,7 +93,7 @@ print(repos_by_id.data)
 # Update repositoryName from recently created repository
 print("\n Update repositoryName from recently created repository")
 try:
-    repo_with_updated_name = repo.patch('replace',
+    repo_with_updated_name = created_repo.patch('replace',
                                         '/repositoryName',
                                         repo.data['name'])
     print(repo_with_updated_name)
@@ -98,13 +109,13 @@ try:
         "userName": "Admin",
         "password": "*******",
         "repositoryURI": "https://172.20.3.65/repositoryFolder",
-        "base64data": "{certificate of the repository web server}"
+        "base64data": ca_certificate
     }
-    repo.update(data=data_to_edit)
-    print("\nUpdated repo '%s' successfully." % (repo.data['repositoryName']))
+    created_repo.update(data=data_to_edit)
+    print("\nUpdated repo '%s' successfully." % (created_repo.data['repositoryName']))
 except HPEOneViewException as e:
     print("Exception {} occurred while update operation of repository".format(str(e)))
 
 # Delete the created repository
-repo.delete()
+created_repo.delete()
 print("\nSuccessfully deleted repo")

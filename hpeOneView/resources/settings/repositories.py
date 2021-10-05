@@ -36,19 +36,3 @@ class Repositories(ResourcePatchMixin, Resource):
 
     def __init__(self, connection, data=None):
         super(Repositories, self).__init__(connection, data)
-
-    # def update(self, resource, timeout=-1):
-    #     """
-    #     Updates the specified alert resource.
-
-    #     Args:
-    #         resource (dict): Object to update.
-    #         timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-    #             in OneView; it just stops waiting for its completion.
-
-    #     Returns:
-    #         dict: Updated alert.
-    #     """
-    #     id = resource.pop('id', None)
-    #     uri = self._client.build_uri(id)
-    #     return self._client.update(resource=resource, uri=uri, timeout=timeout)
