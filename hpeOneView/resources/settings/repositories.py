@@ -19,14 +19,14 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
-from __future__ import standard_library
+from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import (Resource, ResourceClient, ResourcePatchMixin)
+from hpeOneView.resources.resource import (Resource, ResourcePatchMixin)
 
 
-class Repositories(ResourcePatchMixin, ResourceClient,Resource):
+class Repositories(ResourcePatchMixin, Resource):
     """
     Fibre Channel networks API client.
 
@@ -36,20 +36,19 @@ class Repositories(ResourcePatchMixin, ResourceClient,Resource):
 
     def __init__(self, connection, data=None):
         super(Repositories, self).__init__(connection, data)
-        self._client = ResourceClient(connection)
 
-    def update(self, resource, timeout=-1):
-        """
-        Updates the specified alert resource.
+    # def update(self, resource, timeout=-1):
+    #     """
+    #     Updates the specified alert resource.
 
-        Args:
-            resource (dict): Object to update.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+    #     Args:
+    #         resource (dict): Object to update.
+    #         timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+    #             in OneView; it just stops waiting for its completion.
 
-        Returns:
-            dict: Updated alert.
-        """
-        id = resource.pop('id', None)
-        uri = self._client.build_uri(id)
-        return self._client.update(resource=resource, uri=uri, timeout=timeout)
+    #     Returns:
+    #         dict: Updated alert.
+    #     """
+    #     id = resource.pop('id', None)
+    #     uri = self._client.build_uri(id)
+    #     return self._client.update(resource=resource, uri=uri, timeout=timeout)

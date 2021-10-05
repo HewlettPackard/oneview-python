@@ -56,7 +56,7 @@ print(repos_limited)
 
 # Get by name
 print("\nGet all repositories filtering by name")
-repo = repositories.get_by_name(repos_limited[0].members['name'])
+repo = repositories.get_by_name(repos_limited[0]['name'])
 print(repo.data)
 
 # Get all in descending order
@@ -75,11 +75,12 @@ else:
         print("Exception {} occurred while creating repository".format(str(e)))
 
 # Get by repositoryId
-print("\nGet a repo by uri")
-repos_by_id = repositories.get_by_id(repo.data['id'])
+print("\nGet a repo by id")
+repos_by_id = repositories.get_by_id(repo.data['uuid'])
 print(repos_by_id.data)
 
 # Update repositoryName from recently created repository
+print("\n Update repositoryName from recently created repository")
 try:
     repo_with_updated_name = repo.patch('replace',
                                         '/repositoryName',
@@ -89,16 +90,20 @@ except HPEOneViewException as e:
     print("Exception {} occurred while patch operation of repository".format(str(e)))
 
 # Edit a repository
-data_to_edit = {
-     "id": repo_with_updated_name['id'],
-     "repositoryName":"Repo_Name",
-     "userName":"Admin",
-     "password":"*******",
-     "repositoryURI":"https://172.20.3.65/repositoryFolder",
-     "base64data":"{certificate of the repository web server}"
-}
-repo.update(data=data_to_edit)
-print("\nUpdated repo '%s' successfully." % (repo.data['repositoryName']))
+print("Edit a repository")
+try:
+    data_to_edit = {
+        "id": repo_with_updated_name['id'],
+        "repositoryName": "Repo_Name",
+        "userName": "Admin",
+        "password": "*******",
+        "repositoryURI": "https://172.20.3.65/repositoryFolder",
+        "base64data": "{certificate of the repository web server}"
+    }
+    repo.update(data=data_to_edit)
+    print("\nUpdated repo '%s' successfully." % (repo.data['repositoryName']))
+except HPEOneViewException as e:
+    print("Exception {} occurred while update operation of repository".format(str(e)))
 
 # Delete the created repository
 repo.delete()
