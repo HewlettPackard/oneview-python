@@ -19,11 +19,10 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 from future import standard_library
 
 standard_library.install_aliases()
-
-from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 
 
 class IdPools(Resource, ResourceSchemaMixin):
@@ -86,13 +85,14 @@ class IdPools(Resource, ResourceSchemaMixin):
 
         Args:
             information (dict):
-                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
+                Information to update. Can result in system specified IDs or the system reserving
+                user-specified IDs.
 
             pool_type: Id pool type
 
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: A dict containing a list with IDs.
@@ -108,13 +108,14 @@ class IdPools(Resource, ResourceSchemaMixin):
 
         Args:
             information (dict):
-                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
+                Information to update. Can result in system specified IDs or the system reserving
+                user-specified IDs.
 
             pool_type: Id pool type
 
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: A dict containing a list with IDs.
@@ -134,8 +135,8 @@ class IdPools(Resource, ResourceSchemaMixin):
             pool_type: Id pool type
 
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Collector containing list of collected IDs successfully collected.
@@ -157,7 +158,8 @@ class IdPools(Resource, ResourceSchemaMixin):
         Returns:
             dict: A dict containing a list with IDs.
         """
-        uri = self._helper.build_uri(pool_type) + "/checkrangeavailability?idList=" + "&idList=".join(ids_pools)
+        uri = self._helper.build_uri(pool_type) + "/checkrangeavailability?idList=" + \
+                "&idList=".join(ids_pools)
         return super(IdPools, self).get_by_uri(uri)
 
     def generate(self, pool_type):

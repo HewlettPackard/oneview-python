@@ -17,17 +17,13 @@
 """
 This module implements a common client for HPE OneView REST API.
 """
+import json
+import os
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-
-from future import standard_library
-
-standard_library.install_aliases()
-
-import json
-import os
 
 from hpeOneView.connection import connection
 from hpeOneView.image_streamer.image_streamer_client import ImageStreamerClient
@@ -89,7 +85,8 @@ from hpeOneView.resources.storage.volumes import Volumes
 from hpeOneView.resources.storage.sas_logical_jbod_attachments import SasLogicalJbodAttachments
 from hpeOneView.resources.networking.uplink_sets import UplinkSets
 from hpeOneView.resources.servers.migratable_vc_domains import MigratableVcDomains
-from hpeOneView.resources.networking.sas_logical_interconnect_groups import SasLogicalInterconnectGroups
+from hpeOneView.resources.networking.sas_logical_interconnect_groups import \
+				SasLogicalInterconnectGroups
 from hpeOneView.resources.search.index_resources import IndexResources
 from hpeOneView.resources.search.labels import Labels
 from hpeOneView.resources.activity.alerts import Alerts
@@ -100,22 +97,31 @@ from hpeOneView.resources.security.certificate_rabbitmq import CertificateRabbit
 from hpeOneView.resources.security.login_details import LoginDetails
 from hpeOneView.resources.security.roles import Roles
 from hpeOneView.resources.security.users import Users
-from hpeOneView.resources.settings.appliance_device_read_community import ApplianceDeviceReadCommunity
-from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import ApplianceDeviceSNMPv1TrapDestinations
-from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
+from hpeOneView.resources.settings.appliance_device_read_community import \
+				ApplianceDeviceReadCommunity
+from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations import \
+				ApplianceDeviceSNMPv1TrapDestinations
+from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import \
+				ApplianceDeviceSNMPv3TrapDestinations
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
 from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
 from hpeOneView.resources.settings.appliance_proxy_configuration import ApplianceProxyConfiguration
 from hpeOneView.resources.settings.appliance_network_interfaces import ApplianceNetworkInterfaces
 from hpeOneView.resources.settings.ha_nodes import HANodes
-from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
+from hpeOneView.resources.settings.appliance_time_and_locale_configuration import \
+				ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
 from hpeOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
 from hpeOneView.resources.security.certificates_server import CertificatesServer
 from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
-from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
+from hpeOneView.resources.settings.appliance_configuration_timeconfig import \
+				ApplianceConfigurationTimeconfig
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
+
+from future import standard_library
+
+standard_library.install_aliases()
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 ONEVIEW_CLIENT_INVALID_I3S_IP = 'Image streamer ip address is missing'
@@ -125,8 +131,8 @@ ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 class OneViewClient(object):
 
     def __init__(self, config):
-        self.__connection = connection(config.get('ip'), config.get('api_version'), config.get('ssl_certificate', False),
-                                       config.get('timeout'))
+        self.__connection = connection(config.get('ip'), config.get('api_version'), \
+                config.get('ssl_certificate', False), config.get('timeout'))
         self.__image_streamer_ip = config.get("image_streamer_ip")
         self.__validate_host()
         self.__set_proxy(config)
@@ -239,8 +245,10 @@ class OneViewClient(object):
         """
         Construct OneViewClient using environment variables.
 
-        Allowed variables: ONEVIEWSDK_IP (required), ONEVIEWSDK_USERNAME (required), ONEVIEWSDK_PASSWORD (required),
-        ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_IMAGE_STREAMER_IP, ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,
+        Allowed variables: ONEVIEWSDK_IP (required), ONEVIEWSDK_USERNAME (required),
+                            ONEVIEWSDK_PASSWORD (required),
+        ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_IMAGE_STREAMER_IP,
+                            ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,
         ONEVIEWSDK_CONNECTION_TIMEOUT and ONEVIEWSDK_PROXY.
 
         Returns:
@@ -261,7 +269,8 @@ class OneViewClient(object):
                       image_streamer_ip=image_streamer_ip,
                       api_version=api_version,
                       ssl_certificate=ssl_certificate,
-                      credentials=dict(userName=username, authLoginDomain=auth_login_domain, password=password, sessionID=sessionID),
+                      credentials=dict(userName=username, authLoginDomain=auth_login_domain, \
+                                    password=password, sessionID=sessionID),
                       proxy=proxy, timeout=timeout)
 
         return cls(config)

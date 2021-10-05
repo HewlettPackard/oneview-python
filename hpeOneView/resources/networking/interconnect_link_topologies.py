@@ -20,12 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class InterconnectLinkTopologies(object):
@@ -45,9 +45,11 @@ class InterconnectLinkTopologies(object):
 
     def get_all(self, start=0, count=-1, filter='', sort=''):
         """
-        Gets a paginated collection of all the interconnect link topologies based on the specified parameters.
+        Gets a paginated collection of all the interconnect link topologies based on the
+        specified parameters.
 
-        Filters can be used in the URL to control the number of interconnect link topologies that are returned.
+        Filters can be used in the URL to control the number of interconnect link
+        topologies that are returned.
         With no filters specified, the API returns all interconnect link toplogies.
 
         Args:

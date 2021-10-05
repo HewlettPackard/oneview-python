@@ -20,13 +20,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
+                                           ensure_resource_client)
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
-                                           ensure_resource_client)
 
 
 class EthernetNetworks(ResourcePatchMixin, Resource):
@@ -71,8 +71,8 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         Args:
             resource (dict): Specifications to create in bulk.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             list: List of created Ethernet Networks.
@@ -88,7 +88,8 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
 
     def get_range(self, name_prefix, vlan_id_range):
         """
-        Gets a list of Ethernet Networks that match the 'given name_prefix' and the 'vlan_id_range'.
+        Gets a list of Ethernet Networks that match the 'given name_prefix' and the
+        'vlan_id_range'.
 
         Examples:
             >>> enet.get_range('Enet_name', '1-2,5')
@@ -101,7 +102,8 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
 
         Args:
             name_prefix: The Ethernet Network prefix
-            vlan_id_range: A combination of values or ranges to be retrieved. For example, '1-10,50,51,500-700'.
+            vlan_id_range: A combination of values or ranges to be retrieved. For example,
+            '1-10,50,51,500-700'.
 
         Returns:
             list: A list of Ethernet Networks.
@@ -160,7 +162,8 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         Gets the URIs of profiles which are using an Ethernet network.
 
         Args:
-            id_or_uri: Can be either the logical interconnect group id or the logical interconnect group uri
+            id_or_uri: Can be either the logical interconnect group id or the logical
+            interconnect group uri
 
         Returns:
             list: URIs of the associated profiles.
@@ -188,8 +191,8 @@ class EthernetNetworks(ResourcePatchMixin, Resource):
         Args:
             resource (dict): Specifications to delete in bulk.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does
+                not abort the operation in OneView; it just stops waiting for its completion.
 
         """
         uri = self.URI + '/bulk-delete'

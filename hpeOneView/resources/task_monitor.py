@@ -15,6 +15,11 @@
 # limitations under the License.
 ###
 
+import logging
+import time
+
+from errno import ECONNABORTED, ETIMEDOUT, ENOEXEC, EINVAL, ENETUNREACH, ECONNRESET,\
+        ENETDOWN, ECONNREFUSED
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -24,12 +29,8 @@ from future import standard_library
 
 standard_library.install_aliases()
 
-
-import logging
-import time
-
-from errno import ECONNABORTED, ETIMEDOUT, ENOEXEC, EINVAL, ENETUNREACH, ECONNRESET, ENETDOWN, ECONNREFUSED
-from hpeOneView.exceptions import HPEOneViewInvalidResource, HPEOneViewTimeout, HPEOneViewTaskError, HPEOneViewUnknownType
+from hpeOneView.exceptions import HPEOneViewInvalidResource, HPEOneViewTimeout, \
+        HPEOneViewTaskError, HPEOneViewUnknownType
 
 TASK_PENDING_STATES = ['New', 'Starting', 'Pending', 'Running', 'Suspended', 'Stopping']
 TASK_ERROR_STATES = ['Error', 'Warning', 'Terminated', 'Killed']
@@ -76,7 +77,8 @@ class TaskMonitor(object):
 
         task = self.get(task)
 
-        logger.debug("Waiting for task. Percentage complete: " + str(task.get('computedPercentComplete')))
+        logger.debug("Waiting for task. Percentage complete: " + \
+                str(task.get('computedPercentComplete')))
         logger.debug("Waiting for task. Task state: " + str(task.get('taskState')))
 
         task_response = self.__get_task_response(task)
@@ -114,11 +116,13 @@ class TaskMonitor(object):
             # the value increases to avoid flooding server with requests
             i = i + 1 if i < 10 else 10
 
-            logger.debug("Waiting for task. Percentage complete: " + str(task.get('computedPercentComplete')))
+            logger.debug("Waiting for task. Percentage complete: " + \
+                    str(task.get('computedPercentComplete')))
             logger.debug("Waiting for task. Task state: " + str(task.get('taskState')))
 
             time.sleep(i)
-            if (timeout != UNLIMITED_TIMEOUT) and (start_time + timeout < self.get_current_seconds()):
+            if (timeout != UNLIMITED_TIMEOUT) and (start_time + timeout < \
+                    self.get_current_seconds()):
                 raise HPEOneViewTimeout(MSG_TIMEOUT % str(timeout))
 
     def __get_task_response(self, task):
@@ -185,7 +189,8 @@ class TaskMonitor(object):
                     return True
 
             except Exception as error:
-                logger.error('; '.join(str(e) for e in error.args) + ' when waiting for the task: ' + str(task))
+                logger.error('; '.join(str(e) for e in error.args) + ' when waiting for the task: '\
+                        + str(task))
 
                 if not connection_failure_control:
                     raise error

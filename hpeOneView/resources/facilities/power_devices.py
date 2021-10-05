@@ -20,12 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class PowerDevices(object):
@@ -39,11 +39,12 @@ class PowerDevices(object):
         self._connection = con
         self._client = ResourceClient(con, self.URI)
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort=''):
+    def get_all(self, start=0, count=-1, _filter='', query='', sort=''):
         """
-        Gets a set of power delivery device resources according to the specified parameters. Filters can be used to get
-        a specific set of power delivery devices. With no filters specified, the API returns a potentially paginated
-        list of all the power delivery device resources subject to start/count/sort parameters.
+        Gets a set of power delivery device resources according to the specified parameters.
+        Filters can be used to get a specific set of power delivery devices. With no filters
+        specified, the API returns a potentially paginated list of all the power delivery device
+        resources subject to start/count/sort parameters.
 
         Args:
             start:
@@ -83,16 +84,16 @@ class PowerDevices(object):
 
     def add(self, information, timeout=-1):
         """
-        Adds a power delivery device resource based upon the attributes specified. Use this method to create a
-        representation of power delivery devices that provide power to other resources but cannot otherwise be
-        discovered by the management appliance.
+        Adds a power delivery device resource based upon the attributes specified. Use this method
+	to create a representation of power delivery devices that provide power to other resources
+        but cannot otherwise be discovered by the management appliance.
 
         Args:
             information:
                 power device information
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+	 the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: added power device.
@@ -101,16 +102,16 @@ class PowerDevices(object):
 
     def remove(self, resource, force=False, timeout=-1):
         """
-        Deletes the set of power-devices according to the specified parameters. A filter is required to identify the
-        set of resources to be deleted.
+        Deletes the set of power-devices according to the specified parameters. A filter is required
+	 to identify the set of resources to be deleted.
 
         Args:
             resource: dict object to remove
             force:
                  If set to true, the operation completes despite any problems with
                  network connectivity or errors on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+	 abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
              bool: operation success
@@ -119,15 +120,16 @@ class PowerDevices(object):
 
     def add_ipdu(self, information, timeout=-1):
         """
-        Add an HP iPDU and bring all components under management by discovery of its management module. Bring the
-        management module under exclusive management by the appliance, configure any management or data collection
-        settings, and create a private set of administrative credentials to enable ongoing communication and management
-        of the iPDU. Use "force" to claim the device, even if claimed by another management appliance
+        Add an HP iPDU and bring all components under management by discovery of its management
+	module. Bring the management module under exclusive management by the appliance, configure
+        any management or data collection settings, and create a private set of administrative
+        credentials to enable ongoing communication and management of the iPDU. Use "force" to
+        claim the device, even if claimed by another management appliance
 
         Args:
             resource: power device information
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+	 abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: added power device.
@@ -137,15 +139,17 @@ class PowerDevices(object):
 
     def update(self, resource, timeout=-1):
         """
-        Updates the resource for the specified {id}. The properties that are omitted (not included as part of the the
-        request body) are reset to their respective default values. The id and uuid properties are required and cannot
+        Updates the resource for the specified {id}. The properties that are omitted (not included
+	 as part of the the
+        request body) are reset to their respective default values. The id and uuid properties are
+	 required and cannot
         be changed.
 
         Args:
             resource (dict): Object to update
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+	 the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated power device
@@ -154,8 +158,8 @@ class PowerDevices(object):
 
     def get_power_state(self, id_or_uri):
         """
-        Gets the power state (on, off or unknown) of the specified power delivery device that supports power control.
-        The device must be an HP Intelligent Outlet.
+        Gets the power state (on, off or unknown) of the specified power delivery device that
+	supports power control. The device must be an HP Intelligent Outlet.
 
         Args:
             id_or_uri:
@@ -169,7 +173,8 @@ class PowerDevices(object):
 
     def update_power_state(self, id_or_uri, power_state):
         """
-        Sets the power state of the specified power delivery device. The device must be an HP Intelligent Outlet.
+        Sets the power state of the specified power delivery device. The device must be an HP
+	 Intelligent Outlet.
 
         Args:
             id_or_uri:
@@ -208,8 +213,8 @@ class PowerDevices(object):
             force:
                  If set to true, the operation completes despite any problems with
                  network connectivity or errors on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+	 abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: operation success
@@ -220,9 +225,10 @@ class PowerDevices(object):
 
     def get_uid_state(self, id_or_uri):
         """
-        Retrieves the unit identification (UID) state (on, off, unknown) of the specified power outlet or extension bar
-        resource. The device must be an HP iPDU component with a locator light (HP Intelligent Load Segment,
-        HP AC Module, HP Intelligent Outlet Bar, or HP Intelligent Outlet).
+        Retrieves the unit identification (UID) state (on, off, unknown) of the specified power
+	outlet or extension bar resource. The device must be an HP iPDU component with a locator
+        light (HP Intelligent Load Segment, HP AC Module, HP Intelligent Outlet Bar, or HP
+        Intelligent Outlet).
 
         Args:
             id_or_uri:
@@ -236,9 +242,9 @@ class PowerDevices(object):
 
     def update_uid_state(self, id_or_uri, refresh_state_data):
         """
-        Sets the unit identification (UID) light state of the specified power delivery device. The device must be an
-        HP iPDU component with a locator light (HP Intelligent Load Segment, HP AC Module, HP Intelligent Outlet Bar,
-        or HP Intelligent Outlet)
+        Sets the unit identification (UID) light state of the specified power delivery device. The
+	device must be an HP iPDU component with a locator light (HP Intelligent Load Segment, HP
+        AC Module, HP Intelligent Outlet Bar, or HP Intelligent Outlet)
 
         Args:
             id_or_uri:
@@ -252,17 +258,18 @@ class PowerDevices(object):
         uri = self._client.build_uri(id_or_uri) + "/uidState"
         return self._client.update(refresh_state_data, uri)
 
-    def get_utilization(self, id_or_uri, fields=None, filter=None, refresh=False, view=None):
+    def get_utilization(self, id_or_uri, fields=None, _filter=None, refresh=False, view=None):
         """
-        Retrieves historical utilization data for the specified metrics and time span. The device must be a component
-        of an HPE iPDU.
+        Retrieves historical utilization data for the specified metrics and time span. The device
+	must be a component of an HPE iPDU.
 
         Args:
             id_or_uri:
                 The power device id or the resource uri
             fields:
-                Name of the metric(s) to be retrieved in the format METRIC[,METRIC]...If unspecified, all metrics
-                supported are returned. Power delivery devices support the following utilization metrics:
+                Name of the metric(s) to be retrieved in the format METRIC[,METRIC]...If
+	 unspecified, all metrics supported are returned. Power delivery devices support the
+         following utilization metrics:
 
                     * AveragePower
                         Average power consumption in Watts during this sample interval.
@@ -275,56 +282,59 @@ class PowerDevices(object):
                 For Example: 'startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z'
 
                 startDate:
-                    Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
-                    determined by the endDate minus 24 hours.
+                    Start date of requested starting time range in ISO 8601 format. If omitted, the
+	 startDate is determined by the endDate minus 24 hours.
                 endDate:
-                    End date of requested starting time range in ISO 8601 format. When omitted the endDate includes the
-                    latest data sample available.
+                    End date of requested starting time range in ISO 8601 format. When omitted the
+	 endDate includes the latest data sample available.
 
-                If an excessive number of samples would otherwise be returned, the results will be segmented. The caller
-                is responsible for comparing the returned sliceStartTime with the requested startTime in the response.
-                If the sliceStartTime is greater than the oldestSampleTime and the requested start time, the caller is
-                responsible for repeating the request with endTime set to sliceStartTime to obtain the next segment.
+                If an excessive number of samples would otherwise be returned, the results will be
+	 segmented. The caller is responsible for comparing the returned sliceStartTime with the
+         requested startTime in the response.
+                If the sliceStartTime is greater than the oldestSampleTime and the requested start
+	 time, the caller is responsible for repeating the request with endTime set to
+         sliceStartTime to obtain the next segment.
                 This process is repeated until the full data set is retrieved.
 
-                If the resource has no data, the UtilizationData is still returned, but will contain no samples and
-                sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime will still be set
-                appropriately (null if no data is available). If the filter does not happen to overlap the data
-                that a resource does have, then the metric history service will return null sample values for any
-                missing samples.
+                If the resource has no data, the UtilizationData is still returned, but will contain
+	 no samples and sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime
+         will still be set appropriately (null if no data is available). If the filter does not
+         happen to overlap the data that a resource does have, then the metric history service will
+         return null sample values for any missing samples.
 
             refresh:
-                Specifies that if necessary, an additional request will be queued to obtain the most recent utilization
-                data from the enclosure. The response will not include any refreshed data. To track the availability
-                of the newly collected data, monitor the TaskResource identified by the refreshTaskUri property in
-                the response. If null, no refresh was queued.
+                Specifies that if necessary, an additional request will be queued to obtain the most
+	 recent utilization data from the enclosure. The response will not include any refreshed
+         data. To track the availability of the newly collected data, monitor the TaskResource
+         identified by the refreshTaskUri property in the response. If null, no refresh was queued.
             view:
-                Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
-                resolution in the returned response. Utilization data is automatically purged to stay within storage
-                space constraints. Supported views are listed below:
+                Specifies the resolution interval length of the samples to be retrieved. This is
+	 reflected in the resolution in the returned response. Utilization data is automatically
+         purged to stay within storage space constraints. Supported views are listed below:
 
                 native (DEFAULT)
-                    Resolution of the samples returned will be one sample for each 5-minute time period. This is the
-                    default view and matches the resolution of the data returned by the enclosure. Samples at this
-                    resolution are retained up to one year.
+                    Resolution of the samples returned will be one sample for each 5-minute time
+	 period. This is the default view and matches the resolution of the data returned by the
+         enclosure. Samples at this resolution are retained up to one year.
                 hour
-                    Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
-                    calculated by averaging the available 5-minute data samples that occurred within the hour, except
-                    for PeakPower which is calculated by reporting the peak observed 5-minute sample value data during
-                    the hour. Samples at this resolution are retained up to three years.
+                    Resolution of the samples returned will be one sample for each 60-minute time
+	 period. Samples are calculated by averaging the available 5-minute data samples that
+         occurred within the hour, except for PeakPower which is calculated by reporting the peak
+         observed 5-minute sample value data during the hour. Samples at this resolution are
+         retained up to three years.
                 day
-                    Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
-                    24-hour period that starts at midnight GMT regardless of the time zone in which the appliance or
-                    client is located. Samples are calculated by averaging the available 5-minute data samples that
-                    occurred during the day, except for PeakPower which is calculated by reporting the peak observed
-                    5-minute sample value data during the day. Samples at this resolution are retained up to three
-                    years.
+                    Resolution of the samples returned will be one sample for each 24-hour time
+	 period. One day is a 24-hour period that starts at midnight GMT regardless of the time
+         zone in which the appliance or client is located. Samples are calculated by averaging the
+         available 5-minute data samples that occurred during the day, except for PeakPower which
+         is calculated by reporting the peak observed 5-minute sample value data during the day.
+         Samples at this resolution are retained up to three years.
 
         Returns:
             dict: Utilization data
         """
 
-        return self._client.get_utilization(id_or_uri, fields, filter, refresh, view)
+        return self._client.get_utilization(id_or_uri, fields, _filter, refresh, view)
 
     def get_by(self, field, value):
         """

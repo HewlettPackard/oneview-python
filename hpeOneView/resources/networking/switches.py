@@ -20,13 +20,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import merge_default_values
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
-from hpeOneView.resources.resource import merge_default_values
 
 
 class Switches(object):
@@ -107,8 +107,8 @@ class Switches(object):
                  If set to true, the operation completes despite any problems with
                  network connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates if the resource was successfully deleted.
@@ -145,8 +145,8 @@ class Switches(object):
 
     def update_ports(self, ports, id_or_uri):
         """
-        Updates the switch ports. Only the ports under the management of OneView and those that are unlinked are
-        supported for update.
+        Updates the switch ports. Only the ports under the management of OneView and those that
+        are unlinked are supported for update.
 
         Note:
             This method is available for API version 300 or later.
@@ -174,8 +174,8 @@ class Switches(object):
             operation: Patch operation
             path: Path
             value: Value
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated resource.

@@ -21,10 +21,10 @@ from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
 
+from hpeOneView.resources.resource import ResourceClient
+
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class LogicalSwitches(object):
@@ -84,8 +84,8 @@ class LogicalSwitches(object):
                  If set to true, the operation completes despite any problems with
                  network connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates if the resource was successfully deleted.
@@ -112,8 +112,8 @@ class LogicalSwitches(object):
         Args:
             resource (dict): Object to create.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stop waiting for its completion.
 
         Returns:
             dict: Created resource.
@@ -128,8 +128,8 @@ class LogicalSwitches(object):
         Args:
             resource (dict): Object to update.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stop waiting for its completion.
 
         Returns:
             dict: Updated resource.
@@ -161,8 +161,8 @@ class LogicalSwitches(object):
             id_or_uri:
                 Can be either the Logical Switch ID or URI
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stop waiting for its completion.
 
         Returns:
             dict: The Logical Switch
@@ -181,8 +181,8 @@ class LogicalSwitches(object):
             operation: Patch operation
             path: Path
             value: Value
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated resource.
@@ -191,5 +191,5 @@ class LogicalSwitches(object):
 
     def __set_default_values(self, resource):
         if 'logicalSwitch' in resource:
-            resource['logicalSwitch'] = self._client.merge_default_values(resource['logicalSwitch'],
-                                                                          self.SWITCH_DEFAULT_VALUES)
+            resource['logicalSwitch'] = self._client.merge_default_values(\
+                    resource['logicalSwitch'], self.SWITCH_DEFAULT_VALUES)

@@ -19,18 +19,17 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+from hpeOneView.resources.resource import Resource, ensure_resource_client
 from future import standard_library
 
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import Resource, ensure_resource_client
-
-
 class ServerHardwareTypes(Resource):
     """
-    The server hardware types resource is a representation/abstraction of a physical server managed by the appliance.
+    The server hardware types resource is a representation/abstraction of a physical server
+    managed by the appliance.
     It defines capabilities and settings that can be used in a server profile.
 
     """
@@ -46,8 +45,8 @@ class ServerHardwareTypes(Resource):
         Args:
             data (dict): Object to update.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
             force: Flag to force the operation.
         Returns:
             dict: Updated server hardware type.

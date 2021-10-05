@@ -20,12 +20,11 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class CertificateRabbitMQ(object):
@@ -37,13 +36,14 @@ class CertificateRabbitMQ(object):
 
     def generate(self, information, timeout=-1):
         """
-        Generates a self signed certificate or an internal CA signed certificate for RabbitMQ clients.
+        Generates a self signed certificate or an internal CA signed certificate for RabbitMQ
+        clients.
 
         Args:
             information (dict): Information to generate the certificate for RabbitMQ clients.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: RabbitMQ certificate generated

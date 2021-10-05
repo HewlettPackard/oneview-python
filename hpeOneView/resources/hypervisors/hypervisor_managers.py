@@ -19,12 +19,13 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
+
+from hpeOneView.resources.resource import Resource
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource
 
 
 class HypervisorManagers(Resource):
@@ -42,8 +43,8 @@ class HypervisorManagers(Resource):
 
     def get_all(self, start=0, count=-1, filter='', sort='', query='', scope_uris=''):
         """
-        Gets a list of Hypervisor Managers based on optional sorting and filtering, and constrained by start and count
-        parameters.
+        Gets a list of Hypervisor Managers based on optional sorting and filtering, and
+        constrained by start and count parameters.
 
         Args:
             start:
@@ -69,4 +70,5 @@ class HypervisorManagers(Resource):
         Returns:
              list: List of Hypervisor Managers
         """
-        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, scope_uris=scope_uris)
+        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query,\
+                scope_uris=scope_uris)

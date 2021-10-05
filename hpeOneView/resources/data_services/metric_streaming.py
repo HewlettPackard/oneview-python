@@ -20,19 +20,20 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
 
 
 class MetricStreaming(object):
     """
     Metrics API client.
 
-    Metrics can be relayed from OneView for managed resources at a specified interval. The following steps can be
-    followed to enable the metric relay in OneView:
+    Metrics can be relayed from OneView for managed resources at a specified interval. The
+    following steps can be followed to enable the metric relay in OneView:
 
         * Get the list of resource types and metrics which can be configured for live streaming
         * Configure the live metric stream in OneView
@@ -52,15 +53,15 @@ class MetricStreaming(object):
         uri (str):
             Canonical URI of the resource.
         category (str):
-            Identifies the category of resource. The supported devices are server-hardware, enclosures, and
-            power-devices.
+            Identifies the category of resource. The supported devices are server-hardware,
+            enclosures, and power-devices.
         created (timestamp):
             Date and time when the resource was created.
         modified (timestamp):
             Date and time when the resource was last modified.
         eTag (str):
-            Entity tag/version ID of the resource, the same value that is returned in the ETag header on a GET of the
-            resource.
+            Entity tag/version ID of the resource, the same value that is returned in the
+            ETag header on a GET of the resource.
         type (str):
             Uniquely identifies the type of the JSON object.
 
@@ -73,7 +74,8 @@ class MetricStreaming(object):
 
     def get_capability(self):
         """
-        Fetches the list of resource types and supported metrics that OneView is capable of relaying.
+        Fetches the list of resource types and supported metrics that OneView is capable of
+        relaying.
 
         Returns:
             list: List of resource types and supported metrics.
@@ -85,19 +87,21 @@ class MetricStreaming(object):
         Fetches the current configuration for which metrics are being relayed.
 
         Returns:
-            list: List of objects which contain frequency, sample interval, and source type for each resource-type.
+            list: List of objects which contain frequency, sample interval, and source type for
+            each resource-type.
 
         """
         return self._client.get(self.URI + "/configuration")
 
     def update_configuration(self, configuration):
         """
-        Updates the metrics configuration with the new values. Overwrites the existing configuration.
+        Updates the metrics configuration with the new values. Overwrites the existing
+        configuration.
 
         Args:
             configuration (dict):
-                Dictionary with a list of objects which contain frequency, sample interval, and source type for each
-                resource-type.
+                Dictionary with a list of objects which contain frequency, sample interval, and
+                source type for each resource-type.
 
         Returns:
             dict: The current configuration for which metrics are being relayed.

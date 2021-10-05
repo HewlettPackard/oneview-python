@@ -19,12 +19,12 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, unavailable_method
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource, ResourcePatchMixin, unavailable_method
 
 
 class SasInterconnects(ResourcePatchMixin, Resource):
@@ -46,33 +46,33 @@ class SasInterconnects(ResourcePatchMixin, Resource):
 
         Args:
             start:
-                 The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-                 first available item.
+                 The first item to return, using 0-based indexing. If not specified, the default
+                 is 0 - start with the first available item.
             count:
-                The number of resources to return. A count of -1 requests all items. The actual number of items in
-                the response may differ from the requested count if the sum of start and count exceeds the total number
-                of items.
+                The number of resources to return. A count of -1 requests all items. The actual
+                number of items in the response may differ from the requested count if the sum of
+                start and count exceeds the total number of items.
             fields:
                  Specifies which fields should be returned in the result set.
             filter (list or str):
-                 A general filter/query string to narrow the list of items returned. The default is no filter; all
-                 resources are returned.
+                 A general filter/query string to narrow the list of items returned. The default
+                 is no filter; all resources are returned.
             query:
-                 A general query string to narrow the list of resources returned. The default is no query (all
-                 resources are returned).
+                 A general query string to narrow the list of resources returned. The default is no
+                 query (all resources are returned).
             sort:
-                The sort order of the returned data set. By default, the sort order is based on create time, with the
-                oldest entry first.
+                The sort order of the returned data set. By default, the sort order is based on
+                create time, with the oldest entry first.
             view:
-                 Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
-                 predefined view. The default view is expand (show all attributes of the resource and all elements of
-                 collections of resources).
+                 Returns a specific subset of the attributes of the resource or collection, by
+                 specifying the name of a predefined view. The default view is expand (show all
+                 attributes of the resource and all elements of collections of resources).
 
         Returns:
             list: A list of SAS interconnects.
         """
-        return self._helper.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view,
-                                    fields=fields)
+        return self._helper.get_all(start=start, count=count, filter=filter, query=query, \
+                sort=sort, view=view, fields=fields)
 
     def refresh_state(self, configuration):
         """

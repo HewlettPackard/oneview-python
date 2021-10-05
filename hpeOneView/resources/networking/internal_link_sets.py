@@ -20,12 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource
 
 
 class InternalLinkSets(Resource):
@@ -45,7 +45,8 @@ class InternalLinkSets(Resource):
     def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields=''):
         """
         Gets a paginated collection of all internal link sets.
-        The collection is based on optional sorting and filtering and is constrained by start and count parameters.
+        The collection is based on optional sorting and filtering and is constrained by start
+        and count parameters.
 
         Args:
             start:
@@ -67,12 +68,12 @@ class InternalLinkSets(Resource):
             fields:
                 Specifies which fields should be returned in the result set.
             view:
-                Return a specific subset of the attributes of the resource or collection, by specifying the name
-                of a predefined view. The default view is expand - show all attributes of the resource and all
-                elements of collections of resources.
+                Return a specific subset of the attributes of the resource or collection, by
+                specifying the name of a predefined view. The default view is expand - show all
+                attributes of the resource and all elements of collections of resources.
 
         Returns:
             list:  Internal Link Set Collection.
         """
-        return self._helper.get_all(start=start, count=count, filter=filter,
+        return self._helper.get_all(start=start, count=count, filter=filter,\
                                     query=query, sort=sort, view=view, fields=fields)

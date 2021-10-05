@@ -19,12 +19,14 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+
+from hpeOneView.resources.resource import ResourceClient
+from hpeOneView import HPEOneViewValueError
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
-from hpeOneView import HPEOneViewValueError
 
 
 class IdPoolsRanges(object):
@@ -44,7 +46,8 @@ class IdPoolsRanges(object):
         elif type == 'vwwn':
             uri = '/rest/id-pools/vwwn/ranges'
         else:
-            raise HPEOneViewValueError("Invalid type: {0}, types allowed: vmac, vsn, vwwn, ".format(type))
+            raise HPEOneViewValueError("Invalid type: {0}, types allowed: vmac, vsn, vwwn, "\
+                    .format(type))
 
         self._client = ResourceClient(con, uri)
 
@@ -54,8 +57,8 @@ class IdPoolsRanges(object):
 
         Args:
             resource (dict): Object to create
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Created range.
@@ -66,8 +69,8 @@ class IdPoolsRanges(object):
         """
         Gets range.
 
-        Using the allocator and collector associated with the range, IDs may be allocated from or collected back to the
-        range.
+        Using the allocator and collector associated with the range, IDs may be allocated from or
+        collected back to the range.
 
         Args:
             id_or_uri: Can be either the range ID or URI.
@@ -84,8 +87,8 @@ class IdPoolsRanges(object):
         Args:
             information (dict): Information to update.
             id_or_uri: ID or URI of range.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated resource.
@@ -106,8 +109,8 @@ class IdPoolsRanges(object):
                 If set to true, the operation completes despite any problems with
                 network connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates if the resource was successfully deleted.
@@ -122,17 +125,18 @@ class IdPoolsRanges(object):
             id_or_uri:
                 ID or URI of range.
             count:
-                 The number of resources to return. A count of -1 requests all items. The actual number of items in
-                 the response may differ from the requested count if the sum of start and count exceed the total number
-                 of items.
+                 The number of resources to return. A count of -1 requests all items. The actual
+                 number of items in the response may differ from the requested count if the sum
+                 of start and count exceed the total number of items.
             start:
-                The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-                first available item.
+                The first item to return, using 0-based indexing. If not specified, the default is
+                0 - start with the first available item.
 
         Returns:
             list: A list with the allocated fragements.
         """
-        uri = self._client.build_uri(id_or_uri) + "/allocated-fragments?start={0}&count={1}".format(start, count)
+        uri = self._client.build_uri(id_or_uri) + "/allocated-fragments?start={0}&count={1}".\
+                format(start, count)
         return self._client.get_collection(uri)
 
     def allocate(self, information, id_or_uri, timeout=-1):
@@ -143,12 +147,13 @@ class IdPoolsRanges(object):
 
         Args:
             information (dict):
-                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
+                Information to update. Can result in system specified IDs or the system reserving
+                user-specified IDs.
             id_or_uri:
                 ID or URI of vSN range.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Allocator
@@ -169,8 +174,8 @@ class IdPoolsRanges(object):
             id_or_uri:
                 ID or URI of range
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Collector containing list of collected IDs successfully collected.
@@ -187,15 +192,16 @@ class IdPoolsRanges(object):
             id_or_uri:
                 ID or URI of range.
             count:
-                 The number of resources to return. A count of -1 requests all items. The actual number of items in
-                 the response may differ from the requested count if the sum of start and count exceed the total number
-                 of items.
+                 The number of resources to return. A count of -1 requests all items. The actual
+                 number of items in the response may differ from the requested count if the sum of
+                 start and count exceed the total number of items.
             start:
-                The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-                first available item.
+                The first item to return, using 0-based indexing. If not specified, the default is
+                0 - start with the first available item.
 
         Returns:
             list: A list with the free fragments.
         """
-        uri = self._client.build_uri(id_or_uri) + "/free-fragments?start={0}&count={1}".format(start, count)
+        uri = self._client.build_uri(id_or_uri) + "/free-fragments?start={0}&count={1}".format\
+                (start, count)
         return self._client.get_collection(uri)

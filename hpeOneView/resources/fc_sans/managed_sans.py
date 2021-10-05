@@ -20,12 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource, ensure_resource_client, unavailable_method
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource, ensure_resource_client, unavailable_method
 
 
 class ManagedSANs(Resource):
@@ -47,9 +47,9 @@ class ManagedSANs(Resource):
                 The first item to return, using 0-based indexing.
                 If not specified, the default is 0 - start with the first available item.
             count:
-                The number of resources to return. A count of -1 requests all items. The actual number of items in
-                the response may differ from the requested count if the sum of start and count exceed the total number
-                of items.
+                The number of resources to return. A count of -1 requests all items. The actual
+                number of items in the response may differ from the requested count if the sum ofy
+                start and count exceed the total number of items.
             query:
                 A general query string to narrow the list of resources returned.
                 The default is no query - all resources are returned.
@@ -90,7 +90,7 @@ class ManagedSANs(Resource):
         unavailable_method()
 
     @ensure_resource_client
-    def get_endpoints(self, start=0, count=-1, filter='', sort=''):
+    def get_endpoints(self, start=0, count=-1, _filter='', sort=''):
         """
         Gets a list of endpoints in a SAN.
 
@@ -113,7 +113,7 @@ class ManagedSANs(Resource):
             list: A list of endpoints.
         """
         uri = "{}/endpoints/".format(self.data["uri"])
-        return self._helper.get_all(start, count, filter=filter, sort=sort, uri=uri)
+        return self._helper.get_all(start, count, filter=_filter, sort=sort, uri=uri)
 
     @ensure_resource_client
     def create_endpoints_csv_file(self, timeout=-1):
@@ -122,8 +122,8 @@ class ManagedSANs(Resource):
 
         Args:
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stops waiting for its completion.
 
         Returns:
             dict: Endpoint CSV File Response.
@@ -138,8 +138,8 @@ class ManagedSANs(Resource):
 
         Args:
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stops waiting for its completion.
 
         Returns:
             list: A list of FCIssueResponse dict.
@@ -149,7 +149,8 @@ class ManagedSANs(Resource):
 
     def get_wwn(self, wwn):
         """
-        Retrieves a list of associations between provided WWNs and the SANs (if any) on which they reside.
+        Retrieves a list of associations between provided WWNs and the SANs (if any) on which they
+        reside.
 
         Note:
             This method is available for API version 300 or later.

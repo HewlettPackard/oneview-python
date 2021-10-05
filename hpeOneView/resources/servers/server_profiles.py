@@ -15,19 +15,20 @@
 # limitations under the License.
 ###
 
+from copy import deepcopy
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
+                                           ResourceSchemaMixin, ensure_resource_client)
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-from copy import deepcopy
-
-from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
-                                           ResourceSchemaMixin, ensure_resource_client)
 
 
 class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
@@ -57,8 +58,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
         Args:
             data: Additional fields can be passed to create the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
             force: Flag to force the operation
         Returns:
             Created resource.
@@ -82,8 +83,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
         Args:
             data: Data to update the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
             force: Force the update operation.
 
         Returns:
@@ -106,8 +107,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
     def delete_all(self, filter, timeout=-1, force=False):
         """
         Deletes all Server Profile objects from the appliance that match the provided filter.
-        Filters are supported only for the following profile attributes:  name, description, serialnumber, uuid,
-        mactype, wwntype, serialnumbertype, status, and state.
+        Filters are supported only for the following profile attributes:  name, description,
+        serialnumber, uuid, mactype, wwntype, serialnumbertype, status, and state.
 
 
         Examples:
@@ -117,15 +118,15 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
             >>> server_profile_client.delete_all(filter="name matches'%25Database%25'")
             # Remove all profiles that have the word "Database" in its name
 
-        The filter function here operates similarly to the function defined for GET Server Profiles. It allows
-        for both actual and partial matches of data in the profile. Any requests that use a wildcard match
-        must include a %25 as illustrated in the previous example. This is how you encode that character for
-        transmission to the appliance.
+        The filter function here operates similarly to the function defined for GET Server Profiles.
+        It allows for both actual and partial matches of data in the profile. Any requests that use
+        a wildcard match must include a %25 as illustrated in the previous example. This is how you
+        encode that character for transmission to the appliance.
 
         Args:
             filter (dict): Object to delete.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates whether the server profile was successfully deleted.
@@ -146,7 +147,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
     def get_profile_ports(self, **kwargs):
         """
-        Retrieves the port model associated with a server or server hardware type and enclosure group.
+        Retrieves the port model associated with a server or server hardware type and enclosure
+        group.
 
         Args:
             enclosureGroupUri (str):
@@ -177,12 +179,13 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
     def get_transformation(self, **kwargs):
         """
 
-        Transforms an existing profile by supplying a new server hardware type or enclosure group or both.
-        A profile will be returned with a new configuration based on the capabilities of the supplied server hardware
-        type or enclosure group or both. The port assignment for all deployed connections will be set to Auto.
-        Re-selection of the server hardware may also be required. The new profile can subsequently be used for updating
-        the server profile, but passing validation is not guaranteed. Any incompatibilities will be flagged when the
-        transformed server profile is submitted.
+        Transforms an existing profile by supplying a new server hardware type or enclosure
+        group or both. A profile will be returned with a new configuration based on the
+        capabilities of the supplied server hardware type or enclosure group or both. The port
+        assignment for all deployed connections will be set to Auto. Re-selection of the server
+        hardware may also be required. The new profile can subsequently be used for updating
+        the server profile, but passing validation is not guaranteed. Any incompatibilities
+        will be flagged when the transformed server profile is submitted.
 
         Args:
             enclosureGroupUri (str):
@@ -202,25 +205,27 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
     def get_available_networks(self, **kwargs):
         """
-        Retrieves the list of Ethernet networks, Fiber Channel networks, and network sets that are available to a
-        server profile, along with their respective ports.
+        Retrieves the list of Ethernet networks, Fiber Channel networks, and network sets that
+        are available to a server profile, along with their respective ports.
 
         Args:
            enclosureGroupUri (str): The URI of the enclosure group associated with the resource.
-           functionType (str): The FunctionType (Ethernet or FibreChannel) to filter the list of networks returned.
-           serverHardwareTypeUri (str): The URI of the server hardware type associated with the resource.
+           functionType (str): The FunctionType (Ethernet or FibreChannel) to filter the list
+           of networks returned.
+           serverHardwareTypeUri (str): The URI of the server hardware type associated with the
+           resource.
            serverHardwareUri (str): The URI of the server hardware associated with the resource.
-           view (str): Returns a specific subset of the attributes of the resource or collection, by
-               specifying the name of a predefined view. The default view is expand (show all attributes
-               of the resource and all elements of collections of resources).
+           view (str): Returns a specific subset of the attributes of the resource or collection,
+           by specifying the name of a predefined view. The default view is expand (show all
+           attributes of the resource and all elements of collections of resources).
 
                Values:
                    Ethernet
                        Specifies that the connection is to an Ethernet network or a network set.
                    FibreChannel
                        Specifies that the connection is to a Fibre Channel network.
-           profileUri (str): If the URI of the server profile is provided the list of available networks will
-               include only networks that share a scope with the server profile.
+           profileUri (str): If the URI of the server profile is provided the list of available
+           networks will include only networks that share a scope with the server profile.
            scopeUris (str): An expression to restrict the resources returned according to the scopes
                to which they are assigned
 
@@ -236,7 +241,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
         Args:
            enclosureGroupUri (str): The URI of the enclosure group associated with the resource.
-           serverHardwareTypeUri (str): The URI of the server hardware type associated with the resource.
+           serverHardwareTypeUri (str): The URI of the server hardware type associated with the
+           resource.
            profileUri (str): The URI of the server profile resource.
            scopeUris (str): An expression to restrict the resources returned according to
                the scopes to which they are assigned.
@@ -250,8 +256,8 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
     def get_available_storage_system(self, **kwargs):
         """
-        Retrieves a specific storage system and its associated volumes available to the server profile based
-        on the given server hardware type and enclosure group.
+        Retrieves a specific storage system and its associated volumes available to the server
+        profile based on the given server hardware type and enclosure group.
 
         Args:
            enclosureGroupUri (str):
@@ -269,23 +275,23 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
     def get_available_storage_systems(self, start=0, count=-1, filter='', sort='', **kwargs):
         """
-        Retrieves the list of the storage systems and their associated volumes available to the server profile
-        based on the given server hardware type and enclosure group.
+        Retrieves the list of the storage systems and their associated volumes available to
+        the server profile based on the given server hardware type and enclosure group.
 
         Args:
            count:
-               The number of resources to return. A count of -1 requests all items. The actual number of items in
-               the response may differ from the requested count if the sum of start and count exceed the total
-               number of items.
+               The number of resources to return. A count of -1 requests all items. The actual
+               number of items in the response may differ from the requested count if the sum of
+               start and count exceed the total number of items.
            start:
-               The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-               first available item.
+               The first item to return, using 0-based indexing. If not specified, the default is 0
+               - start with the first available item.
            filter (list or str):
-               A general filter/query string to narrow the list of items returned. The default is no filter; all
-               resources are returned.
+               A general filter/query string to narrow the list of items returned. The default is
+               no filter; all resources are returned.
            sort:
-               The sort order of the returned data set. By default, the sort order is based on create time, with the
-               oldest entry first.
+               The sort order of the returned data set. By default, the sort order is based on
+               create time, with the oldest entry first.
            enclosureGroupUri (str):
                The URI of the enclosure group associated with the resource.
            serverHardwareTypeUri (str):
@@ -299,12 +305,13 @@ class ServerProfiles(ResourcePatchMixin, ResourceSchemaMixin, Resource):
 
     def get_available_targets(self, **kwargs):
         """
-        Retrieves a list of the target servers and empty device bays that are available for assignment to the server
-        profile.
+        Retrieves a list of the target servers and empty device bays that are available for
+        assignment to the server profile.
 
         Args:
            enclosureGroupUri (str): The URI of the enclosure group associated with the resource.
-           serverHardwareTypeUri (str): The URI of the server hardware type associated with the resource.
+           serverHardwareTypeUri (str): The URI of the server hardware type associated with the
+           resource.
            profileUri (str): The URI of the server profile associated with the resource.
            scopeUris (str): An expression to restrict the resources returned according to
                the scopes to which they are assigned.

@@ -20,12 +20,11 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class Endpoints(object):
@@ -48,9 +47,9 @@ class Endpoints(object):
                 The first item to return, using 0-based indexing.
                 If not specified, the default is 0 - start with the first available item.
             count:
-                The number of resources to return. A count of -1 requests all items. The actual number of items in
-                the response may differ from the requested count if the sum of start and count exceed the total number
-                of items.
+                The number of resources to return. A count of -1 requests all items. The actual
+                number of items in the response may differ from the requested count if the sum of
+                start and count exceed the total number of items.
             query:
                 A general query string to narrow the list of resources returned.
                 The default is no query - all resources are returned.

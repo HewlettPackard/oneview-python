@@ -5,11 +5,19 @@ HPE OneView Library
 
 hpeOneView is a library for interfacing with HPE OneView Management Appliance.
 """
+
+import sys
+import warnings
+import argparse
+
 from __future__ import unicode_literals
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
+
+from hpeOneView.connection import *
+from hpeOneView.exceptions import *
 
 standard_library.install_aliases()
 
@@ -34,24 +42,17 @@ __license__ = 'Apache'
 # limitations under the License.
 ###
 
-
-import sys
-import warnings
-
 PYTHON_VERSION = sys.version_info[:3]
 PY2 = (PYTHON_VERSION[0] == 2)
 if PY2:
     if PYTHON_VERSION < (2, 7, 9):
-        warning_message = 'Running unsupported Python version: %s, unexpected errors might occur.'
-        warning_message += ' Use of Python v2.7.9+ is advised.'
-        warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
+        WARNING_MESSAGE = 'Running unsupported Python version: %s, unexpected errors might occur.'
+        WARNING_MESSAGE += ' Use of Python v2.7.9+ is advised.'
+        warnings.warn(WARNING_MESSAGE % '.'.join(map(str, PYTHON_VERSION)), Warning)
 elif PYTHON_VERSION < (3, 4):
-        warning_message = 'Running unsupported Python version> %s, unexpected errors might occur.'
-        warning_message += ' Use of Python v3.4+ is advised.'
-        warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
-
-from hpeOneView.connection import *
-from hpeOneView.exceptions import *
+    WARNING_MESSAGE = 'Running unsupported Python version> %s, unexpected errors might occur.'
+    WARNING_MESSAGE += ' Use of Python v3.4+ is advised.'
+    warnings.warn(WARNING_MESSAGE % '.'.join(map(str, PYTHON_VERSION)), Warning)
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 
@@ -83,8 +84,6 @@ def main():
 
 
 if __name__ == '__main__':
-    import sys
-    import argparse
 
     sys.exit(main())
 

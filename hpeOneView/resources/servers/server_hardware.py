@@ -20,13 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import (Resource, ResourceUtilizationMixin,
+                                           ResourcePatchMixin, ensure_resource_client)
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import (Resource, ResourceUtilizationMixin,
-                                           ResourcePatchMixin, ensure_resource_client)
 
 
 class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
@@ -43,16 +42,16 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
     def add(self, information, timeout=-1):
         """
-        Adds a rack-mount server for management by the appliance. This API initiates the asynchronous addition of
-        supported server models.
+        Adds a rack-mount server for management by the appliance. This API initiates the
+        asynchronous addition of supported server models.
 
         Note: Servers in an enclosure are added by adding the enclosure resource. This is
         only supported on appliances that support rack-mounted servers.
 
         Args:
             information (dict): Object to create
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Created rack-mount server.
@@ -61,8 +60,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
     def add_multiple_servers(self, information, timeout=-1):
         """
-        Adds multiple rack-mount servers for management by the appliance. This API initiates the asynchronous addition of
-        supported server models.
+        Adds multiple rack-mount servers for management by the appliance. This API initiates the
+        asynchronous addition of supported server models.
 
         Note: Servers in an enclosure are added by adding the enclosure resource. This is
         only supported on appliances that support rack-mounted servers.
@@ -71,8 +70,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         Args:
             information (dict): Objects to create
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Created rack-mount servers.
@@ -90,8 +89,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
                 If set to true, the operation completes despite any problems with
                 network connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates whether the resource was successfully removed.
@@ -112,8 +111,9 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_environmental_configuration(self):
         """
-        Gets the settings that describe the environmental configuration (supported feature set, calibrated minimum and
-        maximum power, location and dimensions, etc.) of the server hardware resource.
+        Gets the settings that describe the environmental configuration (supported feature
+        set, calibrated minimum and maximum power, location and dimensions, etc.) of the
+        server hardware resource.
 
         Returns:
             dict: Environmental configuration settings.
@@ -128,8 +128,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         Args:
             configuration (dict): Environmental configuration.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Environmental configuration settings.
@@ -140,9 +140,9 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_ilo_sso_url(self, ip=None):
         """
-        Retrieves the URL to launch a Single Sign-On (SSO) session for the iLO web interface. If the server hardware is
-        unsupported, the resulting URL will not use SSO and the iLO web interface will prompt for credentials.
-        This is not supported on G7/iLO3 or earlier servers.
+        Retrieves the URL to launch a Single Sign-On (SSO) session for the iLO web interface. If
+        the server hardware is unsupported, the resulting URL will not use SSO and the iLO web
+        interface will prompt for credentials. This is not supported on G7/iLO3 or earlier servers.
 
         Args:
             ip: IP address or host name of the server's iLO management processor
@@ -159,8 +159,9 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
     def get_all_firmwares(self, filter='', start=0, count=-1, query='', sort=''):
         """
-        Gets a list of firmware inventory across all servers. To filter the returned data, specify a filter
-        expression to select a particular server model, component name, and/or component firmware version.
+        Gets a list of firmware inventory across all servers. To filter the returned data, specify
+        a filter expression to select a particular server model, component name, and/or component
+        firmware version.
 
         Note:
             This method is available for API version 300 or later.
@@ -177,8 +178,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
                 A general filter/query string to narrow the list of items returned. The
                 default is no filter; all resources are returned.
             query:
-                A general query string to narrow the list of resources returned. The default is no query; all resources
-                are returned.
+                A general query string to narrow the list of resources returned. The default is
+                no query; all resources are returned.
             sort:
                 The sort order of the returned data set. By default, the sort order is based
                 on create time with the oldest entry first.
@@ -206,9 +207,11 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_java_remote_console_url(self, ip=None):
         """
-        Generates a Single Sign-On (SSO) session for the iLO Java Applet console and returns the URL to launch it.
-        If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO and the iLO Java Applet
-        will prompt for credentials. This is not supported on G7/iLO3 or earlier servers.
+        Generates a Single Sign-On (SSO) session for the iLO Java Applet console and returns the
+        URL to launch it.
+        If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO
+        and the iLO Java Applet will prompt for credentials. This is not supported on G7/iLO3 or
+        earlier servers.
 
         Args:
             ip: IP address or host name of the server's iLO management processor
@@ -226,13 +229,13 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def update_mp_firware_version(self, timeout=-1):
         """
-        Updates the iLO firmware on a physical server to a minimum ILO firmware version required by OneView to
-        manage the server.
+        Updates the iLO firmware on a physical server to a minimum ILO firmware version required
+        by OneView to manage the server.
 
         Args:
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
         Returns:
             Resource
         """
@@ -246,8 +249,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         Args:
             configuration (dict): Power state configuration.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Resource
@@ -262,8 +265,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
 
         Args:
             configuration: Refresh state configuration.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Resource
@@ -274,10 +277,11 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_remote_console_url(self, ip=None, consoleType=None):
         """
-        Generates a Single Sign-On (SSO) session for the iLO Integrated Remote Console Application (IRC) and returns the
-        URL to launch it. If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO and the
-        IRC application will prompt for credentials. Use of this URL requires a previous installation of the iLO IRC and
-        is supported only on Windows clients.
+        Generates a Single Sign-On (SSO) session for the iLO Integrated Remote Console Application
+        (IRC) and returns the URL to launch it. If the server hardware is unmanaged or unsupported,
+        the resulting URL will not use SSO and the IRC application will prompt for credentials.
+        Use of this URL requires a previous installation of the iLO IRC and is supported only on
+        Windows clients.
 
         Args:
             ip: IP address or host name of the server's iLO management processor
@@ -299,8 +303,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_physical_server_hardware(self):
         """
-        Information describing an 'SDX' partition including a list of physical server blades represented by a server
-        hardware. Used with SDX enclosures only.
+        Information describing an 'SDX' partition including a list of physical server blades
+        represented by a server hardware. Used with SDX enclosures only.
 
         Returns:
             Resource
@@ -311,8 +315,8 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
     @ensure_resource_client
     def get_local_storage(self, ip=None):
         """
-        Gets the updated version 2 local storage resource for the server, including storage controllers,
-        drives, and volumes.
+        Gets the updated version 2 local storage resource for the server, including storage
+        controllers, drives, and volumes.
 
         Args:
             ip: IP address or host name of the server's iLO management processor
