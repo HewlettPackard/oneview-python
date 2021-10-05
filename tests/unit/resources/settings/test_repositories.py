@@ -93,4 +93,4 @@ class RepositoriesTest(unittest.TestCase):
 
         self._repositories.patch('/rest/fake/re123', 'replace', '/repositoryName', ['/rest/fake/repository123'], 1)
         mock_patch.assert_called_once_with('/rest/fake/re123', 'replace', '/repositoryName',
-                                          ['/rest/fake/repository123'], 1)
+                                           ['/rest/fake/repository123'], 1)
