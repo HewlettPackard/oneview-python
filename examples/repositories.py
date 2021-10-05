@@ -30,12 +30,12 @@ config = {
 }
 
 options = {
-     "repositoryName":"Repo_Name",
-     "userName":"Admin",
-     "password":"*******",
-     "repositoryURI":"https://172.20.3.65/repositoryFolder",
-     "repositoryType":"FirmwareExternalRepo",
-     "base64data":"{certificate of the repository web server}"
+     "repositoryName": "Repo_Name",
+     "userName": "Admin",
+     "password": "*******",
+     "repositoryURI": "https://172.20.3.65/repositoryFolder",
+     "repositoryType": "FirmwareExternalRepo",
+     "base64data": "{certificate of the repository web server}"
 }
 
 # Try load config from a file (if there is a config file)

@@ -45,9 +45,9 @@ class RepositoriesTest(unittest.TestCase):
             "repositoryName": "Repo_Name",
             "userName": "Admin",
             "password": "*******",
-            "repositoryURI":" https://172.20.3.65/repositoryFolder",
+            "repositoryURI": "https://172.20.3.65/repositoryFolder",
             "repositoryType": "FirmwareExternalRepo",
-            "base64data": ""  
+            "base64data": ""
         }
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
@@ -92,5 +92,5 @@ class RepositoriesTest(unittest.TestCase):
         mock_patch.return_value = {}
 
         self._repositories.patch('/rest/fake/re123', 'replace', '/repositoryName', ['/rest/fake/repository123'], 1)
-        mock_patch.assert_called_once_with('/rest/fake/re123', 'replace', '/repositoryName', 
-                                            ['/rest/fake/repository123'], 1)
+        mock_patch.assert_called_once_with('/rest/fake/re123', 'replace', '/repositoryName',
+                                          ['/rest/fake/repository123'], 1)
