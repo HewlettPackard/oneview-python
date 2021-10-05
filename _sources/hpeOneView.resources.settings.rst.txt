@@ -132,6 +132,14 @@ hpeOneView.resources.settings.licenses module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.settings.repositories module
+-------------------------------------------------
+
+.. automodule:: hpeOneView.resources.settings.repositories
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.settings.restores module
 ---------------------------------------------
 
