@@ -44,31 +44,15 @@ class RepositoriesTest(unittest.TestCase):
         resource = {
             "repositoryName": "Repo_Name",
             "userName": "Admin",
-            "password": "*******",
+            "password": "password",
             "repositoryURI": "https://172.20.3.65/repositoryFolder",
-            "repositoryType": "FirmwareExternalRepo",
-            "base64data": ""
+            "repositoryType": "FirmwareExternalRepo"
         }
         resource_rest_call = resource.copy()
         mock_create.return_value = {}
 
         self._repositories.create(resource, 30)
         mock_create.assert_called_once_with(resource_rest_call, 30)
-
-    @mock.patch.object(Resource, 'update')
-    def test_update_should_use_given_values(self, mock_update):
-        resource = {
-            "repositoryName": "Repo_Name",
-            "userName": "Admin",
-            "password": "*******",
-            "repositoryURI": "https://172.20.3.65/repositoryFolder",
-            "base64data": ""
-        }
-        resource_rest_call = resource.copy()
-        mock_update.return_value = {}
-
-        self._repositories.update(resource, 60)
-        mock_update.assert_called_once_with(resource_rest_call, 60)
 
     @mock.patch.object(Resource, 'delete')
     def test_delete_called_once(self, mock_delete):
