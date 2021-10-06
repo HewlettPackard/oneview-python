@@ -30,11 +30,11 @@ config = {
 }
 
 options = {
-     "repositoryName": "Repo_Name",
-     "userName": "<repository_username>",
-     "password": "<repository_password>",
-     "repositoryURI": "<repositoryURI>",
-     "repositoryType": "FirmwareExternalRepo"
+    "repositoryName": "Repo_Name",
+    "userName": "<repository_username>",
+    "password": "<repository_password>",
+    "repositoryURI": "<repositoryURI>",
+    "repositoryType": "FirmwareExternalRepo"
 }
 
 # Try load config from a file (if there is a config file)
