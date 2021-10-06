@@ -53,21 +53,21 @@ _CLIENT = OneViewClient(CONFIG)
 
 # Getting the first 5 EVENTS
 print("\nGetting the first 5 EVENTS:")
-EVENTS = _CLIENT.EVENTS.get_all(0, 5)
+EVENTS = _CLIENT.events.get_all(0, 5)
 for EVENT in EVENTS:
     print("EVENTTypeID: '%s' | description: %s " % (EVENT['description'], EVENT['EVENTTypeID']))
 
 # Create an Event
-EVENT = _CLIENT.EVENTS.create(OPTIONS)
+EVENT = _CLIENT.events.create(OPTIONS)
 print("\nCreated EVENT successfully.\n  uri = '%s'" % (EVENT['uri']))
 
 # Get by Uri
 print("\nFind uri == %s" % ('/rest/EVENTS/24'))
-EVENT_BY_URI = _CLIENT.EVENTS.get('/rest/EVENTS/24')
+EVENT_BY_URI = _CLIENT.events.get('/rest/EVENTS/24')
 print("uri: '%s' | EVENTTypeID: '%s' \n" % (EVENT_BY_URI['uri'], EVENT_BY_URI['EVENTTypeID']))
 
 # Filter by state
 print("\nGet all EVENTS filtering by EVENTTypeID")
-EVENTS = _CLIENT.EVENTS.get_all(filter="\"EVENTTypeID='StatusPoll.EnclosureStatus'\"", count=10)
+EVENTS = _CLIENT.events.get_all(filter="\"EVENTTypeID='StatusPoll.EnclosureStatus'\"", count=10)
 for EVENT in EVENTS:
     print("uri: '%s' | EVENTTypeID: '%s'" % (EVENT['uri'], EVENT['EVENTTypeID']))

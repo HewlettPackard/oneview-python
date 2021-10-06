@@ -150,5 +150,5 @@ SERVER_PROFILE_CREATION_INFO = {
 
 # Create a server profile
 print("Create a Server Profile with associated OS Deployment")
-basic_profile = oneview_client.server_profiles.create(SERVER_PROFILE_CREATION_INFO)
-pprint(basic_profile)
+BASIC_PROFILE = oneview_client.server_profiles.create(SERVER_PROFILE_CREATION_INFO)
+pprint(BASIC_PROFILE)

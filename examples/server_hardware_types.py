@@ -31,28 +31,28 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-SERVER_HARDWARE_TYPEs = oneview_client.SERVER_HARDWARE_TYPEs
+SERVER_HARDWARE_TYPES = oneview_client.SERVER_HARDWARE_TYPES
 
 # Get the first 10 records, sorting by name descending
 print("\nGet the first 10 server hardware types, sorting by name descending, filtering by name")
-SERVER_HARDWARE_TYPES_ALL = SERVER_HARDWARE_TYPEs.get_all(0, 10, sort='name:descending')
+SERVER_HARDWARE_TYPES_ALL = SERVER_HARDWARE_TYPES.get_all(0, 10, sort='name:descending')
 for sht in SERVER_HARDWARE_TYPES_ALL:
     print(" - {}".format(sht['name']))
 
 # Get all, with defaults
 print("\nGet all server hardware types")
-SERVER_HARDWARE_TYPES_ALL = SERVER_HARDWARE_TYPEs.get_all()
+SERVER_HARDWARE_TYPES_ALL = SERVER_HARDWARE_TYPES.get_all()
 for sht in SERVER_HARDWARE_TYPES_ALL:
     print(" - {}".format(sht['name']))
 
 # Get by uri
 print("\nGet a Server Hardware Type by uri")
-SERVER_HARDWARE_TYPE_BY_URI = SERVER_HARDWARE_TYPEs.get_by_uri(SERVER_HARDWARE_TYPES_ALL[0]["uri"])
+SERVER_HARDWARE_TYPE_BY_URI = SERVER_HARDWARE_TYPES.get_by_uri(SERVER_HARDWARE_TYPES_ALL[0]["uri"])
 pprint(SERVER_HARDWARE_TYPE_BY_URI.data, depth=2)
 
 # Get by name and UPDATE
 print("\nGet a Server Hardware Type by name")
-SERVER_HARDWARE_TYPE = SERVER_HARDWARE_TYPEs.get_by_name("SY 480 Gen9 2")
+SERVER_HARDWARE_TYPE = SERVER_HARDWARE_TYPES.get_by_name("SY 480 Gen9 2")
 pprint(SERVER_HARDWARE_TYPE.data, depth=2)
 UPDATE = {
     'description': "Updated Description"

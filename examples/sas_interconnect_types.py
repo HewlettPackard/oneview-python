@@ -32,22 +32,22 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-sas_interconnect_types = oneview_client.sas_interconnect_types
+SAS_INTERCONNECT_TYPES = oneview_client.SAS_INTERCONNECT_TYPES
 
 # Get all
 print("\nGet all SAS Interconnect Types")
-SAS_INTERCONNECT_TYPES_ALL = sas_interconnect_types.get_all()
+SAS_INTERCONNECT_TYPES_ALL = SAS_INTERCONNECT_TYPES.get_all()
 pprint(SAS_INTERCONNECT_TYPES_ALL)
 
 if SAS_INTERCONNECT_TYPES_ALL:
     # Get by URI
     print("\nGet a SAS Interconnect Type by URI")
     URI = SAS_INTERCONNECT_TYPES_ALL[0]['URI']
-    SAS_INTERCONNECT_TYPE_BY_URI = sas_interconnect_types.get_by_URI(URI)
+    SAS_INTERCONNECT_TYPE_BY_URI = SAS_INTERCONNECT_TYPES.get_by_URI(URI)
     pprint(SAS_INTERCONNECT_TYPE_BY_URI.data)
 
     # Get by NAME
     print("\nGet a SAS Interconnect Type by NAME")
     NAME = SAS_INTERCONNECT_TYPES_ALL[0]['NAME']
-    SAS_INTERCONNECT_TYPE_BY_NAME = sas_interconnect_types.get_by_NAME(NAME)
+    SAS_INTERCONNECT_TYPE_BY_NAME = SAS_INTERCONNECT_TYPES.get_by_NAME(NAME)
     pprint(SAS_INTERCONNECT_TYPE_BY_NAME.data)

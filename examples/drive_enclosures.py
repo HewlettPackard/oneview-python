@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
@@ -31,42 +31,43 @@ CONFIG = {
 
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
-oneview_client = OneViewClient(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 print("Get all drive enclosures")
-drive_enclosures = oneview_client.drive_enclosures.get_all()
-pprint(drive_enclosures)
+DRIVE_ENCLOSURES = ONEVIEW_CLIENT.drive_enclosures.get_all()
+pprint(DRIVE_ENCLOSURES)
 
-if drive_enclosures:
+if DRIVE_ENCLOSURES:
 
-    FIRST_DRIVE_ENCLOSURE = drive_enclosures[0]
+    FIRST_DRIVE_ENCLOSURE = DRIVE_ENCLOSURES[0]
     DRIVE_ENCLOSURE_URI = FIRST_DRIVE_ENCLOSURE["uri"]
 
     print("\nGet the drive enclosure by URI")
-    drive_enclosure_by_uri = oneview_client.drive_enclosures.get(DRIVE_ENCLOSURE_URI)
-    pprint(drive_enclosure_by_uri)
+    DRIVE_ENCLOSURE_BY_URI = ONEVIEW_CLIENT.drive_enclosures.get(DRIVE_ENCLOSURE_URI)
+    pprint(DRIVE_ENCLOSURE_BY_URI)
 
     PRODUCT_NAME = FIRST_DRIVE_ENCLOSURE['productName']
 
     print("\nGet the drive enclosure by product name")
-    drive_enclosure_by_PRODUCT_NAME = oneview_client.drive_enclosures.get_by('productName',
+    DRIVE_ENCLOSURE_BY_PRODUCT_NAME = ONEVIEW_CLIENT.drive_enclosures.get_by('productName',\
 	 PRODUCT_NAME)
-    pprint(drive_enclosure_by_PRODUCT_NAME)
+    pprint(DRIVE_ENCLOSURE_BY_PRODUCT_NAME)
 
     print("\nGet the drive enclosure port map")
-    port_map = oneview_client.drive_enclosures.get_port_map(DRIVE_ENCLOSURE_URI)
-    pprint(port_map)
+    PORT_MAP = ONEVIEW_CLIENT.drive_enclosures.get_port_map(DRIVE_ENCLOSURE_URI)
+    pprint(PORT_MAP)
 
     print("\nRefresh the drive enclosure")
     REFRESH_CONFIG = dict(refreshState="RefreshPending")
-    refreshed_drive_enclosure = oneview_client.drive_enclosures.refresh_state(DRIVE_ENCLOSURE_URI, REFRESH_CONFIG)
-    pprint(refreshed_drive_enclosure)
+    REFRESHED_DRIVE_ENCLOSURE = ONEVIEW_CLIENT.drive_enclosures.refresh_state(DRIVE_ENCLOSURE_URI,\
+	 REFRESH_CONFIG)
+    pprint(REFRESHED_DRIVE_ENCLOSURE)
 
     print("\nPower off a drive enclosure")
-    drive_enclosure_powered_off = oneview_client.drive_enclosures.patch(
+    DRIVE_ENCLOSURE_POWERED_OFF = ONEVIEW_CLIENT.drive_enclosures.patch(
         id_or_uri=DRIVE_ENCLOSURE_URI,
         operation="replace",
         path="/powerState",
         value="Off"
     )
-    pprint(drive_enclosure_powered_off)
+    pprint(DRIVE_ENCLOSURE_POWERED_OFF)

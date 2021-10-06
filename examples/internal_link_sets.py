@@ -30,16 +30,16 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-internal_link_sets = oneview_client.internal_link_sets
+INTERNAL_LINK_SETS = oneview_client.INTERNAL_LINK_SETS
 
 # Get all, with defaults
 print("Get all internal-link-sets")
-INTERNAL_LINKS = internal_link_sets.get_all()
+INTERNAL_LINKS = INTERNAL_LINK_SETS.get_all()
 pprint(INTERNAL_LINKS)
 
 INTERNAL_LINK_SET_URI = INTERNAL_LINKS[0]['uri']
 INTERNAL_LINK_SET_NAME = INTERNAL_LINKS[0]['name']
 
 # Find by name
-INTERNAL_LINKS_BY_NAME = internal_link_sets.get_by_name(INTERNAL_LINKS[0]["name"])
+INTERNAL_LINKS_BY_NAME = INTERNAL_LINK_SETS.get_by_name(INTERNAL_LINKS[0]["name"])
 print("\nFound the internal-link-sets by name: '{}':".format(INTERNAL_LINKS_BY_NAME.data["name"]))

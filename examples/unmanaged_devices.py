@@ -17,7 +17,7 @@
 
 from pprint import pprint
 
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 CONFIG = {
@@ -40,34 +40,35 @@ UNMANAGED_DEVICE_INFORMATION = {
 }
 
 # Add an Unmanaged Device
-unmanaged_device_added = oneview_client.unmanaged_devices.add(UNMANAGED_DEVICE_INFORMATION)
-print('Added Unmanaged Device "{name}" successfully\n'.format(**unmanaged_device_added))
+UNMANAGED_DEVICE_ADDED = oneview_client.unmanaged_devices.add(UNMANAGED_DEVICE_INFORMATION)
+print('Added Unmanaged Device "{name}" successfully\n'.format(**UNMANAGED_DEVICE_ADDED))
 
 # Retrieve Unmanaged Device by URI
-unmanaged_device = oneview_client.unmanaged_devices.get(unmanaged_device_added['uri'])
-print('Get unmanaged device by URI, retrieved "{name}" successfully\n'.format(**unmanaged_device))
+UNMANAGED_DEVICE = oneview_client.unmanaged_devices.get(UNMANAGED_DEVICE_ADDED['uri'])
+print('Get unmanaged device by URI, retrieved "{name}" successfully\n'.format(**UNMANAGED_DEVICE))
 
 # Update the Unmanaged Device
-unmanaged_device['name'] = "New Unmanaged Device Name"
-unmanaged_device = oneview_client.unmanaged_devices.update(unmanaged_device)
-print('Unmanaged Device "{name}" updated successfully\n'.format(**unmanaged_device))
+UNMANAGED_DEVICE['name'] = "New Unmanaged Device Name"
+UNMANAGED_DEVICE = oneview_client.unmanaged_devices.update(UNMANAGED_DEVICE)
+print('Unmanaged Device "{name}" updated successfully\n'.format(**UNMANAGED_DEVICE))
 
 # Get all Unmanaged Devices
 print("Get all Unmanaged Devices:")
-unmanaged_devices_all = oneview_client.unmanaged_devices.get_all()
-for unm_dev in unmanaged_devices_all:
+UNMANAGED_DEVICES_ALL = oneview_client.unmanaged_devices.get_all()
+for unm_dev in UNMANAGED_DEVICES_ALL:
     print(" - " + unm_dev['name'])
 
 # Get unmanaged device environmental CONFIGuration
-env_CONFIG = oneview_client.unmanaged_devices.get_environmental_CONFIGuration(unmanaged_device_added['uri'])
+env_CONFIG = oneview_client.unmanaged_devices.get_environmental_configuration(UNMANAGED_DEVICE_\
+        ADDED['uri'])
 print('Get Environmental Configuration result:')
 pprint(env_CONFIG)
 
 # Remove added unmanaged device
-oneview_client.unmanaged_devices.remove(unmanaged_device_added)
+oneview_client.unmanaged_devices.remove(UNMANAGED_DEVICE_ADDED)
 print("Successfully removed the unmanaged device")
 
 # Add another unmanaged device and remove all
-unmanaged_device_added = oneview_client.unmanaged_devices.add(UNMANAGED_DEVICE_INFORMATION)
+UNMANAGED_DEVICE_ADDED = oneview_client.unmanaged_devices.add(UNMANAGED_DEVICE_INFORMATION)
 oneview_client.unmanaged_devices.remove_all("name matches '%'")
 print("Successfully removed all the unmanaged device")

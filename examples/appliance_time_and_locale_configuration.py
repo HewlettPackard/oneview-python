@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -36,17 +36,17 @@ OPTIONS = {
 
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
-oneview_client = OneViewClient(CONFIG)
-TIME_AND_LOCALEs = oneview_client.appliance_TIME_AND_LOCALE_CONFIGuration
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+TIME_AND_LOCALES = ONEVIEW_CLIENT.appliance_time_and_locale_configuration
 
 # Lists the appliance time and locale CONFIGuration
-TIME_AND_LOCALE = TIME_AND_LOCALEs.get_all()
+TIME_AND_LOCALE = TIME_AND_LOCALES.get_all()
 if TIME_AND_LOCALE:
     print("\n## Got appliance time and locale CONFIGurations successfully!")
     pprint(TIME_AND_LOCALE.data)
 else:
     # Create a time and locale with the OPTIONS provided
-    TIME_AND_LOCALE = TIME_AND_LOCALEs.create(data=OPTIONS)
+    TIME_AND_LOCALE = TIME_AND_LOCALES.create(data=OPTIONS)
     print("\n## Created appliance time and locale CONFIGurations successfully!")
     pprint(TIME_AND_LOCALE.data)
 
@@ -57,7 +57,7 @@ TIME_AND_LOCALE['ntpServers'] = ['127.0.0.1']
 TIME_AND_LOCALE['locale'] = 'zh_CN.UTF-8'
 # Remove the date and time, we do not want to update it manually
 TIME_AND_LOCALE.pop('dateTime')
-TIME_AND_LOCALE = TIME_AND_LOCALEs.create(data=TIME_AND_LOCALE)
+TIME_AND_LOCALE = TIME_AND_LOCALES.create(data=TIME_AND_LOCALE)
 print("\n## Created appliance time and locale CONFIGurations successfully!")
 pprint(TIME_AND_LOCALE.data)
 # Note: Changing the time and locale will only be fully effective after resetting the appliance.
@@ -66,10 +66,9 @@ pprint(TIME_AND_LOCALE.data)
 '''
 try:
     # Revert the changes made
-    TIME_AND_LOCALE = TIME_AND_LOCALEs.create(data=OPTIONS)
+    TIME_AND_LOCALE = TIME_AND_LOCALES.create(data=OPTIONS)
     print("\n## Reverted appliance time and locale CONFIGurations successfully!")
     pprint(TIME_AND_LOCALE.data)
 except HPEOneViewTaskError:
     print("\n## Appliance will be rebooted to make the changes made previously.")
-
 '''

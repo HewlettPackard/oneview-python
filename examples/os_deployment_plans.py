@@ -31,16 +31,16 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-os_deployment_PLANS = oneview_client.os_deployment_PLANS
+OS_DEPLOYMENT_PLANS = oneview_client.OS_DEPLOYMENT_PLANS
 
 print("\nGet OS Deployment Plans by Filter:")
-PLANS = os_deployment_PLANS.get_by('deploymentType', 'I3S')
+PLANS = OS_DEPLOYMENT_PLANS.get_by('deploymentType', 'I3S')
 pprint(PLANS)
 
 print("\nGet the OS Deployment Plan by Name:")
-OS_DEPLOYMENT_PLAN = os_deployment_PLANS.get_by('name', 'Deployment Plan')
+OS_DEPLOYMENT_PLAN = OS_DEPLOYMENT_PLANS.get_by('name', 'Deployment Plan')
 pprint(OS_DEPLOYMENT_PLAN)
 
 print("\nGet all OS Deployment Plans:")
-OS_DEPLOYMENT_PLANS_ALL = os_deployment_PLANS.get_all()
+OS_DEPLOYMENT_PLANS_ALL = OS_DEPLOYMENT_PLANS.get_all()
 pprint(OS_DEPLOYMENT_PLANS_ALL)

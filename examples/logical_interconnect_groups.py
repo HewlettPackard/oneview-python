@@ -373,7 +373,7 @@ if not LIG:
     print("Create a logical interconnect group")
     LIG = logical_interconnect_groups.create(OPTIONS)
     print("Created logical interconnect group with name - '{}' and uri -
-	 '{}'".format(LIG.data['name'], LIG.data['uri']))
+         '{}'".format(LIG.data['name'], LIG.data['uri']))
 
 # Get all, with defaults
 print("Get all Logical Interconnect Groups")
@@ -404,7 +404,7 @@ if oneview_client.api_version >= 600:
         print("Found {} Logical Interconnect Groups".format(len(LIG_BY_SCOPE_URIS)))
         for LIG_SCOPE in LIG_BY_SCOPE_URIS:
             print("Found Logical Interconnect Group by SCOPE_uris: '{}'.\n  uri =
-	 '{}'".format(LIG_SCOPE['name'], LIG_SCOPE['uri']))
+         '{}'".format(LIG_SCOPE['name'], LIG_SCOPE['uri']))
     else:
         print("No Logical Interconnect Group found.")
 
@@ -444,4 +444,4 @@ print("Successfully deleted logical interconnect group")
 print("Create a logical interconnect group as a pre-requisite for LE creation")
 LIG = logical_interconnect_groups.create(OPTIONS)
 print("Created logical interconnect group with name - '{}' and uri - '{}'".format(LIG.data['name'],
-	 LIG.data['uri']))
+         LIG.data['uri']))

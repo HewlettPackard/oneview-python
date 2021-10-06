@@ -17,7 +17,7 @@
 
 from pprint import pprint
 
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 CONFIG = {
@@ -34,15 +34,15 @@ WWN = None
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 # Get all endpoints
 print("Get all endpoints")
-endpoints_all = oneview_client.endpoints.get_all()
-pprint(endpoints_all)
+ENDPOINTS_ALL = ONEVIEW_CLIENT.endpoints.get_all()
+pprint(ENDPOINTS_ALL)
 
 # Get endpoints filtered to only the one with a specified WWN
 print("Get endpoints filtered to only the one with a specified WWN")
 QUERY = "WWN eq '{}'".format(WWN)
-enpoints_with_QUERY = oneview_client.endpoints.get_all(0, -1, QUERY=QUERY)
-pprint(enpoints_with_QUERY)
+ENPOINTS_WITH_QUERY = ONEVIEW_CLIENT.endpoints.get_all(0, -1, QUERY=QUERY)
+pprint(ENPOINTS_WITH_QUERY)

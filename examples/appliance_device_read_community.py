@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -37,23 +37,23 @@ CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
 
 # Lists the appliance device read community
-read_community = oneview_client.appliance_device_read_community.get()
+READ_COMMUNITY = oneview_client.appliance_device_read_community.get()
 print("\n## Got appliance device read community successfully!")
-pprint(read_community)
+pprint(READ_COMMUNITY)
 
 # Backup original values
 BKP = {}
-BKP['communityString'] = read_community['communityString']
+BKP['communityString'] = READ_COMMUNITY['communityString']
 
 # Update Read Community
 # Set to use appliance device read community
-read_community['communityString'] = OPTIONS['communityString']
-read_community = oneview_client.appliance_device_read_community.update(read_community)
+READ_COMMUNITY['communityString'] = OPTIONS['communityString']
+READ_COMMUNITY = oneview_client.appliance_device_read_community.update(READ_COMMUNITY)
 print("\n## Updated appliance device read community string successfully!")
-pprint(read_community)
+pprint(READ_COMMUNITY)
 
 # Revert the changes made
-read_community['communityString'] = BKP['communityString']
-read_community = oneview_client.appliance_device_read_community.update(read_community)
+READ_COMMUNITY['communityString'] = BKP['communityString']
+READ_COMMUNITY = oneview_client.appliance_device_read_community.update(READ_COMMUNITY)
 print("\n## Reverted appliance device read community string successfully!")
-pprint(read_community)
+pprint(READ_COMMUNITY)

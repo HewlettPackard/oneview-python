@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -32,11 +32,11 @@ URI = '/rest/appliance/network-interfaces'
 # Try load CONFIG from a file
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-network_interface = oneview_client.appliance_NETWORK_INTERFACES
+NETWORK_INTERFACE = oneview_client.appliance_network_interfaces
 
 # Get CONFIGured network interface from appliance
 print("\nGet network interface details from appliance:\n ")
-NETWORK_INTERFACES = network_interface.get_all().data['applianceNetworks']
+NETWORK_INTERFACES = NETWORK_INTERFACE.get_all().data['applianceNetworks']
 for net_interface in NETWORK_INTERFACES:
     pprint(net_interface['hostname'])
     pprint(net_interface['interfaceName'])
@@ -44,23 +44,23 @@ for net_interface in NETWORK_INTERFACES:
 # Create network interface if it doesn't exist
 print("\nCreate network interface on the appliance:\n")
 NI_DETAILS = {"applianceNetworks": [{
-              "interfaceName": "Appliance test",
-              "device": "eth0",
-              "macAddress": "00:11:22:33:ff:3e",
-              "ipv4Type": "STATIC",
-              "ipv6Type": "UNCONFIGURE",
-              "hostname": "test.com",
-              "app1Ipv4Addr": "<ip_address1>",
-              "app2Ipv4Addr": "<ip_address2>",
-              "virtIpv4Addr": "<ip_address>",
-              "ipv4Subnet": "<subnet_id>",
-              "ipv4Gateway": "<gateway>",
-              "ipv4NameServers": [
-                  "<dns1>",
-                  "<dns2>"
-              ]}]}
+    "interfaceName": "Appliance test",
+    "device": "eth0",
+    "macAddress": "00:11:22:33:ff:3e",
+    "ipv4Type": "STATIC",
+    "ipv6Type": "UNCONFIGURE",
+    "hostname": "test.com",
+    "app1Ipv4Addr": "<ip_address1>",
+    "app2Ipv4Addr": "<ip_address2>",
+    "virtIpv4Addr": "<ip_address>",
+    "ipv4Subnet": "<subnet_id>",
+    "ipv4Gateway": "<gateway>",
+    "ipv4NameServers": [
+        "<dns1>",
+        "<dns2>"
+    ]}]}
 
-NEW_NETWORK_INTERFACE = network_interface.create(NI_DETAILS)
+NEW_NETWORK_INTERFACE = NETWORK_INTERFACE.create(NI_DETAILS)
 pprint(NEW_NETWORK_INTERFACE.data)
 print("\nNetwork Interface created successfully")
 
@@ -69,32 +69,33 @@ print("\nNetwork Interface created successfully")
 # as PUT not supported for this resource
 print("\nUpdate dns servers of the network interface:\n")
 UPDATED_DETAILS = {"applianceNetworks": [{
-                   "interfaceName": "Appliance test",
-                   "device": "eth0",
-                   "macAddress": "00:11:22:33:ff:3e",
-                   "ipv4Type": "STATIC",
-                   "ipv6Type": "UNCONFIGURE",
-                   "hostname": "test.com",
-                   "app1Ipv4Addr": "<ip_address1>",
-                   "app2Ipv4Addr": "<ip_address2>",
-                   "virtIpv4Addr": "<ip_address>",
-                   "ipv4Subnet": "<subnet_id>",
-                   "ipv4Gateway": "<gateway>",
-                   "ipv4NameServers": [
-                       "<dns1>",
-                       "<dns3>"
-                   ]}]}
-UPDATED_NETWORK_INTERFACE = network_interface.create(UPDATED_DETAILS)
+    "interfaceName": "Appliance test",
+    "device": "eth0",
+    "macAddress": "00:11:22:33:ff:3e",
+    "ipv4Type": "STATIC",
+    "ipv6Type": "UNCONFIGURE",
+    "hostname": "test.com",
+    "app1Ipv4Addr": "<ip_address1>",
+    "app2Ipv4Addr": "<ip_address2>",
+    "virtIpv4Addr": "<ip_address>",
+    "ipv4Subnet": "<subnet_id>",
+    "ipv4Gateway": "<gateway>",
+    "ipv4NameServers": [
+        "<dns1>",
+        "<dns3>"
+    ]}]}
+UPDATED_NETWORK_INTERFACE = NETWORK_INTERFACE.create(UPDATED_DETAILS)
 pprint(UPDATED_NETWORK_INTERFACE.data)
 print("\nNetwork Interface updated successfully")
 
 # Get network CONFIGuration by the mac address
 print("\nGet network interface details from appliance:\n ")
 if NETWORK_INTERFACES:
-    NETWORK_INTERFACE_BY_MAC = network_interface.get_by_mac_address(NETWORK_INTERFACES[0]['macAddress'])
+    NETWORK_INTERFACE_BY_MAC = NETWORK_INTERFACE.get_by_mac_address\
+            (NETWORK_INTERFACES[0]['macAddress'])
     pprint(NETWORK_INTERFACE_BY_MAC.data)
 
 # Get unCONFIGured network interfaces on the appliance
 print("\nGet unCONFIGured network interfaces from appliance:\n ")
-NETWORK_INTERFACE_UNCONFIGURED = network_interface.get_all_mac_address()
+NETWORK_INTERFACE_UNCONFIGURED = NETWORK_INTERFACE.get_all_mac_address()
 pprint(NETWORK_INTERFACE_UNCONFIGURED)

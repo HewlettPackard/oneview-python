@@ -36,19 +36,19 @@ oneview_client = OneViewClient(CONFIG)
 
 # Get all
 print("\nGet all SAS logical JBOD attachments")
-sas_logical_jbod_attachments = oneview_client.sas_logical_jbod_attachments.get_all()
-pprint(sas_logical_jbod_attachments)
+SAS_LOGICAL_JBOD_ATTACHMENTS = oneview_client.SAS_LOGICAL_JBOD_ATTACHMENTS.get_all()
+pprint(SAS_LOGICAL_JBOD_ATTACHMENTS)
 
-if sas_logical_jbod_attachments:
+if SAS_LOGICAL_JBOD_ATTACHMENTS:
     # Get by URI
     print("\nGet a SAS logical JBOD attachment by URI")
-    URI = sas_logical_jbod_attachments[0]['URI']
-    SAS_URI = oneview_client.sas_logical_jbod_attachments.get(URI)
+    URI = SAS_LOGICAL_JBOD_ATTACHMENTS[0]['URI']
+    SAS_URI = oneview_client.SAS_LOGICAL_JBOD_ATTACHMENTS.get(URI)
     pprint(SAS_URI)
 
     # Get by NAME
     print("\nGet a SAS logical JBOD attachment by NAME")
-    NAME = sas_logical_jbod_attachments[0]['NAME']
-    SAS_NAME = oneview_client.sas_logical_jbod_attachments.get_by(\
+    NAME = SAS_LOGICAL_JBOD_ATTACHMENTS[0]['NAME']
+    SAS_NAME = oneview_client.SAS_LOGICAL_JBOD_ATTACHMENTS.get_by(\
             'NAME', NAME)
     pprint(SAS_NAME)

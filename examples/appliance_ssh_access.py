@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -33,11 +33,11 @@ OPTIONS = {
 
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
-oneview_client = OneViewClient(CONFIG)
-ssh_access = oneview_client.appliance_ssh_access
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+SSH_ACCESS = ONEVIEW_CLIENT.appliance_ssh_access
 
 # Get the SSH access CONFIGuration for the appliance.
-SSH_CONFIG = ssh_access.get_all()
+SSH_CONFIG = SSH_ACCESS.get_all()
 print("\nGot SSH access CONFIGuration successfully!")
 pprint(SSH_CONFIG.data)
 

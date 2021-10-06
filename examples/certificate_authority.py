@@ -17,7 +17,7 @@
 
 from pprint import pprint
 
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 CONFIG = {
@@ -31,27 +31,27 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(CONFIG)
-CERTIFICATE_authority = oneview_client.CERTIFICATE_authority
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+CERTIFICATE_AUTHORITY = ONEVIEW_CLIENT.certificate_authority
 
 # Retrieve Internal CA Certificate
 print("\n\nGet all the internal Certificate Authorities:\n")
-CERTIFICATES_ALL = CERTIFICATE_authority.get_all(cert_details=False)
+CERTIFICATES_ALL = CERTIFICATE_AUTHORITY.get_all(cert_details=False)
 print(CERTIFICATES_ALL)
 
 # Retrieve Internal CA Certificate with CERTIFICATE details
 print("\n\nGet the CERTIFICATE details of internal Certificate Authority:\n")
-CERTIFICATE = CERTIFICATE_authority.get_all()
+CERTIFICATE = CERTIFICATE_AUTHORITY.get_all()
 for cert in CERTIFICATE:
     if cert['CERTIFICATEDetails']['aliasName'] == 'localhostSelfSignedCertificate':
         print(cert['CERTIFICATEDetails']['base64Data'])
 
 # Retrieve Certificate Revocation List
 print("\n\nGetting the Certificate Revocation List:\n")
-CERTIFICATE_VISUAL_CONTENT = CERTIFICATE_authority.get_crl()
+CERTIFICATE_VISUAL_CONTENT = CERTIFICATE_AUTHORITY.get_crl()
 pprint(CERTIFICATE_VISUAL_CONTENT.data)
 
 # Revoke Internal CA Signed Certificate
 print("\n\nRevoking Internal CA Signed Certificate\n")
-# success = CERTIFICATE_authority.delete("default")
+# success = CERTIFICATE_AUTHORITY.delete("default")
 # print(success)

@@ -32,7 +32,7 @@ CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
 
-# Get the current version and the minimum version
-print("Get the current version and the minimum version")
-version = oneview_client.versions.get_version()
-pprint(version)
+# Get the current VERSION and the minimum VERSION
+print("Get the current VERSION and the minimum VERSION")
+VERSION = oneview_client.VERSIONs.get_VERSION()
+pprint(VERSION)

@@ -32,17 +32,17 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-sas_LOGICAL_INTERCONNECTS = oneview_client.sas_LOGICAL_INTERCONNECTS
+SAS_LOGICAL_INTERCONNECTS = oneview_client.SAS_LOGICAL_INTERCONNECTS
 FIRMWARE_DRIVER_URI = None
 
 # Get all SAS Logical Interconnects
 print("\nGet all SAS Logical Interconnects")
-LOGICAL_INTERCONNECTS = sas_LOGICAL_INTERCONNECTS.get_all()
+LOGICAL_INTERCONNECTS = SAS_LOGICAL_INTERCONNECTS.get_all()
 for SAS_LOGICAL_INTERCONNECT in LOGICAL_INTERCONNECTS:
     print('  Name: {NAME}'.format(**SAS_LOGICAL_INTERCONNECT))
 
 NAME = LOGICAL_INTERCONNECTS[0]['NAME']
-SAS_LOGICAL_INTERCONNECT = sas_LOGICAL_INTERCONNECTS.get_by_NAME(NAME)
+SAS_LOGICAL_INTERCONNECT = SAS_LOGICAL_INTERCONNECTS.get_by_NAME(NAME)
 
 # Re-applies the CONFIGuration on the SAS Logical Interconnect
 print("\nRe-applies the CONFIGuration on the SAS Logical Interconnect")

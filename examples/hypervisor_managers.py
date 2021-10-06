@@ -38,21 +38,19 @@ OPTIONS = {
 
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
-oneview_client = OneViewClient(CONFIG)
-HYPERVISOR_MANAGERS = oneview_client.hypervisor_managers
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+HYPERVISOR_MANAGERS = ONEVIEW_CLIENT.hypervisor_managers
 
 # Find recently created hypervisor manager by name
 print("\nGet Hypervisor Manager by name")
 HYPERVISOR_MANAGER = HYPERVISOR_MANAGERS.get_by_name(OPTIONS['name'])
 
 if HYPERVISOR_MANAGER:
-   
-	 print("\nFound hypervisor-manager by name: {}.\n  uri = {}".format(HYPERVISOR_MANAGER.\
+    print("\nFound hypervisor-manager by name: {}.\n  uri = {}".format(HYPERVISOR_MANAGER.\
             data['name'], HYPERVISOR_MANAGER.data['uri']))
 else:
     # Create a HypervisorManager with the OPTIONS provided
-    HYPERVISOR_MANAGER =
-	 HYPERVISOR_MANAGERS.create(data=OPTIONS)
+    HYPERVISOR_MANAGER = HYPERVISOR_MANAGERS.create(data=OPTIONS)
     print("\nCreated a hypervisor-manager with name: {}.\n  uri = {}".format(HYPERVISOR_MANAGER.\
             data['name'], HYPERVISOR_MANAGER.data['uri']))
 
@@ -85,8 +83,7 @@ HYP_MGRS_BY_URI = HYPERVISOR_MANAGERS.get_by_uri(HYPERVISOR_MANAGER.data['uri'])
 pprint(HYP_MGRS_BY_URI.data)
 
 # Update display name of recently created hypervisor manager
-DATA_TO_UPDATE = {'displayName': 'Updated
-	 vcenter'}
+DATA_TO_UPDATE = {'displayName': 'Updated vcenter'}
 HYPERVISOR_MANAGER.update(data=DATA_TO_UPDATE)
 print("\nUpdated hypervisor manager {} successfully.\n  uri = {}".format(HYPERVISOR_MANAGER.\
         data['name'], HYPERVISOR_MANAGER.data['uri']))

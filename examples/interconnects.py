@@ -31,13 +31,13 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-INTERCONNECTs = oneview_client.INTERCONNECTs
+INTERCONNECTS = oneview_client.INTERCONNECTS
 
 # To run this example you must define an INTERCONNECT, otherwise, it will get the first one
 # automatically
-INTERCONNECT_URI = INTERCONNECTs.get_all(0, 1)[0]['uri']
-INTERCONNECT_ID = INTERCONNECT_URI.replace('/rest/INTERCONNECTs/', '')
-INTERCONNECT = INTERCONNECTs.get_by_uri(INTERCONNECT_URI)
+INTERCONNECT_URI = INTERCONNECTS.get_all(0, 1)[0]['uri']
+INTERCONNECT_ID = INTERCONNECT_URI.replace('/rest/INTERCONNECTS/', '')
+INTERCONNECT = INTERCONNECTS.get_by_uri(INTERCONNECT_URI)
 
 PORT_D1 = {
     "type": "port",
@@ -56,8 +56,8 @@ PORT_D2 = {
 PORTS_FOR_UPDATE = [PORT_D1, PORT_D2]
 
 # Get the first two Interconnects
-print("\nGet the first two INTERCONNECTs")
-INTERCONNECTS_ALL = INTERCONNECTs.get_all(0, 2)
+print("\nGet the first two INTERCONNECTS")
+INTERCONNECTS_ALL = INTERCONNECTS.get_all(0, 2)
 pprint(INTERCONNECTS_ALL)
 
 # Get Interconnects Statistics
@@ -90,7 +90,7 @@ except HPEOneViewException as e:
 # Get by hostName
 print("\nGet an INTERCONNECT by hostName")
 try:
-    INTERCONNECT_BY_HOST = INTERCONNECTs.get_by('hostName', INTERCONNECT.data["hostName"])[0]
+    INTERCONNECT_BY_HOST = INTERCONNECTS.get_by('hostName', INTERCONNECT.data["hostName"])[0]
     pprint(INTERCONNECT_BY_HOST)
 except HPEOneViewException as e:
     print(e.msg)
@@ -98,7 +98,7 @@ except HPEOneViewException as e:
 # Get by name
 print("\nGet an INTERCONNECT by name")
 try:
-    INTERCONNECT_BY_NAME = INTERCONNECTs.get_by_name(INTERCONNECT.data["name"])
+    INTERCONNECT_BY_NAME = INTERCONNECTS.get_by_name(INTERCONNECT.data["name"])
     pprint(INTERCONNECT_BY_NAME.data)
 except HPEOneViewException as e:
     print(e.msg)

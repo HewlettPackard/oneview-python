@@ -54,15 +54,15 @@ METRICS_CONFIGURATION = {
 
 # Configure metric relay for server-hardware, enclosures and power-devices.
 print("Configure metric streaming")
-updated_METRICS_CONFIGURATION = oneview_client.metric_streaming.update_CONFIGuration(METRICS_CONFIGURATION)
-pprint(updated_METRICS_CONFIGURATION)
+UPDATED_METRICS_CONFIGURATION = oneview_client.metric_streaming.update_CONFIGuration(METRICS_CONFIGURATION)
+pprint(UPDATED_METRICS_CONFIGURATION)
 
 # Get current relay CONFIGuration
 print("Get current CONFIGuration")
-current_CONFIGuration = oneview_client.metric_streaming.get_CONFIGuration()
-pprint(current_CONFIGuration)
+CURRENT_CONFIGURATION = oneview_client.metric_streaming.get_CONFIGuration()
+pprint(CURRENT_CONFIGURATION)
 
 # Gets the list of all supported metrics and resource types.
 print("Gets the list of all supported metrics and resource types")
-supported_metrics = oneview_client.metric_streaming.get_capability()
-pprint(supported_metrics)
+SUPPORTED_METRICS = oneview_client.metric_streaming.get_capability()
+pprint(SUPPORTED_METRICS)

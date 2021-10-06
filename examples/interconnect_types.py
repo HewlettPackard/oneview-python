@@ -31,17 +31,17 @@ CONFIG = {
 CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
-interconnect_types = oneview_client.interconnect_types
+INTERCONNECT_TYPES = oneview_client.INTERCONNECT_TYPES
 
 # Get all supported interconnect types
 print(">>> Get all supported interconnect types")
-ALL_INTERCONNECT_TYPES = interconnect_types.get_all()
+ALL_INTERCONNECT_TYPES = INTERCONNECT_TYPES.get_all()
 for interconn in ALL_INTERCONNECT_TYPES:
     print(" - {}".format(interconn['NAME']))
 
 # Get all sorting by NAME descending
 print(">>> Get all interconnect-types sorting by NAME")
-INTERCONNECT_TYPES_SORTED = interconnect_types.get_all(sort='NAME:descending')
+INTERCONNECT_TYPES_SORTED = INTERCONNECT_TYPES.get_all(sort='NAME:descending')
 for interconn in INTERCONNECT_TYPES_SORTED:
     print(" - {}".format(interconn['NAME']))
 
@@ -49,5 +49,5 @@ for interconn in INTERCONNECT_TYPES_SORTED:
 print("Get an interconnect_type by NAME")
 if INTERCONNECT_TYPES_SORTED:
     NAME = INTERCONNECT_TYPES_SORTED[0]["NAME"]
-    INTERCONNECT_TYPE_BYNAME = interconnect_types.get_by_NAME(NAME)
+    INTERCONNECT_TYPE_BYNAME = INTERCONNECT_TYPES.get_by_NAME(NAME)
     pprint(INTERCONNECT_TYPE_BYNAME.data, depth=1)

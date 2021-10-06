@@ -31,49 +31,49 @@ CONFIG = {
 CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
-label = oneview_client.labels
+LABEL = oneview_client.LABELs
 
 RESOURCE_URI = "/rest/enclosures/0000000000A66102"
 
-print("\nSet the labels assigned to a resource")
+print("\nSet the LABELs assigned to a resource")
 LABELS_TO_CREATE = dict(
     resourceUri=RESOURCE_URI,
-    labels=["labelSample", "enclosureDemo"]
+    LABELs=["LABELSample", "enclosureDemo"]
 )
-RESOURCE_LABELS = label.create(LABELS_TO_CREATE)
+RESOURCE_LABELS = LABEL.create(LABELS_TO_CREATE)
 pprint(RESOURCE_LABELS.data)
 
-print("\nGet all labels")
-ALL_LABELS = label.get_all(category=['fc-networks', 'enclosures'], name_prefix="label")
+print("\nGet all LABELs")
+ALL_LABELS = LABEL.get_all(category=['fc-networks', 'enclosures'], name_prefix="LABEL")
 pprint(ALL_LABELS)
 
 LABEL_NAME = ALL_LABELS[0]["name"]
-print("\nGet a label by name: ", LABEL_NAME)
-LABEL_BY_NAME = label.get_by_name(LABEL_NAME)
+print("\nGet a LABEL by name: ", LABEL_NAME)
+LABEL_BY_NAME = LABEL.get_by_name(LABEL_NAME)
 pprint(LABEL_BY_NAME.data)
 
 LABEL_URI = ALL_LABELS[0]["uri"]
-print("\nGet a label by uri: ", LABEL_URI)
-LABEL_BY_URI = label.get_by_uri(LABEL_URI)
+print("\nGet a LABEL by uri: ", LABEL_URI)
+LABEL_BY_URI = LABEL.get_by_uri(LABEL_URI)
 pprint(LABEL_BY_URI.data)
 
-print("\nGet all the labels for the resource %s" % RESOURCE_URI)
-LABELS_BY_RESOURCE = label.get_by_resource(RESOURCE_URI)
+print("\nGet all the LABELs for the resource %s" % RESOURCE_URI)
+LABELS_BY_RESOURCE = LABEL.get_by_resource(RESOURCE_URI)
 pprint(LABELS_BY_RESOURCE.data)
 
-print("\nGets all resources assigned with label name: "), ALL_LABELS[0]["name"]
-ASSIGNED_RESOURCES = label.get_ASSIGNED_RESOURCES(ALL_LABELS[0]["name"])
+print("\nGets all resources assigned with LABEL name: "), ALL_LABELS[0]["name"]
+ASSIGNED_RESOURCES = LABEL.get_ASSIGNED_RESOURCES(ALL_LABELS[0]["name"])
 pprint(ASSIGNED_RESOURCES)
 
-print("\nUpdate the resource labels")
+print("\nUpdate the resource LABELs")
 LABELS_TO_UPDATE = dict(
-    labels=[
-        dict(name="renamed label", uri=LABELS_BY_RESOURCE.data['labels'][0]['uri']),
+    LABELs=[
+        dict(name="renamed LABEL", uri=LABELS_BY_RESOURCE.data['LABELs'][0]['uri']),
         dict(name="enclosureDemo1")
     ]
 )
 UPDATED_RESOURCE_LABELS = LABELS_BY_RESOURCE.update(LABELS_TO_UPDATE)
 pprint(UPDATED_RESOURCE_LABELS.data)
 
-print("\nDelete all the labels for a resource")
+print("\nDelete all the LABELs for a resource")
 LABELS_BY_RESOURCE.delete()

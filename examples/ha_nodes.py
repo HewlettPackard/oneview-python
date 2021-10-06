@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -29,18 +29,18 @@ CONFIG = {
 
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
-oneview_client = OneViewClient(CONFIG)
-HA_NODEs = oneview_client.HA_NODEs
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+HA_NODES = ONEVIEW_CLIENT.ha_nodes
 
 # Get all HA nodes from appliance
 print("\nGet all HA nodes from appliance:\n ")
-ALL_NODES = HA_NODEs.get_all()
+ALL_NODES = HA_NODES.get_all()
 for node in ALL_NODES:
     print(" - {}".format(node['name']))
 
 # Get HA node by uri from appliance
 print("\nGet HA node by uri from appliance\n")
-NODE_BY_URI = HA_NODEs.get_by_uri(ALL_NODES[0]['uri'])
+NODE_BY_URI = HA_NODES.get_by_uri(ALL_NODES[0]['uri'])
 pprint(NODE_BY_URI.DATA)
 
 # update role of HA node

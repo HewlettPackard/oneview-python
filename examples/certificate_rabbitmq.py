@@ -21,7 +21,7 @@ from config_loader import try_load_from_file
 from hpeOneView.exceptions import HPEOneViewException
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -30,16 +30,16 @@ config = {
 }
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
-certificate_ca_signed_client = {
+CERTIFICATE_CA_SIGNED_CLIENT = {
     "commonName": "default",
     "type": "RabbitMqClientCertV2"
 }
 
-certificate_self_signed_client = {
+CERTIFICATE_SELF_SIGNED_CLIENT = {
     "commonName": "any",
     "signedCert": "false",
     "type": "RabbitMqClientCertV2"
@@ -49,44 +49,44 @@ certificate_self_signed_client = {
 # Generate a CA Signed Certificate
 print('Generate a CA Signed Certificate')
 try:
-    response = oneview_client.certificate_rabbitmq.generate(certificate_ca_signed_client)
-    pprint(response)
-except HPEOneViewException as e:
-    print (e.msg)
-    if e.oneview_response:
-        print e.oneview_response.get('recommendedActions')
+    RESPONSE = ONEVIEW_CLIENT.certificate_rabbitmq.generate(CERTIFICATE_CA_SIGNED_CLIENT)
+    pprint(RESPONSE)
+except HPEOneViewException as err:
+    print(err.msg)
+    if err.oneview_response:
+        print(err.oneview_response.get('recommendedActions'))
 
 
 # Generate a Self Signed Certificate
 print('\nGenerate a Self Signed Certificate')
 try:
-    response = oneview_client.certificate_rabbitmq.generate(certificate_self_signed_client)
-    pprint(response)
-except HPEOneViewException as e:
-    print (e.msg)
-    if e.oneview_response:
-        print e.oneview_response.get('recommendedActions')
+    RESPONSE = ONEVIEW_CLIENT.certificate_rabbitmq.generate(CERTIFICATE_SELF_SIGNED_CLIENT)
+    pprint(RESPONSE)
+except HPEOneViewException as err:
+    print(err.msg)
+    if err.oneview_response:
+        print(err.oneview_response.get('recommendedActions'))
 
 
 # Get by Alias Name
 print('\nGet by Alias Name')
-response = oneview_client.certificate_rabbitmq.get('default')
-pprint(response)
+RESPONSE = ONEVIEW_CLIENT.certificate_rabbitmq.get('default')
+pprint(RESPONSE)
 
 
 # Get a Key Pair
 print('\nGet a Key Pair')
-response = oneview_client.certificate_rabbitmq.get_key_pair('default')
-pprint(response)
+RESPONSE = ONEVIEW_CLIENT.certificate_rabbitmq.get_key_pair('default')
+pprint(RESPONSE)
 
 
 # Get Keys in Base64 format
 print('\nGet Keys in Base64 format')
-response = oneview_client.certificate_rabbitmq.get_keys('default', 'Base64')
-pprint(response)
+RESPONSE = ONEVIEW_CLIENT.certificate_rabbitmq.get_keys('default', 'Base64')
+pprint(RESPONSE)
 
 
 # Get Keys in PKCS12 format
 print('\nGet Keys in PKCS12 format')
-response = oneview_client.certificate_rabbitmq.get_keys('default', 'PKCS12')
-pprint(response)
+RESPONSE = ONEVIEW_CLIENT.certificate_rabbitmq.get_keys('default', 'PKCS12')
+pprint(RESPONSE)

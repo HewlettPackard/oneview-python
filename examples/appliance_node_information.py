@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -30,14 +30,14 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-app_node_info = oneview_client.appliance_node_information
+APP_NODE_INFO = oneview_client.appliance_node_information
 
 # Get node status information from appliance
 print("\nGet node status information from appliance:\n ")
-NODE_STATUS = app_node_info.get_status()
+NODE_STATUS = APP_NODE_INFO.get_status()
 pprint(NODE_STATUS.data)
 
 # Get node version information from appliance
 print("\nGet node version information from appliance\n")
-NODE_VERSION = app_node_info.get_version()
+NODE_VERSION = APP_NODE_INFO.get_version()
 pprint(NODE_VERSION.data)

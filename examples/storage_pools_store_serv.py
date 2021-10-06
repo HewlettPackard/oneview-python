@@ -33,10 +33,10 @@ oneview_client = OneViewClient(CONFIG)
 
 # Find or add storage system
 print("Find or add storage system")
-S_SYSTEMs = oneview_client.storage_systems.get_all()
+S_SYSTEMS = oneview_client.storage_systems.get_all()
 STORAGE_SYSTEM_ADDED = True
-if S_SYSTEMs:
-    S_SYSTEM = S_SYSTEMs[0]
+if S_SYSTEMS:
+    S_SYSTEM = S_SYSTEMS[0]
     if S_SYSTEM['deviceSpecificAttributes']['managedPools']:
         STORAGE_SYSTEM_ADDED = False
         print("   Found storage system '{}' at uri: {}".format(
@@ -73,19 +73,19 @@ if STORAGE_SYSTEM_ADDED:
 
 # Get all managed storage pools
 print("\nGet all storage pools")
-storage_pools_all = oneview_client.storage_pools.get_all()
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = oneview_client.storage_pools.get_all()
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' state is {}".format(pool['name'], pool['state']))
 
 # Get all managed storage pools
 print("\nGet all managed storage pools")
-storage_pools_all = oneview_client.storage_pools.get_all(filter='isManaged=True')
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = oneview_client.storage_pools.get_all(filter='isManaged=True')
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' state is {}".format(pool['name'], pool['state']))
 
 # Remove first storage pool
-if storage_pools_all:
-    REMOVE_POOL = storage_pools_all[0]
+if STORAGE_POOLS_ALL:
+    REMOVE_POOL = STORAGE_POOLS_ALL[0]
     print("\nRemove '{}' storage pool from management").format(REMOVE_POOL['name'])
     REMOVE_POOL['isManaged'] = False
     oneview_client.storage_pools.update(REMOVE_POOL)
@@ -93,6 +93,6 @@ if storage_pools_all:
 
 # Get all managed storage pools
 print("\nGet all unmanaged storage pools")
-storage_pools_all = oneview_client.storage_pools.get_all(filter='isManaged=False')
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = oneview_client.storage_pools.get_all(filter='isManaged=False')
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' state is {}".format(pool['name'], pool['state']))

@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -31,13 +31,13 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-PROFILE_TEMPLATES = oneview_client.server_PROFILE_TEMPLATES
+PROFILE_TEMPLATES = oneview_client.server_profile_templates
 
 # Dependency resources
-HARDWARE_TYPEs = oneview_client.server_HARDWARE_TYPEs
-ENCLOSURE_GROUPs = oneview_client.ENCLOSURE_GROUPs
-scopes = oneview_client.scopes
-ethernet_networks = oneview_client.ethernet_networks
+HARDWARE_TYPES = oneview_client.server_hardware_types
+ENCLOSURE_GROUPS = oneview_client.enclosure_groups
+SCOPES = oneview_client.scopes
+ETHERNET_NETWORKS = oneview_client.ethernet_networks
 
 # These variables must be defined according with your environment
 SERVER_PROFILE_NAME = "ProfileTemplate-1"
@@ -48,10 +48,10 @@ ENCLOSURE_GROUP_FOR_TRANSFORMATION = "EG-2"
 SCOPE_NAME = "SampleScope"
 MGMT_NW_NAME = "mgmt"
 
-HARDWARE_TYPE = HARDWARE_TYPEs.get_by_name(HARDWARE_TYPE_NAME)
-ENCLOSURE_GROUP = ENCLOSURE_GROUPs.get_by_name(ENCLOSURE_GROUP_NAME)
-SCOPE_URI = scopes.get_by_name(SCOPE_NAME).data['uri']
-MGMT_NW_URI = ethernet_networks.get_by_name(MGMT_NW_NAME).data['uri']
+HARDWARE_TYPE = HARDWARE_TYPES.get_by_name(HARDWARE_TYPE_NAME)
+ENCLOSURE_GROUP = ENCLOSURE_GROUPS.get_by_name(ENCLOSURE_GROUP_NAME)
+SCOPE_URI = SCOPES.get_by_name(SCOPE_NAME).data['uri']
+MGMT_NW_URI = ETHERNET_NETWORKS.get_by_name(MGMT_NW_NAME).data['uri']
 
 # SPT payload
 BASIC_TEMPLATE_OPTIONS = {
@@ -87,8 +87,9 @@ if oneview_client.api_version >= 600:
         print("Found %d Server PROFILE Templates" % (len(SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS)))
         i = 0
         while i < len(SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS):
-            print("Found Server Profile Template by SCOPE_URIs: '%s'.\n  uri = '%s'" % (SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS[i]['name'],
-                                                                                        SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS[i]['uri']))
+            print("Found Server Profile Template by SCOPE_URIs: '%s'.\n  uri = '%s'" % \
+                    (SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS[i]['name'],\
+                    SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS[i]['uri']))
             i += 1
         pprint(SERVER_PROFILE_TEMPLATES_BY_SCOPE_URIS)
     else:
@@ -104,13 +105,13 @@ if ALL_TEMPLATES:
 
 # Get available networks
 print("\nGet available networks")
-AVAILABLE_NETWORKS = PROFILE_TEMPLATES.get_AVAILABLE_NETWORKS(enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
-                                                              serverHardwareTypeUri=HARDWARE_TYPE.data["uri"])
+AVAILABLE_NETWORKS = PROFILE_TEMPLATES.get_available_networks(enclosureGroupUri=\
+        ENCLOSURE_GROUP.data["uri"], serverHardwareTypeUri=HARDWARE_TYPE.data["uri"])
 print(AVAILABLE_NETWORKS)
 
 # Get by name
 print("\nGet a server PROFILE TEMPLATES by name")
-TEMPLATE = oneview_client.server_PROFILE_TEMPLATES.get_by_name(SERVER_PROFILE_NAME)
+TEMPLATE = oneview_client.server_profile_templates.get_by_name(SERVER_PROFILE_NAME)
 if TEMPLATE:
     pprint(TEMPLATE.data)
 else:
@@ -142,8 +143,8 @@ if TEMPLATE:
 if oneview_client.api_version >= 300 and TEMPLATE:
     # Get server PROFILE TEMPLATE TRANSFORMATION
     print("\nGet a server PROFILE TEMPLATE TRANSFORMATION")
-    HARDWARE = HARDWARE_TYPEs.get_by_name(HARDWARE_TYPE_FOR_TRANSFORMATION)
-    ENCLOSURE_GROUP = ENCLOSURE_GROUPs.get_by_name(ENCLOSURE_GROUP_FOR_TRANSFORMATION)
+    HARDWARE = HARDWARE_TYPES.get_by_name(HARDWARE_TYPE_FOR_TRANSFORMATION)
+    ENCLOSURE_GROUP = ENCLOSURE_GROUPS.get_by_name(ENCLOSURE_GROUP_FOR_TRANSFORMATION)
 
     if HARDWARE and ENCLOSURE_GROUP:
 

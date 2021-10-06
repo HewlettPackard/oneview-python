@@ -55,12 +55,14 @@ pprint(TASKS_FILTERED)
 
 # Get an aggregate tree of TASKS with specified filter
 print("Get a aggregate tree")
-TASKS_FILTERED = TASKS.get_all(filter="\"taskState='Completed'\"", view="aggregatedTree", childLimit=2, topCount=2)
+TASKS_FILTERED = TASKS.get_all(filter="\"taskState='Completed'\"", view="aggregatedTree",
+	 childLimit=2, topCount=2)
 pprint(TASKS_FILTERED)
 
 # Get a flat tree of TASKS with specified filter
 print("Get a flat tree")
-TASKS_FILTERED = TASKS.get_all(view="flat-tree", start=0, count=1, filter="status=Warning OR status=OK")
+TASKS_FILTERED = TASKS.get_all(view="flat-tree", start=0, count=1, filter="status=Warning OR
+	 status=OK")
 pprint(TASKS_FILTERED)
 
 # Performs a patch operation

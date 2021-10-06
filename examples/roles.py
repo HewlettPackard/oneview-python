@@ -32,14 +32,14 @@ CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
 
-print ('Get role by name:')
-role = oneview_client.roles.get('Infrastructure administrator')
-pprint(role)
+print ('Get ROLE by name:')
+ROLE = oneview_client.ROLEs.get('Infrastructure administrator')
+pprint(ROLE)
 
-print ('\nGet role by URI:')
-role = oneview_client.roles.get('/rest/roles/Infrastructure administrator')
-pprint(role)
+print ('\nGet ROLE by URI:')
+ROLE = oneview_client.ROLEs.get('/rest/ROLEs/Infrastructure administrator')
+pprint(ROLE)
 
-print ('\nGet all roles:')
-roles = oneview_client.roles.get_all()
-pprint(roles)
+print ('\nGet all ROLEs:')
+ROLEs = oneview_client.ROLEs.get_all()
+pprint(ROLEs)

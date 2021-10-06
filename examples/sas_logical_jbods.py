@@ -35,17 +35,17 @@ CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
 
 print("\nGet all SAS logical JBODs")
-all_sas_logical_jbods = oneview_client.sas_logical_jbods.get_all()
-pprint(all_sas_logical_jbods)
+ALL_SAS_LOGICAL_JBODS = oneview_client.sas_logical_jbods.get_all()
+pprint(ALL_SAS_LOGICAL_JBODS)
 
-if all_sas_logical_jbods:
+if ALL_SAS_LOGICAL_JBODS:
 
-    SAS_LOGICAL_JBOD_URI = all_sas_logical_jbods[0]["uri"]
+    SAS_LOGICAL_JBOD_URI = ALL_SAS_LOGICAL_JBODS[0]["uri"]
 
     print("\nGet the SAS logical JBOD by uri")
-    sas_logical_jbod_by_uri = oneview_client.sas_logical_jbods.get(id_or_uri=SAS_LOGICAL_JBOD_URI)
-    pprint(sas_logical_jbod_by_uri)
+    SAS_LOGICAL_JBOD_BY_URI = oneview_client.sas_logical_jbods.get(id_or_uri=SAS_LOGICAL_JBOD_URI)
+    pprint(SAS_LOGICAL_JBOD_BY_URI)
 
-    print("\nGet the list of drives allocated to this SAS logical JBOD")
-    drives = oneview_client.sas_logical_jbods.get_drives(id_or_uri=SAS_LOGICAL_JBOD_URI)
-    pprint(drives)
+    print("\nGet the list of DRIVES allocated to this SAS logical JBOD")
+    DRIVES = oneview_client.sas_logical_jbods.get_DRIVES(id_or_uri=SAS_LOGICAL_JBOD_URI)
+    pprint(DRIVES)

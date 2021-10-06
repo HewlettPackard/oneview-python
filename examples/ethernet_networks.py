@@ -62,9 +62,9 @@ ETHERNET_NAME = "OneViewSDK Test Ethernet Network"
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(CONFIG)
-ETHERNET_NETWORKS = oneview_client.ethernet_networks
-SCOPES = oneview_client.scopes
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+ETHERNET_NETWORKS = ONEVIEW_CLIENT.ethernet_networks
+SCOPES = ONEVIEW_CLIENT.scopes
 
 # Filter by name
 print("\nGet all ethernet-networks filtering by name")
@@ -140,13 +140,13 @@ if ETHERNET_NETWORK:
 
 # Get the associated uplink set resources
 print("\nGet associated uplink sets")
-UPLINK_SETS = oneview_client.uplink_sets
+UPLINK_SETS = ONEVIEW_CLIENT.uplink_sets
 for uri in UPLINK_GROUP_URIS:
     uplink = UPLINK_SETS.get_by_uri(uri)
     pprint(uplink.data)
 
 # Adds Ethernet network to SCOPE defined only for V300 and V500
-if SCOPE_NAME and 300 <= oneview_client.api_version <= 500:
+if SCOPE_NAME and 300 <= ONEVIEW_CLIENT.api_version <= 500:
     print("\nGet SCOPE then add the network to it")
     SCOPE = SCOPES.get_by_name(SCOPE_NAME)
     ETHERNET_WITH_SCOPE = ETHERNET_NETWORK.patch('replace',
@@ -155,7 +155,7 @@ if SCOPE_NAME and 300 <= oneview_client.api_version <= 500:
     pprint(ETHERNET_WITH_SCOPE)
 
 # Delete bulk ethernet networks
-if oneview_client.api_version >= 1600:
+if ONEVIEW_CLIENT.api_version >= 1600:
     OPTIONS_BULK_DELETE = {"networkUris": BULKNETWORKURIS}
     ETHERNET_NETWORK.delete_bulk(OPTIONS_BULK_DELETE)
     print("Successfully deleted bulk ethernet networks")
@@ -168,7 +168,7 @@ print("Successfully deleted ethernet-network")
 # Create networks for automation 'mgmt_nw' and 'iscsi_nw'
 MGMT_SUBNET = '10.1.0.0'
 ISCSI_SUBNET = '192.168.10.0'
-ALL_SUBNETS = oneview_client.id_pools_ipv4_subnets.get_all()
+ALL_SUBNETS = ONEVIEW_CLIENT.id_pools_ipv4_subnets.get_all()
 
 for subnet in ALL_SUBNETS:
     if subnet['networkId'] == MGMT_SUBNET:

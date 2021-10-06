@@ -30,21 +30,21 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-switch_types = oneview_client.switch_types
+SWITCH_TYPES = oneview_client.SWITCH_TYPES
 
 # Get all supported switch types
 print("\nGet all supported switch types:")
-SWITCH_TYPES_ALL = switch_types.get_all()
+SWITCH_TYPES_ALL = SWITCH_TYPES.get_all()
 pprint(SWITCH_TYPES_ALL, depth=2)
 
 # Get all sorting by name descending
 print("\nGet all switch-types sorting by name:")
-SWITCH_TYPES_SORTED = switch_types.get_all(
+SWITCH_TYPES_SORTED = SWITCH_TYPES.get_all(
     sort='name:descending')
 pprint(SWITCH_TYPES_SORTED, depth=2)
 
 if SWITCH_TYPES_ALL:
     # Get by name
-    print("\nGet a switch_types by name:")
-    SWITCH_TYPE_BYNAME = switch_types.get_by_name(SWITCH_TYPES_ALL[0]['name'])
+    print("\nGet a SWITCH_TYPES by name:")
+    SWITCH_TYPE_BYNAME = SWITCH_TYPES.get_by_name(SWITCH_TYPES_ALL[0]['name'])
     pprint(SWITCH_TYPE_BYNAME.data, depth=1)

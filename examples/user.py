@@ -32,17 +32,17 @@ CONFIG = {
 CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
-USERs = oneview_client.USERs
-SCOPEs = oneview_client.SCOPEs
+USERS = oneview_client.USERS
+SCOPES = oneview_client.SCOPES
 
 # Get the SCOPE Uri
 SCOPE_OPTIONS = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-SCOPE = SCOPEs.get_by_name(SCOPE_OPTIONS['name'])
+SCOPE = SCOPES.get_by_name(SCOPE_OPTIONS['name'])
 if not SCOPE:
-    SCOPE = SCOPEs.create(SCOPE_OPTIONS)
+    SCOPE = SCOPES.create(SCOPE_OPTIONS)
 SCOPE_URI = SCOPE.DATA['uri']
 
 OPTIONS = {
@@ -96,20 +96,20 @@ MULTI_USERS = [
 ]
 
 # Create a User
-USER = USERs.create(OPTIONS)
+USER = USERS.create(OPTIONS)
 print("Created USER '%s' successfully.\n  uri = '%s'\n" % (USER.DATA['USERName'], USER.DATA['uri']))
 print(USER.DATA)
 
 # Create a Multiple Users
-MULTI_USER = USERs.create_multiple_USER(MULTI_USERS)
-print("\nCreated multiple USERs successfully.\n")
+MULTI_USER = USERS.create_multiple_USER(MULTI_USERS)
+print("\nCreated multiple USERS successfully.\n")
 print(MULTI_USER.DATA)
 
 # UpDATA the USER
 DATA = USER.DATA.copy()
 DATA["password"] = "change1234"
 UPDATED_USER = USER.update(DATA)
-print("\nThe USERs is updated successfully....\n")
+print("\nThe USERS is updated successfully....\n")
 print(UPDATED_USER.DATA)
 
 # Add ROLE to USERName
@@ -118,7 +118,7 @@ ROLE_OPTIONS = [
         "ROLEName": "Backup administrator"
     }
 ]
-ROLE = USERs.add_ROLE_to_USERName("testUser1", ROLE_OPTIONS)
+ROLE = USERS.add_ROLE_to_USERName("testUser1", ROLE_OPTIONS)
 print("\nSuccessfully added new ROLE to existing one....\n")
 print(ROLE.DATA)
 
@@ -135,54 +135,54 @@ ROLE_OPTIONS = [
     }
 ]
 
-ROLE = USERs.update_ROLE_to_USERName("testUser1", ROLE_OPTIONS)
+ROLE = USERS.update_ROLE_to_USERName("testUser1", ROLE_OPTIONS)
 print("\nSuccessfully updated the ROLE to the USERname....\n")
 print(ROLE)
 
 # Remove mulitple ROLE from the USER
 # If a single ROLE is to be removed, just specifiy ["ROLE_name"] or "ROLE_name" instead of list.
-ROLE = USERs.remove_ROLE_from_USERname("testUser1", ["Scope administrator", "Backup administrator"])
+ROLE = USERS.remove_ROLE_from_USERname("testUser1", ["Scope administrator", "Backup administrator"])
 print("\nRemoved ROLE from the USER successfully...\n")
 print(ROLE)
 
 # Get USER by name
-USER = USERs.get_by_USERName(OPTIONS['USERName'])
+USER = USERS.get_by_USERName(OPTIONS['USERName'])
 if USER:
     print("\nFound USER by uri = '%s'\n" % USER.DATA['uri'])
 
-# Get all USERs
-print("\nGet all USERs")
-ALL_USERS = USERs.get_all()
+# Get all USERS
+print("\nGet all USERS")
+ALL_USERS = USERS.get_all()
 pprint(ALL_USERS)
 
 # Validates if full name is already in use
-BOL = USERs.validate_full_name(OPTIONS['fullName'])
+BOL = USERS.validate_full_name(OPTIONS['fullName'])
 print("Is full name already in use? %s" % (BOL.DATA))
 
 # Validates if USER name is already in use
-BOL = USERs.validate_USER_NAME(OPTIONS['USERName'])
+BOL = USERS.validate_USER_NAME(OPTIONS['USERName'])
 print("Is USER name already in use? %s" % (BOL.DATA))
 
 # Get the USER's ROLE list
-ROLELIST = USERs.get_ROLE_associated_with_USERName("testUser")
-print("\n>> Got all the ROLEs for the USERs\n")
+ROLELIST = USERS.get_ROLE_associated_with_USERName("testUser")
+print("\n>> Got all the ROLEs for the USERS\n")
 print(ROLELIST)
 
 # Get by ROLE
-ROLE = USERs.get_USER_by_ROLE("Infrastructure administrator")
-print("\n>> Got the USERs by ROLE name\n")
+ROLE = USERS.get_USER_by_ROLE("Infrastructure administrator")
+print("\n>> Got the USERS by ROLE name\n")
 print(ROLE)
 
 # Remove single USER
-USER_TO_DELETE = USERs.get_by_USERName("testUser")
+USER_TO_DELETE = USERS.get_by_USERName("testUser")
 if USER_TO_DELETE:
     USER_TO_DELETE.delete()
     print("\nSuccessfully deleted the testUSER2 USER.....\n")
 
-# Remove Multiple USERs
+# Remove Multiple USERS
 USER_NAME = ["testUser1", "testUser2"]
-USERs.delete_multiple_USER(USER_NAME)
-print("\nDeleted multiple USERs successfully...\n")
+USERS.delete_multiple_USER(USER_NAME)
+print("\nDeleted multiple USERS successfully...\n")
 
 # NOTE: The below script changes the default administrator's password during first-time appliance
 # setup only.
@@ -193,7 +193,7 @@ change_password_request = {
     "newPassword": "admin1234",
     "USERName": "testUser3"
 }
-changePasswordResponse = USERs.change_password(change_password_request)
+changePasswordResponse = USERS.change_password(change_password_request)
 print("Changed Password successfully")
 print(changePasswordResponse)
 '''

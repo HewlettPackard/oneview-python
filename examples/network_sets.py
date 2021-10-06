@@ -61,7 +61,7 @@ CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
 
-ethernet_networks = oneview_client.ethernet_networks
+ETHERNET_NETWORKS = oneview_client.ETHERNET_NETWORKS
 NETWORK_SETS = oneview_client.network_sets
 SCOPES = oneview_client.scopes
 
@@ -76,8 +76,8 @@ NET_SETS_WITHOUT_ETHERNET = NETWORK_SETS.get_all_without_ethernet()
 pprint(NET_SETS_WITHOUT_ETHERNET)
 
 # Create two Ethernet networks
-ETHERNET_NETWORK1 = ethernet_networks.create(OPTIONS_ETHERNET1)
-ETHERNET_NETWORK2 = ethernet_networks.create(OPTIONS_ETHERNET2)
+ETHERNET_NETWORK1 = ETHERNET_NETWORKS.create(OPTIONS_ETHERNET1)
+ETHERNET_NETWORK2 = ETHERNET_NETWORKS.create(OPTIONS_ETHERNET2)
 print("Created ethernet-networks successfully.\n  uri = '%s' and \n\t'%s'" %
       (ETHERNET_NETWORK1.data['uri'], ETHERNET_NETWORK2.data['uri']))
 

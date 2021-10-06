@@ -34,7 +34,7 @@ CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
 
 # To run this example you must set valid URI of the network RESOURCE and of the image streamer
-# appliance
+# APPLIANCE
 MANAGEMENT_NETWORK_URI = ""
 APPLIANCE_URI = ""
 
@@ -43,47 +43,47 @@ RESOURCE = {
     "description": "OS Deployment Server",
     "name": "I3s-Deployment Server",
     "mgmtNetworkUri": MANAGEMENT_NETWORK_URI,
-    "applianceUri": APPLIANCE_URI,
+    "APPLIANCEUri": APPLIANCE_URI,
 }
-os_deployment_server_added = oneview_client.os_deployment_servers.add(RESOURCE)
-pprint(os_deployment_server_added)
+OS_DEPLOYMENT_SERVER_ADDED = oneview_client.OS_DEPLOYMENT_SERVERs.add(RESOURCE)
+pprint(OS_DEPLOYMENT_SERVER_ADDED)
 
 print("Get all Os Deployment Servers:")
-os_deployment_servers_all = oneview_client.os_deployment_servers.get_all(start=0, count=-1,
+OS_DEPLOYMENT_SERVERS_ALL = oneview_client.OS_DEPLOYMENT_SERVERs.get_all(start=0, count=-1,
 	 filter='state=Connected')
-pprint(os_deployment_servers_all)
+pprint(OS_DEPLOYMENT_SERVERS_ALL)
 
-OS_DEPLOYMENT_SERVER_URI = os_deployment_server_added['uri']
+OS_DEPLOYMENT_SERVER_URI = OS_DEPLOYMENT_SERVER_ADDED['uri']
 
 print("Get an Os Deployment Server by URI:")
-os_deployment_server = oneview_client.os_deployment_servers.get(OS_DEPLOYMENT_SERVER_URI)
-pprint(os_deployment_server)
+OS_DEPLOYMENT_SERVER = oneview_client.OS_DEPLOYMENT_SERVERs.get(OS_DEPLOYMENT_SERVER_URI)
+pprint(OS_DEPLOYMENT_SERVER)
 
 print("Get Os Deployment Servers by Filter:")
-os_deployment_servers = oneview_client.os_deployment_servers.get_by('state', 'Connected')
-pprint(os_deployment_servers)
+OS_DEPLOYMENT_SERVERs = oneview_client.OS_DEPLOYMENT_SERVERs.get_by('state', 'Connected')
+pprint(OS_DEPLOYMENT_SERVERs)
 
 print("Get the Os Deployment Server by Name:")
-os_deployment_servers = oneview_client.os_deployment_servers.get_by_name("OS Deployment Server")
-pprint(os_deployment_servers)
+OS_DEPLOYMENT_SERVERs = oneview_client.OS_DEPLOYMENT_SERVERs.get_by_name("OS Deployment Server")
+pprint(OS_DEPLOYMENT_SERVERs)
 
 print("Get all Deployment Servers Networks:")
-networks = oneview_client.os_deployment_servers.get_networks()
-pprint(networks)
+NETWORKS = oneview_client.OS_DEPLOYMENT_SERVERs.get_NETWORKS()
+pprint(NETWORKS)
 
 print("List all the Image Streamer RESOURCEs associated with deployment-server:")
-appliances = oneview_client.os_deployment_servers.get_appliances()
-pprint(appliances)
+APPLIANCES = oneview_client.OS_DEPLOYMENT_SERVERs.get_APPLIANCES()
+pprint(APPLIANCES)
 
 print("List the particular Image Streamer RESOURCE with an given URI:")
-appliance = oneview_client.os_deployment_servers.get_appliance(appliances[0]['uri'], 'name')
-pprint(appliance)
+APPLIANCE = oneview_client.OS_DEPLOYMENT_SERVERs.get_APPLIANCE(APPLIANCES[0]['uri'], 'name')
+pprint(APPLIANCE)
 
 print("Update the Deployment Server description:")
-os_deployment_server_added['description'] = "Description Updated"
-os_deployment_server_updated = oneview_client.os_deployment_servers.update(os_deployment_server_added)
-pprint(os_deployment_server_updated)
+OS_DEPLOYMENT_SERVER_ADDED['description'] = "Description Updated"
+OS_DEPLOYMENT_SERVER_updated = oneview_client.OS_DEPLOYMENT_SERVERs.update(OS_DEPLOYMENT_SERVER_ADDED)
+pprint(OS_DEPLOYMENT_SERVER_updated)
 
 print("Delete the added Deployment Server:")
-oneview_client.os_deployment_servers.delete(os_deployment_server_updated)
+oneview_client.OS_DEPLOYMENT_SERVERs.delete(OS_DEPLOYMENT_SERVER_updated)
 print("Done")

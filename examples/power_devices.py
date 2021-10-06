@@ -40,77 +40,77 @@ POWER_DEVICE_INFORMATION = {
 }
 
 POWER_DEVICE_INFORMATION_IPDU = {
-    "hostname": CONFIG['power_device_hostname'],
-    "username": CONFIG['power_device_username'],
-    "password": CONFIG['power_device_password'],
+    "hostname": CONFIG['POWER_DEVICE_hostname'],
+    "username": CONFIG['POWER_DEVICE_username'],
+    "password": CONFIG['POWER_DEVICE_password'],
 }
 
 # Add a Power Device
-power_device_added = oneview_client.power_devices.add(POWER_DEVICE_INFORMATION)
-print('Added Power Device {name} successfully'.format(**power_device_added))
+POWER_DEVICE_ADDED = oneview_client.POWER_DEVICEs.add(POWER_DEVICE_INFORMATION)
+print('Added Power Device {name} successfully'.format(**POWER_DEVICE_ADDED))
 
 # Add and Discover an iPDU
-ipdu = oneview_client.power_devices.add_ipdu(POWER_DEVICE_INFORMATION_IPDU)
-print('Added iPDU {name} successfully'.format(**ipdu))
+IPDU = oneview_client.POWER_DEVICEs.add_IPDU(POWER_DEVICE_INFORMATION_IPDU)
+print('Added iPDU {name} successfully'.format(**IPDU))
 
 # Retrieve Power Device by URI
-power_device = oneview_client.power_devices.get(power_device_added['uri'])
-print('Get power device by URI, retrieved {name} successfully'.format(**power_device))
+POWER_DEVICE = oneview_client.POWER_DEVICEs.get(POWER_DEVICE_ADDED['uri'])
+print('Get power device by URI, retrieved {name} successfully'.format(**POWER_DEVICE))
 
 # Update the Power Device
-power_device['name'] = "New Power Device Name"
-power_device = oneview_client.power_devices.update(power_device)
-print('Power device {name} updated successfully'.format(**power_device))
+POWER_DEVICE['name'] = "New Power Device Name"
+POWER_DEVICE = oneview_client.POWER_DEVICEs.update(POWER_DEVICE)
+print('Power device {name} updated successfully'.format(**POWER_DEVICE))
 
 # Update the Power Device State
-power_device = oneview_client.power_devices.get_by('deviceType', 'HPIpduOutlet')
-power_device_state = oneview_client.power_devices.update_power_state(power_device[0]['uri'],
+POWER_DEVICE = oneview_client.POWER_DEVICEs.get_by('deviceType', 'HPIpduOutlet')
+POWER_DEVICE_state = oneview_client.POWER_DEVICEs.update_power_state(POWER_DEVICE[0]['uri'],
 	 {"powerState": "Off"})
 print('Power device state updated successfully:')
-pprint(power_device_state)
+pprint(POWER_DEVICE_state)
 
 # Get the Power Device state
-power_device_state = oneview_client.power_devices.get_power_state(power_device[0]['uri'])
+POWER_DEVICE_state = oneview_client.POWER_DEVICEs.get_power_state(POWER_DEVICE[0]['uri'])
 print('Getting the new power device state:')
-pprint(power_device_state)
+pprint(POWER_DEVICE_state)
 
 # Update the Device Refresh State
-power_device_refresh = oneview_client.power_devices.update_refresh_state(power_device[0]['uri'],
+POWER_DEVICE_refresh = oneview_client.POWER_DEVICEs.update_refresh_state(POWER_DEVICE[0]['uri'],
                                                                          {"refreshState":
 	 "RefreshPending"})
 print('Power device state refreshed successfully:')
-pprint(power_device_refresh)
+pprint(POWER_DEVICE_refresh)
 
 # Update the Power Device UID State
-power_device_state = oneview_client.power_devices.update_uid_state(power_device[0]['uri'],
+POWER_DEVICE_state = oneview_client.POWER_DEVICEs.update_uid_state(POWER_DEVICE[0]['uri'],
 	 {"uidState": "On"})
 print('Power device UID state updated successfully')
 
 # Get the Power Device UID State
-power_device_uid_state = oneview_client.power_devices.get_uid_state(power_device[0]['uri'])
-print('Getting the new power device UID state: ' + power_device_uid_state)
+POWER_DEVICE_uid_state = oneview_client.POWER_DEVICEs.get_uid_state(POWER_DEVICE[0]['uri'])
+print('Getting the new power device UID state: ' + POWER_DEVICE_uid_state)
 
 # Get power device utilization with defaults
 print("Get power device utilization")
 try:
-    power_devices_utilization = oneview_client.power_devices.get_utilization(power_device[0]['uri'])
-    pprint(power_devices_utilization)
+    POWER_DEVICEs_utilization = oneview_client.POWER_DEVICEs.get_utilization(POWER_DEVICE[0]['uri'])
+    pprint(POWER_DEVICEs_utilization)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get power device utilization specifying parameters
 print("Get power device statistics with parameters")
 try:
-    power_devices_utilization = oneview_client.power_devices.get_utilization(
-        power_device[0]['uri'],
+    POWER_DEVICEs_utilization = oneview_client.POWER_DEVICEs.get_utilization(
+        POWER_DEVICE[0]['uri'],
         fields='AveragePower',
         filter='startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z',
         view='hour')
-    pprint(power_devices_utilization)
+    pprint(POWER_DEVICEs_utilization)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Remove added power devices
-oneview_client.power_devices.remove(ipdu)
-oneview_client.power_devices.remove_synchronous(power_device_added)
+oneview_client.POWER_DEVICEs.remove(IPDU)
+oneview_client.POWER_DEVICEs.remove_synchronous(POWER_DEVICE_ADDED)
 print("Successfully removed power devices")

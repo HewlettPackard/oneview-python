@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 # Set api_version to 600, default is 300 and this API has been introduced since API 600.
 CONFIG = {
@@ -43,16 +43,16 @@ OPTIONS = {
 CONFIG = try_load_from_file(CONFIG)
 
 oneview_client = OneViewClient(CONFIG)
-appliance_device_SNMP_V3_USERS = oneview_client.appliance_device_SNMP_V3_USERS
+APPLIANCE_DEVICE_SNMP_V3_USERS = oneview_client.appliance_device_snmp_v3_users
 
 # Add appliance device SNMP v3 users
-SNMP_V3_USER = appliance_device_SNMP_V3_USERS.create(OPTIONS)
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.create(OPTIONS)
 SNMP_V3_USER_URI = SNMP_V3_USER.data['uri']
 print("\n## Create appliance SNMP v3 user successfully!")
 pprint(SNMP_V3_USER.data)
 
 # Lists the appliance SNMPv3 users
-SNMP_V3_USERS_LIST = appliance_device_SNMP_V3_USERS.get_all()
+SNMP_V3_USERS_LIST = APPLIANCE_DEVICE_SNMP_V3_USERS.get_all()
 print("\n## Got appliance SNMP v3 users successfully!")
 pprint(SNMP_V3_USERS_LIST)
 
@@ -61,12 +61,12 @@ SNMP_V3_USERS = SNMP_V3_USERS_LIST.pop()
 
 # Get by name
 print("\n## Find an SNMPv3 Users by username")
-SNMP_V3_USER = appliance_device_SNMP_V3_USERS.get_by_name(SNMP_V3_USER.data['userName'])
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.get_by_name(SNMP_V3_USER.data['userName'])
 pprint(SNMP_V3_USER.data)
 
 # Get by URI
 print("Find an SNMP v3 user by URI")
-SNMP_V3_USER = appliance_device_SNMP_V3_USERS.get_by_uri(SNMP_V3_USER_URI)
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.get_by_uri(SNMP_V3_USER_URI)
 pprint(SNMP_V3_USER.data)
 
 # hange appliance device SNMP v3 Users
@@ -80,7 +80,7 @@ SNMP_V3_USER.delete()
 print("\n## Delete appliance SNMP v3 user successfully!")
 
 # Add appliance device SNMP v3 users for Automation
-SNMP_V3_USER = appliance_device_SNMP_V3_USERS.create(OPTIONS)
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.create(OPTIONS)
 SNMP_V3_USER_URI = SNMP_V3_USER.data['uri']
 print("\n## Created appliance SNMP v3 user")
 pprint(SNMP_V3_USER.data)

@@ -17,7 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
@@ -32,16 +32,16 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-sas_interconnects = oneview_client.sas_interconnects
+SAS_INTERCONNECTS = oneview_client.sas_interconnects
 
 # Get all, with defaults
 print("\nGet all SAS Interconnects")
-ALL_SAS_INTERCONNECTS = sas_interconnects.get_all()
+ALL_SAS_INTERCONNECTS = SAS_INTERCONNECTS.get_all()
 pprint(ALL_SAS_INTERCONNECTS)
 
 # Get the first 10 records
 print("\nGet the first ten SAS Interconnects")
-SAS_INTERCONNECTS_LIMITED = sas_interconnects.get_all(0, 10)
+SAS_INTERCONNECTS_LIMITED = SAS_INTERCONNECTS.get_all(0, 10)
 pprint(SAS_INTERCONNECTS_LIMITED)
 
 if ALL_SAS_INTERCONNECTS:
@@ -49,7 +49,7 @@ if ALL_SAS_INTERCONNECTS:
 
     # Get by Uri
     print("\nGet a SAS Interconnect by uri")
-    SAS_INTERCONNECT_BY_URI = sas_interconnects.get_by_uri(SAS_INTERCONNECT_URI)
+    SAS_INTERCONNECT_BY_URI = SAS_INTERCONNECTS.get_by_uri(SAS_INTERCONNECT_URI)
     pprint(SAS_INTERCONNECT_BY_URI.data)
 
     if SAS_INTERCONNECT_BY_URI.data["powerState"] == 'Off':
@@ -63,7 +63,7 @@ if ALL_SAS_INTERCONNECTS:
 
     print("\nRefresh a SAS interconnect")
     SAS_INTERCONNECT_BY_URI.refresh_state(
-        CONFIGuration={"refreshState": "RefreshPending"}
+        configuration={"refreshState": "RefreshPending"}
     )
     print("Done!")
 

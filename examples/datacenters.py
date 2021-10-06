@@ -39,32 +39,32 @@ DATACENTER_INFORMATION = {
 }
 
 # Add a Datacenter
-datacenter_added = oneview_client.datacenters.add(DATACENTER_INFORMATION)
-print("\nAdded Datacenter '{name}' successfully\n".format(**datacenter_added))
+DATACENTER_ADDED = oneview_client.DATACENTERs.add(DATACENTER_INFORMATION)
+print("\nAdded Datacenter '{name}' successfully\n".format(**DATACENTER_ADDED))
 
 # Retrieve Datacenter by URI
-datacenter = oneview_client.datacenters.get(datacenter_added['uri'])
-print("\nGet Datacenter by URI: retrieved '{name}' successfully\n".format(**datacenter))
+DATACENTER = oneview_client.DATACENTERs.get(DATACENTER_ADDED['uri'])
+print("\nGet Datacenter by URI: retrieved '{name}' successfully\n".format(**DATACENTER))
 
 # Update the Datacenter
-datacenter['name'] = "New Datacenter Name"
-datacenter = oneview_client.datacenters.update(datacenter)
-print("\nDatacenter '{name}' updated successfully\n".format(**datacenter))
+DATACENTER['name'] = "New Datacenter Name"
+DATACENTER = oneview_client.DATACENTERs.update(DATACENTER)
+print("\nDatacenter '{name}' updated successfully\n".format(**DATACENTER))
 
 # Get the Datacenter by name
-datacenter_list = oneview_client.datacenters.get_by('name', "New Datacenter Name")
-print("\nGet Datacenter device by name: '{name}'\n".format(**datacenter))
+DATACENTER_list = oneview_client.DATACENTERs.get_by('name', "New Datacenter Name")
+print("\nGet Datacenter device by name: '{name}'\n".format(**DATACENTER))
 
 # Get the Datacenter visual content
 print("Getting the Datacenter visual content...")
-datacenter_visual_content = oneview_client.datacenters.get_visual_content(datacenter['uri'])
-pprint(datacenter_visual_content)
+DATACENTER_visual_content = oneview_client.DATACENTERs.get_visual_content(DATACENTER['uri'])
+pprint(DATACENTER_visual_content)
 
 # Remove added Datacenter
-oneview_client.datacenters.remove(datacenter)
-print("\nSuccessfully removed the datacenter")
+oneview_client.DATACENTERs.remove(DATACENTER)
+print("\nSuccessfully removed the DATACENTER")
 
-# Add a datacenter again and call Remove All
-datacenter_added = oneview_client.datacenters.add(DATACENTER_INFORMATION)
-oneview_client.datacenters.remove_all(filter="name matches '%'")
-print("\nSuccessfully removed all datacenters")
+# Add a DATACENTER again and call Remove All
+DATACENTER_ADDED = oneview_client.DATACENTERs.add(DATACENTER_INFORMATION)
+oneview_client.DATACENTERs.remove_all(filter="name matches '%'")
+print("\nSuccessfully removed all DATACENTERs")

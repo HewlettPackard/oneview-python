@@ -30,7 +30,7 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-RESTOREs = oneview_client.RESTOREs
+RESTORES = oneview_client.RESTORES
 
 # A uri for a backup to RESTORE must be set to run this example
 URI_OF_BACKUP_TO_RESTORE = "/rest/backups/example_backup_2017-04-25_195515"
@@ -40,26 +40,26 @@ print("Starting a RESTORE")
 OPTIONS = {
     "uriOfBackupToRestore": URI_OF_BACKUP_TO_RESTORE
 }
-RESTORE = RESTOREs.RESTORE(OPTIONS)
+RESTORE = RESTORES.RESTORE(OPTIONS)
 pprint(RESTORE.data)
 
-# Get all RESTOREs
+# Get all RESTORES
 print("Get all Restores")
-RESTORE_ALL = RESTOREs.get_all()
+RESTORE_ALL = RESTORES.get_all()
 for restr in RESTORE_ALL:
     print('  - {}'.format(restr['hostName']))
 
 # Get by hostname
 print("\nGet a Restore by hostName equals to '{}'".format(RESTORE['hostName']))
-RESTORE_BY_HOST_NAME = RESTOREs.get_by("hostName", RESTORE['hostName'])
+RESTORE_BY_HOST_NAME = RESTORES.get_by("hostName", RESTORE['hostName'])
 pprint(RESTORE_BY_HOST_NAME)
 
 # Get by URI
 print("\nGet a Restore by URI")
-RESTORE_BY_URI = RESTOREs.get_by_uri(RESTORE['uri'])
+RESTORE_BY_URI = RESTORES.get_by_uri(RESTORE['uri'])
 pprint(RESTORE_BY_URI.data)
 
 # Get Restore Failure
 print("\nRetrieving Restore Failure")
-FAILURES = RESTOREs.get_failure()
+FAILURES = RESTORES.get_failure()
 pprint(FAILURES)

@@ -16,7 +16,7 @@
 ###
 
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -28,10 +28,10 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
-time_CONFIG = oneview_client.appliance_CONFIGuration_TIMECONFIG
+TIME_CONFIG = oneview_client.appliance_configuration_timeconfig
 
 # Get all the supported locales
-TIMECONFIG = time_CONFIG.get_all()
+TIMECONFIG = TIME_CONFIG.get_all()
 print("\nGot appliance supported locales successfully!")
 for timeandlocale in TIMECONFIG:
     print("\nLocale = {}".format(timeandlocale['locale']))

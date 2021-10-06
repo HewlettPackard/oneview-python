@@ -18,7 +18,7 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from CONFIG_loader import try_load_from_file
+from config_loader import try_load_from_file
 
 CONFIG = {
     "ip": "",
@@ -31,7 +31,7 @@ CONFIG = {
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 OPTIONS = {
     "type": "Range",
@@ -57,9 +57,11 @@ OPTIONS_ADDITIONAL = {
         "/rest/id-pools/vmac/ranges/5613a502-9253-45c6-aa78-a83635241cf8/collector",
     "reservedIdCount": 0,
     "freeFragmentUri":
-        "/rest/id-pools/vmac/ranges/5613a502-9253-45c6-aa78-a83635241cf8/free-fragments?start=0&count=-1",
+    "/rest/id-pools/vmac/ranges/5613a502-9253-45c6-aa78-a83635241cf8/free-fragments?start=0&\
+            count=-1",
     "allocatedFragmentUri":
-        "/rest/id-pools/vmac/ranges/5613a502-9253-45c6-aa78-a83635241cf8/allocated-fragments?start=0&count=-1",
+    "/rest/id-pools/vmac/ranges/5613a502-9253-45c6-aa78-a83635241cf8/allocated-fragments?start=0\
+            &count=-1",
     "uri":
         "/rest/id-pools/vmac/ranges/5613a502-9253-45c6-aa78-a83635241cf8",
     "category": "id-range-VMAC",
@@ -70,79 +72,79 @@ OPTIONS_ADDITIONAL = {
 }
 
 # Create vmac Range for id pools
-vmac_range = oneview_client.id_pools_vmac_ranges.create(OPTIONS)
-pprint(vmac_range)
+VMAC_RANGE = ONEVIEW_CLIENT.id_pools_vmac_ranges.create(OPTIONS)
+pprint(VMAC_RANGE)
 
 # Get vmac range by uri
-vmac_range_byuri = oneview_client.id_pools_vmac_ranges.get(vmac_range['uri'])
-print("Got vmac range from '{}' to '{}' by uri:\n   '{}'".format(vmac_range_byuri[
-      'startAddress'], vmac_range_byuri['endAddress'], vmac_range_byuri['uri']))
+VMAC_RANGE_BY_URI = ONEVIEW_CLIENT.id_pools_vmac_ranges.get(VMAC_RANGE['uri'])
+print("Got vmac range from '{}' to '{}' by uri:\n   '{}'".format(VMAC_RANGE_BY_URI[\
+      'startAddress'], VMAC_RANGE_BY_URI['endAddress'], VMAC_RANGE_BY_URI['uri']))
 
 # Get vmac range by id
-vmac_range_byId = oneview_client.id_pools_vmac_ranges.get(vmac_range['uri'])
-print("Got vmac range from '{}' to '{}' by uri:\n   '{}'".format(vmac_range_byId[
-      'startAddress'], vmac_range_byId['endAddress'], vmac_range_byId['uri']))
+VMAC_RANGE_BY_ID = ONEVIEW_CLIENT.id_pools_vmac_ranges.get(VMAC_RANGE['uri'])
+print("Got vmac range from '{}' to '{}' by uri:\n   '{}'".format(VMAC_RANGE_BY_ID[\
+      'startAddress'], VMAC_RANGE_BY_ID['endAddress'], VMAC_RANGE_BY_ID['uri']))
 
 # Enable a vMAC range
 INFORMATION = {
     "type": "Range",
     "enabled": True
 }
-vmac_range = oneview_client.id_pools_vmac_ranges.enable(
-    INFORMATION, vmac_range['uri'])
-print("Successfully enabled vmac range at\n   'uri': {}\n   with 'enabled': {}".format(
-    vmac_range['uri'], vmac_range['enabled']))
+VMAC_RANGE = ONEVIEW_CLIENT.id_pools_vmac_ranges.enable(
+    INFORMATION, VMAC_RANGE['uri'])
+print("Successfully enabled vmac range at\n   'uri': {}\n   with 'enabled': {}".format(\
+    VMAC_RANGE['uri'], VMAC_RANGE['enabled']))
 
 # Allocate a set of IDs from vmac range
 INFORMATION = {
     "count": 10
 }
-successfully_allocated_ids = oneview_client.id_pools_vmac_ranges.allocate(
-    INFORMATION, vmac_range['uri'])
+SUCCESSFULLY_ALLOCATED_IDS = ONEVIEW_CLIENT.id_pools_vmac_ranges.allocate(\
+    INFORMATION, VMAC_RANGE['uri'])
 print("Successfully allocated IDs:")
-pprint(successfully_allocated_ids)
+pprint(SUCCESSFULLY_ALLOCATED_IDS)
 
 # Get all allocated fragments in vmac range
 print("Get all allocated fragments in vmac range")
-allocated_fragments = oneview_client.id_pools_vmac_ranges.get_allocated_fragments(
-    vmac_range['uri'])
-pprint(allocated_fragments)
+ALLOCATED_FRAGMENTS = ONEVIEW_CLIENT.id_pools_vmac_ranges.get_allocated_fragments(
+    VMAC_RANGE['uri'])
+pprint(ALLOCATED_FRAGMENTS)
 
 # Get all free fragments in vmac range
 print("Get all free fragments in vmac range")
-allocated_fragments = oneview_client.id_pools_vmac_ranges.get_free_fragments(
-    vmac_range['uri'])
-pprint(allocated_fragments)
+ALLOCATED_FRAGMENTS = ONEVIEW_CLIENT.id_pools_vmac_ranges.get_free_fragments(
+    VMAC_RANGE['uri'])
+pprint(ALLOCATED_FRAGMENTS)
 
 # Collect a set of IDs back to vmac range
 try:
     INFORMATION = {
-        "idList": successfully_allocated_ids['idList']
+        "idList": SUCCESSFULLY_ALLOCATED_IDS['idList']
     }
-    successfully_collected_ids = oneview_client.id_pools_vmac_ranges.collect(
-        INFORMATION, vmac_range['uri'])
-except HPEOneViewException as e:
-    print(e.msg)
+    SUCCESSFULLY_COLLECTED_IDS = ONEVIEW_CLIENT.id_pools_vmac_ranges.collect(
+        INFORMATION, VMAC_RANGE['uri'])
+except HPEOneViewException as err:
+    print(err.msg)
 
 # Disable a vmac range
 INFORMATION = {
     "type": "Range",
     "enabled": False
 }
-vmac_range = oneview_client.id_pools_vmac_ranges.enable(
-    INFORMATION, vmac_range['uri'])
+VMAC_RANGE = ONEVIEW_CLIENT.id_pools_vmac_ranges.enable(
+    INFORMATION, VMAC_RANGE['uri'])
 print("Successfully disabled vmac range at\n   'uri': {}\n   with 'enabled': {}".format(
-    vmac_range['uri'], vmac_range['enabled']))
+    VMAC_RANGE['uri'], VMAC_RANGE['enabled']))
 
-# Delete vmac_range
-oneview_client.id_pools_vmac_ranges.delete(vmac_range)
+# Delete VMAC_RANGE
+ONEVIEW_CLIENT.id_pools_vmac_ranges.delete(VMAC_RANGE)
 print("Successfully deleted vmac range")
 
 # Create vmac Range for id pools with more OPTIONS specified
 print("Create vMAC range with more OPTIONS specified for id pools")
-vmac_range = oneview_client.id_pools_vmac_ranges.create(OPTIONS_ADDITIONAL)
-pprint(vmac_range)
+VMAC_RANGE = ONEVIEW_CLIENT.id_pools_vmac_ranges.create(OPTIONS_ADDITIONAL)
+pprint(VMAC_RANGE)
 
-# Delete vmac_range
-oneview_client.id_pools_vmac_ranges.delete(vmac_range)
+# Delete VMAC_RANGE
+ONEVIEW_CLIENT.id_pools_vmac_ranges.delete(VMAC_RANGE)
 print("Successfully deleted newly created vMAC range")

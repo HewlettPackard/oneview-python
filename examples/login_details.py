@@ -33,7 +33,7 @@ CONFIG = try_load_from_file(CONFIG)
 oneview_client = OneViewClient(CONFIG)
 
 print("\n Querying system for login details\n")
-login_detail = oneview_client.login_details.get_login_details()
+LOGIN_DETAIL = oneview_client.LOGIN_DETAILs.get_LOGIN_DETAILs()
 
 print("\n Login details are: \n")
-pprint(login_detail)
+pprint(LOGIN_DETAIL)

@@ -17,8 +17,7 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from CONFIG_loader import try_load_from_file
-
+from config_loader import try_load_from_file
 # Try load CONFIG from a file (if there is a CONFIG file)
 CONFIG = {
     "ip": "<oneview_ip>",
@@ -31,10 +30,10 @@ CONFIG = {
 
 CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(CONFIG)
-ENCLOSURE_GROUPs = oneview_client.ENCLOSURE_GROUPs
-id_pool_IPV4_RANGE = oneview_client.id_pools_IPV4_RANGEs
-id_pool_IPV4_SUBNET = oneview_client.id_pools_IPV4_SUBNETs
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+ENCLOSURE_GROUPS = ONEVIEW_CLIENT.enclosure_groups
+ID_POOL_IPV4_RANGE = ONEVIEW_CLIENT.id_pools_ipv4_ranges
+ID_POOL_IPV4_SUBNET = ONEVIEW_CLIENT.id_pools_ipv4_subnets
 
 OPTIONS = {
     "name": "IPv4",
@@ -53,7 +52,7 @@ SUBNET_OPTIONS = {
 }
 
 print('\n Create IPv4 subnet to have Range of IPs')
-IPV4_SUBNET = id_pool_IPV4_SUBNET.create(SUBNET_OPTIONS)
+IPV4_SUBNET = ID_POOL_IPV4_SUBNET.create(SUBNET_OPTIONS)
 pprint(IPV4_SUBNET.data)
 
 OPTION = {
@@ -68,14 +67,14 @@ OPTION = {
 }
 
 print("\n Create an IPv4 Range for id pools")
-if oneview_client.api_version > 1000:
-    IPV4_RANGE = id_pool_IPV4_RANGE.create(OPTION).data
+if ONEVIEW_CLIENT.api_version > 1000:
+    IPV4_RANGE = ID_POOL_IPV4_RANGE.create(OPTION).data
 else:
-    IPV4_RANGE = id_pool_IPV4_RANGE.create(OPTIONS).data
+    IPV4_RANGE = ID_POOL_IPV4_RANGE.create(OPTIONS).data
 pprint(IPV4_RANGE)
 
 print("\n Get the IPv4 range by uri")
-IPV4RANGE = id_pool_IPV4_RANGE.get_by_uri(IPV4_RANGE['uri'])
+IPV4RANGE = ID_POOL_IPV4_RANGE.get_by_uri(IPV4_RANGE['uri'])
 pprint(IPV4RANGE.data)
 
 print("Getting Schema")
@@ -104,7 +103,7 @@ EG_OPTIONS = {
     "ipRangeUris": [IPV4_RANGE['uri']],
     "enclosureCount": 3,
 }
-ENCLOSURE_GROUP = ENCLOSURE_GROUPs.create(EG_OPTIONS)
+ENCLOSURE_GROUP = ENCLOSURE_GROUPS.create(EG_OPTIONS)
 
 print("\nAllocates a set of IDs from an IPv4 range")
 

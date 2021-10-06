@@ -40,38 +40,38 @@ LOGICAL_DOWNLINK_NAME = 'LD49f094dd-1732-48c5-9aa8-2ff827578887 (HP VC FlexFabri
 # Get logical downlink by id
 try:
     print("\nGet logical downlink by id")
-    log_downlink = oneview_client.logical_downlinks.get(LOGICAL_DOWNLINK_ID)
-    pprint(log_downlink)
+    LOG_DOWNLINK = oneview_client.logical_downlinks.get(LOGICAL_DOWNLINK_ID)
+    pprint(LOG_DOWNLINK)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get logical downlink by id without Ethernet networks
 try:
     print("\nGet logical downlink by id without Ethernet networks")
-    log_downlink_without_ethernet = oneview_client.logical_downlinks.get_without_ethernet(LOGICAL_DOWNLINK_ID)
-    pprint(log_downlink_without_ethernet)
+    LOG_DOWNLINK_without_ethernet = oneview_client.logical_downlinks.get_without_ethernet(LOGICAL_DOWNLINK_ID)
+    pprint(LOG_DOWNLINK_without_ethernet)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get logical downlink by name
 try:
     print("\nGet logical downlink by name")
-    log_downlink_by_name = oneview_client.logical_downlinks.get_by('name', LOGICAL_DOWNLINK_NAME)
-    pprint(log_downlink_by_name)
+    LOG_DOWNLINK_by_name = oneview_client.logical_downlinks.get_by('name', LOGICAL_DOWNLINK_NAME)
+    pprint(LOG_DOWNLINK_by_name)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get all logical downlinks
 print("\nGet all logical downlinks")
-log_downlinks = oneview_client.logical_downlinks.get_all()
-pprint(log_downlinks)
+LOG_DOWNLINKs = oneview_client.logical_downlinks.get_all()
+pprint(LOG_DOWNLINKs)
 
 # Get all sorting by name descending
 print("\nGet all logical downlinks sorting by name")
-log_downlinks_sorted = oneview_client.logical_downlinks.get_all(sort='name:descending')
-pprint(log_downlinks_sorted)
+LOG_DOWNLINKs_sorted = oneview_client.logical_downlinks.get_all(sort='name:descending')
+pprint(LOG_DOWNLINKs_sorted)
 
 # Get all logical downlinks without Ethernet
 print("\nGet all logical downlinks without Ethernet")
-log_downlinks_without_ethernet = oneview_client.logical_downlinks.get_all_without_ethernet()
-pprint(log_downlinks_without_ethernet)
+LOG_DOWNLINKs_without_ethernet = oneview_client.logical_downlinks.get_all_without_ethernet()
+pprint(LOG_DOWNLINKs_without_ethernet)
