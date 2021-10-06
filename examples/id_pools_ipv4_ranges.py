@@ -17,10 +17,10 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-# Try load config from a file (if there is a config file)
-config = {
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,14 +29,14 @@ config = {
     "api_version": "<api_version>"
 }
 
-config = try_load_from_file(config)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-enclosure_groups = oneview_client.enclosure_groups
-id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
-id_pool_ipv4_subnet = oneview_client.id_pools_ipv4_subnets
+oneview_client = OneViewClient(CONFIG)
+ENCLOSURE_GROUPs = oneview_client.ENCLOSURE_GROUPs
+id_pool_IPV4_RANGE = oneview_client.id_pools_IPV4_RANGEs
+id_pool_IPV4_SUBNET = oneview_client.id_pools_IPV4_SUBNETs
 
-options = {
+OPTIONS = {
     "name": "IPv4",
     "rangeCategory": "Custom",
     "startAddress": "",
@@ -44,101 +44,101 @@ options = {
     "subnetUri": ""
 }
 
-subnet_options = {
+SUBNET_OPTIONS = {
     "name": "iscsi_Subnet",
-    "networkId": config['subnet_networkid'],
-    "subnetmask": config['subnet_mask'],
-    "gateway": config['subnet_gateway'],
+    "networkId": CONFIG['subnet_networkid'],
+    "subnetmask": CONFIG['subnet_mask'],
+    "gateway": CONFIG['subnet_gateway'],
     "domain": "example.com",
 }
 
 print('\n Create IPv4 subnet to have Range of IPs')
-ipv4_subnet = id_pool_ipv4_subnet.create(subnet_options)
-pprint(ipv4_subnet.data)
+IPV4_SUBNET = id_pool_IPV4_SUBNET.create(SUBNET_OPTIONS)
+pprint(IPV4_SUBNET.data)
 
-option = {
+OPTION = {
     "name": "IPv4",
     "startStopFragments": [
         {
-            "startAddress": config['range_start_address'],
-            "endAddress": config['range_end_address']
+            "startAddress": CONFIG['range_start_address'],
+            "endAddress": CONFIG['range_end_address']
         }
     ],
-    "subnetUri": ipv4_subnet.data['uri']
+    "subnetUri": IPV4_SUBNET.data['uri']
 }
 
 print("\n Create an IPv4 Range for id pools")
 if oneview_client.api_version > 1000:
-    ipv4_range = id_pool_ipv4_range.create(option).data
+    IPV4_RANGE = id_pool_IPV4_RANGE.create(OPTION).data
 else:
-    ipv4_range = id_pool_ipv4_range.create(options).data
-pprint(ipv4_range)
+    IPV4_RANGE = id_pool_IPV4_RANGE.create(OPTIONS).data
+pprint(IPV4_RANGE)
 
 print("\n Get the IPv4 range by uri")
-ipv4Range = id_pool_ipv4_range.get_by_uri(ipv4_range['uri'])
-pprint(ipv4Range.data)
+IPV4RANGE = id_pool_IPV4_RANGE.get_by_uri(IPV4_RANGE['uri'])
+pprint(IPV4RANGE.data)
 
 print("Getting Schema")
-schema = ipv4Range.get_schema()
-pprint(schema)
+SCHEMA = IPV4RANGE.get_SCHEMA()
+pprint(SCHEMA)
 
 print("\n Update the IPv4 Range")
-update_ipv4Range = ipv4Range.data
-update_ipv4Range['name'] = 'New Name'
-ipv4_range = ipv4Range.update(update_ipv4Range)
-pprint(ipv4_range.data)
+UPDATE_IPV4RANGE = IPV4RANGE.data
+UPDATE_IPV4RANGE['name'] = 'New Name'
+IPV4_RANGE = IPV4RANGE.update(UPDATE_IPV4RANGE)
+pprint(IPV4_RANGE.data)
 
 print("\n Enable an IPv4 range")
-ipv4_range = ipv4Range.enable(
+IPV4_RANGE = IPV4RANGE.enable(
     {
         "type": "Range",
         "enabled": True
     },
-    ipv4_range.data['uri'])
+    IPV4_RANGE.data['uri'])
 print(" IPv4 range enabled successfully.")
 
 print("\nAssociate EG with range for allocation")
-eg_options = {
+EG_OPTIONS = {
     "name": "RangeEG",
     "ipAddressingMode": "ipPool",
-    "ipRangeUris": [ipv4_range['uri']],
+    "ipRangeUris": [IPV4_RANGE['uri']],
     "enclosureCount": 3,
 }
-enclosure_group = enclosure_groups.create(eg_options)
+ENCLOSURE_GROUP = ENCLOSURE_GROUPs.create(EG_OPTIONS)
 
 print("\nAllocates a set of IDs from an IPv4 range")
 
-ipv4_range_updated = ipv4Range.update_allocator({
+IPV4_RANGE_UPDATED = IPV4RANGE.update_allocator({
     "count": 2,
-}, ipv4_range['uri'])
-pprint(ipv4_range_updated)
+}, IPV4_RANGE['uri'])
+pprint(IPV4_RANGE_UPDATED)
 print("Allocated set of ID to ipv4 Range")
 
 
 print("\n Get all allocated fragments in IPv4 range")
-allocated_fragments = ipv4Range.get_allocated_fragments(ipv4_range['uri'])
-pprint(allocated_fragments)
+ALLOCATED_FRAGMENTS = IPV4RANGE.get_ALLOCATED_FRAGMENTS(IPV4_RANGE['uri'])
+pprint(ALLOCATED_FRAGMENTS)
 
 print("\n Get all free fragments in IPv4 range")
-allocated_fragments = ipv4Range.get_free_fragments(ipv4_range['uri'])
-pprint(allocated_fragments)
+ALLOCATED_FRAGMENTS = IPV4RANGE.get_free_fragments(IPV4_RANGE['uri'])
+pprint(ALLOCATED_FRAGMENTS)
 
 print("Collects a set of IDs back to an IPv4 range.")
-ipv4_range_collector = ipv4Range.update_collector({
-    "idList": ipv4_range_updated['idList']
-}, ipv4_range['uri'])
-print(ipv4_range_collector)
+IPV4_RANGE_COLLECTOR = IPV4RANGE.update_collector({
+    "idList": IPV4_RANGE_UPDATED['idList']
+}, IPV4_RANGE['uri'])
+print(IPV4_RANGE_COLLECTOR)
 
 print("\nRemove associated EG before deletion")
-enclosure_group.delete()
+ENCLOSURE_GROUP.delete()
 
 print("\n Disable an IPv4 range")
-ipv4_range = ipv4Range.enable({
+IPV4_RANGE = IPV4RANGE.enable({
     "type": "Range",
     "enabled": False
-}, ipv4_range['uri'])
+}, IPV4_RANGE['uri'])
 print(" IPv4 range disabled successfully.")
 
 print("\n Delete the IPv4_range")
-ipv4Range.delete()
+IPV4RANGE.delete()
 print(" Successfully deleted IPv4 range")

@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,33 +27,33 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-ha_nodes = oneview_client.ha_nodes
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+HA_NODEs = oneview_client.HA_NODEs
 
 # Get all HA nodes from appliance
 print("\nGet all HA nodes from appliance:\n ")
-all_nodes = ha_nodes.get_all()
-for node in all_nodes:
+ALL_NODES = HA_NODEs.get_all()
+for node in ALL_NODES:
     print(" - {}".format(node['name']))
 
 # Get HA node by uri from appliance
 print("\nGet HA node by uri from appliance\n")
-node_by_uri = ha_nodes.get_by_uri(all_nodes[0]['uri'])
-pprint(node_by_uri.data)
+NODE_BY_URI = HA_NODEs.get_by_uri(ALL_NODES[0]['uri'])
+pprint(NODE_BY_URI.DATA)
 
 # update role of HA node
-data = {'role': 'Standby'}
-ha_node = node_by_uri.update(data)
+DATA = {'role': 'Standby'}
+HA_NODE = NODE_BY_URI.update(DATA)
 print("\n## Update HA node successfully!")
-pprint(ha_node.data)
+pprint(HA_NODE.DATA)
 
 # Patch update role
 print("\nUpdate the HA node using patch")
-ha_node.patch(operation="replace", path="/role", value="Active")
-pprint(ha_node.data)
+HA_NODE.patch(operation="replace", path="/role", value="Active")
+pprint(HA_NODE.DATA)
 
 # Delete HA node
-ha_node.delete()
+HA_NODE.delete()
 print("\n## Delete HA node successfully!")

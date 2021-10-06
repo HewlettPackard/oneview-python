@@ -17,10 +17,10 @@
 
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from pprint import pprint
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,124 +28,125 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient.from_json_file('config.json')
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient.from_json_file('CONFIG.json')
 storage_systems = oneview_client.storage_systems
-storage_pools = oneview_client.storage_pools
-scopes = oneview_client.scopes
+STORAGE_POOLs = oneview_client.STORAGE_POOLs
+SCOPEs = oneview_client.SCOPEs
 
 # Find or add storage system
 print("Find or add storage system")
-s_systems = storage_systems.get_all()
-if s_systems:
-    s_system_data = s_systems[0]
-    s_system = storage_systems.get_by_uri(s_system_data["uri"])
-    storage_system_added = False
+S_SYSTEMS = storage_systems.get_all()
+if S_SYSTEMS:
+    S_SYSTEM_DATA = S_SYSTEMS[0]
+    S_SYSTEM = storage_systems.get_by_uri(S_SYSTEM_DATA["uri"])
+    STORAGE_SYSTEM_ADDED = False
     print("Found storage system '{}' at uri: {}".format(
-        s_system.data['name'], s_system.data['uri']))
+        S_SYSTEM.data['name'], S_SYSTEM.data['uri']))
 else:
-    options = {
-        "hostname": config['storage_system_hostname'],
-        "username": config['storage_system_username'],
-        "password": config['storage_system_password'],
-        "family": config['storage_system_family']
+    OPTIONS = {
+        "hostname": CONFIG['storage_system_hostname'],
+        "username": CONFIG['storage_system_username'],
+        "password": CONFIG['storage_system_password'],
+        "family": CONFIG['storage_system_family']
     }
-    s_system = storage_systems.add(options)
-    s_system_data = s_system.data.copy()
-    s_system_data['deviceSpecificAttributes']['managedDomain'] = s_system_data['deviceSpecificAttributes']['discoveredDomains'][0]
-    for pool in s_system_data['deviceSpecificAttributes']['discoveredPools']:
-        if pool['domain'] == s_system_data['deviceSpecificAttributes']['managedDomain']:
+    S_SYSTEM = storage_systems.add(OPTIONS)
+    S_SYSTEM_DATA = S_SYSTEM.data.copy()
+    S_SYSTEM_DATA['deviceSpecificAttributes']['managedDomain'] = S_SYSTEM_DATA['deviceSpecificAttributes']['discoveredDomains'][0]
+    for pool in S_SYSTEM_DATA['deviceSpecificAttributes']['discoveredPools']:
+        if pool['domain'] == S_SYSTEM_DATA['deviceSpecificAttributes']['managedDomain']:
             pool_to_manage = pool
-            s_system_data['deviceSpecificAttributes']['discoveredPools'].remove(pool)
+            S_SYSTEM_DATA['deviceSpecificAttributes']['discoveredPools'].remove(pool)
             pprint(pool_to_manage)
             break
-    s_system_data['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
-    s_system.update(s_system_data)
+    S_SYSTEM_DATA['deviceSpecificAttributes']['managedPools'] = [pool_to_manage]
+    S_SYSTEM.update(S_SYSTEM_DATA)
     print("\nUpdated 'managedDomain' to '{}' so storage system can be managed".format(
-          s_system.data['deviceSpecificAttributes']['managedDomain']))
-    storage_system_added = True
+          S_SYSTEM.data['deviceSpecificAttributes']['managedDomain']))
+    STORAGE_SYSTEM_ADDED = True
 
     print("   Added storage system '{}' at uri: {}".format(
-        s_system.data['name'], s_system.data['uri']))
+        S_SYSTEM.data['name'], S_SYSTEM.data['uri']))
 
 # Find and add unmanaged storage pool for management
 # Create and delete operations supports only with API version 300 and below.
 if oneview_client.api_version <= 300:
-    pool_name = ''
-    storage_pool_add = None
+    POOL_NAME = ''
+    STORAGE_POOL_ADD = None
 
     print("Find and add unmanaged storage pool for management")
-    for pool in s_system.data['unmanagedPools']:
-        if pool['domain'] == s_system.data['managedDomain']:
-            pool_name = pool['name']
+    for pool in S_SYSTEM.data['unmanagedPools']:
+        if pool['domain'] == S_SYSTEM.data['managedDomain']:
+            POOL_NAME = pool['name']
             break
 
-    if pool_name:
-        print("   Found pool '{}'".format(pool_name))
-        options = {
-            "storageSystemUri": s_system.data['uri'],
-            "poolName": pool_name
+    if POOL_NAME:
+        print("   Found pool '{}'".format(POOL_NAME))
+        OPTIONS = {
+            "storageSystemUri": S_SYSTEM.data['uri'],
+            "poolName": POOL_NAME
         }
-        storage_pool_add = storage_pools.add(options)
+        STORAGE_POOL_ADD = STORAGE_POOLs.add(OPTIONS)
         print("   Successfully added pool")
     else:
         print("   No available unmanaged storage pools to add")
 
     # Remove storage pool
-    if storage_pool_add:
+    if STORAGE_POOL_ADD:
         print("Remove recently added storage pool")
-        storage_pool_add.remove()
+        STORAGE_POOL_ADD.remove()
         print("   Done.")
 
-# Create a scope
-print("\n## Create the scope")
-options = {
+# Create a SCOPE
+print("\n## Create the SCOPE")
+OPTIONS = {
     "name": "SampleScope",
     "description": "Sample Scope description"
 }
-scope = scopes.get_by_name(options['name'])
-if not scope:
-    scope = scopes.create(options)
-pprint(scope.data)
+SCOPE = SCOPEs.get_by_name(OPTIONS['name'])
+if not SCOPE:
+    SCOPE = SCOPEs.create(OPTIONS)
+pprint(SCOPE.data)
 
-# Get all the reachable storage pools filtered by scope uris.
-print("Get all reachable storage pools filtered by scopes")
-reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_uris=scope.data['uri'])
-print(reachable_storage_pools)
+# Get all the reachable storage pools filtered by SCOPE uris.
+print("Get all reachable storage pools filtered by SCOPEs")
+REACHABLE_STORAGE_POOLS = STORAGE_POOLs.get_REACHABLE_STORAGE_POOLS(SCOPE_uris=SCOPE.data['uri'])
+print(REACHABLE_STORAGE_POOLS)
 
 # Get all managed storage pools
 print("Get all managed storage pools")
-storage_pools_all = storage_pools.get_all()
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = STORAGE_POOLs.get_all()
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' at uri: '{}'".format(pool['name'], pool['uri']))
 
 # Get all reachable storage pools by passing a set of storage pools uris
-# to exclude those storage pools from scope validation checks.
-storage_pools_all = storage_pools.get_all()
-storage_pool_uris = []
-storage_pool_uris.append(storage_pools_all[0]['uri'])
-print("Get all reachable storage pools by passing a set of storage pool uris to exclude from scope validation.")
-reachable_storage_pools = storage_pools.get_reachable_storage_pools(scope_exclusions=storage_pool_uris)
-print(reachable_storage_pools)
+# to exclude those storage pools from SCOPE validation checks.
+STORAGE_POOLS_ALL = STORAGE_POOLs.get_all()
+STORAGE_POOL_URIS = []
+STORAGE_POOL_URIS.append(STORAGE_POOLS_ALL[0]['uri'])
+print("Get all reachable storage pools by passing a set of storage pool uris to exclude from SCOPE
+	 validation.")
+REACHABLE_STORAGE_POOLS = STORAGE_POOLs.get_REACHABLE_STORAGE_POOLS(SCOPE_exclusions=STORAGE_POOL_URIS)
+print(REACHABLE_STORAGE_POOLS)
 
 # Get maximum of 5 storage pools sorted by freeCapacity in descending order.
 print(
     "Get maximum of 5 storage pools  sorted by freeCapacity in descending order.")
-storage_pools_filtered = storage_pools.get_all(
+STORAGE_POOLS_FILTERED = STORAGE_POOLs.get_all(
     0, 5, sort='freeCapacity:desc')
-for pool in storage_pools_filtered:
+for pool in STORAGE_POOLS_FILTERED:
     print("   '{}' at uri: '{}'".format(
         pool['name'], pool['uri']))
 
-if storage_pools_all and storage_pools_all[0]:
+if STORAGE_POOLS_ALL and STORAGE_POOLS_ALL[0]:
     # Get storage pool by id and update it
-    storage_pool = storage_pools.get_by_uri(storage_pools_all[0]['uri'])
+    STORAGE_POOL = STORAGE_POOLs.get_by_uri(STORAGE_POOLS_ALL[0]['uri'])
     try:
         print('Update storage pool description with new description "new description"')
-        s_pool_data = storage_pool.data.copy()
-        s_pool_data['description'] = "new description"
-        storage_pool.update(s_pool_data)
+        S_POOL_DATA = STORAGE_POOL.data.copy()
+        S_POOL_DATA['description'] = "new description"
+        STORAGE_POOL.update(S_POOL_DATA)
         print('Updated storage pool description')
 
     except HPEOneViewException as e:
@@ -153,7 +154,7 @@ if storage_pools_all and storage_pools_all[0]:
 
 # comment the below example to support automation dependency
 # Remove storage system, if it was added
-# if storage_system_added:
+# if STORAGE_SYSTEM_ADDED:
 #     print("Remove recently added storage system")
-#     s_system.remove()
+#     S_SYSTEM.remove()
 #     print("Done.")

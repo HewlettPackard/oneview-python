@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "administrator",
@@ -28,19 +28,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-options = {
+OPTIONS = {
     "type": "Range",
     "startAddress": "10:00:38:9d:20:60:00:00",
     "endAddress": "10:00:38:9d:20:6f:ff:ff",
     "rangeCategory": "Custom"
 }
 
-options_additional = {
+OPTIONS_ADDITIONAL = {
     "type": "Range",
     "name": "VWWN",
     "prefix": None,
@@ -71,7 +71,7 @@ options_additional = {
 
 # Create vwwn Range for id pools
 print("create vWWN range for id pools")
-vwwn_range = oneview_client.id_pools_vwwn_ranges.create(options)
+vwwn_range = oneview_client.id_pools_vwwn_ranges.create(OPTIONS)
 pprint(vwwn_range)
 
 # Get vwwn range by uri
@@ -85,21 +85,21 @@ print("Got vwwn range from '{}' to '{}' by uri:\n   '{}'".format(vwwn_range_byId
       'startAddress'], vwwn_range_byId['endAddress'], vwwn_range_byId['uri']))
 
 # Enable a vWWN range
-information = {
+INFORMATION = {
     "type": "Range",
     "enabled": True
 }
 vwwn_range = oneview_client.id_pools_vwwn_ranges.enable(
-    information, vwwn_range['uri'])
+    INFORMATION, vwwn_range['uri'])
 print("Successfully enabled vwwn range at\n   'uri': {}\n   with 'enabled': {}".format(
     vwwn_range['uri'], vwwn_range['enabled']))
 
 # Allocate a set of IDs from vwwn range
-information = {
+INFORMATION = {
     "count": 10
 }
 successfully_allocated_ids = oneview_client.id_pools_vwwn_ranges.allocate(
-    information, vwwn_range['uri'])
+    INFORMATION, vwwn_range['uri'])
 print("Successfully allocated IDs:")
 pprint(successfully_allocated_ids)
 
@@ -117,21 +117,21 @@ pprint(allocated_fragments)
 
 # Collect a set of IDs back to vwwn range
 try:
-    information = {
+    INFORMATION = {
         "idList": successfully_allocated_ids['idList']
     }
     successfully_collected_ids = oneview_client.id_pools_vwwn_ranges.collect(
-        information, vwwn_range['uri'])
+        INFORMATION, vwwn_range['uri'])
 except HPEOneViewException as e:
     print(e.msg)
 
 # Disable a vwwn range
-information = {
+INFORMATION = {
     "type": "Range",
     "enabled": False
 }
 vwwn_range = oneview_client.id_pools_vwwn_ranges.enable(
-    information, vwwn_range['uri'])
+    INFORMATION, vwwn_range['uri'])
 print("Successfully disabled vwwn range at\n   'uri': {}\n   with 'enabled': {}".format(
     vwwn_range['uri'], vwwn_range['enabled']))
 
@@ -139,9 +139,9 @@ print("Successfully disabled vwwn range at\n   'uri': {}\n   with 'enabled': {}"
 oneview_client.id_pools_vwwn_ranges.delete(vwwn_range)
 print("Successfully deleted vwwn range")
 
-# Create vwwn Range for id pools with more options specified
-print("Create vWWN range with more options specified for id pools")
-vwwn_range = oneview_client.id_pools_vwwn_ranges.create(options_additional)
+# Create vwwn Range for id pools with more OPTIONS specified
+print("Create vWWN range with more OPTIONS specified for id pools")
+vwwn_range = oneview_client.id_pools_vwwn_ranges.create(OPTIONS_ADDITIONAL)
 pprint(vwwn_range)
 
 # Delete vwwn_range

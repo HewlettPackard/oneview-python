@@ -17,13 +17,13 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 # This example has options pre-defined for 'Brocade Network Advisor' and 'Cisco' type SAN Managers
 PROVIDER_NAME = 'Cisco'
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<oneview_administrator_name>",
@@ -32,42 +32,42 @@ config = {
 }
 
 # # To run this sample you must define the following resources for a Brocade Network Advisor
-manager_host = '<san_manager_hostname_or_ip>'
-manager_port = '<port_number_not_quoted>'
-manager_username = '<san_manager_user_name>'
-manager_password = '<san_manager_password>'
+MANAGER_HOST = '<san_MANAGER_HOSTname_or_ip>'
+MANAGER_PORT = '<port_number_not_quoted>'
+MANAGER_USERNAME = '<san_manager_user_name>'
+MANAGER_PASSWORD = '<san_MANAGER_PASSWORD>'
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-# Print default connection info for Brocade Network Advisor
-print("\nGet {} default connection info:".format(PROVIDER_NAME))
-default_info = oneview_client.san_managers.get_default_connection_info(PROVIDER_NAME)
-for property in default_info:
+# Print default connection INFO for Brocade Network Advisor
+print("\nGet {} default connection INFO:".format(PROVIDER_NAME))
+default_INFO = oneview_client.san_managers.get_default_connection_INFO(PROVIDER_NAME)
+for property in default_INFO:
     print("   '{name}' - '{value}'".format(**property))
 # Add a Brocade Network Advisor
 provider_uri = oneview_client.san_managers.get_provider_uri(PROVIDER_NAME)
 
-options_for_brocade = {
+OPTIONS_FOR_BROCADE = {
     'providerDisplayName': PROVIDER_NAME,
     'connectionInfo': [
         {
             'name': 'Host',
-            'value': manager_host
+            'value': MANAGER_HOST
         },
         {
             'name': 'Port',
-            'value': manager_port
+            'value': MANAGER_PORT
         },
         {
             'name': 'Username',
-            'value': manager_username
+            'value': MANAGER_USERNAME
         },
         {
             'name': 'Password',
-            'value': manager_password
+            'value': MANAGER_PASSWORD
         },
         {
             'name': 'UseSsl',
@@ -76,14 +76,14 @@ options_for_brocade = {
     ]
 }
 
-options_for_cisco = {
+OPTIONS_FOR_CISCO = {
     'providerDisplayName': PROVIDER_NAME,
     'connectionInfo': [
         {
             'name': 'Host',
             'displayName': 'Host',
             'required': True,
-            'value': manager_host,
+            'value': MANAGER_HOST,
             'valueFormat': 'IPAddressOrHostname',
             'valueType': 'String'
         },
@@ -91,7 +91,7 @@ options_for_cisco = {
             'name': 'SnmpPort',
             'displayName': 'SnmpPort',
             'required': True,
-            'value': manager_port,
+            'value': MANAGER_PORT,
             'valueFormat': 'None',
             'valueType': 'Integer'
         },
@@ -99,7 +99,7 @@ options_for_cisco = {
             'name': 'SnmpUserName',
             'displayName': 'SnmpUserName',
             'required': True,
-            'value': manager_username,
+            'value': MANAGER_USERNAME,
             'valueFormat': 'None',
             'valueType': 'String'
         },
@@ -123,7 +123,7 @@ options_for_cisco = {
             'name': 'SnmpAuthString',
             'displayName': 'SnmpAuthString',
             'required': False,
-            'value': manager_password,
+            'value': MANAGER_PASSWORD,
             'valueFormat': 'SecuritySensitive',
             'valueType': 'String'
         },
@@ -147,21 +147,22 @@ options_for_cisco = {
 }
 
 if PROVIDER_NAME == 'Brocade Network Advisor':
-    san_manager = oneview_client.san_managers.add(options_for_brocade, provider_uri)
+    san_manager = oneview_client.san_managers.add(OPTIONS_FOR_BROCADE, provider_uri)
 elif PROVIDER_NAME == 'Cisco':
-    san_manager = oneview_client.san_managers.add(options_for_cisco, provider_uri)
+    san_manager = oneview_client.san_managers.add(OPTIONS_FOR_CISCO, provider_uri)
 else:
-    provider_error_msg = 'Options for the "%s" provider not pre-added to this example file. Validate '
-    provider_error_msg < 'and or create options for that provider and remove this exception.' % PROVIDER_NAME
-    raise Exception(provider_error_msg)
+    PROVIDER_ERROR_MSG = 'Options for the "%s" provider not pre-added to this example file. Validate
+	 '
+    PROVIDER_ERROR_MSG < 'and or create options for that provider and remove this exception.' % PROVIDER_NAME
+    raise Exception(PROVIDER_ERROR_MSG)
 
 pprint(san_manager)
 
 print("\nRefresh SAN manager")
-info = {
+INFO = {
     'refreshState': "RefreshPending"
 }
-san_manager = oneview_client.san_managers.update(resource=info, id_or_uri=san_manager['uri'])
+san_manager = oneview_client.san_managers.update(resource=INFO, id_or_uri=san_manager['uri'])
 print("   'refreshState' successfully updated to '{refreshState}'".format(**san_manager))
 
 print("\nGet SAN manager by uri")
@@ -174,7 +175,7 @@ for manager in san_managers:
     print("   '{name}' at uri: {uri}".format(**manager))
 
 print("\nGet a SAN Manager by name")
-san_managers_by_name = oneview_client.san_managers.get_by_name(manager_host)
+san_managers_by_name = oneview_client.san_managers.get_by_name(MANAGER_HOST)
 pprint(san_managers_by_name)
 
 print("\nDelete the SAN Manager previously created...")

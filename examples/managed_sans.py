@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,43 +27,44 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 managed_sans = oneview_client.managed_sans
 
-imported_san = None
-internally_managed_san = None
+IMPORTED_SAN = None
+INTERNALLY_MANAGED_SAN = None
 
 # You must set the value of the WWN to run the API 300 example
-wwn = None
+WWN = None
 
 # Get all, with defaults
 print("\nGet all Managed SANs")
-managed_sans_all = managed_sans.get_all()
+MANAGED_SANS_ALL = managed_sans.get_all()
 
-if managed_sans_all:
-    for managed_san in managed_sans_all:
-        print('  Name: {name} - Manager: {deviceManagerName} - Imported: {imported}'.format(**managed_san))
+if MANAGED_SANS_ALL:
+    for managed_san in MANAGED_SANS_ALL:
+        print('  Name: {name} - Manager: {deviceManagerName} - Imported:
+	 {imported}'.format(**managed_san))
         if managed_san['imported']:
-            imported_san = managed_sans.get_by_uri(managed_san["uri"])
+            IMPORTED_SAN = managed_sans.get_by_uri(managed_san["uri"])
         else:
-            internally_managed_san = managed_sans.get_by_uri(managed_san["uri"])
+            INTERNALLY_MANAGED_SAN = managed_sans.get_by_uri(managed_san["uri"])
 
     # Get a Managed SAN by name
     print("\nGet a Managed SAN by name")
-    managed_san_by_name = managed_sans.get_by_name(managed_san['name'])
-    pprint(managed_san_by_name.data)
+    MANAGED_SAN_BY_NAME = managed_sans.get_by_name(managed_san['name'])
+    pprint(MANAGED_SAN_BY_NAME.data)
 
     # Get a Managed SAN by URI
     print("\nGet a Managed SAN by URI")
-    managed_san_by_uri = managed_sans.get_by_uri(managed_san['uri'])
-    pprint(managed_san_by_uri.data)
+    MANAGED_SAN_BY_URI = managed_sans.get_by_uri(managed_san['uri'])
+    pprint(MANAGED_SAN_BY_URI.data)
 
-    if internally_managed_san:
+    if INTERNALLY_MANAGED_SAN:
         # Update the Managed SAN's publicAttributes
         print("\nUpdate the Internally Managed SAN's publicAttributes")
-        public_attributes = {
+        PUBLIC_ATTRIBUTES = {
             "publicAttributes": [{
                 "name": "MetaSan",
                 "value": "Neon SAN",
@@ -71,12 +72,12 @@ if managed_sans_all:
                 "valueFormat": "None"
             }]
         }
-        internally_managed_san.update(public_attributes)
-        pprint(internally_managed_san.data)
+        INTERNALLY_MANAGED_SAN.update(PUBLIC_ATTRIBUTES)
+        pprint(INTERNALLY_MANAGED_SAN.data)
 
-        # Update the Managed SAN's policy
-        print("\nUpdate the Internally Managed SAN's policy")
-        policy = {
+        # Update the Managed SAN's POLICY
+        print("\nUpdate the Internally Managed SAN's POLICY")
+        POLICY = {
             "sanPolicy": {
                 "zoningPolicy": "SingleInitiatorAllTargets",
                 "zoneNameFormat": "{hostName}_{initiatorWwn}",
@@ -86,39 +87,39 @@ if managed_sans_all:
                 "targetGroupNameFormat": "{storageSystemName}_{targetGroupName}"
             }
         }
-        internally_managed_san.update(policy)
-        pprint(internally_managed_san.data)
+        INTERNALLY_MANAGED_SAN.update(POLICY)
+        pprint(INTERNALLY_MANAGED_SAN.data)
 
-    if imported_san:
+    if IMPORTED_SAN:
         # Refresh the Managed SAN
         print("\nRefresh the Imported Managed SAN")
-        refresh_config = {
+        refresh_CONFIG = {
             "refreshState": "RefreshPending"
         }
-        imported_san.update(refresh_config)
-        pprint(imported_san.data)
+        IMPORTED_SAN.update(refresh_CONFIG)
+        pprint(IMPORTED_SAN.data)
 
-        # Create a SAN endpoints CSV file
-        print("\nCreate a SAN endpoints CSV file")
-        csv_file_response = imported_san.create_endpoints_csv_file()
-        pprint(csv_file_response)
+        # Create a SAN ENDPOINTS CSV file
+        print("\nCreate a SAN ENDPOINTS CSV file")
+        CSV_FILE_RESPONSE = IMPORTED_SAN.create_ENDPOINTS_csv_file()
+        pprint(CSV_FILE_RESPONSE)
 
-        # Retrieve the endpoints for a SAN
-        print("\nGet the list of endpoints in the Imported Managed SAN")
-        endpoints = imported_san.get_endpoints()
-        pprint(endpoints)
+        # Retrieve the ENDPOINTS for a SAN
+        print("\nGet the list of ENDPOINTS in the Imported Managed SAN")
+        ENDPOINTS = IMPORTED_SAN.get_ENDPOINTS()
+        pprint(ENDPOINTS)
 
         # Create an unexpected zoning report
         print("\nCreate an unexpected zoning report")
-        issues_response = imported_san.create_issues_report()
-        pprint(issues_response)
+        ISSUES_RESPONSE = IMPORTED_SAN.create_issues_report()
+        pprint(ISSUES_RESPONSE)
 
 else:
     print("\nNo Managed SANs found.")
 
 # This method is available for API version 300
-if oneview_client.api_version == 300 and wwn is not None:
+if oneview_client.api_version == 300 and WWN is not None:
     # Retrieves an association between the provided WWN and the SAN (if any) on which it resides
     print("\nGet a list of associations between provided WWNs and the SANs on which they reside")
-    wwns = managed_sans.get_wwn(wwn)
-    pprint(wwns)
+    WWNs = managed_sans.get_WWN(WWN)
+    pprint(WWNs)

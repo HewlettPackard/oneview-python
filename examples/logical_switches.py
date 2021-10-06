@@ -17,11 +17,11 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on C7000 enclosures
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,43 +29,47 @@ config = {
     }
 }
 
-# A Logical Switch Group, the Switches IP address/host name, and credentials must be set to run this example
-logical_switch_group_name = '<lsg_name>'
-switch_ip_1 = '<switch_ip_or_hostname>'
-switch_ip_2 = '<switch_ip_or_hostname>'
-ssh_username = '<user_name_for_switches>'
-ssh_password = '<password_for_switches>'
+# A Logical Switch Group, the Switches IP address/host name, and credentials must be set to run this
+# example
+LOGICAL_SWITCH_GROUP_NAME = '<lsg_name>'
+SWITCH_IP_1 = '<switch_ip_or_hostname>'
+SWITCH_IP_2 = '<switch_ip_or_hostname>'
+SSH_USERNAME = '<user_name_for_switches>'
+SSH_PASSWORD = '<password_for_switches>'
 
 # To run the scope patch operations in this example, a scope name is required.
-scope_name = "<scope_name>"
+SCOPE_NAME = "<SCOPE_NAME>"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Check for existance of Logical Switch Group specified, otherwise stops execution
-logical_switch_group = oneview_client.logical_switch_groups.get_by('name', logical_switch_group_name)[0]
+logical_switch_group = oneview_client.logical_switch_groups.get_by('name',
+	 LOGICAL_SWITCH_GROUP_NAME)[0]
 if logical_switch_group:
-    print('Found logical switch group "%s" with uri: %s' % (logical_switch_group['name'], logical_switch_group['uri']))
+    print('Found logical switch group "%s" with uri: %s' % (logical_switch_group['name'],
+	 logical_switch_group['uri']))
 else:
-    raise Exception('Logical switch group "%s" was not found on the appliance.' % logical_switch_group_name)
+    raise Exception('Logical switch group "%s" was not found on the appliance.' %
+	 LOGICAL_SWITCH_GROUP_NAME)
 
-switch_connection_properties = {
+SWITCH_CONNECTION_PROPERTIES = {
     "connectionProperties": [{
         "propertyName": "SshBasicAuthCredentialUser",
-        "value": ssh_username,
+        "value": SSH_USERNAME,
         "valueFormat": "Unknown",
         "valueType": "String"
     }, {
         "propertyName": "SshBasicAuthCredentialPassword",
-        "value": ssh_password,
+        "value": SSH_PASSWORD,
         "valueFormat": "SecuritySensitive",
         "valueType": "String"
     }]
 }
 
-options = {
+OPTIONS = {
     "logicalSwitch": {
         "name": "Test Logical Switch",
         "logicalSwitchGroupUri": logical_switch_group['uri'],
@@ -74,24 +78,24 @@ options = {
                 "snmpV1Configuration": {
                     "communityString": "public"
                 },
-                "logicalSwitchManagementHost": switch_ip_1,
+                "logicalSwitchManagementHost": SWITCH_IP_1,
                 "snmpVersion": "SNMPv1",
                 "snmpPort": 161
             }, {
                 "snmpV1Configuration": {
                     "communityString": "public"
                 },
-                "logicalSwitchManagementHost": switch_ip_2,
+                "logicalSwitchManagementHost": SWITCH_IP_2,
                 "snmpVersion": "SNMPv1",
                 "snmpPort": 161
             }
         ]
     },
-    "logicalSwitchCredentials": [switch_connection_properties, switch_connection_properties]
+    "logicalSwitchCredentials": [SWITCH_CONNECTION_PROPERTIES, SWITCH_CONNECTION_PROPERTIES]
 }
 
 # Create a Logical Switch
-logical_switch = oneview_client.logical_switches.create(options)
+logical_switch = oneview_client.logical_switches.create(OPTIONS)
 print("\nCreated Logical Switch '{name}' successfully.\n  uri = '{uri}'".format(**logical_switch))
 
 # Find the recently created Logical Switch by name
@@ -99,7 +103,7 @@ logical_switch = oneview_client.logical_switches.get_by('name', 'Test Logical Sw
 print("\nFound Logical Switch by name: '{name}'.\n  uri = '{uri}'".format(**logical_switch))
 
 # Update the name of the Logical Switch
-options_update = {
+OPTIONS_UPDATE = {
     "logicalSwitch": {
         "name": "Renamed Logical Switch",
         "uri": logical_switch['uri'],
@@ -107,19 +111,19 @@ options_update = {
         "logicalSwitchGroupUri": logical_switch_group['uri'],
         "consistencyStatus": "CONSISTENT"
     },
-    "logicalSwitchCredentials": [switch_connection_properties, switch_connection_properties]
+    "logicalSwitchCredentials": [SWITCH_CONNECTION_PROPERTIES, SWITCH_CONNECTION_PROPERTIES]
 }
-logical_switch = oneview_client.logical_switches.update(options_update)
+logical_switch = oneview_client.logical_switches.update(OPTIONS_UPDATE)
 print("\nUpdated Logical Switch successfully.\n  uri = '{uri}'".format(**logical_switch))
 print("  with attribute name = {name}".format(**logical_switch))
 
 # Get scope to be added
-print("\nGet the scope named '%s'." % scope_name)
-scope = oneview_client.scopes.get_by_name(scope_name)
+print("\nGet the scope named '%s'." % SCOPE_NAME)
+scope = oneview_client.scopes.get_by_name(SCOPE_NAME)
 
 # Performs a patch operation on the Logical Switch
 if scope:
-    print("\nPatches the logical switch assigning the '%s' scope to it." % scope_name)
+    print("\nPatches the logical switch assigning the '%s' scope to it." % SCOPE_NAME)
     logical_switch = oneview_client.logical_switches.patch(logical_switch['uri'],
                                                            'replace',
                                                            '/scopeUris',

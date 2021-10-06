@@ -17,11 +17,11 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,19 +29,20 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 sas_logical_interconnect_groups = oneview_client.sas_logical_interconnect_groups
-interconnect_types = oneview_client.sas_interconnect_types
+INTERCONNECT_TYPEs = oneview_client.sas_INTERCONNECT_TYPEs
 
-interconnect_type_name = "Synergy 12Gb SAS Connection Module"
-# The Interconnect Type which is permitted to form SAS interconnect map must be defined to run this example
-interconnect_type = interconnect_types.get_by_name(interconnect_type_name)
-pprint(interconnect_type)
+INTERCONNECT_TYPE_NAME = "Synergy 12Gb SAS Connection Module"
+# The Interconnect Type which is permitted to form SAS interconnect map must be defined to run this
+# example
+INTERCONNECT_TYPE = INTERCONNECT_TYPEs.get_by_name(INTERCONNECT_TYPE_NAME)
+pprint(INTERCONNECT_TYPE)
 
 # Create a SAS Logical Interconnect Group
-data = {
+DATA = {
     "name": "Test SAS Logical Interconnect Group",
     "state": "Active",
     "interconnectMapTemplate": {
@@ -58,7 +59,7 @@ data = {
                 ]
             },
             "enclosureIndex": 1,
-            "permittedInterconnectTypeUri": interconnect_type.data["uri"]
+            "permittedInterconnectTypeUri": INTERCONNECT_TYPE.DATA["uri"]
         }, {
             "logicalLocation": {
                 "locationEntries": [
@@ -72,7 +73,7 @@ data = {
                 ]
             },
             "enclosureIndex": 1,
-            "permittedInterconnectTypeUri": interconnect_type.data["uri"]
+            "permittedInterconnectTypeUri": INTERCONNECT_TYPE.DATA["uri"]
         }]
     },
     "enclosureType": "SY12000",
@@ -82,37 +83,39 @@ data = {
 
 # Get all SAS Logical Interconnect Groups
 print("\nGet all SAS Logical Interconnect Groups")
-sas_ligs = sas_logical_interconnect_groups.get_all()
-for sas_lig in sas_ligs:
-    print("\n   '{name}' at uri: {uri}".format(**sas_lig))
+SAS_LIGS = sas_logical_interconnect_groups.get_all()
+for SAS_LIG in SAS_LIGS:
+    print("\n   '{name}' at uri: {uri}".format(**SAS_LIG))
 
 # Get SAS Interconnect Group by scope_uris
 if oneview_client.api_version >= 600:
-    sas_lig_by_scope_uris = sas_logical_interconnect_groups.get_all(
+    SAS_LIG_BY_SCOPE_URIS = sas_logical_interconnect_groups.get_all(
         scope_uris="\"'/rest/scopes/3bb0c754-fd38-45af-be8a-4d4419de06e9'\"")
-    if len(sas_lig_by_scope_uris) > 0:
-        print("found %d SAS Interconnect Groups" % (len(sas_lig_by_scope_uris)))
+    if len(SAS_LIG_BY_SCOPE_URIS) > 0:
+        print("found %d SAS Interconnect Groups" % (len(SAS_LIG_BY_SCOPE_URIS)))
         i = 0
-        while i < len(sas_lig_by_scope_uris):
-            print("Found SAS Interconnect Group by scope_uris: '%s'.\n  uri = '%s'" % (sas_lig_by_scope_uris[i]['name'], sas_lig_by_scope_uris[i]['uri']))
+        while i < len(SAS_LIG_BY_SCOPE_URIS):
+            print("Found SAS Interconnect Group by scope_uris: '%s'.\n  uri = '%s'" %
+	 (SAS_LIG_BY_SCOPE_URIS[i]['name'], SAS_LIG_BY_SCOPE_URIS[i]['uri']))
             i += 1
-        pprint(sas_lig_by_scope_uris)
+        pprint(SAS_LIG_BY_SCOPE_URIS)
     else:
         print("No SAS Interconnect Group found.")
 
-sas_lig = sas_logical_interconnect_groups.get_by_name(data["name"])
-if not sas_lig:
-    sas_lig = sas_logical_interconnect_groups.create(data)
-    print("\nSAS Logical Interconnect Group '{name}' created successfully.\n  uri = '{uri}'".format(**sas_lig.data))
+SAS_LIG = sas_logical_interconnect_groups.get_by_name(DATA["name"])
+if not SAS_LIG:
+    SAS_LIG = sas_logical_interconnect_groups.create(DATA)
+    print("\nSAS Logical Interconnect Group '{name}' created successfully.\n  uri =
+	 '{uri}'".format(**SAS_LIG.DATA))
 
 # Update the SAS Logical Interconnect Group
 print("\nUpdate the SAS Logical Interconnect Group")
-resource_to_update = sas_lig.data.copy()
-resource_to_update['name'] = 'Test SAS Logical Interconnect Group - Renamed1'
+RESOURCE_TO_UPDATE = SAS_LIG.DATA.copy()
+RESOURCE_TO_UPDATE['name'] = 'Test SAS Logical Interconnect Group - Renamed1'
 
-sas_lig.update(resource_to_update)
-pprint(sas_lig.data)
+SAS_LIG.update(RESOURCE_TO_UPDATE)
+pprint(SAS_LIG.DATA)
 
 # Delete the SAS Logical Interconnect Group
-sas_lig.delete()
+SAS_LIG.delete()
 print("\nSAS Logical Interconnect Group deleted successfully")

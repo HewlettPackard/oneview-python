@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,18 +28,18 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-datacenter_information = {
+DATACENTER_INFORMATION = {
     "name": "MyDatacenter",
     "width": 5000, "depth": 5000
 }
 
 # Add a Datacenter
-datacenter_added = oneview_client.datacenters.add(datacenter_information)
+datacenter_added = oneview_client.datacenters.add(DATACENTER_INFORMATION)
 print("\nAdded Datacenter '{name}' successfully\n".format(**datacenter_added))
 
 # Retrieve Datacenter by URI
@@ -65,6 +65,6 @@ oneview_client.datacenters.remove(datacenter)
 print("\nSuccessfully removed the datacenter")
 
 # Add a datacenter again and call Remove All
-datacenter_added = oneview_client.datacenters.add(datacenter_information)
+datacenter_added = oneview_client.datacenters.add(DATACENTER_INFORMATION)
 oneview_client.datacenters.remove_all(filter="name matches '%'")
 print("\nSuccessfully removed all datacenters")

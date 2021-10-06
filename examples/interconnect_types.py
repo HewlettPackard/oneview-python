@@ -17,37 +17,37 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "<username>",
+        "userName": "<userNAME>",
         "password": "<password>"
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 interconnect_types = oneview_client.interconnect_types
 
 # Get all supported interconnect types
 print(">>> Get all supported interconnect types")
-all_interconnect_types = interconnect_types.get_all()
-for interconn in all_interconnect_types:
-    print(" - {}".format(interconn['name']))
+ALL_INTERCONNECT_TYPES = interconnect_types.get_all()
+for interconn in ALL_INTERCONNECT_TYPES:
+    print(" - {}".format(interconn['NAME']))
 
-# Get all sorting by name descending
-print(">>> Get all interconnect-types sorting by name")
-interconnect_types_sorted = interconnect_types.get_all(sort='name:descending')
-for interconn in interconnect_types_sorted:
-    print(" - {}".format(interconn['name']))
+# Get all sorting by NAME descending
+print(">>> Get all interconnect-types sorting by NAME")
+INTERCONNECT_TYPES_SORTED = interconnect_types.get_all(sort='NAME:descending')
+for interconn in INTERCONNECT_TYPES_SORTED:
+    print(" - {}".format(interconn['NAME']))
 
-# Get by name
-print("Get an interconnect_type by name")
-if interconnect_types_sorted:
-    name = interconnect_types_sorted[0]["name"]
-    interconnect_type_byname = interconnect_types.get_by_name(name)
-    pprint(interconnect_type_byname.data, depth=1)
+# Get by NAME
+print("Get an interconnect_type by NAME")
+if INTERCONNECT_TYPES_SORTED:
+    NAME = INTERCONNECT_TYPES_SORTED[0]["NAME"]
+    INTERCONNECT_TYPE_BYNAME = interconnect_types.get_by_NAME(NAME)
+    pprint(INTERCONNECT_TYPE_BYNAME.data, depth=1)

@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -28,19 +28,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-unmanaged_device_information = {
+UNMANAGED_DEVICE_INFORMATION = {
     "name": "MyUnmanagedDevice",
     "model": "Procurve 4200VL",
     "deviceType": "Server"
 }
 
 # Add an Unmanaged Device
-unmanaged_device_added = oneview_client.unmanaged_devices.add(unmanaged_device_information)
+unmanaged_device_added = oneview_client.unmanaged_devices.add(UNMANAGED_DEVICE_INFORMATION)
 print('Added Unmanaged Device "{name}" successfully\n'.format(**unmanaged_device_added))
 
 # Retrieve Unmanaged Device by URI
@@ -58,16 +58,16 @@ unmanaged_devices_all = oneview_client.unmanaged_devices.get_all()
 for unm_dev in unmanaged_devices_all:
     print(" - " + unm_dev['name'])
 
-# Get unmanaged device environmental configuration
-env_config = oneview_client.unmanaged_devices.get_environmental_configuration(unmanaged_device_added['uri'])
+# Get unmanaged device environmental CONFIGuration
+env_CONFIG = oneview_client.unmanaged_devices.get_environmental_CONFIGuration(unmanaged_device_added['uri'])
 print('Get Environmental Configuration result:')
-pprint(env_config)
+pprint(env_CONFIG)
 
 # Remove added unmanaged device
 oneview_client.unmanaged_devices.remove(unmanaged_device_added)
 print("Successfully removed the unmanaged device")
 
 # Add another unmanaged device and remove all
-unmanaged_device_added = oneview_client.unmanaged_devices.add(unmanaged_device_information)
+unmanaged_device_added = oneview_client.unmanaged_devices.add(UNMANAGED_DEVICE_INFORMATION)
 oneview_client.unmanaged_devices.remove_all("name matches '%'")
 print("Successfully removed all the unmanaged device")

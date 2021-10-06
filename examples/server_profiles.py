@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,235 +29,237 @@ config = {
     "api_version": "<api_version>"
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-server_profiles = oneview_client.server_profiles
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+server_PROFILES = oneview_client.server_PROFILES
 
 # Dependency resources
-profile_templates = oneview_client.server_profile_templates
-enclosure_groups = oneview_client.enclosure_groups
-server_hardware_types = oneview_client.server_hardware_types
-server_hardwares = oneview_client.server_hardware
-scopes = oneview_client.scopes
+PROFILE_templates = oneview_client.server_PROFILE_templates
+ENCLOSURE_GROUPs = oneview_client.ENCLOSURE_GROUPs
+server_HARDWARE_TYPEs = oneview_client.server_HARDWARE_TYPEs
+SERVER_HARDWAREs = oneview_client.SERVER_HARDWARE
+SCOPEs = oneview_client.SCOPEs
 
 # To run this sample you must define a server hardware type uri and an enclosure group uri
-profile_template_name = "ProfileTemplate-1"
-profile_name = "TestProfile"
-enclosure_group_name = "EG"
-server_hardware_type_name = "SY 480 Gen9 1"
-server_hardware_name = "0000A66102, bay 5"
+PROFILE_TEMPLATE_NAME = "ProfileTemplate-1"
+PROFILE_NAME = "TestProfile"
+ENCLOSURE_GROUP_NAME = "EG"
+SERVER_HARDWARE_TYPE_NAME = "SY 480 Gen9 1"
+SERVER_HARDWARE_NAME = "0000A66102, bay 5"
 # To run the example 'get a specific storage system' you must define a storage system ID
-storage_system_id = None
+STORAGE_SYSTEM_ID = None
 
-hardware_type = server_hardware_types.get_by_name(server_hardware_type_name)
-enclosure_group = enclosure_groups.get_by_name(enclosure_group_name)
-server_hardware = server_hardwares.get_by_name(server_hardware_name)
+HARDWARE_TYPE = server_HARDWARE_TYPEs.get_by_name(SERVER_HARDWARE_TYPE_NAME)
+ENCLOSURE_GROUP = ENCLOSURE_GROUPs.get_by_name(ENCLOSURE_GROUP_NAME)
+SERVER_HARDWARE = SERVER_HARDWAREs.get_by_name(SERVER_HARDWARE_NAME)
 
 # Get all
-print("\nGet list of all server profiles")
-all_profiles = server_profiles.get_all()
-for profile in all_profiles:
-    print('  %s' % profile['name'])
+print("\nGet list of all server PROFILES")
+ALL_PROFILES = server_PROFILES.get_all()
+for PROFILE in ALL_PROFILES:
+    print('  %s' % PROFILE['name'])
 
 # Get by property
-print("\nGet a list of server profiles that matches the specified macType")
-if all_profiles:
-    profile_mac_type = all_profiles[0]["macType"]
-    profiles = server_profiles.get_by('macType', profile_mac_type)
-    for profile in profiles:
-        print('  %s' % profile['name'])
+print("\nGet a list of server PROFILES that matches the specified macType")
+if ALL_PROFILES:
+    PROFILE_MAC_TYPE = ALL_PROFILES[0]["macType"]
+    PROFILES = server_PROFILES.get_by('macType', PROFILE_MAC_TYPE)
+    for PROFILE in PROFILES:
+        print('  %s' % PROFILE['name'])
 
 # Get by name
-print("\nGet a server profile by name")
-profile = server_profiles.get_by_name(profile_name)
+print("\nGet a server PROFILE by name")
+PROFILE = server_PROFILES.get_by_name(PROFILE_NAME)
 
-if profile:
-    print("Found profile with name '{}' and uri '{}'".format(profile.data['name'], profile.data['uri']))
+if PROFILE:
+    print("Found PROFILE with name '{}' and uri '{}'".format(PROFILE.data['name'], PROFILE.data['uri']))
 else:
-    server_template = profile_templates.get_by_name(profile_template_name)
-    if not server_template:
-        # Create a server profile template to associate with the server profile
-        server_template = profile_templates.create(dict(
-            name=profile_template_name,
-            serverHardwareTypeUri=hardware_type.data["uri"],
-            enclosureGroupUri=enclosure_group.data["uri"]))
+    SERVER_TEMPLATE = PROFILE_templates.get_by_name(PROFILE_TEMPLATE_NAME)
+    if not SERVER_TEMPLATE:
+        # Create a server PROFILE template to associate with the server PROFILE
+        SERVER_TEMPLATE = PROFILE_templates.create(dict(
+            name=PROFILE_TEMPLATE_NAME,
+            serverHardwareTypeUri=HARDWARE_TYPE.data["uri"],
+            enclosureGroupUri=ENCLOSURE_GROUP.data["uri"]))
 
-    basic_profile_options = dict(
-        name=profile_name,
-        serverProfileTemplateUri=server_template.data["uri"],
-        serverHardwareTypeUri=hardware_type.data["uri"],
-        enclosureGroupUri=enclosure_group.data["uri"]
+    basic_PROFILE_options = dict(
+        name=PROFILE_NAME,
+        serverProfileTemplateUri=SERVER_TEMPLATE.data["uri"],
+        serverHardwareTypeUri=HARDWARE_TYPE.data["uri"],
+        enclosureGroupUri=ENCLOSURE_GROUP.data["uri"]
     )
 
-    # Create a server profile
-    print("\nCreate a basic connection-less assigned server profile")
-    profile = server_profiles.create(basic_profile_options)
-    print("Created profile with name '{}' and uri '{}'".format(profile.data['name'], profile.data['uri']))
+    # Create a server PROFILE
+    print("\nCreate a basic connection-less assigned server PROFILE")
+    PROFILE = server_PROFILES.create(basic_PROFILE_options)
+    print("Created PROFILE with name '{}' and uri '{}'".format(PROFILE.data['name'], PROFILE.data['uri']))
 
 # Get by uri
-print("\nGet a server profile by uri")
-profile = server_profiles.get_by_uri(profile.data['uri'])
-pprint(profile.data)
+print("\nGet a server PROFILE by uri")
+PROFILE = server_PROFILES.get_by_uri(PROFILE.data['uri'])
+pprint(PROFILE.data)
 
-# Update bootMode from recently created profile
-print("\nUpdate bootMode from recently created profile")
-if profile:
-    profile_to_update = profile.data.copy()
-    profile_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
-    profile.update(profile_to_update)
-    pprint(profile.data)
+# Update bootMode from recently created PROFILE
+print("\nUpdate bootMode from recently created PROFILE")
+if PROFILE:
+    PROFILE_to_update = PROFILE.data.copy()
+    PROFILE_to_update["bootMode"] = dict(manageMode=True, mode="BIOS")
+    PROFILE.update(PROFILE_to_update)
+    pprint(PROFILE.data)
 
-# Server profile compliance preview
-print("\nGets the preview of manual and automatic updates required to make the server profile consistent "
+# Server PROFILE compliance preview
+print("\nGets the preview of manual and automatic updates required to make the server PROFILE consistent "
       "with its template.")
-if profile:
-    schema = profile.get_compliance_preview()
-    pprint(schema)
+if PROFILE:
+    SCHEMA = PROFILE.get_compliance_preview()
+    pprint(SCHEMA)
 
 # Patch
-print("\nUpdate the profile configuration from server profile template")
-if profile:
-    profile.patch(operation="replace",
+print("\nUpdate the PROFILE CONFIGuration from server PROFILE template")
+if PROFILE:
+    PROFILE.patch(operation="replace",
                   path="/templateCompliance", value="Compliant")
-    pprint(profile.data)
+    pprint(PROFILE.data)
 
-if oneview_client.api_version <= 500 and profile:
-    # Retrieve the error or status messages associated with the specified profile
-    print("\nList profile status messages associated with a profile")
-    messages = profile.get_messages()
-    pprint(messages)
+if oneview_client.api_version <= 500 and PROFILE:
+    # Retrieve the error or status MESSAGES associated with the specified PROFILE
+    print("\nList PROFILE status MESSAGES associated with a PROFILE")
+    MESSAGES = PROFILE.get_MESSAGES()
+    pprint(MESSAGES)
 
-# Transform an server profile
-print("\nTransform an existing profile by supplying a new server hardware type and/or enclosure group.")
-if profile:
-    server_transformed = profile.get_transformation(
-        enclosureGroupUri=enclosure_group.data["uri"],
-        serverHardwareTypeUri=hardware_type.data['uri'])
-    pprint(server_transformed)
+# Transform an server PROFILE
+print("\nTransform an existing PROFILE by supplying a new server hardware type and/or enclosure group.")
+if PROFILE:
+    SERVER_TRANSFORMED = PROFILE.get_transformation(
+        enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+        serverHardwareTypeUri=HARDWARE_TYPE.data['uri'])
+    pprint(SERVER_TRANSFORMED)
 
-print("Transformation complete. Updating server profile with the new configuration.")
-if profile and server_transformed:
-    profile_updated = profile.update(server_transformed['serverProfile'])
-    pprint(profile_updated.data)
+print("Transformation complete. Updating server PROFILE with the new CONFIGuration.")
+if PROFILE and SERVER_TRANSFORMED:
+    PROFILE_updated = PROFILE.update(SERVER_TRANSFORMED['serverProfile'])
+    pprint(PROFILE_updated.data)
 
 # Create a new Server Profile Template based on an existing Server Profile
-# This method i.e., get_new_profile_template works with all the API versions till 1200
-if oneview_client.api_version <= 1200 and profile:
-    new_spt = profile.get_new_profile_template()
+# This method i.e., get_new_PROFILE_template works with all the API versions till 1200
+if oneview_client.api_version <= 1200 and PROFILE:
+    NEW_SPT = PROFILE.get_new_PROFILE_template()
     print('\nNew SPT generated:')
-    pprint(new_spt)
+    pprint(NEW_SPT)
 
-    new_spt['name'] = 'spt_generated_from_sp'
-    new_spt = profile_templates.create(new_spt)
+    NEW_SPT['name'] = 'spt_generated_from_sp'
+    NEW_SPT = PROFILE_templates.create(NEW_SPT)
     print('\nNew SPT created successfully.')
 
-    new_spt.delete()
+    NEW_SPT.delete()
     print('\nDropped recently created SPT.')
 
-# Delete the created server profile
-print("\nDelete the created server profile")
-if profile:
-    profile.delete()
-    print("The server profile was successfully deleted.")
+# Delete the created server PROFILE
+print("\nDelete the created server PROFILE")
+if PROFILE:
+    PROFILE.delete()
+    print("The server PROFILE was successfully deleted.")
 
-# Get profile ports
+# Get PROFILE ports
 print("\nRetrieve the port model associated with a server hardware type and enclosure group")
-profile_ports = server_profiles.get_profile_ports(enclosureGroupUri=enclosure_group.data["uri"],
-                                                  serverHardwareTypeUri=hardware_type.data["uri"])
-pprint(profile_ports)
+PROFILE_ports = server_PROFILES.get_PROFILE_ports(enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+                                                  serverHardwareTypeUri=HARDWARE_TYPE.data["uri"])
+pprint(PROFILE_ports)
 
-# Get profile ports
+# Get PROFILE ports
 print("\nRetrieve the port model associated with a server hardware")
-profile_ports = oneview_client.server_profiles.get_profile_ports(
-    serverHardwareUri=server_hardware.data["uri"])
-pprint(profile_ports)
+PROFILE_ports = oneview_client.server_PROFILES.get_PROFILE_ports(
+    serverHardwareUri=SERVER_HARDWARE.data["uri"])
+pprint(PROFILE_ports)
 
-# Get the list of networks and network sets that are available to a server profile along with their respective ports
+# Get the list of networks and network sets that are available to a server PROFILE along with their respective ports
 print("\nList all Ethernet networks associated with a server hardware type and enclosure group")
-available_networks = server_profiles.get_available_networks(
-    enclosureGroupUri=enclosure_group.data["uri"],
-    serverHardwareTypeUri=hardware_type.data["uri"], view='Ethernet')
-pprint(available_networks)
+AVAILABLE_NETWORKS = server_PROFILES.get_AVAILABLE_NETWORKS(
+    enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+    serverHardwareTypeUri=HARDWARE_TYPE.data["uri"], view='Ethernet')
+pprint(AVAILABLE_NETWORKS)
 
-print("\n## Create the scope")
-scope_options = {
+print("\n## Create the SCOPE")
+SCOPE_OPTIONS = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-scope = scopes.get_by_name(scope_options['name'])
-if not scope:
-    scope = scopes.create(scope_options)
+SCOPE = SCOPEs.get_by_name(SCOPE_OPTIONS['name'])
+if not SCOPE:
+    SCOPE = SCOPEs.create(SCOPE_OPTIONS)
 
-# Get the all Ethernet networks associated with a server hardware type, enclosure group and scopeuris
-# This method ie., get_available_networks works with all the API versions but the scope_uris param is available
+# Get the all Ethernet networks associated with a server hardware type, enclosure group and SCOPEuris
+# This method ie., get_AVAILABLE_NETWORKS works with all the API versions but the SCOPE_uris param is available
 # with API version 600 and above
 if oneview_client.api_version >= 600:
-    available_networks = server_profiles.get_available_networks(
-        enclosureGroupUri=enclosure_group.data["uri"],
-        serverHardwareTypeUri=hardware_type.data["uri"],
+    AVAILABLE_NETWORKS = server_PROFILES.get_AVAILABLE_NETWORKS(
+        enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+        serverHardwareTypeUri=HARDWARE_TYPE.data["uri"],
         view='Ethernet',
-        scope_uris=scope.data['uri'])
-    if len(available_networks) > 0:
-        pprint(available_networks)
+        SCOPE_uris=SCOPE.data['uri'])
+    if len(AVAILABLE_NETWORKS) > 0:
+        pprint(AVAILABLE_NETWORKS)
     else:
         print("No Server Profiles Group found.")
 
 # Get the list of available servers
-# This method i.e.,get_available_servers works with all the API versions till 1200
+# This method i.e.,get_AVAILABLE_SERVERS works with all the API versions till 1200
 # as it got deprecated from apiVersion 1200
 if oneview_client.api_version <= 1200:
     print("\nList all available servers associated with a server hardware type and enclosure group")
-    available_servers = server_profiles.get_available_servers(
-        enclosureGroupUri=enclosure_group.data["uri"],
-        serverHardwareTypeUri=hardware_type.data["uri"])
-    pprint(available_servers)
+    AVAILABLE_SERVERS = server_PROFILES.get_AVAILABLE_SERVERS(
+        enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+        serverHardwareTypeUri=HARDWARE_TYPE.data["uri"])
+    pprint(AVAILABLE_SERVERS)
 
 # List available storage systems
-# This method i.e., get_available_storage_systems works with all the API versions till 500
+# This method i.e., get_AVAILABLE_STORAGE_SYSTEMS works with all the API versions till 500
 if oneview_client.api_version <= 500:
-    print("\nList available storage systems associated with the given enclosure group URI and server hardware type URI")
-    available_storage_systems = server_profiles.get_available_storage_systems(
-        count=25, start=0, enclosureGroupUri=enclosure_group.data["uri"],
-        serverHardwareTypeUri=hardware_type.data["uri"])
-    pprint(available_storage_systems)
+    print("\nList available storage systems associated with the given enclosure group URI and server
+	 hardware type URI")
+    AVAILABLE_STORAGE_SYSTEMS = server_PROFILES.get_AVAILABLE_STORAGE_SYSTEMS(
+        count=25, start=0, enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+        serverHardwareTypeUri=HARDWARE_TYPE.data["uri"])
+    pprint(AVAILABLE_STORAGE_SYSTEMS)
 
 # Get a specific storage system
-# This method ie.,get_available_storage_system works with all the API versions till 500
-if storage_system_id and oneview_client.api_version <= 500:
-    print("\nRetrieve a specific storage system associated with the given enclosure group URI, a server hardware"
+# This method ie.,get_AVAILABLE_STORAGE_SYSTEM works with all the API versions till 500
+if STORAGE_SYSTEM_ID and oneview_client.api_version <= 500:
+    print("\nRetrieve a specific storage system associated with the given enclosure group URI, a
+	 server hardware"
           " type URI and a storage system ID")
-    available_storage_system = server_profiles.get_available_storage_system(
-        storageSystemId=storage_system_id,
-        enclosureGroupUri=enclosure_group.data["uri"],
-        serverHardwareTypeUri=hardware_type.data["uri"])
-    pprint(available_storage_system)
+    AVAILABLE_STORAGE_SYSTEM = server_PROFILES.get_AVAILABLE_STORAGE_SYSTEM(
+        storageSystemId=STORAGE_SYSTEM_ID,
+        enclosureGroupUri=ENCLOSURE_GROUP.data["uri"],
+        serverHardwareTypeUri=HARDWARE_TYPE.data["uri"])
+    pprint(AVAILABLE_STORAGE_SYSTEM)
 
 # List available targets
 print("\nList all available servers and bays for a given enclosure group.")
-available_targets = server_profiles.get_available_targets(
-    enclosureGroupUri=enclosure_group.data["uri"])
-pprint(available_targets)
+AVAILABLE_TARGETS = server_PROFILES.get_AVAILABLE_TARGETS(
+    enclosureGroupUri=ENCLOSURE_GROUP.data["uri"])
+pprint(AVAILABLE_TARGETS)
 
-# Delete all server profile (filtering)
-print("\nRemove all profiles that match the name 'Profile fake'")
-# Create a new profile to delete
-server_profiles.create(dict(
+# Delete all server PROFILE (filtering)
+print("\nRemove all PROFILES that match the name 'Profile fake'")
+# Create a new PROFILE to delete
+server_PROFILES.create(dict(
     name="Profile fake",
-    serverHardwareTypeUri=hardware_type.data["uri"],
-    enclosureGroupUri=enclosure_group.data["uri"]
+    serverHardwareTypeUri=HARDWARE_TYPE.data["uri"],
+    enclosureGroupUri=ENCLOSURE_GROUP.data["uri"]
 ))
-server_profiles.delete_all(filter="name='Profile fake'")
-print("The server profiles were successfully deleted.")
+server_PROFILES.delete_all(filter="name='Profile fake'")
+print("The server PROFILES were successfully deleted.")
 
-# Create a server profile for automation
-print("\nCreate a basic connection-less assigned server profile")
-profile = server_profiles.create(basic_profile_options)
-print("Created profile with name '{}' and uri '{}'".format(profile.data['name'], profile.data['uri']))
+# Create a server PROFILE for automation
+print("\nCreate a basic connection-less assigned server PROFILE")
+PROFILE = server_PROFILES.create(basic_PROFILE_options)
+print("Created PROFILE with name '{}' and uri '{}'".format(PROFILE.data['name'], PROFILE.data['uri']))
 
 # Make SP compliant with SPT
-print("\nUpdate the profile configuration from server profile template")
-if profile:
-    profile.patch(operation="replace",
+print("\nUpdate the PROFILE CONFIGuration from server PROFILE template")
+if PROFILE:
+    PROFILE.patch(operation="replace",
                   path="/templateCompliance", value="Compliant")
-    pprint(profile.data)
+    pprint(PROFILE.data)

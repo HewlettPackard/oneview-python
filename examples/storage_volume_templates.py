@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,30 +27,30 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-storage_pools = oneview_client.storage_pools
-storage_systems = oneview_client.storage_systems
-storage_volume_templates = oneview_client.storage_volume_templates
-storage_pools = oneview_client.storage_pools
+oneview_client = OneViewClient(CONFIG)
+STORAGE_POOLs = oneview_client.STORAGE_POOLs
+STORAGE_SYSTEMs = oneview_client.STORAGE_SYSTEMs
+storage_VOLUME_TEMPLATEs = oneview_client.storage_VOLUME_TEMPLATEs
+STORAGE_POOLs = oneview_client.STORAGE_POOLs
 fcoe_networks = oneview_client.fcoe_networks
 scopes = oneview_client.scopes
 
-fcoe_network_name = "Test_fcoeNetwork"
-scope_name = "SampleScope"
+FCOE_NETWORK_NAME = "Test_fcoeNetwork"
+SCOPE_NAME = "SampleScope"
 
-fcoe_network_uri = fcoe_networks.get_by_name(fcoe_network_name).data['uri']
-scope_uri = scopes.get_by_name(scope_name).data['uri']
-# Gets the first Root Storage Volume Template available to use in options
-root_template = oneview_client.storage_volume_templates.get_all(filter="\"isRoot='True'\"")[0]
+FCOE_NETWORK_URI = fcoe_networks.get_by_name(FCOE_NETWORK_NAME).data['uri']
+SCOPE_URI = scopes.get_by_name(SCOPE_NAME).data['uri']
+# Gets the first Root Storage Volume Template available to use in OPTIONS
+root_template = oneview_client.storage_VOLUME_TEMPLATEs.get_all(filter="\"isRoot='True'\"")[0]
 
-storage_pools_all = storage_pools.get_all()
+STORAGE_POOLS_ALL = STORAGE_POOLs.get_all()
 
 # Request body for create operation
 # Supported from API version >= 500
-options = {
+OPTIONS = {
     "rootTemplateUri": root_template['uri'],
     "properties": {
         "name": {
@@ -106,7 +106,7 @@ options = {
             "format": "x-uri-reference",
             "required": "true",
             "description": "A common provisioning group URI reference",
-            "default": storage_pools_all[0]['uri']
+            "default": STORAGE_POOLS_ALL[0]['uri']
         },
         "snapshotPool": {
             "meta": {
@@ -116,8 +116,9 @@ options = {
             "type": "string",
             "title": "Snapshot Pool",
             "format": "x-uri-reference",
-            "default": storage_pools_all[0]['uri'],
-            "description": "A URI reference to the common provisioning group used to create snapshots"
+            "default": STORAGE_POOLS_ALL[0]['uri'],
+            "description": "A URI reference to the common provisioning group used to create
+	 snapshots"
         },
         "provisioningType": {
             "enum": [
@@ -135,58 +136,58 @@ options = {
             "description": "The provisioning type for the volume"
         }
     },
-    "name": "test_volume_template",
+    "name": "test_VOLUME_TEMPLATE",
     "description": "desc"
 }
 
 # Find or add storage pool to use in template
 print("Find or add storage pool to use in template")
-storage_pools_all = storage_pools.get_all()
-storage_pool_added = False
-storage_system_added = False
-if storage_pools_all:
-    storage_pool_data = storage_pools_all[0]
-    storage_pool = storage_pools.get_by_uri(storage_pool_data["uri"])
-    print("   Found storage pool '{name}' at uri: '{uri}".format(**storage_pool.data))
+STORAGE_POOLS_ALL = STORAGE_POOLs.get_all()
+STORAGE_POOL_ADDED = False
+STORAGE_SYSTEM_ADDED = False
+if STORAGE_POOLS_ALL:
+    STORAGE_POOL_DATA = STORAGE_POOLS_ALL[0]
+    STORAGE_POOL = STORAGE_POOLs.get_by_uri(STORAGE_POOL_DATA["uri"])
+    print("   Found storage pool '{name}' at uri: '{uri}".format(**STORAGE_POOL.data))
 else:
     # Find or add storage system
-    storage_pool_added = True
+    STORAGE_POOL_ADDED = True
     print("   Find or add storage system")
-    s_systems = storage_systems.get_all()
-    if s_systems:
-        s_system_data = s_systems[0]
-        storage_system = storage_systems.get_by_uri(s_system_data["uri"])
-        storage_system_added = False
-        print("      Found storage system '{name}' at uri: {uri}".format(**storage_system.data))
+    S_SYSTEMS = STORAGE_SYSTEMs.get_all()
+    if S_SYSTEMS:
+        S_SYSTEM_DATA = S_SYSTEMS[0]
+        STORAGE_SYSTEM = STORAGE_SYSTEMs.get_by_uri(S_SYSTEM_DATA["uri"])
+        STORAGE_SYSTEM_ADDED = False
+        print("      Found storage system '{name}' at uri: {uri}".format(**STORAGE_SYSTEM.data))
     else:
-        options_storage = {
-            "hostname": config['storage_system_hostname'],
-            "username": config['storage_system_username'],
-            "password": config['storage_system_password'],
-            "family": config['storage_system_family']
+        OPTIONS_storage = {
+            "hostname": CONFIG['STORAGE_SYSTEM_hostname'],
+            "username": CONFIG['STORAGE_SYSTEM_username'],
+            "password": CONFIG['STORAGE_SYSTEM_password'],
+            "family": CONFIG['STORAGE_SYSTEM_family']
         }
-        storage_system = storage_systems.add(options_storage)
-        s_system_data = storage_system.data.copy()
-        s_system_data['managedDomain'] = storage_system.data['unmanagedDomains'][0]
-        storage_system.update(s_system_data)
-        storage_system_added = True
-        print("      Added storage system '{name}' at uri: {uri}".format(**storage_system.data))
+        STORAGE_SYSTEM = STORAGE_SYSTEMs.add(OPTIONS_storage)
+        S_SYSTEM_DATA = STORAGE_SYSTEM.data.copy()
+        S_SYSTEM_DATA['managedDomain'] = STORAGE_SYSTEM.data['unmanagedDomains'][0]
+        STORAGE_SYSTEM.update(S_SYSTEM_DATA)
+        STORAGE_SYSTEM_ADDED = True
+        print("      Added storage system '{name}' at uri: {uri}".format(**STORAGE_SYSTEM.data))
 
     # Find and add unmanaged storage pool for management
-    pool_name = ''
-    storage_pool = {}
+    POOL_NAME = ''
+    STORAGE_POOL = {}
     print("   Find and add unmanaged storage pool for management")
-    for pool in storage_system.data['unmanagedPools']:
-        if pool['domain'] == storage_system.data['managedDomain']:
-            pool_name = pool['name']
+    for pool in STORAGE_SYSTEM.data['unmanagedPools']:
+        if pool['domain'] == STORAGE_SYSTEM.data['managedDomain']:
+            POOL_NAME = pool['name']
             break
-    if pool_name:
-        print("      Found pool '{}'".format(pool_name))
-        options_pool = {
-            "storageSystemUri": storage_system.data['uri'],
-            "poolName": pool_name
+    if POOL_NAME:
+        print("      Found pool '{}'".format(POOL_NAME))
+        OPTIONS_pool = {
+            "storageSystemUri": STORAGE_SYSTEM.data['uri'],
+            "poolName": POOL_NAME
         }
-        storage_pool = storage_pools.add(options_pool)
+        STORAGE_POOL = STORAGE_POOLs.add(OPTIONS_pool)
         print("      Successfully added pool")
     else:
         print("      No available unmanaged storage pools to add")
@@ -194,58 +195,58 @@ else:
 
 # Create storage volume template
 print("Create storage volume template")
-volume_template = storage_volume_templates.create(options)
-pprint(volume_template.data)
+VOLUME_TEMPLATE = storage_VOLUME_TEMPLATEs.create(OPTIONS)
+pprint(VOLUME_TEMPLATE.data)
 
-template_id = volume_template.data["uri"].split('/')[-1]
+TEMPLATE_ID = VOLUME_TEMPLATE.data["uri"].split('/')[-1]
 
 # Update storage volume template
-if volume_template:
-    print("Update '{name}' at uri: {uri}".format(**volume_template.data))
-    volume_template_data = volume_template.data.copy()
-    volume_template_data['description'] = "updated description"
-    volume_template.update(volume_template_data)
-    print("   Updated with 'description': '{description}'".format(**volume_template.data))
+if VOLUME_TEMPLATE:
+    print("Update '{name}' at uri: {uri}".format(**VOLUME_TEMPLATE.data))
+    VOLUME_TEMPLATE_data = VOLUME_TEMPLATE.data.copy()
+    VOLUME_TEMPLATE_data['description'] = "updated description"
+    VOLUME_TEMPLATE.update(VOLUME_TEMPLATE_data)
+    print("   Updated with 'description': '{description}'".format(**VOLUME_TEMPLATE.data))
 
 # Get all storage volume templates
 print("Get all storage volume templates")
-volume_templates_all = storage_volume_templates.get_all()
-for template in volume_templates_all:
+VOLUME_TEMPLATEs_all = storage_VOLUME_TEMPLATEs.get_all()
+for template in VOLUME_TEMPLATEs_all:
     print("   '{name}' at uri: {uri}".format(**template))
 
 # Get storage volume template by uri
-if volume_template:
-    print("Get storage volume template by uri: '{uri}'".format(**volume_template.data))
-    volume_template_by_uri = storage_volume_templates.get_by_uri(volume_template.data['uri'])
-    print("   Found '{name}' at uri: {uri}".format(**volume_template_by_uri.data))
+if VOLUME_TEMPLATE:
+    print("Get storage volume template by uri: '{uri}'".format(**VOLUME_TEMPLATE.data))
+    VOLUME_TEMPLATE_by_uri = storage_VOLUME_TEMPLATEs.get_by_uri(VOLUME_TEMPLATE.data['uri'])
+    print("   Found '{name}' at uri: {uri}".format(**VOLUME_TEMPLATE_by_uri.data))
 
 # Get storage volume template by name
-if volume_template:
-    print("Get storage volume template by 'name': '{name}'".format(**volume_template.data))
-    volume_template_byname = storage_volume_templates.get_by_name(volume_template.data['name'])
-    print("   Found '{name}' at uri: {uri}".format(**volume_template_byname.data))
+if VOLUME_TEMPLATE:
+    print("Get storage volume template by 'name': '{name}'".format(**VOLUME_TEMPLATE.data))
+    VOLUME_TEMPLATE_byname = storage_VOLUME_TEMPLATEs.get_by_name(VOLUME_TEMPLATE.data['name'])
+    print("   Found '{name}' at uri: {uri}".format(**VOLUME_TEMPLATE_byname.data))
 
 # Gets the storage templates that are connected on the specified networks
 # scoper_uris and private_allowed_only parameters supported only with API version >= 600
 if oneview_client.api_version >= 600:
     print("Get storage templates that are connected on the specified networks")
-    storage_templates = storage_volume_templates.get_reachable_volume_templates(
-        networks=fcoe_network_uri, scope_uris=scope_uri, private_allowed_only=False)
-    print(storage_templates)
+    STORAGE_TEMPLATES = storage_VOLUME_TEMPLATEs.get_reachable_VOLUME_TEMPLATEs(
+        networks=FCOE_NETWORK_URI, SCOPE_URIs=SCOPE_URI, private_allowed_only=False)
+    print(STORAGE_TEMPLATES)
 
 # Retrieves all storage systems that is applicable to the storage volume template.
 print("Get storage systems that is applicable to the storage volume template")
-if volume_template:
-    storage_systems = volume_template.get_compatible_systems()
-    print(storage_systems)
+if VOLUME_TEMPLATE:
+    STORAGE_SYSTEMs = VOLUME_TEMPLATE.get_compatible_systems()
+    print(STORAGE_SYSTEMs)
 
 # Remove storage volume template
 print("Delete storage volume template")
-if volume_template:
-    volume_template.delete()
+if VOLUME_TEMPLATE:
+    VOLUME_TEMPLATE.delete()
     print("   Done.")
 
 # Create storage volume template for automation
 print("Create storage volume template")
-volume_template = storage_volume_templates.create(options)
-pprint(volume_template.data)
+VOLUME_TEMPLATE = storage_VOLUME_TEMPLATEs.create(OPTIONS)
+pprint(VOLUME_TEMPLATE.data)

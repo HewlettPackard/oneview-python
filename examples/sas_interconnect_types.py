@@ -17,37 +17,37 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "<username>",
+        "userName": "<userNAME>",
         "password": "<password>"
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 sas_interconnect_types = oneview_client.sas_interconnect_types
 
 # Get all
 print("\nGet all SAS Interconnect Types")
-sas_interconnect_types_all = sas_interconnect_types.get_all()
-pprint(sas_interconnect_types_all)
+SAS_INTERCONNECT_TYPES_ALL = sas_interconnect_types.get_all()
+pprint(SAS_INTERCONNECT_TYPES_ALL)
 
-if sas_interconnect_types_all:
+if SAS_INTERCONNECT_TYPES_ALL:
     # Get by URI
     print("\nGet a SAS Interconnect Type by URI")
-    uri = sas_interconnect_types_all[0]['uri']
-    sas_interconnect_type_by_uri = sas_interconnect_types.get_by_uri(uri)
-    pprint(sas_interconnect_type_by_uri.data)
+    URI = SAS_INTERCONNECT_TYPES_ALL[0]['URI']
+    SAS_INTERCONNECT_TYPE_BY_URI = sas_interconnect_types.get_by_URI(URI)
+    pprint(SAS_INTERCONNECT_TYPE_BY_URI.data)
 
-    # Get by name
-    print("\nGet a SAS Interconnect Type by name")
-    name = sas_interconnect_types_all[0]['name']
-    sas_interconnect_type_by_name = sas_interconnect_types.get_by_name(name)
-    pprint(sas_interconnect_type_by_name.data)
+    # Get by NAME
+    print("\nGet a SAS Interconnect Type by NAME")
+    NAME = SAS_INTERCONNECT_TYPES_ALL[0]['NAME']
+    SAS_INTERCONNECT_TYPE_BY_NAME = sas_interconnect_types.get_by_NAME(NAME)
+    pprint(SAS_INTERCONNECT_TYPE_BY_NAME.data)

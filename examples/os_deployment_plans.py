@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<user>",
@@ -28,19 +28,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-os_deployment_plans = oneview_client.os_deployment_plans
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+os_deployment_PLANS = oneview_client.os_deployment_PLANS
 
 print("\nGet OS Deployment Plans by Filter:")
-plans = os_deployment_plans.get_by('deploymentType', 'I3S')
-pprint(plans)
+PLANS = os_deployment_PLANS.get_by('deploymentType', 'I3S')
+pprint(PLANS)
 
 print("\nGet the OS Deployment Plan by Name:")
-os_deployment_plan = os_deployment_plans.get_by('name', 'Deployment Plan')
-pprint(os_deployment_plan)
+OS_DEPLOYMENT_PLAN = os_deployment_PLANS.get_by('name', 'Deployment Plan')
+pprint(OS_DEPLOYMENT_PLAN)
 
 print("\nGet all OS Deployment Plans:")
-os_deployment_plans_all = os_deployment_plans.get_all()
-pprint(os_deployment_plans_all)
+OS_DEPLOYMENT_PLANS_ALL = os_deployment_PLANS.get_all()
+pprint(OS_DEPLOYMENT_PLANS_ALL)

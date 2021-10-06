@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "administrator",
@@ -28,19 +28,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-options = {
+OPTIONS = {
     "type": "Range",
     "startAddress": "E2:13:C5:F0:00:00",
     "endAddress": "E2:13:C5:FF:FF:FF",
     "rangeCategory": "Custom"
 }
 
-options_additional = {
+OPTIONS_ADDITIONAL = {
     "type": "Range",
     "name": None,
     "prefix": None,
@@ -70,7 +70,7 @@ options_additional = {
 }
 
 # Create vmac Range for id pools
-vmac_range = oneview_client.id_pools_vmac_ranges.create(options)
+vmac_range = oneview_client.id_pools_vmac_ranges.create(OPTIONS)
 pprint(vmac_range)
 
 # Get vmac range by uri
@@ -84,21 +84,21 @@ print("Got vmac range from '{}' to '{}' by uri:\n   '{}'".format(vmac_range_byId
       'startAddress'], vmac_range_byId['endAddress'], vmac_range_byId['uri']))
 
 # Enable a vMAC range
-information = {
+INFORMATION = {
     "type": "Range",
     "enabled": True
 }
 vmac_range = oneview_client.id_pools_vmac_ranges.enable(
-    information, vmac_range['uri'])
+    INFORMATION, vmac_range['uri'])
 print("Successfully enabled vmac range at\n   'uri': {}\n   with 'enabled': {}".format(
     vmac_range['uri'], vmac_range['enabled']))
 
 # Allocate a set of IDs from vmac range
-information = {
+INFORMATION = {
     "count": 10
 }
 successfully_allocated_ids = oneview_client.id_pools_vmac_ranges.allocate(
-    information, vmac_range['uri'])
+    INFORMATION, vmac_range['uri'])
 print("Successfully allocated IDs:")
 pprint(successfully_allocated_ids)
 
@@ -116,21 +116,21 @@ pprint(allocated_fragments)
 
 # Collect a set of IDs back to vmac range
 try:
-    information = {
+    INFORMATION = {
         "idList": successfully_allocated_ids['idList']
     }
     successfully_collected_ids = oneview_client.id_pools_vmac_ranges.collect(
-        information, vmac_range['uri'])
+        INFORMATION, vmac_range['uri'])
 except HPEOneViewException as e:
     print(e.msg)
 
 # Disable a vmac range
-information = {
+INFORMATION = {
     "type": "Range",
     "enabled": False
 }
 vmac_range = oneview_client.id_pools_vmac_ranges.enable(
-    information, vmac_range['uri'])
+    INFORMATION, vmac_range['uri'])
 print("Successfully disabled vmac range at\n   'uri': {}\n   with 'enabled': {}".format(
     vmac_range['uri'], vmac_range['enabled']))
 
@@ -138,9 +138,9 @@ print("Successfully disabled vmac range at\n   'uri': {}\n   with 'enabled': {}"
 oneview_client.id_pools_vmac_ranges.delete(vmac_range)
 print("Successfully deleted vmac range")
 
-# Create vmac Range for id pools with more options specified
-print("Create vMAC range with more options specified for id pools")
-vmac_range = oneview_client.id_pools_vmac_ranges.create(options_additional)
+# Create vmac Range for id pools with more OPTIONS specified
+print("Create vMAC range with more OPTIONS specified for id pools")
+vmac_range = oneview_client.id_pools_vmac_ranges.create(OPTIONS_ADDITIONAL)
 pprint(vmac_range)
 
 # Delete vmac_range

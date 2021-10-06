@@ -18,11 +18,11 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on C7000 enclosures
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -31,30 +31,30 @@ config = {
 }
 
 # provide info about your switch here
-switch_id = "7a2704e2-564d-4163-8745-2a0b807a5e03"
-switch_uri = "/rest/switches/" + switch_id
+SWITCH_ID = "7a2704e2-564d-4163-8745-2a0b807a5e03"
+SWITCH_URI = "/rest/switches/" + SWITCH_ID
 
-port_name = "1.1"
-port_id = "{switch_id}:{port_name}".format(**locals())
+PORT_NAME = "1.1"
+PORT_ID = "{SWITCH_ID}:{PORT_NAME}".format(**locals())
 
 # To run the scope patch operations in this example, a scope name is required.
-scope_name = "scope1"
+SCOPE_NAME = "scope1"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 print("\nGet a switch statistics:\n")
 try:
-    switch_statistics = oneview_client.switches.get_statistics(switch_uri)
+    switch_statistics = oneview_client.switches.get_statistics(SWITCH_URI)
     pprint(switch_statistics)
 except HPEOneViewException as e:
     print(e.msg)
 
 print("\nGet a switch statistics with portName\n")
 try:
-    switch_statistics = oneview_client.switches.get_statistics(switch_uri, "1.2")
+    switch_statistics = oneview_client.switches.get_statistics(SWITCH_URI, "1.2")
     pprint(switch_statistics)
 except HPEOneViewException as e:
     print(e.msg)
@@ -65,28 +65,28 @@ pprint(switches_all)
 
 try:
     print("\nGet switch by id\n")
-    switch_by_id = oneview_client.switches.get(switch_id)
+    switch_by_id = oneview_client.switches.get(SWITCH_ID)
     pprint(switch_by_id)
 except HPEOneViewException as e:
     print(e.msg)
 
 try:
     print("\nGet switch by uri\n")
-    switch_by_uri = oneview_client.switches.get(switch_uri)
+    switch_by_uri = oneview_client.switches.get(SWITCH_URI)
     pprint(switch_by_uri)
 except HPEOneViewException as e:
     print(e.msg)
 
 try:
-    print("\nGet environmental configuration of switch by id\n")
-    switch_by_id = oneview_client.switches.get_environmental_configuration(switch_id)
+    print("\nGet environmental CONFIGuration of switch by id\n")
+    switch_by_id = oneview_client.switches.get_environmental_CONFIGuration(SWITCH_ID)
     pprint(switch_by_id)
 except HPEOneViewException as e:
     print(e.msg)
 
 try:
-    print("\nGet environmental configuration of switch by uri\n")
-    switch_env_conf = oneview_client.switches.get_environmental_configuration(switch_uri)
+    print("\nGet environmental CONFIGuration of switch by uri\n")
+    switch_env_conf = oneview_client.switches.get_environmental_CONFIGuration(SWITCH_URI)
     pprint(switch_env_conf)
 except HPEOneViewException as e:
     print(e.msg)
@@ -99,12 +99,12 @@ except HPEOneViewException as e:
     print(e.msg)
 
 # Get scope to be added
-print("\nTrying to retrieve scope named '%s'." % scope_name)
-scope = oneview_client.scopes.get_by_name(scope_name)
+print("\nTrying to retrieve scope named '%s'." % SCOPE_NAME)
+scope = oneview_client.scopes.get_by_name(SCOPE_NAME)
 
 # Performs a patch operation on the Logical Switch
 if scope and oneview_client.api_version == 500:
-    print("\nPatches the switch assigning the '%s' scope to it." % scope_name)
+    print("\nPatches the switch assigning the '%s' scope to it." % SCOPE_NAME)
     switch_by_uri = oneview_client.switches.patch(switch_by_uri['uri'],
                                                   'replace',
                                                   '/scopeUris',
@@ -115,13 +115,13 @@ if oneview_client.api_version >= 300:
     try:
         print("\nUpdate the switch ports\n")
 
-        ports_to_update = [{
+        PORTS_TO_UPDATE = [{
             "enabled": True,
-            "portId": port_id,
-            "portName": port_name
+            "portId": PORT_ID,
+            "portName": PORT_NAME
         }]
 
-        ports = oneview_client.switches.update_ports(id_or_uri=switch_id, ports=ports_to_update)
+        ports = oneview_client.switches.update_ports(id_or_uri=SWITCH_ID, ports=PORTS_TO_UPDATE)
         print("  Done.")
     except HPEOneViewException as e:
         print(e.msg)

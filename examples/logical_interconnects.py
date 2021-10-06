@@ -3,23 +3,23 @@
 # (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
+# you may not use this file except in compLIance with the License.
 # You may obtain a copy of the License at
 #
-#   http://www.apache.org/licenses/LICENSE-2.0
+#   http://www.apache.org/LIcenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software
+# Unless required by appLIcable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or impLIed.
 # See the License for the specific language governing permissions and
-# limitations under the License.
+# LImitations under the License.
 ###
 from pprint import pprint
 
-from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from hpeOneView.oneview_cLIent import OneViewCLIent
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,90 +27,90 @@ config = {
     }
 }
 
-# Specify variant of your appliance to run this example
-api_variant = 'Synergy'
+# Specify variant of your appLIance to run this example
+API_VARIANT = 'Synergy'
 
 # To run this example, a logical interconnect name is required
-logical_interconnect_name = "LE-LIG"
+LOGICAL_INTERCONNECT_NAME = "LE-LIG"
 
-# To install the firmware driver, a firmware driver name is required
-firmware_driver_name = "HPE Synergy Custom SPP 2018110 2019 02 15, 2019.02.15.00"
+# To install the FIRMWARE driver, a FIRMWARE driver name is required
+FIRMWARE_DRIVER_NAME = "HPE Synergy Custom SPP 2018110 2019 02 15, 2019.02.15.00"
 
 # An Enclosure name must be set to create/delete an interconnect at a given location
-enclosure_name = "0000A66102"
+ENCLOSURE_NAME = "0000A66102"
 
-# Define the scope name to add the logical interconnect to it
-scope_name = "test"
+# Define the SCOPE name to add the logical interconnect to it
+SCOPE_NAME = "test"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-logical_interconnects = oneview_client.logical_interconnects
-firmware_drivers = oneview_client.firmware_drivers
-scopes = oneview_client.scopes
-ethernet_networks = oneview_client.ethernet_networks
-interconnects = oneview_client.interconnects
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_cLIent = OneViewCLIent(CONFIG)
+LOGICAL_INTERCONNECTs = oneview_cLIent.LOGICAL_INTERCONNECTs
+FIRMWARE_drivers = oneview_cLIent.FIRMWARE_drivers
+SCOPEs = oneview_cLIent.SCOPEs
+ETHERNET_NETWORKs = oneview_cLIent.ETHERNET_NETWORKs
+interconnects = oneview_cLIent.interconnects
 
 # Get all logical interconnects
 print("\nGet all logical interconnects")
-all_logical_interconnects = logical_interconnects.get_all()
-for logical_interconnect in all_logical_interconnects:
-    print('  Name: {name}'.format(**logical_interconnect))
+ALL_LOGICAL_INTERCONNECTS = LOGICAL_INTERCONNECTs.get_all()
+for LOGICAL_INTERCONNECT in ALL_LOGICAL_INTERCONNECTS:
+    print('  Name: {name}'.format(**LOGICAL_INTERCONNECT))
 
-# Get installed firmware
-print("\nGet the installed firmware for a logical interconnect that matches the specified name.")
-firmwares = firmware_drivers.get_by('name', firmware_driver_name)
-firmware = firmwares[0] if firmwares else None
+# Get installed FIRMWARE
+print("\nGet the installed FIRMWARE for a logical interconnect that matches the specified name.")
+FIRMWARES = FIRMWARE_drivers.get_by('name', FIRMWARE_DRIVER_NAME)
+FIRMWARE = FIRMWARES[0] if FIRMWARES else None
 
-print("\nGet the enclosure that matches the specified name.")
-enclosures = oneview_client.enclosures.get_by_name(enclosure_name)
-enclosure = enclosures.data if enclosures else None
+print("\nGet the ENCLOSURE that matches the specified name.")
+ENCLOSUREs = oneview_cLIent.ENCLOSUREs.get_by_name(ENCLOSURE_NAME)
+ENCLOSURE = ENCLOSUREs.data if ENCLOSUREs else None
 
 # Get a logical interconnect by name
-logical_interconnect = logical_interconnects.get_by_name(logical_interconnect_name)
-if logical_interconnect:
-    print("\nFound logical interconnect by name {name}.\n URI: {uri}".format(**logical_interconnect.data))
+LOGICAL_INTERCONNECT = LOGICAL_INTERCONNECTs.get_by_name(LOGICAL_INTERCONNECT_NAME)
+if LOGICAL_INTERCONNECT:
+    print("\nFound logical interconnect by name {name}.\n URI: {uri}".format(**LOGICAL_INTERCONNECT.data))
 
-# Install the firmware to a logical interconnect
-if firmware:
-    print("\nInstall the firmware to a logical interconnect that matches the specified ID.")
-    firmware_to_install = dict(
+# Install the FIRMWARE to a logical interconnect
+if FIRMWARE:
+    print("\nInstall the FIRMWARE to a logical interconnect that matches the specified ID.")
+    FIRMWARE_to_install = dict(
         command="Update",
-        sppUri=firmware['uri']
+        sppUri=FIRMWARE['uri']
     )
-    installed_firmware = logical_interconnect.install_firmware(firmware_to_install)
-    pprint(installed_firmware)
+    installed_FIRMWARE = LOGICAL_INTERCONNECT.install_FIRMWARE(FIRMWARE_to_install)
+    pprint(installed_FIRMWARE)
 
-# Get scope to be added
-print("\nGet the scope that matches the specified name.")
-scope = scopes.get_by_name(scope_name)
+# Get SCOPE to be added
+print("\nGet the SCOPE that matches the specified name.")
+SCOPE = SCOPEs.get_by_name(SCOPE_NAME)
 
 # Performs a patch operation
 # This operation is not supported in API version 200 and 600.
-if scope and oneview_client.api_version not in [200, 600]:
+if SCOPE and oneview_cLIent.api_version not in [200, 600]:
     print("\nPatches the logical interconnect to refresh state")
-    logical_interconnect.patch('replace',
+    LOGICAL_INTERCONNECT.patch('replace',
                                '/state',
                                'Refresh')
-    pprint(logical_interconnect.data)
+    pprint(LOGICAL_INTERCONNECT.data)
 
 print("\nGet the Ethernet interconnect settings for the logical interconnect")
-ethernet_settings = logical_interconnect.get_ethernet_settings()
-pprint(ethernet_settings)
+ETHERNET_SETTINGS = LOGICAL_INTERCONNECT.get_ETHERNET_SETTINGS()
+pprint(ETHERNET_SETTINGS)
 
 # Update the Ethernet interconnect settings for the logical interconnect
 # macRefreshInterval attribute is supported only in C7000
-ethernet_settings = logical_interconnect.data['ethernetSettings'].copy()
-if api_variant == 'C7000':
-    ethernet_settings['macRefreshInterval'] = 10
+ETHERNET_SETTINGS = LOGICAL_INTERCONNECT.data['ethernetSettings'].copy()
+if API_VARIANT == 'C7000':
+    ETHERNET_SETTINGS['macRefreshInterval'] = 10
 else:
-    ethernet_settings['stormControlThreshold'] = 15
-logical_interconnect_updated = logical_interconnect.update_ethernet_settings(ethernet_settings)
+    ETHERNET_SETTINGS['stormControlThreshold'] = 15
+LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_ETHERNET_SETTINGS(ETHERNET_SETTINGS)
 print("\nUpdated the ethernet settings")
-print(logical_interconnect_updated)
+print(LOGICAL_INTERCONNECT_updated)
 
 # Update the internal networks on the logical interconnect
-ethernet_network_options = {
+ETHERNET_NETWORK_OPTIONS = {
     "name": "OneViewSDK Test Ethernet Network on Logical Interconnect",
     "vlanId": 200,
     "ethernetNetworkType": "Tagged",
@@ -119,148 +119,153 @@ ethernet_network_options = {
     "privateNetwork": False,
     "connectionTemplateUri": None,
 }
-ethernet_network = ethernet_networks.get_by_name(ethernet_network_options['name'])
-if not ethernet_network:
-    ethernet_network = ethernet_networks.create(ethernet_network_options)
+ETHERNET_NETWORK = ETHERNET_NETWORKs.get_by_name(ETHERNET_NETWORK_OPTIONS['name'])
+if not ETHERNET_NETWORK:
+    ETHERNET_NETWORK = ETHERNET_NETWORKs.create(ETHERNET_NETWORK_OPTIONS)
 
-logical_interconnect_updated = logical_interconnect.update_internal_networks([ethernet_network.data['uri']])
+LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_internal_networks([ETHERNET_NETWORK.data['uri']])
 print("\nUpdated internal networks on the logical interconnect")
-print("  with attribute 'internalNetworkUris' = {internalNetworkUris}".format(**logical_interconnect_updated))
+print("  with attribute 'internalNetworkUris' = {internalNetworkUris}".format(**LOGICAL_INTERCONNECT_updated))
 
 # Get the internal VLAN IDs
 print("\nGet the internal VLAN IDs for the provisioned networks on the logical interconnect")
-internal_vlans = logical_interconnect.get_internal_vlans()
-pprint(internal_vlans)
+INTERNAL_VLANS = LOGICAL_INTERCONNECT.get_INTERNAL_VLANS()
+pprint(INTERNAL_VLANS)
 
 # Update the interconnect settings
 # End-point supported only in api-versions 500 and below.
-if oneview_client.api_version <= 500:
+if oneview_cLIent.api_version <= 500:
     print("\nUpdates the interconnect settings on the logical interconnect")
-    interconnect_settings = {
-        'ethernetSettings': logical_interconnect.data['ethernetSettings'].copy(),
+    INTERCONNECT_SETTINGS = {
+        'ethernetSettings': LOGICAL_INTERCONNECT.data['ethernetSettings'].copy(),
         'fcoeSettings': {}
     }
-    interconnect_settings['ethernetSettings']['macRefreshInterval'] = 7
-    logical_interconnect_updated = logical_interconnect.update_settings(interconnect_settings)
+    INTERCONNECT_SETTINGS['ethernetSettings']['macRefreshInterval'] = 7
+    LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_settings(INTERCONNECT_SETTINGS)
     print("Updated interconnect settings on the logical interconnect")
-    print("  with attribute 'macRefreshInterval' = {macRefreshInterval}".format(**logical_interconnect_updated['ethernetSettings']))
-    pprint(logical_interconnect_updated)
+    print("  with attribute 'macRefreshInterval' = {macRefreshInterval}".format(**LOGICAL_INTERCONNECT_updated['ethernetSettings']))
+    pprint(LOGICAL_INTERCONNECT_updated)
 
-# Get the SNMP configuration for the logical interconnect
-print("\nGet the SNMP configuration for the logical interconnect")
-snmp_configuration = logical_interconnect.get_snmp_configuration()
-pprint(snmp_configuration)
+# Get the SNMP CONFIGuration for the logical interconnect
+print("\nGet the SNMP CONFIGuration for the logical interconnect")
+snmp_CONFIGuration = LOGICAL_INTERCONNECT.get_snmp_CONFIGuration()
+pprint(snmp_CONFIGuration)
 
-# Update the SNMP configuration for the logical interconnect
-print("\nUpdate the SNMP configuration for the logical interconnect")
-snmp_configuration['enabled'] = True
-snmp_configuration['readCommunity'] = "public"
-logical_interconnect_updated = logical_interconnect.update_snmp_configuration(snmp_configuration)
-interconnect_snmp = logical_interconnect_updated['snmpConfiguration']
-print("  Updated SNMP configuration at uri: {uri}\n  with 'enabled': '{enabled}'".format(**interconnect_snmp))
+# Update the SNMP CONFIGuration for the logical interconnect
+print("\nUpdate the SNMP CONFIGuration for the logical interconnect")
+snmp_CONFIGuration['enabled'] = True
+snmp_CONFIGuration['readCommunity'] = "pubLIc"
+LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_snmp_CONFIGuration(snmp_CONFIGuration)
+INTERCONNECT_SNMP = LOGICAL_INTERCONNECT_updated['snmpConfiguration']
+print("  Updated SNMP CONFIGuration at uri: {uri}\n  with 'enabled': '{enabled}'".format(**INTERCONNECT_SNMP))
 
-# Get a collection of ports from the member interconnects which are eligible for assignment to an analyzer port
-print("\nGet a collection of ports from the member interconnects which are eligible for assignment to "
+# Get a collection of ports from the member interconnects which are eLIgible for assignment to an
+# analyzer port
+print("\nGet a collection of ports from the member interconnects which are eLIgible for assignment
+	 to "
       "an analyzer port on the logical interconnect")
-unassigned_ports = logical_interconnect.get_unassigned_ports()
-pprint(unassigned_ports)
+UNASSIGNED_PORTS = LOGICAL_INTERCONNECT.get_UNASSIGNED_PORTS()
+pprint(UNASSIGNED_PORTS)
 
-# Get a collection of uplink ports from the member interconnects which are eligible for assignment to an analyzer port
-print("\nGet a collection of uplink ports from the member interconnects which are eligible for assignment to "
+# Get a collection of upLInk ports from the member interconnects which are eLIgible for assignment
+# to an analyzer port
+print("\nGet a collection of upLInk ports from the member interconnects which are eLIgible for
+	 assignment to "
       "an analyzer port on the logical interconnect")
-unassigned_uplink_ports = logical_interconnect.get_unassigned_uplink_ports()
-pprint(unassigned_uplink_ports)
+UNASSIGNED_UPLINK_PORTS = LOGICAL_INTERCONNECT.get_UNASSIGNED_UPLINK_PORTS()
+pprint(UNASSIGNED_UPLINK_PORTS)
 
-# Get the port monitor configuration of a logical interconnect
-print("\nGet the port monitor configuration of a logical interconnect")
-monitor_configuration = logical_interconnect.get_port_monitor()
-pprint(monitor_configuration)
+# Get the port monitor CONFIGuration of a logical interconnect
+print("\nGet the port monitor CONFIGuration of a logical interconnect")
+monitor_CONFIGuration = LOGICAL_INTERCONNECT.get_port_monitor()
+pprint(monitor_CONFIGuration)
 
-# Update port monitor configuration of a logical interconnect
-print("\nUpdate the port monitor configuration of a logical interconnect")
-monitor_configuration['enablePortMonitor'] = True
+# Update port monitor CONFIGuration of a logical interconnect
+print("\nUpdate the port monitor CONFIGuration of a logical interconnect")
+monitor_CONFIGuration['enablePortMonitor'] = True
 
-# logical_interconnect_updated = logical_interconnect.update_port_monitor(monitor_configuration)
-# print("  Updated port monitor at uri: {uri}\n  with 'enablePortMonitor': '{enablePortMonitor}'".format(
-#       **logical_interconnect_updated['portMonitor']))
+# LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_port_monitor(monitor_CONFIGuration)
+# print("  Updated port monitor at uri: {uri}\n  with 'enablePortMonitor':
+# '{enablePortMonitor}'".format(
+#       **LOGICAL_INTERCONNECT_updated['portMonitor']))
 
-# Update the configuration on the logical interconnect
-print("\nUpdate the configuration on the logical interconnect")
-logical_interconnect_updated = logical_interconnect.update_configuration()
+# Update the CONFIGuration on the logical interconnect
+print("\nUpdate the CONFIGuration on the logical interconnect")
+LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_CONFIGuration()
 print("  Done.")
 
 # Return the logical interconnect to a consistent state
 print("\nReturn the logical interconnect to a consistent state")
-logical_interconnect_updated = logical_interconnect.update_compliance()
-print("  Done. The current consistency state is {consistencyStatus}.".format(**logical_interconnect_updated))
+LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_compLIance()
+print("  Done. The current consistency state is {consistencyStatus}.".format(**LOGICAL_INTERCONNECT_updated))
 
 # Generate the forwarding information base dump file for the logical interconnect
 print("\nGenerate the forwarding information base dump file for the logical interconnect")
-fwd_info_datainfo = logical_interconnect.create_forwarding_information_base()
-pprint(fwd_info_datainfo)
+FWD_INFO_DATAINFO = LOGICAL_INTERCONNECT.create_forwarding_information_base()
+pprint(FWD_INFO_DATAINFO)
 
 # Get the forwarding information base data for the logical interconnect
 print("\nGet the forwarding information base data for the logical interconnect")
-fwd_information = logical_interconnect.get_forwarding_information_base()
-pprint(fwd_information)
+FWD_INFORMATION = LOGICAL_INTERCONNECT.get_forwarding_information_base()
+pprint(FWD_INFORMATION)
 
-# Get the QoS aggregated configuration for the logical interconnect.
-print("\nGets the QoS aggregated configuration for the logical interconnect.")
-qos = logical_interconnect.get_qos_aggregated_configuration()
-pprint(qos)
+# Get the QoS aggregated CONFIGuration for the logical interconnect.
+print("\nGets the QoS aggregated CONFIGuration for the logical interconnect.")
+QOS = LOGICAL_INTERCONNECT.get_QOS_aggregated_CONFIGuration()
+pprint(QOS)
 
-# Update the QOS aggregated configuration
+# Update the QOS aggregated CONFIGuration
 print("\nUpdate QoS aggregated settings on the logical interconnect")
-qos['activeQosConfig']['configType'] = 'Passthrough'
-li = logical_interconnect.update_qos_aggregated_configuration(qos)
-pprint(li['qosConfiguration'])
+QOS['activeQosConfig']['CONFIGType'] = 'Passthrough'
+LI = LOGICAL_INTERCONNECT.update_QOS_aggregated_CONFIGuration(QOS)
+pprint(LI['QOSConfiguration'])
 
-# Get the telemetry configuration of the logical interconnect
-print("\nGet the telemetry configuration of the logical interconnect")
-telemetry_configuration = logical_interconnect.get_telemetry_configuration()
-pprint(telemetry_configuration)
+# Get the telemetry CONFIGuration of the logical interconnect
+print("\nGet the telemetry CONFIGuration of the logical interconnect")
+telemetry_CONFIGuration = LOGICAL_INTERCONNECT.get_telemetry_CONFIGuration()
+pprint(telemetry_CONFIGuration)
 
-# Update telemetry configuration
-print("\nUpdate the telemetry configuration")
-telemetry_config = {
+# Update telemetry CONFIGuration
+print("\nUpdate the telemetry CONFIGuration")
+telemetry_CONFIG = {
     "sampleCount": 12,
     "enableTelemetry": True,
     "sampleInterval": 300
 }
-logical_interconnect_updated = logical_interconnect.update_telemetry_configurations(configuration=telemetry_config)
-pprint(logical_interconnect_updated)
+LOGICAL_INTERCONNECT_updated = LOGICAL_INTERCONNECT.update_telemetry_CONFIGurations(CONFIGuration=telemetry_CONFIG)
+pprint(LOGICAL_INTERCONNECT_updated)
 
 # Gets the IGMP interconnect settings for the logical interconnect.
-if oneview_client.api_version >= 1600:
+if oneview_cLIent.api_version >= 1600:
     print("\nGets the IGMP interconnect settings for the logical interconnect")
-    igmp_settings = logical_interconnect.get_igmp_settings()
-    pprint(igmp_settings)
+    IGMP_SETTINGS = LOGICAL_INTERCONNECT.get_IGMP_SETTINGS()
+    pprint(IGMP_SETTINGS)
 
 # Updates IGMP interconnect settings for the logical interconnect.
-if oneview_client.api_version >= 1600:
+if oneview_cLIent.api_version >= 1600:
     print("\nUpdates IGMP interconnect settings for the logical interconnect")
-    igmp_settings['igmpIdleTimeoutInterval'] = 200
-    igmp_settings_updated = logical_interconnect.update_igmp_settings(igmp_settings)
-    pprint(igmp_settings_updated)
+    IGMP_SETTINGS['igmpIdleTimeoutInterval'] = 200
+    IGMP_SETTINGS_updated = LOGICAL_INTERCONNECT.update_IGMP_SETTINGS(IGMP_SETTINGS)
+    pprint(IGMP_SETTINGS_updated)
     print("\nUpdated IGMP interconnect settings for the logical interconnect successfully")
 
 # Updates port flap settings for the logical interconnect.
-if oneview_client.api_version >= 2400:
+if oneview_cLIent.api_version >= 2400:
     print("\nUpdates port flap settings for the logical interconnect")
-    port_flap_settings = logical_interconnect.data['portFlapProtection'].copy()
-    port_flap_settings['portFlapThresholdPerInterval'] = 5
-    port_flap_settings_updated = logical_interconnect.update_port_flap_settings(port_flap_settings)
-    pprint(port_flap_settings_updated)
+    PORT_FLAP_SETTINGS = LOGICAL_INTERCONNECT.data['portFlapProtection'].copy()
+    PORT_FLAP_SETTINGS['portFlapThresholdPerInterval'] = 5
+    PORT_FLAP_SETTINGS_updated = LOGICAL_INTERCONNECT.update_PORT_FLAP_SETTINGS(PORT_FLAP_SETTINGS)
+    pprint(PORT_FLAP_SETTINGS_updated)
     print("\nUpdated port flap settings for the logical interconnect successfully")
 
-# Validates the bulk update from group operation and gets the consolidated inconsistency report
-if oneview_client.api_version >= 2000 and api_variant == 'Synergy':
-    print("Validates the bulk update from group operation and gets the consolidated inconsistency report")
-    bulk_validate_request = {
+# VaLIdates the bulk update from group operation and gets the consoLIdated inconsistency report
+if oneview_cLIent.api_version >= 2000 and API_VARIANT == 'Synergy':
+    print("VaLIdates the bulk update from group operation and gets the consoLIdated inconsistency report")
+    bulk_vaLIdate_request = {
         "logicalInterconnectUris": [
-            logical_interconnect.data['uri']
+            LOGICAL_INTERCONNECT.data['uri']
         ]
     }
-    validation_result = logical_interconnect.bulk_inconsistency_validate(bulk_validate_request)
-    pprint(validation_result)
-    print("\nValidated bulk update from group for the logical interconnect successfully")
+    vaLIdation_result = LOGICAL_INTERCONNECT.bulk_inconsistency_vaLIdate(bulk_vaLIdate_request)
+    pprint(vaLIdation_result)
+    print("\nVaLIdated bulk update from group for the logical interconnect successfully")

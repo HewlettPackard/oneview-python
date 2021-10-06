@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,163 +28,166 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-volumes = oneview_client.volumes
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+VOLUMEs = oneview_client.VOLUMEs
 fc_networks = oneview_client.fc_networks
-storage_systems = oneview_client.storage_systems
+STORAGE_SYSTEMs = oneview_client.STORAGE_SYSTEMs
 storage_pools = oneview_client.storage_pools
-storage_volume_templates = oneview_client.storage_volume_templates
+storage_VOLUME_TEMPLATEs = oneview_client.storage_VOLUME_TEMPLATEs
 scopes = oneview_client.scopes
 
-# To run this example, you may set a WWN to add a volume using the WWN of the volume (optional)
-unmanaged_volume_wwn = ''
-scope_name = 'SampleScope'
+# To run this example, you may set a WWN to add a VOLUME using the WWN of the VOLUME (optional)
+UNMANAGED_VOLUME_WWN = ''
+SCOPE_NAME = 'SampleScope'
 
-# Defines the storage system and the storage pool which are provided to create the volumes
-storage_system = storage_systems.get_all()[0]
-fc_network_uri = fc_networks.get_all()[0]['uri']
-storage_pools_all = storage_pools.get_all(filter="\"'isManaged'='True'\"")
-storage_pool_available = False
+# Defines the storage system and the storage pool which are provided to create the VOLUMEs
+STORAGE_SYSTEM = STORAGE_SYSTEMs.get_all()[0]
+FC_NETWORK_URI = fc_networks.get_all()[0]['uri']
+STORAGE_POOLS_ALL = storage_pools.get_all(filter="\"'isManaged'='True'\"")
+STORAGE_POOL_AVAILABLE = False
 
-for sp in storage_pools_all:
-    if sp['storageSystemUri'] == storage_system['uri']:
-        storage_pool_available = True
+for sp in STORAGE_POOLS_ALL:
+    if sp['storageSystemUri'] == STORAGE_SYSTEM['uri']:
+        STORAGE_POOL_AVAILABLE = True
         storage_pool = sp
 
-if not storage_pool_available:
+if not STORAGE_POOL_AVAILABLE:
     raise ValueError("ERROR: No storage pools found attached to the storage system")
 
-volume_template = storage_volume_templates.get_all()[0]
+VOLUME_TEMPLATE = storage_VOLUME_TEMPLATEs.get_all()[0]
 
-# Create a volume with a Storage Pool
-print("\nCreate a volume with a specified Storage Pool and Snapshot Pool")
+# Create a VOLUME with a Storage Pool
+print("\nCreate a VOLUME with a specified Storage Pool and Snapshot Pool")
 
-options = {
+OPTIONS = {
     "properties": {
         "storagePool": storage_pool['uri'],
         "size": 1024 * 1024 * 1024,  # 1GB
         "isShareable": False,
         "snapshotPool": storage_pool['uri'],
         "provisioningType": "Thin",
-        "name": "Test_volume"
+        "name": "Test_VOLUME"
     },
-    "templateUri": volume_template['uri'],
+    "templateUri": VOLUME_TEMPLATE['uri'],
     "isPermanent": False
 }
 
-# Find a volume by name
-volume = volumes.get_by_name(options['properties']['name'])
+# Find a VOLUME by name
+VOLUME = VOLUMEs.get_by_name(OPTIONS['properties']['name'])
 
-if not volume:
-    volume = volumes.create(options)
-    print("\nCreated a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
+if not VOLUME:
+    VOLUME = VOLUMEs.create(OPTIONS)
+    print("\nCreated a VOLUME by name: '{name}'.\n  uri = '{uri}'".format(**VOLUME.data))
 else:
-    print("\nFound a volume by name: '{name}'.\n  uri = '{uri}'".format(**volume.data))
+    print("\nFound a VOLUME by name: '{name}'.\n  uri = '{uri}'".format(**VOLUME.data))
 
-# Add a volume for management by the appliance using the WWN of the volume
-if unmanaged_volume_wwn:
-    print("\nAdd a volume for management by the appliance using the WWN of the volume")
+# Add a VOLUME for management by the appliance using the WWN of the VOLUME
+if UNMANAGED_VOLUME_WWN:
+    print("\nAdd a VOLUME for management by the appliance using the WWN of the VOLUME")
 
-    options_with_wwn = {
+    OPTIONS_WITH_WWN = {
         "type": "AddStorageVolumeV2",
         "name": 'ONEVIEW_SDK_TEST_VOLUME_TYPE_4',
-        "description": 'Test volume added for management: Storage System + Storage Pool + WWN',
-        "storageSystemUri": storage_system['uri'],
-        "wwn": unmanaged_volume_wwn,
+        "description": 'Test VOLUME added for management: Storage System + Storage Pool + WWN',
+        "storageSystemUri": STORAGE_SYSTEM['uri'],
+        "wwn": UNMANAGED_VOLUME_WWN,
         "provisioningParameters": {
             "shareable": False
         }
     }
-    volume_added_with_wwn = volumes.create(options_with_wwn)
-    pprint(volume_added_with_wwn.data)
+    VOLUME_ADDED_WITH_WWN = VOLUMEs.create(OPTIONS_WITH_WWN)
+    pprint(VOLUME_ADDED_WITH_WWN.data)
 
-# Get all managed volumes
-print("\nGet a list of all managed volumes")
-volumes_all = volumes.get_all()
-for volume_each in volumes_all:
-    print("Name: {name}".format(**volume_each))
+# Get all managed VOLUMEs
+print("\nGet a list of all managed VOLUMEs")
+VOLUMES_ALL = VOLUMEs.get_all()
+for VOLUME_each in VOLUMES_ALL:
+    print("Name: {name}".format(**VOLUME_each))
 
-# Update the name of the volume recently found to 'Test_volume'
-if volume:
-    volume_data = volume.data.copy()
-    volume_data['name'] = 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
-    volume.update(volume_data)
-    print("\nVolume updated successfully.\n  uri = '{uri}'\n  with attribute 'name' = {name}".format(**volume.data))
+# Update the name of the VOLUME recently found to 'Test_VOLUME'
+if VOLUME:
+    VOLUME_DATA = VOLUME.data.copy()
+    VOLUME_DATA['name'] = 'ONEVIEW_SDK_TEST_VOLUME_TYPE_1_RENAMED'
+    VOLUME.update(VOLUME_DATA)
+    print("\nVolume updated successfully.\n  uri = '{uri}'\n  with attribute 'name' =
+	 {name}".format(**VOLUME.data))
 
-# Find a volume by URI
-volume = volumes.get_by_uri(volume.data["uri"])
-print("\nFind a volume by URI")
-pprint(volume.data)
+# Find a VOLUME by URI
+VOLUME = VOLUMEs.get_by_uri(VOLUME.data["uri"])
+print("\nFind a VOLUME by URI")
+pprint(VOLUME.data)
 
 # Create a snapshot
 print("\nCreate a snapshot")
-snapshot_options = {
+SNAPSHOT_OPTIONS = {
     "name": "Test Snapshot",
     "description": "Description for the snapshot"
 }
-if volume:
-    created_snapshot = volume.create_snapshot(snapshot_options)
-    print("Created a snapshot for the volume '{name}'".format(**volume.data))
+if VOLUME:
+    CREATED_SNAPSHOT = VOLUME.create_snapshot(SNAPSHOT_OPTIONS)
+    print("Created a snapshot for the VOLUME '{name}'".format(**VOLUME.data))
 
 # Get recently created snapshot resource by name
 print("\nGet a snapshot by name")
-if volume and created_snapshot:
-    print(created_snapshot.data)
-    snapshot_by_name = volume.get_snapshot_by_name(created_snapshot.data["name"])
-    print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**snapshot_by_name.data))
+if VOLUME and CREATED_SNAPSHOT:
+    print(CREATED_SNAPSHOT.data)
+    SNAPSHOT_BY_NAME = VOLUME.get_SNAPSHOT_BY_NAME(CREATED_SNAPSHOT.data["name"])
+    print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**SNAPSHOT_BY_NAME.data))
 
 # Get recently created snapshot resource by uri
-if volume and created_snapshot:
-    snapshot_by_uri = volume.get_snapshot_by_uri(created_snapshot.data["uri"])
-    print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**snapshot_by_uri.data))
+if VOLUME and CREATED_SNAPSHOT:
+    SNAPSHOT_BY_URI = VOLUME.get_SNAPSHOT_BY_URI(CREATED_SNAPSHOT.data["uri"])
+    print("Found snapshot at uri '{uri}'\n  by name = '{name}'".format(**SNAPSHOT_BY_URI.data))
 
 # Get a paginated list of snapshot resources sorting by name ascending
-print("\nGet a list of the first 10 snapshots")
-if volume:
-    snapshots = volume.get_snapshots(0, 10, sort='name:ascending')
-    for snapshot in snapshots:
+print("\nGet a list of the first 10 SNAPSHOTS")
+if VOLUME:
+    SNAPSHOTS = VOLUME.get_SNAPSHOTS(0, 10, sort='name:ascending')
+    for snapshot in SNAPSHOTS:
         print('  {name}'.format(**snapshot))
 
 # Delete the recently created snapshot resource
 print("\nDelete the recently created snapshot")
-if created_snapshot:
-    created_snapshot.delete()
+if CREATED_SNAPSHOT:
+    CREATED_SNAPSHOT.delete()
     print("Snapshot deleted successfully")
 
-# Get the list of all extra managed storage volume paths from the appliance
-extra_volumes = volumes.get_extra_managed_storage_volume_paths()
-print("\nGet the list of all extra managed storage volume paths from the appliance")
-pprint(extra_volumes)
+# Get the list of all extra managed storage VOLUME paths from the appliance
+EXTRA_VOLUMES = VOLUMEs.get_extra_managed_storage_VOLUME_paths()
+print("\nGet the list of all extra managed storage VOLUME paths from the appliance")
+pprint(EXTRA_VOLUMES)
 
-# Remove extra presentations from the specified volume on the storage system
-print("\nRemove extra presentations from the specified volume on the storage system")
-if volume:
-    volume.repair()
+# Remove extra presentations from the specified VOLUME on the storage system
+print("\nRemove extra presentations from the specified VOLUME on the storage system")
+if VOLUME:
+    VOLUME.repair()
     print("  Done.")
 
-# Get all the attachable volumes which are managed by the appliance
-print("\nGet all the attachable volumes which are managed by the appliance")
-attachable_volumes = volumes.get_attachable_volumes()
-pprint(attachable_volumes)
+# Get all the attachable VOLUMEs which are managed by the appliance
+print("\nGet all the attachable VOLUMEs which are managed by the appliance")
+ATTACHABLE_VOLUMES = VOLUMEs.get_ATTACHABLE_VOLUMES()
+pprint(ATTACHABLE_VOLUMES)
 
-print("\nGet the attachable volumes which are managed by the appliance with scopes and connections")
-scope_uris = scopes.get_by_name(scope_name).data['uri']
+print("\nGet the attachable VOLUMEs which are managed by the appliance with scopes and CONNECTIONS")
+SCOPE_URIS = scopes.get_by_name(SCOPE_NAME).data['uri']
 
-connections = [{'networkUri': fc_network_uri,
+CONNECTIONS = [{'networkUri': FC_NETWORK_URI,
                 'proxyName': '20:18:40:EB:1A:0F:0E:C7', 'initiatorName': '10:00:72:01:F8:70:00:0F'}]
-attachable_volumes = volumes.get_attachable_volumes(scope_uris=scope_uris, connections=connections)
-pprint(attachable_volumes)
+ATTACHABLE_VOLUMES = VOLUMEs.get_ATTACHABLE_VOLUMES(SCOPE_URIS=SCOPE_URIS, CONNECTIONS=CONNECTIONS)
+pprint(ATTACHABLE_VOLUMES)
 
-print("\nDelete the recently created volumes")
-if volume:
-    volume.delete()
-    print("The volume, that was previously created with a Storage Pool, was deleted from OneView and storage system")
-if unmanaged_volume_wwn:
-    volume_added_with_wwn.delete(export_only=True)
-    print("The volume, that was previously added using the WWN of the volume, was deleted from OneView")
+print("\nDelete the recently created VOLUMEs")
+if VOLUME:
+    VOLUME.delete()
+    print("The VOLUME, that was previously created with a Storage Pool, was deleted from OneView and
+	 storage system")
+if UNMANAGED_VOLUME_WWN:
+    VOLUME_ADDED_WITH_WWN.delete(export_only=True)
+    print("The VOLUME, that was previously added using the WWN of the VOLUME, was deleted from
+	 OneView")
 
-# Create volume for automation
-new_volume = volumes.create(options)
-print("Created volume '{}' with uri '{}'".format(new_volume.data['name'], new_volume.data['uri']))
+# Create VOLUME for automation
+NEW_VOLUME = VOLUMEs.create(OPTIONS)
+print("Created VOLUME '{}' with uri '{}'".format(NEW_VOLUME.data['name'], NEW_VOLUME.data['uri']))

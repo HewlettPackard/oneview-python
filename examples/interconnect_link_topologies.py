@@ -18,11 +18,11 @@
 from pprint import pprint
 import re
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "administrator",
@@ -30,10 +30,10 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Get all interconnect link topologies
 print("Get all interconnect link topologies")
@@ -48,15 +48,15 @@ pprint(interconnect_link_topologies_sorted)
 # Get by uri
 if interconnect_link_topologies:
     print("Get an interconnect link topology by uri")
-    ilt_uri = interconnect_link_topologies[0]['uri']
-    ilt_byuri = oneview_client.interconnect_link_topologies.get(ilt_uri)
+    ILT_URI = interconnect_link_topologies[0]['uri']
+    ilt_byuri = oneview_client.interconnect_link_topologies.get(ILT_URI)
     print("   Found '{name}' at uri: {uri}".format(**ilt_byuri))
 
 # Get by Id
 if interconnect_link_topologies:
     print("Get an interconnect link topology by id")
-    ilt_id = re.sub("/rest/interconnect-link-topologies/", '', interconnect_link_topologies[0]['uri'])
-    ilt_byid = oneview_client.interconnect_link_topologies.get(ilt_id)
+    ILT_ID = re.sub("/rest/interconnect-link-topologies/", '', interconnect_link_topologies[0]['uri'])
+    ilt_byid = oneview_client.interconnect_link_topologies.get(ILT_ID)
     print("   Found '{name}' at uri: {uri}".format(**ilt_byid))
 
 # Get by name

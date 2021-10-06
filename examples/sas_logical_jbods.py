@@ -17,11 +17,11 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,10 +29,10 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 print("\nGet all SAS logical JBODs")
 all_sas_logical_jbods = oneview_client.sas_logical_jbods.get_all()
@@ -40,12 +40,12 @@ pprint(all_sas_logical_jbods)
 
 if all_sas_logical_jbods:
 
-    sas_logical_jbod_uri = all_sas_logical_jbods[0]["uri"]
+    SAS_LOGICAL_JBOD_URI = all_sas_logical_jbods[0]["uri"]
 
     print("\nGet the SAS logical JBOD by uri")
-    sas_logical_jbod_by_uri = oneview_client.sas_logical_jbods.get(id_or_uri=sas_logical_jbod_uri)
+    sas_logical_jbod_by_uri = oneview_client.sas_logical_jbods.get(id_or_uri=SAS_LOGICAL_JBOD_URI)
     pprint(sas_logical_jbod_by_uri)
 
     print("\nGet the list of drives allocated to this SAS logical JBOD")
-    drives = oneview_client.sas_logical_jbods.get_drives(id_or_uri=sas_logical_jbod_uri)
+    drives = oneview_client.sas_logical_jbods.get_drives(id_or_uri=SAS_LOGICAL_JBOD_URI)
     pprint(drives)

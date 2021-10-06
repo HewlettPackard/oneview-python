@@ -17,11 +17,11 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-# To run this example fill the ip and the credentials below or use a configuration file
-config = {
+# To run this example fill the ip and the credentials below or use a CONFIGuration file
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -30,29 +30,30 @@ config = {
     "api_version": "<api_version>"
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-uplink_sets = oneview_client.uplink_sets
+oneview_client = OneViewClient(CONFIG)
+UPLINK_SETs = oneview_client.UPLINK_SETs
 
 
-# To run this example you can define an logical interconnect uri (logicalInterconnectUri), ethernet network uri
+# To run this example you can define an logical interconnect uri (logicalInterconnectUri), ethernet
+# network uri
 # and ethernet name or the example will attempt to retrieve those automatically from the appliance.
-ethernet_network_name = 'OneViewSDK Test Ethernet Network on Logical Interconnect'
+ETHERNET_NETWORK_NAME = 'OneViewSDK Test Ethernet Network on Logical Interconnect'
 
 # Attempting to get first LI and Ethernet uri and use them for this example
 logical_interconnect_uri = oneview_client.logical_interconnects.get_all()[0]['uri']
 
-enet = oneview_client.ethernet_networks.get_by_name(ethernet_network_name)
-ethernet_network_uri = enet.data['uri']
+enet = oneview_client.ethernet_NETWORKS.get_by_name(ETHERNET_NETWORK_NAME)
+ETHERNET_NETWORK_URI = enet.data['uri']
 
-options = {
+OPTIONS = {
     "name": "Uplink Set Demo",
     "status": "OK",
     "logicalInterconnectUri": logical_interconnect_uri,
     "networkUris": [
-        ethernet_network_uri
+        ETHERNET_NETWORK_URI
     ],
     "fcNetworkUris": [],
     "fcoeNetworkUris": [],
@@ -64,57 +65,59 @@ options = {
 
 # Get a paginated list of uplink set resources sorting by name ascending and filtering by status
 print("\nGet a list of uplink sets")
-all_uplink_sets = uplink_sets.get_all(0, 15, sort='name:ascending')
-for uplink_set in all_uplink_sets:
-    print('  %s' % uplink_set['name'])
+ALL_UPLINK_SETS = UPLINK_SETs.get_all(0, 15, sort='name:ascending')
+for UPLINK_SET in ALL_UPLINK_SETS:
+    print('  %s' % UPLINK_SET['name'])
 
-if all_uplink_sets:
+if ALL_UPLINK_SETS:
     # Get an uplink set resource by uri
     print("\nGet an uplink set by uri")
-    uplink_uri = all_uplink_sets[0]['uri']
-    uplink_set = uplink_sets.get_by_uri(uplink_uri)
-    pprint(uplink_set.data)
+    UPLINK_URI = ALL_UPLINK_SETS[0]['uri']
+    UPLINK_SET = UPLINK_SETs.get_by_uri(UPLINK_URI)
+    pprint(UPLINK_SET.data)
 
 # Get an uplink set resource by name
 print("\nGet uplink set by name")
-uplink_set = uplink_sets.get_by_name(options["name"])
-if uplink_set:
-    print("Found uplink set at uri '{uri}'\n  by name = '{name}'".format(**uplink_set.data))
+UPLINK_SET = UPLINK_SETs.get_by_name(OPTIONS["name"])
+if UPLINK_SET:
+    print("Found uplink set at uri '{uri}'\n  by name = '{name}'".format(**UPLINK_SET.data))
 else:
     # Create an uplink set
     print("\nCreate an uplink set")
-    uplink_set = uplink_sets.create(options)
-    print("Created uplink set '{name}' successfully.\n  uri = '{uri}'".format(**uplink_set.data))
+    UPLINK_SET = UPLINK_SETs.create(OPTIONS)
+    print("Created uplink set '{name}' successfully.\n  uri = '{uri}'".format(**UPLINK_SET.data))
 
 # Update an uplink set
 print("\nUpdate an uplink set")
-if uplink_set:
-    uplink_set.data['name'] = 'Renamed Uplink Set Demo'
-    uplink_set.update(uplink_set.data)
-    print("Updated uplink set name to '{name}' successfully.\n  uri = '{uri}'".format(**uplink_set.data))
+if UPLINK_SET:
+    UPLINK_SET.data['name'] = 'Renamed Uplink Set Demo'
+    UPLINK_SET.update(UPLINK_SET.data)
+    print("Updated uplink set name to '{name}' successfully.\n  uri = '{uri}'".format(**UPLINK_SET.data))
 
 # Add an ethernet network to the uplink set
 # To run this example you must define an ethernet network uri or ID below
-if ethernet_network_name and uplink_set:
+if ETHERNET_NETWORK_NAME and UPLINK_SET:
     print("\nAdd an ethernet network to the uplink set")
-    uplink_added_ethernet = uplink_set.add_ethernet_networks(ethernet_network_name)
-    print("The uplink set with name = '{name}' have now the networkUris:\n {networkUris}".format(**uplink_added_ethernet))
+    UPLINK_ADDED_ETHERNET = UPLINK_SET.add_ethernet_NETWORKS(ETHERNET_NETWORK_NAME)
+    print("The uplink set with name = '{name}' have now the networkUris:\n
+	 {networkUris}".format(**UPLINK_ADDED_ETHERNET))
 
 # Remove an ethernet network from the uplink set
 # To run this example you must define an ethernet network uri or ID below
-if ethernet_network_name and uplink_set:
+if ETHERNET_NETWORK_NAME and UPLINK_SET:
     print("\nRemove an ethernet network of the uplink set")
-    uplink_removed_ethernet = uplink_set.remove_ethernet_networks(ethernet_network_name)
-    print("The uplink set with name = '{name}' have now the networkUris:\n {networkUris}".format(**uplink_removed_ethernet))
+    UPLINK_REMOVED_ETHERNET = UPLINK_SET.remove_ethernet_NETWORKS(ETHERNET_NETWORK_NAME)
+    print("The uplink set with name = '{name}' have now the networkUris:\n
+	 {networkUris}".format(**UPLINK_REMOVED_ETHERNET))
 
-# Get the associated ethernet networks of an uplink set
-print("\nGet the associated ethernet networks of the uplink set")
-if uplink_set:
-    networks = uplink_set.get_ethernet_networks()
-    pprint(networks)
+# Get the associated ethernet NETWORKS of an uplink set
+print("\nGet the associated ethernet NETWORKS of the uplink set")
+if UPLINK_SET:
+    NETWORKS = UPLINK_SET.get_ethernet_NETWORKS()
+    pprint(NETWORKS)
 
 # Delete the recently created uplink set
 print("\nDelete the uplink set")
-if uplink_set:
-    uplink_set.delete()
+if UPLINK_SET:
+    UPLINK_SET.delete()
     print("Successfully deleted the uplink set")

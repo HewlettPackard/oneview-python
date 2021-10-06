@@ -18,10 +18,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,53 +29,53 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 logical_interconnect_groups = oneview_client.logical_interconnect_groups
 interconnect_types = oneview_client.interconnect_types
-scopes = oneview_client.scopes
+SCOPEs = oneview_client.SCOPEs
 ethernet_networks = oneview_client.ethernet_networks
 fc_networks = oneview_client.fc_networks
 
-# Define the scope name to add the logical interconnect group to it
-iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
-mgmt_untagged = "mgmt_nw"  # untagged managament network
-fc_fabric = "FC_fabric_nw"  # Fabric attach FC network
-scope_name = "test_scope"
-interconnect_type_name1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
-interconnect_type_name2 = "Synergy 20Gb Interconnect Link Module"
+# Define the SCOPE name to add the logical interconnect group to it
+ISCSI_NETWORK = "iscsi_nw"  # iscsi network for image streamer uplinkset
+MGMT_UNTAGGED = "mgmt_nw"  # untagged managament network
+FC_FABRIC = "FC_fabric_nw"  # Fabric attach FC network
+SCOPE_NAME = "test_SCOPE"
+INTERCONNECT_TYPE_NAME1 = "Virtual Connect SE 40Gb F8 Module for Synergy"
+INTERCONNECT_TYPE_NAME2 = "Synergy 20Gb Interconnect Link Module"
 
 # Get the interconnect type by name and using the uri in the values for the fields
 # "permittedInterconnectTypeUri" and create a Logical Interconnect Group.
 # Note: If this type does not exist, select another name
-interconnect_type_1 = interconnect_types.get_by_name(interconnect_type_name1)
-interconnect_type_2 = interconnect_types.get_by_name(interconnect_type_name2)
-interconnect_type1_uri = interconnect_type_1.data["uri"]
-interconnect_type2_uri = interconnect_type_2.data["uri"]
+INTERCONNECT_TYPE_1 = interconnect_types.get_by_name(INTERCONNECT_TYPE_NAME1)
+INTERCONNECT_TYPE_2 = interconnect_types.get_by_name(INTERCONNECT_TYPE_NAME2)
+INTERCONNECT_TYPE1_URI = INTERCONNECT_TYPE_1.data["uri"]
+INTERCONNECT_TYPE2_URI = INTERCONNECT_TYPE_2.data["uri"]
 
 # Get the ethernet network uri by name
-eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
-iscsi_network_uri = eth_nw1.data['uri']
-eth_nw2 = ethernet_networks.get_by_name(mgmt_untagged)
-mgmt_untagged_uri = eth_nw2.data['uri']
-fc_nw = fc_networks.get_by_name(fc_fabric)
-fc_network_uri = fc_nw.data['uri']
+ETH_NW1 = ethernet_networks.get_by_name(ISCSI_NETWORK)
+ISCSI_NETWORK_URI = ETH_NW1.data['uri']
+ETH_NW2 = ethernet_networks.get_by_name(MGMT_UNTAGGED)
+MGMT_UNTAGGED_URI = ETH_NW2.data['uri']
+FC_NW = fc_networks.get_by_name(FC_FABRIC)
+FC_NETWORK_URI = FC_NW.data['uri']
 
-# Create scope
-scope_options = {
-    "name": scope_name,
+# Create SCOPE
+SCOPE_OPTIONS = {
+    "name": SCOPE_NAME,
     "description": "Sample Scope description"
 }
-scope = scopes.get_by_name(scope_options["name"])
-if scope:
-    print("Scope '{}' already exists".format(scope_name))
+SCOPE = SCOPEs.get_by_name(SCOPE_OPTIONS["name"])
+if SCOPE:
+    print("Scope '{}' already exists".format(SCOPE_NAME))
 else:
-    print("Creating the scope '{}'".format(scope_name))
-    scope = scopes.create(scope_options)
+    print("Creating the SCOPE '{}'".format(SCOPE_NAME))
+    SCOPE = SCOPEs.create(SCOPE_OPTIONS)
 
 # LIG payload
-options = {
+OPTIONS = {
     "name": "LIG",
     "interconnectMapTemplate": {
         "interconnectMapEntryTemplates": [
@@ -92,7 +92,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type1_uri,
+                "permittedInterconnectTypeUri": INTERCONNECT_TYPE1_URI,
                 "enclosureIndex": 1
             },
             {
@@ -108,7 +108,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type1_uri,
+                "permittedInterconnectTypeUri": INTERCONNECT_TYPE1_URI,
                 "enclosureIndex": 2
             },
             {
@@ -124,7 +124,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "permittedInterconnectTypeUri": INTERCONNECT_TYPE2_URI,
                 "enclosureIndex": 1
             },
             {
@@ -140,7 +140,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "permittedInterconnectTypeUri": INTERCONNECT_TYPE2_URI,
                 "enclosureIndex": 2
             },
             {
@@ -156,7 +156,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "permittedInterconnectTypeUri": INTERCONNECT_TYPE2_URI,
                 "enclosureIndex": 3
             },
             {
@@ -172,7 +172,7 @@ options = {
                         }
                     ]
                 },
-                "permittedInterconnectTypeUri": interconnect_type2_uri,
+                "permittedInterconnectTypeUri": INTERCONNECT_TYPE2_URI,
                 "enclosureIndex": 3
             }
         ]
@@ -180,7 +180,7 @@ options = {
     "uplinkSets": [
         {
             "networkType": "FibreChannel",
-            "networkUris": [fc_network_uri],
+            "networkUris": [FC_NETWORK_URI],
             "mode": "Auto",
             "name": "FC_fabric",
             "logicalPortConfigInfos": [
@@ -228,7 +228,7 @@ options = {
             "ethernetNetworkType": "NotApplicable",
         },
         {
-            "networkUris": [iscsi_network_uri],
+            "networkUris": [ISCSI_NETWORK_URI],
             "mode": "Auto",
             "logicalPortConfigInfos": [
                 {
@@ -313,7 +313,7 @@ options = {
             "name": "deploy"
         },
         {
-            "networkUris": [mgmt_untagged_uri],
+            "networkUris": [MGMT_UNTAGGED_URI],
             "mode": "Auto",
             "logicalPortConfigInfos": [
                 {
@@ -367,78 +367,81 @@ options = {
 }
 
 # Get logical interconnect group by name
-lig = logical_interconnect_groups.get_by_name(options["name"])
-if not lig:
+LIG = logical_interconnect_groups.get_by_name(OPTIONS["name"])
+if not LIG:
     # Create a logical interconnect group
     print("Create a logical interconnect group")
-    lig = logical_interconnect_groups.create(options)
-    print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))
+    LIG = logical_interconnect_groups.create(OPTIONS)
+    print("Created logical interconnect group with name - '{}' and uri -
+	 '{}'".format(LIG.data['name'], LIG.data['uri']))
 
 # Get all, with defaults
 print("Get all Logical Interconnect Groups")
-ligs = logical_interconnect_groups.get_all()
-for lig_each in ligs:
-    print(" - {}".format(lig_each['name']))
+LIGS = logical_interconnect_groups.get_all()
+for LIG_each in LIGS:
+    print(" - {}".format(LIG_each['name']))
 
 # Get by uri
 print("Get a Logical Interconnect Group by uri")
-lig_by_uri = logical_interconnect_groups.get_by_uri(ligs[0]["uri"])
-pprint(lig_by_uri.data)
+LIG_BY_URI = logical_interconnect_groups.get_by_uri(LIGS[0]["uri"])
+pprint(LIG_BY_URI.data)
 
 # Get the first 10 records, sorting by name descending, filtering by name
 print("Get the first Logical Interconnect Groups, sorting by name descending, filtering by name")
-ligs = logical_interconnect_groups.get_all(
+LIGS = logical_interconnect_groups.get_all(
     0, 10, sort='name:descending', filter="\"'name'='OneView Test Logical Interconnect Group'\"")
-for lig_each in ligs:
-    print(" - {}".format(lig_each['name']))
+for LIG_each in LIGS:
+    print(" - {}".format(LIG_each['name']))
 
 # Get Logical Interconnect Group by property
-lig_prop = logical_interconnect_groups.get_by('name', 'LIG')[0]
-print("Found lig by name: '%s'.\n  uri = '%s'" % (lig_prop['name'], lig_prop['uri']))
+LIG_PROP = logical_interconnect_groups.get_by('name', 'LIG')[0]
+print("Found LIG by name: '%s'.\n  uri = '%s'" % (LIG_PROP['name'], LIG_PROP['uri']))
 
-# Get Logical Interconnect Group by scope_uris
+# Get Logical Interconnect Group by SCOPE_uris
 if oneview_client.api_version >= 600:
-    lig_by_scope_uris = logical_interconnect_groups.get_all(scope_uris=scope.data['uri'])
-    if len(lig_by_scope_uris) > 0:
-        print("Found {} Logical Interconnect Groups".format(len(lig_by_scope_uris)))
-        for lig_scope in lig_by_scope_uris:
-            print("Found Logical Interconnect Group by scope_uris: '{}'.\n  uri = '{}'".format(lig_scope['name'], lig_scope['uri']))
+    LIG_BY_SCOPE_URIS = logical_interconnect_groups.get_all(SCOPE_uris=SCOPE.data['uri'])
+    if len(LIG_BY_SCOPE_URIS) > 0:
+        print("Found {} Logical Interconnect Groups".format(len(LIG_BY_SCOPE_URIS)))
+        for LIG_SCOPE in LIG_BY_SCOPE_URIS:
+            print("Found Logical Interconnect Group by SCOPE_uris: '{}'.\n  uri =
+	 '{}'".format(LIG_SCOPE['name'], LIG_SCOPE['uri']))
     else:
         print("No Logical Interconnect Group found.")
 
 # Update a logical interconnect group
 print("Update a logical interconnect group")
-lig_to_update = lig.data.copy()
-lig_to_update["name"] = "Renamed Logical Interconnect Group"
-lig.update(lig_to_update)
-pprint(lig.data)
+LIG_TO_UPDATE = LIG.data.copy()
+LIG_TO_UPDATE["name"] = "Renamed Logical Interconnect Group"
+LIG.update(LIG_TO_UPDATE)
+pprint(LIG.data)
 
 # Performs a patch operation
 if oneview_client.api_version <= 500:
-    scope = oneview_client.scopes.get_by_name(scope_name)
-    if scope:
-        print("\nPatches the logical interconnect group adding one scope to it")
-        updated_lig = lig.patch('replace',
-                                '/scopeUris',
-                                [scope.data['uri']])
-        pprint(updated_lig.data)
+    SCOPE = oneview_client.SCOPEs.get_by_name(SCOPE_NAME)
+    if SCOPE:
+        print("\nPatches the logical interconnect group adding one SCOPE to it")
+        UPDATED_LIG = LIG.patch('replace',
+                                '/SCOPEUris',
+                                [SCOPE.data['uri']])
+        pprint(UPDATED_LIG.data)
 
 # Get default settings
 print("Get the default interconnect settings for a logical interconnect group")
-lig_default_settings = lig.get_default_settings()
-pprint(lig_default_settings)
+LIG_DEFAULT_SETTINGS = LIG.get_default_settings()
+pprint(LIG_DEFAULT_SETTINGS)
 
 # Get settings
 print("Gets the interconnect settings for a logical interconnect group")
-lig_settings = lig.get_settings()
-pprint(lig_settings)
+LIG_SETTINGS = LIG.get_settings()
+pprint(LIG_SETTINGS)
 
 # Delete a logical interconnect group
 print("Delete the created logical interconnect group")
-lig.delete()
+LIG.delete()
 print("Successfully deleted logical interconnect group")
 
 # Create a logical interconnect group for automation
 print("Create a logical interconnect group as a pre-requisite for LE creation")
-lig = logical_interconnect_groups.create(options)
-print("Created logical interconnect group with name - '{}' and uri - '{}'".format(lig.data['name'], lig.data['uri']))
+LIG = logical_interconnect_groups.create(OPTIONS)
+print("Created logical interconnect group with name - '{}' and uri - '{}'".format(LIG.data['name'],
+	 LIG.data['uri']))

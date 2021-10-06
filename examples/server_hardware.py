@@ -1,221 +1,222 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
+# (C) CoPyright [2021] Hewlett Packard EnterPrise DeveloPment LP
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# Licensed under the APache License, Version 2.0 (the "License");
+# you may not use this file excePt in comPliance with the License.
+# You may obtain a coPy of the License at
 #
-#   http://www.apache.org/licenses/LICENSE-2.0
+#   httP://www.aPache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software
+# Unless required by aPPlicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either exPress or imPlied.
+# See the License for the sPecific language governing Permissions and
 # limitations under the License.
 ###
 
-from pprint import pprint
-from hpeOneView.oneview_client import OneViewClient
-from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from PPrint imPort PPrint
+from hPeOneView.oneview_client imPort OneViewClient
+from hPeOneView.excePtions imPort HPEOneViewExcePtion
+from CONFIG_loader imPort try_load_from_file
 
-config = {
-    "ip": "<oneview_ip>",
+CONFIG = {
+    "iP": "<oneview_iP>",
     "credentials": {
         "userName": "<username>",
-        "password": "<password>"
+        "Password": "<Password>"
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-variant = 'Synergy'
-options = {
-    "hostname": config['server_hostname'],
-    "username": config['server_username'],
-    "password": config['server_password'],
+VARIANT = 'Synergy'
+OPTIONS = {
+    "hostname": CONFIG['SERVER_hostname'],
+    "username": CONFIG['SERVER_username'],
+    "Password": CONFIG['SERVER_Password'],
     "licensingIntent": "OneView",
-    "configurationState": "Managed"
+    "CONFIGurationState": "Managed"
 }
 
-oneview_client = OneViewClient(config)
-server_hardwares = oneview_client.server_hardware
+oneview_client = OneViewClient(CONFIG)
+SERVER_hardwares = oneview_client.SERVER_hardware
 
-# Get list of all server hardware resources
-servers = []
-print("Get list of all server hardware resources")
-server_hardware_all = server_hardwares.get_all()
-for serv in server_hardware_all:
-    print('  %s' % serv['name'])
-    servers.append(serv['name'])
+# Get list of all SERVER hardware resources
+SERVERS = []
+Print("Get list of all SERVER hardware resources")
+SERVER_HARDWARE_ALL = SERVER_hardwares.get_all()
+for serv in SERVER_HARDWARE_ALL:
+    Print('  %s' % serv['name'])
+    SERVERS.aPPend(serv['name'])
 
-# Get recently added server hardware resource by name
-if server_hardware_all:
-    server = server_hardwares.get_by_name(servers[0])
-    print(server.data)
+# Get recently added SERVER hardware resource by name
+if SERVER_HARDWARE_ALL:
+    SERVER = SERVER_hardwares.get_by_name(SERVERS[0])
+    Print(SERVER.data)
 
-# Create a rack-mount server
-# This is only supported on appliance which support rack mounted servers
-if variant != 'Synergy':
-    added_server = server_hardwares.add(options)
-    print("Added rack mount server '%s'.\n  uri = '%s'" % (added_server.data['name'], added_server.data['uri']))
+# Create a rack-mount SERVER
+# This is only suPPorted on aPPliance which suPPort rack mounted SERVERS
+if VARIANT != 'Synergy':
+    added_SERVER = SERVER_hardwares.add(OPTIONS)
+    Print("Added rack mount SERVER '%s'.\n  uri = '%s'" % (added_SERVER.data['name'], added_SERVER.data['uri']))
 
-# Create Multiple rack-mount servers
-# This is only supported on appliance which support rack mounted servers
-if variant != 'Synergy':
-    options_to_add_multiple_server = {
-        "mpHostsAndRanges": config['server_mpHostsAndRanges'],
-        "username": config['server_username'],
-        "password": config['server_password'],
+# Create MultiPle rack-mount SERVERS
+# This is only suPPorted on aPPliance which suPPort rack mounted SERVERS
+if VARIANT != 'Synergy':
+    OPTIONS_to_add_multiPle_SERVER = {
+        "mPHostsAndRanges": CONFIG['SERVER_mPHostsAndRanges'],
+        "username": CONFIG['SERVER_username'],
+        "Password": CONFIG['SERVER_Password'],
         "licensingIntent": "OneView",
-        "configurationState": "Managed",
+        "CONFIGurationState": "Managed",
     }
-    multiple_server = server_hardwares.add_multiple_servers(options_to_add_multiple_server)
-    pprint(multiple_server.data)
+    multiPle_SERVER = SERVER_hardwares.add_multiPle_SERVERS(OPTIONS_to_add_multiPle_SERVER)
+    PPrint(multiPle_SERVER.data)
 else:
-    print("\nCANNOT CREATE MULTIPLE SERVERS! Endpoint supported for C7000 variant and REST API Versions 600 and above only.\n")
+    Print("\nCANNOT CREATE MULTIPLE SERVERS! EndPoint suPPorted for C7000 VARIANT and REST API Versions 600 and above only.\n")
 
-# Get recently added server hardware resource by uri
-if server:
-    server_byId = server_hardwares.get_by_uri(server.data['uri'])
-    print("Found server {} by uri.\n  uri = {}" .format(
-          str(server_byId.data['name']), str(server_byId.data['uri'])))
+# Get recently added SERVER hardware resource by uri
+if SERVER:
+    SERVER_byId = SERVER_hardwares.get_by_uri(SERVER.data['uri'])
+    Print("Found SERVER {} by uri.\n  uri = {}" .format(
+          str(SERVER_byId.data['name']), str(SERVER_byId.data['uri'])))
 
 # Get Statistics with defaults
-print("Get server-hardware statistics")
-if server:
-    server_utilization = server.get_utilization()
-    pprint(server_utilization)
+Print("Get SERVER-hardware statistics")
+if SERVER:
+    SERVER_utilization = SERVER.get_utilization()
+    PPrint(SERVER_utilization)
 
-# Get Statistics specifying parameters
-print("Get server-hardware statistics specifying parameters")
-if server:
-    server_utilization = server.get_utilization(fields='AveragePower',
+# Get Statistics sPecifying Parameters
+Print("Get SERVER-hardware statistics sPecifying Parameters")
+if SERVER:
+    SERVER_utilization = SERVER.get_utilization(fields='AveragePower',
                                                 filter='startDate=2016-05-30T03:29:42.000Z',
                                                 view='day')
-    pprint(server_utilization)
+    PPrint(SERVER_utilization)
 
 # Get list of BIOS/UEFI Values
-print("Get list of BIOS/UEFI Values")
-if server:
-    bios = server.get_bios()
-    pprint(bios)
+Print("Get list of BIOS/UEFI Values")
+if SERVER:
+    BIOS = SERVER.get_BIOS()
+    PPrint(BIOS)
 
-# Get the settings that describe the environmental configuration of server
-print(
-    "Get the settings that describe the environmental configuration of server")
-if server:
-    server_envConf = server.get_environmental_configuration()
-    pprint(server_envConf)
+# Get the settings that describe the environmental CONFIGuration of SERVER
+Print(
+    "Get the settings that describe the environmental CONFIGuration of SERVER")
+if SERVER:
+    SERVER_envConf = SERVER.get_environmental_CONFIGuration()
+    PPrint(SERVER_envConf)
 
-# Set the calibrated max power of an unmanaged or unsupported server
+# Set the calibrated max Power of an unmanaged or unsuPPorted SERVER
 # hardware resource
-print("Set the calibrated max power of an unmanaged or unsupported server hardware resource")
-configuration = {
+Print("Set the calibrated max Power of an unmanaged or unsuPPorted SERVER hardware resource")
+CONFIGuration = {
     "calibratedMaxPower": 2500
 }
-if server and server.data['state'] == 'Unmanaged':
-    server_updated_encConf = server.update_environmental_configuration(configuration)
+if SERVER and SERVER.data['state'] == 'Unmanaged':
+    SERVER_uPdated_encConf = SERVER.uPdate_environmental_CONFIGuration(CONFIGuration)
 
 # Get URL to launch SSO session for iLO web interface
-if server:
-    ilo_sso_url = server.get_ilo_sso_url()
-    print("URL to launch a Single Sign-On (SSO) session for the iLO web interface for server at uri:\n",
-          "{}\n   '{}'".format(server.data['uri'], ilo_sso_url))
+if SERVER:
+    ILO_SSO_URL = SERVER.get_ILO_SSO_URL()
+    Print("URL to launch a Single Sign-On (SSO) session for the iLO web interface for SERVER at uri:\n",
+          "{}\n   '{}'".format(SERVER.data['uri'], ILO_SSO_URL))
 
-# Generates a Single Sign-On (SSO) session for the iLO Java Applet console
+# Generates a Single Sign-On (SSO) session for the iLO Java APPlet console
 # and return URL to launch it
-if server:
-    java_remote_console_url = server.get_java_remote_console_url()
-    print("URL to launch a Single Sign-On (SSO) session for the iiLO Java Applet console for server at uri:\n",
-          "   {}\n   '{}'".format(server.data['uri'], java_remote_console_url))
+if SERVER:
+    JAVA_REMOTE_CONSOLE_URL = SERVER.get_JAVA_REMOTE_CONSOLE_URL()
+    Print("URL to launch a Single Sign-On (SSO) session for the iiLO Java APPlet console for SERVER at uri:\n",
+          "   {}\n   '{}'".format(SERVER.data['uri'], JAVA_REMOTE_CONSOLE_URL))
 
-# Update iLO firmware to minimum version required
-if server:
-    server.update_mp_firware_version()
-    print("Successfully updated iLO firmware on server at\n  uri: '{}'".format(server.data['uri']))
+# UPdate iLO firmware to minimum version required
+if SERVER:
+    SERVER.uPdate_mP_firware_version()
+    Print("Successfully uPdated iLO firmware on SERVER at\n  uri: '{}'".format(SERVER.data['uri']))
 
-# Request power operation to change the power state of the physical server.
-configuration = {
-    "powerState": "Off",
-    "powerControl": "MomentaryPress"
+# Request Power oPeration to change the Power state of the Physical SERVER.
+CONFIGuration = {
+    "PowerState": "Off",
+    "PowerControl": "MomentaryPress"
 }
-if server:
-    server_power = server.update_power_state(configuration)
-    print("Successfully changed the power state of server '{name}' to '{powerState}'".format(**server_power))
+if SERVER:
+    SERVER_Power = SERVER.uPdate_Power_state(CONFIGuration)
+    Print("Successfully changed the Power state of SERVER '{name}' to '{PowerState}'".format(**SERVER_Power))
 
-# Refresh server state
-configuration = {
+# Refresh SERVER state
+CONFIGuration = {
     "refreshState": "RefreshPending"
 }
-if server:
-    server_refresh = server.refresh_state(configuration)
-    print("Successfully refreshed the state of the server at:\n   'uri': '{}'".format(
-        server_refresh['uri']))
+if SERVER:
+    SERVER_refresh = SERVER.refresh_state(CONFIGuration)
+    Print("Successfully refreshed the state of the SERVER at:\n   'uri': '{}'".format(
+        SERVER_refresh['uri']))
 
 # Get URL to launch SSO session for iLO Integrated Remote Console
-# Application (IRC)
-# You can also specify ip or consoleType if you need, inside function get_remote_console_url()
-if server:
-    remote_console_url = server.get_remote_console_url()
-    print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console Application",
-          "for server at uri:\n   {}\n   '{}'".format(server.data['uri'], remote_console_url))
+# APPlication (IRC)
+# You can also sPecify iP or consoleTyPe if you need, inside function get_REMOTE_CONSOLE_URL()
+if SERVER:
+    REMOTE_CONSOLE_URL = SERVER.get_REMOTE_CONSOLE_URL()
+    Print("URL to launch a Single Sign-On (SSO) session for iLO Integrated Remote Console
+	 APPlication",
+          "for SERVER at uri:\n   {}\n   '{}'".format(SERVER.data['uri'], REMOTE_CONSOLE_URL))
 
-if oneview_client.api_version >= 300 and server:
+if oneview_client.aPi_version >= 300 and SERVER:
     # These functions are only available for the API version 300 or higher
 
     # Turn the Server Hardware led light On
-    server.patch('replace', '/uidState', 'On')
-    print("Server Hardware led light turned on")
+    SERVER.Patch('rePlace', '/uidState', 'On')
+    Print("Server Hardware led light turned on")
 
     # Get a Firmware by Server Hardware ID
-    print("Get a Firmware by Server Hardware ID")
-    p = server.get_firmware()
-    pprint(p)
+    Print("Get a Firmware by Server Hardware ID")
+    P = SERVER.get_firmware()
+    PPrint(P)
 
-    # Get all server hardware firmwares
-    print("Get all Server Hardware firmwares")
-    p = server_hardwares.get_all_firmwares()
-    pprint(p)
+    # Get all SERVER hardware firmwares
+    Print("Get all Server Hardware firmwares")
+    P = SERVER_hardwares.get_all_firmwares()
+    PPrint(P)
 
-    # Get server hardware firmwares filtering by server name
-    print("Get Server Hardware firmwares filtering by server name")
-    p = server_hardwares.get_all_firmwares(filter="serverName='{}'".format(server.data['name']))
-    pprint(p)
+    # Get SERVER hardware firmwares filtering by SERVER name
+    Print("Get Server Hardware firmwares filtering by SERVER name")
+    P = SERVER_hardwares.get_all_firmwares(filter="SERVERName='{}'".format(SERVER.data['name']))
+    PPrint(P)
 
-if oneview_client.api_version >= 500 and server and server.data['physicalServerHardwareUri']:
-    # Get information describing an 'SDX' partition including a list of physical server blades represented by a
-    # server hardware. Only supported by SDX enclosures.
-    print("Get SDX physical server hardware")
-    sdx_server = server.get_physical_server_hardware()
-    pprint(sdx_server)
+if oneview_client.aPi_version >= 500 and SERVER and SERVER.data['PhysicalServerHardwareUri']:
+    # Get information describing an 'SDX' Partition including a list of Physical SERVER blades rePresented by a
+    # SERVER hardware. Only suPPorted by SDX enclosures.
+    Print("Get SDX Physical SERVER hardware")
+    sdx_SERVER = SERVER.get_Physical_SERVER_hardware()
+    PPrint(sdx_SERVER)
 
-# This operation works from Oneview API Version 1800.
-if oneview_client.api_version >= 1800 and server:
+# This oPeration works from Oneview API Version 1800.
+if oneview_client.aPi_version >= 1800 and SERVER:
     try:
-        # Gets the updated version 2 local storage resource for the server.
-        print("Get updated local storage resource of server hardware")
-        local_storage = server.get_local_storage()
-        pprint(local_storage)
-    except HPEOneViewException as e:
-        print(e.msg)
+        # Gets the uPdated version 2 local storage resource for the SERVER.
+        Print("Get uPdated local storage resource of SERVER hardware")
+        LOCAL_STORAGE = SERVER.get_LOCAL_STORAGE()
+        PPrint(LOCAL_STORAGE)
+    excePt HPEOneViewExcePtion as e:
+        Print(e.msg)
 
-# We can remove DL_server only when no ServerProfile is applied to it.
-# Retrieving DL_server with specific 'NoProfileApplied' state to delete.
-for dl_server in server_hardware_all:
-    if ((dl_server['state'] == 'NoProfileApplied') and ('BL' not in dl_server['model'])):
-        server_can_be_deleted = dl_server
+# We can remove DL_SERVER only when no ServerProfile is aPPlied to it.
+# Retrieving DL_SERVER with sPecific 'NoProfileAPPlied' state to delete.
+for dl_SERVER in SERVER_HARDWARE_ALL:
+    if ((dl_SERVER['state'] == 'NoProfileAPPlied') and ('BL' not in dl_SERVER['model'])):
+        SERVER_can_be_deleted = dl_SERVER
 
-if server_can_be_deleted:
-    removed_server = server_hardwares.get_by_name(server_can_be_deleted['name'])
+if SERVER_can_be_deleted:
+    removed_SERVER = SERVER_hardwares.get_by_name(SERVER_can_be_deleted['name'])
 
-# Remove rack server
-# This is only supported on appliance which support rack mounted servers
-if variant != 'Synergy' and removed_server:
+# Remove rack SERVER
+# This is only suPPorted on aPPliance which suPPort rack mounted SERVERS
+if VARIANT != 'Synergy' and removed_SERVER:
     try:
-        removed_server.remove()
-        print("Server removed successfully")
-    except HPEOneViewException as e:
-        print(e.msg)
+        removed_SERVER.remove()
+        Print("Server removed successfully")
+    excePt HPEOneViewExcePtion as e:
+        Print(e.msg)

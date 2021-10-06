@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview-ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,41 +28,41 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-options = {
+OPTIONS = {
     "name": "IPv4Subnet",
-    "networkId": config['subnet_networkid'],
-    "subnetmask": config['subnet_mask'],
-    "gateway": config['subnet_gateway'],
+    "networkId": CONFIG['subnet_networkid'],
+    "subnetmask": CONFIG['subnet_mask'],
+    "gateway": CONFIG['subnet_gateway'],
     "domain": "example.com",
     "dnsServers": []
 }
 
-id_pools_ipv4_subnets = oneview_client.id_pools_ipv4_subnets
-ethernet_networks = oneview_client.ethernet_networks
+id_pools_IPV4_SUBNETs = oneview_client.id_pools_IPV4_SUBNETs
+ETHERNET_NETWORKs = oneview_client.ETHERNET_NETWORKs
 
 print('\n Create IPv4 subnet for id pools')
-ipv4_subnet = id_pools_ipv4_subnets.create(options)
-pprint(ipv4_subnet.data)
+IPV4_SUBNET = id_pools_IPV4_SUBNETs.create(OPTIONS)
+pprint(IPV4_SUBNET.data)
 
 print('\n Update IPv4 subnet for id pools')
-updated_data = {'name': 'Changed Name'}
-ipv4_subnet = ipv4_subnet.update(updated_data)
+UPDATED_DATA = {'name': 'Changed Name'}
+IPV4_SUBNET = IPV4_SUBNET.update(UPDATED_DATA)
 
 print('\n Get IPv4 subnet by uri')
-ipv4_subnet_byuri = id_pools_ipv4_subnets.get_by_uri(ipv4_subnet.data['uri'])
-pprint(ipv4_subnet_byuri.data)
+IPV4_SUBNET_BYURI = id_pools_IPV4_SUBNETs.get_by_uri(IPV4_SUBNET.data['uri'])
+pprint(IPV4_SUBNET_BYURI.data)
 
 print('\n Get all IPv4 subnet')
-all_subnets = id_pools_ipv4_subnets.get_all()
-pprint(all_subnets)
+ALL_SUBNETS = id_pools_IPV4_SUBNETs.get_all()
+pprint(ALL_SUBNETS)
 
 print('\nAssociate Subnet with Ethernet for ID allocation')
-options = {
+OPTIONS = {
     "name": "SubnetEthernet",
     "vlanId": 209,
     "ethernetNetworkType": "Tagged",
@@ -70,43 +70,43 @@ options = {
     "smartLink": False,
     "privateNetwork": False,
     "connectionTemplateUri": None,
-    "subnetUri": ipv4_subnet.data['uri']
+    "subnetUri": IPV4_SUBNET.data['uri']
 }
 
-ethernet_network = ethernet_networks.create(options)
+ETHERNET_NETWORK = ETHERNET_NETWORKs.create(OPTIONS)
 
 print('\nCreate Range with set of IDs')
-option = {
+OPTION = {
     "name": "IPv4",
     "startStopFragments": [
         {
-            "startAddress": config['range_start_address'],
-            "endAddress": config['range_end_address']
+            "startAddress": CONFIG['range_start_address'],
+            "endAddress": CONFIG['range_end_address']
         }
     ],
-    "subnetUri": ipv4_subnet.data['uri']
+    "subnetUri": IPV4_SUBNET.data['uri']
 }
-id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
-ipv4_range = id_pool_ipv4_range.create(option).data
+id_pool_IPV4_RANGE = oneview_client.id_pools_IPV4_RANGEs
+IPV4_RANGE = id_pool_IPV4_RANGE.create(OPTION).data
 
-subnet_id = ipv4_subnet.data['allocatorUri'].split('/')[-2]
+SUBNET_ID = IPV4_SUBNET.data['allocatorUri'].split('/')[-2]
 print("\n Allocates a set of IDs from a pool")
 try:
-    allocated_ids = id_pools_ipv4_subnets.allocate({"count": 2}, subnet_id)
-    pprint(allocated_ids)
+    ALLOCATED_IDS = id_pools_IPV4_SUBNETs.allocate({"count": 2}, SUBNET_ID)
+    pprint(ALLOCATED_IDS)
 except HPEOneViewException as e:
     print(e.msg)
 
 print("\n Collect a set of IDs back to Id Pool")
 try:
-    collected_ids = id_pools_ipv4_subnets.collect({"idList": allocated_ids['idList']}, subnet_id)
-    pprint(collected_ids)
+    COLLECTED_IDS = id_pools_IPV4_SUBNETs.collect({"idList": ALLOCATED_IDS['idList']}, SUBNET_ID)
+    pprint(COLLECTED_IDS)
 except HPEOneViewException as e:
     print(e.msg)
 
 print('\nDelete assocaited resource before deleting subnet')
-ethernet_network.delete()
+ETHERNET_NETWORK.delete()
 
 print('\n Delete IPv4 subnet')
-ipv4_subnet.delete()
+IPV4_SUBNET.delete()
 print(" Successfully deleted IPv4 subnet")

@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,19 +27,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 internal_link_sets = oneview_client.internal_link_sets
 
 # Get all, with defaults
 print("Get all internal-link-sets")
-internal_links = internal_link_sets.get_all()
-pprint(internal_links)
+INTERNAL_LINKS = internal_link_sets.get_all()
+pprint(INTERNAL_LINKS)
 
-internal_link_set_uri = internal_links[0]['uri']
-internal_link_set_name = internal_links[0]['name']
+INTERNAL_LINK_SET_URI = INTERNAL_LINKS[0]['uri']
+INTERNAL_LINK_SET_NAME = INTERNAL_LINKS[0]['name']
 
 # Find by name
-internal_links_by_name = internal_link_sets.get_by_name(internal_links[0]["name"])
-print("\nFound the internal-link-sets by name: '{}':".format(internal_links_by_name.data["name"]))
+INTERNAL_LINKS_BY_NAME = internal_link_sets.get_by_name(INTERNAL_LINKS[0]["name"])
+print("\nFound the internal-link-sets by name: '{}':".format(INTERNAL_LINKS_BY_NAME.data["name"]))

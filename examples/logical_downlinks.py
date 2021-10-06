@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,19 +28,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # An existent Logical Downlink ID is required to run this example
-logical_downlink_id = '5b0f2e7a-394f-47e9-aed0-e4be225e0e19'
-logical_downlink_name = 'LD49f094dd-1732-48c5-9aa8-2ff827578887 (HP VC FlexFabric-20/40 F8 Module)'
+LOGICAL_DOWNLINK_ID = '5b0f2e7a-394f-47e9-aed0-e4be225e0e19'
+LOGICAL_DOWNLINK_NAME = 'LD49f094dd-1732-48c5-9aa8-2ff827578887 (HP VC FlexFabric-20/40 F8 Module)'
 
 # Get logical downlink by id
 try:
     print("\nGet logical downlink by id")
-    log_downlink = oneview_client.logical_downlinks.get(logical_downlink_id)
+    log_downlink = oneview_client.logical_downlinks.get(LOGICAL_DOWNLINK_ID)
     pprint(log_downlink)
 except HPEOneViewException as e:
     print(e.msg)
@@ -48,7 +48,7 @@ except HPEOneViewException as e:
 # Get logical downlink by id without Ethernet networks
 try:
     print("\nGet logical downlink by id without Ethernet networks")
-    log_downlink_without_ethernet = oneview_client.logical_downlinks.get_without_ethernet(logical_downlink_id)
+    log_downlink_without_ethernet = oneview_client.logical_downlinks.get_without_ethernet(LOGICAL_DOWNLINK_ID)
     pprint(log_downlink_without_ethernet)
 except HPEOneViewException as e:
     print(e.msg)
@@ -56,7 +56,7 @@ except HPEOneViewException as e:
 # Get logical downlink by name
 try:
     print("\nGet logical downlink by name")
-    log_downlink_by_name = oneview_client.logical_downlinks.get_by('name', logical_downlink_name)
+    log_downlink_by_name = oneview_client.logical_downlinks.get_by('name', LOGICAL_DOWNLINK_NAME)
     pprint(log_downlink_by_name)
 except HPEOneViewException as e:
     print(e.msg)

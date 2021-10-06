@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from examples.config_loader import try_load_from_file
+from examples.CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -28,33 +28,35 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-# To run this example you must set valid URI of the network resource and of the image streamer appliance
-management_network_uri = ""
-appliance_uri = ""
+# To run this example you must set valid URI of the network RESOURCE and of the image streamer
+# appliance
+MANAGEMENT_NETWORK_URI = ""
+APPLIANCE_URI = ""
 
 print("Add an Os Deployment Server:")
-resource = {
+RESOURCE = {
     "description": "OS Deployment Server",
     "name": "I3s-Deployment Server",
-    "mgmtNetworkUri": management_network_uri,
-    "applianceUri": appliance_uri,
+    "mgmtNetworkUri": MANAGEMENT_NETWORK_URI,
+    "applianceUri": APPLIANCE_URI,
 }
-os_deployment_server_added = oneview_client.os_deployment_servers.add(resource)
+os_deployment_server_added = oneview_client.os_deployment_servers.add(RESOURCE)
 pprint(os_deployment_server_added)
 
 print("Get all Os Deployment Servers:")
-os_deployment_servers_all = oneview_client.os_deployment_servers.get_all(start=0, count=-1, filter='state=Connected')
+os_deployment_servers_all = oneview_client.os_deployment_servers.get_all(start=0, count=-1,
+	 filter='state=Connected')
 pprint(os_deployment_servers_all)
 
-os_deployment_server_uri = os_deployment_server_added['uri']
+OS_DEPLOYMENT_SERVER_URI = os_deployment_server_added['uri']
 
 print("Get an Os Deployment Server by URI:")
-os_deployment_server = oneview_client.os_deployment_servers.get(os_deployment_server_uri)
+os_deployment_server = oneview_client.os_deployment_servers.get(OS_DEPLOYMENT_SERVER_URI)
 pprint(os_deployment_server)
 
 print("Get Os Deployment Servers by Filter:")
@@ -69,11 +71,11 @@ print("Get all Deployment Servers Networks:")
 networks = oneview_client.os_deployment_servers.get_networks()
 pprint(networks)
 
-print("List all the Image Streamer resources associated with deployment-server:")
+print("List all the Image Streamer RESOURCEs associated with deployment-server:")
 appliances = oneview_client.os_deployment_servers.get_appliances()
 pprint(appliances)
 
-print("List the particular Image Streamer resource with an given URI:")
+print("List the particular Image Streamer RESOURCE with an given URI:")
 appliance = oneview_client.os_deployment_servers.get_appliance(appliances[0]['uri'], 'name')
 pprint(appliance)
 

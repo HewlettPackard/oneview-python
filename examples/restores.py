@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -27,39 +27,39 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-restores = oneview_client.restores
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+RESTOREs = oneview_client.RESTOREs
 
-# A uri for a backup to restore must be set to run this example
-uri_of_backup_to_restore = "/rest/backups/example_backup_2017-04-25_195515"
+# A uri for a backup to RESTORE must be set to run this example
+URI_OF_BACKUP_TO_RESTORE = "/rest/backups/example_backup_2017-04-25_195515"
 
-# Start a restore
-print("Starting a restore")
-options = {
-    "uriOfBackupToRestore": uri_of_backup_to_restore
+# Start a RESTORE
+print("Starting a RESTORE")
+OPTIONS = {
+    "uriOfBackupToRestore": URI_OF_BACKUP_TO_RESTORE
 }
-restore = restores.restore(options)
-pprint(restore.data)
+RESTORE = RESTOREs.RESTORE(OPTIONS)
+pprint(RESTORE.data)
 
-# Get all restores
+# Get all RESTOREs
 print("Get all Restores")
-restore_all = restores.get_all()
-for restr in restore_all:
+RESTORE_ALL = RESTOREs.get_all()
+for restr in RESTORE_ALL:
     print('  - {}'.format(restr['hostName']))
 
 # Get by hostname
-print("\nGet a Restore by hostName equals to '{}'".format(restore['hostName']))
-restore_by_host_name = restores.get_by("hostName", restore['hostName'])
-pprint(restore_by_host_name)
+print("\nGet a Restore by hostName equals to '{}'".format(RESTORE['hostName']))
+RESTORE_BY_HOST_NAME = RESTOREs.get_by("hostName", RESTORE['hostName'])
+pprint(RESTORE_BY_HOST_NAME)
 
 # Get by URI
 print("\nGet a Restore by URI")
-restore_by_uri = restores.get_by_uri(restore['uri'])
-pprint(restore_by_uri.data)
+RESTORE_BY_URI = RESTOREs.get_by_uri(RESTORE['uri'])
+pprint(RESTORE_BY_URI.data)
 
 # Get Restore Failure
 print("\nRetrieving Restore Failure")
-failures = restores.get_failure()
-pprint(failures)
+FAILURES = RESTOREs.get_failure()
+pprint(FAILURES)

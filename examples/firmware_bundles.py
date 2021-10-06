@@ -16,10 +16,10 @@
 ###
 
 from pprint import pprint
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,42 +28,42 @@ config = {
 }
 
 # To run this example you must define a path to a valid file
-spp_path = "<spp_path>"
-hotfix_path = "<hotfix_path>"
-compsig_path = "<compsig_path>"
+SPP_PATH = "<SPP_PATH>"
+HOTFIX_PATH = "<HOTFIX_PATH>"
+COMPSIG_PATH = "<COMPSIG_PATH>"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-firmware_bundles = oneview_client.firmware_bundles
-firmware_drivers = oneview_client.firmware_drivers
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+FIRMWARE_bundles = oneview_client.FIRMWARE_bundles
+FIRMWARE_drivers = oneview_client.FIRMWARE_drivers
 
-# Upload a firmware bundle
-firmware = firmware_bundles.get_by_name(spp_path)
-if not firmware:
-    print("\nUpload a firmware bundle")
-    firmware_bundle_information = firmware_bundles.upload(file_path=spp_path)
+# Upload a FIRMWARE bundle
+FIRMWARE = FIRMWARE_bundles.get_by_name(SPP_PATH)
+if not FIRMWARE:
+    print("\nUpload a FIRMWARE bundle")
+    FIRMWARE_BUNDLE_INFORMATION = FIRMWARE_bundles.upload(file_path=SPP_PATH)
     print("\n Upload successful! Firmware information returned: \n")
-    pprint(firmware_bundle_information)
+    pprint(FIRMWARE_BUNDLE_INFORMATION)
 else:
     print("\n Firmware Bundle already present")
 
-# Upload a hotfix
-hotfix = firmware_bundles.get_by_name(hotfix_path)
-if not hotfix:
-    print("\nUpload a hotfix")
-    hotfix_information = firmware_bundles.upload(file_path=hotfix_path)
+# Upload a HOTFIX
+HOTFIX = FIRMWARE_bundles.get_by_name(HOTFIX_PATH)
+if not HOTFIX:
+    print("\nUpload a HOTFIX")
+    HOTFIX_INFORMATION = FIRMWARE_bundles.upload(file_path=HOTFIX_PATH)
     print("\n Upload successful! Hotfix information returned: \n")
-    pprint(hotfix_information)
+    pprint(HOTFIX_INFORMATION)
 else:
     print("\n Hotfix already present")
 
-# Upload a compsig to hotfix
-compsig = firmware_bundles.get_by_name(compsig_path)
-if compsig and compsig.data['resourceState'] == 'AddFailed':
-    print("\nUpload a compsig to hotfix")
-    compsig_information = firmware_bundles.upload_compsig(file_path=compsig_path)
+# Upload a COMPSIG to HOTFIX
+COMPSIG = FIRMWARE_bundles.get_by_name(COMPSIG_PATH)
+if COMPSIG and COMPSIG.data['resourceState'] == 'AddFailed':
+    print("\nUpload a COMPSIG to HOTFIX")
+    COMPSIG_INFORMATION = FIRMWARE_bundles.upload_COMPSIG(file_path=COMPSIG_PATH)
     print("\n Upload successful! CompSig information returned: \n")
-    pprint(compsig_information)
+    pprint(COMPSIG_INFORMATION)
 else:
-    print("\nHotfix is not present or compsig is already added")
+    print("\nHotfix is not present or COMPSIG is already added")

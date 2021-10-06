@@ -18,10 +18,10 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-# To run this example fill the ip and the credentials below or use a configuration file
-config = {
+# To run this example fill the ip and the credentials below or use a CONFIGuration file
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -30,7 +30,7 @@ config = {
     "api_version": "<api_version>"
 }
 
-options = {
+OPTIONS = {
     "name": "OneViewSDK Test FC Network",
     "connectionTemplateUri": None,
     "autoLoginRedistribution": True,
@@ -39,95 +39,100 @@ options = {
 }
 
 # Scope name to perform the patch operation
-scope_name = "test_scope"
+SCOPE_NAME = "test_SCOPE"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-fc_networks = oneview_client.fc_networks
-scopes = oneview_client.scopes
+oneview_client = OneViewClient(CONFIG)
+FC_NETWORKs = oneview_client.FC_NETWORKs
+SCOPEs = oneview_client.SCOPEs
 
 # Get all, with defaults
 print("\nGet all fc-networks")
-fc_nets = fc_networks.get_all()
-pprint(fc_nets)
+FC_NETS = FC_NETWORKs.get_all()
+pprint(FC_NETS)
 
 # Get the first 10 records
 print("\nGet the first ten fc-networks")
-fc_nets_limited = fc_networks.get_all(0, 10)
-pprint(fc_nets_limited)
+FC_NETS_LIMITED = FC_NETWORKs.get_all(0, 10)
+pprint(FC_NETS_LIMITED)
 
 # Filter by name
 print("\nGet all fc-networks filtering by name")
-fc_nets_filtered = fc_networks.get_all(filter="\"'name'='Updated FC'\"")
-pprint(fc_nets_filtered)
+FC_NETS_FILTERED = FC_NETWORKs.get_all(filter="\"'name'='Updated FC'\"")
+pprint(FC_NETS_FILTERED)
 
 # Get all sorting by name descending
 print("\nGet all fc-networks sorting by name")
-fc_nets_sorted = fc_networks.get_all(sort='name:descending')
-pprint(fc_nets_sorted)
+FC_NETS_SORTED = FC_NETWORKs.get_all(sort='name:descending')
+pprint(FC_NETS_SORTED)
 
 # Find recently created network by name
 print("\nGet FC Network by name")
-fc_network = fc_networks.get_by_name(options['name'])
+FC_NETWORK = FC_NETWORKs.get_by_name(OPTIONS['name'])
 
-if fc_network:
-    print("\nFound fc-network by name: '%s'.\n  uri = '%s'" % (fc_network.data['name'], fc_network.data['uri']))
+if FC_NETWORK:
+    print("\nFound fc-network by name: '%s'.\n  uri = '%s'" % (FC_NETWORK.data['name'],
+	 FC_NETWORK.data['uri']))
 else:
-    # Create a FcNetWork with the options provided
-    fc_network = fc_networks.create(data=options)
-    print("\nCreated a fc-network with name: '%s'.\n  uri = '%s'" % (fc_network.data['name'], fc_network.data['uri']))
+    # Create a FcNetWork with the OPTIONS provided
+    FC_NETWORK = FC_NETWORKs.create(data=OPTIONS)
+    print("\nCreated a fc-network with name: '%s'.\n  uri = '%s'" % (FC_NETWORK.data['name'],
+	 FC_NETWORK.data['uri']))
 
 # Get by uri
 print("\nGet a fc-network by uri")
-fc_nets_by_uri = fc_networks.get_by_uri(fc_network.data['uri'])
-pprint(fc_nets_by_uri.data)
+FC_NETS_BY_URI = FC_NETWORKs.get_by_uri(FC_NETWORK.data['uri'])
+pprint(FC_NETS_BY_URI.data)
 
 # Update autoLoginRedistribution from recently created network
-data_to_update = {'autoLoginRedistribution': False,
+DATA_TO_UPDATE = {'autoLoginRedistribution': False,
                   'name': 'Updated FC'}
-fc_network.update(data=data_to_update)
-print("\nUpdated fc-network '%s' successfully.\n  uri = '%s'" % (fc_network.data['name'], fc_network.data['uri']))
-print("  with attribute {'autoLoginRedistribution': %s}" % fc_network.data['autoLoginRedistribution'])
+FC_NETWORK.update(data=DATA_TO_UPDATE)
+print("\nUpdated fc-network '%s' successfully.\n  uri = '%s'" % (FC_NETWORK.data['name'],
+	 FC_NETWORK.data['uri']))
+print("  with attribute {'autoLoginRedistribution': %s}" % FC_NETWORK.data['autoLoginRedistribution'])
 
-# Adds fc-network to scope defined only for V300 and V500
-if scope_name and 300 <= oneview_client.api_version <= 500:
-    print("\nGet scope then add the network to it")
-    scope = scopes.get_by_name(scope_name)
-    print(scope['uri'])
+# Adds fc-network to SCOPE defined only for V300 and V500
+if SCOPE_NAME and 300 <= oneview_client.api_version <= 500:
+    print("\nGet SCOPE then add the network to it")
+    SCOPE = SCOPEs.get_by_name(SCOPE_NAME)
+    print(SCOPE['uri'])
     try:
-        fc_with_scope = fc_network.patch('replace',
-                                         '/scopeUris',
-                                         [scope.data['uri']])
-        pprint(fc_with_scope)
+        FC_WITH_SCOPE = FC_NETWORK.patch('replace',
+                                         '/SCOPEUris',
+                                         [SCOPE.data['uri']])
+        pprint(FC_WITH_SCOPE)
     except HPEOneViewException as e:
         print(e)
 
 # Delete the created network
-fc_network.delete()
+FC_NETWORK.delete()
 print("\nSuccessfully deleted fc-network")
 
 # Creates bulk fc-networks
 for i in range(4):
-    fc_network_body = options.copy()
-    fc_network_body['name'] = "OneViewSDK Test FC Network" + str(i)
-    bulk_fc_network = fc_networks.create(data=fc_network_body)
-    print("\nCreated bulk fc-networks with name: '%s'.\n  uri = '%s'" % (bulk_fc_network.data['name'], bulk_fc_network.data['uri']))
+    FC_NETWORK_body = OPTIONS.copy()
+    FC_NETWORK_body['name'] = "OneViewSDK Test FC Network" + str(i)
+    bulk_FC_NETWORK = FC_NETWORKs.create(data=FC_NETWORK_body)
+    print("\nCreated bulk fc-networks with name: '%s'.\n  uri = '%s'" %
+	 (bulk_FC_NETWORK.data['name'], bulk_FC_NETWORK.data['uri']))
 
 # Delete bulk fcnetworks
 if oneview_client.api_version >= 1600:
-    bulk_network_uris = []
+    BULK_NETWORK_URIS = []
     for i in range(4):
-        fc_network_name = "OneViewSDK Test FC Network" + str(i)
-        bulk_fc_network = fc_networks.get_by_name(fc_network_name)
-        bulk_network_uris.append(bulk_fc_network.data['uri'])
+        FC_NETWORK_name = "OneViewSDK Test FC Network" + str(i)
+        bulk_FC_NETWORK = FC_NETWORKs.get_by_name(FC_NETWORK_name)
+        BULK_NETWORK_URIS.append(bulk_FC_NETWORK.data['uri'])
     print("\nDelete bulk fc-networks")
-    options_bulk_delete = {"networkUris": bulk_network_uris}
-    fc_network.delete_bulk(options_bulk_delete)
+    OPTIONS_BULK_DELETE = {"networkUris": BULK_NETWORK_URIS}
+    FC_NETWORK.delete_bulk(OPTIONS_BULK_DELETE)
     print("Successfully deleted bulk fc-networks")
 
 # Automation tasks for FC networks
-fc_network_body['name'] = "FC_fabric_nw"
-fc_network = fc_networks.create(data=fc_network_body)
-print("\nCreated fc-networks with name: '%s'.\n  uri = '%s'" % (fc_network.data['name'], fc_network.data['uri']))
+FC_NETWORK_body['name'] = "FC_fabric_nw"
+FC_NETWORK = FC_NETWORKs.create(data=FC_NETWORK_body)
+print("\nCreated fc-networks with name: '%s'.\n  uri = '%s'" % (FC_NETWORK.data['name'],
+	 FC_NETWORK.data['uri']))

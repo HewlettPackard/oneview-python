@@ -18,10 +18,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,27 +29,27 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-api_variant = 'Synergy'
-oneview_client = OneViewClient(config)
-enclosure_groups = oneview_client.enclosure_groups
-scopes = oneview_client.scopes
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+API_VARIANT = 'Synergy'
+oneview_client = OneViewClient(CONFIG)
+ENCLOSURE_GROUPs = oneview_client.ENCLOSURE_GROUPs
+SCOPEs = oneview_client.SCOPEs
 logical_interconnect_groups = oneview_client.logical_interconnect_groups
 
-lig_name = 'LIG'
-lig_uri = logical_interconnect_groups.get_by_name(lig_name).data['uri']
+LIG_NAME = 'LIG'
+LIG_URI = logical_interconnect_groups.get_by_name(LIG_NAME).data['uri']
 
-eg_options = {
+EG_OPTIONS = {
     "name": "EG",
     "interconnectBayMappings": [
         {
             "interconnectBay": 3,
-            "logicalInterconnectGroupUri": lig_uri
+            "logicalInterconnectGroupUri": LIG_URI
         },
         {
             "interconnectBay": 6,
-            "logicalInterconnectGroupUri": lig_uri
+            "logicalInterconnectGroupUri": LIG_URI
         }
     ],
     "ipAddressingMode": "External",
@@ -68,80 +68,83 @@ eg_options = {
 
 # Get the first 10 records, sorting by name descending
 print("Get the ten first Enclosure Groups, sorting by name descending")
-egs = enclosure_groups.get_all(0, 10, sort='name:descending')
-pprint(egs)
+EGS = ENCLOSURE_GROUPs.get_all(0, 10, sort='name:descending')
+pprint(EGS)
 
-print("\n## Create the scope")
-scope_options = {
+print("\n## Create the SCOPE")
+SCOPE_OPTIONS = {
     "name": "SampleScopeForTest",
-    "description": "Sample Scope description"
+    "deSCRIPTion": "Sample Scope deSCRIPTion"
 }
-scope = scopes.get_by_name(scope_options['name'])
-if not scope:
-    scope = scopes.create(scope_options)
+SCOPE = SCOPEs.get_by_name(SCOPE_OPTIONS['name'])
+if not SCOPE:
+    SCOPE = SCOPEs.create(SCOPE_OPTIONS)
 
-# Get Enclosure Group by scope_uris
+# Get Enclosure Group by SCOPE_uris
 if oneview_client.api_version >= 600:
-    eg_by_scope_uris = enclosure_groups.get_all(scope_uris=scope.data['uri'])
-    if len(eg_by_scope_uris) > 0:
-        print("Found Enclosure Group by scope_uris: '%s'.\n  uri = '%s'" % (eg_by_scope_uris[0]['name'], eg_by_scope_uris[0]['uri']))
-        pprint(eg_by_scope_uris)
+    EG_BY_SCOPE_URIS = ENCLOSURE_GROUPs.get_all(SCOPE_uris=SCOPE.data['uri'])
+    if len(EG_BY_SCOPE_URIS) > 0:
+        print("Found Enclosure Group by SCOPE_uris: '%s'.\n  uri = '%s'" % (EG_BY_SCOPE_URIS[0]['name'], EG_BY_SCOPE_URIS[0]['uri']))
+        pprint(EG_BY_SCOPE_URIS)
     else:
         print("No Enclosure Group found.")
 
 # Get by name
-enclosure_group = enclosure_groups.get_by_name(eg_options["name"])
-if not enclosure_group:
+ENCLOSURE_GROUP = ENCLOSURE_GROUPs.get_by_name(EG_OPTIONS["name"])
+if not ENCLOSURE_GROUP:
     # Create a Enclosure Group
     print("Create a Enclosure Group")
     if oneview_client.api_version <= 500:
-        options = {"stackingMode": "Enclosure"}
-        options.update(eg_options)
-        enclosure_group = enclosure_groups.create(options)
+        OPTIONS = {"stackingMode": "Enclosure"}
+        OPTIONS.update(EG_OPTIONS)
+        ENCLOSURE_GROUP = ENCLOSURE_GROUPs.create(OPTIONS)
     else:
-        enclosure_group = enclosure_groups.create(eg_options)
-print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
+        ENCLOSURE_GROUP = ENCLOSURE_GROUPs.create(EG_OPTIONS)
+print("Created enclosure group of name - '{}' with uri - '{}'".format(ENCLOSURE_GROUP.data['name'],
+	 ENCLOSURE_GROUP.data['uri']))
 
 # Get all, with default
 print("Get all Enclosure Groups")
-egs = enclosure_groups.get_all()
-pprint(egs)
+EGS = ENCLOSURE_GROUPs.get_all()
+pprint(EGS)
 
 # Get by uri
 print("Get an Enclosure Group by uri")
-eg_byuri = enclosure_groups.get_by_uri(egs[0]["uri"])
-pprint(eg_byuri.data)
+EG_BYURI = ENCLOSURE_GROUPs.get_by_uri(EGS[0]["uri"])
+pprint(EG_BYURI.data)
 
 # Update an Enclosure Group
-resource = {"name": "Renamed EG"}
+RESOURCE = {"name": "Renamed EG"}
 print("Renaming the enclosure Group")
-enclosure_group.update(resource)
-pprint(enclosure_group.data)
+ENCLOSURE_GROUP.update(RESOURCE)
+pprint(ENCLOSURE_GROUP.data)
 
 # Update an Enclosure Group Script
-if api_variant == 'C7000':
-    # update_script is available for API version 300 in Synergy and in all versions in C7000
+if API_VARIANT == 'C7000':
+    # update_SCRIPT is available for API version 300 in Synergy and in all versions in C7000
     print("Update an Enclosure Group Script")
-    script = "#TEST COMMAND"
-    update_script_result = enclosure_group.update_script(script)
-    pprint(update_script_result)
+    SCRIPT = "#TEST COMMAND"
+    UPDATE_SCRIPT_RESULT = ENCLOSURE_GROUP.update_SCRIPT(SCRIPT)
+    pprint(UPDATE_SCRIPT_RESULT)
 
-    # Gets the configuration script of a Enclosure Group
-    # get_script is available for API version 300 in Synergy and in all versions in C7000
-    print("Gets the configuration script of an Enclosure Group")
-    script = enclosure_group.get_script()
-    print(script)
+    # Gets the CONFIGuration SCRIPT of a Enclosure Group
+    # get_SCRIPT is available for API version 300 in Synergy and in all versions in C7000
+    print("Gets the CONFIGuration SCRIPT of an Enclosure Group")
+    SCRIPT = ENCLOSURE_GROUP.get_SCRIPT()
+    print(SCRIPT)
 
 # Delete an Enclosure Group
 print("Delete the created Enclosure Group")
-enclosure_group.delete()
+ENCLOSURE_GROUP.delete()
 print("Successfully deleted Enclosure Group")
-scope.delete()
+SCOPE.delete()
 
 # Create EG & EG-2 for automation
-enclosure_group = enclosure_groups.create(eg_options)
-print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
+ENCLOSURE_GROUP = ENCLOSURE_GROUPs.create(EG_OPTIONS)
+print("Created enclosure group of name - '{}' with uri - '{}'".format(ENCLOSURE_GROUP.data['name'],
+	 ENCLOSURE_GROUP.data['uri']))
 
-eg_options['name'] = "EG-2"
-enclosure_group = enclosure_groups.create(eg_options)
-print("Created enclosure group of name - '{}' with uri - '{}'".format(enclosure_group.data['name'], enclosure_group.data['uri']))
+EG_OPTIONS['name'] = "EG-2"
+ENCLOSURE_GROUP = ENCLOSURE_GROUPs.create(EG_OPTIONS)
+print("Created enclosure group of name - '{}' with uri - '{}'".format(ENCLOSURE_GROUP.data['name'],
+	 ENCLOSURE_GROUP.data['uri']))

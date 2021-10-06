@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,27 +29,27 @@ config = {
 }
 
 # NOTE: To run this sample you must define the name of an already managed enclosure
-enclosure_name = "Encl1"
+ENCLOSURE_NAME = "Encl1"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-# Retrieve enclosure using enclosure_name
-enclosure = oneview_client.enclosures.get_by('name', enclosure_name)[0]
+# Retrieve enclosure using ENCLOSURE_NAME
+enclosure = oneview_client.enclosures.get_by('name', ENCLOSURE_NAME)[0]
 
 # Add empty rack with default values
 print("\nAdd an empty rack with default values")
-empty_rack_options = {
+EMPTY_RACK_OPTIONS = {
     "name": "OneViewSDK Test Empty Rack"
 }
-rack_empty = oneview_client.racks.add(empty_rack_options)
+rack_empty = oneview_client.racks.add(EMPTY_RACK_OPTIONS)
 pprint(rack_empty)
 
 # Add a rack
 print("\nAdd rack with custom size and a single mounted enclosure at slot 20")
-rack_options = {
+RACK_OPTIONS = {
     "uuid": "4b4b87e2-eea8-4c90-8eca-b72eaaeecggf",
     "name": "OneViewSDK Test Rack",
     "depth": 1500,
@@ -61,7 +61,7 @@ rack_options = {
         "uHeight": 10
     }]
 }
-rack_custom = oneview_client.racks.add(rack_options)
+rack_custom = oneview_client.racks.add(RACK_OPTIONS)
 pprint(rack_custom)
 
 # Get device topology
@@ -75,12 +75,12 @@ racks_all = oneview_client.racks.get_all()
 for rack in racks_all:
     print("   '{name}' at uri: {uri}".format(**rack))
 
-# Get five racks, sorting by name ascending
-print("\nGet five racks, sorted by name ascending")
-count = 5
-sort = 'name:asc'
-racks_sorted = oneview_client.racks.get_all(count=count, sort=sort)
-for rack in racks_sorted:
+# Get five racks, SORTing by name ascending
+print("\nGet five racks, SORTed by name ascending")
+COUNT = 5
+SORT = 'name:asc'
+racks_SORTed = oneview_client.racks.get_all(COUNT=COUNT, SORT=SORT)
+for rack in racks_SORTed:
     print("   '{name}' at uri: {uri}".format(**rack))
 
 # Get rack by UUID

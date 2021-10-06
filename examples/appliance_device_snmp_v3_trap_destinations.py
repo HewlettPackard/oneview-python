@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,54 +27,54 @@ config = {
     }
 }
 
-options = {
+OPTIONS = {
     "type": "Destination",
     "destinationAddress": "1.1.1.1",
     "port": 162,
     "existingDestinations": ['2.3.2.3']
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-appliance_device_snmp_v3_trap_destinations = oneview_client.appliance_device_snmp_v3_trap_destinations
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+appliance_device_SNMP_V3_TRAP_destinations = oneview_client.appliance_device_SNMP_V3_TRAP_destinations
 appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users
 
 # Get all snmpv3 users
 # snmp v3 user must be there to create this
-snmp_users = appliance_device_snmp_v3_users.get_all()
-if snmp_users:
-    snmp_userId = snmp_users[0]['id']
+SNMP_USERS = appliance_device_snmp_v3_users.get_all()
+if SNMP_USERS:
+    SNMP_USERID = SNMP_USERS[0]['id']
     # Adding userId to snmpv3 users payload
-    options['userId'] = snmp_userId
+    OPTIONS['userId'] = SNMP_USERID
     # Add appliance device SNMP v3 Trap Destination
-    snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.create(options)
+    SNMP_V3_TRAP = appliance_device_SNMP_V3_TRAP_destinations.create(OPTIONS)
     print("\n## Created appliance SNMPv3 trap destination successfully!")
-    pprint(snmp_v3_trap.data)
+    pprint(SNMP_V3_TRAP.data)
 
 
 # Lists the appliance device SNMP v3 Trap Destination
 print("\n## Get list of appliance SNMPv3 trap destination")
-snmp_v3_trap_all = appliance_device_snmp_v3_trap_destinations.get_all()
-for snmp_trap in snmp_v3_trap_all:
+SNMP_V3_TRAP_ALL = appliance_device_SNMP_V3_TRAP_destinations.get_all()
+for snmp_trap in SNMP_V3_TRAP_ALL:
     print('  - {}: {}'.format(snmp_trap['destinationAddress'], snmp_trap['uri']))
 
 # Get by name
 print("\n## Find an SNMPv3 trap destination by name")
-snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.get_by_name(snmp_v3_trap.data['destinationAddress'])
-pprint(snmp_v3_trap.data)
+SNMP_V3_TRAP = appliance_device_SNMP_V3_TRAP_destinations.get_by_name(SNMP_V3_TRAP.data['destinationAddress'])
+pprint(SNMP_V3_TRAP.data)
 
 # Get by URI
 print("\n## Find an SNMPv3 trap destination by URI")
-snmp_v3_trap = appliance_device_snmp_v3_trap_destinations.get_by_uri(snmp_v3_trap.data['uri'])
-pprint(snmp_v3_trap.data)
+SNMP_V3_TRAP = appliance_device_SNMP_V3_TRAP_destinations.get_by_uri(SNMP_V3_TRAP.data['uri'])
+pprint(SNMP_V3_TRAP.data)
 
 # Change appliance device SNMP v3 Trap Destination - Only Community String and Port can be changed
-snmpv3_data = {"port": 170}
-snmp_v3_trap = snmp_v3_trap.update(snmpv3_data)
+SNMPV3_DATA = {"port": 170}
+SNMP_V3_TRAP = SNMP_V3_TRAP.update(SNMPV3_DATA)
 print("\n## Update appliance SNMPv3 trap destination successfully!")
-pprint(snmp_v3_trap.data)
+pprint(SNMP_V3_TRAP.data)
 
 # Delete Created Entry
-snmp_v3_trap.delete(snmp_v3_trap)
+SNMP_V3_TRAP.delete(SNMP_V3_TRAP)
 print("\n## Delete appliance SNMPv3 trap destination successfully!")

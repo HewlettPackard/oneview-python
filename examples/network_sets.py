@@ -19,8 +19,8 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-# To run this example fill the ip and the credentials below or use a configuration file
-config = {
+# To run this example fill the ip and the credentials below or use a CONFIGuration file
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,11 +29,11 @@ config = {
     "api_version": "<api_version>"
 }
 
-options = {
+OPTIONS = {
     "name": "OneViewSDK Test Network Set"
 }
 
-options_ethernet1 = {
+OPTIONS_ETHERNET1 = {
     "name": "OneViewSDK Test Ethernet Network1",
     "vlanId": 200,
     "ethernetNetworkType": "Tagged",
@@ -43,7 +43,7 @@ options_ethernet1 = {
     "connectionTemplateUri": None,
 }
 
-options_ethernet2 = {
+OPTIONS_ETHERNET2 = {
     "name": "OneViewSDK Test Ethernet Network2",
     "vlanId": 201,
     "ethernetNetworkType": "Tagged",
@@ -54,74 +54,74 @@ options_ethernet2 = {
 }
 
 # Scope name to perform the patch operation
-scope_name = ""
+SCOPE_NAME = ""
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 ethernet_networks = oneview_client.ethernet_networks
-network_sets = oneview_client.network_sets
-scopes = oneview_client.scopes
+NETWORK_SETS = oneview_client.network_sets
+SCOPES = oneview_client.scopes
 
 # Get all network sets
 print("Get all network sets")
-net_sets = network_sets.get_all()
-pprint(net_sets)
+NET_SETS = NETWORK_SETS.get_all()
+pprint(NET_SETS)
 
 # Get all network sets without Ethernet
 print("Get all network sets without Ethernet")
-net_sets_without_ethernet = network_sets.get_all_without_ethernet()
-pprint(net_sets_without_ethernet)
+NET_SETS_WITHOUT_ETHERNET = NETWORK_SETS.get_all_without_ethernet()
+pprint(NET_SETS_WITHOUT_ETHERNET)
 
 # Create two Ethernet networks
-ethernet_network1 = ethernet_networks.create(options_ethernet1)
-ethernet_network2 = ethernet_networks.create(options_ethernet2)
+ETHERNET_NETWORK1 = ethernet_networks.create(OPTIONS_ETHERNET1)
+ETHERNET_NETWORK2 = ethernet_networks.create(OPTIONS_ETHERNET2)
 print("Created ethernet-networks successfully.\n  uri = '%s' and \n\t'%s'" %
-      (ethernet_network1.data['uri'], ethernet_network2.data['uri']))
+      (ETHERNET_NETWORK1.data['uri'], ETHERNET_NETWORK2.data['uri']))
 
 # create Network set containing Ethernet networks
-options['networkUris'] = [
-    ethernet_network1.data['uri'],
-    ethernet_network2.data['uri']
+OPTIONS['networkUris'] = [
+    ETHERNET_NETWORK1.data['uri'],
+    ETHERNET_NETWORK2.data['uri']
 ]
-network_set = network_sets.create(options)
-print('Created network-set {} successfully'.format(network_set.data['name']))
+NETWORK_SET = NETWORK_SETS.create(OPTIONS)
+print('Created network-set {} successfully'.format(NETWORK_SET.data['name']))
 
 # Find recently created network set by name
-network_set = network_sets.get_by_name(options["name"])
+NETWORK_SET = NETWORK_SETS.get_by_name(OPTIONS["name"])
 print("Found network set by name: '%s'.\n  uri = '%s'" %
-      (network_set.data['name'], network_set.data['uri']))
+      (NETWORK_SET.data['name'], NETWORK_SET.data['uri']))
 
 # Get network set without Ethernet networks
 print("Get network-set without Ethernet:")
-if network_set:
-    net_set_without_ethernet = network_set.get_without_ethernet()
-    pprint(net_set_without_ethernet)
+if NETWORK_SET:
+    NET_SET_WITHOUT_ETHERNET = NETWORK_SET.get_without_ethernet()
+    pprint(NET_SET_WITHOUT_ETHERNET)
 else:
-    print("No network set '%s' found.\n" % (network_set.data['name']))
+    print("No network set '%s' found.\n" % (NETWORK_SET.data['name']))
 
 # Update name of recently created network set
-network_set_update = {'name': 'OneViewSDK Test Network Set Re-named'}
-if network_set:
-    network_set = network_set.update(network_set_update)
-    print("Updated network set '%s' successfully.\n" % (network_set.data['name']))
+NETWORK_SET_UPDATE = {'name': 'OneViewSDK Test Network Set Re-named'}
+if NETWORK_SET:
+    NETWORK_SET = NETWORK_SET.update(NETWORK_SET_UPDATE)
+    print("Updated network set '%s' successfully.\n" % (NETWORK_SET.data['name']))
 
-# Adds network set to scope defined only for V300 and V500
-if scope_name and 300 <= oneview_client.api_version <= 500:
-    print("\nGet scope then add the network set to it")
-    scope = scopes.get_by_name(scope_name)
-    net_set_with_scope = network_sets.patch('replace',
-                                            '/scopeUris',
-                                            [scope.data['uri']])
-    pprint(net_set_with_scope)
+# Adds network set to SCOPE defined only for V300 and V500
+if SCOPE_NAME and 300 <= oneview_client.api_version <= 500:
+    print("\nGet SCOPE then add the network set to it")
+    SCOPE = SCOPES.get_by_name(SCOPE_NAME)
+    NET_SET_WITH_SCOPE = NETWORK_SETS.patch('replace',
+                                            '/SCOPEUris',
+                                            [SCOPE.data['uri']])
+    pprint(NET_SET_WITH_SCOPE)
 
 # Delete network set
-network_set.delete()
+NETWORK_SET.delete()
 print("Successfully deleted network set")
 
 # Delete Ethernet networks
-ethernet_network1.delete()
-ethernet_network2.delete()
+ETHERNET_NETWORK1.delete()
+ETHERNET_NETWORK2.delete()
 print("Successfully deleted Ethernet networks")

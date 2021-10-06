@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,65 +27,66 @@ config = {
     }
 }
 
-options = {
+OPTIONS = {
     "destination": "1.1.1.2",
     "communityString": "testOne",
     "port": 162
 }
 
-destination_ip = '2.2.2.2'
+DESTINATION_IP = '2.2.2.2'
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-appliance_device_snmp_v1_trap_destinations = oneview_client.appliance_device_snmp_v1_trap_destinations
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+appliance_device_SNMP_V1_TRAP_destinations = oneview_client.appliance_device_SNMP_V1_TRAP_destinations
 
 # Lists the appliance device SNMP v1 Trap Destination
 print("\n Get list of appliance SNMP v1 trap destination")
-snmp_v1_trap_all = appliance_device_snmp_v1_trap_destinations.get_all()
-for snmp_trap in snmp_v1_trap_all:
+SNMP_V1_TRAP_ALL = appliance_device_SNMP_V1_TRAP_destinations.get_all()
+for snmp_trap in SNMP_V1_TRAP_ALL:
     print('  - {}: {}'.format(snmp_trap['destination'], snmp_trap['uri']))
 
 # Add appliance device SNMP v1 Trap Destination
-snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.create(options)
+SNMP_V1_TRAP = appliance_device_SNMP_V1_TRAP_destinations.create(OPTIONS)
 print("\n Created appliance SNMP v1 trap destination successfully!")
-pprint(snmp_v1_trap.data)
+pprint(SNMP_V1_TRAP.DATA)
 
 # Get by name
 print("\n## Find an SNMPv1 trap destination by name")
-snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.get_by_name(snmp_v1_trap.data['destination'])
-pprint(snmp_v1_trap.data)
+SNMP_V1_TRAP = appliance_device_SNMP_V1_TRAP_destinations.get_by_name(SNMP_V1_TRAP.DATA['destination'])
+pprint(SNMP_V1_TRAP.DATA)
 
 # Add appliance device SNMP v1 Trap Destination with ID
-trap_id = 9
-options['destination'] = destination_ip
-snmp_v1_trap_id = appliance_device_snmp_v1_trap_destinations.create(options, trap_id)
+TRAP_ID = 9
+OPTIONS['destination'] = DESTINATION_IP
+SNMP_V1_TRAP_ID = appliance_device_SNMP_V1_TRAP_destinations.create(OPTIONS, TRAP_ID)
 print("\n Created appliance SNMP v1 trap destination by id successfully!")
-pprint(snmp_v1_trap_id.data)
+pprint(SNMP_V1_TRAP_ID.DATA)
 
 # Get the appliance device SNMP v1 Trap Destination by id
 print("\n Get appliance SNMP v1 trap destination by id")
-snmp_v1_trap_by_id = appliance_device_snmp_v1_trap_destinations.get_by_id(1)
-pprint(snmp_v1_trap_by_id.data)
+SNMP_V1_TRAP_BY_ID = appliance_device_SNMP_V1_TRAP_destinations.get_by_id(1)
+pprint(SNMP_V1_TRAP_BY_ID.DATA)
 
 # Lists the appliance device SNMP v1 Trap Destination by destination (unique)
 print("\n## Get appliance SNMP v1 trap by destination..")
-snmp_v1_traps = appliance_device_snmp_v1_trap_destinations.get_by('destination', options['destination'])
-for snmp_trap in snmp_v1_traps:
+SNMP_V1_TRAPS = appliance_device_SNMP_V1_TRAP_destinations.get_by('destination',
+	 OPTIONS['destination'])
+for snmp_trap in SNMP_V1_TRAPS:
     print(' - {} : {}'.format(snmp_trap['destination'], snmp_trap['communityString']))
 
 # Get by URI
 print("\n Find an SNMP v1 trap destination by URI")
-snmp_v1_trap = appliance_device_snmp_v1_trap_destinations.get_by_uri(snmp_v1_trap.data['uri'])
-pprint(snmp_v1_trap.data)
+SNMP_V1_TRAP = appliance_device_SNMP_V1_TRAP_destinations.get_by_uri(SNMP_V1_TRAP.DATA['uri'])
+pprint(SNMP_V1_TRAP.DATA)
 
 # Change appliance device SNMP v1 Trap Destination - Only Community String and Port can be changed
-data = {'communityString': 'testTwo'}
-snmp_v1_trap = snmp_v1_trap.update(data)
+DATA = {'communityString': 'testTwo'}
+SNMP_V1_TRAP = SNMP_V1_TRAP.update(DATA)
 print("\n## Update appliance SNMP v1 trap destination successfully!")
-pprint(snmp_v1_trap.data)
+pprint(SNMP_V1_TRAP.DATA)
 
 # Delete Created Entry
-snmp_v1_trap.delete()
-snmp_v1_trap_id.delete()
+SNMP_V1_TRAP.delete()
+SNMP_V1_TRAP_ID.delete()
 print("\n## Delete appliance SNMP v1 trap destination successfully!")

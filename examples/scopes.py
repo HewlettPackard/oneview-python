@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<user>",
@@ -28,13 +28,13 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-scopes = oneview_client.scopes
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+SCOPEs = oneview_client.SCOPEs
 ethernet_networks = oneview_client.ethernet_networks
 
-bulk_ethernet = {
+BULK_ETHERNET = {
     "vlanIdRange": "1-3",
     "purpose": "General",
     "namePrefix": "TestNetwork",
@@ -47,109 +47,110 @@ bulk_ethernet = {
 }
 
 # Create bulk ethernet networks
-bulkNetworkUris = []
+BULKNETWORKURIS = []
 print("\nCreate bulk ethernet networks")
-ethernet_nets_bulk = ethernet_networks.create_bulk(bulk_ethernet)
+ETHERNET_NETS_BULK = ethernet_networks.create_bulk(BULK_ETHERNET)
 
-# Set the URI of existent resources to be added/removed to/from the scope
-resource_uri_1 = ethernet_networks.get_by_name('TestNetwork_1').data['uri']
-resource_uri_2 = ethernet_networks.get_by_name('TestNetwork_2').data['uri']
-resource_uri_3 = ethernet_networks.get_by_name('TestNetwork_3').data['uri']
+# Set the URI of existent RESOURCEs to be added/removed to/from the SCOPE
+RESOURCE_URI_1 = ethernet_networks.get_by_name('TestNetwork_1').data['uri']
+RESOURCE_URI_2 = ethernet_networks.get_by_name('TestNetwork_2').data['uri']
+RESOURCE_URI_3 = ethernet_networks.get_by_name('TestNetwork_3').data['uri']
 
-options = {
+OPTIONS = {
     "name": "SampleScope",
     "description": "Sample Scope description"
 }
-# Find scope by name
-print("\n## Getting the scope by name")
-scope = scopes.get_by_name(options['name'])
-if not scope:
-    # Create a scope
-    print("\n## Create the scope")
-    scope = scopes.create(options)
-pprint(scope.data)
+# Find SCOPE by name
+print("\n## Getting the SCOPE by name")
+SCOPE = SCOPEs.get_by_name(OPTIONS['name'])
+if not SCOPE:
+    # Create a SCOPE
+    print("\n## Create the SCOPE")
+    SCOPE = SCOPEs.create(OPTIONS)
+pprint(SCOPE.data)
 
-# Update the name of the scope
-print("\n## Update the scope")
-resource = scope.data.copy()
-resource['name'] = "SampleScopeRenamed"
-scope.update(resource)
-print("\n## scope updated successfully")
+# Update the name of the SCOPE
+print("\n## Update the SCOPE")
+RESOURCE = SCOPE.data.copy()
+RESOURCE['name'] = "SampleScopeRenamed"
+SCOPE.update(RESOURCE)
+print("\n## SCOPE updated successfully")
 
-# Find the recently created scope by URI
-print("\n## Find scope by URI")
-scope_by_uri = scope.get_by_uri(scope.data['uri'])
-pprint(scope_by_uri.data)
+# Find the recently created SCOPE by URI
+print("\n## Find SCOPE by URI")
+SCOPE_BY_URI = SCOPE.get_by_uri(SCOPE.data['uri'])
+pprint(SCOPE_BY_URI.data)
 
-# Get all scopes
+# Get all SCOPEs
 print("\n## Get all Scopes")
-all_scopes = scope.get_all()
-for elem in all_scopes:
+ALL_SCOPES = SCOPE.get_all()
+for elem in ALL_SCOPES:
     print(" - {}".format(elem['name']))
 
-# Update the scope resource assignments (Available only in API300)
+# Update the SCOPE RESOURCE assignments (Available only in API300)
 if oneview_client.api_version == 300:
     try:
-        print("\n## Update the scope resource assignments, adding two resources")
-        options = {
-            "addedResourceUris": [resource_uri_1, resource_uri_2]
+        print("\n## Update the SCOPE RESOURCE assignments, adding two RESOURCEs")
+        OPTIONS = {
+            "addedResourceUris": [RESOURCE_URI_1, RESOURCE_URI_2]
         }
-        scopes.update_resource_assignments(scope['uri'], options)
+        SCOPEs.update_RESOURCE_assignments(SCOPE['uri'], OPTIONS)
         print("  Done.")
 
-        print("\n## Update the scope resource assignments, adding one resource and removing another previously added")
-        options = {
-            "removedResourceUris": [resource_uri_1],
-            "addedResourceUris": [resource_uri_3]
+        print("\n## Update the SCOPE RESOURCE assignments, adding one RESOURCE and removing another
+	 previously added")
+        OPTIONS = {
+            "removedResourceUris": [RESOURCE_URI_1],
+            "addedResourceUris": [RESOURCE_URI_3]
         }
-        scopes.update_resource_assignments(scope['uri'], options)
+        SCOPEs.update_RESOURCE_assignments(SCOPE['uri'], OPTIONS)
         print("  Done.")
     except HPEOneViewException as e:
         print(e.msg)
 
-# Updates the name and description of a scope assigning and unassigning ethernet resources
+# Updates the name and description of a SCOPE assigning and unassigning ethernet RESOURCEs
 # (Available only from API500)
 if oneview_client.api_version >= 500:
     try:
-        print("\n## Patch the scope adding two resource uris")
-        edited_scope = scope.patch('add', '/addedResourceUris/-', resource_uri_1)
-        pprint(edited_scope.data)
+        print("\n## Patch the SCOPE adding two RESOURCE uris")
+        EDITED_SCOPE = SCOPE.patch('add', '/addedResourceUris/-', RESOURCE_URI_1)
+        pprint(EDITED_SCOPE.data)
 
-        edited_scope = scope.patch('add', '/addedResourceUris/-', resource_uri_2)
-        pprint(edited_scope.data)
+        EDITED_SCOPE = SCOPE.patch('add', '/addedResourceUris/-', RESOURCE_URI_2)
+        pprint(EDITED_SCOPE.data)
 
-        # Find the recently created scope by name
-        print("\n## Find scope by name")
-        scope_by_name = scope.get_by_name(scope.data['name'])
-        pprint(scope_by_name.data)
+        # Find the recently created SCOPE by name
+        print("\n## Find SCOPE by name")
+        SCOPE_BY_NAME = SCOPE.get_by_name(SCOPE.data['name'])
+        pprint(SCOPE_BY_NAME.data)
 
-        # Get the resource assignments of scope
-        print("\n## Find resource assignments to scope")
-        scope_assigned_resource = scopes.get_scope_resource(resource_uri_1)
-        pprint(scope_assigned_resource.data)
+        # Get the RESOURCE assignments of SCOPE
+        print("\n## Find RESOURCE assignments to SCOPE")
+        SCOPE_ASSIGNED_RESOURCE = SCOPEs.get_SCOPE_RESOURCE(RESOURCE_URI_1)
+        pprint(SCOPE_ASSIGNED_RESOURCE.data)
 
-        print("\n## Patch the scope removing one of the previously added resource uris")
-        resource_list = [resource_uri_1]
-        edited_scope = scope.patch('replace', '/removedResourceUris', resource_list)
-        pprint(edited_scope.data)
+        print("\n## Patch the SCOPE removing one of the previously added RESOURCE uris")
+        RESOURCE_LIST = [RESOURCE_URI_1]
+        EDITED_SCOPE = SCOPE.patch('replace', '/removedResourceUris', RESOURCE_LIST)
+        pprint(EDITED_SCOPE.data)
 
-        print("\n## Patch the scope updating the name")
-        update_name = "MySampleScope"
-        edited_scope = scope.patch('replace', '/name', update_name)
-        pprint(edited_scope.data)
+        print("\n## Patch the SCOPE updating the name")
+        UPDATE_NAME = "MySampleScope"
+        EDITED_SCOPE = SCOPE.patch('replace', '/name', UPDATE_NAME)
+        pprint(EDITED_SCOPE.data)
 
-        print("\n## Patch the scope updating the description")
-        update_description = "Modified scope description"
-        edited_scope = scope.patch('replace', '/description', update_description)
-        pprint(edited_scope.data)
+        print("\n## Patch the SCOPE updating the description")
+        UPDATE_DESCRIPTION = "Modified SCOPE description"
+        EDITED_SCOPE = SCOPE.patch('replace', '/description', UPDATE_DESCRIPTION)
+        pprint(EDITED_SCOPE.data)
     except HPEOneViewException as e:
         print(e.msg)
 
-# Get the resource assignments of scope when unassigned
-print("\n## Find resource assignments to scope when resource unassigned")
-scope_assigned_resource = scopes.get_scope_resource(resource_uri_1)
-pprint(scope_assigned_resource.data)
+# Get the RESOURCE assignments of SCOPE when unassigned
+print("\n## Find RESOURCE assignments to SCOPE when RESOURCE unassigned")
+SCOPE_ASSIGNED_RESOURCE = SCOPEs.get_SCOPE_RESOURCE(RESOURCE_URI_1)
+pprint(SCOPE_ASSIGNED_RESOURCE.data)
 
-# Delete the scope
-scope.delete()
+# Delete the SCOPE
+SCOPE.delete()
 print("\n## Scope deleted successfully.")

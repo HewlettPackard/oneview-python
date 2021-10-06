@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "administrator",
@@ -28,19 +28,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-options = {
+OPTIONS = {
     "type": "Range",
     "startAddress": "VCUS6EI000",
     "endAddress": "VCUS6EIZZZ",
     "rangeCategory": "Custom"
 }
 
-options_additional = {
+OPTIONS_ADDITIONAL = {
     "type": "Range",
     "name": "VSN",
     "prefix": None,
@@ -70,7 +70,7 @@ options_additional = {
 }
 
 # Create VSN Range for id pools
-vsn_range = oneview_client.id_pools_vsn_ranges.create(options)
+vsn_range = oneview_client.id_pools_vsn_ranges.create(OPTIONS)
 pprint(vsn_range)
 
 # Get vsn range by uri
@@ -84,21 +84,21 @@ print("Got vsn range from '{}' to '{}' by uri:\n   '{}'".format(vsn_range_byId[
       'startAddress'], vsn_range_byId['endAddress'], vsn_range_byId['uri']))
 
 # Enable a vSN range
-information = {
+INFORMATION = {
     "type": "Range",
     "enabled": True
 }
 vsn_range = oneview_client.id_pools_vsn_ranges.enable(
-    information, vsn_range['uri'])
+    INFORMATION, vsn_range['uri'])
 print("Successfully enabled vsn range at\n   'uri': {}\n   with 'enabled': {}".format(
     vsn_range['uri'], vsn_range['enabled']))
 
 # Allocate a set of IDs from vsn range
-information = {
+INFORMATION = {
     "count": 10
 }
 successfully_allocated_ids = oneview_client.id_pools_vsn_ranges.allocate(
-    information, vsn_range['uri'])
+    INFORMATION, vsn_range['uri'])
 print("Successfully allocated IDs:")
 pprint(successfully_allocated_ids)
 
@@ -116,21 +116,21 @@ pprint(allocated_fragments)
 
 # Collect a set of IDs back to vsn range
 try:
-    information = {
+    INFORMATION = {
         "idList": successfully_allocated_ids['idList']
     }
     successfully_collected_ids = oneview_client.id_pools_vsn_ranges.collect(
-        information, vsn_range['uri'])
+        INFORMATION, vsn_range['uri'])
 except HPEOneViewException as e:
     print(e.msg)
 
 # Disable a vsn range
-information = {
+INFORMATION = {
     "type": "Range",
     "enabled": False
 }
 vsn_range = oneview_client.id_pools_vsn_ranges.enable(
-    information, vsn_range['uri'])
+    INFORMATION, vsn_range['uri'])
 print("Successfully disabled vsn range at\n   'uri': {}\n   with 'enabled': {}".format(
     vsn_range['uri'], vsn_range['enabled']))
 
@@ -138,9 +138,9 @@ print("Successfully disabled vsn range at\n   'uri': {}\n   with 'enabled': {}".
 oneview_client.id_pools_vsn_ranges.delete(vsn_range)
 print("Successfully deleted vsn range")
 
-# Create vsn Range for id pools with more options specified
-print("Create vsn range with more options specified for id pools")
-vsn_range = oneview_client.id_pools_vsn_ranges.create(options_additional)
+# Create vsn Range for id pools with more OPTIONS specified
+print("Create vsn range with more OPTIONS specified for id pools")
+vsn_range = oneview_client.id_pools_vsn_ranges.create(OPTIONS_ADDITIONAL)
 pprint(vsn_range)
 
 # Delete vsn_range

@@ -17,11 +17,11 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from copy import deepcopy
 
-# To run this example fill the ip and the credentials below or use a configuration file
-config = {
+# To run this example fill the ip and the credentials below or use a CONFIGuration file
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -30,99 +30,102 @@ config = {
     "api_version": "<api_version>"
 }
 
-options = {
+OPTIONS = {
     "name": "OneViewSDK Test FCoE Network",
     "vlanId": "201",
     "connectionTemplateUri": None,
 }
 
 # Scope name to perform the patch operation
-scope_name = ""
+SCOPE_NAME = ""
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-fcoe_networks = oneview_client.fcoe_networks
-scopes = oneview_client.scopes
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+FCOE_NETWORKs = oneview_client.FCOE_NETWORKs
+SCOPEs = oneview_client.SCOPEs
 
 # Get all, with defaults
 print("\nGet all fcoe-networks")
-fcoe_nets = fcoe_networks.get_all()
-pprint(fcoe_nets)
+FCOE_NETS = FCOE_NETWORKs.get_all()
+pprint(FCOE_NETS)
 
 # Filter by name
 print("\nGet all fcoe-networks filtering by name")
-fcoe_nets_filtered = fcoe_networks.get_all(filter="\"'name'='OneViewSDK Test FCoE Network'\"")
-pprint(fcoe_nets_filtered)
+FCOE_NETS_FILTERED = FCOE_NETWORKs.get_all(filter="\"'name'='OneViewSDK Test FCoE Network'\"")
+pprint(FCOE_NETS_FILTERED)
 
 # Get all sorting by name descending
 print("\nGet all fcoe-networks sorting by name")
-fcoe_nets_sorted = fcoe_networks.get_all(sort='name:descending')
-pprint(fcoe_nets_sorted)
+FCOE_NETS_SORTED = FCOE_NETWORKs.get_all(sort='name:descending')
+pprint(FCOE_NETS_SORTED)
 
 # Get the first 10 records
 print("\nGet the first ten fcoe-networks")
-fcoe_nets_limited = fcoe_networks.get_all(0, 10)
-pprint(fcoe_nets_limited)
+FCOE_NETS_LIMITED = FCOE_NETWORKs.get_all(0, 10)
+pprint(FCOE_NETS_LIMITED)
 
 # Get by name
-fcoe_network = fcoe_networks.get_by_name(options['name'])
-if fcoe_network:
-    print("\nGot fcoe-network by name uri={}".format(fcoe_network.data['uri']))
+FCOE_NETWORK = FCOE_NETWORKs.get_by_name(OPTIONS['name'])
+if FCOE_NETWORK:
+    print("\nGot fcoe-network by name uri={}".format(FCOE_NETWORK.data['uri']))
 else:
     # Create a FC Network
-    fcoe_network = fcoe_networks.create(options)
-    print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network.data['name'], fcoe_network.data['uri']))
+    FCOE_NETWORK = FCOE_NETWORKs.create(OPTIONS)
+    print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (FCOE_NETWORK.data['name'],
+	 FCOE_NETWORK.data['uri']))
 
 # Update autoLoginRedistribution from recently created network
-resource = deepcopy(fcoe_network.data)
-resource['status'] = 'Warning'
-resource['name'] = "{}-Renamed".format(options["name"])
-fcoe_network_updated = fcoe_network.update(resource)
-print("\nUpdated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network_updated.data['name'], fcoe_network_updated.data['uri']))
-print("  with attribute {'status': %s}" % fcoe_network_updated.data['status'])
+RESOURCE = deepcopy(FCOE_NETWORK.data)
+RESOURCE['status'] = 'Warning'
+RESOURCE['name'] = "{}-Renamed".format(OPTIONS["name"])
+FCOE_NETWORK_UPDATED = FCOE_NETWORK.update(RESOURCE)
+print("\nUpdated fcoe-network '%s' successfully.\n  uri = '%s'" % (FCOE_NETWORK_UPDATED.data['name'], FCOE_NETWORK_UPDATED.data['uri']))
+print("  with attribute {'status': %s}" % FCOE_NETWORK_UPDATED.data['status'])
 
 # Get by Uri
 print("\nGet a fcoe-network by uri")
-fcoe_nets_by_uri = fcoe_networks.get_by_uri(fcoe_network.data['uri'])
-pprint(fcoe_nets_by_uri.data)
+FCOE_NETS_BY_URI = FCOE_NETWORKs.get_by_uri(FCOE_NETWORK.data['uri'])
+pprint(FCOE_NETS_BY_URI.data)
 
-# Adds FCOE network to scope defined only for V300 and V500
-if scope_name and 300 <= oneview_client.api_version <= 500:
-    print("\nGet scope then add the network to it")
-    scope = scopes.get_by_name(scope_name)
-    fcoe_with_scope = fcoe_network.patch('replace',
-                                         '/scopeUris',
-                                         [scope.data['uri']])
-    pprint(fcoe_with_scope.data)
+# Adds FCOE network to SCOPE defined only for V300 and V500
+if SCOPE_NAME and 300 <= oneview_client.api_version <= 500:
+    print("\nGet SCOPE then add the network to it")
+    SCOPE = SCOPEs.get_by_name(SCOPE_NAME)
+    FCOE_WITH_SCOPE = FCOE_NETWORK.patch('replace',
+                                         '/SCOPEUris',
+                                         [SCOPE.data['uri']])
+    pprint(FCOE_WITH_SCOPE.data)
 
 # Delete the created network
-fcoe_network.delete()
+FCOE_NETWORK.delete()
 print("\nSuccessfully deleted fcoe-network")
 
 # Creates bulk fcoe-networks
 for i in range(4):
-    options = {
+    OPTIONS = {
         "name": "OneViewSDK Test FCoE Network" + str(i),
         "vlanId": int("201") + int(i),
         "connectionTemplateUri": None,
     }
-    bulk_fcoe_network = fcoe_networks.create(options)
-    print("\nCreated bulk fcoe-networks with name: '%s'.\n  uri = '%s'" % (bulk_fcoe_network.data['name'], bulk_fcoe_network.data['uri']))
+    bulk_FCOE_NETWORK = FCOE_NETWORKs.create(OPTIONS)
+    print("\nCreated bulk fcoe-networks with name: '%s'.\n  uri = '%s'" %
+	 (bulk_FCOE_NETWORK.data['name'], bulk_FCOE_NETWORK.data['uri']))
 
 # Delete bulk fcoe-networks
 if oneview_client.api_version >= 1600:
-    bulk_network_uris = []
+    BULK_NETWORK_URIS = []
     for i in range(4):
-        fcoe_network_name = "OneViewSDK Test FCoE Network" + str(i)
-        bulk_fcoe_network = fcoe_networks.get_by_name(fcoe_network_name)
-        bulk_network_uris.append(bulk_fcoe_network.data['uri'])
+        FCOE_NETWORK_name = "OneViewSDK Test FCoE Network" + str(i)
+        bulk_FCOE_NETWORK = FCOE_NETWORKs.get_by_name(FCOE_NETWORK_name)
+        BULK_NETWORK_URIS.append(bulk_FCOE_NETWORK.data['uri'])
     print("\nDelete bulk fcoe-networks")
-    options_bulk_delete = {"networkUris": bulk_network_uris}
-    fcoe_network.delete_bulk(options_bulk_delete)
+    OPTIONS_BULK_DELETE = {"networkUris": BULK_NETWORK_URIS}
+    FCOE_NETWORK.delete_bulk(OPTIONS_BULK_DELETE)
     print("Successfully deleted bulk fcoe-networks")
 
 # Create a FCoE Network for automation
-options['name'] = "Test_fcoeNetwork"
-fcoe_network = fcoe_networks.create(options)
-print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (fcoe_network.data['name'], fcoe_network.data['uri']))
+OPTIONS['name'] = "Test_fcoeNetwork"
+FCOE_NETWORK = FCOE_NETWORKs.create(OPTIONS)
+print("\nCreated fcoe-network '%s' successfully.\n  uri = '%s'" % (FCOE_NETWORK.data['name'],
+	 FCOE_NETWORK.data['uri']))

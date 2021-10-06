@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,23 +27,23 @@ config = {
     }
 }
 
-uri = '/rest/appliance/network-interfaces'
+URI = '/rest/appliance/network-interfaces'
 
-# Try load config from a file
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-network_interface = oneview_client.appliance_network_interfaces
+# Try load CONFIG from a file
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+network_interface = oneview_client.appliance_NETWORK_INTERFACES
 
-# Get configured network interface from appliance
+# Get CONFIGured network interface from appliance
 print("\nGet network interface details from appliance:\n ")
-network_interfaces = network_interface.get_all().data['applianceNetworks']
-for net_interface in network_interfaces:
+NETWORK_INTERFACES = network_interface.get_all().data['applianceNetworks']
+for net_interface in NETWORK_INTERFACES:
     pprint(net_interface['hostname'])
     pprint(net_interface['interfaceName'])
 
 # Create network interface if it doesn't exist
 print("\nCreate network interface on the appliance:\n")
-ni_details = {"applianceNetworks": [{
+NI_DETAILS = {"applianceNetworks": [{
               "interfaceName": "Appliance test",
               "device": "eth0",
               "macAddress": "00:11:22:33:ff:3e",
@@ -60,15 +60,15 @@ ni_details = {"applianceNetworks": [{
                   "<dns2>"
               ]}]}
 
-new_network_interface = network_interface.create(ni_details)
-pprint(new_network_interface.data)
+NEW_NETWORK_INTERFACE = network_interface.create(NI_DETAILS)
+pprint(NEW_NETWORK_INTERFACE.data)
 print("\nNetwork Interface created successfully")
 
 # Updates dns servers of the network interface
 # For update, we use the same create method
 # as PUT not supported for this resource
 print("\nUpdate dns servers of the network interface:\n")
-updated_details = {"applianceNetworks": [{
+UPDATED_DETAILS = {"applianceNetworks": [{
                    "interfaceName": "Appliance test",
                    "device": "eth0",
                    "macAddress": "00:11:22:33:ff:3e",
@@ -84,17 +84,17 @@ updated_details = {"applianceNetworks": [{
                        "<dns1>",
                        "<dns3>"
                    ]}]}
-updated_network_interface = network_interface.create(updated_details)
-pprint(updated_network_interface.data)
+UPDATED_NETWORK_INTERFACE = network_interface.create(UPDATED_DETAILS)
+pprint(UPDATED_NETWORK_INTERFACE.data)
 print("\nNetwork Interface updated successfully")
 
-# Get network configuration by the mac address
+# Get network CONFIGuration by the mac address
 print("\nGet network interface details from appliance:\n ")
-if network_interfaces:
-    network_interface_by_mac = network_interface.get_by_mac_address(network_interfaces[0]['macAddress'])
-    pprint(network_interface_by_mac.data)
+if NETWORK_INTERFACES:
+    NETWORK_INTERFACE_BY_MAC = network_interface.get_by_mac_address(NETWORK_INTERFACES[0]['macAddress'])
+    pprint(NETWORK_INTERFACE_BY_MAC.data)
 
-# Get unconfigured network interfaces on the appliance
-print("\nGet unconfigured network interfaces from appliance:\n ")
-network_interface_unconfigured = network_interface.get_all_mac_address()
-pprint(network_interface_unconfigured)
+# Get unCONFIGured network interfaces on the appliance
+print("\nGet unCONFIGured network interfaces from appliance:\n ")
+NETWORK_INTERFACE_UNCONFIGURED = network_interface.get_all_mac_address()
+pprint(NETWORK_INTERFACE_UNCONFIGURED)

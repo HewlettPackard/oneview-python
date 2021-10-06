@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,20 +28,20 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-storage_pool_name = 'FST_CPG1'
+STORAGE_POOL_NAME = 'FST_CPG1'
 
-# Get the storage pool by name to use in options
-storage_pool = oneview_client.storage_pools.get_by('name', storage_pool_name)[0]
+# Get the storage pool by name to use in OPTIONS
+storage_pool = oneview_client.storage_pools.get_by('name', STORAGE_POOL_NAME)[0]
 
-# Gets the first Root Storage Volume Template available to use in options
+# Gets the first Root Storage Volume Template available to use in OPTIONS
 root_template = oneview_client.storage_volume_templates.get_all(filter="\"isRoot='True'\"")[0]
 
-options = {
+OPTIONS = {
     "name": "vt1",
     "description": "",
     "rootTemplateUri": root_template['uri'],
@@ -112,7 +112,8 @@ options = {
             "title": "Snapshot Pool",
             "format": "x-uri-reference",
             "default": storage_pool['uri'],
-            "description": "A URI reference to the common provisioning group used to create snapshots"
+            "description": "A URI reference to the common provisioning group used to create
+	 snapshots"
         },
         "provisioningType": {
             "enum": [
@@ -132,11 +133,11 @@ options = {
     }
 }
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Create storage volume template
 print("\nCreate storage volume template")
-volume_template = oneview_client.storage_volume_templates.create(options)
+volume_template = oneview_client.storage_volume_templates.create(OPTIONS)
 pprint(volume_template)
 
 # Update storage volume template
@@ -153,9 +154,9 @@ for template in volume_templates:
 
 # Get storage volume template by id
 try:
-    template_id = volume_templates[0]['uri'].split('/')[-1]
-    print("\nGet storage volume template by id: '{}'".format(template_id))
-    volume_template_byid = oneview_client.storage_volume_templates.get(template_id)
+    TEMPLATE_ID = volume_templates[0]['uri'].split('/')[-1]
+    print("\nGet storage volume template by id: '{}'".format(TEMPLATE_ID))
+    volume_template_byid = oneview_client.storage_volume_templates.get(TEMPLATE_ID)
     print("   Found '{name}' at uri: {uri}".format(**volume_template_byid))
 except HPEOneViewException as e:
     print(e.msg)
@@ -167,7 +168,8 @@ print("   Found '{name}' at uri: {uri}".format(**volume_template_by_uri))
 
 # Get storage volume template by name
 print("\nGet storage volume template by 'name': '{name}'".format(**volume_template))
-volume_template_byname = oneview_client.storage_volume_templates.get_by('name', volume_template['name'])[0]
+volume_template_byname = oneview_client.storage_volume_templates.get_by('name',
+	 volume_template['name'])[0]
 print("   Found '{name}' at uri: {uri}".format(**volume_template_byname))
 
 # Get reachable volume templates

@@ -20,10 +20,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -31,24 +31,24 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-hypervisor_cluster_profiles = oneview_client.hypervisor_cluster_profiles
-hypervisor_managers = oneview_client.hypervisor_managers
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+HYPERVISOR_CLUSTER_PROFILEs = oneview_client.HYPERVISOR_CLUSTER_PROFILEs
+HYPERVISOR_MANAGERs = oneview_client.HYPERVISOR_MANAGERs
 profile_templates = oneview_client.server_profile_templates
-os_deployment_plans = oneview_client.os_deployment_plans
+os_DEPLOYMENT_PLANs = oneview_client.os_DEPLOYMENT_PLANs
 
-hypervisor_manager = "172.18.13.11"
-spt_name = "ProfileTemplate-1"  # spt without os deployment plan and one mgmt connection
-deployment_plan = "Basic Deployment Plan"
+HYPERVISOR_MANAGER = "172.18.13.11"
+SPT_NAME = "ProfileTemplate-1"  # spt without os deployment plan and one mgmt connection
+DEPLOYMENT_PLAN = "Basic Deployment Plan"
 
 # Getting the uris from name
-hyp_mgr_uri = hypervisor_managers.get_by_name(hypervisor_manager).data['uri']
-spt_uri = profile_templates.get_by_name(spt_name).data['uri']
-dp_uri = os_deployment_plans.get_by_name(deployment_plan).data['uri']
+HYP_MGR_URI = HYPERVISOR_MANAGERs.get_by_name(HYPERVISOR_MANAGER).data['uri']
+SPT_URI = profile_templates.get_by_name(SPT_NAME).data['uri']
+DP_URI = os_DEPLOYMENT_PLANs.get_by_name(DEPLOYMENT_PLAN).data['uri']
 
-options = {
+OPTIONS = {
     "name": "Test_cluster_profile",
     "description": "test cluster",
     "hypervisorType": "Vmware",
@@ -60,9 +60,9 @@ options = {
         "virtualSwitchType": "Standard"
     },
     "hypervisorHostProfileTemplate": {
-        "serverProfileTemplateUri": spt_uri,
+        "serverProfileTemplateUri": SPT_URI,
         "deploymentPlan": {
-            "deploymentPlanUri": dp_uri,
+            "deploymentPlanUri": DP_URI,
             "serverPassword": "",
             "deploymentCustomArgs": []
         },
@@ -74,83 +74,83 @@ options = {
         },
         "virtualSwitchConfigPolicy": {
             "manageVirtualSwitches": True,
-            "configurePortGroups": True
+            "CONFIGurePortGroups": True
         }
     },
     "mgmtIpSettingsOverride": None,
-    "hypervisorManagerUri": hyp_mgr_uri,
+    "hypervisorManagerUri": HYP_MGR_URI,
     "path": "DC1",
     "initialScopeUris": []
 }
 
-vswitch_options = {
-    "hypervisorManagerUri": hyp_mgr_uri,
-    "serverProfileTemplateUri": spt_uri
+VSWITCH_OPTIONS = {
+    "hypervisorManagerUri": HYP_MGR_URI,
+    "serverProfileTemplateUri": SPT_URI
 }
 
 # Get all cluster profiles
 print("\nGet all hypervisor cluster profiles")
-cluster_profiles_all = hypervisor_cluster_profiles.get_all()
-for profile in cluster_profiles_all:
+CLUSTER_PROFILES_ALL = HYPERVISOR_CLUSTER_PROFILEs.get_all()
+for profile in CLUSTER_PROFILES_ALL:
     print('  - {}'.format(profile['name']))
 
 # Find recently created hypervisor cluster profile by name
 print("\nGet Hypervisor cluster profile by name")
-hypervisor_cluster_profile = hypervisor_cluster_profiles.get_by_name(options['name'])
+HYPERVISOR_CLUSTER_PROFILE = HYPERVISOR_CLUSTER_PROFILEs.get_by_name(OPTIONS['name'])
 
-if hypervisor_cluster_profile:
+if HYPERVISOR_CLUSTER_PROFILE:
     print("\nFound hypervisor cluster profile by name: {}.\n  uri = {}".format(
-        hypervisor_cluster_profile.data['name'], hypervisor_cluster_profile.data['uri']))
+        HYPERVISOR_CLUSTER_PROFILE.data['name'], HYPERVISOR_CLUSTER_PROFILE.data['uri']))
 else:
     # Create virtual switch layout
     print("\nCreate virtual switch layout")
 
-    vswitch_layout = hypervisor_cluster_profiles.create_virtual_switch_layout(data=vswitch_options)
-    pprint(vswitch_layout)
+    VSWITCH_LAYOUT = HYPERVISOR_CLUSTER_PROFILEs.create_virtual_switch_layout(data=VSWITCH_OPTIONS)
+    pprint(VSWITCH_LAYOUT)
 
-    # Create a Hypervisor Cluster Profile with the options provided
-    options['hypervisorHostProfileTemplate']['virtualSwitches'] = vswitch_layout
+    # Create a Hypervisor Cluster Profile with the OPTIONS provided
+    OPTIONS['hypervisorHostProfileTemplate']['virtualSwitches'] = VSWITCH_LAYOUT
 
-    hypervisor_cluster_profile = hypervisor_cluster_profiles.create(data=options)
+    HYPERVISOR_CLUSTER_PROFILE = HYPERVISOR_CLUSTER_PROFILEs.create(data=OPTIONS)
     print("\nCreated a hypervisor cluster profile with name: {}.\n  uri = {}".format(
-        hypervisor_cluster_profile.data['name'], hypervisor_cluster_profile.data['uri']))
+        HYPERVISOR_CLUSTER_PROFILE.data['name'], HYPERVISOR_CLUSTER_PROFILE.data['uri']))
 
 # Get the first 10 records
 print("\nGet the first ten hypervisor cluster profiles")
-cluster_profiles_top_ten = hypervisor_cluster_profiles.get_all(0, 10)
-for profile in cluster_profiles_top_ten:
+CLUSTER_PROFILES_TOP_TEN = HYPERVISOR_CLUSTER_PROFILEs.get_all(0, 10)
+for profile in CLUSTER_PROFILES_TOP_TEN:
     print('  - {}'.format(profile['name']))
 
 # Filter by hypervisor type
 print("\nGet all hypervisor cluster profiles filtering by hypervisor type")
-cluster_profiles_filtered = hypervisor_cluster_profiles.get_all(filter="\"'hypervisorType'='Vmware'\"")
-for profile in cluster_profiles_filtered:
+CLUSTER_PROFILES_FILTERED = HYPERVISOR_CLUSTER_PROFILEs.get_all(filter="\"'hypervisorType'='Vmware'\"")
+for profile in CLUSTER_PROFILES_FILTERED:
     print("Cluster profile with type 'Vmware'  - {}".format(profile['name']))
 
 # Get all sorting by name descending
 print("\nGet all hypervisor cluster profiles sorting by name")
-clusters_sorted = hypervisor_cluster_profiles.get_all(sort='name:descending')
-for profile in clusters_sorted:
+CLUSTERS_SORTED = HYPERVISOR_CLUSTER_PROFILEs.get_all(sort='name:descending')
+for profile in CLUSTERS_SORTED:
     print('  - {}'.format(profile['name']))
 
 # Get by uri
 print("\nGet a hypervisor cluster profile by uri")
-cluster_profile_by_uri = hypervisor_cluster_profiles.get_by_uri(hypervisor_cluster_profile.data['uri'])
-pprint(cluster_profile_by_uri.data)
+CLUSTER_PROFILE_BY_URI = HYPERVISOR_CLUSTER_PROFILEs.get_by_uri(HYPERVISOR_CLUSTER_PROFILE.data['uri'])
+pprint(CLUSTER_PROFILE_BY_URI.data)
 
 # Update the name of recently created hypervisor cluster profile
-data_to_update = {'name': 'Updated cluster'}
-if hypervisor_cluster_profile:
-    hypervisor_cluster_profile.update(data=data_to_update)
+DATA_TO_UPDATE = {'name': 'Updated cluster'}
+if HYPERVISOR_CLUSTER_PROFILE:
+    HYPERVISOR_CLUSTER_PROFILE.update(data=DATA_TO_UPDATE)
     print("\nUpdated hypervisor cluster profile name - {0} to {1}".format(
-        options['name'], hypervisor_cluster_profile.data['name']))
+        OPTIONS['name'], HYPERVISOR_CLUSTER_PROFILE.data['name']))
 
 # Get compliance preview of cluster profile
-if hypervisor_cluster_profile:
-    profile_compliance = hypervisor_cluster_profile.get_compliance_preview()
-    print("   - Compliance preview: '{}'".format(profile_compliance))
+if HYPERVISOR_CLUSTER_PROFILE:
+    PROFILE_COMPLIANCE = HYPERVISOR_CLUSTER_PROFILE.get_compliance_preview()
+    print("   - Compliance preview: '{}'".format(PROFILE_COMPLIANCE))
 
 # Delete the created hypervisor cluster profile
-if hypervisor_cluster_profile:
-    hypervisor_cluster_profile.delete(soft_delete=True, force=True)
+if HYPERVISOR_CLUSTER_PROFILE:
+    HYPERVISOR_CLUSTER_PROFILE.delete(soft_delete=True, force=True)
     print("\nSuccessfully deleted hypervisor cluster profile")

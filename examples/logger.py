@@ -17,25 +17,25 @@
 
 import logging
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 """
-hpeOneView do not add any handlers other than NullHandler.
-The configuration of handlers is the prerogative of the developer who uses hpeOneView library.
+hpeOneView do not add any HANDLERs other than NullHandler.
+The CONFIGuration of HANDLERs is the prerogative of the developer who uses hpeOneView library.
 This example uses a StreamHandler to send the logging output to streams sys.stdout and sys.stderr.
 """
 
-logger = logging.getLogger('hpeOneView')
+LOGGER = logging.getLogger('hpeOneView')
 
-handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(name)-12s %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
-logger.setLevel(logging.DEBUG)
+HANDLER = logging.StreamHandler()
+FORMATTER = logging.Formatter('%(asctime)s %(levelname)-8s %(name)-12s %(message)s')
+HANDLER.setFormatter(FORMATTER)
+LOGGER.addHandler(HANDLER)
+LOGGER.setLevel(logging.DEBUG)
 
 
-config = {
+CONFIG = {
     "ip": "172.16.102.59",
     "credentials": {
         "userName": "administrator",
@@ -43,20 +43,20 @@ config = {
     }
 }
 
-options = {
+OPTIONS = {
     "name": "OneViewSDK Test FC Network",
     "connectionTemplateUri": None,
     "autoLoginRedistribution": True,
     "fabricType": "FabricAttach",
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Create a FC Network
-fc_network = oneview_client.fc_networks.create(options)
+fc_network = oneview_client.fc_networks.create(OPTIONS)
 
 # Find recently created network by name
 fc_network = oneview_client.fc_networks.get_by('name', 'OneViewSDK Test FC Network')[0]
@@ -68,7 +68,8 @@ fc_network = oneview_client.fc_networks.update(fc_network)
 # Get all, with defaults
 fc_nets = oneview_client.fc_networks.get_all()
 # Filter by name
-fc_nets_filtered = oneview_client.fc_networks.get_all(filter="\"'name'='OneViewSDK Test FC Network'\"")
+fc_nets_filtered = oneview_client.fc_networks.get_all(filter="\"'name'='OneViewSDK Test FC
+	 Network'\"")
 
 # Get all sorting by name descending
 fc_nets_sorted = oneview_client.fc_networks.get_all(sort='name:descending')

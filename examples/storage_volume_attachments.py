@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,73 +29,75 @@ config = {
 }
 
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 volume_attachments = oneview_client.storage_volume_attachments
 volumes = oneview_client.volumes
 server_profiles = oneview_client.server_profiles
 
 # variable definitions
-sp_name = "TestProfile"
-volume_name = "Test_volume"
+SP_NAME = "TestProfile"
+VOLUME_NAME = "Test_volume"
 
 # To run all parts of this example, a server profile uri, volume uri, volume attachment id and
 # path id must be defined.
-serverProfileUri = server_profiles.get_by_name(sp_name).data['uri']
-storageVolumeUri = volumes.get_by_name(volume_name).data['uri']
+SERVERPROFILEURI = server_profiles.get_by_name(SP_NAME).data['uri']
+STORAGEVOLUMEURI = volumes.get_by_name(VOLUME_NAME).data['uri']
 
 # Get all volume attachments
 print("\nGet all volume attachments")
-volume_attachments_all = volume_attachments.get_all()
-for attachment in volume_attachments_all:
-    print('\n#### Storage Volume Attachment info:')
+VOLUME_ATTACHMENTS_ALL = volume_attachments.get_all()
+for attachment in VOLUME_ATTACHMENTS_ALL:
+    print('\n#### Storage Volume Attachment INFO:')
     pprint(attachment)
 
-# Get all storage volume attachments filtering by storage volume URI
+# Get all storage volume attachments FILTERing by storage volume URI
 try:
-    print("\nGet all storage volume attachments filtering by storage volume URI")
-    filter = "storageVolumeUri='{}'".format(storageVolumeUri)
-    volume_attachments_filtered = volume_attachments.get_all(filter=filter)
-    for attachment in volume_attachments_filtered:
-        print('\n#### Storage Volume Attachment info:')
+    print("\nGet all storage volume attachments FILTERing by storage volume URI")
+    FILTER = "STORAGEVOLUMEURI='{}'".format(STORAGEVOLUMEURI)
+    VOLUME_ATTACHMENTS_FILTERED = volume_attachments.get_all(FILTER=FILTER)
+    for attachment in VOLUME_ATTACHMENTS_FILTERED:
+        print('\n#### Storage Volume Attachment INFO:')
         pprint(attachment)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get the list of extra unmanaged storage volumes
 print("\nGet the list of extra unmanaged storage volumes")
-unmanaged_storage_volumes = volume_attachments.get_extra_unmanaged_storage_volumes()
-pprint(unmanaged_storage_volumes)
+UNMANAGED_STORAGE_VOLUMES = volume_attachments.get_extra_UNMANAGED_STORAGE_VOLUMES()
+pprint(UNMANAGED_STORAGE_VOLUMES)
 
 # Removes extra presentations from a specified server profile.
 try:
-    info = {
+    INFO = {
         "type": "ExtraUnmanagedStorageVolumes",
-        "resourceUri": serverProfileUri
+        "resourceUri": SERVERPROFILEURI
     }
-    print("\nRemoves extra presentations from a specified server profile at uri: '{}".format(serverProfileUri))
-    volume_attachments.remove_extra_presentations(info)
+    print("\nRemoves extra presentations from a specified server profile at uri:
+	 '{}".format(SERVERPROFILEURI))
+    volume_attachments.remove_extra_presentations(INFO)
     print("   Done.")
 except HPEOneViewException as e:
     print(e.msg)
 
-if len(volume_attachments_all) != 0:
+if len(VOLUME_ATTACHMENTS_ALL) != 0:
     # Get storage volume attachment by uri
-    print("\nGet storage volume attachment by uri: '{uri}'".format(**volume_attachments_all[0]))
-    volume_attachment_byid = volume_attachments.get_by_uri(volume_attachments_all[0]['uri'])
-    print('\n#### Storage Volume Attachment info:')
-    pprint(volume_attachment_byid.data)
+    print("\nGet storage volume attachment by uri: '{uri}'".format(**VOLUME_ATTACHMENTS_ALL[0]))
+    VOLUME_ATTACHMENT_BYID = volume_attachments.get_by_uri(VOLUME_ATTACHMENTS_ALL[0]['uri'])
+    print('\n#### Storage Volume Attachment INFO:')
+    pprint(VOLUME_ATTACHMENT_BYID.data)
 
     if oneview_client.api_version < 500:
-        # Get all volume attachment paths
-        print("\nGet all volume attachment paths for volume attachment at uri: {uri}".format(**volume_attachment_byid.data))
-        paths = volume_attachment_byid.get_paths()
-        for path in paths:
+        # Get all volume attachment PATHS
+        print("\nGet all volume attachment PATHS for volume attachment at uri:
+	 {uri}".format(**VOLUME_ATTACHMENT_BYID.data))
+        PATHS = VOLUME_ATTACHMENT_BYID.get_PATHS()
+        for path in PATHS:
             print("   Found path at uri: {uri}".format(**path))
 
-        if paths:
+        if PATHS:
             # Get specific volume attachment path by uri
             print("\nGet specific volume attachment path by uri")
-            path_byuri = volume_attachment_byid.get_paths(paths[0]['uri'])
-            pprint(path_byuri)
+            PATH_BYURI = VOLUME_ATTACHMENT_BYID.get_PATHS(PATHS[0]['uri'])
+            pprint(PATH_BYURI)

@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,24 +27,24 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
 switch_types = oneview_client.switch_types
 
 # Get all supported switch types
 print("\nGet all supported switch types:")
-switch_types_all = switch_types.get_all()
-pprint(switch_types_all, depth=2)
+SWITCH_TYPES_ALL = switch_types.get_all()
+pprint(SWITCH_TYPES_ALL, depth=2)
 
 # Get all sorting by name descending
 print("\nGet all switch-types sorting by name:")
-switch_types_sorted = switch_types.get_all(
+SWITCH_TYPES_SORTED = switch_types.get_all(
     sort='name:descending')
-pprint(switch_types_sorted, depth=2)
+pprint(SWITCH_TYPES_SORTED, depth=2)
 
-if switch_types_all:
+if SWITCH_TYPES_ALL:
     # Get by name
     print("\nGet a switch_types by name:")
-    switch_type_byname = switch_types.get_by_name(switch_types_all[0]['name'])
-    pprint(switch_type_byname.data, depth=1)
+    SWITCH_TYPE_BYNAME = switch_types.get_by_name(SWITCH_TYPES_ALL[0]['name'])
+    pprint(SWITCH_TYPE_BYNAME.data, depth=1)
