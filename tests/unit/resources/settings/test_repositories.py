@@ -75,6 +75,6 @@ class RepositoriesTest(unittest.TestCase):
     def test_patch_should_use_user_defined_values(self, mock_patch):
         mock_patch.return_value = {}
 
-        self._repositories.patch('/rest/fake/re123', 'replace', '/repositoryName', ['/rest/fake/repository123'], 1)
+        self._repositories.patch('/rest/fake/re123', 'replace', '/repositoryName', ['repoName'], 1)
         mock_patch.assert_called_once_with('/rest/fake/re123', 'replace', '/repositoryName',
-                                           ['/rest/fake/repository123'], 1)
+                                           ['repoName'], 1)
