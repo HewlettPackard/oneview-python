@@ -1,3 +1,10 @@
+# 6.4.0(unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 3400 (OneView v6.40)
+
+##### Features supported with the current release
+- Repositories
+
 # 6.3.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
