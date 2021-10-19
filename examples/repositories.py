@@ -81,10 +81,11 @@ print(repos_by_id.data)
 
 # Update repositoryName
 print("\n Update repositoryName from recently created repository")
+updated_reponame = 'TestUpdated'
 try:
     repo_with_updated_name = created_repo.patch('replace',
-                                        '/repositoryName',
-                                        'TestUpdated')
+                                                '/repositoryName',
+                                                updated_reponame)
     print(repo_with_updated_name.data['name'])
 except HPEOneViewException as e:
     print("Exception {} occurred while patch operation of repository".format(str(e)))
