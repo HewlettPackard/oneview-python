@@ -55,8 +55,9 @@ print(repos_limited)
 
 # Get by name
 print("\nGet all repositories filtering by name")
-repo = repositories.get_by_name(repos[0]['name'])
-print(repo.data)
+if repos:
+    repo = repositories.get_by_name(repos[0]['name'])
+    print(repo.data)
 
 # Get all in descending order
 print("\nGet all repositories sorting by name")
@@ -81,7 +82,7 @@ print(repos_by_id.data)
 # Update repositoryName
 print("\n Update repositoryName from recently created repository")
 try:
-    repo_with_updated_name = repo.patch('replace',
+    repo_with_updated_name = created_repo.patch('replace',
                                         '/repositoryName',
                                         'TestUpdated')
     print(repo_with_updated_name.data['name'])
@@ -89,5 +90,5 @@ except HPEOneViewException as e:
     print("Exception {} occurred while patch operation of repository".format(str(e)))
 
 # Delete the created repository
-repo.delete()
+created_repo.delete()
 print("\nSuccessfully deleted repo")
