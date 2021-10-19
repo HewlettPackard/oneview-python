@@ -28,7 +28,7 @@ from hpeOneView.resources.resource import (Resource, ResourcePatchMixin)
 
 class Repositories(ResourcePatchMixin, Resource):
     """
-    Fibre Channel networks API client.
+    Repositories API client.
 
     """
 
