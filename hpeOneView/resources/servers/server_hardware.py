@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -325,4 +325,81 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
         if ip:
             uri = "{}?ip={}".format(uri, ip)
 
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_chassis(self):
+        """
+        Gets the list of chassis values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of chassis values.
+        """
+        uri = "{}/chassis".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_firmware_inventory(self):
+        """
+        Gets the list of firmwareInventory values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of firmwareInventory values.
+        """
+        uri = "{}/firmwareInventory".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_network_adapters(self):
+        """
+        Gets the list of networkAdapters values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of networkAdapters values.
+        """
+        uri = "{}/networkAdapters".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_power_supplies(self):
+        """
+        Gets the list of powerSupplies values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of powerSupplies values.
+        """
+        uri = "{}/powerSupplies".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_processors(self):
+        """
+        Gets the list of processors values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of processors values.
+        """
+        uri = "{}/processors".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_software_inventory(self):
+        """
+        Gets the list of softwareInventory values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of softwareInventory values.
+        """
+        uri = "{}/softwareInventory".format(self.data["uri"])
+        return self._helper.do_get(uri)
+
+    @ensure_resource_client
+    def get_thermal(self):
+        """
+        Gets the list of thermal values currently set on the physical server.
+
+        Returns:
+            dict: Dictionary of thermal values.
+        """
+        uri = "{}/thermal".format(self.data["uri"])
         return self._helper.do_get(uri)
