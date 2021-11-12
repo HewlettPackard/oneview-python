@@ -203,14 +203,14 @@ class Resource(object):
         """Makes a PUT request to update a resource when a request body is required.
 
         Args:
-            data: 
+            data:
                 Data to update the resource.
-            timeout: 
+            timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
-            custom_headers: 
+            custom_headers:
                 Allows to add custom HTTP headers.
-            force: 
+            force:
                 Force the update operation.
 
         Returns:
@@ -497,17 +497,17 @@ class ResourceHelper(object):
         """Makes a PUT request to update a resource when a request body is required.
 
         Args:
-            resource: 
+            resource:
                 Data to update the resource.
-            uri: 
+            uri:
                 Resource uri
-            force: 
+            force:
                 If set to true, the operation completes despite any problems
                 with network connectivity or errors on the resource itself. The default is false.
-            timeout: 
+            timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
-            custom_headers: 
+            custom_headers:
                 Allows to add custom HTTP headers.
 
         Returns:
@@ -1375,8 +1375,7 @@ class ResourceClient(object):
                         '300': {"type": "logical-switch-groupV300"}
                     }
 
-        Returns:
-            Updated resource.
+        Returns: Updated resource.
         """
         if not resource:
             logger.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
