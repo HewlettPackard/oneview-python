@@ -219,3 +219,73 @@ if variant != 'Synergy' and removed_server:
         print("Server removed successfully")
     except HPEOneViewException as e:
         print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about chasis configuration of server.
+        print("Get the settings that describe the chasis configuration of server")
+        server_chasisConf = server.get_chasis_configuration()
+        pprint(server_chasisConf)
+    except HPEOneViewException as e:
+        print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about firmwareInventory configuration of server.
+        print("Get the settings that describe the firmwareInventory configuration of server")
+        server_firmwareConf = server.get_firmware_configuration()
+        pprint(server_firmwareConf)
+    except HPEOneViewException as e:
+        print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about networkAdapters configuration of server.
+        print("Get the settings that describe the networkAdapters configuration of server")
+        server_networkAdaptersConf = server.get_network_adapters_configuration()
+        pprint(server_networkAdaptersConf)
+    except HPEOneViewException as e:
+        print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about powerSupplies configuration of server.
+        print("Get the settings that describe the powerSupplies configuration of server")
+        server_powerSuppliesConf = server.get_power_supplies_configuration()
+        pprint(server_powerSuppliesConf)
+    except HPEOneViewException as e:
+        print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about processors configuration of server.
+        print("Get the settings that describe the processors configuration of server")
+        server_processorsConf = server.get_processors_configuration()
+        pprint(server_processorsConf)
+    except HPEOneViewException as e:
+        print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about softwareInventory configuration of server.
+        print("Get the settings that describe the softwareInventory configuration of server")
+        server_softwareInventoryConf = server.get_software_inventory_configuration()
+        pprint(server_softwareInventoryConf)
+    except HPEOneViewException as e:
+        print(e.msg)
+
+# This operation works from Oneview API Version 3400.
+if oneview_client.api_version >= 3400 and server:
+    try:
+        # Gets the settings that describe about thermal configuration of server.
+        print("Get the settings that describe the thermal configuration of server")
+        server_thermalConf = server.get_thermal_configuration()
+        pprint(server_thermalConf)
+    except HPEOneViewException as e:
+        print(e.msg)

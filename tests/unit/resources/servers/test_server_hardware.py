@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -279,5 +279,61 @@ class ServerHardwareTest(TestCase):
         uri_rest_call = '{}/localStorageV2?ip=172.16.8.4'.format(self.uri)
 
         self._server_hardware.get_local_storage(ip='172.16.8.4')
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_chassis(self, mock_get):
+        uri_rest_call = '{}/chassis'.format(self.uri)
+
+        self._server_hardware.get_chassis()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_firmwareInventory(self, mock_get):
+        uri_rest_call = '{}/firmwareInventory'.format(self.uri)
+
+        self._server_hardware.get_firmware_inventory()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_networkAdapters(self, mock_get):
+        uri_rest_call = '{}/networkAdapters'.format(self.uri)
+
+        self._server_hardware.get_network_adapters()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_powerSupplies(self, mock_get):
+        uri_rest_call = '{}/powerSupplies'.format(self.uri)
+
+        self._server_hardware.get_power_supplies()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_processors(self, mock_get):
+        uri_rest_call = '{}/processors'.format(self.uri)
+
+        self._server_hardware.get_processors()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_thermal(self, mock_get):
+        uri_rest_call = '{}/thermal'.format(self.uri)
+
+        self._server_hardware.get_thermal()
+
+        mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_softwareInventory(self, mock_get):
+        uri_rest_call = '{}/softwareInventory'.format(self.uri)
+
+        self._server_hardware.get_software_inventory()
 
         mock_get.assert_called_once_with(uri_rest_call)
