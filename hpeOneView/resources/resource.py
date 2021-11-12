@@ -166,6 +166,7 @@ class Resource(object):
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
             custom_headers: Allows set specific HTTP headers.
+
         Returns:
             Created resource.
         """
@@ -202,11 +203,15 @@ class Resource(object):
         """Makes a PUT request to update a resource when a request body is required.
 
         Args:
-            data: Data to update the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+            data: 
+                Data to update the resource.
+            timeout: 
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
-            custom_headers: Allows to add custom HTTP headers.
-            force: Force the update operation.
+            custom_headers: 
+                Allows to add custom HTTP headers.
+            force: 
+                Force the update operation.
 
         Returns:
             A dict with the updated resource data.
@@ -451,6 +456,7 @@ class ResourceHelper(object):
             timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
             custom_headers: Allows set specific HTTP headers.
+
         Returns:
             Created resource.
         """
@@ -491,13 +497,18 @@ class ResourceHelper(object):
         """Makes a PUT request to update a resource when a request body is required.
 
         Args:
-            resource: Data to update the resource.
-            uri: Resource uri
-            force: If set to true, the operation completes despite any problems
+            resource: 
+                Data to update the resource.
+            uri: 
+                Resource uri
+            force: 
+                If set to true, the operation completes despite any problems
                 with network connectivity or errors on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+            timeout: 
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
-            custom_headers: Allows to add custom HTTP headers.
+            custom_headers: 
+                Allows to add custom HTTP headers.
 
         Returns:
             A dict with the updated resource data.
@@ -1849,9 +1860,11 @@ def merge_default_values(resource_list, default_values):
 
 def transform_list_to_dict(list):
     """
-        Transforms a list into a dictionary, putting values as keys
+    Transforms a list into a dictionary, putting values as keys
+
     Args:
         id:
+
     Returns:
         dict: dictionary built
     """
