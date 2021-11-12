@@ -30,4 +30,4 @@ setup(name='hpeOneView',
       packages=find_packages(exclude=['examples*', 'tests*']),
       keywords=['oneview', 'hpe'],
       long_description_content_type="text/markdown",
-      install_requires=['future>=0.15.2'])
+      install_requires=['future>=0.15.2', 'docutils<0.18'])

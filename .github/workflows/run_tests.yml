@@ -9,30 +9,6 @@ jobs:
     strategy:
       matrix:
         python_version:
-        - 2.7
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Python ${{ matrix.python_version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python_version }}
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install tox
-
-    - name: Run tox tests
-      run: tox
-
-  Build_and_publish:
-    name: Run tox (${{ matrix.python_version }})
-    strategy:
-      matrix:
-        python_version:
         - 3.6
     runs-on: ubuntu-latest
 
