@@ -65,7 +65,7 @@
   <h1>Source code for hpeOneView.resources.servers.server_hardware</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -390,6 +390,83 @@
         <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">?ip=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
 
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_chassis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of chassis values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of chassis values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/chassis&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_firmware_inventory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of firmwareInventory values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of firmwareInventory values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/firmwareInventory&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_network_adapters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of networkAdapters values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of networkAdapters values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/networkAdapters&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_power_supplies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of powerSupplies values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of powerSupplies values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/powerSupplies&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_processors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of processors values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of processors values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/processors&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_software_inventory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of softwareInventory values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of softwareInventory values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/softwareInventory&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">get_thermal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the list of thermal values currently set on the physical server.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary of thermal values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/thermal&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 </pre></div>
 
