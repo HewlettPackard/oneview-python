@@ -15,6 +15,8 @@
 # limitations under the License.
 ###
 
+import logging
+import traceback
 
 from __future__ import unicode_literals
 from __future__ import print_function
@@ -22,11 +24,9 @@ from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
 
-standard_library.install_aliases()
-
-import logging
-import traceback
 from past.builtins import basestring
+
+standard_library.install_aliases()
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +61,7 @@ class HPEOneViewException(Exception):
        oneview_response (dict): OneView rest response.
    """
 
-    def __init__(self, data, error=None):
+    def __init__(self, data):
         self.msg = None
         self.oneview_response = None
 

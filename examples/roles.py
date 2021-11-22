@@ -17,9 +17,9 @@
 from pprint import pprint
 
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "172.16.102.59",
     "credentials": {
         "userName": "administrator",
@@ -27,19 +27,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-print ('Get role by name:')
-role = oneview_client.roles.get('Infrastructure administrator')
-pprint(role)
+print ('Get ROLE by name:')
+ROLE = oneview_client.ROLEs.get('Infrastructure administrator')
+pprint(ROLE)
 
-print ('\nGet role by URI:')
-role = oneview_client.roles.get('/rest/roles/Infrastructure administrator')
-pprint(role)
+print ('\nGet ROLE by URI:')
+ROLE = oneview_client.ROLEs.get('/rest/ROLEs/Infrastructure administrator')
+pprint(ROLE)
 
-print ('\nGet all roles:')
-roles = oneview_client.roles.get_all()
-pprint(roles)
+print ('\nGet all ROLEs:')
+ROLEs = oneview_client.ROLEs.get_all()
+pprint(ROLEs)

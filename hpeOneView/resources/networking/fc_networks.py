@@ -21,9 +21,9 @@ from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
 
-standard_library.install_aliases()
-
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin)
+
+standard_library.install_aliases()
 
 
 class FcNetworks(ResourcePatchMixin, Resource):
@@ -56,8 +56,8 @@ class FcNetworks(ResourcePatchMixin, Resource):
         Args:
             resource (dict): Specifications to delete in bulk.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does
+                not abort the operation in OneView; it just stops waiting for its completion.
 
         """
         uri = self.URI + '/bulk-delete'

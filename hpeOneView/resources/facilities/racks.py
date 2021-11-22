@@ -20,12 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class Racks(object):
@@ -39,11 +39,11 @@ class Racks(object):
         self._connection = con
         self._client = ResourceClient(con, self.URI)
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort=''):
+    def get_all(self, start=0, count=-1, _filter='', query='', sort=''):
         """
-        Gets a set of rack resources according to the specified parameters. Filters can be used to get a specific set
-        of racks. With no filters specified, the API returns a potentially paginated list of all the racks subject
-        to start/count/sort parameters.
+        Gets a set of rack resources according to the specified parameters. Filters can be used
+        to get a specific set of racks. With no filters specified, the API returns a potentially
+        paginated list of all the racks subject to start/count/sort parameters.
 
         Args:
             start:
@@ -67,7 +67,7 @@ class Racks(object):
         Returns:
             list: List of racks.
         """
-        return self._client.get_all(start, count, filter=filter, sort=sort, query=query)
+        return self._client.get_all(start, count, filter=_filter, sort=sort, query=query)
 
     def get(self, id_or_uri):
         """
@@ -118,11 +118,11 @@ class Racks(object):
         Args:
             resource (dict): Object to remove.
             force:
-                 If set to true, the operation completes despite any problems with network connectivity or errors on the
-                 resource itself. The default is false.
+                 If set to true, the operation completes despite any problems with network
+                 connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView; it just stops waiting for its completion.
 
         Returns: Result status.
 
@@ -131,15 +131,16 @@ class Racks(object):
 
     def add(self, information, timeout=-1):
         """
-        Adds a rack resource based upon the attributes specified. All attributes without default values must be
-        specified in the POST body. The response contains the rack resource as added to the appliance with default and
-        assigned properties expanded. The id and uri are assigned by the management appliance and are used to uniquely
+        Adds a rack resource based upon the attributes specified. All attributes without
+        default values must be specified in the POST body. The response contains the rack
+        resource as added to the appliance with default and assigned properties expanded.
+        The id and uri are assigned by the management appliance and are used to uniquely
         identify this particular resource.
 
         Args:
             information: Rack information
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Added rack.
@@ -149,15 +150,16 @@ class Racks(object):
 
     def update(self, resource, timeout=-1):
         """
-        Updates the specified rack resource. The properties that are omitted (not included as part of the request body)
-        are reset to their respective default values. The id and uuid properties are required and cannot be changed.
-        To update existing racks first perform a get() request to retrieve the current properties, update the desired
-        properties, and then update() the request body containing the new representation of the resource.
+        Updates the specified rack resource. The properties that are omitted (not included as
+        part of the request body) are reset to their respective default values. The id and uuid
+        properties are required and cannot be changed. To update existing racks first perform a
+        get() request to retrieve the current properties, update the desired properties, and then
+        update() the request body containing the new representation of the resource.
 
         Args:
             resource (dict): Object to update.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated rack.

@@ -19,11 +19,11 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
+
 from future import standard_library
 
 standard_library.install_aliases()
-
-from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class NetworkSets(Resource, ResourcePatchMixin):

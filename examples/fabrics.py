@@ -21,7 +21,7 @@ from config_loader import try_load_from_file
 from hpeOneView.exceptions import HPEOneViewException
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -30,48 +30,49 @@ config = {
 }
 
 # To run the get operations by ID, an ID must be defined bellow
-fabric_id = 'a7896ce7-c11d-4658-829d-142bc66a85e4'
+FABRIC_ID = 'a7896ce7-c11d-4658-829d-142bc66a85e4'
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 # Get all fabrics
 print("Get all fabrics")
-fabrics = oneview_client.fabrics.get_all()
-pprint(fabrics)
+FABRICS = ONEVIEW_CLIENT.fabrics.get_all()
+pprint(FABRICS)
 
 # Get all sorting by name descending
 print("\nGet all fabrics sorting by name")
-fabrics_sorted = oneview_client.fabrics.get_all(sort='name:descending')
-pprint(fabrics_sorted)
+FABRICS_SORTED = ONEVIEW_CLIENT.fabrics.get_all(sort='name:descending')
+pprint(FABRICS_SORTED)
 
 # Get by Id
 try:
     print("\nGet a fabric by id")
-    fabrics_byid = oneview_client.fabrics.get(fabric_id)
-    pprint(fabrics_byid)
-except HPEOneViewException as e:
-    print(e.msg)
+    FABRICS_BYID = ONEVIEW_CLIENT.fabrics.get(FABRIC_ID)
+    pprint(FABRICS_BYID)
+except HPEOneViewException as err:
+    print(err.msg)
 
 # Get by name
 print("\nGet a fabrics by name")
-fabric_byname = oneview_client.fabrics.get_by('name', 'DefaultFabric')[0]
-pprint(fabric_byname)
+FABRIC_BYNAME = ONEVIEW_CLIENT.fabrics.get_by('name', 'DefaultFabric')[0]
+pprint(FABRIC_BYNAME)
 
 # These methods are available for API version 300 or later
-if oneview_client.api_version >= 300:
+if ONEVIEW_CLIENT.api_version >= 300:
     # Get reserved vlan ID range for the fabric.
-    print("\nGet reserved vlan ID range for the fabric '%s'." % fabric_byname['name'])
-    vlan_pool = oneview_client.fabrics.get_reserved_vlan_range(fabric_byname['uri'])
-    pprint(vlan_pool)
+    print("\nGet reserved vlan ID range for the fabric '%s'." % FABRIC_BYNAME['name'])
+    VLAN_POOL = ONEVIEW_CLIENT.fabrics.get_reserved_vlan_range(FABRIC_BYNAME['uri'])
+    pprint(VLAN_POOL)
 
     # Update the reserved vlan ID range for the fabric
-    vlan_pool_data = {
+    VLAN_POOL_DATA = {
         "start": 100,
         "length": 100
     }
-    print("\nUpdate the reserved vlan ID range for the fabric '%s'." % fabric_byname['name'])
-    fabric_byname = oneview_client.fabrics.update_reserved_vlan_range(fabric_byname['uri'], vlan_pool_data)
-    pprint(fabric_byname)
+    print("\nUpdate the reserved vlan ID range for the fabric '%s'." % FABRIC_BYNAME['name'])
+    FABRIC_BYNAME = ONEVIEW_CLIENT.fabrics.update_reserved_vlan_range(FABRIC_BYNAME['uri'],\
+	 VLAN_POOL_DATA)
+    pprint(FABRIC_BYNAME)

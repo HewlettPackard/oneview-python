@@ -19,12 +19,12 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+
+from hpeOneView.resources.resource import ResourceClient
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class Connections(object):
@@ -68,7 +68,8 @@ class Connections(object):
         Returns:
             list: A list of connections.
         """
-        return self._client.get_all(start, count, filter=filter, sort=sort, view=view, fields=fields)
+        return self._client.get_all(start, count, filter=filter, sort=sort, view=view,\
+                fields=fields)
 
     def get_by(self, field, value):
         """

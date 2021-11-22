@@ -20,7 +20,7 @@ from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
 # Set api_version to 600, default is 300 and this API has been introduced since API 600.
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,7 +29,7 @@ config = {
     "api_version": 600
 }
 
-options = {
+OPTIONS = {
     "type": "Users",
     "userName": "user1239",
     "securityLevel": "Authentication and privacy",
@@ -39,48 +39,48 @@ options = {
     "privacyPassphrase": "1234567812345678"
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users
+oneview_client = OneViewClient(CONFIG)
+APPLIANCE_DEVICE_SNMP_V3_USERS = oneview_client.appliance_device_snmp_v3_users
 
 # Add appliance device SNMP v3 users
-snmp_v3_user = appliance_device_snmp_v3_users.create(options)
-snmp_v3_user_uri = snmp_v3_user.data['uri']
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.create(OPTIONS)
+SNMP_V3_USER_URI = SNMP_V3_USER.data['uri']
 print("\n## Create appliance SNMP v3 user successfully!")
-pprint(snmp_v3_user.data)
+pprint(SNMP_V3_USER.data)
 
 # Lists the appliance SNMPv3 users
-snmp_v3_users_list = appliance_device_snmp_v3_users.get_all()
+SNMP_V3_USERS_LIST = APPLIANCE_DEVICE_SNMP_V3_USERS.get_all()
 print("\n## Got appliance SNMP v3 users successfully!")
-pprint(snmp_v3_users_list)
+pprint(SNMP_V3_USERS_LIST)
 
 # Get first element of the List
-snmp_v3_users = snmp_v3_users_list.pop()
+SNMP_V3_USERS = SNMP_V3_USERS_LIST.pop()
 
 # Get by name
 print("\n## Find an SNMPv3 Users by username")
-snmp_v3_user = appliance_device_snmp_v3_users.get_by_name(snmp_v3_user.data['userName'])
-pprint(snmp_v3_user.data)
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.get_by_name(SNMP_V3_USER.data['userName'])
+pprint(SNMP_V3_USER.data)
 
 # Get by URI
 print("Find an SNMP v3 user by URI")
-snmp_v3_user = appliance_device_snmp_v3_users.get_by_uri(snmp_v3_user_uri)
-pprint(snmp_v3_user.data)
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.get_by_uri(SNMP_V3_USER_URI)
+pprint(SNMP_V3_USER.data)
 
 # hange appliance device SNMP v3 Users
-snmpv3_data = {"authenticationPassphrase": "newAuthPass", "privacyPassphrase": "8765432187654321"}
-snmp_v3_user = snmp_v3_user.update(snmpv3_data)
+SNMPV3_DATA = {"authenticationPassphrase": "newAuthPass", "privacyPassphrase": "8765432187654321"}
+SNMP_V3_USER = SNMP_V3_USER.update(SNMPV3_DATA)
 print("\n## Update appliance SNMPv3 User successfully!")
-pprint(snmp_v3_user.data)
+pprint(SNMP_V3_USER.data)
 
 # Delete Created Entry
-snmp_v3_user.delete()
+SNMP_V3_USER.delete()
 print("\n## Delete appliance SNMP v3 user successfully!")
 
 # Add appliance device SNMP v3 users for Automation
-snmp_v3_user = appliance_device_snmp_v3_users.create(options)
-snmp_v3_user_uri = snmp_v3_user.data['uri']
+SNMP_V3_USER = APPLIANCE_DEVICE_SNMP_V3_USERS.create(OPTIONS)
+SNMP_V3_USER_URI = SNMP_V3_USER.data['uri']
 print("\n## Created appliance SNMP v3 user")
-pprint(snmp_v3_user.data)
+pprint(SNMP_V3_USER.data)

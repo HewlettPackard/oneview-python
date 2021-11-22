@@ -19,17 +19,19 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
+
+from hpeOneView.resources.resource import Resource
+
 from future import standard_library
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import Resource
-
 
 class HypervisorClusterProfiles(Resource):
     """
-    The cluster profile resource manager REST APIs to create, retrieve, modify and delete hypervisor cluster profiles.
+    The cluster profile resource manager REST APIs to create, retrieve, modify and delete
+    hypervisor cluster profiles.
     """
     URI = '/rest/hypervisor-cluster-profiles'
     DEFAULT_VALUES = {
@@ -74,15 +76,16 @@ class HypervisorClusterProfiles(Resource):
         Return:
              list: List of Hypervisor cluster profiles
         """
-        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, scope_uris=scope_uris)
+        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, \
+                scope_uris=scope_uris)
 
     def create_virtual_switch_layout(self, data=None, timeout=-1):
         """Generates vSwitch layout using information specified in the request body.
 
         Args:
             data: Fields passed to create the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout
+            does not abort the operation in OneView; it just stops waiting for its completion.
 
         Return:
             Created virtual switch layout.
@@ -95,7 +98,8 @@ class HypervisorClusterProfiles(Resource):
 
     def get_compliance_preview(self):
         """
-        Gets the preview of manual and automatic updates required to make the cluster profile consistent with its template.
+        Gets the preview of manual and automatic updates required to make the cluster profile
+        consistent with its template.
 
         Return:
             cluster profile compliance preview
@@ -105,7 +109,8 @@ class HypervisorClusterProfiles(Resource):
 
     def delete(self, timeout=-1, soft_delete=False, force=False):
         """
-        Deletes a hypervisor cluster profile object from the appliance based on Hypervisor Cluster Profile UUID
+        Deletes a hypervisor cluster profile object from the appliance based on Hypervisor Cluster
+        Profile UUID
 
         Args:
             force:

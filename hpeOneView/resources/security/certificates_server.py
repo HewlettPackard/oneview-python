@@ -19,19 +19,20 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
+from hpeOneView.resources.resource import Resource
+from hpeOneView.exceptions import HPEOneViewException
+
 from future import standard_library
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import Resource
-from hpeOneView.exceptions import HPEOneViewException
-
 
 class CertificatesServer(Resource):
     """
     The Certificates Servers resource provides REST APIs for configuration of device or
-    server certificates for the appliance to establish SSL communication with other managed network entities.
+    server certificates for the appliance to establish SSL communication with other
+    managed network entities.
 
     Import, Update and Delete APIs are asynchronous and GET API is synchronous.
 
@@ -50,8 +51,8 @@ class CertificatesServer(Resource):
 
         Args:
             data: Fields passed to create the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Return:
             Created certificate resource.
@@ -61,7 +62,8 @@ class CertificatesServer(Resource):
 
     def get_remote(self, remote_address):
         """
-        Retrieves the device or server certificate and certificate chain of the specified device or server.
+        Retrieves the device or server certificate and certificate chain of the specified device
+        or server.
 
         Args:
             remote_address:

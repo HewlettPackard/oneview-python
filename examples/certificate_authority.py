@@ -20,7 +20,7 @@ from pprint import pprint
 from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -28,30 +28,30 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-certificate_authority = oneview_client.certificate_authority
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+CERTIFICATE_AUTHORITY = ONEVIEW_CLIENT.certificate_authority
 
 # Retrieve Internal CA Certificate
 print("\n\nGet all the internal Certificate Authorities:\n")
-certificates_all = certificate_authority.get_all(cert_details=False)
-print(certificates_all)
+CERTIFICATES_ALL = CERTIFICATE_AUTHORITY.get_all(cert_details=False)
+print(CERTIFICATES_ALL)
 
-# Retrieve Internal CA Certificate with certificate details
-print("\n\nGet the certificate details of internal Certificate Authority:\n")
-certificate = certificate_authority.get_all()
-for cert in certificate:
-    if cert['certificateDetails']['aliasName'] == 'localhostSelfSignedCertificate':
-        print(cert['certificateDetails']['base64Data'])
+# Retrieve Internal CA Certificate with CERTIFICATE details
+print("\n\nGet the CERTIFICATE details of internal Certificate Authority:\n")
+CERTIFICATE = CERTIFICATE_AUTHORITY.get_all()
+for cert in CERTIFICATE:
+    if cert['CERTIFICATEDetails']['aliasName'] == 'localhostSelfSignedCertificate':
+        print(cert['CERTIFICATEDetails']['base64Data'])
 
 # Retrieve Certificate Revocation List
 print("\n\nGetting the Certificate Revocation List:\n")
-certificate_visual_content = certificate_authority.get_crl()
-pprint(certificate_visual_content.data)
+CERTIFICATE_VISUAL_CONTENT = CERTIFICATE_AUTHORITY.get_crl()
+pprint(CERTIFICATE_VISUAL_CONTENT.data)
 
 # Revoke Internal CA Signed Certificate
 print("\n\nRevoking Internal CA Signed Certificate\n")
-# success = certificate_authority.delete("default")
+# success = CERTIFICATE_AUTHORITY.delete("default")
 # print(success)

@@ -19,11 +19,13 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import ResourceClient
 
 
 class MigratableVcDomains(object):
@@ -42,37 +44,38 @@ class MigratableVcDomains(object):
         self._client = ResourceClient(connection, self.URI)
 
     @staticmethod
-    def make_migration_information(oaIpAddress, oaUsername, oaPassword, vcmUsername, vcmPassword,
-                                   iloLicenseType='OneView', enclosureGroupUri=None):
+    def make_migration_information(oa_ip_address, oa_username, oa_password, vcm_username,\
+            vcm_password, ilo_license_type='OneView', enclosure_group_uri=None):
         return {
             'credentials': {
-                'oaIpAddress': oaIpAddress,
-                'oaUsername': oaUsername,
-                'oaPassword': oaPassword,
-                'vcmUsername': vcmUsername,
-                'vcmPassword': vcmPassword,
+                'oaIpAddress': oa_ip_address,
+                'oaUsername': oa_username,
+                'oaPassword': oa_password,
+                'vcmUsername': vcm_username,
+                'vcmPassword': vcm_password,
                 'type': 'EnclosureCredentials'
             },
-            'iloLicenseType': iloLicenseType,
-            'enclosureGroupUri': enclosureGroupUri,
+            'iloLicenseType': ilo_license_type,
+            'enclosureGroupUri': enclosure_group_uri,
             'type': 'migratable-vc-domains',
             'category': 'migratable-vc-domains'
         }
 
-    def test_compatibility(self, migrationInformation, timeout=-1):
+    def test_compatibility(self, migration_information, timeout=-1):
         """
         Creates a migration report for an enclosure with a Virtual Connect domain.
 
         Args:
-           migrationInformation: A dict specifying the enclosure, OA username, OA password, VCM username, and VCM
-               password among other things.  Use make_migration_information to easily create this dict.
-           timeout: Timeout in seconds.  Waits for task completion by default.  The timeout does not abort the task in
-               OneView; just stops waiting for its completion.
+           migrationInformation: A dict specifying the enclosure, OA username, OA password,
+           VCM username, and VCM password among other things.  Use make_migration_information
+           to easily create this dict.
+           timeout: Timeout in seconds.  Waits for task completion by default.  The timeout does
+           not abort the task in OneView; just stops waiting for its completion.
 
         Returns: dict: a migration report.
         """
 
-        return self._client.create(migrationInformation, timeout=timeout)
+        return self._client.create(migration_information, timeout=timeout)
 
     def get_migration_report(self, id_or_uri):
         """
@@ -92,24 +95,24 @@ class MigratableVcDomains(object):
 
         Args:
             id_or_uri: ID or URI of the migration report.
-            timeout: Timeout in seconds.  Waits for task completion by default.  The timeout does not abort the task in
-                OneView; just stops waiting for its completion.
+            timeout: Timeout in seconds.  Waits for task completion by default.  The timeout does
+            not abort the task in OneView; just stops waiting for its completion.
 
         Returns: dict: a migration report.
         """
 
         # create the special payload to tell the VC Migration Manager to migrate the VC domain
-        migrationInformation = {
+        migration_information = {
             'migrationState': 'Migrated',
             'type': 'migratable-vc-domains',
             'category': 'migratable-vc-domains'
         }
 
-        # call build_uri manually since .update(...) doesn't do it and the URI is not to be included in the body when
-        # requesting a migration
+        # call build_uri manually since .update(...) doesn't do it and the URI is not to be
+        # included in the body when requesting a migration
         complete_uri = self._client.build_uri(id_or_uri)
 
-        return self._client.update(migrationInformation, uri=complete_uri, timeout=timeout)
+        return self._client.update(migration_information, uri=complete_uri, timeout=timeout)
 
     def delete(self, id_or_uri, timeout=-1):
         """
@@ -117,8 +120,8 @@ class MigratableVcDomains(object):
 
         Args:
             id_or_uri: ID or URI of the migration report.
-            timeout: Timeout in seconds.  Waits for task completion by default.  The timeout does not abort the task in
-                OneView; just stops waiting for its completion.
+            timeout: Timeout in seconds.  Waits for task completion by default.  The timeout does
+            not abort the task in OneView; just stops waiting for its completion.
 
         Returns: bool: Indicates if the migration report was successfully deleted.
         """

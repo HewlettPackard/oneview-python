@@ -19,7 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,16 +27,16 @@ config = {
     }
 }
 
-uri = '/rest/appliance/proxy-config'
+URI = '/rest/appliance/PROXY-CONFIG'
 
-# Try load config from a file
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-proxy = oneview_client.appliance_proxy_configuration
+# Try load CONFIG from a file
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+PROXY = oneview_client.appliance_proxy_configuration
 
-# Configure proxy with HTTP protocol
-print("\nCreating proxy with HTTP:\n")
-proxy_config = {
+# Configure PROXY with HTTP protocol
+print("\nCreating PROXY with HTTP:\n")
+PROXY_CONFIG = {
     "server": "<server_ip>",
     "port": 443,
     "username": "<username>",
@@ -44,16 +44,16 @@ proxy_config = {
     "communicationProtocol": "HTTP"
 }
 
-new_proxy = proxy.create(proxy_config)
-pprint(new_proxy.data)
+NEW_PROXY = PROXY.create(PROXY_CONFIG)
+pprint(NEW_PROXY.data)
 print("Proxy created successfully\n")
 
-# Get proxy configuration from appliance
-print("\nGet proxy configuration from appliance:\n ")
-proxy_info = proxy.get_by_proxy(proxy_config["server"])
-pprint(proxy_info.data)
+# Get PROXY CONFIGuration from appliance
+print("\nGet PROXY CONFIGuration from appliance:\n ")
+PROXY_INFO = PROXY.get_by_proxy(PROXY_CONFIG["server"])
+pprint(PROXY_INFO.data)
 
-# Delete proxy configured on the appliance
+# Delete PROXY CONFIGured on the appliance
 print("\nDelete Proxy")
-proxy.delete()
+PROXY.delete()
 print("Proxy deleted successfully")

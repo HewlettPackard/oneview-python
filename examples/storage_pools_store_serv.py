@@ -16,9 +16,9 @@
 ###
 
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -26,73 +26,73 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Find or add storage system
 print("Find or add storage system")
-s_systems = oneview_client.storage_systems.get_all()
-storage_system_added = True
-if s_systems:
-    s_system = s_systems[0]
-    if s_system['deviceSpecificAttributes']['managedPools']:
-        storage_system_added = False
+S_SYSTEMS = oneview_client.storage_systems.get_all()
+STORAGE_SYSTEM_ADDED = True
+if S_SYSTEMS:
+    S_SYSTEM = S_SYSTEMS[0]
+    if S_SYSTEM['deviceSpecificAttributes']['managedPools']:
+        STORAGE_SYSTEM_ADDED = False
         print("   Found storage system '{}' at uri: {}".format(
-            s_system['name'], s_system['uri']))
-    elif s_system['hostname'] == config['storage_system_hostname']:
-        oneview_client.storage_systems.remove(s_system, force=True)
+            S_SYSTEM['name'], S_SYSTEM['uri']))
+    elif S_SYSTEM['hostname'] == CONFIG['storage_system_hostname']:
+        oneview_client.storage_systems.remove(S_SYSTEM, force=True)
         print("   Removing Storage System since it has no storage pools managed")
 
 
-if storage_system_added:
-    options = {
-        "hostname": config['storage_system_hostname'],
-        "username": config['storage_system_username'],
-        "password": config['storage_system_password'],
-        "family": config['storage_system_family']
+if STORAGE_SYSTEM_ADDED:
+    OPTIONS = {
+        "hostname": CONFIG['storage_system_hostname'],
+        "username": CONFIG['storage_system_username'],
+        "password": CONFIG['storage_system_password'],
+        "family": CONFIG['storage_system_family']
     }
-    s_system = oneview_client.storage_systems.add(options)
+    S_SYSTEM = oneview_client.storage_systems.add(OPTIONS)
     print("   Added storage system '{}' at uri: {}".format(
-        s_system['name'], s_system['uri']))
-    s_system['deviceSpecificAttributes']['managedDomain'] = s_system[
+        S_SYSTEM['name'], S_SYSTEM['uri']))
+    S_SYSTEM['deviceSpecificAttributes']['managedDomain'] = S_SYSTEM[
         'deviceSpecificAttributes']['discoveredDomains'][0]
     print("   Discovering Storage Pools...")
-    s_system['deviceSpecificAttributes']['managedPools'] = []
-    for pool in s_system['deviceSpecificAttributes']['discoveredPools']:
-        if pool['domain'] == s_system['deviceSpecificAttributes']['managedDomain']:
-            s_system['deviceSpecificAttributes']['managedPools'].append(pool)
-            s_system['deviceSpecificAttributes']['discoveredPools'].remove(pool)
+    S_SYSTEM['deviceSpecificAttributes']['managedPools'] = []
+    for pool in S_SYSTEM['deviceSpecificAttributes']['discoveredPools']:
+        if pool['domain'] == S_SYSTEM['deviceSpecificAttributes']['managedDomain']:
+            S_SYSTEM['deviceSpecificAttributes']['managedPools'].append(pool)
+            S_SYSTEM['deviceSpecificAttributes']['discoveredPools'].remove(pool)
             print("        Discovered '{}' storage pool").format(pool['name'])
-    s_system = oneview_client.storage_systems.update(s_system)
+    S_SYSTEM = oneview_client.storage_systems.update(S_SYSTEM)
     print("   Added the discovered pools for management")
-    storage_system_added = True
+    STORAGE_SYSTEM_ADDED = True
     print
 
 
 # Get all managed storage pools
 print("\nGet all storage pools")
-storage_pools_all = oneview_client.storage_pools.get_all()
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = oneview_client.storage_pools.get_all()
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' state is {}".format(pool['name'], pool['state']))
 
 # Get all managed storage pools
 print("\nGet all managed storage pools")
-storage_pools_all = oneview_client.storage_pools.get_all(filter='isManaged=True')
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = oneview_client.storage_pools.get_all(filter='isManaged=True')
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' state is {}".format(pool['name'], pool['state']))
 
 # Remove first storage pool
-if storage_pools_all:
-    remove_pool = storage_pools_all[0]
-    print("\nRemove '{}' storage pool from management").format(remove_pool['name'])
-    remove_pool['isManaged'] = False
-    oneview_client.storage_pools.update(remove_pool)
+if STORAGE_POOLS_ALL:
+    REMOVE_POOL = STORAGE_POOLS_ALL[0]
+    print("\nRemove '{}' storage pool from management").format(REMOVE_POOL['name'])
+    REMOVE_POOL['isManaged'] = False
+    oneview_client.storage_pools.update(REMOVE_POOL)
     print("   Done.")
 
 # Get all managed storage pools
 print("\nGet all unmanaged storage pools")
-storage_pools_all = oneview_client.storage_pools.get_all(filter='isManaged=False')
-for pool in storage_pools_all:
+STORAGE_POOLS_ALL = oneview_client.storage_pools.get_all(filter='isManaged=False')
+for pool in STORAGE_POOLS_ALL:
     print("   '{}' state is {}".format(pool['name'], pool['state']))

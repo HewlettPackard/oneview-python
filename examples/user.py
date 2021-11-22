@@ -17,35 +17,35 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
-        "userName": "",
+        "USERName": "",
         "password": ""
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-users = oneview_client.users
-scopes = oneview_client.scopes
+oneview_client = OneViewClient(CONFIG)
+USERS = oneview_client.USERS
+SCOPES = oneview_client.SCOPES
 
-# Get the scope Uri
-scope_options = {
+# Get the SCOPE Uri
+SCOPE_OPTIONS = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-scope = scopes.get_by_name(scope_options['name'])
-if not scope:
-    scope = scopes.create(scope_options)
-scope_uri = scope.data['uri']
+SCOPE = SCOPES.get_by_name(SCOPE_OPTIONS['name'])
+if not SCOPE:
+    SCOPE = SCOPES.create(SCOPE_OPTIONS)
+SCOPE_URI = SCOPE.DATA['uri']
 
-options = {
+OPTIONS = {
     'emailAddress': 'testUser@example.com',
     'enabled': 'true',
     'fullName': 'testUser101',
@@ -54,15 +54,15 @@ options = {
     'password': 'myPass1234',
     'permissions': [
         {
-            'roleName': 'Infrastructure administrator',
-            'scopeUri': scope_uri
+            'ROLEName': 'Infrastructure administrator',
+            'SCOPEUri': SCOPE_URI
         }
     ],
     'type': 'UserAndPermissions',
-    'userName': 'testUser'
+    'USERName': 'testUser'
 }
 
-multi_users = [
+MULTI_USERS = [
     {
         'emailAddress': 'testUser@example.com',
         'enabled': 'true',
@@ -72,11 +72,11 @@ multi_users = [
         'password': 'myPass1234',
         'permissions': [
             {
-                'roleName': 'Read only',
+                'ROLEName': 'Read only',
             }
         ],
         'type': 'UserAndPermissions',
-        'userName': 'testUser1'
+        'USERName': 'testUser1'
     },
     {
         'emailAddress': 'testUser@example.com',
@@ -87,112 +87,113 @@ multi_users = [
         'password': 'myPass1234',
         'permissions': [
             {
-                'roleName': 'Read only',
+                'ROLEName': 'Read only',
             }
         ],
         'type': 'UserAndPermissions',
-        'userName': 'testUser2'
+        'USERName': 'testUser2'
     }
 ]
 
 # Create a User
-user = users.create(options)
-print("Created user '%s' successfully.\n  uri = '%s'\n" % (user.data['userName'], user.data['uri']))
-print(user.data)
+USER = USERS.create(OPTIONS)
+print("Created USER '%s' successfully.\n  uri = '%s'\n" % (USER.DATA['USERName'], USER.DATA['uri']))
+print(USER.DATA)
 
 # Create a Multiple Users
-multi_user = users.create_multiple_user(multi_users)
-print("\nCreated multiple users successfully.\n")
-print(multi_user.data)
+MULTI_USER = USERS.create_multiple_USER(MULTI_USERS)
+print("\nCreated multiple USERS successfully.\n")
+print(MULTI_USER.DATA)
 
-# Updata the user
-data = user.data.copy()
-data["password"] = "change1234"
-updated_user = user.update(data)
-print("\nThe users is updated successfully....\n")
-print(updated_user.data)
+# UpDATA the USER
+DATA = USER.DATA.copy()
+DATA["password"] = "change1234"
+UPDATED_USER = USER.update(DATA)
+print("\nThe USERS is updated successfully....\n")
+print(UPDATED_USER.DATA)
 
-# Add role to userName
-role_options = [
+# Add ROLE to USERName
+ROLE_OPTIONS = [
     {
-        "roleName": "Backup administrator"
+        "ROLEName": "Backup administrator"
     }
 ]
-role = users.add_role_to_userName("testUser1", role_options)
-print("\nSuccessfully added new role to existing one....\n")
-print(role.data)
+ROLE = USERS.add_ROLE_to_USERName("testUser1", ROLE_OPTIONS)
+print("\nSuccessfully added new ROLE to existing one....\n")
+print(ROLE.DATA)
 
-# Update role to userName (it will replace entrie role with specified role)
-role_options = [
+# Update ROLE to USERName (it will replace entrie ROLE with specified ROLE)
+ROLE_OPTIONS = [
     {
-        "roleName": "Scope administrator"
+        "ROLEName": "Scope administrator"
     },
     {
-        "roleName": "Backup administrator"
+        "ROLEName": "Backup administrator"
     },
     {
-        "roleName": "Infrastructure administrator"
+        "ROLEName": "Infrastructure administrator"
     }
 ]
 
-role = users.update_role_to_userName("testUser1", role_options)
-print("\nSuccessfully updated the role to the username....\n")
-print(role)
+ROLE = USERS.update_ROLE_to_USERName("testUser1", ROLE_OPTIONS)
+print("\nSuccessfully updated the ROLE to the USERname....\n")
+print(ROLE)
 
-# Remove mulitple role from the user
-# If a single role is to be removed, just specifiy ["role_name"] or "role_name" instead of list.
-role = users.remove_role_from_username("testUser1", ["Scope administrator", "Backup administrator"])
-print("\nRemoved role from the user successfully...\n")
-print(role)
+# Remove mulitple ROLE from the USER
+# If a single ROLE is to be removed, just specifiy ["ROLE_name"] or "ROLE_name" instead of list.
+ROLE = USERS.remove_ROLE_from_USERname("testUser1", ["Scope administrator", "Backup administrator"])
+print("\nRemoved ROLE from the USER successfully...\n")
+print(ROLE)
 
-# Get user by name
-user = users.get_by_userName(options['userName'])
-if user:
-    print("\nFound user by uri = '%s'\n" % user.data['uri'])
+# Get USER by name
+USER = USERS.get_by_USERName(OPTIONS['USERName'])
+if USER:
+    print("\nFound USER by uri = '%s'\n" % USER.DATA['uri'])
 
-# Get all users
-print("\nGet all users")
-all_users = users.get_all()
-pprint(all_users)
+# Get all USERS
+print("\nGet all USERS")
+ALL_USERS = USERS.get_all()
+pprint(ALL_USERS)
 
 # Validates if full name is already in use
-bol = users.validate_full_name(options['fullName'])
-print("Is full name already in use? %s" % (bol.data))
+BOL = USERS.validate_full_name(OPTIONS['fullName'])
+print("Is full name already in use? %s" % (BOL.DATA))
 
-# Validates if user name is already in use
-bol = users.validate_user_name(options['userName'])
-print("Is user name already in use? %s" % (bol.data))
+# Validates if USER name is already in use
+BOL = USERS.validate_USER_NAME(OPTIONS['USERName'])
+print("Is USER name already in use? %s" % (BOL.DATA))
 
-# Get the user's role list
-rolelist = users.get_role_associated_with_userName("testUser")
-print("\n>> Got all the roles for the users\n")
-print(rolelist)
+# Get the USER's ROLE list
+ROLELIST = USERS.get_ROLE_associated_with_USERName("testUser")
+print("\n>> Got all the ROLEs for the USERS\n")
+print(ROLELIST)
 
-# Get by role
-role = users.get_user_by_role("Infrastructure administrator")
-print("\n>> Got the users by role name\n")
-print(role)
+# Get by ROLE
+ROLE = USERS.get_USER_by_ROLE("Infrastructure administrator")
+print("\n>> Got the USERS by ROLE name\n")
+print(ROLE)
 
-# Remove single user
-user_to_delete = users.get_by_userName("testUser")
-if user_to_delete:
-    user_to_delete.delete()
-    print("\nSuccessfully deleted the testuser2 user.....\n")
+# Remove single USER
+USER_TO_DELETE = USERS.get_by_USERName("testUser")
+if USER_TO_DELETE:
+    USER_TO_DELETE.delete()
+    print("\nSuccessfully deleted the testUSER2 USER.....\n")
 
-# Remove Multiple users
-user_name = ["testUser1", "testUser2"]
-users.delete_multiple_user(user_name)
-print("\nDeleted multiple users successfully...\n")
+# Remove Multiple USERS
+USER_NAME = ["testUser1", "testUser2"]
+USERS.delete_multiple_USER(USER_NAME)
+print("\nDeleted multiple USERS successfully...\n")
 
-# NOTE: The below script changes the default administrator's password during first-time appliance setup only.
+# NOTE: The below script changes the default administrator's password during first-time appliance
+# setup only.
 '''
 # Change Password only during the initial setup of the appliance.
 change_password_request = {
     "oldPassword": "mypass1234",
     "newPassword": "admin1234",
-    "userName": "testUser3"
+    "USERName": "testUser3"
 }
-changePasswordResponse = users.change_password(change_password_request)
+changePasswordResponse = USERS.change_password(change_password_request)
 print("Changed Password successfully")
 print(changePasswordResponse)
 '''

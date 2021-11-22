@@ -18,9 +18,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,37 +28,37 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-server_hardware_types = oneview_client.server_hardware_types
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+SERVER_HARDWARE_TYPES = oneview_client.SERVER_HARDWARE_TYPES
 
 # Get the first 10 records, sorting by name descending
 print("\nGet the first 10 server hardware types, sorting by name descending, filtering by name")
-server_hardware_types_all = server_hardware_types.get_all(0, 10, sort='name:descending')
-for sht in server_hardware_types_all:
+SERVER_HARDWARE_TYPES_ALL = SERVER_HARDWARE_TYPES.get_all(0, 10, sort='name:descending')
+for sht in SERVER_HARDWARE_TYPES_ALL:
     print(" - {}".format(sht['name']))
 
 # Get all, with defaults
 print("\nGet all server hardware types")
-server_hardware_types_all = server_hardware_types.get_all()
-for sht in server_hardware_types_all:
+SERVER_HARDWARE_TYPES_ALL = SERVER_HARDWARE_TYPES.get_all()
+for sht in SERVER_HARDWARE_TYPES_ALL:
     print(" - {}".format(sht['name']))
 
 # Get by uri
 print("\nGet a Server Hardware Type by uri")
-server_hardware_type_by_uri = server_hardware_types.get_by_uri(server_hardware_types_all[0]["uri"])
-pprint(server_hardware_type_by_uri.data, depth=2)
+SERVER_HARDWARE_TYPE_BY_URI = SERVER_HARDWARE_TYPES.get_by_uri(SERVER_HARDWARE_TYPES_ALL[0]["uri"])
+pprint(SERVER_HARDWARE_TYPE_BY_URI.data, depth=2)
 
-# Get by name and update
+# Get by name and UPDATE
 print("\nGet a Server Hardware Type by name")
-server_hardware_type = server_hardware_types.get_by_name("SY 480 Gen9 2")
-pprint(server_hardware_type.data, depth=2)
-update = {
+SERVER_HARDWARE_TYPE = SERVER_HARDWARE_TYPES.get_by_name("SY 480 Gen9 2")
+pprint(SERVER_HARDWARE_TYPE.data, depth=2)
+UPDATE = {
     'description': "Updated Description"
 }
-if server_hardware_type:
-    server_hardware_type.update(update)
-    print("\nServer Hardware type '{}' updated: \n 'description': '{}'".format(
-        server_hardware_type.data['name'],
-        server_hardware_type.data['description']))
+if SERVER_HARDWARE_TYPE:
+    SERVER_HARDWARE_TYPE.UPDATE(UPDATE)
+    print("\nServer Hardware type '{}' UPDATEd: \n 'description': '{}'".format(
+        SERVER_HARDWARE_TYPE.data['name'],
+        SERVER_HARDWARE_TYPE.data['description']))

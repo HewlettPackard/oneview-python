@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,12 +27,12 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-# Get the current version and the minimum version
-print("Get the current version and the minimum version")
-version = oneview_client.versions.get_version()
-pprint(version)
+# Get the current VERSION and the minimum VERSION
+print("Get the current VERSION and the minimum VERSION")
+VERSION = oneview_client.VERSIONs.get_VERSION()
+pprint(VERSION)

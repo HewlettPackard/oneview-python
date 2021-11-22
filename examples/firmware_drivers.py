@@ -21,7 +21,7 @@ from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,61 +29,63 @@ config = {
     }
 }
 
-# NOTE: This example requires a SPP and a hotfix inside the appliance.
+# NOTE: This example requires a SPP and a HOTFIX inside the appliance.
 
-options = {
+OPTIONS = {
     "customBaselineName": "Service Pack for Synergy",
 }
-version = "SY-2021.02.01"
+VERSION = "SY-2021.02.01"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-firmware_drivers = oneview_client.firmware_drivers
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+FIRMWARE_DRIVERS = ONEVIEW_CLIENT.firmware_drivers
 
 # Get all firmwares
 print("\nGet list of firmwares managed by the appliance.")
-all_firmwares = firmware_drivers.get_all()
-for firmware in all_firmwares:
+ALL_FIRMWARES = FIRMWARE_DRIVERS.get_all()
+for firmware in ALL_FIRMWARES:
     print('  - {}'.format(firmware['name']))
 
 # Get firmware driver schema
-firmware_schema = firmware_drivers.get_schema()
-pprint(firmware_schema)
+FIRMWARE_SCHEMA = FIRMWARE_DRIVERS.get_schema()
+pprint(FIRMWARE_SCHEMA)
 
-# Get a firmware by name (version is optional)
+# Get a firmware by name (VERSION is optional)
 print("\nGet firmware by name.")
-if all_firmwares:
-    firmware_driver = firmware_drivers.get_by_name(options["customBaselineName"], version)
+if ALL_FIRMWARES:
+    FIRMWARE_DRIVER = FIRMWARE_DRIVERS.get_by_name(OPTIONS["customBaselineName"], VERSION)
 
-if firmware_driver:
-    print("\nFound a firmware by name: '{}'.\n  uri = '{}'".format(firmware_driver.data['name'], firmware_driver.data['uri']))
+if FIRMWARE_DRIVER:
+    print("\nFound a firmware by name: '{}'.\n  uri = '{}'".format(FIRMWARE_DRIVER.data['name'],\
+	 FIRMWARE_DRIVER.data['uri']))
 else:
-    # Getting a SPP and a hotfix from within the Appliance to use in the custom SPP creation.
+    # Getting a SPP and a HOTFIX from within the Appliance to use in the custom SPP creation.
     try:
-        spp = firmware_drivers.get_by('bundleType', "ServicePack")[0]
-        options['baselineUri'] = spp['uri']
-        print("\nSPP named '{}' found within appliance. Saving for custom SPP.".format(spp['name']))
+        SPP = FIRMWARE_DRIVERS.get_by('bundleType', "ServicePack")[0]
+        OPTIONS['baselineUri'] = SPP['uri']
+        print("\nSPP named '{}' found within appliance. Saving for custom SPP.".format(SPP['name']))
     except IndexError:
         raise HPEOneViewException('No available SPPs found within appliance. Stopping run.')
 
     try:
-        hotfix = firmware_drivers.get_by('bundleType', "Hotfix")[0]
-        options['hotfixUris'] = [hotfix['uri']]
-        print("\nHotfix named '{}' found within appliance. Saving for custom SPP.".format(hotfix['name']))
+        HOTFIX = FIRMWARE_DRIVERS.get_by('bundleType', "Hotfix")[0]
+        OPTIONS['HOTFIXUris'] = [HOTFIX['uri']]
+        print("\nHotfix named '{}' found within appliance. Saving for custom\
+	 SPP.".format(HOTFIX['name']))
     except IndexError:
-        raise HPEOneViewException('No available hotfixes found within appliance. Stopping run.')
+        raise HPEOneViewException('No available HOTFIXes found within appliance. Stopping run.')
 
     # Create the custom SPP
-    print("\nCreate the custom SPP '{}'".format(options['customBaselineName']))
-    firmware_driver = firmware_drivers.create(options)
-    print("\nCustom SPP '%s' created successfully" % options['customBaselineName'])
+    print("\nCreate the custom SPP '{}'".format(OPTIONS['customBaselineName']))
+    FIRMWARE_DRIVER = FIRMWARE_DRIVERS.create(OPTIONS)
+    print("\nCustom SPP '%s' created successfully" % OPTIONS['customBaselineName'])
 
 # Get by Uri
 print("\nGet firmware resource by URI.")
-firmware_data = firmware_drivers.get_by_uri(firmware_driver.data['uri'])
-pprint(firmware_data.data)
+FIRMWARE_DATA = FIRMWARE_DRIVERS.get_by_uri(FIRMWARE_DRIVER.data['uri'])
+pprint(FIRMWARE_DATA.data)
 
 # Remove the firmware driver
-firmware_driver.delete()
-print("\nCustom SPP '{}' deleted successfully".format(firmware_driver.data['name']))
+FIRMWARE_DRIVER.delete()
+print("\nCustom SPP '{}' deleted successfully".format(FIRMWARE_DRIVER.data['name']))

@@ -17,9 +17,9 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,13 +27,13 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 print("\n Querying system for login details\n")
-login_detail = oneview_client.login_details.get_login_details()
+LOGIN_DETAIL = oneview_client.LOGIN_DETAILs.get_LOGIN_DETAILs()
 
 print("\n Login details are: \n")
-pprint(login_detail)
+pprint(LOGIN_DETAIL)

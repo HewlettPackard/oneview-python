@@ -19,7 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,25 +27,26 @@ config = {
     }
 }
 
-attribute = 'Model'
-category = 'server-hardware'
+ATTRIBUTE = 'Model'
+CATEGORY = 'server-hardware'
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-index_resource_obj = oneview_client.index_resources
-server_hardware_obj = oneview_client.server_hardware
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+INDEX_RESOURCE_OBJ = ONEVIEW_CLIENT.index_resources
+SERVER_HARDWARE_OBJ = ONEVIEW_CLIENT.server_hardware
 
 print('\nGetting all index resources:')
-index_resources = index_resource_obj.get_all()
-pprint(index_resources)
+INDEX_RESOURCES = INDEX_RESOURCE_OBJ.get_all()
+pprint(INDEX_RESOURCES)
 
-sh = server_hardware_obj.get_all()[0]
-print('\nGetting index resource for server hardware with uri "{0}":'.format(sh['uri']))
-index_resource = index_resource_obj.get_by_uri(sh['uri'])
-pprint(index_resource.data)
+SH = SERVER_HARDWARE_OBJ.get_all()[0]
+print('\nGetting index resource for server hardware with uri "{0}":'.format(SH['uri']))
+INDEX_RESOURCE = INDEX_RESOURCE_OBJ.get_by_uri(SH['uri'])
+pprint(INDEX_RESOURCE.data)
 
-print('\nGetting aggregated index resources with attribute: "{0}" and category: "{1}"'.format(attribute, category))
-index_resources_aggr = index_resource_obj.get_aggregated(attribute, category)
-pprint(index_resources_aggr.data)
+print('\nGetting aggregated index resources with ATTRIBUTE: "{0}" and CATEGORY:\
+	 "{1}"'.format(ATTRIBUTE, CATEGORY))
+INDEX_RESOURCES_AGGR = INDEX_RESOURCE_OBJ.get_aggregated(ATTRIBUTE, CATEGORY)
+pprint(INDEX_RESOURCES_AGGR.data)

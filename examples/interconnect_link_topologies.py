@@ -22,7 +22,7 @@ from config_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "administrator",
@@ -30,38 +30,40 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 # Get all interconnect link topologies
 print("Get all interconnect link topologies")
-interconnect_link_topologies = oneview_client.interconnect_link_topologies.get_all()
-pprint(interconnect_link_topologies)
+INTERCONNECT_LINK_TOPOLOGIES = ONEVIEW_CLIENT.interconnect_link_topologies.get_all()
+pprint(INTERCONNECT_LINK_TOPOLOGIES)
 
 # Get all sorting by name descending
 print("Get all interconnect link topologies sorting by name")
-interconnect_link_topologies_sorted = oneview_client.interconnect_link_topologies.get_all(sort='name:descending')
-pprint(interconnect_link_topologies_sorted)
+INTERCONNECT_LINK_TOPOLOGIES_SORTED = ONEVIEW_CLIENT.interconnect_link_topologies.get_all\
+        (sort='name:descending')
+pprint(INTERCONNECT_LINK_TOPOLOGIES_SORTED)
 
 # Get by uri
-if interconnect_link_topologies:
+if INTERCONNECT_LINK_TOPOLOGIES:
     print("Get an interconnect link topology by uri")
-    ilt_uri = interconnect_link_topologies[0]['uri']
-    ilt_byuri = oneview_client.interconnect_link_topologies.get(ilt_uri)
-    print("   Found '{name}' at uri: {uri}".format(**ilt_byuri))
+    ILT_URI = INTERCONNECT_LINK_TOPOLOGIES[0]['uri']
+    ILT_BYURI = ONEVIEW_CLIENT.interconnect_link_topologies.get(ILT_URI)
+    print("   Found '{name}' at uri: {uri}".format(**ILT_BYURI))
 
 # Get by Id
-if interconnect_link_topologies:
+if INTERCONNECT_LINK_TOPOLOGIES:
     print("Get an interconnect link topology by id")
-    ilt_id = re.sub("/rest/interconnect-link-topologies/", '', interconnect_link_topologies[0]['uri'])
-    ilt_byid = oneview_client.interconnect_link_topologies.get(ilt_id)
-    print("   Found '{name}' at uri: {uri}".format(**ilt_byid))
+    ILT_ID = re.sub("/rest/interconnect-link-topologies/", '', INTERCONNECT_LINK_TOPOLOGIES\
+            [0]['uri'])
+    ILT_BYID = ONEVIEW_CLIENT.interconnect_link_topologies.get(ILT_ID)
+    print("   Found '{name}' at uri: {uri}".format(**ILT_BYID))
 
 # Get by name
-if interconnect_link_topologies:
+if INTERCONNECT_LINK_TOPOLOGIES:
     print("Get an interconnect link topology by name")
-    ilt_byname = oneview_client.interconnect_link_topologies.get_by(
-        'name', interconnect_link_topologies[0]['name'])[0]
-    print("   Found '{name}' at uri: {uri}".format(**ilt_byname))
+    ILT_BYNAME = ONEVIEW_CLIENT.interconnect_link_topologies.get_by(
+        'name', INTERCONNECT_LINK_TOPOLOGIES[0]['name'])[0]
+    print("   Found '{name}' at uri: {uri}".format(**ILT_BYNAME))

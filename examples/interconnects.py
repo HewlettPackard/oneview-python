@@ -18,9 +18,9 @@
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<ov_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,172 +28,173 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-interconnects = oneview_client.interconnects
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+INTERCONNECTS = oneview_client.INTERCONNECTS
 
-# To run this example you must define an interconnect, otherwise, it will get the first one automatically
-interconnect_uri = interconnects.get_all(0, 1)[0]['uri']
-interconnect_id = interconnect_uri.replace('/rest/interconnects/', '')
-interconnect = interconnects.get_by_uri(interconnect_uri)
+# To run this example you must define an INTERCONNECT, otherwise, it will get the first one
+# automatically
+INTERCONNECT_URI = INTERCONNECTS.get_all(0, 1)[0]['uri']
+INTERCONNECT_ID = INTERCONNECT_URI.replace('/rest/INTERCONNECTS/', '')
+INTERCONNECT = INTERCONNECTS.get_by_uri(INTERCONNECT_URI)
 
-port_d1 = {
+PORT_D1 = {
     "type": "port",
     "portName": "d1",
     "bayNumber": 1,
     "enabled": False,
-    "portId": "{0}:d1".format(interconnect_id)
+    "portId": "{0}:d1".format(INTERCONNECT_ID)
 }
 
-port_d2 = {
+PORT_D2 = {
     "portName": "d2",
     "enabled": False,
-    "portId": "{0}:d2".format(interconnect_id)
+    "portId": "{0}:d2".format(INTERCONNECT_ID)
 }
 
-ports_for_update = [port_d1, port_d2]
+PORTS_FOR_UPDATE = [PORT_D1, PORT_D2]
 
 # Get the first two Interconnects
-print("\nGet the first two interconnects")
-interconnects_all = interconnects.get_all(0, 2)
-pprint(interconnects_all)
+print("\nGet the first two INTERCONNECTS")
+INTERCONNECTS_ALL = INTERCONNECTS.get_all(0, 2)
+pprint(INTERCONNECTS_ALL)
 
 # Get Interconnects Statistics
-print("\nGet the interconnect statistics")
-interconnect_statistics = interconnect.get_statistics()
-if interconnect_statistics:
-    pprint(interconnect_statistics['moduleStatistics'])
+print("\nGet the INTERCONNECT STATISTICS")
+INTERCONNECT_STATISTICS = INTERCONNECT.get_STATISTICS()
+if INTERCONNECT_STATISTICS:
+    pprint(INTERCONNECT_STATISTICS['moduleStatistics'])
 else:
-    pprint("\nThere are no statistics for the interconnect {0}".format(interconnect.data["name"]))
+    pprint("\nThere are no STATISTICS for the INTERCONNECT {0}".format(INTERCONNECT.data["name"]))
 
 # Get the Statistics from a port of an Interconnects
-print("\nGet the port statistics for downlink port 1 on the interconnect "
+print("\nGet the port STATISTICS for downlink port 1 on the INTERCONNECT "
       "that matches the specified ID")
 try:
-    statistics = interconnect.get_statistics(port_d1["portName"])
-    pprint(statistics)
+    STATISTICS = INTERCONNECT.get_STATISTICS(PORT_D1["portName"])
+    pprint(STATISTICS)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get the subport Statistics from a port of an Interconnects
-print("\nGet the subport statistics for subport 1 on downlink port 2 on the interconnect "
+print("\nGet the subport STATISTICS for subport 1 on downlink port 2 on the INTERCONNECT "
       "that matches the specified ID")
 try:
-    statistics = interconnect.get_subport_statistics(port_d1["portName"],
-                                                     port_d1["bayNumber"])
-    pprint(statistics)
+    STATISTICS = INTERCONNECT.get_subport_STATISTICS(PORT_D1["portName"],
+                                                     PORT_D1["bayNumber"])
+    pprint(STATISTICS)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get by hostName
-print("\nGet an interconnect by hostName")
+print("\nGet an INTERCONNECT by hostName")
 try:
-    interconnect_by_host = interconnects.get_by('hostName', interconnect.data["hostName"])[0]
-    pprint(interconnect_by_host)
+    INTERCONNECT_BY_HOST = INTERCONNECTS.get_by('hostName', INTERCONNECT.data["hostName"])[0]
+    pprint(INTERCONNECT_BY_HOST)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get by name
-print("\nGet an interconnect by name")
+print("\nGet an INTERCONNECT by name")
 try:
-    interconnect_by_name = interconnects.get_by_name(interconnect.data["name"])
-    pprint(interconnect_by_name.data)
+    INTERCONNECT_BY_NAME = INTERCONNECTS.get_by_name(INTERCONNECT.data["name"])
+    pprint(INTERCONNECT_BY_NAME.data)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Turn the power off
-print("\nTurn the power off and the UID light to 'Off' for interconnect " +
+print("\nTurn the power off and the UID light to 'Off' for INTERCONNECT " +
       "that matches the specified ID")
 try:
-    interconnect_patch = interconnect.patch(
+    INTERCONNECT_PATCH = INTERCONNECT.patch(
         operation='replace',
         path='/powerState',
         value='Off'
     )
-    pprint(interconnect_patch.data)
+    pprint(INTERCONNECT_PATCH.data)
 except HPEOneViewException as e:
     print(e.msg)
 
-# Updates an interconnect port.
-print("\nUpdate the interconnect port")
+# Updates an INTERCONNECT port.
+print("\nUpdate the INTERCONNECT port")
 try:
-    port_for_update = port_d1.copy()
-    port_for_update["enabled"] = False
+    PORT_FOR_UPDATE = PORT_D1.copy()
+    PORT_FOR_UPDATE["enabled"] = False
 
-    updated = interconnect.update_port(port_for_update)
-    pprint(updated)
+    UPDATED = INTERCONNECT.update_port(PORT_FOR_UPDATE)
+    pprint(UPDATED)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Reset of port protection.
-print("\nTrigger a reset of port protection of the interconnect that matches the specified ID")
+print("\nTrigger a reset of port protection of the INTERCONNECT that matches the specified ID")
 try:
-    result = interconnect.reset_port_protection()
-    pprint(result)
+    RESULT = INTERCONNECT.reset_port_protection()
+    pprint(RESULT)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Get name servers
-print("\nGet the named servers for the interconnect that matches the specified ID")
+print("\nGet the named servers for the INTERCONNECT that matches the specified ID")
 
 try:
-    interconnect_ns = interconnect.get_name_servers()
-    pprint(interconnect_ns)
+    INTERCONNECT_NS = INTERCONNECT.get_name_servers()
+    pprint(INTERCONNECT_NS)
 except HPEOneViewException as e:
     print(e.msg)
 
-# Get the interconnect ports.
+# Get the INTERCONNECT PORTS.
 try:
-    print("\nGet all the interconnect ports.")
-    ports = interconnect.get_ports()
-    pprint(ports)
+    print("\nGet all the INTERCONNECT PORTS.")
+    PORTS = INTERCONNECT.get_PORTS()
+    pprint(PORTS)
 
-    print("\nGet an interconnect port.")
-    ports = interconnect.get_port(port_d1["portId"])
-    pprint(ports)
+    print("\nGet an INTERCONNECT port.")
+    PORTS = INTERCONNECT.get_port(PORT_D1["portId"])
+    pprint(PORTS)
 
 except HPEOneViewException as e:
     print(e.msg)
 
-# Updates the interconnect ports.
-print("\nUpdate the interconnect ports again")
+# Updates the INTERCONNECT PORTS.
+print("\nUpdate the INTERCONNECT PORTS again")
 try:
-    updated = interconnect.update_ports(ports_for_update)
+    UPDATED = INTERCONNECT.update_PORTS(PORTS_FOR_UPDATE)
 
-    # filtering only updated ports
-    names = [port_d1["portName"], port_d2["portName"]]
-    updated_ports = [port for port in updated["ports"] if port["portName"] in names]
+    # filtering only UPDATED PORTS
+    NAMES = [PORT_D1["portName"], PORT_D2["portName"]]
+    UPDATED_PORTS = [port for port in UPDATED["PORTS"] if port["portName"] in NAMES]
 
-    pprint(updated_ports)
+    pprint(UPDATED_PORTS)
 except HPEOneViewException as e:
     print(e.msg)
 
-# Updates the interconnect configuration.
-print("\nUpdate the interconnect configuration")
+# Updates the INTERCONNECT CONFIGuration.
+print("\nUpdate the INTERCONNECT CONFIGuration")
 try:
-    updated = interconnect.update_configuration()
-    pprint(updated)
+    UPDATED = INTERCONNECT.update_CONFIGuration()
+    pprint(UPDATED)
 except HPEOneViewException as e:
     print(e.msg)
 
-# Gets the interconnect configuration.
-print("\nGet the interconnect pluggable module information")
+# Gets the INTERCONNECT CONFIGuration.
+print("\nGet the INTERCONNECT pluggable module information")
 try:
-    plug_info = interconnect.get_pluggable_module_information()
-    pprint(plug_info)
+    PLUG_INFO = INTERCONNECT.get_pluggable_module_information()
+    pprint(PLUG_INFO)
 except HPEOneViewException as e:
     print(e.msg)
 
 # Turn the power on
-print("\nTurn the power on and the UID light to 'On' for interconnect " +
+print("\nTurn the power on and the UID light to 'On' for INTERCONNECT " +
       "that matches the specified ID")
 try:
-    interconnect_patch = interconnect.patch(
+    INTERCONNECT_PATCH = INTERCONNECT.patch(
         operation='replace',
         path='/powerState',
         value='On'
     )
-    pprint(interconnect_patch.data)
+    pprint(INTERCONNECT_PATCH.data)
 except HPEOneViewException as e:
     print(e.msg)

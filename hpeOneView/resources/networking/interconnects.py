@@ -20,12 +20,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin
+from hpeOneView.resources.resource import merge_default_values
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-from hpeOneView.resources.resource import Resource, ResourcePatchMixin
-from hpeOneView.resources.resource import merge_default_values
 
 
 class Interconnects(ResourcePatchMixin, Resource):
@@ -65,7 +66,8 @@ class Interconnects(ResourcePatchMixin, Resource):
             subport_number (int): The subport.
 
         Returns:
-             dict: The statistics for the interconnect that matches id, port_name, and subport_number.
+             dict: The statistics for the interconnect that matches id, port_name,
+             and subport_number.
         """
         uri = "{}/statistics/{}/subport/{}".format(self.data["uri"], port_name, subport_number)
         return self._helper.do_get(uri)
@@ -87,8 +89,8 @@ class Interconnects(ResourcePatchMixin, Resource):
 
         Args:
             port_information (dict): object to update
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: The interconnect.
@@ -103,8 +105,8 @@ class Interconnects(ResourcePatchMixin, Resource):
 
         Args:
             ports (list): Ports to update.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: The interconnect.
@@ -119,11 +121,12 @@ class Interconnects(ResourcePatchMixin, Resource):
         """
         Triggers a reset of port protection.
 
-        Cause port protection to be reset on all the interconnects of the logical interconnect that matches ID.
+        Cause port protection to be reset on all the interconnects of the logical interconnect
+        that matches ID.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: The interconnect.
@@ -176,12 +179,13 @@ class Interconnects(ResourcePatchMixin, Resource):
 
     def update_configuration(self, timeout=-1):
         """
-        Reapplies the appliance's configuration on the interconnect. This includes running the same configure steps
-        that were performed as part of the interconnect add by the enclosure.
+        Reapplies the appliance's configuration on the interconnect. This includes running
+        the same configure steps that were performed as part of the interconnect add by the
+        enclosure.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout
+            does not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Interconnect

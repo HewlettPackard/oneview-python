@@ -21,33 +21,34 @@ from config_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "<username>",
+        "userName": "<userNAME>",
         "password": "<password>"
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Get all
 print("\nGet all SAS logical JBOD attachments")
-sas_logical_jbod_attachments = oneview_client.sas_logical_jbod_attachments.get_all()
-pprint(sas_logical_jbod_attachments)
+SAS_LOGICAL_JBOD_ATTACHMENTS = oneview_client.SAS_LOGICAL_JBOD_ATTACHMENTS.get_all()
+pprint(SAS_LOGICAL_JBOD_ATTACHMENTS)
 
-if sas_logical_jbod_attachments:
+if SAS_LOGICAL_JBOD_ATTACHMENTS:
     # Get by URI
     print("\nGet a SAS logical JBOD attachment by URI")
-    uri = sas_logical_jbod_attachments[0]['uri']
-    sas_logical_jbod_attachment_by_uri = oneview_client.sas_logical_jbod_attachments.get(uri)
-    pprint(sas_logical_jbod_attachment_by_uri)
+    URI = SAS_LOGICAL_JBOD_ATTACHMENTS[0]['URI']
+    SAS_URI = oneview_client.SAS_LOGICAL_JBOD_ATTACHMENTS.get(URI)
+    pprint(SAS_URI)
 
-    # Get by name
-    print("\nGet a SAS logical JBOD attachment by name")
-    name = sas_logical_jbod_attachments[0]['name']
-    sas_logical_jbod_attachment_by_name = oneview_client.sas_logical_jbod_attachments.get_by('name', name)
-    pprint(sas_logical_jbod_attachment_by_name)
+    # Get by NAME
+    print("\nGet a SAS logical JBOD attachment by NAME")
+    NAME = SAS_LOGICAL_JBOD_ATTACHMENTS[0]['NAME']
+    SAS_NAME = oneview_client.SAS_LOGICAL_JBOD_ATTACHMENTS.get_by(\
+            'NAME', NAME)
+    pprint(SAS_NAME)

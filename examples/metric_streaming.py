@@ -17,22 +17,22 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
         "password": "<password>"
     }
 }
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-metrics_configuration = {
+METRICS_CONFIGURATION = {
     "sourceTypeList": [
         {
             "sourceType": "/rest/power-devices",
@@ -54,15 +54,15 @@ metrics_configuration = {
 
 # Configure metric relay for server-hardware, enclosures and power-devices.
 print("Configure metric streaming")
-updated_metrics_configuration = oneview_client.metric_streaming.update_configuration(metrics_configuration)
-pprint(updated_metrics_configuration)
+UPDATED_METRICS_CONFIGURATION = oneview_client.metric_streaming.update_CONFIGuration(METRICS_CONFIGURATION)
+pprint(UPDATED_METRICS_CONFIGURATION)
 
-# Get current relay configuration
-print("Get current configuration")
-current_configuration = oneview_client.metric_streaming.get_configuration()
-pprint(current_configuration)
+# Get current relay CONFIGuration
+print("Get current CONFIGuration")
+CURRENT_CONFIGURATION = oneview_client.metric_streaming.get_CONFIGuration()
+pprint(CURRENT_CONFIGURATION)
 
 # Gets the list of all supported metrics and resource types.
 print("Gets the list of all supported metrics and resource types")
-supported_metrics = oneview_client.metric_streaming.get_capability()
-pprint(supported_metrics)
+SUPPORTED_METRICS = oneview_client.metric_streaming.get_capability()
+pprint(SUPPORTED_METRICS)

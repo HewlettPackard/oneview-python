@@ -20,7 +20,7 @@ from pprint import pprint
 from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -28,7 +28,7 @@ config = {
     }
 }
 
-options = {
+OPTIONS = {
     "name": "172.18.13.11",
     "displayName": "vcenter",
     "hypervisorType": "Vmware",
@@ -36,60 +36,64 @@ options = {
     "password": "dcs",
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-hypervisor_managers = oneview_client.hypervisor_managers
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+HYPERVISOR_MANAGERS = ONEVIEW_CLIENT.hypervisor_managers
 
 # Find recently created hypervisor manager by name
 print("\nGet Hypervisor Manager by name")
-hypervisor_manager = hypervisor_managers.get_by_name(options['name'])
+HYPERVISOR_MANAGER = HYPERVISOR_MANAGERS.get_by_name(OPTIONS['name'])
 
-if hypervisor_manager:
-    print("\nFound hypervisor-manager by name: {}.\n  uri = {}".format(hypervisor_manager.data['name'], hypervisor_manager.data['uri']))
+if HYPERVISOR_MANAGER:
+    print("\nFound hypervisor-manager by name: {}.\n  uri = {}".format(HYPERVISOR_MANAGER.\
+            data['name'], HYPERVISOR_MANAGER.data['uri']))
 else:
-    # Create a HypervisorManager with the options provided
-    hypervisor_manager = hypervisor_managers.create(data=options)
-    print("\nCreated a hypervisor-manager with name: {}.\n  uri = {}".format(hypervisor_manager.data['name'], hypervisor_manager.data['uri']))
+    # Create a HypervisorManager with the OPTIONS provided
+    HYPERVISOR_MANAGER = HYPERVISOR_MANAGERS.create(data=OPTIONS)
+    print("\nCreated a hypervisor-manager with name: {}.\n  uri = {}".format(HYPERVISOR_MANAGER.\
+            data['name'], HYPERVISOR_MANAGER.data['uri']))
 
 # Get all, with defaults
 print("\nGet all hypervisor managers")
-hyp_managers_all = hypervisor_managers.get_all()
-for hyp in hyp_managers_all:
+HYP_MANAGERS_ALL = HYPERVISOR_MANAGERS.get_all()
+for hyp in HYP_MANAGERS_ALL:
     print('  - {}'.format(hyp['name']))
 
 # Get the first 10 records
 print("\nGet the first ten hypervisor managers")
-hyp_mgrs_top_ten = hypervisor_managers.get_all(0, 10)
-for hyp in hyp_mgrs_top_ten:
+HYP_MGRS_TOP_TEN = HYPERVISOR_MANAGERS.get_all(0, 10)
+for hyp in HYP_MGRS_TOP_TEN:
     print('  - {}'.format(hyp['name']))
 
 # Filter by hypervisor type
 print("\nGet all hypervisor managers filtering by hypervisor type")
-hyp_mgrs_filtered = hypervisor_managers.get_all(filter="\"'hypervisorType'='Vmware'\"")
-for hyp in hyp_mgrs_filtered:
+HYP_MGRS_FILTERED = HYPERVISOR_MANAGERS.get_all(filter="\"'hypervisorType'='Vmware'\"")
+for hyp in HYP_MGRS_FILTERED:
     print("Hypervisor with type 'Vmware'  - {}".format(hyp['name']))
 
 # Get all sorting by name descending
 print("\nGet all hypervisor managers sorting by name")
-hyp_mgrs_sorted = hypervisor_managers.get_all(sort='name:descending')
-pprint(hyp_mgrs_sorted)
+HYP_MGRS_SORTED = HYPERVISOR_MANAGERS.get_all(sort='name:descending')
+pprint(HYP_MGRS_SORTED)
 
 # Get by uri
 print("\nGet a hypervisor managers by uri")
-hyp_mgrs_by_uri = hypervisor_managers.get_by_uri(hypervisor_manager.data['uri'])
-pprint(hyp_mgrs_by_uri.data)
+HYP_MGRS_BY_URI = HYPERVISOR_MANAGERS.get_by_uri(HYPERVISOR_MANAGER.data['uri'])
+pprint(HYP_MGRS_BY_URI.data)
 
 # Update display name of recently created hypervisor manager
-data_to_update = {'displayName': 'Updated vcenter'}
-hypervisor_manager.update(data=data_to_update)
-print("\nUpdated hypervisor manager {} successfully.\n  uri = {}".format(hypervisor_manager.data['name'], hypervisor_manager.data['uri']))
-print("  with attribute 'displayName': {}".format(hypervisor_manager.data['displayName']))
+DATA_TO_UPDATE = {'displayName': 'Updated vcenter'}
+HYPERVISOR_MANAGER.update(data=DATA_TO_UPDATE)
+print("\nUpdated hypervisor manager {} successfully.\n  uri = {}".format(HYPERVISOR_MANAGER.\
+        data['name'], HYPERVISOR_MANAGER.data['uri']))
+print("  with attribute 'displayName': {}".format(HYPERVISOR_MANAGER.data['displayName']))
 
 # Delete the created hypervisor manager
-hypervisor_manager.delete()
+HYPERVISOR_MANAGER.delete()
 print("\nSuccessfully deleted hypervisor manager")
 
 # Create a HypervisorManager for automation
-hypervisor_manager = hypervisor_managers.create(data=options)
-print("\nCreated a hypervisor-manager with name: {}.\n  uri = {}".format(hypervisor_manager.data['name'], hypervisor_manager.data['uri']))
+HYPERVISOR_MANAGER = HYPERVISOR_MANAGERS.create(data=OPTIONS)
+print("\nCreated a hypervisor-manager with name: {}.\n  uri = {}".format(HYPERVISOR_MANAGER.\
+        data['name'], HYPERVISOR_MANAGER.data['uri']))

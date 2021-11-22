@@ -18,7 +18,7 @@
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "administrator",
@@ -26,8 +26,8 @@ config = {
     }
 }
 
-options = {
-    "description": "This is a very simple test event",
+OPTIONS = {
+    "description": "This is a very simple test EVENT",
     "serviceEventSource": "true",
     "serviceEventDetails": {
         "caseId": "1234",
@@ -36,38 +36,38 @@ options = {
     },
     "severity": "OK",
     "healthCategory": "PROCESSOR",
-    "eventTypeID": "hp.justATest",
+    "EVENTTypeID": "hp.justATest",
     "rxTime": "2012-05-14T20:23:56.688Z",
     "urgency": "None",
-    "eventDetails":
-    [{"eventItemName": "ipv4Address",
-        "eventItemValue": "198.51.100.5",
-        "isThisVarbindData": "false",
-        "varBindOrderIndex": -1}]
+    "EVENTDetails":
+    [{"EVENTItemName": "ipv4Address",
+      "EVENTItemValue": "198.51.100.5",
+      "isThisVarbindData": "false",
+      "varBindOrderIndex": -1}]
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-_client = OneViewClient(config)
+_CLIENT = OneViewClient(CONFIG)
 
-# Getting the first 5 events
-print("\nGetting the first 5 events:")
-events = _client.events.get_all(0, 5)
-for event in events:
-    print("eventTypeID: '%s' | description: %s " % (event['description'], event['eventTypeID']))
+# Getting the first 5 EVENTS
+print("\nGetting the first 5 EVENTS:")
+EVENTS = _CLIENT.events.get_all(0, 5)
+for EVENT in EVENTS:
+    print("EVENTTypeID: '%s' | description: %s " % (EVENT['description'], EVENT['EVENTTypeID']))
 
 # Create an Event
-event = _client.events.create(options)
-print("\nCreated event successfully.\n  uri = '%s'" % (event['uri']))
+EVENT = _CLIENT.events.create(OPTIONS)
+print("\nCreated EVENT successfully.\n  uri = '%s'" % (EVENT['uri']))
 
 # Get by Uri
-print("\nFind uri == %s" % ('/rest/events/24'))
-event_by_uri = _client.events.get('/rest/events/24')
-print("uri: '%s' | eventTypeID: '%s' \n" % (event_by_uri['uri'], event_by_uri['eventTypeID']))
+print("\nFind uri == %s" % ('/rest/EVENTS/24'))
+EVENT_BY_URI = _CLIENT.events.get('/rest/EVENTS/24')
+print("uri: '%s' | EVENTTypeID: '%s' \n" % (EVENT_BY_URI['uri'], EVENT_BY_URI['EVENTTypeID']))
 
 # Filter by state
-print("\nGet all events filtering by eventTypeID")
-events = _client.events.get_all(filter="\"eventTypeID='StatusPoll.EnclosureStatus'\"", count=10)
-for event in events:
-    print("uri: '%s' | eventTypeID: '%s'" % (event['uri'], event['eventTypeID']))
+print("\nGet all EVENTS filtering by EVENTTypeID")
+EVENTS = _CLIENT.events.get_all(filter="\"EVENTTypeID='StatusPoll.EnclosureStatus'\"", count=10)
+for EVENT in EVENTS:
+    print("uri: '%s' | EVENTTypeID: '%s'" % (EVENT['uri'], EVENT['EVENTTypeID']))

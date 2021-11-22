@@ -19,11 +19,11 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
+
+from hpeOneView.resources.resource import Resource
 from future import standard_library
 
 standard_library.install_aliases()
-
-from hpeOneView.resources.resource import Resource
 
 
 class IdPoolsIpv4Subnets(Resource):
@@ -43,12 +43,13 @@ class IdPoolsIpv4Subnets(Resource):
         The allocator returned contains the list of IDs successfully allocated.
         Args:
             information (dict):
-                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.
+                Information to update. Can result in system specified IDs or the system reserving
+                user-specified IDs.
             subnet_id:
                 IPv4 subnet id.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
         Returns:
             dict: A dict containing a list with IDs.
         """
@@ -64,8 +65,8 @@ class IdPoolsIpv4Subnets(Resource):
             subnet_id:
                 IPv4 subnet id
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView; it just stops waiting for its completion.
         Returns:
             dict: Collector containing list of collected IDs successfully collected.
         """

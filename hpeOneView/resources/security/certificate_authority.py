@@ -20,11 +20,10 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource
 from future import standard_library
 
 standard_library.install_aliases()
-
-from hpeOneView.resources.resource import Resource
 
 
 class CertificateAuthority(Resource):
@@ -39,13 +38,14 @@ class CertificateAuthority(Resource):
 
     def create(self, data=None, parent_task='', timeout=-1):
         """
-        Imports an external CA root certificate or CA certificate chain into the appliance trust store.
+        Imports an external CA root certificate or CA certificate chain into the appliance trust
+        store.
         Same CA certificate will not be allowed to be imported into the appliance trust store.
 
         Args:
             data: Fields passed to create the resource.
-            parent_task: The parentTask can be passed only if auth header has either a valid trusted token
-                         or a valid combined token consisting of a trusted token.
+            parent_task: The parentTask can be passed only if auth header has either a valid trusted
+            token or a valid combined token consisting of a trusted token.
             timeout: Timeout in seconds. Wait for task completion by default.
 
         Returns:
@@ -64,7 +64,8 @@ class CertificateAuthority(Resource):
 
         Args:
             filter: Filter based on a specific value. Supported filter is filter=certType:INTERNAL
-            cert_details: If this is set to true the api returns all the CA certificates with full certificate details
+            cert_details: If this is set to true the api returns all the CA certificates with full
+            certificate details
 
         Returns:
             list: List of all CA Certificate.
@@ -74,8 +75,8 @@ class CertificateAuthority(Resource):
 
     def get_crl(self):
         """
-        Retrieves the contents of the CRL file maintained by the internal CA; in Base-64 encoded format, in the form
-        of a string.
+        Retrieves the contents of the CRL file maintained by the internal CA; in Base-64 encoded format,
+        in the form of a string.
 
         Returns:
             str: The Certificate Revocation List

@@ -21,16 +21,6 @@ connection.py
 
 This module maintains communication with the appliance.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-from builtins import open
-from builtins import str
-from future import standard_library
-
-standard_library.install_aliases()
 
 import http.client
 import json
@@ -41,6 +31,17 @@ import os
 import ssl
 import time
 import traceback
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+from builtins import open
+from builtins import str
+from future import standard_library
+
+standard_library.install_aliases()
 
 from hpeOneView.exceptions import HPEOneViewException
 
@@ -58,8 +59,8 @@ class connection(object):
         self._sslTrustAll = True
         self._sslBundle = sslBundle
         self._sslTrustedBundle = self.set_trusted_ssl_bundle(sslBundle)
-        self._nextPage = None
-        self._prevPage = None
+        self._next_page = None
+        self._prev_page = None
         self._numTotalRecords = 0
         self._numDisplayedRecords = 0
         self._validateVersion = False
@@ -76,11 +77,11 @@ class connection(object):
         self._headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json'}
-        version = self.get(uri['version'])
+        version = self.get(URI['version'])
         return version['currentVersion']
 
     def validateVersion(self):
-        version = self.get(uri['version'])
+        version = self.get(URI['version'])
         if 'minimumVersion' in version:
             if self._apiVersion < version['minimumVersion']:
                 raise HPEOneViewException('Unsupported API Version')
@@ -123,9 +124,9 @@ class connection(object):
         if custom_headers:
             http_headers.update(custom_headers)
 
-        bConnected = False
+        b_connected = False
         conn = None
-        while bConnected is False:
+        while b_connected is False:
             try:
                 conn = self.get_connection()
                 conn.request(method, path, body, http_headers)
@@ -137,7 +138,7 @@ class connection(object):
                 except UnicodeDecodeError:  # Might be binary data
                     tempbody = tempbytes
                     conn.close()
-                    bConnected = True
+                    b_connected = True
                     return resp, tempbody
                 if tempbody:
                     try:
@@ -145,7 +146,7 @@ class connection(object):
                     except ValueError:
                         body = tempbody
                 conn.close()
-                bConnected = True
+                b_connected = True
             except http.client.BadStatusLine:
                 logger.warning('Bad Status Line. Trying again...')
                 if conn:
@@ -153,7 +154,9 @@ class connection(object):
                 time.sleep(1)
                 continue
             except http.client.HTTPException:
-                raise HPEOneViewException('Failure during login attempt.\n %s' % traceback.format_exc())
+                raise HPEOneViewException('Failure during login attempt.\n %s' % \
+				\
+				traceback.format_exc())
 
         return resp, body
 
@@ -173,7 +176,7 @@ class connection(object):
                 resp = conn.getresponse()
 
                 if resp.status >= 400:
-                    self.__handle_download_error(resp, conn)
+                    self.handle_download_error(resp, conn)
 
                 if resp.status == 302:
                     return self.download_to_stream(stream_writer=stream_writer,
@@ -197,11 +200,13 @@ class connection(object):
                 time.sleep(1)
                 continue
             except http.client.HTTPException:
-                raise HPEOneViewException('Failure during login attempt.\n %s' % traceback.format_exc())
+                raise HPEOneViewException('Failure during login attempt.\n %s' % \
+				\
+				traceback.format_exc())
 
         return successful_connected
 
-    def __handle_download_error(self, resp, conn):
+    def handle_download_error(self, resp, conn):
         try:
             tempbytes = resp.read()
             tempbody = tempbytes.decode('utf-8')
@@ -248,10 +253,10 @@ class connection(object):
 
         return conn
 
-    def _open(self, name, mode):
+    def open_file(self, name, mode):
         return open(name, mode)
 
-    def encode_multipart_formdata(self, fields, files, baseName, verbose=False):
+    def encode_multipart_formdata(self, fields, files, base_name, verbose=False):
         """
         Fields is a sequence of (name, value) elements for regular form fields.
         Files is a sequence of (name, filename, value) elements for data
@@ -259,41 +264,41 @@ class connection(object):
 
         Returns: (content_type, body) ready for httplib.HTTP instance
         """
-        BOUNDARY = '----------ThIs_Is_tHe_bouNdaRY_$'
-        CRLF = '\r\n'
-        content_type = 'multipart/form-data; boundary=%s' % BOUNDARY
+        boundary = '----------ThIs_Is_tHe_bouNdaRY_$'
+        crlf = '\r\n'
+        content_type = 'multipart/form-data; boundary=%s' % boundary
         if verbose is True:
-            print(('Encoding ' + baseName + ' for upload...'))
-        fin = self._open(files, 'rb')
-        fout = self._open(files + '.b64', 'wb')
-        fout.write(bytearray('--' + BOUNDARY + CRLF, 'utf-8'))
+            print(('Encoding ' + base_name + ' for upload...'))
+        fin = self.open_file(files, 'rb')
+        fout = self.open_file(files + '.b64', 'wb')
+        fout.write(bytearray('--' + boundary + crlf, 'utf-8'))
         fout.write(bytearray('Content-Disposition: form-data'
-                             '; name="file"; filename="' + baseName + '"' + CRLF, "utf-8"))
-        fout.write(bytearray('Content-Type: application/octet-stream' + CRLF,
+                             '; name="file"; filename="' + base_name + '"' + crlf, "utf-8"))
+        fout.write(bytearray('Content-Type: application/octet-stream' + crlf,
                              'utf-8'))
-        fout.write(bytearray(CRLF, 'utf-8'))
+        fout.write(bytearray(crlf, 'utf-8'))
         shutil.copyfileobj(fin, fout)
-        fout.write(bytearray(CRLF, 'utf-8'))
-        fout.write(bytearray('--' + BOUNDARY + '--' + CRLF, 'utf-8'))
-        fout.write(bytearray(CRLF, 'utf-8'))
+        fout.write(bytearray(crlf, 'utf-8'))
+        fout.write(bytearray('--' + boundary + '--' + crlf, 'utf-8'))
+        fout.write(bytearray(crlf, 'utf-8'))
         fout.close()
         fin.close()
         return content_type
 
-    def post_multipart_with_response_handling(self, uri, file_path, baseName):
-        resp, body = self.post_multipart(uri, None, file_path, baseName)
+    def post_multipart_with_response_handling(self, uri, file_path, base_name):
+        resp, body = self.post_multipart(uri, None, file_path, base_name)
 
         if resp.status == 202:
             task = self.__get_task_from_response(resp, body)
             return task, body
 
-        if self.__body_content_is_task(body):
+        if self.body_content_is_task(body):
             return body, body
 
         return None, body
 
-    def post_multipart(self, uri, fields, files, baseName, verbose=False):
-        content_type = self.encode_multipart_formdata(fields, files, baseName,
+    def post_multipart(self, uri, fields, files, base_name, verbose=False):
+        content_type = self.encode_multipart_formdata(fields, files, base_name,
                                                       verbose)
         inputfile = self._open(files + '.b64', 'rb')
         mappedfile = mmap.mmap(inputfile.fileno(), 0, access=mmap.ACCESS_READ)
@@ -303,11 +308,11 @@ class connection(object):
         # conn.set_debuglevel(1)
         conn.connect()
         conn.putrequest('POST', uri)
-        conn.putheader('uploadfilename', baseName)
+        conn.putheader('uploadfilename', base_name)
         conn.putheader('auth', self._headers['auth'])
         conn.putheader('Content-Type', content_type)
-        totalSize = os.path.getsize(files + '.b64')
-        conn.putheader('Content-Length', totalSize)
+        total_size = os.path.getsize(files + '.b64')
+        conn.putheader('Content-Length', total_size)
         conn.putheader('X-API-Version', self._apiVersion)
         conn.endheaders()
 
@@ -315,8 +320,8 @@ class connection(object):
             # Send 1MB at a time
             # NOTE: Be careful raising this value as the read chunk
             # is stored in RAM
-            readSize = 1048576
-            conn.send(mappedfile.read(readSize))
+            read_size = 1048576
+            conn.send(mappedfile.read(read_size))
             if verbose is True:
                 print('%d bytes sent... \r' % mappedfile.tell())
         mappedfile.close()
@@ -347,33 +352,33 @@ class connection(object):
             raise HPEOneViewException(body)
         if resp.status == 302:
             body = self.get(resp.getheader('Location'))
-        if type(body) is dict:
+        if isinstance(body, dict):
             if 'nextPageUri' in body:
-                self._nextPage = body['nextPageUri']
+                self._next_page = body['nextPageUri']
             if 'prevPageUri' in body:
-                self._prevPage = body['prevPageUri']
+                self._prev_page = body['prevPageUri']
             if 'total' in body:
                 self._numTotalRecords = body['total']
             if 'count' in body:
                 self._numDisplayedRecords = body['count']
         return body
 
-    def getNextPage(self):
-        body = self.get(self._nextPage)
+    def get_next_page(self):
+        body = self.get(self._next_page)
         return get_members(body)
 
-    def getPrevPage(self):
-        body = self.get(self._prevPage)
+    def get_prev_page(self):
+        body = self.get(self._prev_page)
         return get_members(body)
 
-    def getLastPage(self):
-        while self._nextPage is not None:
-            members = self.getNextPage()
+    def get_last_page(self):
+        while self._next_page is not None:
+            members = self.get_next_page()
         return members
 
-    def getFirstPage(self):
-        while self._prevPage is not None:
-            members = self.getPrevPage()
+    def get_first_page(self):
+        while self._prev_page is not None:
+            members = self.get_prev_page()
         return members
 
     def delete(self, uri, custom_headers=None):
@@ -388,7 +393,7 @@ class connection(object):
     def patch(self, uri, body, custom_headers=None):
         return self.__do_rest_call('PATCH', uri, body, custom_headers=custom_headers)
 
-    def __body_content_is_task(self, body):
+    def body_content_is_task(self, body):
         return isinstance(body, dict) and 'category' in body and body['category'] == 'tasks'
 
     def __get_task_from_response(self, response, body):
@@ -397,7 +402,8 @@ class connection(object):
             task = self.get(location)
         elif 'taskState' in body:
             # This check is needed to handle a status response 202 without the location header,
-            # as is for PowerDevices. We are not sure if there are more resources with the same behavior.
+            # as is for PowerDevices. We are not sure if there are more resources with the same \
+	    # behavior.
             task = body
         else:
             # For the resource Label the status is 202 but the response not contains a task.
@@ -422,7 +428,7 @@ class connection(object):
             task = self.__get_task_from_response(resp, body)
             return task, body
 
-        if self.__body_content_is_task(body):
+        if self.body_content_is_task(body):
             return body, body
 
         return None, body
@@ -431,21 +437,21 @@ class connection(object):
     # EULA
     ###########################################################################
     def get_eula_status(self):
-        return self.get(uri['eulaStatus'])
+        return self.get(URI['eulaStatus'])
 
-    def set_eula(self, supportAccess='yes'):
-        eula = make_eula_dict(supportAccess)
-        self.post(uri['eulaSave'], eula)
+    def set_eula(self, support_access='yes'):
+        eula = make_eula_dict(support_access)
+        self.post(URI['eulaSave'], eula)
         return
 
     ###########################################################################
     # Initial Setup
     ###########################################################################
-    def change_initial_password(self, newPassword):
+    def change_initial_password(self, new_password):
         password = make_initial_password_change_dict('Administrator',
-                                                     'admin', newPassword)
+                                                     'admin', new_password)
         # This will throw an exception if the password is already changed
-        self.post(uri['changePassword'], password)
+        self.post(URI['changePassword'], password)
 
     ###########################################################################
     # Login/Logout to/from appliance
@@ -455,17 +461,18 @@ class connection(object):
             if self._validateVersion is False:
                 self.validateVersion()
         except Exception:
-            raise(HPEOneViewException('Failure during login attempt.\n %s' % traceback.format_exc()))
+            raise HPEOneViewException('Failure during login attempt.\n %s' % \
+				traceback.format_exc())
 
         cred['loginMsgAck'] = True  # This will handle the login acknowledgement message
         self._cred = cred
         try:
             if self._cred.get("sessionID"):
                 self.set_session_id(self._cred["sessionID"])
-                task, body = self.put(uri['loginSessions'], None)
+                _, body = self.put(URI['loginSessions'], None)
             else:
                 self._cred.pop("sessionID", None)
-                task, body = self.post(uri['loginSessions'], self._cred)
+                _, body = self.post(URI['loginSessions'], self._cred)
         except HPEOneViewException:
             logger.exception('Login failed')
             raise
@@ -481,7 +488,7 @@ class connection(object):
         # resp, body = self.do_http(method, uri['loginSessions'] \
         #                        , body, self._headers)
         try:
-            self.delete(uri['loginSessions'])
+            self.delete(URI['loginSessions'])
         except HPEOneViewException:
             logger.exception('Logout failed')
             raise
@@ -494,8 +501,10 @@ class connection(object):
 
     def enable_etag_validation(self):
         """
-        Enable the concurrency control for the PUT and DELETE requests, in which the requests are conditionally
-        processed only if the provided entity tag in the body matches the latest entity tag stored for the resource.
+        Enable the concurrency control for the PUT and DELETE requests, in which the requests are \
+				conditionally
+        processed only if the provided entity tag in the body matches the latest entity tag stored for the \
+				resource.
 
         The eTag validation is enabled by default.
         """
@@ -503,13 +512,14 @@ class connection(object):
 
     def disable_etag_validation(self):
         """
-        Disable the concurrency control for the PUT and DELETE requests. The requests will be forced without specifying
+        Disable the concurrency control for the PUT and DELETE requests. The requests will be forced without \
+				specifying
         an explicit ETag. This method sets an If-Match header of "*".
         """
         self._headers['If-Match'] = '*'
 
 
-uri = {
+URI = {
     # ------------------------------------
     # Settings
     # ------------------------------------
@@ -678,12 +688,12 @@ def get_member(mlist):
     return mlist['members'][0]
 
 
-def make_eula_dict(supportAccess):
-    return {'supportAccess': supportAccess}
+def make_eula_dict(support_access):
+    return {'supportAccess': support_access}
 
 
-def make_initial_password_change_dict(userName, oldPassword, newPassword):
+def make_initial_password_change_dict(user_name, old_password, new_password):
     return {
-        'userName': userName,
-        'oldPassword': oldPassword,
-        'newPassword': newPassword}
+        'userName': user_name,
+        'oldPassword': old_password,
+        'newPassword': new_password}

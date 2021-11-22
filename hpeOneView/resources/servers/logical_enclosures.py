@@ -19,12 +19,11 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ensure_resource_client
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ensure_resource_client
 
 
 class LogicalEnclosures(ResourcePatchMixin, Resource):
@@ -40,9 +39,10 @@ class LogicalEnclosures(ResourcePatchMixin, Resource):
 
     def get_all(self, start=0, count=-1, filter='', sort='', scope_uris=''):
         """
-        Returns a list of logical enclosures matching the specified filter. A maximum of 40 logical enclosures are
-        returned to the caller. Additional calls can be made to retrieve any other logical enclosures matching the
-        filter. Valid filter parameters include attributes of a Logical Enclosure resource.
+        Returns a list of logical enclosures matching the specified filter. A maximum of 40 logical
+        enclosures are returned to the caller. Additional calls can be made to retrieve any other
+        logical enclosures matching the filter. Valid filter parameters include attributes of a
+        Logical Enclosure resource.
 
         Args:
             start:
@@ -71,12 +71,13 @@ class LogicalEnclosures(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_configuration(self, timeout=-1):
         """
-        Reapplies the appliance's configuration on enclosures for the logical enclosure by ID or URI. This includes
-        running the same configure steps that were performed as part of the enclosure add.
+        Reapplies the appliance's configuration on enclosures for the logical enclosure by ID or
+        URI. This includes running the same configure steps that were performed as part of the
+        enclosure add.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical enclosure.
@@ -101,13 +102,13 @@ class LogicalEnclosures(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_script(self, information, timeout=-1):
         """
-        Updates the configuration script of the logical enclosure and on all enclosures in the logical enclosure with
-        the specified ID.
+        Updates the configuration script of the logical enclosure and on all enclosures in the
+        logical enclosure with the specified ID.
 
         Args:
             information: Updated script.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Return:
             Configuration script.
@@ -118,14 +119,14 @@ class LogicalEnclosures(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def generate_support_dump(self, information, timeout=-1):
         """
-        Generates a support dump for the logical enclosure with the specified ID. A logical enclosure support dump
-        includes content for logical interconnects associated with that logical enclosure. By default, it also contains
-        appliance support dump content.
+        Generates a support dump for the logical enclosure with the specified ID. A logical
+        enclosure support dump includes content for logical interconnects associated with that
+        logical enclosure. By default, it also contains appliance support dump content.
 
         Args:
             information (dict): Information to generate support dump.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Support dump.
@@ -136,12 +137,12 @@ class LogicalEnclosures(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_from_group(self, data=None, timeout=-1):
         """
-        Use this action to make a logical enclosure consistent with the enclosure group when the logical enclosure is
-        in the Inconsistent state.
+        Use this action to make a logical enclosure consistent with the enclosure group when
+        the logical enclosure is in the Inconsistent state.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical enclosure.

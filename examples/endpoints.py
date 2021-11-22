@@ -20,7 +20,7 @@ from pprint import pprint
 from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<oneview_administrator_name>",
@@ -29,20 +29,20 @@ config = {
 }
 
 # To run this example, you must specify a WWN
-wwn = None
+WWN = None
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 # Get all endpoints
 print("Get all endpoints")
-endpoints_all = oneview_client.endpoints.get_all()
-pprint(endpoints_all)
+ENDPOINTS_ALL = ONEVIEW_CLIENT.endpoints.get_all()
+pprint(ENDPOINTS_ALL)
 
 # Get endpoints filtered to only the one with a specified WWN
 print("Get endpoints filtered to only the one with a specified WWN")
-query = "wwn eq '{}'".format(wwn)
-enpoints_with_query = oneview_client.endpoints.get_all(0, -1, query=query)
-pprint(enpoints_with_query)
+QUERY = "WWN eq '{}'".format(WWN)
+ENPOINTS_WITH_QUERY = ONEVIEW_CLIENT.endpoints.get_all(0, -1, QUERY=QUERY)
+pprint(ENPOINTS_WITH_QUERY)

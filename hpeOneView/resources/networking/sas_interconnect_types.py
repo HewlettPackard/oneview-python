@@ -19,12 +19,12 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+
+from hpeOneView.resources.resource import Resource, unavailable_method
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource, unavailable_method
 
 
 class SasInterconnectTypes(Resource):

@@ -20,15 +20,14 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource, ensure_resource_client
+from hpeOneView.resources.networking.ethernet_networks import EthernetNetworks
+from hpeOneView.exceptions import HPEOneViewResourceNotFound
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource, ensure_resource_client
-from hpeOneView.resources.networking.ethernet_networks import EthernetNetworks
-from hpeOneView.exceptions import HPEOneViewResourceNotFound
-from builtins import isinstance
 
 
 class UplinkSets(Resource):
@@ -113,19 +112,20 @@ class UplinkSets(Resource):
         associated_enets = self.data.get('networkUris', [])
         ethernet_uris = []
 
-        for i, enet in enumerate(ethernet_names):
+        for _, enet in enumerate(ethernet_names):
             enet_exists = self._ethernet_networks.get_by_name(enet)
             if enet_exists:
                 ethernet_uris.append(enet_exists.data['uri'])
             else:
-                raise HPEOneViewResourceNotFound("Ethernet: {} does not exist".foramt(enet))
+                raise HPEOneViewResourceNotFound("Ethernet: {} does not exist".format(enet))
 
         if operation == "remove":
             enets_to_update = sorted(list(set(associated_enets) - set(ethernet_uris)))
         elif operation == "add":
             enets_to_update = sorted(list(set(associated_enets).union(set(ethernet_uris))))
         else:
-            raise ValueError("Value {} is not supported as operation. The supported values are: ['add', 'remove']")
+            raise ValueError("Value {} is not supported as operation. The supported values are:\
+                    ['add', 'remove']")
 
         if set(enets_to_update) != set(associated_enets):
             updated_network = {'networkUris': enets_to_update}

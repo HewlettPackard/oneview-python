@@ -20,27 +20,29 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource
+from hpeOneView.resources.search.index_resources import IndexResources
+
 from future import standard_library
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import Resource
-from hpeOneView.resources.search.index_resources import IndexResources
-
-category_list = ['connection-templates', 'drive-enclosures', 'ethernet-networks', 'enclosures', 'enclosure-groups',
-                 'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles',
-                 'hypervisor-host-profiles', 'hypervisor-managers', 'interconnects', 'logical-enclosures',
-                 'logical-interconnect-groups', 'logical-interconnects', 'network-sets', 'os-deployment-plans',
-                 'sas-interconnects', 'sas-logical-interconnect-groups', 'sas-logical-interconnects',
-                 'sas-logical-jbods', 'scopes', 'server-hardware', 'server-profile-templates', 'server-profiles',
-                 'storage-pools', 'storage-volume-sets', 'storage-volume-templates', 'storage-volumes']
+CATEGORY_LIST = ['connection-templates', 'drive-enclosures', 'ethernet-networks', 'enclosures',\
+                  'enclosure-groups', 'fc-networks', 'fcoe-networks', 'firmware-bundles',\
+                 'hypervisor-cluster-profiles', 'hypervisor-host-profiles', 'hypervisor-managers',\
+                  'interconnects', 'logical-enclosures', 'logical-interconnect-groups',\
+                  'logical-interconnects', 'network-sets', 'os-deployment-plans',\
+                  'sas-interconnects', 'sas-logical-interconnect-groups', 'sas-logical-\
+                  interconnects', 'sas-logical-jbods', 'scopes', 'server-hardware',\
+                  'server-profile-templates', 'server-profiles', 'storage-pools',\
+                  'storage-volume-sets', 'storage-volume-templates', 'storage-volumes']
 
 
 def get_resources_associated_with_label(connection, label):
     index_resource = IndexResources(connection)
     query_string = "labels='{}'".format(label)
-    all_index_resources = index_resource.get_all(category=category_list, query=query_string)
+    all_index_resources = index_resource.get_all(category=CATEGORY_LIST, query=query_string)
     response = [dict_response['uri'] for dict_response in all_index_resources]
     return response
 
@@ -99,22 +101,24 @@ class Labels(Resource):
         uri = self.URI + self.RESOURCES_PATH + '/' + resource_uri
         return super(Labels, self).get_by_uri(uri)
 
-    def get_all(self, count=-1, sort='', start=0, view='', fields='', filter='', name_prefix='', category=[]):
+    def get_all(self, count=-1, sort='', start=0, view='', fields='', filter='', name_prefix='',\
+            category=[]):
         """
         Gets all items according with the given arguments.
         Args:
             start: The first item to return, using 0-based indexing.
                 If not specified, the default is 0 - start with the first available item.
             count: The number of resources to return. A count of -1 requests all items (default).
-            sort: The sort order of the returned data set. By default, the sort order is based on create time with the
-                oldest entry first.
+            sort: The sort order of the returned data set. By default, the sort order is based on
+            create time with the oldest entry first.
             view:
-                Returns a specific subset of the attributes of the resource or collection by specifying the name of a
-                predefined view. The default view is expand (show all attributes of the resource and all elements of
-                the collections or resources).
+                Returns a specific subset of the attributes of the resource or collection by
+                specifying the name of a predefined view. The default view is expand (show all
+                attributes of the resource and all elements of the collections or resources).
             fields:
                 Name of the fields.
         Returns:
              list: A list of items matching the specified filter.
         """
-        return self._helper.get_all(count=count, sort=sort, start=start, view=view, fields=fields, filter=filter, name_prefix=name_prefix, category=category)
+        return self._helper.get_all(count=count, sort=sort, start=start, view=view, fields=fields,\
+                filter=filter, name_prefix=name_prefix, category=category)

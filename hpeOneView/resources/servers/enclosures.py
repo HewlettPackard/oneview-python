@@ -19,13 +19,14 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
-from future import standard_library
-
-standard_library.install_aliases()
 
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin,
                                            ResourceZeroBodyMixin, ResourceUtilizationMixin,
                                            ensure_resource_client)
+from future import standard_library
+
+standard_library.install_aliases()
+
 
 
 class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationMixin, Resource):
@@ -40,8 +41,8 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
 
     def get_all(self, start=0, count=-1, filter='', sort='', scope_uris=''):
         """
-        Gets a paginated collection of Enclosures. The collection is based on optional sorting and filtering, and
-        constrained by start and count parameters.
+        Gets a paginated collection of Enclosures. The collection is based on optional sorting and
+        filtering, and constrained by start and count parameters.
 
         Args:
             start:
@@ -72,18 +73,18 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
     def add(self, information, timeout=-1):
         """
         C7000:
-            Takes information about an enclosure (for example: IP address, username, password) and uses
-            it to claim/configure the enclosure and add its components to the appliance.
+            Takes information about an enclosure (for example: IP address, username, password) and
+            uses it to claim/configure the enclosure and add its components to the appliance.
 
         Synergy:
-            Adds a remote enclosure and all the enclosures linked to that enclosure by their frame link
-            modules. The remote enclosures' frame link modules must not be claimed by another appliance.
-            The IP used must be the frame link module's Link Local IPv6 address.
+            Adds a remote enclosure and all the enclosures linked to that enclosure by their frame
+            link modules. The remote enclosures' frame link modules must not be claimed by another
+            appliance.  The IP used must be the frame link module's Link Local IPv6 address.
 
         Args:
             information: Enclosure information to add.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Enclosure.
@@ -99,12 +100,12 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
 
     def update_configuration(self, timeout=-1):
         """
-        Reapplies the appliance's configuration on the enclosure. This includes running the same configure steps
-        that were performed as part of the enclosure add.
+        Reapplies the appliance's configuration on the enclosure. This includes running the same
+        configure steps that were performed as part of the enclosure add.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Enclosure
@@ -115,8 +116,10 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
     def get_by_hostname(self, hostname):
         """Get enclosure by it's hostname"""
         def filter_by_hostname(hostname, enclosure):
-            is_primary_ip = ('activeOaPreferredIP' in enclosure and enclosure['activeOaPreferredIP'] == hostname)
-            is_standby_ip = ('standbyOaPreferredIP' in enclosure and enclosure['standbyOaPreferredIP'] == hostname)
+            is_primary_ip = ('activeOaPreferredIP' in enclosure and enclosure\
+                    ['activeOaPreferredIP'] == hostname)
+            is_standby_ip = ('standbyOaPreferredIP' in enclosure and enclosure\
+                    ['standbyOaPreferredIP'] == hostname)
             return is_primary_ip or is_standby_ip
 
         enclosures = self.get_all()
@@ -132,7 +135,8 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
     @ensure_resource_client
     def get_environmental_configuration(self):
         """
-        Gets the settings that describe the environmental configuration (supported feature set, calibrated minimum &
+        Gets the settings that describe the environmental configuration (supported feature
+        set, calibrated minimum &
         maximum power, location & dimensions, ...) of the enclosure resource.
 
         Returns:
@@ -148,8 +152,8 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
 
         Args:
             configuration: Configuration
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Settings that describe the environmental configuration.
@@ -160,15 +164,16 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
     @ensure_resource_client
     def refresh_state(self, configuration, timeout=-1):
         """
-        Refreshes the enclosure along with all of its components, including interconnects and servers. Any new
-        hardware is added and any hardware that is no longer present within the enclosure is removed. The
-        configuration dict must have the "refreshState" field set to "Refreshing" and optionally
-        provide information to re-claim the enclosure (for example: IP address, user name, password, etc.).
+        Refreshes the enclosure along with all of its components, including interconnects and
+        servers. Any new hardware is added and any hardware that is no longer present within
+        the enclosure is removed. The configuration dict must have the "refreshState" field set
+        to "Refreshing" and optionally provide information to re-claim the enclosure (for example:
+        IP address, user name, password, etc.).
 
         Args:
             configuration: Configuration
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Enclosure
@@ -179,8 +184,9 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
     @ensure_resource_client
     def get_sso(self, role):
         """
-        Builds the SSO (Single Sign-On) URL parameters for the specified enclosure. This allows the user to
-        log in to the enclosure without providing credentials. This API is currently only supported by C7000 enclosures.
+        Builds the SSO (Single Sign-On) URL parameters for the specified enclosure. This allows the
+        user to log in to the enclosure without providing credentials. This API is currently only
+        supported by C7000 enclosures.
 
         Args:
             role: Role
@@ -215,7 +221,8 @@ class Enclosures(ResourcePatchMixin, ResourceZeroBodyMixin, ResourceUtilizationM
     @ensure_resource_client
     def get_csr(self, bay_number=None):
         """
-        Get an enclosure's Certificate Signing Request (CSR) that was generated by previous POST to the same URI.
+        Get an enclosure's Certificate Signing Request (CSR) that was generated by previous POST
+        to the same URI.
 
         Args:
             bay_number: OA to retrieve the previously generated CSR.

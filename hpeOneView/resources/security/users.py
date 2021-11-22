@@ -15,19 +15,22 @@
 # limitations under the License.
 ###
 
+from urllib.parse import quote
+from copy import deepcopy
+
 from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
+
+from hpeOneView.resources.resource import Resource
+from hpeOneView.exceptions import HPEOneViewException
+
 from future import standard_library
-from urllib.parse import quote
-from copy import deepcopy
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import Resource
-from hpeOneView.exceptions import HPEOneViewException
 
 
 class Users(Resource):
@@ -44,7 +47,7 @@ class Users(Resource):
             'type': 'UserAndRoles'
         }
 
-    def validate_user_name(self, user_name, timeout=-1):
+    def validate_user_name(self, user_name):
         """
         Verifies if a userName is already in use.
 
@@ -52,15 +55,15 @@ class Users(Resource):
             user_name (str):
                 The userName to be verified.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView, just stops waiting for its completion.
 
         Returns: True if user name is in use, False if it is not.
         """
         uri = self.URI + '/validateLoginName/' + user_name
         return self.create(uri=uri)
 
-    def validate_full_name(self, full_name, timeout=-1):
+    def validate_full_name(self, full_name):
         """
         Verifies if a fullName is already in use.
 
@@ -68,8 +71,8 @@ class Users(Resource):
             full_name (str):
                 The fullName to be verified.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stops waiting for its completion.
 
         Returns: True if full name is in use, False if it is not.
         """
@@ -83,8 +86,8 @@ class Users(Resource):
         Args:
             resource (dict): Object to change password
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stops waiting for its completion.
 
         """
         uri = self._helper.build_uri('changePassword')
@@ -172,8 +175,8 @@ class Users(Resource):
 
         Args:
             data (dict): Data to update the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
             custom_headers: Allows to add custom HTTP headers.
             force: Force the update operation.
 

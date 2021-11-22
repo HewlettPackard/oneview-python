@@ -20,12 +20,11 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource, ResourcePatchMixin
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import Resource, ResourcePatchMixin
 
 
 class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
@@ -53,8 +52,8 @@ class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
 
     def get_all(self, start=0, count=-1, filter='', sort='', scope_uris=''):
         """
-        Gets a list of logical interconnect groups based on optional sorting and filtering and is constrained by start
-        and count parameters.
+        Gets a list of logical interconnect groups based on optional sorting and filtering 
+        and is constrained by start and count parameters.
 
         Args:
             start:

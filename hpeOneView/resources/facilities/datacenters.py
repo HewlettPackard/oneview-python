@@ -20,12 +20,12 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-
-from hpeOneView.resources.resource import ResourceClient
 
 
 class Datacenters(object):
@@ -39,10 +39,10 @@ class Datacenters(object):
         self._connection = con
         self._client = ResourceClient(con, self.URI)
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort=''):
+    def get_all(self, start=0, count=-1, _filter='', query='', sort=''):
         """
-        Gets a set of data center resources according to the specified parameters. Filters can be used to get a specific
-        set of data centers.
+        Gets a set of data center resources according to the specified parameters. Filters can be
+        used to get a specific set of data centers.
 
         Args:
             start:
@@ -66,7 +66,7 @@ class Datacenters(object):
         Returns:
             list: List of data centers.
         """
-        return self._client.get_all(start, count, filter=filter, sort=sort, query=query)
+        return self._client.get_all(start, count, filter=_filter, sort=sort, query=query)
 
     def get(self, id_or_uri):
         """
@@ -83,9 +83,9 @@ class Datacenters(object):
 
     def get_visual_content(self, id_or_uri):
         """
-        Gets a list of visual content objects describing each rack within the data center. The response aggregates data
-        center and rack data with a specified metric (peak24HourTemp) to provide simplified access to display data for
-        the data center.
+        Gets a list of visual content objects describing each rack within the data center.
+        The response aggregates data center and rack data with a specified metric (peak24HourTemp)
+        to provide simplified access to display data for the data center.
 
         Args:
             id_or_uri: Can be either the resource ID or the resource URI.
@@ -119,11 +119,11 @@ class Datacenters(object):
         Args:
             resource (dict): Object to remove.
             force:
-                 If set to true, the operation completes despite any problems with network connectivity or errors on the
-                 resource itself. The default is false.
+                 If set to true, the operation completes despite any problems with network
+                 connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does
+                not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns: Result status.
         """
@@ -135,8 +135,8 @@ class Datacenters(object):
 
         Args:
             information: Data center information
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Added data center.
@@ -149,18 +149,18 @@ class Datacenters(object):
 
         Args:
             resource (dict): Object to update.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated data center.
         """
         return self._client.update(resource, timeout=timeout)
 
-    def remove_all(self, filter, force=False, timeout=-1):
+    def remove_all(self, _filter, force=False, timeout=-1):
         """
-        Deletes the set of datacenters according to the specified parameters. A filter is required to identify the set
-        of resources to be deleted.
+        Deletes the set of datacenters according to the specified parameters. A filter is required
+        to identify the set of resources to be deleted.
 
         Args:
             filter:
@@ -169,10 +169,10 @@ class Datacenters(object):
                  If set to true, the operation completes despite any problems with
                  network connectivity or errors on the resource itself. The default is false.
             timeout:
-                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                 in OneView; it just stops waiting for its completion.
+                 Timeout in seconds. Wait for task completion by default. The timeout does not
+                 abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
              bool: operation success
         """
-        return self._client.delete_all(filter=filter, force=force, timeout=timeout)
+        return self._client.delete_all(filter=_filter, force=force, timeout=timeout)

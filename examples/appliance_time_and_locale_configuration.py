@@ -19,7 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,49 +27,48 @@ config = {
     }
 }
 
-options = {
+OPTIONS = {
     "locale": "en_US.UTF-8",
     "timezone": "UTC",
     "ntpServers": ["127.0.0.1"],
 }
 
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-time_and_locales = oneview_client.appliance_time_and_locale_configuration
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+TIME_AND_LOCALES = ONEVIEW_CLIENT.appliance_time_and_locale_configuration
 
-# Lists the appliance time and locale configuration
-time_and_locale = time_and_locales.get_all()
-if time_and_locale:
-    print("\n## Got appliance time and locale configurations successfully!")
-    pprint(time_and_locale.data)
+# Lists the appliance time and locale CONFIGuration
+TIME_AND_LOCALE = TIME_AND_LOCALES.get_all()
+if TIME_AND_LOCALE:
+    print("\n## Got appliance time and locale CONFIGurations successfully!")
+    pprint(TIME_AND_LOCALE.data)
 else:
-    # Create a time and locale with the options provided
-    time_and_locale = time_and_locales.create(data=options)
-    print("\n## Created appliance time and locale configurations successfully!")
-    pprint(time_and_locale.data)
+    # Create a time and locale with the OPTIONS provided
+    TIME_AND_LOCALE = TIME_AND_LOCALES.create(data=OPTIONS)
+    print("\n## Created appliance time and locale CONFIGurations successfully!")
+    pprint(TIME_AND_LOCALE.data)
 
-time_and_locale = time_and_locale.data
+TIME_AND_LOCALE = TIME_AND_LOCALE.data
 # Set to use appliance local time and date server
-time_and_locale['ntpServers'] = ['127.0.0.1']
+TIME_AND_LOCALE['ntpServers'] = ['127.0.0.1']
 # Set locale to Chinese (China) with charset UTF-8
-time_and_locale['locale'] = 'zh_CN.UTF-8'
+TIME_AND_LOCALE['locale'] = 'zh_CN.UTF-8'
 # Remove the date and time, we do not want to update it manually
-time_and_locale.pop('dateTime')
-time_and_locale = time_and_locales.create(data=time_and_locale)
-print("\n## Created appliance time and locale configurations successfully!")
-pprint(time_and_locale.data)
+TIME_AND_LOCALE.pop('dateTime')
+TIME_AND_LOCALE = TIME_AND_LOCALES.create(data=TIME_AND_LOCALE)
+print("\n## Created appliance time and locale CONFIGurations successfully!")
+pprint(TIME_AND_LOCALE.data)
 # Note: Changing the time and locale will only be fully effective after resetting the appliance.
 # Until then we cannot run the below create function
 
 '''
 try:
     # Revert the changes made
-    time_and_locale = time_and_locales.create(data=options)
-    print("\n## Reverted appliance time and locale configurations successfully!")
-    pprint(time_and_locale.data)
+    TIME_AND_LOCALE = TIME_AND_LOCALES.create(data=OPTIONS)
+    print("\n## Reverted appliance time and locale CONFIGurations successfully!")
+    pprint(TIME_AND_LOCALE.data)
 except HPEOneViewTaskError:
     print("\n## Appliance will be rebooted to make the changes made previously.")
-
 '''

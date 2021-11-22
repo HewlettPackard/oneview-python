@@ -17,69 +17,69 @@
 from pprint import pprint
 
 from hpeOneView.oneview_client import OneViewClient
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
 # This resource is only available on HPE Synergy
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
-        "userName": "<username>",
+        "userName": "<userNAME>",
         "password": "<password>"
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-sas_logical_interconnects = oneview_client.sas_logical_interconnects
-firmware_driver_uri = None
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+oneview_client = OneViewClient(CONFIG)
+SAS_LOGICAL_INTERCONNECTS = oneview_client.SAS_LOGICAL_INTERCONNECTS
+FIRMWARE_DRIVER_URI = None
 
 # Get all SAS Logical Interconnects
 print("\nGet all SAS Logical Interconnects")
-logical_interconnects = sas_logical_interconnects.get_all()
-for sas_logical_interconnect in logical_interconnects:
-    print('  Name: {name}'.format(**sas_logical_interconnect))
+LOGICAL_INTERCONNECTS = SAS_LOGICAL_INTERCONNECTS.get_all()
+for SAS_LOGICAL_INTERCONNECT in LOGICAL_INTERCONNECTS:
+    print('  Name: {NAME}'.format(**SAS_LOGICAL_INTERCONNECT))
 
-name = logical_interconnects[0]['name']
-sas_logical_interconnect = sas_logical_interconnects.get_by_name(name)
+NAME = LOGICAL_INTERCONNECTS[0]['NAME']
+SAS_LOGICAL_INTERCONNECT = SAS_LOGICAL_INTERCONNECTS.get_by_NAME(NAME)
 
-# Re-applies the configuration on the SAS Logical Interconnect
-print("\nRe-applies the configuration on the SAS Logical Interconnect")
-sas_logical_interconnect.update_configuration()
+# Re-applies the CONFIGuration on the SAS Logical Interconnect
+print("\nRe-applies the CONFIGuration on the SAS Logical Interconnect")
+SAS_LOGICAL_INTERCONNECT.update_CONFIGuration()
 print("\n  Done.")
 
 # Return the SAS Logical Interconnect to a consistent state
 print("\nReturn the SAS Logical Interconnect to a consistent state")
-sas_logical_interconnect.update_compliance()
-print("\n  Done. The current consistency state is {consistencyStatus}.".format(**sas_logical_interconnect.data))
+SAS_LOGICAL_INTERCONNECT.update_compliance()
+print("\n  Done. The current consistency state is {consistencyStatus}.".format(**SAS_LOGICAL_INTERCONNECT.data))
 
 # Return the SAS Logical Interconnect list to a consistent state
 print("\nReturn the SAS Logical Interconnect list to a consistent state")
-compliance_uris = [logical_interconnects[0]['uri']]
-sas_logical_interconnect.update_compliance_all(compliance_uris)
-print("\n  Done. The current consistency state is {consistencyStatus}.".format(**sas_logical_interconnect.data))
+COMPLIANCE_URIS = [LOGICAL_INTERCONNECTS[0]['uri']]
+SAS_LOGICAL_INTERCONNECT.update_compliance_all(COMPLIANCE_URIS)
+print("\n  Done. The current consistency state is {consistencyStatus}.".format(**SAS_LOGICAL_INTERCONNECT.data))
 
 # Replace Drive Enclosure (This example only works with real hardware)
 print("\nReplacing Drive Enclosure")
-drive_replacement = {
+DRIVE_REPLACEMENT = {
     "oldSerialNumber": "S46016710000J4524YPT",
     "newSerialNumber": "S46016710001J4524YPT"
 }
-drive_replacement_output = sas_logical_interconnect.replace_drive_enclosure(drive_replacement)
-pprint(drive_replacement_output)
+DRIVE_REPLACEMENT_OUTPUT = SAS_LOGICAL_INTERCONNECT.replace_drive_enclosure(DRIVE_REPLACEMENT)
+pprint(DRIVE_REPLACEMENT_OUTPUT)
 
-# Get installed firmware
-print("\nGet the installed firmware for a SAS Logical Interconnect that matches the specified ID.")
-firmware = sas_logical_interconnect.get_firmware()
-pprint(firmware)
+# Get installed FIRMWARE
+print("\nGet the installed FIRMWARE for a SAS Logical Interconnect that matches the specified ID.")
+FIRMWARE = SAS_LOGICAL_INTERCONNECT.get_FIRMWARE()
+pprint(FIRMWARE)
 
-# Install the firmware to a SAS Logical Interconnect (time-consuming operation)
-print("\nInstall the firmware to a SAS Logical Interconnect that matches the specified ID.")
-firmware_to_install = {
+# Install the FIRMWARE to a SAS Logical Interconnect (time-consuming operation)
+print("\nInstall the FIRMWARE to a SAS Logical Interconnect that matches the specified ID.")
+FIRMWARE_TO_INSTALL = {
     "command": "Update",
     "force": "false",
-    "sppUri": firmware_driver_uri
+    "sppUri": FIRMWARE_DRIVER_URI
 }
-installed_firmware = sas_logical_interconnect.update_firmware(firmware_to_install)
-pprint(installed_firmware)
+INSTALLED_FIRMWARE = SAS_LOGICAL_INTERCONNECT.update_FIRMWARE(FIRMWARE_TO_INSTALL)
+pprint(INSTALLED_FIRMWARE)

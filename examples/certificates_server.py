@@ -20,7 +20,7 @@ from pprint import pprint
 from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "",
     "credentials": {
         "userName": "",
@@ -28,66 +28,68 @@ config = {
     }
 }
 
-remote_server_options = {
+REMOTE_SERVER_OPTIONS = {
     "name": "172.18.13.11",
 }
 
-options = {
-    "certificateDetails": [
-        {
-            "aliasName": "vcenter",
-            "base64Data": "",
-            "type": "CertificateDetailV2"
-        }
-    ],
+OPTIONS = {
+    "certificateDetails": [{
+        "aliasName": "vcenter",
+        "base64Data": "",
+        "type": "CertificateDetailV2"
+        }],
 }
 
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-certificate_server = oneview_client.certificates_server
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+CERTIFICATE_SERVER = ONEVIEW_CLIENT.certificates_server
 
 # Fetch server certificate of remote server
 print("\nGet server certificate of remote server by ip address")
-remote_server_cert = certificate_server.get_remote(remote_server_options['name'])
-if remote_server_cert:
-    ca_certificate = remote_server_cert.data['certificateDetails'][0]['base64Data']
-    print(ca_certificate)
+REMOTE_SERVER_CERT = CERTIFICATE_SERVER.get_remote(REMOTE_SERVER_OPTIONS['name'])
+if REMOTE_SERVER_CERT:
+    CA_CERTIFICATE = REMOTE_SERVER_CERT.data['certificateDetails'][0]['base64Data']
+    print(CA_CERTIFICATE)
 
 # Fetch certificate by alias name
 print("\nGet server certificate by alias name")
-server_certificate = certificate_server.get_by_alias_name("vcenter")
-if server_certificate:
-    print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(
-        server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
+SERVER_CERTIFICATE = CERTIFICATE_SERVER.get_by_alias_name("vcenter")
+if SERVER_CERTIFICATE:
+    print("\nFound server certificate by aliasName: {}.\n  uri = {}".format(\
+        SERVER_CERTIFICATE.data['certificateDetails'][0]['aliasName'], \
+        SERVER_CERTIFICATE.data['uri']))
 else:
-    # Add a server certificate with the options provided
-    options['certificateDetails'][0]['base64Data'] = ca_certificate
-    options['certificateDetails'][0]['type'] = remote_server_cert.data['certificateDetails'][0]['type']
-    server_certificate = certificate_server.create(data=options)
-    print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
-          server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
+    # Add a server certificate with the OPTIONS provided
+    OPTIONS['certificateDetails'][0]['base64Data'] = CA_CERTIFICATE
+    OPTIONS['certificateDetails'][0]['type'] = REMOTE_SERVER_CERT.\
+            data['certificateDetails'][0]['type']
+    SERVER_CERTIFICATE = CERTIFICATE_SERVER.create(data=OPTIONS)
+    print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(\
+        SERVER_CERTIFICATE.data['certificateDetails'][0]['aliasName'],\
+	 SERVER_CERTIFICATE.data['uri']))
 
 # Get by uri
 print("\nGet a server certificate by uri")
-server_cert_by_uri = certificate_server.get_by_uri(server_certificate.data['uri'])
-pprint(server_cert_by_uri.data)
+SERVER_CERT_BY_URI = CERTIFICATE_SERVER.get_by_uri(SERVER_CERTIFICATE.data['uri'])
+pprint(SERVER_CERT_BY_URI.data)
 
 # Update alias name of recently added certificate
 print("\nUpdate recently created server certificate")
-data_to_update = {'name': 'Updated vcenter'}
-server_certificate.update(data=data_to_update)
-print("\nUpdated server certificate {} successfully.\n".format(
-      server_certificate.data['certificateDetails'][0]['aliasName']))
+DATA_TO_UPDATE = {'name': 'Updated vcenter'}
+SERVER_CERTIFICATE.update(data=DATA_TO_UPDATE)
+print("\nUpdated server certificate {} successfully.\n".format(\
+      SERVER_CERTIFICATE.data['certificateDetails'][0]['aliasName']))
 
 # Delete the added server certificate
-server_certificate.delete()
+SERVER_CERTIFICATE.delete()
 print("\nSuccessfully deleted server certificate")
 
 # Create server certificate for automation
-options['certificateDetails'][0]['base64Data'] = ca_certificate
-options['certificateDetails'][0]['type'] = remote_server_cert.data['certificateDetails'][0]['type']
-server_certificate = certificate_server.create(data=options)
-print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(
-      server_certificate.data['certificateDetails'][0]['aliasName'], server_certificate.data['uri']))
+OPTIONS['certificateDetails'][0]['base64Data'] = CA_CERTIFICATE
+OPTIONS['certificateDetails'][0]['type'] = REMOTE_SERVER_CERT.data['certificateDetails'][0]['type']
+SERVER_CERTIFICATE = CERTIFICATE_SERVER.create(data=OPTIONS)
+print("\nAdded a server certificate with aliasName: {}.\n  uri = {}".format(\
+      SERVER_CERTIFICATE.data['certificateDetails'][0]['aliasName'],\
+      SERVER_CERTIFICATE.data['uri']))

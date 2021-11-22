@@ -20,7 +20,7 @@ from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview-ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,70 +28,70 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
-pool_type_vsn = 'vsn'
-pool_type_vwwn = 'vwwn'
-pool_type_vmac = 'vmac'
-pool_type_ipv4 = 'ipv4'
+POOL_TYPE_VSN = 'vsn'
+POOL_TYPE_VWWN = 'vwwn'
+POOL_TYPE_VMAC = 'vmac'
+POOL_TYPE_IPV4 = 'ipv4'
 
-id_pools = oneview_client.id_pools
-print("\n Gets schema: ")
-schema = id_pools.get_schema()
-pprint(schema)
+ID_POOLS = ONEVIEW_CLIENT.id_pools
+print("\n Gets SCHEMA: ")
+SCHEMA = ID_POOLS.get_schema()
+pprint(SCHEMA)
 
-print("\n Gets the Pool: " + pool_type_vsn)
-id_pool = id_pools.get_pool_type(pool_type_vsn)
-pprint(id_pool.data)
+print("\n Gets the Pool: " + POOL_TYPE_VSN)
+ID_POOL = ID_POOLS.get_pool_type(POOL_TYPE_VSN)
+pprint(ID_POOL.data)
 
-print("\n Gets the Pool: " + pool_type_vwwn)
-id_pool = id_pools.get_pool_type(pool_type_vwwn)
-pprint(id_pool.data)
+print("\n Gets the Pool: " + POOL_TYPE_VWWN)
+ID_POOL = ID_POOLS.get_pool_type(POOL_TYPE_VWWN)
+pprint(ID_POOL.data)
 
-print("\n Gets the Pool: " + pool_type_ipv4)
-id_pool = id_pools.get_pool_type(pool_type_ipv4)
-pprint(id_pool.data)
+print("\n Gets the Pool: " + POOL_TYPE_IPV4)
+ID_POOL = ID_POOLS.get_pool_type(POOL_TYPE_IPV4)
+pprint(ID_POOL.data)
 
-print("\n Gets the Pool: " + pool_type_vmac)
-id_pool = id_pools.get_pool_type(pool_type_vmac)
-pprint(id_pool.data)
+print("\n Gets the Pool: " + POOL_TYPE_VMAC)
+ID_POOL = ID_POOLS.get_pool_type(POOL_TYPE_VMAC)
+pprint(ID_POOL.data)
 
 print("\n Enable the Id Pool")
-data = {
-    "rangeUris": id_pool.data['rangeUris'],
+DATA = {
+    "rangeUris": ID_POOL.data['rangeUris'],
     "type": "Pool",
     "enabled": True
 }
-id_pool = id_pools.update_pool_type(data, pool_type_vmac)
+ID_POOL = ID_POOLS.update_pool_type(DATA, POOL_TYPE_VMAC)
 print(" Id Pool Updated")
 
 print("\n Generates a random range")
-rnd_range = id_pools.generate(pool_type_vsn)
-pprint(rnd_range.data)
+RND_RANGE = ID_POOLS.generate(POOL_TYPE_VSN)
+pprint(RND_RANGE.data)
 
 print("\n Allocates a set of IDs from a pool")
-allocated_ids = id_pools.allocate({"count": 10}, pool_type_vsn)
-pprint(allocated_ids)
+ALLOCATED_IDS = ID_POOLS.allocate({"count": 10}, POOL_TYPE_VSN)
+pprint(ALLOCATED_IDS)
 
 print("\n Checks the range availability in the Id pool")
-range_availability = id_pools.get_check_range_availability(pool_type_vsn, allocated_ids['idList'])
-pprint(range_availability.data)
+RANGE_AVAILABILITY = ID_POOLS.get_check_range_availability(POOL_TYPE_VSN, ALLOCATED_IDS['idList'])
+pprint(RANGE_AVAILABILITY.data)
 
 print("\n Validates a set of user specified IDs to reserve in the pool")
-ids = [str(x)[:-3] + '200' for x in allocated_ids['idList']]
-validated = id_pools.validate({'idList': ids}, pool_type_vsn)
-pprint(validated)
+IDS = [str(x)[:-3] + '200' for x in ALLOCATED_IDS['idList']]
+VALIDATED = ID_POOLS.validate({'idList': IDS}, POOL_TYPE_VSN)
+pprint(VALIDATED)
 
 print("\n Validates an Id Pool")
-get_validate = id_pools.validate_id_pool(pool_type_ipv4, ['172.18.9.11'])
-pprint(get_validate.data)
+GET_VALIDATE = ID_POOLS.validate_id_pool(POOL_TYPE_IPV4, ['172.18.9.11'])
+pprint(GET_VALIDATE.data)
 
 print("\n Collect a set of IDs back to Id Pool")
 try:
-    collected_ids = id_pools.collect({"idList": allocated_ids['idList']}, pool_type_vsn)
-    pprint(collected_ids)
-except HPEOneViewException as e:
-    print(e.msg)
+    COLLECTED_IDS = ID_POOLS.collect({"idList": ALLOCATED_IDS['idList']}, POOL_TYPE_VSN)
+    pprint(COLLECTED_IDS)
+except HPEOneViewException as err:
+    print(err.msg)

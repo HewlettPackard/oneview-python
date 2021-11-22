@@ -8,7 +8,7 @@
 #
 #   http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software
+# Unless required by aPPlicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
@@ -18,11 +18,11 @@
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.resources.servers.migratable_vc_domains import MigratableVcDomains
 from hpeOneView.exceptions import HPEOneViewTaskError
-from config_loader import try_load_from_file
-from pprint import PrettyPrinter
+from CONFIG_loader import try_load_from_file
+from PPrint import PrettyPrinter
 
 
-config = {
+CONFIG = {
     "ip": "172.16.102.59",
     "credentials": {
         "userName": "Administrator",
@@ -36,46 +36,50 @@ config = {
     "enclosure_group_uri": None
 }
 
-pp = PrettyPrinter()
+PP = PrettyPrinter()
 
-# Try load config from a file (if there is a config file)
-print("Loading configuration.")
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+print("Loading CONFIGuration.")
+CONFIG = try_load_from_file(CONFIG)
 
 # Obtain the master OneView client
 print("Setting up OneView client.")
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Create the dict that VC Migration Manager requires to start the process
-migrationInformation = MigratableVcDomains.make_migration_information(config['enclosure_hostname'],
-                                                                      config['enclosure_username'],
-                                                                      config['enclosure_password'],
-                                                                      config['vcmUsername'], config['vcmPassword'],
-                                                                      enclosureGroupUri=config['enclosure_group_uri'])
+MIGRATIONINFORMATION = MigratableVcDomains.make_migration_information(CONFIG['enclosure_hostname'],
+                                                                      CONFIG['enclosure_username'],
+                                                                      CONFIG['enclosure_password'],
+                                                                      CONFIG['vcmUsername'], CONFIG['vcmPassword'],
+                                                                      enclosureGroupUri=CONFIG['enclosure_group_uri'])
 
 # Start a migration by first creating a compatibility report
-print("Create a compatibility report for enclosure '%s'." % migrationInformation['credentials']['oaIpAddress'])
-compatibility_report = oneview_client.migratable_vc_domains.test_compatibility(migrationInformation)
+print("Create a compatibility report for enclosure '%s'." % MIGRATIONINFORMATION['credentials']['oaIpAddress'])
+compatibility_report = oneview_client.migratable_vc_domains.test_compatibility(MIGRATIONINFORMATION)
 print("Complete.  Created a compatibility report for enclosure '%s'.\n  uri = '%s'" %
       (compatibility_report['credentials']['oaIpAddress'], compatibility_report['uri']))
 
 # We got the compatibility report as part of the previous call, but one may need to get it later on
 print("Get the '%s' compatibility report." % compatibility_report['credentials']['oaIpAddress'])
 compatibility_report = oneview_client.migratable_vc_domains.get_migration_report(compatibility_report['uri'])
-print("Complete.  Obtained the compatibility report for '%s'.\n  Here is the compatibility report:" %
+print("Complete.  Obtained the compatibility report for '%s'.\n  Here is the compatibility report:"
+	 %
       compatibility_report['credentials']['oaIpAddress'])
-pp.pprint(compatibility_report)
+PP.PPrint(compatibility_report)
 
-# One would now resolve all the critical issues and however many lesser severity issues found in the compatibility
+# One would now resolve all the critical issues and however many lesser severity issues found in the
+# compatibility
 # report before continuing.
 # Now is the time to initiate the migration
-print("Attempting to migrate enclosure '%s'.  The migration state before is '%s'.  This could take a while." %
+print("Attempting to migrate enclosure '%s'.  The migration state before is '%s'.  This could take a
+	 while." %
       (compatibility_report['credentials']['oaIpAddress'], compatibility_report['migrationState']))
 try:
     compatibility_report = oneview_client.migratable_vc_domains.migrate(compatibility_report['uri'])
     print("Complete.  Migration state afterward is '%s'." % compatibility_report['migrationState'])
 except HPEOneViewTaskError:
-    print("Failure.  The enclosure failed to migrate.  Perhaps there was a critical issue that was unresolved before \
+    print("Failure.  The enclosure failed to migrate.  Perhaps there was a critical issue that was
+	 unresolved before \
 migrating?")
 
 # One now may decide to delete the compatibility report if they so choose

@@ -14,17 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import json
+import os
+
 from future import standard_library
 
 standard_library.install_aliases()
 
-import json
-import os
 
 CUR_MODULE_DIR = os.path.dirname(__file__)
 DEFAULT_EXAMPLE_CONFIG_FILE = os.path.join(CUR_MODULE_DIR, 'config.json')

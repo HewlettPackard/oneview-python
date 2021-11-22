@@ -21,141 +21,142 @@ from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
-# This example is compatible only for C7000 enclosures
-config = {
+# This example is compatible only for C7000 ENCLOSURES
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
         "password": "<password>"
     },
     "api_version": "<api_version>",
-    "enclosure_group_uri": "/rest/enclosure-groups/06475bf3-084b-4874",
-    "enclosure_hostname": "",
-    "enclosure_username": "",
-    "enclosure_password": "",
+    "ENCLOSURE_group_URI": "/rest/ENCLOSURE-groups/06475bf3-084b-4874",
+    "ENCLOSURE_hostname": "",
+    "ENCLOSURE_username": "",
+    "ENCLOSURE_password": "",
 }
 
-enclosure_name = "0000A66101"
+ENCLOSURE_NAME = "0000A66101"
 
 # Specify variant of your appliance before running this example
-api_variant = "Synergy"
+API_VARIANT = "Synergy"
 
-# Declare a CA signed certificate file path.
-certificate_file = ""
+# Declare a CA signed CERTIFICATE file path.
+CERTIFICATE_FILE = ""
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-# The hostname, enclosure group URI, username, and password must be set on the configuration file
-options = {
-    "enclosureGroupUri": config['enclosure_group_uri'],
-    "hostname": config['enclosure_hostname'],
-    "username": config['enclosure_username'],
-    "password": config['enclosure_password'],
+# The hostname, ENCLOSURE group URI, username, and password must be set on the CONFIGURATION file
+OPTIONS = {
+    "ENCLOSUREGroupUri": CONFIG['ENCLOSURE_group_URI'],
+    "hostname": CONFIG['ENCLOSURE_hostname'],
+    "username": CONFIG['ENCLOSURE_username'],
+    "password": CONFIG['ENCLOSURE_password'],
     "licensingIntent": "OneView"
 }
 
 # Get Enclosure resource object
-oneview_client = OneViewClient(config)
-enclosure_resource = oneview_client.enclosures
-scopes = oneview_client.scopes
+oneview_client = OneViewClient(CONFIG)
+ENCLOSURE_RESOURCE = oneview_client.enclosures
+SCOPES = oneview_client.scopes
 
-# Get all enclosures
-print("Get all enclosures")
-enclosures = enclosure_resource.get_all()
-for enc in enclosures:
+# Get all ENCLOSURES
+print("Get all ENCLOSURES")
+ENCLOSURES = ENCLOSURE_RESOURCE.get_all()
+for enc in ENCLOSURES:
     print('  {name}'.format(**enc))
 
-enclosure = enclosure_resource.get_by_name(enclosure_name)
-if not enclosure:
-    # Creates an enclosure and returns created enclosure object
-    enclosure = enclosure_resource.add(options)
-print("Enclosure '{name}'.\n  URI = '{uri}'".format(**enclosure.data))
+ENCLOSURE = ENCLOSURE_RESOURCE.get_by_name(ENCLOSURE_NAME)
+if not ENCLOSURE:
+    # Creates an ENCLOSURE and returns created ENCLOSURE object
+    ENCLOSURE = ENCLOSURE_RESOURCE.add(OPTIONS)
+print("Enclosure '{name}'.\n  URI = '{URI}'".format(**ENCLOSURE.data))
 
 # Get by URI.
-print("Find an enclosure by URI")
-uri = enclosure.data['uri']
-enclosure = enclosure_resource.get_by_uri(uri)
-pprint(enclosure.data)
+print("Find an ENCLOSURE by URI")
+URI = ENCLOSURE.data['URI']
+ENCLOSURE = ENCLOSURE_RESOURCE.get_by_uri(URI)
+pprint(ENCLOSURE.data)
 
-# Update name of the newly added enclosure
-update_name = enclosure_name + "-Updated"
-print("Updating the enclosure with name " + update_name)
-headers = {'If-Match': '*'}
-enclosure.patch('replace', '/name', update_name, custom_headers=headers)
-print("  Done.\n  URI = '{uri}', name = {name}".format(**enclosure.data))
+# Update name of the newly added ENCLOSURE
+UPDATE_NAME = ENCLOSURE_NAME + "-Updated"
+print("Updating the ENCLOSURE with name " + UPDATE_NAME)
+HEADERS = {'If-Match': '*'}
+ENCLOSURE.patch('replace', '/name', UPDATE_NAME, custom_HEADERS=HEADERS)
+print("  Done.\n  URI = '{URI}', name = {name}".format(**ENCLOSURE.data))
 
-# Revert the name of the enclosure
-print("Reverting the enclosure name " + enclosure_name)
-headers = {'If-Match': '*'}
-enclosure.patch('replace', '/name', enclosure_name, custom_headers=headers)
-print("  Done.\n  URI = '{uri}', name = {name}".format(**enclosure.data))
+# Revert the name of the ENCLOSURE
+print("Reverting the ENCLOSURE name " + ENCLOSURE_NAME)
+HEADERS = {'If-Match': '*'}
+ENCLOSURE.patch('replace', '/name', ENCLOSURE_NAME, custom_HEADERS=HEADERS)
+print("  Done.\n  URI = '{URI}', name = {name}".format(**ENCLOSURE.data))
 
-# Update configuration
-print("Reapplying the appliance's configuration on the enclosure")
+# Update CONFIGURATION
+print("Reapplying the appliance's CONFIGURATION on the ENCLOSURE")
 try:
-    enclosure.update_configuration()
+    ENCLOSURE.update_CONFIGURATION()
     print("  Done.")
-except HPEOneViewException as e:
-    print(e.msg)
+except HPEOneViewException as err:
+    print(err.msg)
 
-print("Retrieve the environmental configuration data for the enclosure")
+print("Retrieve the environmental CONFIGURATION data for the ENCLOSURE")
 try:
-    environmental_configuration = enclosure.get_environmental_configuration()
-    print("  Enclosure calibratedMaxPower = {calibratedMaxPower}".format(**environmental_configuration))
-except HPEOneViewException as e:
-    print(e.msg)
+    ENVIRONMENTAL_CONFIGURATION = ENCLOSURE.get_ENVIRONMENTAL_CONFIGURATION()
+    print("  Enclosure calibratedMaxPower = {calibratedMaxPower}".\
+            format(**ENVIRONMENTAL_CONFIGURATION))
+except HPEOneViewException as err:
+    print(err.msg)
 
-# Set the calibrated max power of an unmanaged or unsupported enclosure
-# update_environmental_configuration is available only in C7000
-if api_variant == 'C7000':
-    print("Set the calibrated max power of an unmanaged or unsupported enclosure")
+# Set the calibrated max power of an unmanaged or unsupported ENCLOSURE
+# update_ENVIRONMENTAL_CONFIGURATION is available only in C7000
+if API_VARIANT == 'C7000':
+    print("Set the calibrated max power of an unmanaged or unsupported ENCLOSURE")
 
     try:
-        configuration = {
+        CONFIGURATION = {
             "calibratedMaxPower": 2500
         }
-        enclosure_updated_encConf = enclosure.update_environmental_configuration(configuration)
+        ENCLOSURE_UPDATED_ENCCONF = ENCLOSURE.update_ENVIRONMENTAL_CONFIGURATION(CONFIGURATION)
         print("  Done.")
-    except HPEOneViewException as e:
-        print(e.msg)
+    except HPEOneViewException as err:
+        print(err.msg)
 
-# Refresh the enclosure
-print("Refreshing the enclosure")
+# Refresh the ENCLOSURE
+print("Refreshing the ENCLOSURE")
 try:
-    refresh_state = {"refreshState": "RefreshPending"}
-    enclosure.refresh_state(refresh_state)
+    REFRESH_STATE = {"refreshState": "RefreshPending"}
+    ENCLOSURE.REFRESH_STATE(REFRESH_STATE)
     print("  Done")
-except HPEOneViewException as e:
-    print(e.msg)
+except HPEOneViewException as err:
+    print(err.msg)
 
 # Buid the SSO URL parameters
 # get_sso is available only in C7000
-if api_variant == 'C7000':
-    print("Build the SSO (Single Sign-On) URL parameters for the enclosure")
+if API_VARIANT == 'C7000':
+    print("Build the SSO (Single Sign-On) URL parameters for the ENCLOSURE")
     try:
-        sso_url_parameters = enclosure.get_sso('Active')
-        pprint(sso_url_parameters)
-    except HPEOneViewException as e:
-        print(e.msg)
+        SSO_URL_PARAMETERS = ENCLOSURE.get_sso('Active')
+        pprint(SSO_URL_PARAMETERS)
+    except HPEOneViewException as err:
+        print(err.msg)
 
 # Get Statistics specifying parameters
-print("Get the enclosure statistics")
+print("Get the ENCLOSURE statistics")
 try:
-    enclosure_statistics = enclosure.get_utilization(fields='AveragePower',
+    ENCLOSURE_STATISTICS = ENCLOSURE.get_utilization(fields='AveragePower',
                                                      filter='startDate=2016-06-30T03:29:42.000Z',
                                                      view='day')
-    pprint(enclosure_statistics)
-except HPEOneViewException as e:
-    print(e.msg)
+    pprint(ENCLOSURE_STATISTICS)
+except HPEOneViewException as err:
+    print(err.msg)
 
-# Create a Certificate Signing Request (CSR) for the enclosure.
-if api_variant == 'C7000':
-    bay_number = 1  # Required for C7000 enclosure
+# Create a Certificate Signing Request (CSR) for the ENCLOSURE.
+if API_VARIANT == 'C7000':
+    BAY_NUMBER = 1  # Required for C7000 ENCLOSURE
 else:
-    bay_number = None
+    BAY_NUMBER = None
 
-csr_data = {
+CSR_DATA = {
     "type": "CertificateDtoV2",
     "organization": "organization",
     "organizationalUnit": "organization unit",
@@ -165,66 +166,67 @@ csr_data = {
     "commonName": "name"
 }
 try:
-    enclosure.generate_csr(csr_data, bay_number=bay_number)
-    print("Generated CSR for the enclosure.")
-except HPEOneViewException as e:
-    print(e.msg)
+    ENCLOSURE.generate_CSR(CSR_DATA, BAY_NUMBER=BAY_NUMBER)
+    print("Generated CSR for the ENCLOSURE.")
+except HPEOneViewException as err:
+    print(err.msg)
 
-# Get the certificate Signing Request (CSR) that was generated by previous POST.
+# Get the CERTIFICATE Signing Request (CSR) that was generated by previous POST.
 try:
-    csr = enclosure.get_csr(bay_number=bay_number)
-    with open('enclosure.csr', 'w') as csr_file:
-        csr_file.write(csr["base64Data"])
-    print("Saved CSR(generated by previous POST) to 'enclosure.csr' file")
-except HPEOneViewException as e:
-    print(e.msg)
+    CSR = ENCLOSURE.get_CSR(BAY_NUMBER=BAY_NUMBER)
+    with open('ENCLOSURE.CSR', 'w') as CSR_file:
+        CSR_file.write(CSR["base64Data"])
+    print("Saved CSR(generated by previous POST) to 'ENCLOSURE.CSR' file")
+except HPEOneViewException as err:
+    print(err.msg)
 
-# Import CA signed certificate to the enclosure.
+# Import CA signed CERTIFICATE to the ENCLOSURE.
 try:
     # Certificate has to be signed by CA before running the task.
-    certificate_file = "enclosure.csr"
-    certificate = open(certificate_file).read()
+    CERTIFICATE_FILE = "ENCLOSURE.CSR"
+    CERTIFICATE = open(CERTIFICATE_FILE).read()
 
-    certificate_data = {
+    CERTIFICATE_DATA = {
         "type": "CertificateDataV2",
-        "base64Data": certificate
+        "base64Data": CERTIFICATE
     }
 
-    enclosure.import_certificate(certificate_data, bay_number=bay_number)
-    print("Imported Signed Certificate  to the enclosure.")
-except HPEOneViewException as e:
-    print(e.msg)
-except Exception as e:
-    print(e)
+    ENCLOSURE.import_CERTIFICATE(CERTIFICATE_DATA, BAY_NUMBER=BAY_NUMBER)
+    print("Imported Signed Certificate  to the ENCLOSURE.")
+except HPEOneViewException as err:
+    print(err.msg)
+except Exception as err:
+    print(err)
 
-print("\n## Create the scope")
-options = {
+print("\n## Create the SCOPE")
+OPTIONS = {
     "name": "SampleScopeForTest",
     "description": "Sample Scope description"
 }
-scope = scopes.create(options)
+SCOPE = SCOPES.create(OPTIONS)
 
-# Get Enclosure by scope_uris
+# Get Enclosure by SCOPE_URIs
 if oneview_client.api_version >= 600:
     try:
-        enclosures_by_scope_uris = enclosure.get_all(scope_uris=scope.data['uri'])
-        if len(enclosures_by_scope_uris) > 0:
-            print("Found %d Enclosures" % (len(enclosures_by_scope_uris)))
+        ENCLOSURES_BY_SCOPE_URIS = ENCLOSURE.get_all(SCOPE_URIs=SCOPE.data['URI'])
+        if len(ENCLOSURES_BY_SCOPE_URIS) > 0:
+            print("Found %d Enclosures" % (len(ENCLOSURES_BY_SCOPE_URIS)))
             i = 0
-            while i < len(enclosures_by_scope_uris):
-                print("Found Enclosures by scope_uris: '%s'.\n  uri = '%s'" % (enclosures_by_scope_uris[i]['name'], enclosures_by_scope_uris[i]['uri']))
+            while i < len(ENCLOSURES_BY_SCOPE_URIS):
+                print("Found Enclosures by SCOPE_URIs: '%s'.\n  URI = '%s'" %\
+	 (ENCLOSURES_BY_SCOPE_URIS[i]['name'], ENCLOSURES_BY_SCOPE_URIS[i]['URI']))
                 i += 1
-            pprint(enclosures_by_scope_uris)
+            pprint(ENCLOSURES_BY_SCOPE_URIS)
         else:
-            print("No Enclosures found with scope.")
-    except HPEOneViewException as e:
-        print(e.msg)
+            print("No Enclosures found with SCOPE.")
+    except HPEOneViewException as err:
+        print(err.msg)
 
-# Delete the scope
-scope.delete()
+# Delete the SCOPE
+SCOPE.delete()
 print("\n## Scope deleted successfully.")
 
-if api_variant == 'C7000':
-    # Remove the recently added enclosure
-    enclosure.remove()
+if API_VARIANT == 'C7000':
+    # Remove the recently added ENCLOSURE
+    ENCLOSURE.remove()
     print("Enclosure removed successfully")

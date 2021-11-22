@@ -15,6 +15,12 @@
 # limitations under the License.
 ###
 
+import logging
+import os
+from copy import deepcopy
+from urllib.parse import quote
+from functools import partial
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -24,12 +30,6 @@ from future import standard_library
 from future.utils import lmap
 
 standard_library.install_aliases()
-
-import logging
-import os
-from copy import deepcopy
-from urllib.parse import quote
-from functools import partial
 
 from hpeOneView.resources.task_monitor import TaskMonitor
 from hpeOneView import exceptions
@@ -146,10 +146,10 @@ class Resource(object):
             start: The first item to return, using 0-based indexing.
                 If not specified, the default is 0 - start with the first available item.
             count: The number of resources to return. A count of -1 requests all items (default).
-            filter (list or str): A general filter/query string to narrow the list of items returned. The default is no
-                filter; all resources are returned.
-            sort: The sort order of the returned data set. By default, the sort order is based on create time with the
-                oldest entry first.
+            filter (list or str): A general filter/query string to narrow the list of items
+         returned. The default is no filter; all resources are returned.
+            sort: The sort order of the returned data set. By default, the sort order is based on
+                create time with the oldest entry first.
 
         Returns:
             list: A list of items matching the specified filter.
@@ -163,8 +163,8 @@ class Resource(object):
         Args:
             data: Additional fields can be passed to create the resource.
             uri: Resouce uri
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
             custom_headers: Allows set specific HTTP headers.
         Returns:
             Created resource.
@@ -203,8 +203,8 @@ class Resource(object):
 
         Args:
             data: Data to update the resource.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
             custom_headers: Allows to add custom HTTP headers.
             force: Force the update operation.
 
@@ -246,7 +246,8 @@ class Resource(object):
         # Workaround when the OneView filter does not work, it will filter again
         if "." not in field:
             # This filter only work for the first level
-            results = [item for item in results if str(item.get(field, "")).lower() == value.lower()]
+            results = [item for item in results if str(item.get(field, "")).lower() ==\
+         value.lower()]
         return results
 
     def get_by_name(self, name):
@@ -266,7 +267,8 @@ class Resource(object):
             new_resource = None
         return new_resource
 
-    # Sometimes get_all() with filters are not returning correct values, so added this method to overcome that issue
+    # Sometimes get_all() with filters are not returning correct values, so added this method to
+    # overcome that issue
     def get_by_field(self, field, value):
         """Retrieves a resource by its field.
 
@@ -368,8 +370,9 @@ class ResourceHelper(object):
         self._connection = connection
         self._task_monitor = task_monitor
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris='', custom_headers=None,
-                name_prefix='', category=[], childLimit=0, topCount=0,):
+    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', \
+            uri=None, scope_uris='', custom_headers=None, name_prefix='', category=[], \
+            childLimit=0, topCount=0,):
 
         """Gets all items according with the given arguments.
 
@@ -377,16 +380,17 @@ class ResourceHelper(object):
             start: The first item to return, using 0-based indexing.
                 If not specified, the default is 0 - start with the first available item.
             count: The number of resources to return. A count of -1 requests all items (default).
-            filter (list or str): A general filter/query string to narrow the list of items returned. The default is no
-                filter; all resources are returned.
-            query: A single query parameter can do what would take multiple parameters or multiple GET requests using
-                filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.
-            sort: The sort order of the returned data set. By default, the sort order is based on create time with the
-                oldest entry first.
+            filter (list or str): A general filter/query string to narrow the list of items
+         returned. The default is no filter; all resources are returned.
+            query: A single query parameter can do what would take multiple parameters or multiple
+         GET requests using filter. Use query for more complex queries. NOTE: This parameter is
+         experimental for OneView 2.0.
+            sort: The sort order of the returned data set. By default, the sort order is based on
+         create time with the oldest entry first.
             view:
-                Returns a specific subset of the attributes of the resource or collection by specifying the name of a
-                predefined view. The default view is expand (show all attributes of the resource and all elements of
-                the collections or resources).
+                Returns a specific subset of the attributes of the resource or collection by
+         specifying the name of a predefined view. The default view is expand (show all attributes
+         of the resource and all elements of the collections or resources).
             fields:
                 Name of the fields.
             uri:
@@ -428,11 +432,11 @@ class ResourceHelper(object):
             filter:
                 A general filter/query string to narrow the list of items deleted.
             force:
-                If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
+                If set to true, the operation completes despite any problems with network
+         connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates if the resources were successfully deleted.
@@ -448,8 +452,8 @@ class ResourceHelper(object):
         Args:
             data: Additional fields can be passed to create the resource.
             uri: Resouce uri
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
             custom_headers: Allows set specific HTTP headers.
         Returns:
             Created resource.
@@ -495,7 +499,8 @@ class ResourceHelper(object):
             uri: Resource uri
             force: If set to true, the operation completes despite any problems
                 with network connectivity or errors on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation
                 in OneView; it just stops waiting for its completion.
             custom_headers: Allows to add custom HTTP headers.
 
@@ -518,7 +523,8 @@ class ResourceHelper(object):
         Args:
             uri: Allows to use a different URI other than resource URI
             timeout: Timeout in seconds. Wait for task completion by default.
-                The timeout does not abort the operation in OneView; it just stops waiting for its completion.
+                The timeout does not abort the operation in OneView; it just stops waiting for its
+         completion.
             custom_headers: Allows to set custom HTTP headers.
 
         Returns:
@@ -535,7 +541,8 @@ class ResourceHelper(object):
         Args:
             uri: URI
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
@@ -580,19 +587,21 @@ class ResourceHelper(object):
 
         return self.get_members(response)
 
-    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris='',
-                        name_prefix='', category=[], childLimit=0, topCount=0):
+    def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='',\
+         fields='', scope_uris='', name_prefix='', category=[], childLimit=0, topCount=0):
 
         """Builds the URI from given parameters.
 
-        More than one request can be send to get the items, regardless the query parameter 'count', because the actual
-        number of items in the response might differ from the requested count. Some types of resource have a limited
-        number of items returned on each call. For those resources, additional calls are made to the API to retrieve
-        any other items matching the given filter. The actual number of items can also differ from the requested call
+        More than one request can be send to get the items, regardless the query parameter 'count',
+        because the actual number of items in the response might differ from the requested count.
+        Some types of resource have a limited number of items returned on each call. For those
+        resources, additional calls are made to the API to retrieve any other items matching the
+        given filter. The actual number of items can also differ from the requested call
         if the requested number of items would take too long.
 
         The use of optional parameters for OneView 2.0 is described at:
-        http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/index.html
+        http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current
+        /index.html
 
         Note:
             Single quote - "'" - inside a query parameter is not supported by OneView API.
@@ -601,15 +610,16 @@ class ResourceHelper(object):
             start: The first item to return, using 0-based indexing.
                 If not specified, the default is 0 - start with the first available item.
             count: The number of resources to return. A count of -1 requests all items (default).
-            filter (list or str): A general filter/query string to narrow the list of items returned. The default is no
-                filter; all resources are returned.
-            query: A single query parameter can do what would take multiple parameters or multiple GET requests using
-                filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.
-            sort: The sort order of the returned data set. By default, the sort order is based on create time with the
-                oldest entry first.
-            view: Returns a specific subset of the attributes of the resource or collection by specifying the name of a
-                predefined view. The default view is expand (show all attributes of the resource and all elements of
-                the collections or resources).
+            filter (list or str): A general filter/query string to narrow the list of items
+         returned. The default is no filter; all resources are returned.
+            query: A single query parameter can do what would take multiple parameters or multiple
+         GET requests using filter. Use query for more complex queries. NOTE: This parameter is
+         experimental for OneView 2.0.
+            sort: The sort order of the returned data set. By default, the sort order is based on
+         create time with the oldest entry first.
+            view: Returns a specific subset of the attributes of the resource or collection by
+         specifying the name of a predefined view. The default view is expand (show all attributes
+         of the resource and all elements of the collections or resources).
             fields: Name of the fields.
             uri: A specific URI (optional)
             scope_uris: An expression to restrict the resources returned according to the scopes to
@@ -657,8 +667,8 @@ class ResourceHelper(object):
 
         symbol = '?' if '?' not in path else '&'
 
-        uri = "{0}{1}start={2}&count={3}{4}{5}{6}{7}{8}{9}{10}{11}".format(path, symbol, start, count, filter, query, sort,
-                                                                           view, fields, scope_uris, name_prefix, categories)
+        uri = "{0}{1}start={2}&count={3}{4}{5}{6}{7}{8}{9}{10}{11}".format(path, symbol, start,\
+         count, filter, query, sort, view, fields, scope_uris, name_prefix, categories)
         return uri
 
     def build_uri_with_query_string(self, kwargs, sufix_path='', uri=None):
@@ -687,7 +697,8 @@ class ResourceHelper(object):
         else:
             return self._base_uri + "/" + id_or_uri
 
-    def build_subresource_uri(self, resource_id_or_uri=None, subresource_id_or_uri=None, subresource_path=''):
+    def build_subresource_uri(self, resource_id_or_uri=None, subresource_id_or_uri=None,\
+         subresource_path=''):
         """Helps to build a URI with resource path and its sub resource path.
 
         Args:
@@ -706,7 +717,8 @@ class ResourceHelper(object):
 
             resource_uri = self.build_uri(resource_id_or_uri)
 
-            uri = "{}/{}/{}".format(resource_uri, subresource_path, str(subresource_id_or_uri or ''))
+            uri = "{}/{}/{}".format(resource_uri, subresource_path, str(subresource_id_or_uri or\
+         ''))
             uri = uri.replace("//", "/")
 
             if uri.endswith("/"):
@@ -766,7 +778,8 @@ class ResourceHelper(object):
             members = self.get_members(response)
             items += members
 
-            logger.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri, str(len(members))))
+            logger.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri,\
+         str(len(members))))
             uri = self.get_next_page(response, items, requested_count)
 
         logger.debug('Total # of members found = {0}'.format(str(len(items))))
@@ -864,8 +877,8 @@ class ResourcePatchMixin(object):
             operation: Patch operation
             path: Path
             value: Value
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
             custom_headers: Allows to add custom http headers.
 
         Returns:
@@ -887,8 +900,8 @@ class ResourcePatchMixin(object):
 
         Args:
             body (list): Patch request body
-            timeout (int): Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout (int): Timeout in seconds. Wait for task completion by default. The timeout does
+         not abort the operation in OneView; it just stops waiting for its completion.
             custom_headers (dict): Allows to add custom http headers.
 
         Returns:
@@ -918,8 +931,8 @@ class ResourceFileHandlerMixin(object):
         Args:
             file_path: File to upload.
             uri: A specific URI (optional).
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Response body.
@@ -928,7 +941,8 @@ class ResourceFileHandlerMixin(object):
             uri = self.URI
 
         upload_file_name = os.path.basename(file_path)
-        task, entity = self._connection.post_multipart_with_response_handling(uri, file_path, upload_file_name)
+        task, entity = self._connection.post_multipart_with_response_handling(uri, file_path,\
+         upload_file_name)
 
         if not task:
             return entity
@@ -958,53 +972,56 @@ class ResourceUtilizationMixin(object):
             fields: Name of the supported metric(s) to be retrieved in the format METRIC[,METRIC]...
                 If unspecified, all metrics supported are returned.
 
-            filter (list or str): Filters should be in the format FILTER_NAME=VALUE[,FILTER_NAME=VALUE]...
+            filter (list or str): Filters should be in the format FILTER_NAME=VALUE
+            [,FILTER_NAME=VALUE]...
                 E.g.: 'startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z'
 
                 startDate
-                    Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
-                    determined by the endDate minus 24 hours.
+                    Start date of requested starting time range in ISO 8601 format. If omitted, the
+         startDate is determined by the endDate minus 24 hours.
                 endDate
-                    End date of requested starting time range in ISO 8601 format. When omitted, the endDate includes
-                    the latest data sample available.
+                    End date of requested starting time range in ISO 8601 format. When omitted, the
+         endDate includes the latest data sample available.
 
-                If an excessive number of samples would otherwise be returned, the results will be segmented. The
-                caller is responsible for comparing the returned sliceStartTime with the requested startTime in the
-                response. If the sliceStartTime is greater than the oldestSampleTime and the requested start time,
-                the caller is responsible for repeating the request with endTime set to sliceStartTime to obtain the
-                next segment. This process is repeated until the full data set is retrieved.
+                If an excessive number of samples would otherwise be returned, the results will be
+         segmented. The caller is responsible for comparing the returned sliceStartTime with the
+         startTime in the response. If the sliceStartTime is greater than the oldestSampleTime and
+         requested start time,the caller is responsible for repeating the request with endTime setto
+         sliceStartTime to obtain the next segment. This process is repeated until the full data
+         set is retrieved.
 
-                If the resource has no data, the UtilizationData is still returned but will contain no samples and
-                sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime will still be set
-                appropriately (null if no data is available). If the filter does not happen to overlap the data
-                that a resource has, then the metric history service will return null sample values for any
-                missing samples.
+                If the resource has no data, the UtilizationData is still returned but will contain
+         no samples and sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime
+         will still be set appropriately (null if no data is available). If the filter does not
+         happen to overlap the data that a resource has, then the metric history service will return
+         null sample values for any missing samples.
 
-            refresh: Specifies that if necessary, an additional request will be queued to obtain the most recent
-                utilization data from the iLO. The response will not include any refreshed data. To track the
-                availability of the newly collected data, monitor the TaskResource identified by the refreshTaskUri
-                property in the response. If null, no refresh was queued.
+            refresh: Specifies that if necessary, an additional request will be queued to obtain the
+         most recent utilization data from iLO. The response will not include any refreshed data.
+         To track the availability of the newly collected data, monitor the TaskResource identified
+         by the refreshTaskUri property in the response. If null, no refresh was queued.
 
-            view: Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
-                resolution in the returned response. Utilization data is automatically purged to stay within storage
-                space constraints. Supported views are listed below:
+            view: Specifies the resolution interval length of the samples to be retrieved. This is
+         reflected in the resolution in the returned response. Utilization data is automatically
+         purged to stay within storage space constraints. Supported views are listed below:
 
                 native
-                    Resolution of the samples returned will be one sample for each 5-minute time period. This is the
-                    default view and matches the resolution of the data returned by the iLO. Samples at this resolution
-                    are retained up to one year.
+                    Resolution of the samples returned will be one sample for each 5-minute time
+         period. This is the default view and matches the resolution of the data returned by iLO.
+         Samples at this resolution are retained up to one year.
                 hour
-                    Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
-                    calculated by averaging the available 5-minute data samples that occurred within the hour, except
-                    for PeakPower which is calculated by reporting the peak observed 5-minute sample value data during
-                    the hour. Samples at this resolution are retained up to three years.
+                    Resolution of the samples returned will be one sample for each 60-minute time
+         period. Samples are calculated by averaging the available 5-mins data samples that occurred
+         within the hour, except for PeakPower which is calculated by reporting the peak observed
+	 5-mins sample value data during the hour. Samples at this resolution are retained up to
+         three years.
                 day
-                    Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
-                    24-hour period that starts at midnight GMT regardless of the time zone in which the appliance or
-                    client is located. Samples are calculated by averaging the available 5-minute data samples that
-                    occurred during the day, except for PeakPower which is calculated by reporting the peak observed
-                    5-minute sample value data during the day. Samples at this resolution are retained up to three
-                    years.
+                    Resolution of the samples returned will be one sample for each 24-hour time
+         period. One day is a 24-hour period that starts at midnight GMT regardless of the time in
+         which the appliance or client is located. Samples are calculated by averaging the available
+         5-minute data samples that occurred during the day, except for PeakPower which is
+	 calculated by reporting the peak observed 5-minute sample value data during the day.
+         Samples at this resolution are retained up to three years
 
         Returns:
             dict
@@ -1049,8 +1066,8 @@ class ResourceZeroBodyMixin(object):
         """Makes a POST request to create a resource when no request body is required.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
             custom_headers: Allows set specific HTTP headers.
 
         Returns:
@@ -1070,7 +1087,8 @@ class ResourceZeroBodyMixin(object):
         Args:
             uri: Allows to use a different URI other than resource URI
             timeout: Timeout in seconds. Wait for task completion by default.
-                The timeout does not abort the operation in OneView; it just stops waiting for its completion.
+                The timeout does not abort the operation in OneView; it just stops waiting for its
+         completion.
             custom_headers: Allows to set custom HTTP headers.
 
         Returns:
@@ -1095,18 +1113,21 @@ class ResourceClient(object):
         self._uri = uri
         self._task_monitor = TaskMonitor(con)
 
-    def build_query_uri(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris=''):
+    def build_query_uri(self, start=0, count=-1, filter='', query='', sort='', view='', fields='',\
+         uri=None, scope_uris=''):
         """
         Builds the URI given the parameters.
 
-        More than one request can be send to get the items, regardless the query parameter 'count', because the actual
-        number of items in the response might differ from the requested count. Some types of resource have a limited
-        number of items returned on each call. For those resources, additional calls are made to the API to retrieve
-        any other items matching the given filter. The actual number of items can also differ from the requested call
+        More than one request can be send to get the items, regardless the query parameter 'count',
+        because the actual number of items in the response might differ from the requested count.
+        Some types of resource have a limited number of items returned on each call. For those
+        resources, additional calls are made to the API to retrieve any other items matching the
+        given filter. The actual number of items can also differ from the requested call
         if the requested number of items would take too long.
 
         The use of optional parameters for OneView 2.0 is described at:
-        http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/index.html
+        http://h17007.www1.hpe.com/docs/enterprise/servers/oneview2.0/cic-api/en/api-docs/current/
+        index.html
 
         Note:
             Single quote - "'" - inside a query parameter is not supported by OneView API.
@@ -1118,18 +1139,19 @@ class ResourceClient(object):
             count:
                 The number of resources to return. A count of -1 requests all items (default).
             filter (list or str):
-                A general filter/query string to narrow the list of items returned. The default is no
-                filter; all resources are returned.
+                A general filter/query string to narrow the list of items returned. The default is
+         no filter; all resources are returned.
             query:
-                A single query parameter can do what would take multiple parameters or multiple GET requests using
-                filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.
+                A single query parameter can do what would take multiple parameters or multiple GET
+         requests using filter. Use query for more complex queries. NOTE: This parameter is
+         experimental for OneView 2.0.
             sort:
-                The sort order of the returned data set. By default, the sort order is based on create time with the
-                oldest entry first.
+                The sort order of the returned data set. By default, the sort order is based on
+         create time with the oldest entry first.
             view:
-                Returns a specific subset of the attributes of the resource or collection by specifying the name of a
-                predefined view. The default view is expand (show all attributes of the resource and all elements of
-                the collections or resources).
+                Returns a specific subset of the attributes of the resource or collection by
+         specifying the name of a predefined view. The default view is expand (show all attributes
+         of the resource and all elements of the collections or resources).
             fields:
                 Name of the fields.
             uri:
@@ -1165,11 +1187,12 @@ class ResourceClient(object):
 
         symbol = '?' if '?' not in path else '&'
 
-        uri = "{0}{1}start={2}&count={3}{4}{5}{6}{7}{8}{9}".format(path, symbol, start, count, filter, query, sort,
-                                                                   view, fields, scope_uris)
+        uri = "{0}{1}start={2}&count={3}{4}{5}{6}{7}{8}{9}".format(path, symbol, start, count,\
+         filter, query, sort, view, fields, scope_uris)
         return uri
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris=''):
+    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', \
+            uri=None, scope_uris=''):
         """
         Gets all items according with the given arguments.
 
@@ -1180,18 +1203,19 @@ class ResourceClient(object):
             count:
                 The number of resources to return. A count of -1 requests all items (default).
             filter (list or str):
-                A general filter/query string to narrow the list of items returned. The default is no
-                filter; all resources are returned.
+                A general filter/query string to narrow the list of items returned. The default is
+         no filter; all resources are returned.
             query:
-                A single query parameter can do what would take multiple parameters or multiple GET requests using
-                filter. Use query for more complex queries. NOTE: This parameter is experimental for OneView 2.0.
+                A single query parameter can do what would take multiple parameters or multiple GET
+         requests using filter. Use query for more complex queries. NOTE: This parameter is
+         experimental for OneView 2.0.
             sort:
-                The sort order of the returned data set. By default, the sort order is based on create time with the
-                oldest entry first.
+                The sort order of the returned data set. By default, the sort order is based on
+         create time with the oldest entry first.
             view:
-                Returns a specific subset of the attributes of the resource or collection by specifying the name of a
-                predefined view. The default view is expand (show all attributes of the resource and all elements of
-                the collections or resources).
+                Returns a specific subset of the attributes of the resource or collection by
+         specifying the name of a predefined view. The default view is expand (show all attributes
+         of the resource and all elements of the collections or resources).
             fields:
                 Name of the fields.
             uri:
@@ -1204,8 +1228,8 @@ class ResourceClient(object):
             list: A list of items matching the specified filter.
         """
 
-        uri = self.build_query_uri(start=start, count=count, filter=filter,
-                                   query=query, sort=sort, view=view, fields=fields, uri=uri, scope_uris=scope_uris)
+        uri = self.build_query_uri(start=start, count=count, filter=filter,\
+            query=query, sort=sort, view=view, fields=fields, uri=uri, scope_uris=scope_uris)
 
         logger.debug('Getting all resources with uri: {0}'.format(uri))
 
@@ -1221,11 +1245,12 @@ class ResourceClient(object):
             filter:
                 A general filter/query string to narrow the list of items deleted.
             force:
-                If set to true, the operation completes despite any problems with network connectivity or errors
+                If set to true, the operation completes despite any problems with network
+         connectivity or errors
                 on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             bool: Indicates if the resources were successfully deleted.
@@ -1325,8 +1350,8 @@ class ResourceClient(object):
             uri:
                 Can be either the resource ID or the resource URI.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
             custom_headers:
                 Allows set specific HTTP headers.
 
@@ -1337,7 +1362,8 @@ class ResourceClient(object):
 
         return self.__do_put(uri, None, timeout, custom_headers)
 
-    def update(self, resource, uri=None, force=False, timeout=-1, custom_headers=None, default_values={}):
+    def update(self, resource, uri=None, force=False, timeout=-1, custom_headers=None,\
+         default_values={}):
         """
         Makes a PUT request to update a resource when a request body is required.
 
@@ -1347,16 +1373,16 @@ class ResourceClient(object):
             uri:
                 Can be either the resource ID or the resource URI.
             force:
-                If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
+                If set to true, the operation completes despite any problems with network
+         connectivity or errors on the resource itself. The default is false.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
             custom_headers:
                 Allows set specific HTTP headers.
             default_values:
-                Dictionary with default values grouped by OneView API version. This dictionary will be be merged with
-                the resource dictionary only if the dictionary does not contain the keys.
+                Dictionary with default values grouped by OneView API version. This dictionary will
+         be be merged with the resource dictionary only if the dictionary does not contain the keys
                 This argument is optional and the default value is an empty dictionary.
                 Ex.:
                     default_values = {
@@ -1392,7 +1418,8 @@ class ResourceClient(object):
             uri:
                 Can be either the resource ID or the resource URI.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation
                 in OneView; it just stops waiting for its completion.
             custom_headers:
                 Allows set specific HTTP headers.
@@ -1417,13 +1444,13 @@ class ResourceClient(object):
             uri:
                 Can be either the resource ID or the resource URI.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
             custom_headers:
                 Allows set specific HTTP headers.
             default_values:
-                Dictionary with default values grouped by OneView API version. This dictionary will be be merged with
-                the resource dictionary only if the dictionary does not contain the keys.
+                Dictionary with default values grouped by OneView API version. This dictionary will
+         be be merged with the resource dictionary only if the dictionary does not contain the keys.
                 This argument is optional and the default value is an empty dictionary.
                 Ex.:
                     default_values = {
@@ -1458,8 +1485,8 @@ class ResourceClient(object):
             uri:
                 A specific URI (optional).
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Response body.
@@ -1468,7 +1495,8 @@ class ResourceClient(object):
             uri = self._uri
 
         upload_file_name = os.path.basename(file_path)
-        task, entity = self._connection.post_multipart_with_response_handling(uri, file_path, upload_file_name)
+        task, entity = self._connection.post_multipart_with_response_handling(uri, file_path,\
+         upload_file_name)
 
         if not task:
             return entity
@@ -1486,8 +1514,8 @@ class ResourceClient(object):
             operation: Patch operation
             path: Path
             value: Value
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Updated resource.
@@ -1508,8 +1536,8 @@ class ResourceClient(object):
         Args:
             id_or_uri: Can be either the resource ID or the resource URI.
             body: Patch request body
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+         abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             Updated resource.
@@ -1560,7 +1588,8 @@ class ResourceClient(object):
         # Workaround when the OneView filter does not work, it will filter again
         if "." not in field:
             # This filter only work for the first level
-            results = [item for item in results if str(item.get(field, '')).lower() == value.lower()]
+            results = [item for item in results if str(item.get(field, '')).lower() ==\
+         value.lower()]
 
         return results
 
@@ -1596,51 +1625,53 @@ class ResourceClient(object):
                 E.g.: 'startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z'
 
                 startDate
-                    Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
-                    determined by the endDate minus 24 hours.
+                    Start date of requested starting time range in ISO 8601 format. If omitted, the
+         startDate is determined by the endDate minus 24 hours.
                 endDate
-                    End date of requested starting time range in ISO 8601 format. When omitted, the endDate includes
-                    the latest data sample available.
+                    End date of requested starting time range in ISO 8601 format. When omitted, the
+         endDate includes the latest data sample available.
 
-                If an excessive number of samples would otherwise be returned, the results will be segmented. The
-                caller is responsible for comparing the returned sliceStartTime with the requested startTime in the
-                response. If the sliceStartTime is greater than the oldestSampleTime and the requested start time,
-                the caller is responsible for repeating the request with endTime set to sliceStartTime to obtain the
-                next segment. This process is repeated until the full data set is retrieved.
+                If an excessive number of samples would otherwise be returned, the results will be
+         segmented. The caller is responsible for comparing the returned sliceStartTime with the
+         requested startTime in the response. If the sliceStartTime is greater than the
+         oldestSampleTime and the requested start time, the caller is responsible for repeating the
+         request with endTime set to sliceStartTime to obtain the next segment. This process is
+         repeated until the full data set is retrieved.
 
-                If the resource has no data, the UtilizationData is still returned but will contain no samples and
-                sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime will still be set
-                appropriately (null if no data is available). If the filter does not happen to overlap the data
-                that a resource has, then the metric history service will return null sample values for any
-                missing samples.
+                If the resource has no data, the UtilizationData is still returned but will contain
+         no samples and sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime
+         will still be set appropriately (null if no data is available). If the filter does not
+         happen to overlap the data that a resource has, then the metric history service will return
+         null sample values for any missing samples.
 
             refresh:
-                Specifies that if necessary, an additional request will be queued to obtain the most recent
-                utilization data from the iLO. The response will not include any refreshed data. To track the
-                availability of the newly collected data, monitor the TaskResource identified by the refreshTaskUri
-                property in the response. If null, no refresh was queued.
+                Specifies that if necessary, an additional request will be queued to obtain the most
+         recent utilization data from the iLO. The response will not include any refreshed data. To
+         track the availability of the newly collected data, monitor the TaskResource identified by
+         the refreshTaskUri property in the response. If null, no refresh was queued.
 
             view:
-                Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
-                resolution in the returned response. Utilization data is automatically purged to stay within storage
-                space constraints. Supported views are listed below:
+                Specifies the resolution interval length of the samples to be retrieved. This is
+         reflected in the resolution in the returned response. Utilization data is automatically
+         purged to stay within storage space constraints. Supported views are listed below:
 
                 native
-                    Resolution of the samples returned will be one sample for each 5-minute time period. This is the
-                    default view and matches the resolution of the data returned by the iLO. Samples at this resolution
-                    are retained up to one year.
+                    Resolution of the samples returned will be one sample for each 5-minute time
+         period. This is the default view and matches the resolution of the data returned by iLO.
+         Samples at this resolution are retained up to one year.
                 hour
-                    Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
-                    calculated by averaging the available 5-minute data samples that occurred within the hour, except
-                    for PeakPower which is calculated by reporting the peak observed 5-minute sample value data during
-                    the hour. Samples at this resolution are retained up to three years.
+                    Resolution of the samples returned will be one sample for each 60-minute time
+         period. Samples are calculated by averaging the available 5-minute data samples that
+         occurred within the hour, except for PeakPower which is calculated by reporting the peak
+         observed 5min sample value data during the hour. Samples at this resolution are retained
+         up to three years.
                 day
-                    Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
-                    24-hour period that starts at midnight GMT regardless of the time zone in which the appliance or
-                    client is located. Samples are calculated by averaging the available 5-minute data samples that
-                    occurred during the day, except for PeakPower which is calculated by reporting the peak observed
-                    5-minute sample value data during the day. Samples at this resolution are retained up to three
-                    years.
+                    Resolution of the samples returned will be one sample for each 24-hour time
+         period. One day is a 24-hour period that starts at midnight GMT regardless of the time zone
+         in which the appliance or client is located. Samples are calculated by averaging the
+         available 5-minute data samples that occurred during the day, except for PeakPower which is
+         calculated by reporting the peak observed 5-minute sample value data during the day.
+         Samples at this resolution are retained up to three years.
 
         Returns:
             dict
@@ -1677,8 +1708,8 @@ class ResourceClient(object):
         Args:
             uri: URI
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+         the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             list:
@@ -1704,7 +1735,8 @@ class ResourceClient(object):
         else:
             return self._uri + "/" + id_or_uri
 
-    def build_subresource_uri(self, resource_id_or_uri=None, subresource_id_or_uri=None, subresource_path=''):
+    def build_subresource_uri(self, resource_id_or_uri=None, subresource_id_or_uri=None,\
+         subresource_path=''):
         if subresource_id_or_uri and "/" in subresource_id_or_uri:
             return subresource_id_or_uri
         else:
@@ -1713,7 +1745,8 @@ class ResourceClient(object):
 
             resource_uri = self.build_uri(resource_id_or_uri)
 
-            uri = "{}/{}/{}".format(resource_uri, subresource_path, str(subresource_id_or_uri or ''))
+            uri = "{}/{}/{}".format(resource_uri, subresource_path, str(subresource_id_or_uri or\
+         ''))
             uri = uri.replace("//", "/")
 
             if uri.endswith("/"):
@@ -1782,7 +1815,8 @@ class ResourceClient(object):
             members = self.__get_members(response)
             items += members
 
-            logger.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri, str(len(members))))
+            logger.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(\
+                    uri, str(len(members))))
             uri = self.__get_next_page(response, items, requested_count)
 
         logger.debug('Total # of members found = {0}'.format(str(len(items))))
@@ -1830,12 +1864,13 @@ def merge_resources(resource1, resource2):
 
 def merge_default_values(resource_list, default_values):
     """
-    Generate a new list where each item of original resource_list will be merged with the default_values.
+    Generate a new list where each item of original resource_list will be merged with the
+         default_values.
 
     Args:
         resource_list: list with items to be merged
-        default_values: properties to be merged with each item list. If the item already contains some property
-            the original value will be maintained.
+        default_values: properties to be merged with each item list. If the item already contains
+         some property the original value will be maintained.
 
     Returns:
         list: list containing each item merged with default_values

@@ -19,9 +19,9 @@ from pprint import pprint
 import re
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -29,19 +29,19 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-options = {
-    "ip_hostname": config['storage_system_hostname'],
-    "username": config['storage_system_username'],
-    "password": config['storage_system_password']
+OPTIONS = {
+    "ip_hostname": CONFIG['storage_system_hostname'],
+    "username": CONFIG['storage_system_username'],
+    "password": CONFIG['storage_system_password']
 }
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
 # Add and update storage system for management
-storage_system = oneview_client.storage_systems.add(options)
+storage_system = oneview_client.storage_systems.add(OPTIONS)
 print("\nAdded storage system '%s'.\n   uri = '%s'" %
       (storage_system['name'], storage_system['uri']))
 storage_system['managedDomain'] = storage_system['unmanagedDomains'][0]
@@ -79,14 +79,15 @@ for ss in storage_systems_all:
 # Get maximum of 5 storage systems which belong to model of type 'HP_3PAR
 # 7200', sorted by freeCapacity in descending order.
 print(
-    "Get maximum of 5 storage systems which belong to model of type 'HP_3PAR 7200,' sorted by freeCapacity in "
+    "Get maximum of 5 storage systems which belong to model of type 'HP_3PAR 7200,' sorted by
+	 freeCapacity in "
     "descending order.")
-filter = 'model=HP_3PAR 7200'
-storage_systems_filtered = oneview_client.storage_systems.get_all(
-    0, 5, filter="\"'name'='ThreePAR7200-5718'\"", sort='freeCapacity:desc')
-for ss in storage_systems_filtered:
+FILTER = 'model=HP_3PAR 7200'
+storage_systems_FILTERed = oneview_client.storage_systems.get_all(
+    0, 5, FILTER="\"'name'='ThreePAR7200-5718'\"", sort='freeCapacity:desc')
+for ss in storage_systems_FILTERed:
     print("   '{}' at uri: '{}'".format(ss['name'], ss['uri']))
-if not storage_systems_filtered:
+if not storage_systems_FILTERed:
     print("   No storage systems matching parameters")
 
 # Get the list of supported host types
@@ -109,7 +110,7 @@ except HPEOneViewException as e:
     print(e.msg)
 
 # Add managed ports
-ports_to_manage = []
+PORTS_TO_MANAGE = []
 for port in storage_system['unmanagedPorts']:
     if port['actualNetworkSanUri'] != "unknown":
         port_to_manage = {
@@ -124,8 +125,8 @@ for port in storage_system['unmanagedPorts']:
             "protocolType": port['protocolType'],
             "label": port['label']
         }
-        ports_to_manage.append(port_to_manage)
-storage_system['managedPorts'] = ports_to_manage
+        PORTS_TO_MANAGE.append(port_to_manage)
+storage_system['managedPorts'] = PORTS_TO_MANAGE
 storage_system = oneview_client.storage_systems.update(storage_system)
 print("\nSuccessfully added ports to be managed")
 
@@ -146,11 +147,11 @@ print("   '{}' at uri: {}".format(
 
 # Get managed target port for specified storage system by id
 try:
-    port_id = re.sub("/rest/storage-systems/TXQ1010307/managedPorts/",
+    PORT_ID = re.sub("/rest/storage-systems/TXQ1010307/managedPorts/",
                      '', storage_system['managedPorts'][0]['uri'])
-    print("\nGet managed port by id: '{}'".format(port_id))
+    print("\nGet managed port by id: '{}'".format(PORT_ID))
     managed_port_by_id = oneview_client.storage_systems.get_managed_ports(
-        'TXQ1010307', port_id)
+        'TXQ1010307', PORT_ID)
     print("   '{}' at uri: {}".format(
         managed_port_by_id['name'], managed_port_by_id['uri']))
 except HPEOneViewException as e:

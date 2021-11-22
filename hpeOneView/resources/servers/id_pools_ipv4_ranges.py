@@ -20,11 +20,10 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 from future import standard_library
 
 standard_library.install_aliases()
-
-from hpeOneView.resources.resource import Resource, ResourceSchemaMixin
 
 
 class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
@@ -44,8 +43,8 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         Args:
             information (dict): Information to update.
             uri: URI of range.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout
+            does not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Updated IPv4 range.
@@ -59,8 +58,8 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         Args:
             information (dict): Information to update.
             id_or_uri: URI of range.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: The allocator returned contains the list of IDs successfully allocated.
@@ -75,8 +74,8 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
         Args:
             information (dict): Information to update.
             id_or_uri: URI of range.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: The collector returned contains the list of IDs successfully collected.
@@ -92,12 +91,12 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
             uri:
                 URI of range.
             count:
-                 The number of resources to return. A count of -1 requests all items. The actual number of items in
-                 the response may differ from the requested count if the sum of start and count exceed the total number
-                 of items.
+                 The number of resources to return. A count of -1 requests all items. The actual
+                 number of items in the response may differ from the requested count if the sum
+                 of start and count exceed the total number of items.
             start:
-                The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-                first available item.
+                The first item to return, using 0-based indexing. If not specified, the default
+                is 0 - start with the first available item.
 
         Returns:
             list: A list with the allocated fragements.
@@ -113,12 +112,12 @@ class IdPoolsIpv4Ranges(Resource, ResourceSchemaMixin):
             uri:
                 URI of range.
             count:
-                 The number of resources to return. A count of -1 requests all items. The actual number of items in
-                 the response may differ from the requested count if the sum of start and count exceed the total number
-                 of items.
+                 The number of resources to return. A count of -1 requests all items. The actual
+                 number of items in the response may differ from the requested count if the sum
+                 of start and count exceed the total number of items.
             start:
-                The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-                first available item.
+                The first item to return, using 0-based indexing. If not specified, the default
+                is 0 - start with the first available item.
 
         Returns:
             list: A list with the free fragments.

@@ -19,7 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -27,25 +27,25 @@ config = {
     }
 }
 
-options = {
+OPTIONS = {
     "allowSshAccess": False
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
-oneview_client = OneViewClient(config)
-ssh_access = oneview_client.appliance_ssh_access
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+SSH_ACCESS = ONEVIEW_CLIENT.appliance_ssh_access
 
-# Get the SSH access configuration for the appliance.
-ssh_config = ssh_access.get_all()
-print("\nGot SSH access configuration successfully!")
-pprint(ssh_config.data)
+# Get the SSH access CONFIGuration for the appliance.
+SSH_CONFIG = SSH_ACCESS.get_all()
+print("\nGot SSH access CONFIGuration successfully!")
+pprint(SSH_CONFIG.data)
 
-# Set the SSH access configuration for the appliance as False.
-ssh_config = ssh_config.update(data=options)
-print("\nUpdated SSH access configuration successfully!")
+# Set the SSH access CONFIGuration for the appliance as False.
+SSH_CONFIG = SSH_CONFIG.update(data=OPTIONS)
+print("\nUpdated SSH access CONFIGuration successfully!")
 
-# Set the SSH access configuration for the appliance as True.
-options["allowSshAccess"] = True
-ssh_config = ssh_config.update(data=options)
-print("\nUpdated SSH access configuration successfully!")
+# Set the SSH access CONFIGuration for the appliance as True.
+OPTIONS["allowSshAccess"] = True
+SSH_CONFIG = SSH_CONFIG.update(data=OPTIONS)
+print("\nUpdated SSH access CONFIGuration successfully!")

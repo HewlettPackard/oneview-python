@@ -20,13 +20,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from future import standard_library
-
-standard_library.install_aliases()
-
 from hpeOneView.exceptions import HPEOneViewResourceNotFound
 from hpeOneView.resources.resource import (Resource, ResourcePatchMixin, merge_resources,
                                            ensure_resource_client, unavailable_method)
+
+from future import standard_library
+
+standard_library.install_aliases()
 
 
 class LogicalInterconnects(ResourcePatchMixin, Resource):
@@ -90,8 +90,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
     def get_all(self, start=0, count=-1, sort=''):
         """
-        Gets a list of logical interconnects based on optional sorting and filtering and is constrained by start
-        and count parameters.
+        Gets a list of logical interconnects based on optional sorting and filtering and is
+        constrained by start and count parameters.
 
         Args:
             start:
@@ -132,18 +132,19 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_compliance(self, timeout=-1):
         """
-        Returns logical interconnects to a consistent state. The current logical interconnect state is
-        compared to the associated logical interconnect group.
+        Returns logical interconnects to a consistent state. The current logical interconnect
+        state is compared to the associated logical interconnect group.
 
-        Any differences identified are corrected, bringing the logical interconnect back to a consistent
-        state. Changes are asynchronously applied to all managed interconnects. Note that if the changes detected
-        involve differences in the interconnect map between the logical interconnect group and the logical interconnect,
-        the process of bringing the logical interconnect back to a consistent state might involve automatically removing
+        Any differences identified are corrected, bringing the logical interconnect back to a
+        consistent state. Changes are asynchronously applied to all managed interconnects. Note
+        that if the changes detected involve differences in the interconnect map between the
+        logical interconnect group and the logical interconnect, the process of bringing the
+        logical interconnect back to a consistent state might involve automatically removing
         existing interconnects from management and/or adding new interconnects for management.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.
@@ -158,10 +159,10 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         Args:
             configuration:  Ethernet interconnect settings.
-            force: If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            force: If set to true, the operation completes despite any problems with network
+            connectivity or errors on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.
@@ -176,10 +177,10 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         Args:
             network_uri_list: List of Ethernet network uris.
-            force: If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            force: If set to true, the operation completes despite any problems with network
+            connectivity or errors on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.
@@ -204,15 +205,15 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_settings(self, settings, force=False, timeout=-1):
         """
-        Updates interconnect settings on the logical interconnect. Changes to interconnect settings are asynchronously
-        applied to all managed interconnects.
-        (This method is not available from API version 600 onwards)
+        Updates interconnect settings on the logical interconnect. Changes to interconnect
+        settings are asynchronously applied to all managed interconnects. (This method is
+        not available from API version 600 onwards)
         Args:
             settings: Interconnect settings
-            force: If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            force: If set to true, the operation completes despite any problems with network
+            connectivity or errors on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout
+            does not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect
@@ -220,7 +221,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         data = settings.copy()
 
         if 'ethernetSettings' in data:
-            ethernet_default_values = self._get_default_values(self.SETTINGS_ETHERNET_DEFAULT_VALUES)
+            ethernet_default_values = self._get_default_values\
+                    (self.SETTINGS_ETHERNET_DEFAULT_VALUES)
             data['ethernetSettings'] = merge_resources(data['ethernetSettings'],
                                                        ethernet_default_values)
 
@@ -233,11 +235,12 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_configuration(self, timeout=-1):
         """
-        Asynchronously applies or re-applies the logical interconnect configuration to all managed interconnects.
+        Asynchronously applies or re-applies the logical interconnect configuration to all managed
+        interconnects.
 
         Args:
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.
@@ -259,8 +262,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_snmp_configuration(self, configuration, timeout=-1):
         """
-        Updates the SNMP configuration of a logical interconnect. Changes to the SNMP configuration are asynchronously
-        applied to all managed interconnects.
+        Updates the SNMP configuration of a logical interconnect. Changes to the SNMP
+        configuration are asynchronously applied to all managed interconnects.
 
         Args:
             configuration: snmp configuration.
@@ -292,9 +295,10 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def get_unassigned_uplink_ports(self):
         """
-        Gets a collection of uplink ports from the member interconnects which are eligible for assignment to an
-        analyzer port. To be eligible, a port must be a valid uplink, must not be a member of an existing uplink set,
-        and must not currently be used for stacking.
+        Gets a collection of uplink ports from the member interconnects which are eligible
+        for assignment to an analyzer port. To be eligible, a port must be a valid uplink,
+        must not be a member of an existing uplink set, and must not currently be used for
+        stacking.
 
         Returns:
             dict: Collection of uplink ports.
@@ -341,15 +345,17 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         Returns:
             dict: LIFirmware.
         """
-        firmware_uri = self._helper.build_subresource_uri(self.data["uri"], subresource_path=self.FIRMWARE_PATH)
+        firmware_uri = self._helper.build_subresource_uri(self.data["uri"], subresource_path=\
+                self.FIRMWARE_PATH)
         return self._helper.do_get(firmware_uri)
 
     @ensure_resource_client
     def install_firmware(self, firmware_information):
         """
-        Installs firmware to a logical interconnect. The three operations that are supported for the firmware
-        update are Stage (uploads firmware to the interconnect), Activate (installs firmware on the interconnect),
-        and Update (which does a Stage and Activate in a sequential manner).
+        Installs firmware to a logical interconnect. The three operations that are supported
+        for the firmware update are Stage (uploads firmware to the interconnect), Activate
+        (installs firmware on the interconnect), and Update (which does a Stage and Activate
+        in a sequential manner).
 
         Args:
             firmware_information: Options to install firmware to a logical interconnect.
@@ -357,20 +363,23 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
         Returns:
             dict
         """
-        firmware_uri = self._helper.build_subresource_uri(self.data["uri"], subresource_path=self.FIRMWARE_PATH)
+        firmware_uri = self._helper.build_subresource_uri(self.data["uri"], subresource_path=\
+                self.FIRMWARE_PATH)
         return self._helper.update(firmware_information, firmware_uri)
 
     @ensure_resource_client
     def get_forwarding_information_base(self, filter=''):
         """
-        Gets the forwarding information base data for a logical interconnect. A maximum of 100 entries is returned.
+        Gets the forwarding information base data for a logical interconnect. A maximum of 10
+        0 entries is returned.
         Optional filtering criteria might be specified.
 
         Args:
             filter (list or str):
-                Filtering criteria may be specified using supported attributes: interconnectUri, macAddress,
-                internalVlan, externalVlan, and supported relation = (Equals). macAddress is 12 hexadecimal digits with
-                a colon between each pair of digits (upper case or lower case).
+                Filtering criteria may be specified using supported attributes: interconnectUri,
+                macAddress, internalVlan, externalVlan, and supported relation = (Equals).
+                macAddress is 12 hexadecimal digits with a colon between each pair of digits
+                (upper case or lower case).
                 The default is no filter; all resources are returned.
 
         Returns:
@@ -386,7 +395,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         Args:
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+                Timeout in seconds. Wait for task completion by default.
+                The timeout does not abort the operation in
                 OneView, just stops waiting for its completion.
 
         Returns: Interconnect Forwarding Information Base DataInfo.
@@ -414,8 +424,8 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
             qos_configuration:
                 QOS configuration.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does
+                not abort the operation in OneView, just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.
@@ -444,15 +454,16 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def update_telemetry_configurations(self, configuration, timeout=-1):
         """
-        Updates the telemetry configuration of a logical interconnect. Changes to the telemetry configuration are
+        Updates the telemetry configuration of a logical interconnect. Changes to the telemetry
+        configuration are
         asynchronously applied to all managed interconnects.
 
         Args:
             configuration:
                 The telemetry configuration for the logical interconnect.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stops waiting for its completion.
 
         Returns:
             dict: The Logical Interconnect.
@@ -492,10 +503,10 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         Args:
             configuration:  Igmp interconnect settings.
-            force: If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            force: If set to true, the operation completes despite any problems with network
+            connectivity or errors on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does
+            not abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.
@@ -506,12 +517,13 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
     @ensure_resource_client
     def bulk_inconsistency_validate(self, validation_request, timeout=-1):
         """
-        Validates the bulk update from group operation and gets the consolidated inconsistency report
+        Validates the bulk update from group operation and gets the consolidated inconsistency
+        report
 
         Args:
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-                OneView, just stops waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not abort
+                the operation in OneView, just stops waiting for its completion.
 
         Returns: Consolidated inconsistency report.
         """
@@ -525,10 +537,10 @@ class LogicalInterconnects(ResourcePatchMixin, Resource):
 
         Args:
             configuration:  Port flap settings.
-            force: If set to true, the operation completes despite any problems with network connectivity or errors
-                on the resource itself. The default is false.
-            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView; it just stops waiting for its completion.
+            force: If set to true, the operation completes despite any problems with network
+            connectivity or errors on the resource itself. The default is false.
+            timeout: Timeout in seconds. Wait for task completion by default. The timeout does not
+            abort the operation in OneView; it just stops waiting for its completion.
 
         Returns:
             dict: Logical Interconnect.

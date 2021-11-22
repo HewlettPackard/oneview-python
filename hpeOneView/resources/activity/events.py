@@ -20,15 +20,15 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from hpeOneView.resources.resource import ResourceClient
+
 from future import standard_library
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import ResourceClient
-
-
 class Events(object):
+    """ Class to retrieve events """
     URI = '/rest/events'
 
     DEFAULT_VALUES = {
@@ -54,36 +54,38 @@ class Events(object):
         event = self._client.get(id_or_uri)
         return event
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view=''):
+    def get_all(self, start=0, count=-1, _filter='', query='', sort='', view=''):
         """
         Gets all the events based upon filters provided.
 
         Args:
             start:
-                 The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-                 first available item.
+                 The first item to return, using 0-based indexing. If not specified,
+                 the default is 0 - start with the first available item.
             count:
-                The number of resources to return. A count of -1 requests all items. The actual number of items in
-                the response may differ from the requested count if the sum of start and count exceed the total number
-                of items.
+                The number of resources to return. A count of -1 requests all items.
+                The actual number of items in the response may differ from the requested
+                count if the sum of start and count exceed the total number of items.
             filter (list or str):
-                 A general filter/query string to narrow the list of items returned. The default is no filter; all
-                 resources are returned.
+                 A general filter/query string to narrow the list of items returned.
+                 The default is no filter; all resources are returned.
             query:
-                 A general query string to narrow the list of resources returned. The default is no query (all
-                 resources are returned).
+                 A general query string to narrow the list of resources returned.
+                 The default is no query (all resources are returned).
             sort:
-                The sort order of the returned data set. By default, the sort order is based on create time, with the
-                oldest entry first.
+                The sort order of the returned data set. By default, the sort order is
+                based on create time, with the oldest entry first.
             view:
-                 Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
-                 predefined view. The default view is expand (show all attributes of the resource and all elements of
+                 Returns a specific subset of the attributes of the resource or collection,
+                 by specifying the name of a predefined view. The default view is expand
+                 (show all attributes of the resource and all elements of
                  collections of resources).
 
         Returns:
             list: A list of events.
         """
-        return self._client.get_all(start=start, count=count, filter=filter, query=query, sort=sort, view=view)
+        return self._client.get_all(start=start, count=count, filter=_filter, query=query, \
+                sort=sort, view=view)
 
     def get_by(self, field, value):
         """
@@ -108,8 +110,8 @@ class Events(object):
         Args:
             resource (dict): Object to create.
             timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
+                Timeout in seconds. Wait for task completion by default. The timeout does not
+                abort the operation in OneView, just stop waiting for its completion.
 
         Returns:
             dict: Created resource.

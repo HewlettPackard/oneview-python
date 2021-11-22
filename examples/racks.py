@@ -17,10 +17,10 @@
 
 from pprint import pprint
 
-from config_loader import try_load_from_file
+from CONFIG_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,74 +28,74 @@ config = {
     }
 }
 
-# NOTE: To run this sample you must define the name of an already managed enclosure
-enclosure_name = "Encl1"
+# NOTE: To run this sample you must define the name of an already managed ENCLOSURE
+ENCLOSURE_NAME = "Encl1"
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+oneview_client = OneViewClient(CONFIG)
 
-# Retrieve enclosure using enclosure_name
-enclosure = oneview_client.enclosures.get_by('name', enclosure_name)[0]
+# Retrieve ENCLOSURE using ENCLOSURE_NAME
+ENCLOSURE = oneview_client.ENCLOSUREs.get_by('name', ENCLOSURE_NAME)[0]
 
 # Add empty rack with default values
 print("\nAdd an empty rack with default values")
-empty_rack_options = {
+EMPTY_RACK_OPTIONS = {
     "name": "OneViewSDK Test Empty Rack"
 }
-rack_empty = oneview_client.racks.add(empty_rack_options)
-pprint(rack_empty)
+RACK_EMPTY = oneview_client.racks.add(EMPTY_RACK_OPTIONS)
+pprint(RACK_EMPTY)
 
 # Add a rack
-print("\nAdd rack with custom size and a single mounted enclosure at slot 20")
-rack_options = {
+print("\nAdd rack with custom size and a single mounted ENCLOSURE at slot 20")
+RACK_OPTIONS = {
     "uuid": "4b4b87e2-eea8-4c90-8eca-b72eaaeecggf",
     "name": "OneViewSDK Test Rack",
     "depth": 1500,
     "height": 2500,
     "width": 1200,
     "rackMounts": [{
-        "mountUri": enclosure['uri'],
+        "mountUri": ENCLOSURE['uri'],
         "topUSlot": 20,
         "uHeight": 10
     }]
 }
-rack_custom = oneview_client.racks.add(rack_options)
-pprint(rack_custom)
+RACK_CUSTOM = oneview_client.racks.add(RACK_OPTIONS)
+pprint(RACK_CUSTOM)
 
-# Get device topology
-print("\nGet device topology for '{name}'".format(**rack_custom))
-topology = oneview_client.racks.get_device_topology(rack_custom['uri'])
-pprint(topology)
+# Get device TOPOLOGY
+print("\nGet device TOPOLOGY for '{name}'".format(**RACK_CUSTOM))
+TOPOLOGY = oneview_client.racks.get_device_TOPOLOGY(RACK_CUSTOM['uri'])
+pprint(TOPOLOGY)
 
 # Get all racks
 print("\nGet all racks")
-racks_all = oneview_client.racks.get_all()
-for rack in racks_all:
+RACKS_ALL = oneview_client.racks.get_all()
+for rack in RACKS_ALL:
     print("   '{name}' at uri: {uri}".format(**rack))
 
-# Get five racks, sorting by name ascending
-print("\nGet five racks, sorted by name ascending")
-count = 5
-sort = 'name:asc'
-racks_sorted = oneview_client.racks.get_all(count=count, sort=sort)
-for rack in racks_sorted:
+# Get five racks, SORTing by name ascending
+print("\nGet five racks, SORTed by name ascending")
+COUNT = 5
+SORT = 'name:asc'
+RACKS_SORTED = oneview_client.racks.get_all(COUNT=COUNT, SORT=SORT)
+for rack in RACKS_SORTED:
     print("   '{name}' at uri: {uri}".format(**rack))
 
 # Get rack by UUID
-print("\nGet rack by 'uuid': '{uuid}'".format(**rack_custom))
-rack_byUuid = oneview_client.racks.get_by('uuid', rack_custom['uuid'])
+print("\nGet rack by 'uuid': '{uuid}'".format(**RACK_CUSTOM))
+RACK_BYUUID = oneview_client.racks.get_by('uuid', RACK_CUSTOM['uuid'])
 print("   Found '{name}' at uri: {uri}".format(**rack))
 
 # Update the name of a rack
-print("\nUpdate the name of '{name}' at uri: '{uri}'".format(**rack_custom))
-rack_custom['name'] = rack_custom['name'] + "-updated"
-rack_custom = oneview_client.racks.update(rack_custom)
-print("   Updated rack to have name: '{name}'".format(**rack_custom))
+print("\nUpdate the name of '{name}' at uri: '{uri}'".format(**RACK_CUSTOM))
+RACK_CUSTOM['name'] = RACK_CUSTOM['name'] + "-updated"
+RACK_CUSTOM = oneview_client.racks.update(RACK_CUSTOM)
+print("   Updated rack to have name: '{name}'".format(**RACK_CUSTOM))
 
 # Remove created racks
 print("\nRemove created racks by resource")
-oneview_client.racks.remove(rack_custom)
-oneview_client.racks.remove(rack_empty)
+oneview_client.racks.remove(RACK_CUSTOM)
+oneview_client.racks.remove(RACK_EMPTY)
 print("   Done.")

@@ -19,7 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "<oneview_ip>",
     "credentials": {
         "userName": "<username>",
@@ -28,39 +28,39 @@ config = {
     "api_version": 800
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
-connection_templates = oneview_client.connection_templates
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
+CONNECTION_TEMPLATES = ONEVIEW_CLIENT.connection_templates
 
 # The name and ID of an existent Connection Template must be set to run this example
-connection_template_name = 'defaultConnectionTemplate'
+CONNECTION_TEMPLATE_NAME = 'defaultConnectionTemplate'
 
 # Get all connection templates
 print("Get all connection templates")
-con_templates = connection_templates.get_all()
-pprint(con_templates)
+CON_TEMPLATES = CONNECTION_TEMPLATES.get_all()
+pprint(CON_TEMPLATES)
 
 # Get all sorting by name descending
 print("Get all connection templates sorting by name")
-con_templates_sorted = connection_templates.get_all(sort='name:descending')
-pprint(con_templates_sorted)
+CON_TEMPLATES_SORTED = CONNECTION_TEMPLATES.get_all(sort='name:descending')
+pprint(CON_TEMPLATES_SORTED)
 
 # Get default template
 print("Get default connection template")
-con_template_default = connection_templates.get_default()
-pprint(con_template_default)
+CON_TEMPLATE_DEFAULT = CONNECTION_TEMPLATES.get_default()
+pprint(CON_TEMPLATE_DEFAULT)
 
 # Get by name
 print("Get a connection_template by name")
-con_template_byname = connection_templates.get_by_name(connection_template_name)
-pprint(con_template_byname.data)
+CON_TEMPLATE_BYNAME = CONNECTION_TEMPLATES.get_by_name(CONNECTION_TEMPLATE_NAME)
+pprint(CON_TEMPLATE_BYNAME.data)
 
 # Update the connection_template retrieved in the last operation
 print("Update the retrieved connection_template typicalBandwidth")
-if con_template_byname:
-    template_byname = con_template_byname.data.copy()
-    template_byname['bandwidth']['typicalBandwidth'] = 5000
-    con_template_updated = con_template_byname.update(template_byname)
-    pprint(con_template_updated.data)
+if CON_TEMPLATE_BYNAME:
+    TEMPLATE_BYNAME = CON_TEMPLATE_BYNAME.data.copy()
+    TEMPLATE_BYNAME['bandwidth']['typicalBandwidth'] = 5000
+    CON_TEMPLATE_UPDATED = CON_TEMPLATE_BYNAME.update(TEMPLATE_BYNAME)
+    pprint(CON_TEMPLATE_UPDATED.data)

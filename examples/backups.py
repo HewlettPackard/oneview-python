@@ -20,7 +20,7 @@ from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
-config = {
+CONFIG = {
     "ip": "172.16.102.59",
     "credentials": {
         "userName": "administrator",
@@ -28,56 +28,57 @@ config = {
     }
 }
 
-# Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+# Try load CONFIG from a file (if there is a CONFIG file)
+CONFIG = try_load_from_file(CONFIG)
 
-oneview_client = OneViewClient(config)
+ONEVIEW_CLIENT = OneViewClient(CONFIG)
 
 # Create a new appliance backup
 print("\n## Create a new appliance backup")
-backup_details = oneview_client.backups.create()
-pprint(backup_details)
+BACKUP_DETAILS = ONEVIEW_CLIENT.backups.create()
+pprint(BACKUP_DETAILS)
 
-filename = backup_details['id']
+FILENAME = BACKUP_DETAILS['id']
 
 # Download the backup archive
 print("\n## Download the previously created backup archive")
-response = oneview_client.backups.download(backup_details['downloadUri'], filename)
-print(response)
+RESPONSE = ONEVIEW_CLIENT.backups.download(BACKUP_DETAILS['downloadUri'], FILENAME)
+print(RESPONSE)
 
 # Upload the backup archive
 print("\n## Upload the previously downloaded backup archive")
-backup_details = oneview_client.backups.upload(filename)
-pprint(backup_details)
+BACKUP_DETAILS = ONEVIEW_CLIENT.backups.upload(FILENAME)
+pprint(BACKUP_DETAILS)
 
 # Get by URI
 print("\n## Find recently created backup by URI")
-backup_by_uri = oneview_client.backups.get(backup_details['uri'])
-pprint(backup_by_uri)
+BACKUP_BY_URI = ONEVIEW_CLIENT.backups.get(BACKUP_DETAILS['uri'])
+pprint(BACKUP_BY_URI)
 
 # Get all backups
 print("\n## Get all backups")
-backups = oneview_client.backups.get_all()
-pprint(backups)
+BACKUPS = ONEVIEW_CLIENT.backups.get_all()
+pprint(BACKUPS)
 
-# Get the details of the backup configuration
-print("\n## Get the details of the backup configuration for the remote server and automatic backup schedule")
-config = oneview_client.backups.get_config()
-pprint(config)
+# Get the details of the backup CONFIGuration
+print("\nGet the details of the backup configuration for the remote server and automatic backup\
+	 schedule")
+CONFIG = ONEVIEW_CLIENT.backups.get_config()
+pprint(CONFIG)
 
-# Update the backup configuration
+# Update the backup CONFIGuration
 try:
-    print("\n## Update the backup configuration")
-    config['scheduleTime'] = '23:00'
-    updated_config = oneview_client.backups.update_config(config)
-    pprint(updated_config)
-except HPEOneViewException as e:
-    print(e.msg)
+    print("\n## Update the backup CONFIGuration")
+    CONFIG['scheduleTime'] = '23:00'
+    UPDATED_CONFIG = ONEVIEW_CLIENT.backups.update_config(CONFIG)
+    pprint(UPDATED_CONFIG)
+except HPEOneViewException as err:
+    print(err.msg)
 
-# Save the backup file to a previously-configured remote location
+# Save the backup file to a previously-CONFIGured remote location
 try:
-    print("\n## Save the backup file to a previously-configured remote location")
-    backup_details = oneview_client.backups.update_remote_archive(backup_details['saveUri'])
-    pprint(backup_details)
-except HPEOneViewException as e:
-    print(e.msg)
+    print("\n## Save the backup file to a previously-CONFIGured remote location")
+    BACKUP_DETAILS = ONEVIEW_CLIENT.backups.update_remote_archive(BACKUP_DETAILS['saveUri'])
+    pprint(BACKUP_DETAILS)
+except HPEOneViewException as err:
+    print(err.msg)
