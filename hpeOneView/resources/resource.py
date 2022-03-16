@@ -50,6 +50,7 @@ logger = logging.getLogger(__name__)
 
 class EnsureResourceClient(object):
     """Decorator class to update the resource data."""
+
     def __init__(self, method=None, update_data=False):
         self.method = method
         self.update_data = update_data
@@ -284,7 +285,8 @@ class Resource(object):
         results = self.get_all()
 
         # This filter only work for the first level
-        result = [item for item in results if str(item.get(field, "")).lower() == value.lower()]
+        result = [item for item in results if value.lower() in str(
+            item.get(field, "")).lower()]
 
         if result:
             data = result[0]
@@ -370,7 +372,6 @@ class ResourceHelper(object):
 
     def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris='', custom_headers=None,
                 name_prefix='', category=[], childLimit=0, topCount=0,):
-
         """Gets all items according with the given arguments.
 
         Args:
@@ -582,7 +583,6 @@ class ResourceHelper(object):
 
     def build_query_uri(self, uri=None, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris='',
                         name_prefix='', category=[], childLimit=0, topCount=0):
-
         """Builds the URI from given parameters.
 
         More than one request can be send to get the items, regardless the query parameter 'count', because the actual
