@@ -29,9 +29,8 @@ config = {
 
 # To run this example you must define a path to a valid file
 spp_path = "<spp_path>"
-hotfix_path = "/home/ubuntu/firmware-ilo5-2.41-1.1.x86_64.rpm"
-compsig_path = "/home/ubuntu/firmware-ilo5-2.41-1.1.x86_64_part1.compsig"
-compsig_path2 = "/home/ubuntu/firmware-ilo5-2.41-1.1.x86_64_part2.compsig"
+hotfix_path = "<hotfix_path>"
+compsig_path = "<compsig_path>"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -40,7 +39,6 @@ firmware_bundles = oneview_client.firmware_bundles
 firmware_drivers = oneview_client.firmware_drivers
 
 # Upload a firmware bundle
-'''
 firmware = firmware_bundles.get_by_name(spp_path)
 if not firmware:
     print("\nUpload a firmware bundle")
@@ -49,10 +47,9 @@ if not firmware:
     pprint(firmware_bundle_information)
 else:
     print("\n Firmware Bundle already present")
-'''
+
 # Upload a hotfix
 hotfix = firmware_bundles.get_by_name(hotfix_path)
-print("\nUpload", hotfix)
 if not hotfix:
     print("\nUpload a hotfix")
     hotfix_information = firmware_bundles.upload(file_path=hotfix_path)
@@ -63,21 +60,9 @@ else:
 
 # Upload a compsig to hotfix
 compsig = firmware_bundles.get_by_name(compsig_path)
-print("\nUpload1", compsig)
-if not compsig or compsig.data['resourceState'] == 'AddFailed':
+if compsig and compsig.data['resourceState'] == 'AddFailed':
     print("\nUpload a compsig to hotfix")
     compsig_information = firmware_bundles.upload_compsig(file_path=compsig_path)
-    print("\n Upload successful! CompSig information returned: \n")
-    pprint(compsig_information)
-else:
-    print("\nHotfix is not present or compsig is already added")
-
-# Upload a compsig to hotfix
-compsig = firmware_bundles.get_by_name(compsig_path2)
-print("\nUpload2", compsig)
-if not compsig or compsig.data['resourceState'] == 'AddFailed':
-    print("\nUpload a compsig to hotfix")
-    compsig_information = firmware_bundles.upload_compsig(file_path=compsig_path2)
     print("\n Upload successful! CompSig information returned: \n")
     pprint(compsig_information)
 else:
