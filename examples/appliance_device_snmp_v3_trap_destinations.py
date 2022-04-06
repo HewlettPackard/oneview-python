@@ -35,7 +35,7 @@ options = {
 }
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+config = try_load_from_file()
 oneview_client = OneViewClient(config)
 appliance_device_snmp_v3_trap_destinations = oneview_client.appliance_device_snmp_v3_trap_destinations
 appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users

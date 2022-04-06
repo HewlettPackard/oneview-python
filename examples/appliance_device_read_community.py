@@ -32,7 +32,7 @@ options = {
 }
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+config = try_load_from_file()
 
 oneview_client = OneViewClient(config)
 

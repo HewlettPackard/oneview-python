@@ -29,9 +29,10 @@ config = {
 }
 
 # To run this example you must define a path to a valid file
-spp_path = "<path_to_firmware_bundle>"
-hotfix_path = "<path_to_hotfix_file>"
-compsig_path = "<path_to_compsig_file>"
+spp_path = "/mnt/win_share/Builds/SPP/Synergy_Custom_SPP_2021.02.01_Z7550-97110.iso"
+hotfix_path = "cp042959.zip"
+#hotfix_path = "/home/venkatesh/Documents/cp042959.zip"
+compsig_path = "/home/venkatesh/Documents/cp042959.compsig"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -39,10 +40,10 @@ oneview_client = OneViewClient(config)
 firmware_bundles = oneview_client.firmware_bundles
 
 # Upload a firmware bundle
-print("\nUpload a firmware bundle")
-firmware_bundle_information = firmware_bundles.upload(file_path=firmware_path)
-print("\n Upload successful! Firmware information returned: \n")
-pprint(firmware_bundle_information)
+# print("\nUpload a firmware bundle")
+# firmware_bundle_information = firmware_bundles.upload(file_path=spp_path)
+# print("\n Upload successful! Firmware information returned: \n")
+# pprint(firmware_bundle_information)
 
 # Upload a hotfix
 print("\nUpload a hotfix")

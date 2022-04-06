@@ -17,6 +17,8 @@
 
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
 from config_loader import try_load_from_file
 
 config = {
@@ -36,7 +38,7 @@ options = {
 destination_ip = '2.2.2.2'
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+config = try_load_from_file()
 oneview_client = OneViewClient(config)
 appliance_device_snmp_v1_trap_destinations = oneview_client.appliance_device_snmp_v1_trap_destinations
 

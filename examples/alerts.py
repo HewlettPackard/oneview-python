@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-
 from hpeOneView.oneview_client import OneViewClient
 from config_loader import try_load_from_file
 from hpeOneView.resources.resource import extract_id_from_uri
@@ -29,7 +28,7 @@ config = {
 }
 
 # Try load config from a file (if there is a config file)
-config = try_load_from_file(config)
+config = try_load_from_file()
 
 _client = OneViewClient(config)
 

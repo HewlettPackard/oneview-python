@@ -14,25 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-
+import sys,os
+print(sys.path)
 from pprint import pprint
-
 from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 from copy import deepcopy
-
 # To run this example fill the ip and the credentials below or use a configuration file
 config = {
-    "ip": "<oneview_ip>",
+    "ip": "10.1.19.41",
     "credentials": {
-        "userName": "<username>",
-        "password": "<password>"
+        "userName": "administrator",
+        "password": "admin123"
     },
-    "api_version": "<api_version>"
+    "api_version": "3600"
 }
 
 options = {
-    "name": "OneViewSDK Test Ethernet Network",
+    "name": "OneViewSDK Test Ethernet Network srija",
     "vlanId": 200,
     "ethernetNetworkType": "Tagged",
     "purpose": "General",
@@ -56,7 +55,7 @@ options_bulk = {
 
 # Scope name to perform the patch operation
 scope_name = ""
-ethernet_name = "OneViewSDK Test Ethernet Network"
+ethernet_name = "OneViewSDK Test Ethernet Network srija"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -68,7 +67,7 @@ scopes = oneview_client.scopes
 # Filter by name
 print("\nGet all ethernet-networks filtering by name")
 ethernet_nets_filtered = ethernet_networks.get_all(
-    filter="\"'name'='OneViewSDK Test Ethernet Network'\"")
+    filter="\"'name'='OneViewSDK Test Ethernet Network srija'\"")
 for net in ethernet_nets_filtered:
     print("   '{name}' at uri: '{uri}'".format(**net))
 
@@ -86,7 +85,7 @@ for net in ethernet_nets_limited:
 
 # Find network by name
 print("\nFind network by name")
-ethernet_network = ethernet_networks.get_by_name(ethernet_name)
+ethernet_network = ethernet_networks.get_by_name('OneViewSDK Test Ethernet Network srija')
 if ethernet_network:
     print("Found ethernet-network by name: '{name}'.\n   uri = '{uri}'" .format(**ethernet_network.data))
 else:
@@ -174,7 +173,7 @@ for subnet in all_subnets:
         iscsi_subnet_uri = subnet['uri']
 
 mgmt_network_body = options.copy()
-mgmt_network_body['name'] = 'mgmt_nw'
+mgmt_network_body['name'] = 'mgmt_nw7'
 mgmt_network_body['ethernetNetworkType'] = "Untagged"
 mgmt_network_body['purpose'] = "Management"
 mgmt_network_body['subnetUri'] = mgmt_subnet_uri
