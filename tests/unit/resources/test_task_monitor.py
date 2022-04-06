@@ -447,3 +447,9 @@ class TaskMonitorTest(unittest.TestCase):
         response = self.task_monitor.get_completed_task(task.copy())
 
         self.assertEqual(task, response)
+
+    @mock.patch('time.time')
+    def test_get_current_seconds(self, mock_time):
+        mock_time.return_value = 120
+        current_seconds = TaskMonitor.get_current_seconds()
+        self.assertEqual(current_seconds, 120)

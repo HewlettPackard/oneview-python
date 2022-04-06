@@ -1,4 +1,221 @@
-# 6.2.0(unreleased)
+# 6.6.0
+#### Notes
+Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
+
+##### Features supported with the current release
+- Appliance Configuration Timeconfig
+- Appliance Health Status
+- Appliance Network Interfaces
+- Appliance Node Information
+- Appliance Proxy Configuration
+- Appliance SNMPv1 Trap Destinations
+- Appliance SNMPv3 Trap Destinations
+- Appliance SNMPv3 Users
+- Appliance SSH Access
+- Appliance Time and Locale Configuration
+- Connection Templates
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Bundles
+- Firmware Drivers
+- HA Nodes
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- ID Pools
+- ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
+- Index Resources
+- Interconnects
+- Interconnect Types
+- Labels 
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- Repositories
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume
+- Tasks
+- Uplink set
+- Users
+- Version
+# 6.5.0
+#### Notes
+Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
+
+##### Features supported with the current release
+- Appliance Configuration Timeconfig
+- Appliance Health Status
+- Appliance Network Interfaces
+- Appliance Node Information
+- Appliance Proxy Configuration
+- Appliance SNMPv1 Trap Destinations
+- Appliance SNMPv3 Trap Destinations
+- Appliance SNMPv3 Users
+- Appliance SSH Access
+- Appliance Time and Locale Configuration
+- Connection Templates
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Bundles
+- Firmware Drivers
+- HA Nodes
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- ID Pools
+- ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
+- Index Resources
+- Interconnects
+- Interconnect Types
+- Labels 
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- Repositories
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume
+- Tasks
+- Uplink set
+- Users
+- Version
+  
+# 6.4.0
+#### Notes
+Extends support of the SDK to OneView REST API version 3400 (OneView v6.40)
+
+##### Features supported with the current release
+- Appliance Configuration Timeconfig
+- Appliance Health Status
+- Appliance Network Interfaces
+- Appliance Node Information
+- Appliance Proxy Configuration
+- Appliance SNMPv1 Trap Destinations
+- Appliance SNMPv3 Trap Destinations
+- Appliance SNMPv3 Users
+- Appliance SSH Access
+- Appliance Time and Locale Configuration
+- Connection Templates
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Bundles
+- Firmware Drivers
+- HA Nodes
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- ID Pools
+- ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
+- Index Resources
+- Interconnects
+- Interconnect Types
+- Labels 
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- Repositories
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume
+- Tasks
+- Uplink set
+- Users
+- Version
+
+# 6.3.0
+#### Notes
+Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
+
+#### Bug fixes & Enhancements
+- [#173] (https://github.com/HewlettPackard/oneview-python/issues/73) is this a typo https://github.com/HewlettPackard/oneview-python/blob/master/examples/server_hardware.py#L200-201
+
+##### Features supported with the current release
+- Appliance Configuration Timeconfig
+- Appliance Health Status
+- Appliance Network Interfaces
+- Appliance Node Information
+- Appliance Proxy Configuration
+- Appliance SNMPv1 Trap Destinations
+- Appliance SNMPv3 Trap Destinations
+- Appliance SNMPv3 Users
+- Appliance SSH Access
+- Appliance Time and Locale Configuration
+- Connection Templates
+- Enclosures
+- Enclosure Groups
+- Ethernet network
+- FC network
+- FCOE network
+- Firmware Bundles
+- Firmware Drivers
+- HA Nodes
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- ID Pools
+- ID Pool IPv4 Range
+- ID Pool IPv4 Subnets
+- Index Resources
+- Interconnects
+- Interconnect Types
+- Labels 
+- Logical Enclosures
+- Logical Interconnects
+- Logical Interconnect Group
+- Network set
+- Restores
+- Scopes
+- Server Hardware
+- Server Hardware Types
+- Server Profiles
+- Server Profile Templates
+- Storage Pools
+- Storage Systems
+- Storage Templates
+- Storage Volume Attachments
+- Storage Volume
+- Tasks
+- Uplink set
+- Users
+- Version
+
+# 6.2.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 
@@ -407,15 +624,15 @@ Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
  4. Added below methods for all the resources by introducing a base class for the resource client classes.
     Appropriate exception will be raised, if any of the features are not available for a resource.
     
-    | Method              | Returns                                       |
-    | ------------------  | --------------------------------------------- |
-    | create              |   resource object                             |
-    | update              |   resource object                             |
-    | delete              |   boolean                                     |
-    | get_all             |   list of resource data                       |
-    | get_by_name         |   resource object                             |
-    | get_by_uri          |   resource object                             |
-    | get_by              |   resource data                               |
+    | Method      | Returns               |
+    | ----------- | --------------------- |
+    | create      | resource object       |
+    | update      | resource object       |
+    | delete      | boolean               |
+    | get_all     | list of resource data |
+    | get_by_name | resource object       |
+    | get_by_uri  | resource object       |
+    | get_by      | resource data         |
     
 #### Breaking
   Enhancement made in this version breaks the previous version of the SDK.

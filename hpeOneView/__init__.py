@@ -14,7 +14,7 @@ from future import standard_library
 standard_library.install_aliases()
 
 __title__ = 'hpeOneView'
-__version__ = '6.1.0'
+__version__ = '6.6.0'
 __copyright__ = '(C) Copyright (2012-2021) Hewlett Packard Enterprise Development LP'
 __license__ = 'Apache'
 
@@ -46,9 +46,9 @@ if PY2:
         warning_message += ' Use of Python v2.7.9+ is advised.'
         warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
 elif PYTHON_VERSION < (3, 4):
-        warning_message = 'Running unsupported Python version> %s, unexpected errors might occur.'
-        warning_message += ' Use of Python v3.4+ is advised.'
-        warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
+    warning_message = 'Running unsupported Python version> %s, unexpected errors might occur.'
+    warning_message += ' Use of Python v3.4+ is advised.'
+    warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
 
 from hpeOneView.connection import *
 from hpeOneView.exceptions import *

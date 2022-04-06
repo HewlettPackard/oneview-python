@@ -85,6 +85,7 @@ from hpeOneView.resources.storage.drive_enclosures import DriveEnclosures
 from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
 from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
 from hpeOneView.resources.settings.backups import Backups
+from hpeOneView.resources.settings.repositories import Repositories
 from hpeOneView.resources.storage.volumes import Volumes
 from hpeOneView.resources.storage.sas_logical_jbod_attachments import SasLogicalJbodAttachments
 from hpeOneView.resources.networking.uplink_sets import UplinkSets
@@ -106,6 +107,8 @@ from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
 from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
+from hpeOneView.resources.settings.appliance_proxy_configuration import ApplianceProxyConfiguration
+from hpeOneView.resources.settings.appliance_network_interfaces import ApplianceNetworkInterfaces
 from hpeOneView.resources.settings.ha_nodes import HANodes
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
@@ -133,6 +136,7 @@ class OneViewClient(object):
         self.__connections = None
         self.__connection_templates = None
         self.__fc_networks = None
+        self.__repositories = None
         self.__fcoe_networks = None
         self.__ethernet_networks = None
         self.__fabrics = None
@@ -204,6 +208,8 @@ class OneViewClient(object):
         self.__appliance_time_and_locale_configuration = None
         self.__appliance_node_information = None
         self.__appliance_health_status = None
+        self.__appliance_proxy_configuration = None
+        self.__appliance_network_interfaces = None
         self.__versions = None
         self.__backups = None
         self.__login_details = None
@@ -1119,6 +1125,26 @@ class OneViewClient(object):
         return ApplianceHealthStatus(self.__connection)
 
     @property
+    def appliance_proxy_configuration(self):
+        """
+        Gets the ApplianceProxyConfiguration API client.
+
+        Returns:
+            ApplianceProxyConfiguration:
+        """
+        return ApplianceProxyConfiguration(self.__connection)
+
+    @property
+    def appliance_network_interfaces(self):
+        """
+        Gets the ApplianceNetworkInterfaces API client.
+
+        Returns:
+            ApplianceNetworkInterfaces:
+        """
+        return ApplianceNetworkInterfaces(self.__connection)
+
+    @property
     def ha_nodes(self):
         """
         Gets the HANodes API client.
@@ -1234,3 +1260,13 @@ class OneViewClient(object):
             ApplianceSshAccess:
         """
         return ApplianceSshAccess(self.__connection)
+
+    @property
+    def repositories(self):
+        """
+        Gets the Repositories API client.
+
+        Returns:
+            Repositories:
+        """
+        return Repositories(self.__connection)

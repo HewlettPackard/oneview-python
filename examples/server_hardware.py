@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2021] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,27 +39,32 @@ options = {
     "licensingIntent": "OneView",
     "configurationState": "Managed"
 }
-server_name = "0000A66101, bay 3"
 
 oneview_client = OneViewClient(config)
 server_hardwares = oneview_client.server_hardware
 
 # Get list of all server hardware resources
+servers = []
 print("Get list of all server hardware resources")
 server_hardware_all = server_hardwares.get_all()
 for serv in server_hardware_all:
     print('  %s' % serv['name'])
+    servers.append(serv['name'])
 
-server = server_hardwares.get_by_name(server_name)
-if not server and variant == 'C7000':
-    # Create a rack-mount server
-    # This is only supported on appliance which support rack mounted servers
-    server = server_hardwares.add(options)
-    print("Added rack mount server '%s'.\n  uri = '%s'" % (server.data['name'], server.data['uri']))
+# Get recently added server hardware resource by name
+if server_hardware_all:
+    server = server_hardwares.get_by_name(servers[0])
+    print(server.data)
+
+# Create a rack-mount server
+# This is only supported on appliance which support rack mounted servers
+if variant != 'Synergy':
+    added_server = server_hardwares.add(options)
+    print("Added rack mount server '%s'.\n  uri = '%s'" % (added_server.data['name'], added_server.data['uri']))
 
 # Create Multiple rack-mount servers
 # This is only supported on appliance which support rack mounted servers
-if oneview_client.api_version >= 600 and variant == 'C7000':
+if variant != 'Synergy':
     options_to_add_multiple_server = {
         "mpHostsAndRanges": config['server_mpHostsAndRanges'],
         "username": config['server_username'],
@@ -177,7 +182,7 @@ if oneview_client.api_version >= 300 and server:
 
     # Get server hardware firmwares filtering by server name
     print("Get Server Hardware firmwares filtering by server name")
-    p = server_hardwares.get_all_firmwares(filter="serverName='{}'".format(server_name))
+    p = server_hardwares.get_all_firmwares(filter="serverName='{}'".format(server.data['name']))
     pprint(p)
 
 if oneview_client.api_version >= 500 and server and server.data['physicalServerHardwareUri']:
@@ -197,8 +202,20 @@ if oneview_client.api_version >= 1800 and server:
     except HPEOneViewException as e:
         print(e.msg)
 
+# We can remove DL_server only when no ServerProfile is applied to it.
+# Retrieving DL_server with specific 'NoProfileApplied' state to delete.
+for dl_server in server_hardware_all:
+    if ((dl_server['state'] == 'NoProfileApplied') and ('BL' not in dl_server['model'])):
+        server_can_be_deleted = dl_server
+
+if server_can_be_deleted:
+    removed_server = server_hardwares.get_by_name(server_can_be_deleted['name'])
+
 # Remove rack server
-# This operation works till Oneview API Version 500.
-if oneview_client.api_version <= 500 and variant == 'C7000':
-    server.remove()
-    print("Server removed successfully")
+# This is only supported on appliance which support rack mounted servers
+if variant != 'Synergy' and removed_server:
+    try:
+        removed_server.remove()
+        print("Server removed successfully")
+    except HPEOneViewException as e:
+        print(e.msg)

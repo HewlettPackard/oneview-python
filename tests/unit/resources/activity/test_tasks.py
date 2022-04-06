@@ -15,13 +15,14 @@
 # limitations under the License.
 ###
 
+from hpeOneView.exceptions import HPEOneViewException
 from unittest import TestCase
 
 import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.activity.tasks import Tasks
-from hpeOneView.resources.resource import ResourceHelper
+from hpeOneView.resources.resource import (ResourceHelper, TaskMonitor)
 
 
 class TasksTest(TestCase):
@@ -41,3 +42,26 @@ class TasksTest(TestCase):
                                          filter='"taskState=\'Running\'&filter=associatedResource'
                                                 '.resourceCatgory=\'appliance\'"',
                                          query='', sort='name:ascending', start=0, view='day', topCount=0, childLimit=0)
+
+    @mock.patch.object(TaskMonitor, "wait_for_task")
+    @mock.patch.object(connection, "do_http")
+    def test_patch_request_with_status_400(self, mock_do_http, mock_wait4task):
+        fake_associated_resource = mock.Mock()
+        mockedResponse = type('mockResponse', (), {'status': 400})()
+        mockedTaskBody = {'category': 'tasks'}
+
+        mock_do_http.return_value = (mockedResponse, mockedTaskBody)
+        mock_wait4task.return_value = fake_associated_resource
+        try:
+            self._tasks.patch('/uri')
+        except HPEOneViewException as e:
+            self.assertEqual(e.msg, None)
+
+    @mock.patch.object(connection, "do_http")
+    def test_patch_request_with_status_304(self, mock_do_http):
+        mockedResponse = type('mockResponse', (), {'status': 304})()
+        mockedTaskBody = {'category': 'tasks'}
+
+        mock_do_http.return_value = (mockedResponse, mockedTaskBody)
+        return_patch_request = self._tasks.patch('/uri')
+        self.assertEqual(return_patch_request, mockedTaskBody)

@@ -69,6 +69,13 @@ class FirmwareDriversTest(TestCase):
         self.assertEqual(result.data['type'], 'SPP')
 
     @mock.patch.object(Resource, 'get_all')
+    def test_get_by_name_called_once_with_no_results(self, mock_get_all):
+        mock_get_all.return_value = []
+        result = self._firmware_drivers.get_by_name("name1")
+        mock_get_all.assert_called_once_with()
+        self.assertEqual(result, None)
+
+    @mock.patch.object(Resource, 'get_all')
     def test_get_by_name_called_once_with_version(self, mock_get_by_name):
         drivers = [{'name': 'name1', 'type': 'SPP', 'version': '1.1'}, {'name': 'name2', 'type': 'HotFix', 'version': '1.2'}]
         mock_get_by_name.return_value = drivers

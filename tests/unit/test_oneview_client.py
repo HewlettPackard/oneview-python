@@ -77,6 +77,8 @@ from hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations im
 from hpeOneView.resources.settings.appliance_device_snmp_v3_trap_destinations import ApplianceDeviceSNMPv3TrapDestinations
 from hpeOneView.resources.settings.appliance_device_snmp_v3_users import ApplianceDeviceSNMPv3Users
 from hpeOneView.resources.settings.appliance_node_information import ApplianceNodeInformation
+from hpeOneView.resources.settings.appliance_proxy_configuration import ApplianceProxyConfiguration
+from hpeOneView.resources.settings.appliance_network_interfaces import ApplianceNetworkInterfaces
 from hpeOneView.resources.settings.appliance_health_status import ApplianceHealthStatus
 from hpeOneView.resources.settings.appliance_time_and_locale_configuration import ApplianceTimeAndLocaleConfiguration
 from hpeOneView.resources.settings.versions import Versions
@@ -1004,3 +1006,17 @@ class OneViewClientTest(unittest.TestCase):
     def test_appliance_ssh_access_client(self):
         ApplianceSshAccess = self._oneview.appliance_ssh_access
         self.assertNotEqual(ApplianceSshAccess, self._oneview.appliance_ssh_access)
+
+    def test_appliance_proxy_configuration_has_right_type(self):
+        self.assertIsInstance(self._oneview.appliance_proxy_configuration, ApplianceProxyConfiguration)
+
+    def test_appliance_proxy_configuration_client(self):
+        ApplianceProxyConfiguration = self._oneview.appliance_proxy_configuration
+        self.assertNotEqual(ApplianceProxyConfiguration, self._oneview.appliance_proxy_configuration)
+
+    def test_appliance_network_interfaces_has_right_type(self):
+        self.assertIsInstance(self._oneview.appliance_network_interfaces, ApplianceNetworkInterfaces)
+
+    def test_appliance_network_interfaces_client(self):
+        ApplianceNetworkInterfaces = self._oneview.appliance_network_interfaces
+        self.assertNotEqual(ApplianceNetworkInterfaces, self._oneview.appliance_network_interfaces)
