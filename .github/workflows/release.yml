@@ -16,5 +16,5 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         name: "Version"
-        body: "Srija-Papinwar/blob/master/CHANGELOG.md"
+        body: CHANGELOG.md
         token: ${{ secrets.TOKEN }}
