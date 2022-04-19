@@ -16,5 +16,5 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         name: "Version"
-        body: <p>See the</p><a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a><p>for details.</p>
+        body: See the<a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a>for details.
         token: ${{ secrets.TOKEN }}
