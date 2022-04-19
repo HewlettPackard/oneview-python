@@ -17,4 +17,4 @@ jobs:
       with:
         name: "Version"
         bodyFile: "CHANGELOG.md"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.TOKEN }}
