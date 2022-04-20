@@ -1,19 +1,17 @@
-name: Pull Request
+name: create automatic PR
 
-on: 
+on:
   push:
     branches:
-      - "PR"
+    - PR
+
 jobs:
-  createPullRequest:
+  pull-request:
     runs-on: ubuntu-latest
     steps:
-      
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.TOKEN }}
-          commit-message: Update report
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          assignees: Srija-Papinwar
-          reviewers: Srija-Papinwar
+    - uses: actions/checkout@v2
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "master"
+        github_token: ${{ secrets.TOKEN }}
