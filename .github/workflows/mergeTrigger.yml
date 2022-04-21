@@ -16,6 +16,6 @@ jobs:
       uses: appleboy/jenkins-action@master
       with:
         url: "http://15.146.41.67:8443/"
-        user: "admin"
+        user: "srija"
         token: ${{ secrets.JENKIN }}
         job: "intgration"
