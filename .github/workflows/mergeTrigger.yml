@@ -15,7 +15,7 @@ jobs:
     - name: trigger single Job
       uses: appleboy/jenkins-action@master
       with:
-        url: "http://15.146.41.67:8443/"
+        url: "http://15.146.41.67:8443"
         user: "admin"
         token: ${{ secrets.JENKIN }}
         job: "integration"
