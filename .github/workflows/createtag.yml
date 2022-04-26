@@ -1,0 +1,16 @@
+name: Create/update tag
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+
+  create-tag:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "v1.6"
+          message: "Latest release"
