@@ -6,13 +6,12 @@ on:
 jobs:
 
   create-tag:
-    name: Build
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v3
       - uses: rickstaa/action-create-tag@v1
         with:
-          tag: "v1.999"
+          tag: "v1.6"
           message: "Latest release"
 
