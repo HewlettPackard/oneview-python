@@ -2,7 +2,7 @@ name: Create/update tag
 on:
   pull_request:
     branches:
-      - master
+      - PR
 jobs:
 
   create-tag:
