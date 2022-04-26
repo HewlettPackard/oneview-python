@@ -15,3 +15,4 @@ jobs:
         with:
           tag: "v1.99"
           message: "Latest release"
+
