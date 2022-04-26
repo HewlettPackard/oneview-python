@@ -14,3 +14,4 @@ jobs:
         with:
           tag: "v1.6"
           message: "Latest release"
+
