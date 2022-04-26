@@ -1,11 +1,14 @@
 name: Create/update tag
 on:
-  push:
+  pull_request:
     branches:
-    - master
+      - master
 jobs:
+
   create-tag:
+    name: Build
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v3
       - uses: rickstaa/action-create-tag@v1
