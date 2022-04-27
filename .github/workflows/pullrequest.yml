@@ -1,0 +1,25 @@
+
+
+name: Raise a Pullrequest
+
+on:
+  push:
+    branches:
+    - "PR"  # Support wildcard matching
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: "PR"                                 # If blank, default: triggered branch
+        destination_branch: "master"                      # If blank, default: master
+        pr_title: "v1.1.3" # Title of pull request
+        pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
+        pr_template: ".github/pull_request_template.md"   # Path to pull request template, requires pr_title to be set, excludes pr_body                         # Comma-separated list (no spaces)
+        pr_label: "v1.1.3"                               # Comma-separated list (no spaces                       # Milestone name
+        pr_allow_empty: true                              # Creates pull request even if there are no changes
+        github_token: ${{ secrets.TOKEN }}
