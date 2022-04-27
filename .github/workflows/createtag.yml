@@ -7,22 +7,21 @@ on:
 jobs:
   create-tag:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
     steps:
       - uses: actions/checkout@v3
+        id: tag_and_prepare_release
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: "newtag"
           message: "Latest release"
-  release:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ncipollo/release-action@v1
-      with:
-        name: 'Version'
-        tag: "newtag"
-        body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
-        token: ${{ secrets.TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Upload release notes
+      - uses: ncipollo/release-action@v1
+        with:
+          name: ${{ steps.tag_and_prepare_release.tag }}
+          tag: ${{ steps.tag_and_prepare_release.tag }}
+          body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
+          token: ${{ secrets.TOKEN }}
