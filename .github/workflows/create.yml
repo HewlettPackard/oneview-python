@@ -1,0 +1,20 @@
+name: create tag
+
+on:
+  pull_request:
+    types: closed
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
+    steps:
+      - uses: actions/checkout@master
+      - name: Bump version and push tag
+        uses: laputansoft/github-tag-action@v4.6
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          tag: ${{ steps.package-version.outputs.version }}
+ 
