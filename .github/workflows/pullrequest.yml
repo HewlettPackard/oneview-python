@@ -20,6 +20,6 @@ jobs:
         pr_title: "Pull request from PR to Master" # Title of pull request
         pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
         pr_template: ".github/pull_request_template.md"   # Path to pull request template, requires pr_title to be set, excludes pr_body                         # Comma-separated list (no spaces)
-        pr_label: "v1.1.2"                               # Comma-separated list (no spaces                       # Milestone name
+        pr_label: "v1.1.3"                               # Comma-separated list (no spaces                       # Milestone name
         pr_allow_empty: true                              # Creates pull request even if there are no changes
         github_token: ${{ secrets.TOKEN }}
