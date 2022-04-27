@@ -15,9 +15,8 @@ jobs:
         id: tag_and_prepare_release
       - uses: rickstaa/action-create-tag@v1
         with:
-          tag: "v3.1.99"
+          tag: "v3.1.9"
           message: "Latest release"
-      - uses: actions/checkout@v2
       - uses: ncipollo/release-action@v1
         with:
           name: ${{ steps.tag_and_prepare_release.tag }}
