@@ -18,7 +18,6 @@ jobs:
           tag: "newtag"
           message: "Latest release"
       - uses: actions/checkout@v2
-      - name: Upload release notes
       - uses: ncipollo/release-action@v1
         with:
           name: ${{ steps.tag_and_prepare_release.tag }}
