@@ -15,11 +15,11 @@ jobs:
         id: tag_and_prepare_release
       - uses: rickstaa/action-create-tag@v1
         with:
-          tag: "v3.1.9"
+          tag: "v3.19.9"
           message: "Latest release"
-      - uses: ncipollo/release-action@v1
-        with:
-          name: ${{ steps.tag_and_prepare_release.tag }}
-          tag: ${{ steps.tag_and_prepare_release.tag }}
-          body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
-          token: ${{ secrets.TOKEN }}
+  display:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output-number
+        run: echo ${{ steps.tag_and_prepare_release.tag }}
+ 
