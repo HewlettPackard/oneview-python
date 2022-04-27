@@ -11,12 +11,10 @@ jobs:
       contents: write
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
     steps:
-      - uses: actions/checkout@v3
-        id: tag_and_prepare_release
-      - uses: rickstaa/action-create-tag@v1
+      - uses: actions/checkout@master
+      - name: Bump version and push tag
+        uses: laputansoft/github-tag-action@v4.6
         with:
-          tag: "v3.9.9"
-          message: "Latest release"
-      - name : out
-        run: echo ${{ steps.tag_and_prepare_release.tag }}
+          github_token: ${{ secrets.TOKEN }}
+          tag: ${{ steps.package-version.outputs.version }}
  
