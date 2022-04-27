@@ -1,4 +1,4 @@
-name: create tag
+name: create tag and relese
 
 on:
   pull_request:
@@ -13,8 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Bump version and push tag
+        id: tag_prepare
         uses: laputansoft/github-tag-action@v4.6
         with:
           github_token: ${{ secrets.TOKEN }}
           tag: ${{ steps.package-version.outputs.version }}
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
+        with:
+          name:  ${{ steps.tag_prepare.outputs.new_tag }}
+          body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
+          token: ${{ secrets.TOKEN }}
  
