@@ -20,5 +20,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
     - name: output
-      run: echo ${{steps.tag.outputs}}
+      run: echo ${{steps.tag.new_tag}}
  
