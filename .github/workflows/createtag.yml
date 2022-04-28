@@ -18,13 +18,12 @@ jobs:
           release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      - name: Upload release notes
-        if: steps.tag_and_prepare_release.outputs.tag
-        uses: Roang-zero1/github-create-release-action@master
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
         with:
-          created_tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          changelog_heading: "h1"
+          name:  ${{ steps.tag_prepare.outputs.new_tag }}
+          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
+          body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
+          token: ${{ secrets.TOKEN }}
     
  
