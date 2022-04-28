@@ -3,20 +3,29 @@ name: create tag and relese
 on:
   pull_request:
     types: closed
-
 jobs:
-  create-tag:
+  changelog:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
+
     steps:
-      - uses: actions/checkout@master
-      - name: Bump version
-        id: tag_prepare
-        uses: laputansoft/github-tag-action@v4.6
+      - uses: actions/checkout@v2
+
+      - name: conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.7.1
         with:
-          github_token: ${{ secrets.TOKEN }}
-          tag: ${{ steps.package-version.outputs.version }}
+          github-token: ${{ secrets.TOKEN }}
+          version-file: './package.json,./package-lock.json'
+
+      - name: create release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+
       
  
