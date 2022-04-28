@@ -21,7 +21,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           name:  ${{ steps.tag_prepare.outputs.new_tag }}
-          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
+          tag: ${{ steps.tag_and_prepare_release.outputs.new_tag }}
           body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
           token: ${{ secrets.TOKEN }}
       
