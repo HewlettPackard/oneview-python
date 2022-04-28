@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
-    - name: Bump version and push tag
+    - name: Bump version push tag
       uses: moble/github-tag-action@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
