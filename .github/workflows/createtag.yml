@@ -11,13 +11,13 @@ jobs:
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
     steps:
       - name: Tag
-        id: tagid
+        id: tagi
         uses: K-Phoen/semver-release-action@master
         with:
           release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: output
-        run: echo ${{ steps.tagid.outputs.tag }}
+        run: echo ${{ steps.tagi.outputs.tag }}
     
  
