@@ -14,10 +14,15 @@ jobs:
       - name: Tag and prepare release
         id: tag_and_prepare_release
         uses: K-Phoen/semver-release-action@master
-        with:
-          release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
+        with:
+          name:  ${{ steps.tag_prepare.outputs.new_tag }}
+          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
+          body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
+          token: ${{ secrets.TOKEN }}
       
     
  
