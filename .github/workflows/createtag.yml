@@ -19,6 +19,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+        INITIAL_VERSION: 6.6.0
     - name: output
-      run: echo ${{steps.tag.new_tag}}
+      run: echo ${{steps.tag.outputs.new_tag}}
  
