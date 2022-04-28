@@ -10,17 +10,17 @@ jobs:
       contents: write
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
     steps:
-      - uses: actions/checkout@master
-      - name: Bump version
-        id: tag_prepare
-        uses: laputansoft/github-tag-action@v4.6
+      - uses: actions/checkout@v3
+      - uses: rickstaa/action-create-tag@v1
         with:
-          github_token: ${{ secrets.TOKEN }}
-          tag: "manver"
-      - name: display
-        run: echo ${{ steps.package-version.outputs.version }}
-      - name: tag
-        run: echo  ${{ steps.tag_prepare.tag }}
+          tag: "tag1"
+          message: "Latest release"
+      - uses: ncipollo/release-action@v1
+        with:
+          name:  ${{ steps.tag_prepare.outputs.new_tag }}
+          tag: "tag1"
+          body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
+          token: ${{ secrets.TOKEN }}
 
       
  
