@@ -13,9 +13,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: '0'
-    - name: Bump version push tag
+    - name: Bump version and push tag
+      id: tag
       uses: moble/github-tag-action@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+    - name: output
+      run: echo ${{steps.tag.outputs}}
  
