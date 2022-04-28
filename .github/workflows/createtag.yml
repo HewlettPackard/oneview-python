@@ -10,14 +10,12 @@ jobs:
       contents: write
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
     steps:
-      - name: Tag
-        id: tagi
-        uses: K-Phoen/semver-release-action@master
+      - name: Create GitHub release
+        uses: Roang-zero1/github-create-release-action@master
         with:
-          release_branch: master
+          version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      - name: output
-        run: echo ${{ steps.tagi.outputs.tag }}
+          changelog_heading: "h1"
     
  
