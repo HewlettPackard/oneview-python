@@ -2,7 +2,7 @@ name: create tag and relese
 
 on:
   pull_request:
-    types: closed
+    types: [closed]
 jobs:
   create-tag:
     runs-on: ubuntu-latest
