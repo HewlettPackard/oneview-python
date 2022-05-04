@@ -23,8 +23,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ncipollo/release-action@v1
         with:
-          name:  "v6.7.0"
-          tag: "v6.7.0"
+          name:  ${{ steps.tag_and_prepare_release.outputs.new_tag }}
+          tag: ${{ steps.tag_and_prepare_release.outputs.new_tag }}
           body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
           token: ${{ secrets.TOKEN }}
       
