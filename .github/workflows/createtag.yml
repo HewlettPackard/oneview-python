@@ -2,7 +2,7 @@ name: create tag and relese
 
 on:
   pull_request:
-    types: closed
+    types: [closed]
 jobs:
   create-tag:
     runs-on: ubuntu-latest
@@ -17,11 +17,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
+          CUSTOM_TAG: "v6.7.0"
+      - name: Display
+        run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
       - uses: actions/checkout@v2
       - uses: ncipollo/release-action@v1
         with:
-          name:  ${{ steps.tag_prepare.outputs.new_tag }}
-          tag: ${{ steps.tag_and_prepare_release.outputs.new_tag }}
+          name:  "v6.7.0"
+          tag: "v6.7.0"
           body: See the <a href="https://github.com/Srija-Papinwar/Srija-Papinwar/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
           token: ${{ secrets.TOKEN }}
       
