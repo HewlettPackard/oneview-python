@@ -1,3 +1,3 @@
 ###### Requirements with Version Specifiers ######
 future >= 0.15.2
-docutils < 0.18 ## Added this to get rid of error from Sphinx. Please refer https://github.com/sphinx-doc/sphinx/issues/9811
+docutils < 0.18 ## this to get rid of error from Sphinx. Please refer https://github.com/sphinx-doc/sphinx/issues/9811
