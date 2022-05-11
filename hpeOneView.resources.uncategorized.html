@@ -39,8 +39,6 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.uncategorized package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.uncategorized.config_loader">hpeOneView.resources.uncategorized.config_loader module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.uncategorized.migrate">hpeOneView.resources.uncategorized.migrate module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.uncategorized.os_deployment_plans">hpeOneView.resources.uncategorized.os_deployment_plans module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.uncategorized.os_deployment_servers">hpeOneView.resources.uncategorized.os_deployment_servers module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.uncategorized.unmanaged_devices">hpeOneView.resources.uncategorized.unmanaged_devices module</a></li>
@@ -77,82 +75,6 @@
 <h1>hpeOneView.resources.uncategorized package<a class="headerlink" href="#hpeoneview-resources-uncategorized-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.uncategorized.config_loader">
-<span id="hpeoneview-resources-uncategorized-config-loader-module"></span><h2>hpeOneView.resources.uncategorized.config_loader module<a class="headerlink" href="#module-hpeOneView.resources.uncategorized.config_loader" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="hpeOneView.resources.uncategorized.config_loader.try_load_from_file">
-<code class="descclassname">hpeOneView.resources.uncategorized.config_loader.</code><code class="descname">try_load_from_file</code><span class="sig-paren">(</span><em>config</em>, <em>file_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/config_loader.html#try_load_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.config_loader.try_load_from_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-hpeOneView.resources.uncategorized.migrate">
-<span id="hpeoneview-resources-uncategorized-migrate-module"></span><h2>hpeOneView.resources.uncategorized.migrate module<a class="headerlink" href="#module-hpeOneView.resources.uncategorized.migrate" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.uncategorized.migrate.ServerHardware">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.uncategorized.migrate.</code><code class="descname">ServerHardware</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/migrate.html#ServerHardware"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.migrate.ServerHardware" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
-<dl class="method">
-<dt id="hpeOneView.resources.uncategorized.migrate.ServerHardware.appliance_request">
-<code class="descname">appliance_request</code><span class="sig-paren">(</span><em>request_type</em>, <em>url</em>, <em>secure=True</em>, <em>payload=None</em>, <em>other_properties={}</em>, <em>extra_headers={}</em>, <em>poll=True</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/migrate.html#ServerHardware.appliance_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.migrate.ServerHardware.appliance_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.uncategorized.migrate.ServerHardware.do_migrate">
-<code class="descname">do_migrate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/migrate.html#ServerHardware.do_migrate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.migrate.ServerHardware.do_migrate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to perform the migration of selected harware .</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.uncategorized.migrate.ServerHardware.get_migratable_device">
-<code class="descname">get_migratable_device</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/migrate.html#ServerHardware.get_migratable_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.migrate.ServerHardware.get_migratable_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to get list of migratable device .</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list containing server hardware that are eligible for migration</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.uncategorized.migrate.ServerHardware.get_secure_headers">
-<code class="descname">get_secure_headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/migrate.html#ServerHardware.get_secure_headers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.migrate.ServerHardware.get_secure_headers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper method to appliance_request().
-Gives header information required by the appliance with authentication information.
-:returns: <strong>_secure_header</strong>
-:rtype: dict. Dictionary containing X-API-Verions, Content-Type, and Auth.  The Auth parameter value is a sessionID.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.uncategorized.migrate.ServerHardware.poll_for_task">
-<code class="descname">poll_for_task</code><span class="sig-paren">(</span><em>calling_url</em>, <em>response</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/uncategorized/migrate.html#ServerHardware.poll_for_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.uncategorized.migrate.ServerHardware.poll_for_task" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper method to appliance_request().
-Status Response 202 indicates an asynchronous REST call.  Poll until the task is complete or error.
-Adds to the set of parameters that appliance_request() returns.
-:param calling_url: The URL that was called in appliance_request.
-:type calling_url: string
-:param response:
-:type response: a response object from a Requests call.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">task_state: str.  A short summary of the execution/completion status
-task_status: str. State of the task.  For Example: Unknown, Running, Terminated, Error, Warning, Completed.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple containing</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="module-hpeOneView.resources.uncategorized.os_deployment_plans">
 <span id="hpeoneview-resources-uncategorized-os-deployment-plans-module"></span><h2>hpeOneView.resources.uncategorized.os_deployment_plans module<a class="headerlink" href="#module-hpeOneView.resources.uncategorized.os_deployment_plans" title="Permalink to this headline">¶</a></h2>
