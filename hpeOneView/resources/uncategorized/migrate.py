@@ -221,8 +221,9 @@ class ServerHardware(Thread):
         if migrateable_success:
             logging.info('migrateable accepted.')
         else:
-            raise Exception('migratable device listing failed. Status: {0}. JSON Response: {1}'.format(migrateable_resp.status_code,
-                                                                                                       json.dumps(migrateable_json_response, sort_keys=True, indent=4, separators=(',', ': '))))
+            raise Exception('migratable device listing failed. Status: {0}. JSON Response: {1}'
+                            .format(migrateable_resp.status_code, json.dumps(migrateable_json_response, sort_keys=True,
+                                                                             indent=4, separators=(',', ': '))))
 
         sh_list = migrateable_json_response['serverHardware']
 
@@ -242,20 +243,23 @@ class ServerHardware(Thread):
         if migrate_success:
             logging.info('migration successful.')
         else:
-            raise Exception('migration failed. Status: {0}. JSON Response: {1}'.format(migrate_resp.status_code,
-                                                                                       json.dumps(migrate_json_response, sort_keys=True, indent=4, separators=(',', ': '))))
+            raise Exception('migration failed. Status: {0}. JSON Response: {1}'.
+                            format(migrate_resp.status_code, json.dumps(migrate_json_response, sort_keys=True, indent=4, separators=(',', ': '))))
 
 
+config = {
+    "ip": "",
+    "credentials": {
+        "userName": "",
+        "password": ""
+    }
+}
 if __name__ == '__main__':
     # logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
-    config = try_load_from_file()
+    config = try_load_from_file(config)
     max_retries_in_session = 10
 
     ra = ServerHardware(config)
-    # override_version=4000,
-    #                    retries=max_retries_in_session,
-    #                    appliance_ip_address="172.27.2.235"
-    #                    )
 
     sh_list = ra.get_migratable_device()
 

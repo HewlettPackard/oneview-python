@@ -30,7 +30,7 @@ CUR_MODULE_DIR = os.path.dirname(__file__)
 DEFAULT_EXAMPLE_CONFIG_FILE = os.path.join(CUR_MODULE_DIR, 'config.json')
 
 
-def try_load_from_file(file_name=None):
+def try_load_from_file(config, file_name=None):
     if not file_name:
         file_name = DEFAULT_EXAMPLE_CONFIG_FILE
 
