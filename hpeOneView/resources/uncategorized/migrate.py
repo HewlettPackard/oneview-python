@@ -5,8 +5,6 @@ import json
 import logging
 import time
 from threading import Thread
-import time
-
 from config_loader import try_load_from_file
 
 rest_call_timeout_sec = 60
@@ -79,7 +77,7 @@ class ServerHardware(Thread):
             return self._secure_header
         except ValueError as e:
             raise Exception('Failure to get a JSON value from the response. Status: {0}.'.format(r.status_code))
-        except:
+        except KeyError:
             raise Exception('Failure to access the sessionID from the response. Status: {0}. JSON: {1}'.format(r.status_code, r.json()))
 
     def appliance_request(self, request_type, url, secure=True, payload=None, other_properties={}, extra_headers={}, poll=True,
@@ -102,18 +100,12 @@ class ServerHardware(Thread):
         try:
             if request_type == "POST":
                 r = self.sess.post(full_url, verify=False, headers=head, data=json.dumps(payload), timeout=timeout, **other_properties)
-            # elif request_type == "PUT":
-            #     r = self.sess.put(full_url, verify=False, headers=head, data=json.dumps(payload), timeout=timeout, **other_properties)
-            # elif request_type == "GET":
-            #     r = self.sess.get(full_url, verify=False, headers=head, timeout=timeout, **other_properties)
-            # elif request_type == "DELETE":
-            #     r = self.sess.delete(full_url, verify=False, headers=head, timeout=timeout, **other_properties)
             else:
                 raise Exception(
                     "RestAppliance attempted to call an http request other than POST, PUT, or GET. request_type: {0}. url: {1}".format(request_type, url))
             try:
                 safe_json_result = r.json()
-            except:
+            except ValueError:
                 safe_json_result = {}
             logging.debug("Returned. Status code: {0}.".format(r.status_code))
             logging.debug("Returned. JSON: {0}.".format(safe_json_result))
