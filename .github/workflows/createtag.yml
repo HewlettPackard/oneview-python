@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR')
+    if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR') && startsWith(github.base_ref, 'master')
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
@@ -17,7 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
-          CUSTOM_TAG: "v6.9.0"
+          CUSTOM_TAG: "v6.19.0"
       - name: Display
         run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
       - uses: actions/checkout@v2
