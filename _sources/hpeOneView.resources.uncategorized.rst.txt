@@ -4,6 +4,22 @@ hpeOneView.resources.uncategorized package
 Submodules
 ----------
 
+hpeOneView.resources.uncategorized.config\_loader module
+--------------------------------------------------------
+
+.. automodule:: hpeOneView.resources.uncategorized.config_loader
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+hpeOneView.resources.uncategorized.migrate module
+-------------------------------------------------
+
+.. automodule:: hpeOneView.resources.uncategorized.migrate
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.uncategorized.os\_deployment\_plans module
 ---------------------------------------------------------------
 

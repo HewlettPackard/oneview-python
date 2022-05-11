@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.networking.switch_types &mdash; HPE OneView Python SDK 6.6.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>hpeOneView.resources.uncategorized.config_loader &mdash; HPE OneView Python SDK 6.6.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -53,7 +53,7 @@
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
           <li><a href="../../../hpeOneView.html">hpeOneView</a> &raquo;</li>
-      <li>hpeOneView.resources.networking.switch_types</li>
+      <li>hpeOneView.resources.uncategorized.config_loader</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -62,7 +62,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for hpeOneView.resources.networking.switch_types</h1><div class="highlight"><pre>
+  <h1>Source code for hpeOneView.resources.uncategorized.config_loader</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
 <span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
@@ -79,7 +79,6 @@
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
-
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
@@ -89,19 +88,22 @@
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="n">CUR_MODULE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="n">DEFAULT_EXAMPLE_CONFIG_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CUR_MODULE_DIR</span><span class="p">,</span> <span class="s1">&#39;config.json&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="SwitchTypes"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.switch_types.SwitchTypes">[docs]</a><span class="k">class</span> <span class="nc">SwitchTypes</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Switch Types API client.</span>
+<div class="viewcode-block" id="try_load_from_file"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.config_loader.try_load_from_file">[docs]</a><span class="k">def</span> <span class="nf">try_load_from_file</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">file_name</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">DEFAULT_EXAMPLE_CONFIG_FILE</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/switch-types&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">config</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SwitchTypes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

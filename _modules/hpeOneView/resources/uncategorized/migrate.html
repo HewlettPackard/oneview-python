@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hpeOneView.resources.uncategorized.migrate &mdash; HPE OneView Python SDK 6.6.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> HPE OneView Python SDK
+          </a>
+              <div class="version">
+                6.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">HPE OneView Python SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../hpeOneView.html">hpeOneView</a> &raquo;</li>
+      <li>hpeOneView.resources.uncategorized.migrate</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for hpeOneView.resources.uncategorized.migrate</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">packages</span><span class="o">.</span><span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">from</span> <span class="nn">config_loader</span> <span class="kn">import</span> <span class="n">try_load_from_file</span>
+
+<span class="n">rest_call_timeout_sec</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">max_retries_in_session</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">polling_call_timeout_sec</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">sec_between_polling</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<div class="viewcode-block" id="ServerHardware"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.migrate.ServerHardware">[docs]</a><span class="k">class</span> <span class="nc">ServerHardware</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="c1"># override_version=None, retries=max_retries_in_session, appliance_ip_address=None):</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;appliance_ip&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://&quot;</span> <span class="o">+</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;appliance_ip&quot;</span><span class="p">)</span>
+
+        <span class="c1"># create a persistant session so that we can retry if the appliance goes offline (e.g. first time setup)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">retries</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_retries&quot;</span><span class="p">)</span>
+        <span class="n">adap</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retries</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">,</span> <span class="n">adap</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="n">adap</span><span class="p">)</span>
+
+        <span class="c1"># if version is passed in, use that.  Else use the default for the program</span>
+        <span class="c1"># Default to the minimal version number that implements all the requirements that we need. Defined per program.</span>
+        <span class="c1"># Eventually we may need version overrides at each REST call.</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;api_version&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api_version</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;api_version&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api_version</span> <span class="o">=</span> <span class="mi">120</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The API Version utilized is </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_version</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_header</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X-API-Version&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_version</span><span class="p">),</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">appliance_ip</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;appliance_ip&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">appliance_username</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;userName&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">appliance_password</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_ip</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_appliance_ip&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_username</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_username&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_password</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;credentials&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_password&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_hardware_uri</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="ServerHardware.get_secure_headers"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.migrate.ServerHardware.get_secure_headers">[docs]</a>    <span class="k">def</span> <span class="nf">get_secure_headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper method to appliance_request().</span>
+<span class="sd">        Gives header information required by the appliance with authentication information.</span>
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        _secure_header: dict. Dictionary containing X-API-Verions, Content-Type, and Auth.  The Auth parameter value is a sessionID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Once _secure_header is defined, we can use it over and over again for the duration of its life.</span>
+        <span class="c1"># Note, the header is only good for that user (administrator), 24 hours, and until the next reboot.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appliance_username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appliance_password</span><span class="p">}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/rest/login-sessions&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="n">rest_call_timeout_sec</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;There was an issue connecting to the appliance to get headers. Exception message: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;There was an issue with the HTTP Call to get headers. Exception message: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&gt;=</span> <span class="mi">300</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Failure to get secure connection. Status </span><span class="si">{0}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">safe_json</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span><span class="p">[</span><span class="s1">&#39;Auth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">safe_json</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sessionID&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span><span class="p">[</span><span class="s1">&#39;Auth&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Auth token for the header is undefined.  No Session ID available. Status: </span><span class="si">{0}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secure_header</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Failure to get a JSON value from the response. Status: </span><span class="si">{0}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Failure to access the sessionID from the response. Status: </span><span class="si">{0}</span><span class="s1">. JSON: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()))</span></div>
+
+<div class="viewcode-block" id="ServerHardware.appliance_request"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.migrate.ServerHardware.appliance_request">[docs]</a>    <span class="k">def</span> <span class="nf">appliance_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_type</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">secure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">other_properties</span><span class="o">=</span><span class="p">{},</span> <span class="n">extra_headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">poll</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                          <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="n">rest_call_timeout_sec</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">secure</span><span class="p">:</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_header</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_secure_headers</span><span class="p">()</span>
+
+        <span class="n">full_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Preparing HTTP </span><span class="si">{0}</span><span class="s2"> request.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">request_type</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Preparing URL: </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">full_url</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Preparing Headers: </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">head</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Preparing Payload: </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">)))</span>
+        <span class="n">polling_results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">request_type</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">full_url</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">head</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">other_properties</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;RestAppliance attempted to call an http request other than POST, PUT, or GET. request_type: </span><span class="si">{0}</span><span class="s2">. url: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">request_type</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">safe_json_result</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">safe_json_result</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Returned. Status code: </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Returned. JSON: </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">safe_json_result</span><span class="p">))</span>
+            <span class="c1"># 202 status codes indicate a task that is pollable. The calling function may not know that this will return a 202.</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">202</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">poll</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">safe_json_result</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;task_state&#39;</span><span class="p">:</span> <span class="s1">&#39;N/A&#39;</span><span class="p">,</span> <span class="s1">&#39;task_status&#39;</span><span class="p">:</span> <span class="s1">&#39;N/A&#39;</span><span class="p">})</span>
+                <span class="p">(</span><span class="n">task_state</span><span class="p">,</span> <span class="n">task_status</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poll_for_task</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+                <span class="n">polling_results</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task_state&#39;</span><span class="p">:</span> <span class="n">task_state</span><span class="p">,</span>
+                                   <span class="s1">&#39;task_status&#39;</span><span class="p">:</span> <span class="n">task_status</span><span class="p">}</span>
+                <span class="k">if</span> <span class="n">task_state</span> <span class="o">==</span> <span class="s2">&quot;Completed&quot;</span><span class="p">:</span>
+                    <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="k">elif</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>
+                <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">polling_results</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;task_state&#39;</span><span class="p">:</span> <span class="n">safe_json_result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;errorCode&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">),</span>
+                                   <span class="s1">&#39;task_status&#39;</span><span class="p">:</span> <span class="n">safe_json_result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;details&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">safe_json_result</span><span class="p">))}</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">safe_json_result</span><span class="p">,</span> <span class="n">polling_results</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;There was an issue connecting to the appliance. Exception message: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;There was an issue with the HTTP Call. Exception message: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ServerHardware.poll_for_task"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.migrate.ServerHardware.poll_for_task">[docs]</a>    <span class="k">def</span> <span class="nf">poll_for_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calling_url</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Helper method to appliance_request().</span>
+<span class="sd">        Status Response 202 indicates an asynchronous REST call.  Poll until the task is complete or error.</span>
+<span class="sd">        Adds to the set of parameters that appliance_request() returns.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        calling_url : string</span>
+<span class="sd">            The URL that was called in appliance_request.</span>
+<span class="sd">        response : a response object from a Requests call.</span>
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        tuple containing:</span>
+<span class="sd">            task_state: str.  A short summary of the execution/completion status</span>
+<span class="sd">            task_status: str. State of the task.  For Example: Unknown, Running, Terminated, Error, Warning, Completed.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Could not read the task to poll. Originating request on URL: </span><span class="si">{0}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">calling_url</span><span class="p">))</span>
+        <span class="n">full_rest_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span>
+        <span class="n">task_state</span> <span class="o">=</span> <span class="s1">&#39;Running&#39;</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting polling the rest task </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+            <span class="n">already_reset_session</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">while</span> <span class="n">task_state</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Running&#39;</span><span class="p">,</span> <span class="s1">&#39;New&#39;</span><span class="p">,</span> <span class="s1">&#39;Pending&#39;</span><span class="p">,</span> <span class="s1">&#39;Starting&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">start_time</span> <span class="o">+</span> <span class="n">polling_call_timeout_sec</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Task Polling did not respond within </span><span class="si">{0}</span><span class="s1"> seconds. Time out and exit. Originating request on URL: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">polling_call_timeout_sec</span><span class="p">,</span> <span class="n">calling_url</span><span class="p">))</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sec_between_polling</span><span class="p">)</span>
+                <span class="n">r_tree</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Current Time </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))))</span>
+                    <span class="n">r_tree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">full_rest_url</span> <span class="o">+</span> <span class="s2">&quot;?view=tree&quot;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_secure_headers</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="n">rest_call_timeout_sec</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Migration failed: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">already_reset_session</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;There was an issue with the HTTP Call for task polling. Exception message: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+                    <span class="c1"># delete and recreate of the session if it loses connection.  Changes in IP address, FQDN, etc can make use lose the session.</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">already_reset_session</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+                        <span class="n">adap</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retries</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">,</span> <span class="n">adap</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="n">adap</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">r_tree</span><span class="p">:</span>
+                    <span class="n">r_treejson</span> <span class="o">=</span> <span class="n">r_tree</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+                    <span class="n">task_resource</span> <span class="o">=</span> <span class="n">r_treejson</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;resource&#39;</span><span class="p">)</span>
+                    <span class="n">task_state</span> <span class="o">=</span> <span class="n">task_resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;taskState&#39;</span><span class="p">)</span>
+                    <span class="n">task_status</span> <span class="o">=</span> <span class="n">task_resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;taskStatus&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                    <span class="n">task_errors</span> <span class="o">=</span> <span class="n">task_resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;taskErrors&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">task_errors</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Task failed.&quot;</span><span class="p">)</span>
+                        <span class="c1"># in case of errors place them in log output and append to status message</span>
+                        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">task_errors</span><span class="p">:</span>
+                            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                        <span class="n">task_status</span> <span class="o">+=</span> <span class="s2">&quot;;&quot;</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">task_errors</span><span class="p">])</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Percent Complete : </span><span class="si">{0}</span><span class="s2">. State: </span><span class="si">{1}</span><span class="s2">. Status: </span><span class="si">{2}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task_resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;percentComplete&#39;</span><span class="p">),</span> <span class="n">task_state</span><span class="p">,</span> <span class="n">task_status</span><span class="p">))</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;The task tree for </span><span class="si">{0}</span><span class="s2"> is:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">full_rest_url</span><span class="p">))</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Returned JSON: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r_treejson</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Exception during get call, response was not set&quot;</span><span class="p">)</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Unable to get the task tree for </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">full_rest_url</span><span class="p">))</span>
+            <span class="k">return</span><span class="p">(</span><span class="n">task_state</span><span class="p">,</span> <span class="n">task_status</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error getting the JSON results from the task. Originating request on URL: </span><span class="si">{0}</span><span class="s1">. Exception: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">calling_url</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error in polling for the task. Originating request on URL: </span><span class="si">{0}</span><span class="s1">. Exception: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">calling_url</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ServerHardware.get_migratable_device"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.migrate.ServerHardware.get_migratable_device">[docs]</a>    <span class="k">def</span> <span class="nf">get_migratable_device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Method to get list of migratable device .</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">        list containing server hardware that are eligible for migration:</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/rest/migrate/migratable-server-hardware/&#39;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ipAddress&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_ip</span><span class="p">,</span>
+                   <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_password</span><span class="p">}</span>
+
+        <span class="p">(</span><span class="n">migrateable_success</span><span class="p">,</span> <span class="n">migrateable_resp</span><span class="p">,</span> <span class="n">migrateable_json_response</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">appliance_request</span><span class="p">(</span>
+            <span class="n">request_type</span><span class="o">=</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">secure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">migrateable_success</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;migrateable accepted.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;migratable device listing failed. Status: </span><span class="si">{0}</span><span class="s1">. JSON Response: </span><span class="si">{1}</span><span class="s1">&#39;</span>
+                            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">migrateable_resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">migrateable_json_response</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                                             <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">))))</span>
+
+        <span class="n">sh_list</span> <span class="o">=</span> <span class="n">migrateable_json_response</span><span class="p">[</span><span class="s1">&#39;serverHardware&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">sh_list</span></div>
+
+<div class="viewcode-block" id="ServerHardware.do_migrate"><a class="viewcode-back" href="../../../../hpeOneView.resources.uncategorized.html#hpeOneView.resources.uncategorized.migrate.ServerHardware.do_migrate">[docs]</a>    <span class="k">def</span> <span class="nf">do_migrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Method to perform the migration of selected harware .</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/rest/migrate&#39;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ipAddress&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_ip</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_username</span><span class="p">,</span>
+                   <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_password</span><span class="p">,</span> <span class="s2">&quot;uri&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">migrate_source_hardware_uri</span><span class="p">}</span>
+
+        <span class="n">migrate_json_response</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="p">(</span><span class="n">migrate_success</span><span class="p">,</span> <span class="n">migrate_resp</span><span class="p">,</span> <span class="n">migrate_json_response</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">appliance_request</span><span class="p">(</span>
+            <span class="n">request_type</span><span class="o">=</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">secure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">migrate_success</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;migration successful.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;migration failed. Status: </span><span class="si">{0}</span><span class="s1">. JSON Response: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span>
+                            <span class="nb">format</span><span class="p">(</span><span class="n">migrate_resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">migrate_json_response</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">))))</span></div></div>
+
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;credentials&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">try_load_from_file</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">max_retries_in_session</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="n">ra</span> <span class="o">=</span> <span class="n">ServerHardware</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="n">sh_list</span> <span class="o">=</span> <span class="n">ra</span><span class="o">.</span><span class="n">get_migratable_device</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sh_list</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List of server hardware for migrate: &quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sh</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sh_list</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hardware number: &quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sh</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">select_sh_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the list of server hardware to migrate: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">select_sh</span> <span class="ow">in</span> <span class="n">select_sh_list</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">select_sh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sh_list</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">select_sh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">select_sh</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have chosen: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">select_sh</span><span class="p">))</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You chosen wrong!&#39;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ra</span><span class="o">.</span><span class="n">migrate_source_hardware_uri</span> <span class="o">=</span> <span class="n">sh_list</span><span class="p">[</span><span class="n">select_sh</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="s2">&quot;uri&quot;</span><span class="p">]</span>
+            <span class="n">t1</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">ra</span><span class="o">.</span><span class="n">do_migrate</span><span class="p">)</span>
+            <span class="n">t1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+            <span class="n">t1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error performing the migration.Server hardware is : </span><span class="si">{0}</span><span class="s1">. Exception: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sh_list</span><span class="p">[</span><span class="n">select_sh</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">e</span><span class="p">))</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (C) 2021 Hewlett Packard Enterprise.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
