@@ -16,9 +16,9 @@ Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet networks
+- FC networks
+- FCOE networks
 - Firmware Bundles
 - Firmware Drivers
 - HA Nodes
@@ -33,8 +33,8 @@ Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
 - Labels 
 - Logical Enclosures
 - Logical Interconnects
-- Logical Interconnect Group
-- Network set
+- Logical Interconnect Groups
+- Network sets
 - Repositories
 - Restores
 - Scopes
@@ -48,7 +48,7 @@ Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink sets
 - Users
 - Version
 # 6.5.0
@@ -69,9 +69,9 @@ Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet networks
+- FC networks
+- FCOE networks
 - Firmware Bundles
 - Firmware Drivers
 - HA Nodes
@@ -86,8 +86,8 @@ Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
 - Labels 
 - Logical Enclosures
 - Logical Interconnects
-- Logical Interconnect Group
-- Network set
+- Logical Interconnect Groups
+- Network sets
 - Repositories
 - Restores
 - Scopes
@@ -101,7 +101,7 @@ Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink sets
 - Users
 - Version
   
