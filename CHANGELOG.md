@@ -1,38 +1,3 @@
-# 6.7.0(unreleased)
-#### Notes
-Extends support of the SDK to OneView REST API version 3400 (OneView v6.7)
-
-##### Features supported with the current release
--  
-- Certificates Server 
-- Connection Templates 
-- Enclosure Groups 
-- Enclosures 
-- Ethernet Networks 
-- FC Networks 
-- FCoE Networks 
-- Firmware Drivers 
-- Hypervisor Cluster Profiles 
-- Hypervisor Managers 
-- Interconnect Types 
-- Interconnects 
-- Logical Enclosures 
-- Logical Interconnect Groups 
-- Logical Interconnects 
-- Network Sets 
-- Scopes 
-- Server Hardware 
-- Server Hardware Types 
-- Server Profile Templates 
-- Server Profiles 
-- Storage Pools 
-- Storage Systems 
-- Storage Volume Attachments 
-- Storage Volume Templates 
-- Tasks 
-- Uplink Sets 
-- Volumes 
-
 # 6.6.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
