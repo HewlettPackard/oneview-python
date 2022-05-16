@@ -1,6 +1,7 @@
 import requests
 requests.packages.urllib3.disable_warnings()
 import sys
+import csv
 import json
 import logging
 import time
@@ -248,50 +249,55 @@ class ServerHardware(Thread):
 
 
 config = {
-    "ip": "",
-    "credentials": {
-        "userName": "",
-        "password": ""
-    }
+  "appliance_ip": "<appliance_ip>",
+  "source_appliance_ip": "<source_appliance_ip>",
+   "api_version": 4000,
+   "credentials": {
+   "userName": "<appliance_username>",
+     "authLoginDomain": "",
+    "password": "<appliance_password>",
+     "sessionID": "",
+    "source_username": "<source_appliance_username>",
+    "source_password": "<source_appliance_password>"
+   }
 }
+
 if __name__ == '__main__':
     # logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+    if len(sys.argv) >= 2:
+        sh_user = str(sys.argv[1])
+    else:
+        print("input list of server hardware to be migrated")
+        sys.exit(1)
+
+    sh_user_list = sh_user.strip('[]').split(',')
+
     config = try_load_from_file(config)
     max_retries_in_session = 10
 
-    ra = ServerHardware(config)
+    serverH = ServerHardware(config)
 
-    sh_list = ra.get_migratable_device()
+    sh_list = serverH.get_migratable_device()
 
     if len(sh_list) <= 0:
         sys.exit()
     else:
         print("List of server hardware for migrate: ")
-    for i, sh in enumerate(sh_list):
-        print(50 * "#")
-        print("Hardware number: ", i + 1)
 
-        for x, y in sh.items():
-            if x == 'status':
-                continue
-            print(x, ":", y)
+    sh_dic = {}
+    for sh in sh_list:
+        sh_dic[sh["name"]] = sh["uri"]
 
-    select_sh_list = [int(item) for item in input("Enter the list of server hardware to migrate: ").split()]
-    for select_sh in select_sh_list:
-
-        if select_sh in range(1, len(sh_list) + 1):
-            select_sh = int(select_sh)
-            print("You have chosen: " + str(select_sh))
-
-        else:
-            print('You chosen wrong!')
-            sys.exit()
+    for sh in sh_user_list:
+        if sh_dic.get(sh):
+            print("Server hardare {0} is going to be migrated".format(sh))
+        sh_uri = sh_dic.get(sh)
         try:
-            ra.migrate_source_hardware_uri = sh_list[select_sh - 1]["uri"]
-            t1 = Thread(target=ra.do_migrate)
+            serverH.migrate_source_hardware_uri = sh_uri
+            t1 = Thread(target=serverH.do_migrate)
             t1.start()
 
             t1.join()
 
         except ValueError as e:
-            raise Exception('Error performing the migration.Server hardware is : {0}. Exception: {1}'.format(sh_list[select_sh - 1]["name"], e))
+            raise Exception('Error performing the migration.Server hardware is : {0}. Exception: {1}'.format(sh, e))
