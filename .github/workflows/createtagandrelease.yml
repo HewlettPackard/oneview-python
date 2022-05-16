@@ -15,7 +15,7 @@ jobs:
         id: tag_and_prepare_release
         uses: moble/github-tag-action@main
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           CUSTOM_TAG: "v6.11.0"
       - name: Display
@@ -26,7 +26,7 @@ jobs:
           name:  ${{ steps.tag_and_prepare_release.outputs.new_tag }}
           tag: ${{ steps.tag_and_prepare_release.outputs.new_tag }}
           body: See the <a href="https://github.com/HewlettPackard/oneview-python/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
-          token: ${{ secrets.TOKEN }}
+          token:  ${{ secrets.GITHUB_TOKEN }}
       
     
  
