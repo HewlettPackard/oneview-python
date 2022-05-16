@@ -1,7 +1,6 @@
 import requests
 requests.packages.urllib3.disable_warnings()
 import sys
-import csv
 import json
 import logging
 import time
@@ -249,21 +248,21 @@ class ServerHardware(Thread):
 
 
 config = {
-  "appliance_ip": "<appliance_ip>",
-  "source_appliance_ip": "<source_appliance_ip>",
-   "api_version": 4000,
-   "credentials": {
-   "userName": "<appliance_username>",
-     "authLoginDomain": "",
-    "password": "<appliance_password>",
-     "sessionID": "",
-    "source_username": "<source_appliance_username>",
-    "source_password": "<source_appliance_password>"
-   }
+    "appliance_ip": "<appliance_ip>",
+    "source_appliance_ip": "<source_appliance_ip>",
+    "api_version": 4000,
+    "credentials": {
+        "userName": "<appliance_username>",
+        "authLoginDomain": "",
+        "password": "<appliance_password>",
+        "sessionID": "",
+        "source_username": "<source_appliance_username>",
+        "source_password": "<source_appliance_password>"
+    }
 }
 
 if __name__ == '__main__':
-    # logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+
     if len(sys.argv) >= 2:
         sh_user = str(sys.argv[1])
     else:
@@ -281,8 +280,6 @@ if __name__ == '__main__':
 
     if len(sh_list) <= 0:
         sys.exit()
-    else:
-        print("List of server hardware for migrate: ")
 
     sh_dic = {}
     for sh in sh_list:
