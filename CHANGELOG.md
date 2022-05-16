@@ -1,56 +1,59 @@
-# 6.6.0(unreleased)
+# 6.6.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
 
 ##### Features supported with the current release
-- Appliance Configuration Timeconfig
-- Appliance Health Status
-- Appliance Network Interfaces
-- Appliance Node Information
-- Appliance Proxy Configuration
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
-- Connection Templates
-- Enclosures
-- Enclosure Groups
-- Ethernet networks
-- FC networks
-- FCOE networks
-- Firmware Bundles
-- Firmware Drivers
-- HA Nodes
-- Hypervisor Cluster Profiles
-- Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
-- Index Resources
-- Interconnects
-- Interconnect Types
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server 
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
 - Labels 
-- Logical Enclosures
-- Logical Interconnects
-- Logical Interconnect Groups
-- Network sets
-- Repositories
-- Restores
-- Scopes
-- Server Hardware
-- Server Hardware Types
-- Server Profiles
-- Server Profile Templates
-- Storage Pools
-- Storage Systems
-- Storage Templates
-- Storage Volume Attachments
-- Storage Volume
-- Tasks
-- Uplink sets
-- Users
-- Version
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Repositories 
+- Restores 
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates 
+- Tasks 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes 
 # 6.5.0
 #### Notes
 Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
