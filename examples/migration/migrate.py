@@ -306,6 +306,7 @@ if __name__ == '__main__':
     sh_list = serverH.get_migratable_device()
 
     if len(sh_list) <= 0:
+        print("no server hardware found for migration")
         sys.exit(1)
 
     sh_dic = {}
