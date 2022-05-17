@@ -1,0 +1,14 @@
+{
+  "appliance_ip": "<appliance_ip>",
+  "source_appliance_ip": "<source_appliance_ip>",
+  "api_version": 4000,
+  "ssl_certificate": "",
+  "credentials": {
+    "userName": "<appliance_username>",
+    "authLoginDomain": "",
+    "password": "<appliance_password>",
+    "sessionID": "",
+    "source_username": "<source_appliance_username>",
+    "source_password": "<source_appliance_password>"
+  }
+}
