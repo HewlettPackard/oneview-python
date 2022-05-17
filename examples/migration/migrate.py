@@ -1,3 +1,30 @@
+#!/usr/bin/env python3
+
+###
+# (C) Copyright [2022] Hewlett Packard Enterprise Development LP
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+###
+
+"""
+The script is used to migrate server hardware from HPE OneView 6.x version to HPE OneView 7.0 version.
+Usage Example
+The list of server hardware names(ip address here) to migrate is [10.1.1.0,10.1.1.2]
+Run script as below:
+python migrate.py [10.1.1.0,10.1.1.2]
+"""
+
+
 import requests
 requests.packages.urllib3.disable_warnings()
 import sys
@@ -279,7 +306,7 @@ if __name__ == '__main__':
     sh_list = serverH.get_migratable_device()
 
     if len(sh_list) <= 0:
-        sys.exit()
+        sys.exit(1)
 
     sh_dic = {}
     for sh in sh_list:
