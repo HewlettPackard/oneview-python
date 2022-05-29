@@ -122,9 +122,9 @@ Extends support of the SDK to OneView REST API version 4200 (OneView v7.1.0)
 - Users 
 - Version 
 - Volumes 
-# 7.0.0
+# 7.1.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4000 (OneView v7.0.0)
+Extends support of the SDK to OneView REST API version 4200 (OneView v7.1.0)
 
 ##### Features supported with the current release
 - Appliance Configuration Timeconfig 
@@ -180,6 +180,62 @@ Extends support of the SDK to OneView REST API version 4000 (OneView v7.0.0)
 - Storage Volume Templates 
 - Tasks 
 - Uplink Set 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes 
+# 7.0.0
+#### Notes
+Extends support of the SDK to OneView REST API version 4000 (OneView v7.0.0)
+
+##### Features supported with the current release
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server 
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures  
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
+- Labels 
+- Logical Enclosures  
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Set  
+- Repositories 
+- Restores 
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates 
+- Tasks  
 - Uplink Sets 
 - Users 
 - Version 
