@@ -218,4 +218,4 @@ Learn more about HPE OneView at [hpe.com/info/oneview](https://hpe.com/info/onev
 | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/2376290875) 
 =======
 | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/2376290875) 
->>>>>>> c83748d6daabea2b7591261fe4cfbf9de70160eb
+>>>>>>> c83748d6daabea2b7591261fe4cfbf9de70160eb| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/2405183330) 
