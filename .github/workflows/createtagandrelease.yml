@@ -17,7 +17,11 @@ jobs:
         env:
           GITHUB_TOKEN:  ${{ secrets.CD_TOKEN }}
           WITH_V: true
+<<<<<<< HEAD
           CUSTOM_TAG: "v7.2.0"
+=======
+          CUSTOM_TAG: "v7.0.0"
+>>>>>>> c83748d6daabea2b7591261fe4cfbf9de70160eb
       - name: Display
         run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
       - uses: actions/checkout@v2

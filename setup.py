@@ -20,10 +20,17 @@ from setuptools import find_packages
 from setuptools import setup
 
 setup(name='hpeOneView',
+<<<<<<< HEAD
       version='7.2.0',
       description='HPE OneView Python Library',
       url='https://github.com/HewlettPackard/oneview-python',
       download_url="https://github.com/HewlettPackard/oneview-python/tarball/v7.2.0",
+=======
+      version='7.0.0',
+      description='HPE OneView Python Library',
+      url='https://github.com/HewlettPackard/oneview-python',
+      download_url="https://github.com/HewlettPackard/oneview-python/tarball/v7.0.0",
+>>>>>>> c83748d6daabea2b7591261fe4cfbf9de70160eb
       author='Hewlett Packard Enterprise Development LP',
       author_email='oneview-pythonsdk@hpe.com',
       license='Apache',
