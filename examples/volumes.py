@@ -70,8 +70,7 @@ options = {
         "provisioningType": "Thin",
         "name": "Test_volume"
     },
-    "templateUri": volume_template['uri'],
-    "isPermanent": False
+    "templateUri": volume_template['uri']
 }
 
 # Find a volume by name

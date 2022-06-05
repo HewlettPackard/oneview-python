@@ -32,11 +32,14 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 restores = oneview_client.restores
 
-# A uri for a backup to restore must be set to run this example
-uri_of_backup_to_restore = "/rest/backups/example_backup_2017-04-25_195515"
+
 
 # Start a restore
 print("Starting a restore")
+print("\n## Create a new appliance backup")
+backup_details = oneview_client.backups.create()
+# A uri for a backup to restore must be set to run this example
+uri_of_backup_to_restore = backup_details['uri']
 options = {
     "uriOfBackupToRestore": uri_of_backup_to_restore
 }
@@ -46,8 +49,8 @@ pprint(restore.data)
 # Get all restores
 print("Get all Restores")
 restore_all = restores.get_all()
-for restr in restore_all:
-    print('  - {}'.format(restr['hostName']))
+for restore in restore_all:
+    print('  - {}'.format(restore['hostName']))
 
 # Get by hostname
 print("\nGet a Restore by hostName equals to '{}'".format(restore['hostName']))

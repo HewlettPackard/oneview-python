@@ -43,7 +43,9 @@ appliance_device_snmp_v3_users = oneview_client.appliance_device_snmp_v3_users
 # Get all snmpv3 users
 # snmp v3 user must be there to create this
 snmp_users = appliance_device_snmp_v3_users.get_all()
+print("++++",snmp_users)
 if snmp_users:
+    print("in if")
     snmp_userId = snmp_users[0]['id']
     # Adding userId to snmpv3 users payload
     options['userId'] = snmp_userId

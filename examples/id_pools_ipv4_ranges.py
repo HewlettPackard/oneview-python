@@ -45,10 +45,10 @@ options = {
 }
 
 subnet_options = {
-    "name": "iscsi_Subnet",
-    "networkId": config['subnet_networkid'],
-    "subnetmask": config['subnet_mask'],
-    "gateway": config['subnet_gateway'],
+    "name": "mgmt_subnet",
+    "networkId": config["networkId"],
+    "subnetmask": config["subnetmask"],
+    "gateway": config["gateway"],
     "domain": "example.com",
 }
 
@@ -57,11 +57,11 @@ ipv4_subnet = id_pool_ipv4_subnet.create(subnet_options)
 pprint(ipv4_subnet.data)
 
 option = {
-    "name": "IPv4",
+    "name": "IPv4_mgmt",
     "startStopFragments": [
         {
-            "startAddress": config['range_start_address'],
-            "endAddress": config['range_end_address']
+            "startAddress": config["startAddress"],
+            "endAddress": config["endAddress"]
         }
     ],
     "subnetUri": ipv4_subnet.data['uri']
@@ -142,3 +142,21 @@ print(" IPv4 range disabled successfully.")
 print("\n Delete the IPv4_range")
 ipv4Range.delete()
 print(" Successfully deleted IPv4 range")
+print('\n Delete IPv4 subnet')
+ipv4_subnet.delete()
+print(" Successfully deleted IPv4 subnet")
+# Create a mgmt network for automation
+ipv4_subnet = id_pool_ipv4_subnet.create(subnet_options)
+option = {
+    "name": "IPv4_mgmt",
+    "startStopFragments": [
+        {
+            "startAddress": config["startAddress"],
+            "endAddress": config["endAddress"]
+        }
+    ],
+    "subnetUri": ipv4_subnet.data['uri']
+}
+
+if oneview_client.api_version > 1000:
+    ipv4_range = id_pool_ipv4_range.create(option).data

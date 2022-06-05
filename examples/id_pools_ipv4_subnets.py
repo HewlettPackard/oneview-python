@@ -34,10 +34,10 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 
 options = {
-    "name": "IPv4Subnet",
-    "networkId": config['subnet_networkid'],
-    "subnetmask": config['subnet_mask'],
-    "gateway": config['subnet_gateway'],
+    "name": "iscsi_subnet",
+    "networkId": config["subnet_networkid"],
+    "subnetmask": config["subnet_mask"],
+    "gateway": config["subnet_gateway"],
     "domain": "example.com",
     "dnsServers": []
 }
@@ -54,8 +54,8 @@ updated_data = {'name': 'Changed Name'}
 ipv4_subnet = ipv4_subnet.update(updated_data)
 
 print('\n Get IPv4 subnet by uri')
-ipv4_subnet_byuri = id_pools_ipv4_subnets.get_by_uri(ipv4_subnet.data['uri'])
-pprint(ipv4_subnet_byuri.data)
+ipv4_subnet = id_pools_ipv4_subnets.get_by_uri('/rest/id-pools/ipv4/subnets/6452b1aa-54a0-475e-a86b-ee08aa53cb18')
+pprint(ipv4_subnet)
 
 print('\n Get all IPv4 subnet')
 all_subnets = id_pools_ipv4_subnets.get_all()
@@ -74,14 +74,14 @@ options = {
 }
 
 ethernet_network = ethernet_networks.create(options)
-
+ethernet_network =  ethernet_networks.get_by_name('SubnetEthernet')
 print('\nCreate Range with set of IDs')
 option = {
-    "name": "IPv4",
+    "name": "IPv4iscsi",
     "startStopFragments": [
         {
-            "startAddress": config['range_start_address'],
-            "endAddress": config['range_end_address']
+            "startAddress": config["range_start_address"],
+            "endAddress": config["range_end_address"]
         }
     ],
     "subnetUri": ipv4_subnet.data['uri']
@@ -90,6 +90,7 @@ id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
 ipv4_range = id_pool_ipv4_range.create(option).data
 
 subnet_id = ipv4_subnet.data['allocatorUri'].split('/')[-2]
+print("++",subnet_id)
 print("\n Allocates a set of IDs from a pool")
 try:
     allocated_ids = id_pools_ipv4_subnets.allocate({"count": 2}, subnet_id)
@@ -110,3 +111,18 @@ ethernet_network.delete()
 print('\n Delete IPv4 subnet')
 ipv4_subnet.delete()
 print(" Successfully deleted IPv4 subnet")
+# Create a iscsi network for automation
+ipv4_subnet = id_pools_ipv4_subnets.create(options)
+option = {
+    "name": "IPv4_mgmt",
+    "startStopFragments": [
+        {
+            "startAddress": config["startAddress"],
+            "endAddress": config["endAddress"]
+        }
+    ],
+    "subnetUri": ipv4_subnet.data['uri']
+}
+
+if oneview_client.api_version > 1000:
+    ipv4_range = id_pool_ipv4_range.create(option).data
