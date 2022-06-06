@@ -9,6 +9,18 @@
     "password": "",
     "sessionID": ""
   },
+  "subnet_options":{
+    "networkId": "",
+    "subnetmask": "",
+    "gateway": "",
+    "startAddress": "",
+    "endAddress": ""
+      },
+  "app1Ipv4Addr": "",
+  "app2Ipv4Addr": "",
+  "virtIpv4Addr": "",
+  "ipv4Subnet": "",
+  "ipv4Gateway": "",
   "enclosure_hostname": "",
   "enclosure_username": "",
   "enclosure_password": "",
@@ -20,6 +32,7 @@
   "storage_system_hostname": "",
   "storage_system_username": "",
   "storage_system_password": "",
+  "storage_system_family": "",
   "power_device_hostname": "",
   "power_device_username": "",
   "power_device_password": "",
@@ -27,5 +40,17 @@
   "subnet_mask": "",
   "subnet_gateway": "",
   "range_start_address": "",
-  "range_end_address": ""
+  "range_end_address": "",
+  "options":{
+    "key": "",
+    "type": ""
+   },
+  "proxy_config": {
+    "server": ""
+},
+"firmware":{
+  "spp_path":"",
+"hotfix_path":"",
+"compsig_path":""
+}
 }

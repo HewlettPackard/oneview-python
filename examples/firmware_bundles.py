@@ -27,16 +27,16 @@ config = {
     }
 }
 
-# To run this example you must define a path to a valid file
-spp_path = "<spp_path>"
-hotfix_path = "<hotfix_path>"
-compsig_path = "<compsig_path>"
-
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 firmware_bundles = oneview_client.firmware_bundles
 firmware_drivers = oneview_client.firmware_drivers
+# To run this example you must define a path to a valid file
+spp_path = config["firmware"]["spp_path"]
+hotfix_path = config["firmware"]["hotfix_path"]
+compsig_path = config["firmware"]["compsig_path"]
+
 
 # Upload a firmware bundle
 firmware = firmware_bundles.get_by_name(spp_path)
