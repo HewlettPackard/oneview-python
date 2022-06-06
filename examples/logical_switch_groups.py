@@ -56,21 +56,20 @@ logical_switch_groups = oneview_client.logical_switch_groups
 switch_types = oneview_client.switch_types
 
 # Get all, with defaults
-# print("\nGet all Logical Switch Groups")
-# lsgs = logical_switch_groups.get_all()
-# for lsg in lsgs:
-#     print("   '{name}' at uri: '{uri}'".format(**lsg))
+print("\nGet all Logical Switch Groups")
+lsgs = logical_switch_groups.get_all()
+for lsg in lsgs:
+    print("   '{name}' at uri: '{uri}'".format(**lsg))
 
 # Get the first 10 records, sorting by name descending, filtering by name
-# print("\nGet the first Logical Switch Groups, sorting by name descending, filtering by name")
-# lsgs = logical_switch_groups.get_all(
-#     0, 10, sort='name:descending', filter="\"'name'='OneView Test Logical Switch Group'\"")
-# for lsg in lsgs:
-#     print("   '{name}' at uri: '{uri}'".format(**lsg))
+print("\nGet the first Logical Switch Groups, sorting by name descending, filtering by name")
+lsgs = logical_switch_groups.get_all(
+    0, 10, sort='name:descending', filter="\"'name'='OneView Test Logical Switch Group'\"")
+for lsg in lsgs:
+    print("   '{name}' at uri: '{uri}'".format(**lsg))
 
-# # Get Logical Switch by property
-# lsg_getby = logical_switch_groups.get_by('name', 'OneView Test Logical Switch Group')
-lsg_getby = []
+# Get Logical Switch by property
+lsg_getby = logical_switch_groups.get_by('name', 'OneView Test Logical Switch Group')
 if lsg_getby:
     print("\nFound logical switch group by name: '{name}' at uri = '{uri}'".format(**lsg_getby[0]))
 
@@ -80,8 +79,7 @@ if lsg_getby:
 
 # Get switch type to use in creation of logical switch group
 print("\nGet switch type to use in creation of logical switch group")
-print(switch_types.get_all()[0]['name'])
-switch_type = switch_types.get_by_name(switch_types.get_all()[0]['name'])
+switch_type = switch_types.get_by_name("Arista 7060X")
 print("   Found switch type at uri: '{}'".format(switch_type.data['uri']))
 
 lsg = logical_switch_groups.get_by_name(options["name"])

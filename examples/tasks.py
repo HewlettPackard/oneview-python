@@ -15,7 +15,6 @@
 # limitations under the License.
 ###
 
-from logging import exception
 from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
