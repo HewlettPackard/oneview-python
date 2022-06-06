@@ -54,7 +54,7 @@ updated_data = {'name': 'Changed Name'}
 ipv4_subnet = ipv4_subnet.update(updated_data)
 
 print('\n Get IPv4 subnet by uri')
-ipv4_subnet = id_pools_ipv4_subnets.get_by_uri('/rest/id-pools/ipv4/subnets/6452b1aa-54a0-475e-a86b-ee08aa53cb18')
+ipv4_subnet = id_pools_ipv4_subnets.get_by_uri(ipv4_subnet.data['uri'])
 pprint(ipv4_subnet)
 
 print('\n Get all IPv4 subnet')

@@ -46,9 +46,9 @@ options = {
 
 subnet_options = {
     "name": "mgmt_subnet",
-    "networkId": config["networkId"],
-    "subnetmask": config["subnetmask"],
-    "gateway": config["gateway"],
+    "networkId": config["subnet_options"]["networkId"],
+    "subnetmask": config["subnet_options"]["subnetmask"],
+    "gateway": config["subnet_options"]["gateway"],
     "domain": "example.com",
 }
 
