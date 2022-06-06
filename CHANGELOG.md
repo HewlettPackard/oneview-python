@@ -35,7 +35,7 @@ Extends support of the SDK to OneView REST API version 4000 (OneView v7.0.0)
 - Logical Enclosures  
 - Logical Interconnect Groups 
 - Logical Interconnects 
-- Network Set  
+- Network Sets  
 - Repositories 
 - Restores 
 - Scopes 
