@@ -37,7 +37,7 @@ proxy = oneview_client.appliance_proxy_configuration
 # Configure proxy with HTTP protocol
 print("\nCreating proxy with HTTP:\n")
 proxy_config = {
-    "server": config["server"],
+    "server": config["proxy_config"]["server"],
     "port": 443,
     "username": "local",
     "password": "<password>",

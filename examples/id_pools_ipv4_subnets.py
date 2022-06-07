@@ -111,6 +111,14 @@ ethernet_network.delete()
 print('\n Delete IPv4 subnet')
 ipv4_subnet.delete()
 print(" Successfully deleted IPv4 subnet")
+options = {
+    "name": "iscsi_subnet",
+    "networkId": config["subnet_networkid"],
+    "subnetmask": config["subnet_mask"],
+    "gateway": config["subnet_gateway"],
+    "domain": "example.com",
+    "dnsServers": []
+}
 # Create a iscsi network for automation
 ipv4_subnet = id_pools_ipv4_subnets.create(options)
 option = {

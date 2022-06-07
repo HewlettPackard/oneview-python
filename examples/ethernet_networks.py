@@ -44,7 +44,7 @@ options = {
 options_bulk = {
     "vlanIdRange": "1-5,7",
     "purpose": "General",
-    "namePrefix": "TestNetwork",
+    "namePrefix": "TestNetworks",
     "smartLink": False,
     "privateNetwork": False,
     "bandwidth": {
