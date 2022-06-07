@@ -117,7 +117,7 @@ if not logical_enclosure:
         )
     except HPEOneViewException as e:
         print(e.msg)
-
+logical_enclosure = logical_enclosures.get_by_name(options["name"])
 # Update the logical enclosure name
 print("Update the logical enclosure to have a name of '%s'" %
       options["name"])

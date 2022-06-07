@@ -34,7 +34,7 @@ config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 
 options = {
-    "name": "iscsi_subnet",
+    "name": "iscsi_nw",
     "networkId": config["subnet_networkid"],
     "subnetmask": config["subnet_mask"],
     "gateway": config["subnet_gateway"],
@@ -112,7 +112,7 @@ print('\n Delete IPv4 subnet')
 ipv4_subnet.delete()
 print(" Successfully deleted IPv4 subnet")
 options = {
-    "name": "iscsi_subnet",
+    "name": "iscsi_nw",
     "networkId": config["subnet_networkid"],
     "subnetmask": config["subnet_mask"],
     "gateway": config["subnet_gateway"],

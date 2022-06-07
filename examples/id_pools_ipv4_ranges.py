@@ -45,7 +45,7 @@ options = {
 }
 
 subnet_options = {
-    "name": "mgmt_subnet",
+    "name": "mgmt",
     "networkId": config["subnet_options"]["networkId"],
     "subnetmask": config["subnet_options"]["subnetmask"],
     "gateway": config["subnet_options"]["gateway"],
@@ -57,7 +57,7 @@ ipv4_subnet = id_pool_ipv4_subnet.create(subnet_options)
 pprint(ipv4_subnet.data)
 
 option = {
-    "name": "IPv4_mgmt",
+    "name": "mgmt",
     "startStopFragments": [
         {
             "startAddress": config["subnet_options"]["startAddress"],
