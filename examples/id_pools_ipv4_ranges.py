@@ -151,8 +151,8 @@ option = {
     "name": "IPv4_mgmt",
     "startStopFragments": [
         {
-            "startAddress": config["startAddress"],
-            "endAddress": config["endAddress"]
+            "startAddress": config["subnet_options"]["startAddress"],
+            "endAddress": config["subnet_options"]["endAddress"]
         }
     ],
     "subnetUri": ipv4_subnet.data['uri']
