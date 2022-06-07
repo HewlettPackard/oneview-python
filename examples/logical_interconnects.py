@@ -40,7 +40,7 @@ firmware_driver_name = "HPE Synergy Custom SPP 2018110 2019 02 15, 2019.02.15.00
 enclosure_name = "0000A66102"
 
 # Define the scope name to add the logical interconnect to it
-scope_name = "SampleScope"
+scope_name = "test"
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)

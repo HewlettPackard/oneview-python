@@ -122,7 +122,7 @@ options = {
 # Create a iscsi network for automation
 ipv4_subnet = id_pools_ipv4_subnets.create(options)
 option = {
-    "name": "IPv4_mgmt",
+    "name": "IPv4iscsi",
     "startStopFragments": [
         {
             "startAddress": config["range_start_address"],
