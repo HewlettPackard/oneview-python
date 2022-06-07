@@ -38,8 +38,8 @@ oneview_client = OneViewClient(config)
 # ZLAB\"24R2-02192-002 T1111A HP_OneView_w/o_iLO_Explicit_Feature J4E8IAMANEON\"
 
 options = {
-    "key": "<your license Key>",
-    "type": "LicenseV500"
+    "key": config["options"]["key"],
+    "type": config["options"]["type"]
 }
 
 # Add a License
