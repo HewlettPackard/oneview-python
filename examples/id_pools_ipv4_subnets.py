@@ -77,7 +77,7 @@ ethernet_network = ethernet_networks.create(options)
 ethernet_network =  ethernet_networks.get_by_name('SubnetEthernet')
 print('\nCreate Range with set of IDs')
 option = {
-    "name": "IPv4iscsi",
+    "name": "iscsi_nw",
     "startStopFragments": [
         {
             "startAddress": config["range_start_address"],
@@ -122,7 +122,7 @@ options = {
 # Create a iscsi network for automation
 ipv4_subnet = id_pools_ipv4_subnets.create(options)
 option = {
-    "name": "IPv4iscsi",
+    "name": "iscsi_nw",
     "startStopFragments": [
         {
             "startAddress": config["range_start_address"],

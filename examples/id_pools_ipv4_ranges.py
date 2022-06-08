@@ -148,7 +148,7 @@ print(" Successfully deleted IPv4 subnet")
 # Create a mgmt network for automation
 ipv4_subnet = id_pool_ipv4_subnet.create(subnet_options)
 option = {
-    "name": "IPv4_mgmt",
+    "name": "mgmt",
     "startStopFragments": [
         {
             "startAddress": config["subnet_options"]["startAddress"],
