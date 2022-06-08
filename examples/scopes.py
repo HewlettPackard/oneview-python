@@ -158,5 +158,4 @@ scope = scopes.get_by_name(options['name'])
 if not scope:
     # Create a scope
     print("\n## Create the scope")
-    scope = scopes.create(options)
-      
+    scope = scopes.create(options) 
