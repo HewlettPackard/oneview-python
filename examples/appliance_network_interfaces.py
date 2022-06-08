@@ -63,7 +63,7 @@ ni_details = {"applianceNetworks": [{
               ]}]}
 # Create network interface if it doesn't exist
 print("\nCreate network interface on the appliance:\n")
-if not network_interface_by_mac :
+if not network_interface_by_mac:
     new_network_interface = network_interface.create(ni_details)
     pprint(new_network_interface.data)
     print("\nNetwork Interface created successfully")
@@ -72,21 +72,22 @@ if not network_interface_by_mac :
     # as PUT not supported for this resource
     print("\nUpdate dns servers of the network interface:\n")
     updated_details = {"applianceNetworks": [{
-                    "interfaceName": "Appliance",
-                    "device": "eth0",
-                    "macAddress": "00:11:22:33:ff:3e",
-                    "ipv4Type": "STATIC",
-                    "ipv6Type": "UNCONFIGURE",
-                    "hostname": "ThisIsAutomated.com",
-                    "app1Ipv4Addr": config["app1Ipv4Addr"],
-                    "app2Ipv4Addr": config["app2Ipv4Addr"],
-                    "virtIpv4Addr": config["virtIpv4Addr"],
-                    "ipv4Subnet": config["ipv4Subnet"],
-                    "ipv4Gateway": config["ipv4Gateway"],
-                    "ipv4NameServers": [
-                        "<dns1>",
-                        "<dns3>"
-                    ]}]}
+                       "interfaceName": "Appliance",
+                       "device": "eth0",
+                       "macAddress": "00:11:22:33:ff:3e",
+                       "ipv4Type": "STATIC",
+                       "ipv6Type": "UNCONFIGURE",
+                       "hostname": "ThisIsAutomated.com",
+                       "app1Ipv4Addr": config["app1Ipv4Addr"],
+                       "app2Ipv4Addr": config["app2Ipv4Addr"],
+                       "virtIpv4Addr": config["virtIpv4Addr"],
+                       "ipv4Subnet": config["ipv4Subnet"],
+                       "ipv4Gateway": config["ipv4Gateway"],
+                       "ipv4NameServers": [
+                           "<dns1>",
+                           "<dns3>"
+                        ]}]
+                      }
     updated_network_interface = network_interface.create(updated_details)
     pprint(updated_network_interface.data)
     print("\nNetwork Interface updated successfully")

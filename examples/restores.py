@@ -31,9 +31,6 @@ config = {
 config = try_load_from_file(config)
 oneview_client = OneViewClient(config)
 restores = oneview_client.restores
-
-
-
 # Start a restore
 print("Starting a restore")
 print("\n## Create a new appliance backup")

@@ -74,7 +74,7 @@ options = {
 }
 
 ethernet_network = ethernet_networks.create(options)
-ethernet_network =  ethernet_networks.get_by_name('SubnetEthernet')
+ethernet_network = ethernet_networks.get_by_name('SubnetEthernet')
 print('\nCreate Range with set of IDs')
 option = {
     "name": "iscsi_nw",
@@ -90,7 +90,6 @@ id_pool_ipv4_range = oneview_client.id_pools_ipv4_ranges
 ipv4_range = id_pool_ipv4_range.create(option).data
 
 subnet_id = ipv4_subnet.data['allocatorUri'].split('/')[-2]
-print("++",subnet_id)
 print("\n Allocates a set of IDs from a pool")
 try:
     allocated_ids = id_pools_ipv4_subnets.allocate({"count": 2}, subnet_id)
@@ -131,7 +130,6 @@ option = {
     ],
     "subnetUri": ipv4_subnet.data['uri']
 }
-
 if oneview_client.api_version > 1000:
-    ipv4_range = id_pool_ipv4_range.create(option).data
-    
+    ipv4_range = id_pool_ipv4_range.create(option).data 
+       

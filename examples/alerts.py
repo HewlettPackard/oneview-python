@@ -86,4 +86,3 @@ print("Note with URI '%s' deleted" % uri_note)
 print("\nDelete an alert")
 _client.alerts.delete(alert_by_id)
 print("Successfully deleted alert")
-

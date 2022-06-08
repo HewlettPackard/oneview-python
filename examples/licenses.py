@@ -40,7 +40,6 @@ oneview_client = OneViewClient(config)
 
 options = {
     "key": "<your license Key>",
- 
 }
 
 # Add a License

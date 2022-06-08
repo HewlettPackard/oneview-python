@@ -153,7 +153,6 @@ pprint(scope_assigned_resource.data)
 # Delete the scope
 scope.delete()
 print("\n## Scope deleted successfully.")
-
 # Create a scopes for automation
 scope = scopes.get_by_name(options['name'])
 if not scope:
