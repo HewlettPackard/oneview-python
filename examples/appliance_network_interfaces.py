@@ -84,8 +84,8 @@ if not network_interface_by_mac:
                        "ipv4Subnet": config["ipv4Subnet"],
                        "ipv4Gateway": config["ipv4Gateway"],
                        "ipv4NameServers": [
-                           "<dns1>",
-                           "<dns3>" 
+                            "<dns1>",
+                            "<dns3>"
                         ]}]}
     updated_network_interface = network_interface.create(updated_details)
     pprint(updated_network_interface.data)
