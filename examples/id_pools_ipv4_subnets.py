@@ -131,5 +131,4 @@ option = {
     "subnetUri": ipv4_subnet.data['uri']
 }
 if oneview_client.api_version > 1000:
-    ipv4_range = id_pool_ipv4_range.create(option).data 
-       
+    ipv4_range = id_pool_ipv4_range.create(option).data
