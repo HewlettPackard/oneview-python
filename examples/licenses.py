@@ -16,6 +16,7 @@
 ###
 
 from config_loader import try_load_from_file
+from hpeOneView.exceptions import HPEOneViewException
 from hpeOneView.oneview_client import OneViewClient
 from pprint import pprint
 
@@ -38,8 +39,8 @@ oneview_client = OneViewClient(config)
 # ZLAB\"24R2-02192-002 T1111A HP_OneView_w/o_iLO_Explicit_Feature J4E8IAMANEON\"
 
 options = {
-    "key": config["options"]["key"],
-    "type": config["options"]["type"]
+    "key": "<your license Key>",
+ 
 }
 
 # Add a License
@@ -62,7 +63,9 @@ pprint(license)
 print ("\n\n   ********** Delete the license by ID:  **********")
 print(uri)
 oneview_client.licenses.delete(uri)
-
-print("\n Check if the license is Deleted: \n")
-lic = oneview_client.licenses.get_by_id(uri)
-pprint(lic)
+try:
+    print("\n Check if the license is Deleted: \n")
+    lic = oneview_client.licenses.get_by_id(uri)
+    pprint(lic)
+except HPEOneViewException as e:
+    print(e.msg)

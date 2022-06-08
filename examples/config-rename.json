@@ -42,8 +42,7 @@
   "range_start_address": "",
   "range_end_address": "",
   "options":{
-    "key": "",
-    "type": ""
+    "key": ""
    },
   "proxy_config": {
     "server": ""
