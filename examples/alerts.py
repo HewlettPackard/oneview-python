@@ -74,10 +74,6 @@ alerts = _client.alerts.get_all(filter="\"alertState='Locked'\"", view="day", co
 for alert in alerts:
     print("'%s' | type: '%s' | alertState: '%s'" % (alert['uri'], alert['type'], alert['alertState']))
 
-# Deletes the alert
-print("\nDelete an alert")
-_client.alerts.delete(alert_by_id)
-print("Successfully deleted alert")
 
 # Deletes the AlertChangeLog item identified by URI
 print("\nDelete alert change log by URI")
@@ -86,3 +82,7 @@ list_change_logs = [x for x in alert_updated['changeLog'] if x['userEntered'] is
 uri_note = list_change_logs[-1]['uri']
 _client.alerts.delete_alert_change_log(uri_note)
 print("Note with URI '%s' deleted" % uri_note)
+# Deletes the alert
+print("\nDelete an alert")
+_client.alerts.delete(alert_by_id)
+print("Successfully deleted alert")

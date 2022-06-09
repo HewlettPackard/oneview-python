@@ -39,7 +39,7 @@ ethernet_networks = oneview_client.ethernet_networks
 fc_networks = oneview_client.fc_networks
 
 # Define the scope name to add the logical interconnect group to it
-iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
+# iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
 mgmt_untagged = "mgmt_nw"  # untagged managament network
 fc_fabric = "FC_fabric_nw"  # Fabric attach FC network
 scope_name = "test_scope"
@@ -55,8 +55,8 @@ interconnect_type1_uri = interconnect_type_1.data["uri"]
 interconnect_type2_uri = interconnect_type_2.data["uri"]
 
 # Get the ethernet network uri by name
-eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
-iscsi_network_uri = eth_nw1.data['uri']
+# eth_nw1 = ethernet_networks.get_by_name(iscsi_network)
+# iscsi_network_uri = eth_nw1.data['uri']
 eth_nw2 = ethernet_networks.get_by_name(mgmt_untagged)
 mgmt_untagged_uri = eth_nw2.data['uri']
 fc_nw = fc_networks.get_by_name(fc_fabric)
@@ -226,91 +226,6 @@ options = {
                 }
             ],
             "ethernetNetworkType": "NotApplicable",
-        },
-        {
-            "networkUris": [iscsi_network_uri],
-            "mode": "Auto",
-            "logicalPortConfigInfos": [
-                {
-                    "desiredSpeed": "Auto",
-                    "logicalLocation": {
-                        "locationEntries": [
-                            {
-                                "relativeValue": 82,
-                                "type": "Port"
-                            },
-                            {
-                                "relativeValue": 3,
-                                "type": "Bay"
-                            },
-                            {
-                                "relativeValue": 1,
-                                "type": "Enclosure"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "desiredSpeed": "Auto",
-                    "logicalLocation": {
-                        "locationEntries": [
-                            {
-                                "relativeValue": 87,
-                                "type": "Port"
-                            },
-                            {
-                                "relativeValue": 3,
-                                "type": "Bay"
-                            },
-                            {
-                                "relativeValue": 1,
-                                "type": "Enclosure"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "desiredSpeed": "Auto",
-                    "logicalLocation": {
-                        "locationEntries": [
-                            {
-                                "relativeValue": 82,
-                                "type": "Port"
-                            },
-                            {
-                                "relativeValue": 6,
-                                "type": "Bay"
-                            },
-                            {
-                                "relativeValue": 2,
-                                "type": "Enclosure"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "desiredSpeed": "Auto",
-                    "logicalLocation": {
-                        "locationEntries": [
-                            {
-                                "relativeValue": 87,
-                                "type": "Port"
-                            },
-                            {
-                                "relativeValue": 6,
-                                "type": "Bay"
-                            },
-                            {
-                                "relativeValue": 2,
-                                "type": "Enclosure"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "networkType": "Ethernet",
-            "ethernetNetworkType": "ImageStreamer",
-            "name": "deploy"
         },
         {
             "networkUris": [mgmt_untagged_uri],

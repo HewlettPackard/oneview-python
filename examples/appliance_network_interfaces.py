@@ -40,59 +40,59 @@ network_interfaces = network_interface.get_all().data['applianceNetworks']
 for net_interface in network_interfaces:
     pprint(net_interface['hostname'])
     pprint(net_interface['interfaceName'])
-
-# Create network interface if it doesn't exist
-print("\nCreate network interface on the appliance:\n")
-ni_details = {"applianceNetworks": [{
-              "interfaceName": "Appliance test",
-              "device": "eth0",
-              "macAddress": "00:11:22:33:ff:3e",
-              "ipv4Type": "STATIC",
-              "ipv6Type": "UNCONFIGURE",
-              "hostname": "test.com",
-              "app1Ipv4Addr": "<ip_address1>",
-              "app2Ipv4Addr": "<ip_address2>",
-              "virtIpv4Addr": "<ip_address>",
-              "ipv4Subnet": "<subnet_id>",
-              "ipv4Gateway": "<gateway>",
-              "ipv4NameServers": [
-                  "<dns1>",
-                  "<dns2>"
-              ]}]}
-
-new_network_interface = network_interface.create(ni_details)
-pprint(new_network_interface.data)
-print("\nNetwork Interface created successfully")
-
-# Updates dns servers of the network interface
-# For update, we use the same create method
-# as PUT not supported for this resource
-print("\nUpdate dns servers of the network interface:\n")
-updated_details = {"applianceNetworks": [{
-                   "interfaceName": "Appliance test",
-                   "device": "eth0",
-                   "macAddress": "00:11:22:33:ff:3e",
-                   "ipv4Type": "STATIC",
-                   "ipv6Type": "UNCONFIGURE",
-                   "hostname": "test.com",
-                   "app1Ipv4Addr": "<ip_address1>",
-                   "app2Ipv4Addr": "<ip_address2>",
-                   "virtIpv4Addr": "<ip_address>",
-                   "ipv4Subnet": "<subnet_id>",
-                   "ipv4Gateway": "<gateway>",
-                   "ipv4NameServers": [
-                       "<dns1>",
-                       "<dns3>"
-                   ]}]}
-updated_network_interface = network_interface.create(updated_details)
-pprint(updated_network_interface.data)
-print("\nNetwork Interface updated successfully")
-
 # Get network configuration by the mac address
 print("\nGet network interface details from appliance:\n ")
 if network_interfaces:
     network_interface_by_mac = network_interface.get_by_mac_address(network_interfaces[0]['macAddress'])
     pprint(network_interface_by_mac.data)
+ni_details = {"applianceNetworks": [{
+              "interfaceName": "Appliance",
+              "device": "eth0",
+              "macAddress": network_interfaces[0]['macAddress'],
+              "ipv4Type": "STATIC",
+              "ipv6Type": "UNCONFIGURE",
+              "hostname": "ThisIsAutomated.com",
+              "app1Ipv4Addr": config["app1Ipv4Addr"],
+              "app2Ipv4Addr": config["app2Ipv4Addr"],
+              "virtIpv4Addr": config["virtIpv4Addr"],
+              "ipv4Subnet": config["ipv4Subnet"],
+              "ipv4Gateway": config["ipv4Gateway"],
+              "ipv4NameServers": [
+                  "<dns1>",
+                  "<dns2>"
+              ]}]}
+# Create network interface if it doesn't exist
+print("\nCreate network interface on the appliance:\n")
+if not network_interface_by_mac:
+    new_network_interface = network_interface.create(ni_details)
+    pprint(new_network_interface.data)
+    print("\nNetwork Interface created successfully")
+    # Updates dns servers of the network interface
+    # For update, we use the same create method
+    # as PUT not supported for this resource
+    print("\nUpdate dns servers of the network interface:\n")
+    updated_details = {"applianceNetworks": [{
+                       "interfaceName": "Appliance",
+                       "device": "eth0",
+                       "macAddress": "00:11:22:33:ff:3e",
+                       "ipv4Type": "STATIC",
+                       "ipv6Type": "UNCONFIGURE",
+                       "hostname": "ThisIsAutomated.com",
+                       "app1Ipv4Addr": config["app1Ipv4Addr"],
+                       "app2Ipv4Addr": config["app2Ipv4Addr"],
+                       "virtIpv4Addr": config["virtIpv4Addr"],
+                       "ipv4Subnet": config["ipv4Subnet"],
+                       "ipv4Gateway": config["ipv4Gateway"],
+                       "ipv4NameServers": [
+                           "<dns1>",
+                           "<dns3>"
+                       ]}]}
+    updated_network_interface = network_interface.create(updated_details)
+    pprint(updated_network_interface.data)
+    print("\nNetwork Interface updated successfully")
+else:
+    print("Network Interface exsits")
+
 
 # Get unconfigured network interfaces on the appliance
 print("\nGet unconfigured network interfaces from appliance:\n ")

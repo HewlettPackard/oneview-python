@@ -62,8 +62,8 @@ event = _client.events.create(options)
 print("\nCreated event successfully.\n  uri = '%s'" % (event['uri']))
 
 # Get by Uri
-print("\nFind uri == %s" % ('/rest/events/24'))
-event_by_uri = _client.events.get('/rest/events/24')
+print("\nFind uri == %s" % (event['uri']))
+event_by_uri = _client.events.get(event['uri'])
 print("uri: '%s' | eventTypeID: '%s' \n" % (event_by_uri['uri'], event_by_uri['eventTypeID']))
 
 # Filter by state

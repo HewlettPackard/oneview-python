@@ -17,7 +17,7 @@
 
 from pprint import pprint
 
-from examples.config_loader import try_load_from_file
+from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 config = {
