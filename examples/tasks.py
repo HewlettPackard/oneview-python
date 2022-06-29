@@ -65,7 +65,11 @@ pprint(tasks_filtered)
 
 # Performs a patch operation
 if oneview_client.api_version >= 1200:
-    tasks_filtered = tasks.get_all(filter=["\"taskState='Running'\"", "\"isCancellable='true'\""])
-    task_uri = tasks_filtered[0]['uri']
-    response = tasks.patch(task_uri)
-    print(response)
+    try:
+        tasks_filtered = tasks.get_all(filter=["\"taskState='Running'\"", "\"isCancellable='true'\""])
+        task_uri = tasks_filtered[0]['uri']
+        response = tasks.patch(task_uri)
+        print(response)
+    except IndexError as e:
+        print("Task state running and isCancellable true is not found")
+        print(e)

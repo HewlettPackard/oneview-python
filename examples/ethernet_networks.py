@@ -44,7 +44,7 @@ options = {
 options_bulk = {
     "vlanIdRange": "1-5,7",
     "purpose": "General",
-    "namePrefix": "TestNetwork",
+    "namePrefix": "TestNetworks",
     "smartLink": False,
     "privateNetwork": False,
     "bandwidth": {
@@ -55,7 +55,7 @@ options_bulk = {
 
 
 # Scope name to perform the patch operation
-scope_name = ""
+scope_name = "SampleScope"
 ethernet_name = "OneViewSDK Test Ethernet Network"
 
 # Try load config from a file (if there is a config file)

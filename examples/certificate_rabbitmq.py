@@ -54,7 +54,7 @@ try:
 except HPEOneViewException as e:
     print (e.msg)
     if e.oneview_response:
-        print e.oneview_response.get('recommendedActions')
+        print(e.oneview_response.get('recommendedActions'))
 
 
 # Generate a Self Signed Certificate
@@ -65,7 +65,7 @@ try:
 except HPEOneViewException as e:
     print (e.msg)
     if e.oneview_response:
-        print e.oneview_response.get('recommendedActions')
+        print(e.oneview_response.get('recommendedActions'))
 
 
 # Get by Alias Name

@@ -2,11 +2,10 @@
 
 ## Build Status 
 
-OV Version | 6.60| 6.50| 6.40 | 6.30 | 6.20 | 6.10 | 6.00 | 5.60 | 
-| ------------- | ------------- | ------------- |:-------------:| :-------------:| :-------------:| :-------------:| :-------------:| :-------------:|
-SDK Version/Tag |[v6.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.6.0)|[v6.5.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.5.0) |[v6.4.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.4.0) |[v6.3.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.3.0) |[v6.2.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.2.0) | [v6.1.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.1.0) | [v6.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.0.0) | [v5.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.6.0) | 
-Build Status | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/1967921808) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/1658469670) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/runs/4236699714) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/runs/3524286157) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/986745563)| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/726148134)| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/623585124)| [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://travis-ci.com/github/HewlettPackard/oneview-python/builds/214352373)|
-
+| OV Version | 7.00                                                                                                                                                                                    | 6.60                                                                                                                                                                                    | 6.50                                                                                                                                                                                    |                                                                                      6.40                                                                                       |                                                                                      6.30                                                                                       |                                                                                          6.20                                                                                          |                                                                                          6.10                                                                                          |                                                                                          6.00                                                                                          |                                                                                            5.60                                                                                            |
+|  --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| SDK Version/Tag | [v7.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v7.0.0)                                                                                                          | [v6.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.6.0)                                                                                                          | [v6.5.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.5.0)                                                                                                          |                                                 [v6.4.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.4.0)                                                  |                                                 [v6.3.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.3.0)                                                  |                                                     [v6.2.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.2.0)                                                     |                                                     [v6.1.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.1.0)                                                     |                                                     [v6.0.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v6.0.0)                                                     |                                                       [v5.6.0](https://github.com/HewlettPackard/oneview-python/releases/tag/v5.6.0)                                                       |
+| Build Status    | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/2376290875) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/1967921808) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/1658469670) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/runs/4236699714) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/runs/3524286157) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/986745563) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/726148134) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://github.com/HewlettPackard/oneview-python/actions/runs/623585124) | [![Build status](https://github.com/HewlettPackard/oneview-python/actions/workflows/run_tests.yml/badge.svg)](https://travis-ci.com/github/HewlettPackard/oneview-python/builds/214352373) |
 
 ## Introduction
 
@@ -23,7 +22,14 @@ Latest version of the OneView Python [SDK Documentation](https://hewlettpackard.
 
 ## What's New
 
-HPE OneView Python library extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
+HPE OneView Python library extends support of the SDK to OneView REST API version 4000 (OneView v7.00)
+### Migration script
+Perform migration from HPE OneView 6.x to HPE OneView 7.0 for non-Synergy appliance using below script.
+```bash
+   $ git clone https://github.com/HewlettPackard/oneview-python.git
+   $ cd oneview-python/examples/migration/
+   $ python migrate.py [<list of server hardwware names to be migrated>] 
+```
 
 Please refer to [notes](https://github.com/HewlettPackard/oneview-python/blob/master/CHANGELOG.md) for more information on the changes , features supported and issues fixed in this version
 
@@ -90,12 +96,15 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
 
    Download and store a local copy of hpe-oneview-sdk-for-python and use it as a Docker image. <br />
    ```bash
-   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.6.0-OV6.6
+
+   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v7.0.0-OV7.0
    ```
 
    Run docker commands and this will in turn create sh session where you can create files, issue commands and execute the tests <br />
    ```bash
-   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v6.6.0-OV6.6 /bin/sh
+
+   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v7.0.0-OV7.0 /bin/sh
+
    ```
    
 ## Configuration
@@ -204,6 +213,5 @@ This project is licensed under the Apache license. Please see [LICENSE](https://
 [HPE OneView Community Forums](http://hpe.com/info/oneviewcommunity)
 
 Learn more about HPE OneView at [hpe.com/info/oneview](https://hpe.com/info/oneview)
-
 
 

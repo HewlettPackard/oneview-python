@@ -56,14 +56,7 @@ eg_options = {
     "ipRangeUris": [],
     "ipv6AddressingMode": "External",
     "ipv6RangeUris": [],
-    "enclosureCount": 3,
-    "osDeploymentSettings": {
-        "manageOSDeployment": True,
-        "deploymentModeSettings": {
-            "deploymentMode": "Internal",
-            "deploymentNetworkUri": None
-        }
-    }
+    "enclosureCount": 3
 }
 
 # Get the first 10 records, sorting by name descending

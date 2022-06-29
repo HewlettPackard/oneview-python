@@ -16,6 +16,7 @@
 ###
 
 from config_loader import try_load_from_file
+from hpeOneView.exceptions import HPEOneViewException
 from hpeOneView.oneview_client import OneViewClient
 from pprint import pprint
 
@@ -39,7 +40,6 @@ oneview_client = OneViewClient(config)
 
 options = {
     "key": "<your license Key>",
-    "type": "LicenseV500"
 }
 
 # Add a License
@@ -53,16 +53,18 @@ pprint(licenses)
 
 # Get License by ID
 uri = license['uri']
-print uri
+print(uri)
 print("\n License fetched by ID is: \n")
 license = oneview_client.licenses.get_by_id(uri)
 pprint(license)
 
 # Delete License by ID
 print ("\n\n   ********** Delete the license by ID:  **********")
-print uri
+print(uri)
 oneview_client.licenses.delete(uri)
-
-print("\n Check if the license is Deleted: \n")
-lic = oneview_client.licenses.get_by_id(uri)
-pprint(lic)
+try:
+    print("\n Check if the license is Deleted: \n")
+    lic = oneview_client.licenses.get_by_id(uri)
+    pprint(lic)
+except HPEOneViewException as e:
+    print(e.msg)

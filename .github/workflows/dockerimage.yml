@@ -22,19 +22,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: ${{ secrets.pypi_username }}
-        TWINE_PASSWORD: ${{ secrets.pypi_password }}
-      run: |
-        python setup.py sdist bdist_wheel
-        twine upload dist/*
-    - name: Setup environment for Docker image publish
-      run: |
-        echo "GITHUB_REF=${GITHUB_REF:10}" >> $GITHUB_ENV
-    - name: Login to Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-    - name: Build the tagged Docker image
-      run: docker build . --file Dockerfile --tag hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV6.6
-    - name: Push the tagged Docker image
-      run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV6.6
+#     - name: Build and publish
+#       env:
+#         TWINE_USERNAME: ${{ secrets.pypi_username }}
+#         TWINE_PASSWORD: ${{ secrets.pypi_password }}
+#       run: |
+#         python setup.py sdist bdist_wheel
+#         twine upload dist/*
+#     - name: Setup environment for Docker image publish
+#       run: |
+#         echo "GITHUB_REF=${GITHUB_REF:10}" >> $GITHUB_ENV
+#     - name: Login to Docker Hub
+#       run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+#     - name: Build the tagged Docker image
+#       run: docker build . --file Dockerfile --tag hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV7.0
+#     - name: Push the tagged Docker image
+#       run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV7.0

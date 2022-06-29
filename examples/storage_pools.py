@@ -97,14 +97,8 @@ if oneview_client.api_version <= 300:
         print("Remove recently added storage pool")
         storage_pool_add.remove()
         print("   Done.")
-
-# Create a scope
-print("\n## Create the scope")
-options = {
-    "name": "SampleScope",
-    "description": "Sample Scope description"
-}
-scope = scopes.get_by_name(options['name'])
+scope_name = "sampleScope"
+scope = scopes.get_by_name(scope_name)
 if not scope:
     scope = scopes.create(options)
 pprint(scope.data)
