@@ -125,13 +125,13 @@ ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 
 class OneViewClient(object):
 
-    def __init__(self, config):
+    def __init__(self, config, sessionID=None):
         self.__connection = connection(config.get('ip'), config.get('api_version'), config.get('ssl_certificate', False),
                                        config.get('timeout'))
         self.__image_streamer_ip = config.get("image_streamer_ip")
         self.__validate_host()
         self.__set_proxy(config)
-        self.__connection.login(config["credentials"])
+        self.__connection.login(config["credentials"], sessionID=sessionID)
         self.__certificate_authority = None
         self.__connections = None
         self.__connection_templates = None
@@ -221,7 +221,7 @@ class OneViewClient(object):
         self.__ha_nodes = None
 
     @classmethod
-    def from_json_file(cls, file_name):
+    def from_json_file(cls, file_name, sessionID=None):
         """
         Construct OneViewClient using a json file.
 
@@ -233,11 +233,13 @@ class OneViewClient(object):
         """
         with open(file_name) as json_data:
             config = json.load(json_data)
-
-        return cls(config)
+        if sessionID is not None:
+            return cls(config, sessionID=sessionID)
+        else:        
+            return cls(config)
 
     @classmethod
-    def from_environment_variables(cls):
+    def from_environment_variables(cls, sessionID=None):
         """
         Construct OneViewClient using environment variables.
 
