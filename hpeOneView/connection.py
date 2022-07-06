@@ -451,7 +451,6 @@ class connection(object):
     # Login/Logout to/from appliance
     ###########################################################################
     def login(self, cred, sessionID=None, verbose=False):
-        open('/home/alisha/session.txt', 'a').write("\nSession id for appliance login:"+str(sessionID))
         try:
             if self._validateVersion is False:
                 self.validateVersion()

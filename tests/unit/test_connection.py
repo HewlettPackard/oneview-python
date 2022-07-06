@@ -924,7 +924,7 @@ class ConnectionTest(unittest.TestCase):
         mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
         mock_post.return_value = {'cat': 'task'}, {'sessionID': '123'}
 
-        self.connection.login({}, True)
+        self.connection.login({}, verbose=True)
 
         self.assertEqual(self.connection.get_session_id(), '123')
         self.assertEqual(self.connection.get_session(), True)
@@ -965,6 +965,18 @@ class ConnectionTest(unittest.TestCase):
 
         self.assertEqual(self.connection.get_session_id(), '123')
         self.assertEqual(self.connection.get_session(), True)
+
+    @patch.object(connection, 'get')
+    @patch.object(connection, 'put')
+    def test_login_sessionID_as_param(self, mock_put, mock_get):
+        mock_get.side_effect = [{'minimumVersion': 800, 'currentVersion': 1000}]
+        mock_put.return_value = {'cat': 'task'}, {'sessionID': '123'}
+
+        self.connection.login({}, sessionID=123)
+
+        self.assertEqual(self.connection.get_session_id(), '123')
+        self.assertEqual(self.connection.get_session(), True)
+
 
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')

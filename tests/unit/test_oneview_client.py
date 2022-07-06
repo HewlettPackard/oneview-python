@@ -229,6 +229,25 @@ class OneViewClientTest(unittest.TestCase):
 
     @mock.patch.object(connection, 'login')
     @mock.patch(mock_builtin('open'))
+    def test_sessionID_passed_as_param(self, mock_open, mock_login):
+        json_config_content = u"""{
+          "ip": "172.16.102.59",
+          "api_version": 800,
+          "credentials": {
+            "userName": "administrator",
+            "authLoginDomain": "",
+            "password": ""
+          }
+        }"""
+        sessionID = 123
+        mock_open.return_value = self.__mock_file_open(json_config_content)
+        oneview_client = OneViewClient.from_json_file("config.json", sessionID)
+
+        self.assertEqual(800, oneview_client.connection._apiVersion)
+        self.assertEqual(800, oneview_client.api_version)
+
+    @mock.patch.object(connection, 'login')
+    @mock.patch(mock_builtin('open'))
     def test_default_api_version(self, mock_open, mock_login):
         json_config_content = u"""{
           "ip": "172.16.102.59",
@@ -272,7 +291,7 @@ class OneViewClientTest(unittest.TestCase):
         mock_login.assert_called_once_with(dict(userName='admin',
                                                 password='secret123',
                                                 authLoginDomain='',
-                                                sessionID=''))
+                                                sessionID=''), sessionID=None)
         mock_set_proxy.assert_not_called()
         self.assertEqual(800, oneview_client.connection._apiVersion)
 
@@ -285,7 +304,7 @@ class OneViewClientTest(unittest.TestCase):
         mock_login.assert_called_once_with(dict(userName='',
                                                 password='',
                                                 authLoginDomain='',
-                                                sessionID='123'))
+                                                sessionID='123'), sessionID=None)
         mock_set_proxy.assert_not_called()
         self.assertEqual(800, oneview_client.connection._apiVersion)
 
@@ -298,7 +317,7 @@ class OneViewClientTest(unittest.TestCase):
         mock_login.assert_called_once_with(dict(userName='admin',
                                                 password='secret123',
                                                 authLoginDomain='authdomain',
-                                                sessionID=''))
+                                                sessionID=''), sessionID=None)
         mock_set_proxy.assert_called_once_with('172.16.100.195', 9999)
 
         self.assertEqual(201, oneview_client.connection._apiVersion)
@@ -314,7 +333,7 @@ class OneViewClientTest(unittest.TestCase):
         mock_login.assert_called_once_with(dict(userName='admin',
                                                 password='secret123',
                                                 authLoginDomain='',
-                                                sessionID='123'))
+                                                sessionID='123'), sessionID=None)
         mock_set_proxy.assert_called_once_with('172.16.100.195', 9999)
 
         self.assertEqual(201, oneview_client.connection._apiVersion)

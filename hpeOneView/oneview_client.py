@@ -239,7 +239,7 @@ class OneViewClient(object):
             return cls(config)
 
     @classmethod
-    def from_environment_variables(cls, sessionID=None):
+    def from_environment_variables(cls, session_id=None):
         """
         Construct OneViewClient using environment variables.
 
@@ -267,8 +267,11 @@ class OneViewClient(object):
                       ssl_certificate=ssl_certificate,
                       credentials=dict(userName=username, authLoginDomain=auth_login_domain, password=password, sessionID=sessionID),
                       proxy=proxy, timeout=timeout)
-
-        return cls(config)
+     
+        if session_id is not None:
+            return cls(config, sessionID=session_id)
+        else:
+            return cls(config)
 
     def __set_proxy(self, config):
         """
