@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.connection &mdash; HPE OneView Python SDK 7.1.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>hpeOneView.connection &mdash; HPE OneView Python SDK 7.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
             <a href="../../index.html" class="icon icon-home"> HPE OneView Python SDK
           </a>
               <div class="version">
-                7.1.0
+                7.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -515,7 +515,7 @@
     <span class="c1">###########################################################################</span>
     <span class="c1"># Login/Logout to/from appliance</span>
     <span class="c1">###########################################################################</span>
-<div class="viewcode-block" id="connection.login"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.login">[docs]</a>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cred</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="connection.login"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.login">[docs]</a>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cred</span><span class="p">,</span> <span class="n">sessionID</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validateVersion</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">validateVersion</span><span class="p">()</span>
@@ -527,6 +527,9 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sessionID&quot;</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">set_session_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cred</span><span class="p">[</span><span class="s2">&quot;sessionID&quot;</span><span class="p">])</span>
+                <span class="n">task</span><span class="p">,</span> <span class="n">body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">uri</span><span class="p">[</span><span class="s1">&#39;loginSessions&#39;</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">sessionID</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_session_id</span><span class="p">(</span><span class="n">sessionID</span><span class="p">)</span>
                 <span class="n">task</span><span class="p">,</span> <span class="n">body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">uri</span><span class="p">[</span><span class="s1">&#39;loginSessions&#39;</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;sessionID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>

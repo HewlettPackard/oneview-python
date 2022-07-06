@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView package &mdash; HPE OneView Python SDK 7.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>hpeOneView package &mdash; HPE OneView Python SDK 7.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
             <a href="index.html" class="icon icon-home"> HPE OneView Python SDK
           </a>
               <div class="version">
-                7.1.0
+                7.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -382,7 +382,7 @@ to be uploaded as files</p>
 
 <dl class="method">
 <dt id="hpeOneView.connection.connection.login">
-<code class="descname">login</code><span class="sig-paren">(</span><em>cred</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/connection.html#connection.login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.connection.connection.login" title="Permalink to this definition">¶</a></dt>
+<code class="descname">login</code><span class="sig-paren">(</span><em>cred</em>, <em>sessionID=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/connection.html#connection.login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.connection.connection.login" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -703,7 +703,7 @@ The exception is raised when the data contains an inappropriate value.</p>
 <p>This module implements a common client for HPE OneView REST API.</p>
 <dl class="class">
 <dt id="hpeOneView.oneview_client.OneViewClient">
-<em class="property">class </em><code class="descclassname">hpeOneView.oneview_client.</code><code class="descname">OneViewClient</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/oneview_client.html#OneViewClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.oneview_client.OneViewClient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">hpeOneView.oneview_client.</code><code class="descname">OneViewClient</code><span class="sig-paren">(</span><em>config</em>, <em>sessionID=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/oneview_client.html#OneViewClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.oneview_client.OneViewClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="attribute">
 <dt id="hpeOneView.oneview_client.OneViewClient.alerts">
@@ -1235,7 +1235,7 @@ The exception is raised when the data contains an inappropriate value.</p>
 
 <dl class="classmethod">
 <dt id="hpeOneView.oneview_client.OneViewClient.from_environment_variables">
-<em class="property">classmethod </em><code class="descname">from_environment_variables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/oneview_client.html#OneViewClient.from_environment_variables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.oneview_client.OneViewClient.from_environment_variables" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_environment_variables</code><span class="sig-paren">(</span><em>session_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/oneview_client.html#OneViewClient.from_environment_variables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.oneview_client.OneViewClient.from_environment_variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct OneViewClient using environment variables.</p>
 <p>Allowed variables: ONEVIEWSDK_IP (required), ONEVIEWSDK_USERNAME (required), ONEVIEWSDK_PASSWORD (required),
 ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_IMAGE_STREAMER_IP, ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,
@@ -1254,7 +1254,7 @@ ONEVIEWSDK_CONNECTION_TIMEOUT and ONEVIEWSDK_PROXY.</p>
 
 <dl class="classmethod">
 <dt id="hpeOneView.oneview_client.OneViewClient.from_json_file">
-<em class="property">classmethod </em><code class="descname">from_json_file</code><span class="sig-paren">(</span><em>file_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/oneview_client.html#OneViewClient.from_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.oneview_client.OneViewClient.from_json_file" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_json_file</code><span class="sig-paren">(</span><em>file_name</em>, <em>sessionID=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/oneview_client.html#OneViewClient.from_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.oneview_client.OneViewClient.from_json_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct OneViewClient using a json file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
