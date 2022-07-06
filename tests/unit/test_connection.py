@@ -977,7 +977,6 @@ class ConnectionTest(unittest.TestCase):
         self.assertEqual(self.connection.get_session_id(), '123')
         self.assertEqual(self.connection.get_session(), True)
 
-
     @patch.object(connection, 'get')
     @patch.object(connection, 'put')
     def test_login_with_exception_in_put(self, mock_put, mock_get):

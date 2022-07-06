@@ -235,7 +235,7 @@ class OneViewClient(object):
             config = json.load(json_data)
         if sessionID is not None:
             return cls(config, sessionID=sessionID)
-        else:        
+        else:
             return cls(config)
 
     @classmethod
@@ -267,7 +267,7 @@ class OneViewClient(object):
                       ssl_certificate=ssl_certificate,
                       credentials=dict(userName=username, authLoginDomain=auth_login_domain, password=password, sessionID=sessionID),
                       proxy=proxy, timeout=timeout)
-     
+
         if session_id is not None:
             return cls(config, sessionID=session_id)
         else:
