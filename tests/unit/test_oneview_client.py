@@ -239,9 +239,8 @@ class OneViewClientTest(unittest.TestCase):
             "password": ""
           }
         }"""
-        sessionID = 123
         mock_open.return_value = self.__mock_file_open(json_config_content)
-        oneview_client = OneViewClient.from_json_file("config.json", sessionID)
+        oneview_client = OneViewClient.from_json_file("config.json", sessionID=123)
 
         self.assertEqual(800, oneview_client.connection._apiVersion)
         self.assertEqual(800, oneview_client.api_version)
