@@ -450,7 +450,7 @@ class connection(object):
     ###########################################################################
     # Login/Logout to/from appliance
     ###########################################################################
-    def login(self, cred, verbose=False):
+    def login(self, cred, sessionID=None, verbose=False):
         try:
             if self._validateVersion is False:
                 self.validateVersion()
@@ -462,6 +462,9 @@ class connection(object):
         try:
             if self._cred.get("sessionID"):
                 self.set_session_id(self._cred["sessionID"])
+                task, body = self.put(uri['loginSessions'], None)
+            elif sessionID is not None:
+                self.set_session_id(sessionID)
                 task, body = self.put(uri['loginSessions'], None)
             else:
                 self._cred.pop("sessionID", None)
