@@ -116,6 +116,7 @@
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.enclosure_groups</span> <span class="kn">import</span> <span class="n">EnclosureGroups</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.server_hardware</span> <span class="kn">import</span> <span class="n">ServerHardware</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.server_hardware_types</span> <span class="kn">import</span> <span class="n">ServerHardwareTypes</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.rack_manager</span> <span class="kn">import</span> <span class="n">RackManager</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.id_pools_ranges</span> <span class="kn">import</span> <span class="n">IdPoolsRanges</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.id_pools_ipv4_ranges</span> <span class="kn">import</span> <span class="n">IdPoolsIpv4Ranges</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.id_pools_ipv4_subnets</span> <span class="kn">import</span> <span class="n">IdPoolsIpv4Subnets</span>
@@ -216,6 +217,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__metric_streaming</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__server_hardware_types</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rack_managers</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_vsn_ranges</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_vmac_ranges</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__id_pools_vwwn_ranges</span> <span class="o">=</span> <span class="kc">None</span>
@@ -534,6 +536,16 @@
 <span class="sd">            ServerHardwareTypes:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ServerHardwareTypes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rack_managers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the Rack Manager API client.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            RackManager:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">RackManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_vsn_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

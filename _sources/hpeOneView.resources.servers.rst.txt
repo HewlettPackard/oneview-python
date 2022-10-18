@@ -76,6 +76,14 @@ hpeOneView.resources.servers.migratable\_vc\_domains module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.servers.rack\_manager module
+-------------------------------------------------
+
+.. automodule:: hpeOneView.resources.servers.rack_manager
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 hpeOneView.resources.servers.server\_hardware module
 ----------------------------------------------------
 
