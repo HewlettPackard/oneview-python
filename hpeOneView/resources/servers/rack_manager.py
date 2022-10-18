@@ -18,6 +18,7 @@
 
 from hpeOneView.resources.resource import Resource, ResourcePatchMixin, ensure_resource_client
 
+
 class RackManager(ResourcePatchMixin, Resource):
     """
     The rack manager resource provides methods for managing one or more rack managers and its components.

@@ -18,7 +18,6 @@
 from pprint import pprint
 
 from hpeOneView.oneview_client import OneViewClient
-from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
 
 config = {
@@ -63,19 +62,19 @@ if variant != 'Synergy':
 print("Get list of chassis from all rack managers")
 chassis_all = rack_managers.get_all_chassis()
 for ch in chassis_all['members']:
-    pprint("Name:{} , ChassisType:{}".format(ch['name'],ch['chassisType']))
+    pprint("Name:{} , ChassisType:{}".format(ch['name'], ch['chassisType']))
 
 # Get list of manager resources from all rack managers
 print("Get list of manager resources from all rack managers")
 managers_all = rack_managers.get_all_managers()
 for mn in managers_all['members']:
-    pprint("Name:{} , ManagerType:{}".format(mn['name'],mn['managerType']))
+    pprint("Name:{} , ManagerType:{}".format(mn['name'], mn['managerType']))
 
-#Get collection of partition resources from all rack managers
+# Get collection of partition resources from all rack managers
 print("Get collection of partition resources from all rack managers")
 partition_all = rack_managers.get_all_partitions()
 for pn in partition_all['members']:
-    pprint("Name:{} , partitionNum:{}".format(pn['name'],pn['partitionNum']))
+    pprint("Name:{} , partitionNum:{}".format(pn['name'], pn['partitionNum']))
 
 
 # Get recently added rack manager resource
@@ -136,14 +135,13 @@ print("Refreshes a rack manager")
 if rackmanagers:
     rm_name = rackmanagers[0]
     rm_to_refresh = rack_managers.get_by_name(rm_name)
-    rm_to_refresh.patch('RefreshRackManagerOp', '','')
+    rm_to_refresh.patch('RefreshRackManagerOp', '', '')
     print("Succesfully refreshed rack manager.")
 
 # remove a recently added rack manager
 print("Remove a recently added rack manager")
-if rackmanagers:
+if rackmanagers and variant != 'Synergy':
     rm_name = rackmanagers[0]
     rm_to_remove = rack_managers.get_by_name(rm_name)
     rm_to_remove.remove()
     print("Succesfully removed rack manager")
-

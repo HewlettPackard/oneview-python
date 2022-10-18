@@ -22,8 +22,8 @@ import mock
 from hpeOneView.connection import connection
 from hpeOneView.resources.servers.rack_manager import RackManager
 from hpeOneView.resources.resource import (Resource, ResourceHelper,
-                                           ResourceUtilizationMixin,
                                            ResourcePatchMixin)
+
 
 class RackManagerTest(TestCase):
 
@@ -102,7 +102,7 @@ class RackManagerTest(TestCase):
         mock_get.assert_called_once_with("/rest/rack-managers/managers")
 
     @mock.patch.object(ResourceHelper, 'do_get')
-    def test_get_all_chassis(self, mock_get):
+    def test_get_all_partitions(self, mock_get):
         self._rack_manager.get_all_partitions()
         mock_get.assert_called_once_with("/rest/rack-managers/partitions")
 
@@ -126,3 +126,14 @@ class RackManagerTest(TestCase):
         uri = '/rest/rack-managers/12345678/managers/abcdefgh/'
         self._rack_manager.get_a_specific_resource(uri)
         mock_get.assert_called_once_with(uri)
+
+    @mock.patch.object(ResourcePatchMixin, 'patch_request')
+    def test_patch_called_once(self, mock_patch):
+        self._rack_manager.patch('RefreshRackManagerOp', '', '')
+
+        mock_patch.assert_called_once_with(self.uri,
+                                           body=[{'op': 'RefreshRackManagerOp',
+                                                  'path': '',
+                                                  'value': ''}],
+                                           custom_headers=None,
+                                           timeout=-1)
