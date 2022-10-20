@@ -108,6 +108,7 @@ class RackManager(ResourcePatchMixin, Resource):
         """
         return self.delete(force=force, timeout=timeout)
 
+    @ensure_resource_client
     def get_environmental_configuration(self):
         """
         Gets the environmental configuration of a rack manager.
@@ -138,6 +139,7 @@ class RackManager(ResourcePatchMixin, Resource):
         uri = "{}/partitions".format(self.data["uri"])
         return self._helper.do_get(uri)
 
+    @ensure_resource_client
     def get_remote_support_settings(self):
         """
         Gets the remote support settings of a rack manager.
