@@ -31,11 +31,10 @@ config = {
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
-variant = 'DL'
 options = {
-    "hostname": config['server_hostname'],
-    "username": config['server_username'],
-    "password": config['server_password'],
+    "hostname": config['rack_manager_hostname'],
+    "username": config['rack_manager_username'],
+    "password": config['rack_manager_password'],
     "force": False
 }
 
@@ -55,9 +54,8 @@ for rm in rack_managers_all:
 # Adds a rack manager
 # This is only supported on appliance which support managers
 print("\n## Add a rack manager")
-if variant != 'Synergy':
-    added_rack_manager = rack_managers.add(options)
-    print("Added rack manager '%s'.\n  uri = '%s'" % (added_rack_manager.data['name'], added_rack_manager.data['uri']))
+added_rack_manager = rack_managers.add(options)
+print("Added rack manager '%s'.\n  uri = '%s'" % (added_rack_manager.data['name'], added_rack_manager.data['uri']))
 
 # Get list of chassis from all rack managers
 print("\n## Get list of chassis from all rack managers")
@@ -141,7 +139,7 @@ if rackmanagers:
 
 # remove a recently added rack manager
 print("\n## Remove a recently added rack manager")
-if rackmanagers and variant != 'Synergy':
+if rackmanagers:
     rm_name = rackmanagers[0]
     rm_to_remove = rack_managers.get_by_name(rm_name)
     rm_to_remove.remove()
