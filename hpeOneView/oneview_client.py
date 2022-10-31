@@ -24,6 +24,7 @@ from __future__ import unicode_literals
 
 from future import standard_library
 
+
 standard_library.install_aliases()
 
 import json
@@ -67,6 +68,7 @@ from hpeOneView.resources.facilities.racks import Racks
 from hpeOneView.resources.facilities.datacenters import Datacenters
 from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
 from hpeOneView.resources.fc_sans.san_managers import SanManagers
+from hpeOneView.resources.fc_sans.san_providers import SanProviders
 from hpeOneView.resources.fc_sans.endpoints import Endpoints
 from hpeOneView.resources.networking.logical_interconnects import LogicalInterconnects
 from hpeOneView.resources.networking.logical_interconnect_groups import LogicalInterconnectGroups
@@ -118,6 +120,8 @@ from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import Hypervi
 from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
 
+
+
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 ONEVIEW_CLIENT_INVALID_I3S_IP = 'Image streamer ip address is missing'
 ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
@@ -168,6 +172,7 @@ class OneViewClient(object):
         self.__roles = None
         self.__datacenters = None
         self.__san_managers = None
+        self.__san_providers = None
         self.__endpoints = None
         self.__logical_interconnects = None
         self.__sas_logical_interconnects = None
@@ -777,17 +782,26 @@ class OneViewClient(object):
             self.__racks = Racks(self.__connection)
         return self.__racks
 
+    
+    # def san_managers(self):
+    #     """
+    #     Gets the SanManagers API client.
+
+    #     Returns:
+    #         SanManagers:
+    #     """
+    #     if not self.__san_managers:
+    #         self.__san_managers = SanManagers(self.__connection)
+    #     return self.__san_managers
     @property
-    def san_managers(self):
+    def  san_managers(self):
         """
-        Gets the SanManagers API client.
+        Gets the Repositories API client.
 
         Returns:
-            SanManagers:
+            Repositories:
         """
-        if not self.__san_managers:
-            self.__san_managers = SanManagers(self.__connection)
-        return self.__san_managers
+        return SanManagers(self.__connection)
 
     @property
     def endpoints(self):
@@ -1275,3 +1289,12 @@ class OneViewClient(object):
             Repositories:
         """
         return Repositories(self.__connection)
+    @property
+    def san_providers(self):
+        """
+        Gets the Repositories API client.
+
+        Returns:
+            Repositories:
+        """
+        return SanProviders(self.__connection)

@@ -43,7 +43,7 @@ config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
 san_providers=oneview_client.san_providers
-san_managers=oneview_client.san_managers
+
 
 
 # Print default connection info for Brocade Network Advisor
@@ -53,11 +53,11 @@ print(default_info)
 for property in default_info:
     print("   '{name}' - '{value}'".format(**property))
 # Add a Brocade Network Advisor
+print("aloha")
 
-
-provider_uri = san_providers.get_provider_uri(PROVIDER_NAME)
-
-
+provider_uri =  san_providers.get_provider_uri(PROVIDER_NAME)
+print("aloha1")
+print(provider_uri)
 
 
 options_for_brocade = {
@@ -167,39 +167,40 @@ options_for_cisco = {
         }
     ]
 }
-
+print("nope")
+print(provider_uri)
 if PROVIDER_NAME == 'Brocade FOS Switch':
-    san_manager = san_providers.add(options_for_brocade, provider_uri)
+    san_manager =  san_providers.add(options_for_brocade, provider_uri)
 elif PROVIDER_NAME == 'Cisco':
-    san_manager = san_providers.add(options_for_cisco, provider_uri)
+    san_manager =  san_providers.add(options_for_cisco, provider_uri)
 else:
     provider_error_msg = 'Options for the "%s" provider not pre-added to this example file. Validate '
     provider_error_msg < 'and or create options for that provider and remove this exception.' % PROVIDER_NAME
     raise Exception(provider_error_msg)
 
 pprint(san_manager)
-
+'''
 print("\nRefresh SAN manager")
 info = {
     'refreshState': "RefreshPending"
 }
-san_manager = san_managers.update(resource=info, id_or_uri=san_manager['uri'])
+san_manager = oneview_client.san_managers.update(resource=info, id_or_uri=san_manager['uri'])
 print("   'refreshState' successfully updated to '{refreshState}'".format(**san_manager))
 
 print("\nGet SAN manager by uri")
-san_manager_byuri = san_managers.get_by_uri(san_manager['uri'])
-
-print("   Found '{name}' at uri: {uri}".format(**san_manager_byuri.data))
+san_manager_byuri = oneview_client.san_managers.get(san_manager['uri'])
+print("   Found '{name}' at uri: {uri}".format(**san_manager_byuri))
 
 print("\nGet all SAN managers")
-san_manager_all = san_managers.get_all()
-for manager in san_manager_all:
+san_managers = oneview_client.san_managers.get_all()
+for manager in san_managers:
     print("   '{name}' at uri: {uri}".format(**manager))
 
 print("\nGet a SAN Manager by name")
-san_managers_by_name = san_managers.get_by_name(manager_host)
+san_managers_by_name = oneview_client.san_managers.get_by_name(manager_host)
 pprint(san_managers_by_name)
 
 print("\nDelete the SAN Manager previously created...")
-san_managers_by_name.remove()
+oneview_client.san_managers.remove(san_manager)
 print("The SAN Manager was deleted successfully.")
+'''

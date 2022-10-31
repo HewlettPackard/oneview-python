@@ -19,27 +19,27 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
+from asyncio.log import logger
 
 from future import standard_library
 
 standard_library.install_aliases()
 
 
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource
 
 
-class SanManagers(object):
+class SanManagers(Resource):
     """
     SAN Managers API client.
 
     """
     URI = '/rest/fc-sans/device-managers'
-    PROVIDER_URI = '/rest/fc-sans/providers'
+  
 
-    def __init__(self, con):
-        self._connection = con
-        self._client = ResourceClient(con, self.URI)
-        self._provider_client = ResourceClient(con, self.PROVIDER_URI)
+    def __init__(self, connection,data=None):
+        super(SanManagers, self).__init__(connection, data)
+
 
     def get_all(self, start=0, count=-1, query='', sort=''):
         """
@@ -64,19 +64,7 @@ class SanManagers(object):
             list: A list of SAN managers.
 
         """
-        return self._client.get_all(start=start, count=count, query=query, sort=sort)
-
-    def get(self, id_or_uri):
-        """
-        Retrieves a single registered SAN Manager by ID or URI.
-
-        Args:
-            id_or_uri: Can be either the SAN Manager resource ID or URI.
-
-        Returns:
-            dict: The SAN Manager resource.
-        """
-        return self._client.get(id_or_uri=id_or_uri)
+        return self._helper.get_all(start=start, count=count, query=query, sort=sort)
 
     def update(self, resource, id_or_uri):
         """
@@ -89,68 +77,27 @@ class SanManagers(object):
         Returns:
             dict: The device manager resource.
         """
-        return self._client.update(resource=resource, uri=id_or_uri)
-
-    def add(self, resource, provider_uri_or_id, timeout=-1):
+        
+        return self._helper.update(resource=resource,uri=id_or_uri)
+    
+    def remove(self, force=False, timeout=-1):
         """
-        Adds a Device Manager under the specified provider.
+        Removes the  SAN Manager from OneView.
 
         Args:
-            resource (dict): Object to add.
-            provider_uri_or_id: ID or URI of provider.
-            timeout:
-                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-                in OneView, just stop waiting for its completion.
-
-        Returns:
-            dict: Added SAN Manager.
-        """
-        uri = self._provider_client.build_uri(provider_uri_or_id) + "/device-managers"
-        return self._client.create(resource=resource, uri=uri, timeout=timeout)
-
-    def get_provider_uri(self, provider_display_name):
-        """
-        Gets uri for a specific provider.
-
-        Args:
-            provider_display_name: Display name of the provider.
-
-        Returns:
-            uri
-        """
-        providers = self._provider_client.get_by('displayName', provider_display_name)
-        return providers[0]['uri'] if providers else None
-
-    def get_default_connection_info(self, provider_name):
-        """
-        Gets default connection info for a specific provider.
-
-        Args:
-            provider_name: Name of the provider.
-
-        Returns:
-            dict: Default connection information.
-        """
-        provider = self._provider_client.get_by_name(provider_name)
-        if provider:
-            return provider['defaultConnectionInfo']
-        else:
-            return {}
-
-    def remove(self, resource, timeout=-1):
-        """
-        Removes a registered SAN Manager.
-
-        Args:
-            resource (dict): Object to delete.
+            force (bool):
+                 If set to true, the operation completes despite any problems with
+                 network connectivity or errors on the resource itself. The default is false.
             timeout:
                 Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
                 in OneView; it just stops waiting for its completion.
 
         Returns:
-            bool: Indicates if the resource was successfully removed.
+            dict: Details of associated resource.
         """
-        return self._client.delete(resource, timeout=timeout)
+        headers = {'If-Match': '*'}
+        return self.delete(force=force, timeout=timeout, custom_headers=headers)
+   
 
     def get_by_name(self, name):
         """
@@ -162,9 +109,10 @@ class SanManagers(object):
         Returns:
             dict: SAN Manager.
         """
-        san_managers = self._client.get_all()
+        san_managers = self.get_all()
         result = [x for x in san_managers if x['name'] == name]
-        return result[0] if result else None
+        
+        return self.new(self._connection,result[0] )if result else None
 
     def get_by_provider_display_name(self, provider_display_name):
         """
@@ -176,6 +124,7 @@ class SanManagers(object):
         Returns:
             dict: SAN Manager.
         """
-        san_managers = self._client.get_all()
+        san_managers = self.get_all()
         result = [x for x in san_managers if x['providerDisplayName'] == provider_display_name]
-        return result[0] if result else None
+        return self.new(self._connection,result[0] )if result else None
+
