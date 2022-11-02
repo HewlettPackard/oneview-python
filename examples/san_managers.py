@@ -16,11 +16,10 @@
 ###
 
 from pprint import pprint
-import logging,sys
 
 from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
-logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+
 # This example has options pre-defined for 'Brocade Network Advisor' and 'Cisco' type SAN Managers
 PROVIDER_NAME = 'Brocade FOS Switch'
 
@@ -42,8 +41,8 @@ manager_password = 'dcs'
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
-san_providers=oneview_client.san_providers
-san_managers=oneview_client.san_managers
+san_providers = oneview_client.san_providers
+san_managers = oneview_client.san_managers
 
 
 # Print default connection info for Brocade Network Advisor
@@ -53,47 +52,42 @@ print(default_info)
 for property in default_info:
     print("   '{name}' - '{value}'".format(**property))
 # Add a Brocade Network Advisor
-
-
 provider_uri = san_providers.get_provider_uri(PROVIDER_NAME)
-
-
-
 
 options_for_brocade = {
     'providerDisplayName': PROVIDER_NAME,
     'connectionInfo': [
         {
-            "name":"Host",
-            "displayName":"Host",
-            "required":True,
-            "value":manager_host,
-            "valueType":"String",
-            "valueFormat":"IPAddressOrHostname"
+            "name": "Host",
+            "displayName": "Host",
+            "required": True,
+            "value": manager_host,
+            "valueType": "String",
+            "valueFormat": "IPAddressOrHostname"
         },
         {
-            "name":"Username",
-            "displayName":"Username",
-            "required":True,
-            "value":manager_username,
-            "valueType":"String",
-            "valueFormat":"None"
+            "name": "Username",
+            "displayName": "Username",
+            "required": True,
+            "value": manager_username,
+            "valueType": "String",
+            "valueFormat": "None"
         },
         {
-            "name":"Password",
-            "displayName":"Password",
-            "required":True,
-            "value":manager_password,
-            "valueType":"String",
-            "valueFormat":"SecuritySensitive"
+            "name": "Password",
+            "displayName": "Password",
+            "required": True,
+            "value": manager_password,
+            "valueType": "String",
+            "valueFormat": "SecuritySensitive"
         },
         {
-            "name":"UseHttps",
-            "displayName":"UseHttps",
-            "required":True,
-            "value":True,
-            "valueType":"Boolean",
-            "valueFormat":"None"
+            "name": "UseHttps",
+            "displayName": "UseHttps",
+            "required": True,
+            "value": True,
+            "valueType": "Boolean",
+            "valueFormat": "None"
         }
     ]
 }

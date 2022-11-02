@@ -19,7 +19,6 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-from asyncio.log import logger
 
 from future import standard_library
 
@@ -35,16 +34,13 @@ class SanManagers(Resource):
 
     """
     URI = '/rest/fc-sans/device-managers'
-  
 
-    def __init__(self, connection,data=None):
+    def __init__(self, connection, data=None):
         super(SanManagers, self).__init__(connection, data)
-
 
     def get_all(self, start=0, count=-1, query='', sort=''):
         """
         Retrieves the list of registered SAN Managers.
-
         Args:
             start:
                 The first item to return, using 0-based indexing.
@@ -77,9 +73,9 @@ class SanManagers(Resource):
         Returns:
             dict: The device manager resource.
         """
-        
-        return self._helper.update(resource=resource,uri=id_or_uri)
-    
+
+        return self._helper.update(resource=resource, uri=id_or_uri)
+
     def remove(self, force=False, timeout=-1):
         """
         Removes the  SAN Manager from OneView.
@@ -97,7 +93,6 @@ class SanManagers(Resource):
         """
         headers = {'If-Match': '*'}
         return self.delete(force=force, timeout=timeout, custom_headers=headers)
-   
 
     def get_by_name(self, name):
         """
@@ -107,12 +102,12 @@ class SanManagers(Resource):
             name: Name of the SAN Manager
 
         Returns:
-            dict: SAN Manager.
+            SAN Manager.
         """
         san_managers = self.get_all()
         result = [x for x in san_managers if x['name'] == name]
-        
-        return self.new(self._connection,result[0] )if result else None
+
+        return self.new(self._connection, result[0])if result else None
 
     def get_by_provider_display_name(self, provider_display_name):
         """
@@ -122,9 +117,8 @@ class SanManagers(Resource):
             provider_display_name: Name of the Provider Display Name
 
         Returns:
-            dict: SAN Manager.
+            SAN Manager.
         """
         san_managers = self.get_all()
         result = [x for x in san_managers if x['providerDisplayName'] == provider_display_name]
-        return self.new(self._connection,result[0] )if result else None
-
+        return self.new(self._connection, result[0])if result else None

@@ -19,7 +19,6 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-from asyncio.log import logger
 
 from future import standard_library
 
@@ -34,13 +33,11 @@ class SanProviders(Resource):
     SAN Managers API client.
 
     """
-    
+
     URI = '/rest/fc-sans/providers'
 
     def __init__(self, connection, data=None):
         super(SanProviders, self).__init__(connection, data)
-
-        
 
     def add(self, resource, provider_uri_or_id, timeout=-1):
         """
@@ -57,7 +54,7 @@ class SanProviders(Resource):
             dict: Added SAN Manager.
         """
         uri = provider_uri_or_id + "/device-managers"
-       
+
         return self._helper.create(data=resource, uri=uri, timeout=timeout)
 
     def get_provider_uri(self, provider_display_name):
@@ -83,11 +80,9 @@ class SanProviders(Resource):
         Returns:
             dict: Default connection information.
         """
-        provider = self.get_by_field('displayName', provider_name)    
-     
+        provider = self.get_by_field('displayName', provider_name)
+
         if provider:
             return provider.data['defaultConnectionInfo']
         else:
             return {}
-
-    
