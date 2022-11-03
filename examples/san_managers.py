@@ -195,5 +195,5 @@ san_managers_by_name = san_managers.get_by_name(manager_host)
 pprint(san_managers_by_name)
 
 print("\nDelete the SAN Manager previously created...")
-san_managers_by_name.remove()
-print("The SAN Manager was deleted successfully.")
+# san_managers_by_name.remove()
+# print("The SAN Manager was deleted successfully.")

@@ -38,7 +38,7 @@ class SanManagers(Resource):
     def __init__(self, connection, data=None):
         super(SanManagers, self).__init__(connection, data)
 
-    def get_all(self, start=0, count=-1, query='', sort=''):
+    def get_all(self, start=0, count=-1, filter='',sort='', query=''):
         """
         Retrieves the list of registered SAN Managers.
         Args:
@@ -49,6 +49,9 @@ class SanManagers(Resource):
                 The number of resources to return. A count of -1 requests all items. The actual number of items in
                 the response may differ from the requested count if the sum of start and count exceed the total number
                 of items.
+            filter (list or str):
+                A general filter/query string to narrow the list of items returned. The
+                default is no filter; all resources are returned.
             query:
                 A general query string to narrow the list of resources returned.
                 The default is no query - all resources are returned.
@@ -60,7 +63,7 @@ class SanManagers(Resource):
             list: A list of SAN managers.
 
         """
-        return self._helper.get_all(start=start, count=count, query=query, sort=sort)
+        return self._helper.get_all(start=start, count=count, filter=filter, sort=sort, query=query,)
 
     def update(self, resource, id_or_uri):
         """
