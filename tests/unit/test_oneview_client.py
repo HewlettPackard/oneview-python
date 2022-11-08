@@ -90,7 +90,6 @@ from hpeOneView.resources.security.certificates_server import CertificatesServer
 from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
-from tests.unit.resources.fc_sans.test_san_managers import SanManagersTest
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
