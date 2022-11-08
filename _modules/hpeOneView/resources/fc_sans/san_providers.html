@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers.id_pools_ipv4_subnets &mdash; HPE OneView Python SDK 7.2.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>hpeOneView.resources.fc_sans.san_providers &mdash; HPE OneView Python SDK 7.2.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -53,7 +53,7 @@
       <li><a href="../../../../index.html" class="icon icon-home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
           <li class="breadcrumb-item"><a href="../../../hpeOneView.html">hpeOneView</a></li>
-      <li class="breadcrumb-item active">hpeOneView.resources.servers.id_pools_ipv4_subnets</li>
+      <li class="breadcrumb-item active">hpeOneView.resources.fc_sans.san_providers</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -62,10 +62,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for hpeOneView.resources.servers.id_pools_ipv4_subnets</h1><div class="highlight"><pre>
+  <h1>Source code for hpeOneView.resources.fc_sans.san_providers</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">###</span>
-<span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
+<span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -84,58 +84,73 @@
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
 <span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
+
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
 
 
-<div class="viewcode-block" id="IdPoolsIpv4Subnets"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets">[docs]</a><span class="k">class</span> <span class="nc">IdPoolsIpv4Subnets</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="SanProviders"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_providers.SanProviders">[docs]</a><span class="k">class</span> <span class="nc">SanProviders</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The ID pools IPv4 subnets resource provides a Client API for managing IPv4 subnets.</span>
+<span class="sd">    SAN Managers API client.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/id-pools/ipv4/subnets&#39;</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/fc-sans/providers&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">IdPoolsIpv4Subnets</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__default_values</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Subnet&#39;</span><span class="p">}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SanProviders</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="IdPoolsIpv4Subnets.allocate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.allocate">[docs]</a>    <span class="k">def</span> <span class="nf">allocate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="SanProviders.add"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_providers.SanProviders.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">provider_uri_or_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Allocates a set of IDs from range.</span>
-<span class="sd">        The allocator returned contains the list of IDs successfully allocated.</span>
+<span class="sd">        Adds a Device Manager under the specified provider.</span>
+
 <span class="sd">        Args:</span>
-<span class="sd">            information (dict):</span>
-<span class="sd">                Information to update. Can result in system specified IDs or the system reserving user-specified IDs.</span>
-<span class="sd">            subnet_id:</span>
-<span class="sd">                IPv4 subnet id.</span>
+<span class="sd">            resource (dict): Object to add.</span>
+<span class="sd">            provider_uri_or_id: ID or URI of provider.</span>
 <span class="sd">            timeout:</span>
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView; it just stops waiting for its completion.</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: A dict containing a list with IDs.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">subnet_id</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/allocator&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+<span class="sd">                in OneView, just stop waiting for its completion.</span>
 
-<div class="viewcode-block" id="IdPoolsIpv4Subnets.collect"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools_ipv4_subnets.IdPoolsIpv4Subnets.collect">[docs]</a>    <span class="k">def</span> <span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">subnet_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Collects one or more IDs to be returned to a pool.</span>
-<span class="sd">        Args:</span>
-<span class="sd">            information (dict):</span>
-<span class="sd">                The list of IDs to be collected</span>
-<span class="sd">            subnet_id:</span>
-<span class="sd">                IPv4 subnet id</span>
-<span class="sd">            timeout:</span>
-<span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation</span>
-<span class="sd">                in OneView; it just stops waiting for its completion.</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: Collector containing list of collected IDs successfully collected.</span>
+<span class="sd">            dict: Added SAN Manager.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">subnet_id</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/collector&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div></div>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">provider_uri_or_id</span> <span class="o">+</span> <span class="s2">&quot;/device-managers&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SanProviders.get_provider_uri"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_provider_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_provider_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider_display_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets uri for a specific provider.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            provider_display_name: Display name of the provider.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            uri</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">providers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_field</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="n">provider_display_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">providers</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">providers</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="SanProviders.get_default_connection_info"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_default_connection_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_default_connection_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets default connection info for a specific provider.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            provider_name: Name of the provider.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Default connection information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">provider</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_field</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="n">provider_name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">provider</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">provider</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;defaultConnectionInfo&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span></div></div>
 </pre></div>
 
            </div>
