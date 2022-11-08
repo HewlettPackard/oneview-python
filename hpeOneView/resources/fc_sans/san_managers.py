@@ -38,7 +38,7 @@ class SanManagers(Resource):
     def __init__(self, connection, data=None):
         super(SanManagers, self).__init__(connection, data)
 
-    def get_all(self, start=0, count=-1, filter='',sort='', query=''):
+    def get_all(self, start=0, count=-1, filter='', sort='', query=''):
         """
         Retrieves the list of registered SAN Managers.
         Args:

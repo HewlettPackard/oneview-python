@@ -120,8 +120,6 @@ from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import Hypervi
 from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
 
-
-
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 ONEVIEW_CLIENT_INVALID_I3S_IP = 'Image streamer ip address is missing'
 ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
@@ -782,7 +780,6 @@ class OneViewClient(object):
             self.__racks = Racks(self.__connection)
         return self.__racks
 
-    
     # def san_managers(self):
     #     """
     #     Gets the SanManagers API client.
@@ -793,8 +790,9 @@ class OneViewClient(object):
     #     if not self.__san_managers:
     #         self.__san_managers = SanManagers(self.__connection)
     #     return self.__san_managers
+
     @property
-    def  san_managers(self):
+    def san_managers(self):
         """
         Gets the Repositories API client.
 
@@ -1289,6 +1287,7 @@ class OneViewClient(object):
             Repositories:
         """
         return Repositories(self.__connection)
+
     @property
     def san_providers(self):
         """
