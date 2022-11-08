@@ -1,6 +1,6 @@
 # 8.0.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4400 (OneView v8.0.0)
+Extends support of the SDK to OneView REST API version 4600 (OneView v8.0.0)
 
 ##### Features supported with the current release
 - Appliance Configuration Timeconfig 
@@ -36,6 +36,7 @@ Extends support of the SDK to OneView REST API version 4400 (OneView v8.0.0)
 - Logical Interconnect Groups 
 - Logical Interconnects 
 - Network Sets 
+- Rack Managers
 - Repositories 
 - Restores 
 - Scopes 
@@ -53,7 +54,8 @@ Extends support of the SDK to OneView REST API version 4400 (OneView v8.0.0)
 - Uplink Sets 
 - Users 
 - Version 
-- Volumes 
+- Volumes
+ 
 # 7.2.0
 #### Notes
 Extends support of the SDK to OneView REST API version 4400 (OneView v7.2.0)

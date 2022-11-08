@@ -22,7 +22,7 @@ Latest version of the OneView Python [SDK Documentation](https://hewlettpackard.
 
 ## What's New
 
-HPE OneView Python library extends support of the SDK to OneView REST API version 4400 (OneView v8.00)
+HPE OneView Python library extends support of the SDK to OneView REST API version 4600 (OneView v8.00)
 ### Migration script
 Perform migration from HPE OneView 6.x to HPE OneView 7.0 for non-Synergy appliance using below script.
 ```bash
