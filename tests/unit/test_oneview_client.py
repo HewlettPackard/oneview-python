@@ -27,6 +27,7 @@ from hpeOneView.resources.facilities.power_devices import PowerDevices
 from hpeOneView.resources.facilities.racks import Racks
 from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
 from hpeOneView.resources.fc_sans.san_managers import SanManagers
+from hpeOneView.resources.fc_sans.san_providers import SanProviders
 from hpeOneView.resources.fc_sans.endpoints import Endpoints
 from hpeOneView.resources.settings.firmware_drivers import FirmwareDrivers
 from hpeOneView.resources.settings.firmware_bundles import FirmwareBundles
@@ -89,6 +90,7 @@ from hpeOneView.resources.security.certificates_server import CertificatesServer
 from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
+from tests.unit.resources.fc_sans.test_san_managers import SanManagersTest
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
@@ -660,9 +662,19 @@ class OneViewClientTest(unittest.TestCase):
     def test_san_managers_has_value(self):
         self.assertIsNotNone(self._oneview.san_managers)
 
-    def test_lazy_loading_san_managers(self):
+    def test_san_managers(self):
         san_managers = self._oneview.san_managers
-        self.assertEqual(san_managers, self._oneview.san_managers)
+        self.assertNotEqual(san_managers, self._oneview.san_managers)
+
+    def test_san_providers_has_right_type(self):
+        self.assertIsInstance(self._oneview.san_providers, SanProviders)
+
+    def test_san_providers_has_value(self):
+        self.assertIsNotNone(self._oneview.san_providers)
+
+    def test_san_providers(self):
+        san_providers = self._oneview.san_providers
+        self.assertNotEqual(san_providers, self._oneview.san_providers)
 
     def test_endpoints_has_right_type(self):
         self.assertIsInstance(self._oneview.endpoints, Endpoints)
