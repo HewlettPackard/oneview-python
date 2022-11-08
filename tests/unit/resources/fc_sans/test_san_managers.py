@@ -50,9 +50,9 @@ class SanManagersTest(TestCase):
             'refreshState': "RefreshPending"
         }
 
-        self._san_manager.update(resource=info, uri=uri_rest_call)
+        self._san_manager.update(info, uri_rest_call)
 
-        mock_update.assert_called_once_with(resource=info, uri=uri_rest_call)        
+        mock_update.assert_called_once_with(resource=info, uri=uri_rest_call)
 
     @mock.patch.object(ResourceHelper, 'delete')
     def test_remove_called_once(self, mock_delete):
@@ -103,11 +103,3 @@ class SanManagersTest(TestCase):
         san_manager = self._san_manager.get_by_name("172.18.15.3")
 
         self.assertIsNone(san_manager)
-
-
-
-
-
-
-
-
