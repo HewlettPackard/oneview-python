@@ -28,6 +28,14 @@ hpeOneView.resources.fc\_sans.san\_managers module
     :undoc-members:
     :show-inheritance:
 
+hpeOneView.resources.fc\_sans.san\_providers module
+---------------------------------------------------
+
+.. automodule:: hpeOneView.resources.fc_sans.san_providers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
