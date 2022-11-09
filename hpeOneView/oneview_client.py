@@ -780,17 +780,6 @@ class OneViewClient(object):
             self.__racks = Racks(self.__connection)
         return self.__racks
 
-    # def san_managers(self):
-    #     """
-    #     Gets the SanManagers API client.
-
-    #     Returns:
-    #         SanManagers:
-    #     """
-    #     if not self.__san_managers:
-    #         self.__san_managers = SanManagers(self.__connection)
-    #     return self.__san_managers
-
     @property
     def san_managers(self):
         """

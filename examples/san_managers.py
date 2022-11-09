@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2022] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,10 +32,10 @@ config = {
 }
 
 # # To run this sample you must define the following resources for a Brocade Network Advisor
-manager_host = '172.18.19.1'
+manager_host = '<san_manager_hostname_or_ip>'
 manager_port = '<port_number_not_quoted>'
-manager_username = 'dcs'
-manager_password = 'dcs'
+manager_username = '<san_manager_username>'
+manager_password = '<san_manager_password>'
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -195,5 +195,5 @@ san_managers_by_name = san_managers.get_by_name(manager_host)
 pprint(san_managers_by_name)
 
 print("\nDelete the SAN Manager previously created...")
-# san_managers_by_name.remove()
-# print("The SAN Manager was deleted successfully.")
+san_managers_by_name.remove()
+print("The SAN Manager was deleted successfully.")
