@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2022] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ from config_loader import try_load_from_file
 from hpeOneView.oneview_client import OneViewClient
 
 # This example has options pre-defined for 'Brocade Network Advisor' and 'Cisco' type SAN Managers
-PROVIDER_NAME = 'Cisco'
+PROVIDER_NAME = 'Brocade FOS Switch'
 
 config = {
     "ip": "<oneview_ip>",
@@ -34,44 +34,60 @@ config = {
 # # To run this sample you must define the following resources for a Brocade Network Advisor
 manager_host = '<san_manager_hostname_or_ip>'
 manager_port = '<port_number_not_quoted>'
-manager_username = '<san_manager_user_name>'
+manager_username = '<san_manager_username>'
 manager_password = '<san_manager_password>'
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+san_providers = oneview_client.san_providers
+san_managers = oneview_client.san_managers
+
 
 # Print default connection info for Brocade Network Advisor
 print("\nGet {} default connection info:".format(PROVIDER_NAME))
-default_info = oneview_client.san_managers.get_default_connection_info(PROVIDER_NAME)
+default_info = san_providers.get_default_connection_info(PROVIDER_NAME)
+print(default_info)
 for property in default_info:
     print("   '{name}' - '{value}'".format(**property))
 # Add a Brocade Network Advisor
-provider_uri = oneview_client.san_managers.get_provider_uri(PROVIDER_NAME)
+provider_uri = san_providers.get_provider_uri(PROVIDER_NAME)
 
 options_for_brocade = {
     'providerDisplayName': PROVIDER_NAME,
     'connectionInfo': [
         {
-            'name': 'Host',
-            'value': manager_host
+            "name": "Host",
+            "displayName": "Host",
+            "required": True,
+            "value": manager_host,
+            "valueType": "String",
+            "valueFormat": "IPAddressOrHostname"
         },
         {
-            'name': 'Port',
-            'value': manager_port
+            "name": "Username",
+            "displayName": "Username",
+            "required": True,
+            "value": manager_username,
+            "valueType": "String",
+            "valueFormat": "None"
         },
         {
-            'name': 'Username',
-            'value': manager_username
+            "name": "Password",
+            "displayName": "Password",
+            "required": True,
+            "value": manager_password,
+            "valueType": "String",
+            "valueFormat": "SecuritySensitive"
         },
         {
-            'name': 'Password',
-            'value': manager_password
-        },
-        {
-            'name': 'UseSsl',
-            'value': True
+            "name": "UseHttps",
+            "displayName": "UseHttps",
+            "required": True,
+            "value": True,
+            "valueType": "Boolean",
+            "valueFormat": "None"
         }
     ]
 }
@@ -146,10 +162,10 @@ options_for_cisco = {
     ]
 }
 
-if PROVIDER_NAME == 'Brocade Network Advisor':
-    san_manager = oneview_client.san_managers.add(options_for_brocade, provider_uri)
+if PROVIDER_NAME == 'Brocade FOS Switch':
+    san_manager = san_providers.add(options_for_brocade, provider_uri)
 elif PROVIDER_NAME == 'Cisco':
-    san_manager = oneview_client.san_managers.add(options_for_cisco, provider_uri)
+    san_manager = san_providers.add(options_for_cisco, provider_uri)
 else:
     provider_error_msg = 'Options for the "%s" provider not pre-added to this example file. Validate '
     provider_error_msg < 'and or create options for that provider and remove this exception.' % PROVIDER_NAME
@@ -161,22 +177,23 @@ print("\nRefresh SAN manager")
 info = {
     'refreshState': "RefreshPending"
 }
-san_manager = oneview_client.san_managers.update(resource=info, id_or_uri=san_manager['uri'])
+san_manager = san_managers.update(resource=info, id_or_uri=san_manager['uri'])
 print("   'refreshState' successfully updated to '{refreshState}'".format(**san_manager))
 
 print("\nGet SAN manager by uri")
-san_manager_byuri = oneview_client.san_managers.get(san_manager['uri'])
-print("   Found '{name}' at uri: {uri}".format(**san_manager_byuri))
+san_manager_byuri = san_managers.get_by_uri(san_manager['uri'])
+
+print("   Found '{name}' at uri: {uri}".format(**san_manager_byuri.data))
 
 print("\nGet all SAN managers")
-san_managers = oneview_client.san_managers.get_all()
-for manager in san_managers:
+san_manager_all = san_managers.get_all()
+for manager in san_manager_all:
     print("   '{name}' at uri: {uri}".format(**manager))
 
 print("\nGet a SAN Manager by name")
-san_managers_by_name = oneview_client.san_managers.get_by_name(manager_host)
+san_managers_by_name = san_managers.get_by_name(manager_host)
 pprint(san_managers_by_name)
 
 print("\nDelete the SAN Manager previously created...")
-oneview_client.san_managers.remove(san_manager)
+san_managers_by_name.remove()
 print("The SAN Manager was deleted successfully.")

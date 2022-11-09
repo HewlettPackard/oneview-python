@@ -24,6 +24,7 @@ from __future__ import unicode_literals
 
 from future import standard_library
 
+
 standard_library.install_aliases()
 
 import json
@@ -68,6 +69,7 @@ from hpeOneView.resources.facilities.racks import Racks
 from hpeOneView.resources.facilities.datacenters import Datacenters
 from hpeOneView.resources.fc_sans.managed_sans import ManagedSANs
 from hpeOneView.resources.fc_sans.san_managers import SanManagers
+from hpeOneView.resources.fc_sans.san_providers import SanProviders
 from hpeOneView.resources.fc_sans.endpoints import Endpoints
 from hpeOneView.resources.networking.logical_interconnects import LogicalInterconnects
 from hpeOneView.resources.networking.logical_interconnect_groups import LogicalInterconnectGroups
@@ -170,6 +172,7 @@ class OneViewClient(object):
         self.__roles = None
         self.__datacenters = None
         self.__san_managers = None
+        self.__san_providers = None
         self.__endpoints = None
         self.__logical_interconnects = None
         self.__sas_logical_interconnects = None
@@ -792,14 +795,12 @@ class OneViewClient(object):
     @property
     def san_managers(self):
         """
-        Gets the SanManagers API client.
+        Gets the Repositories API client.
 
         Returns:
-            SanManagers:
+            Repositories:
         """
-        if not self.__san_managers:
-            self.__san_managers = SanManagers(self.__connection)
-        return self.__san_managers
+        return SanManagers(self.__connection)
 
     @property
     def endpoints(self):
@@ -1287,3 +1288,13 @@ class OneViewClient(object):
             Repositories:
         """
         return Repositories(self.__connection)
+
+    @property
+    def san_providers(self):
+        """
+        Gets the Repositories API client.
+
+        Returns:
+            Repositories:
+        """
+        return SanProviders(self.__connection)
