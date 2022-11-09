@@ -39,6 +39,8 @@ Extends support of the SDK to OneView REST API version 4600 (OneView v8.0.0)
 - Rack Managers
 - Repositories 
 - Restores 
+- San Managers
+- San Providers
 - Scopes 
 - Server Hardware 
 - Server Hardware Types 
