@@ -51,6 +51,7 @@ from hpeOneView.resources.servers.logical_enclosures import LogicalEnclosures
 from hpeOneView.resources.servers.enclosure_groups import EnclosureGroups
 from hpeOneView.resources.servers.server_hardware import ServerHardware
 from hpeOneView.resources.servers.server_hardware_types import ServerHardwareTypes
+from hpeOneView.resources.servers.rack_manager import RackManager
 from hpeOneView.resources.servers.id_pools_ranges import IdPoolsRanges
 from hpeOneView.resources.servers.id_pools_ipv4_ranges import IdPoolsIpv4Ranges
 from hpeOneView.resources.servers.id_pools_ipv4_subnets import IdPoolsIpv4Subnets
@@ -151,6 +152,7 @@ class OneViewClient(object):
         self.__metric_streaming = None
         self.__server_hardware = None
         self.__server_hardware_types = None
+        self.__rack_managers = None
         self.__id_pools_vsn_ranges = None
         self.__id_pools_vmac_ranges = None
         self.__id_pools_vwwn_ranges = None
@@ -469,6 +471,16 @@ class OneViewClient(object):
             ServerHardwareTypes:
         """
         return ServerHardwareTypes(self.__connection)
+
+    @property
+    def rack_managers(self):
+        """
+        Gets the Rack Manager API client.
+
+        Returns:
+            RackManager:
+        """
+        return RackManager(self.__connection)
 
     @property
     def id_pools_vsn_ranges(self):
