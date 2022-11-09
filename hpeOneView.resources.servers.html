@@ -48,6 +48,7 @@
 <li><a class="reference internal" href="#module-hpeOneView.resources.servers.id_pools_ranges">hpeOneView.resources.servers.id_pools_ranges module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.servers.logical_enclosures">hpeOneView.resources.servers.logical_enclosures module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.servers.migratable_vc_domains">hpeOneView.resources.servers.migratable_vc_domains module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.servers.rack_manager">hpeOneView.resources.servers.rack_manager module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.servers.server_hardware">hpeOneView.resources.servers.server_hardware module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.servers.server_hardware_types">hpeOneView.resources.servers.server_hardware_types module</a></li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.servers.server_profile_templates">hpeOneView.resources.servers.server_profile_templates module</a></li>
@@ -1201,6 +1202,135 @@ OneView; just stops waiting for its completion.</li>
 </tbody>
 </table>
 <p>Returns: dict: a migration report.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-hpeOneView.resources.servers.rack_manager">
+<span id="hpeoneview-resources-servers-rack-manager-module"></span><h2>hpeOneView.resources.servers.rack_manager module<a class="headerlink" href="#module-hpeOneView.resources.servers.rack_manager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager">
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.servers.rack_manager.</code><code class="descname">RackManager</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<p>The rack manager resource provides methods for managing one or more rack managers and its components.</p>
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.URI">
+<code class="descname">URI</code><em class="property"> = '/rest/rack-managers'</em><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.URI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a rack manager for management by the appliance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>information</strong> (<em>dict</em>) – Object to create</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created Rack Manager</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_a_specific_resource">
+<code class="descname">get_a_specific_resource</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager.get_a_specific_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_a_specific_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a specific resource that is part of a rack manager.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Resource</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_all_chassis">
+<code class="descname">get_all_chassis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager.get_all_chassis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_all_chassis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of chassis from all rack managers.</p>
+<p>Returns: List of Chassis</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_all_managers">
+<code class="descname">get_all_managers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager.get_all_managers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_all_managers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of manager resources from all rack managers.</p>
+<p>Returns: list of managers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_all_partitions">
+<code class="descname">get_all_partitions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager.get_all_partitions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_all_partitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of partition resources from all rack managers.</p>
+<p>Returns: List of partitions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_associated_chassis">
+<code class="descname">get_associated_chassis</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_associated_chassis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_associated_managers">
+<code class="descname">get_associated_managers</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_associated_managers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_associated_partitions">
+<code class="descname">get_associated_partitions</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_associated_partitions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_environmental_configuration">
+<code class="descname">get_environmental_configuration</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_environmental_configuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.get_remote_support_settings">
+<code class="descname">get_remote_support_settings</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.get_remote_support_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="hpeOneView.resources.servers.rack_manager.RackManager.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/rack_manager.html#RackManager.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.rack_manager.RackManager.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the rack manager with the specified URI.
+Note: This operation is only supported on appliances that support rack managers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</li>
+<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates whether the resource was successfully removed.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
