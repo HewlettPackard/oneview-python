@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.oneview_client &mdash; HPE OneView Python SDK 8.0.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>hpeOneView.oneview_client &mdash; HPE OneView Python SDK 7.2.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
             <a href="../../index.html" class="icon icon-home"> HPE OneView Python SDK
           </a>
               <div class="version">
-                8.0.0
+                7.2.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -89,6 +89,7 @@
 
 <span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
 
+
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
@@ -133,6 +134,7 @@
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.facilities.datacenters</span> <span class="kn">import</span> <span class="n">Datacenters</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.fc_sans.managed_sans</span> <span class="kn">import</span> <span class="n">ManagedSANs</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.fc_sans.san_managers</span> <span class="kn">import</span> <span class="n">SanManagers</span>
+<span class="kn">from</span> <span class="nn">hpeOneView.resources.fc_sans.san_providers</span> <span class="kn">import</span> <span class="n">SanProviders</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.fc_sans.endpoints</span> <span class="kn">import</span> <span class="n">Endpoints</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.networking.logical_interconnects</span> <span class="kn">import</span> <span class="n">LogicalInterconnects</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.networking.logical_interconnect_groups</span> <span class="kn">import</span> <span class="n">LogicalInterconnectGroups</span>
@@ -235,6 +237,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__roles</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__datacenters</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__san_managers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__san_providers</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__endpoints</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__logical_interconnects</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__sas_logical_interconnects</span> <span class="o">=</span> <span class="kc">None</span>
@@ -857,14 +860,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">san_managers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets the SanManagers API client.</span>
+<span class="sd">        Gets the Repositories API client.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            SanManagers:</span>
+<span class="sd">            Repositories:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__san_managers</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__san_managers</span> <span class="o">=</span> <span class="n">SanManagers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__san_managers</span>
+        <span class="k">return</span> <span class="n">SanManagers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1351,7 +1352,17 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Repositories:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Repositories</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Repositories</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">san_providers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the Repositories API client.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Repositories:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">SanProviders</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
