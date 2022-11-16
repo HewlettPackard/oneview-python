@@ -96,7 +96,6 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">hpeOneView.connection</span> <span class="kn">import</span> <span class="n">connection</span>
-<span class="kn">from</span> <span class="nn">hpeOneView.image_streamer.image_streamer_client</span> <span class="kn">import</span> <span class="n">ImageStreamerClient</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.security.certificate_authority</span> <span class="kn">import</span> <span class="n">CertificateAuthority</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.servers.connections</span> <span class="kn">import</span> <span class="n">Connections</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.networking.fc_networks</span> <span class="kn">import</span> <span class="n">FcNetworks</span>
@@ -163,8 +162,6 @@
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.search.labels</span> <span class="kn">import</span> <span class="n">Labels</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.activity.alerts</span> <span class="kn">import</span> <span class="n">Alerts</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.activity.events</span> <span class="kn">import</span> <span class="n">Events</span>
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.uncategorized.os_deployment_plans</span> <span class="kn">import</span> <span class="n">OsDeploymentPlans</span>
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.uncategorized.os_deployment_servers</span> <span class="kn">import</span> <span class="n">OsDeploymentServers</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.security.certificate_rabbitmq</span> <span class="kn">import</span> <span class="n">CertificateRabbitMQ</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.security.login_details</span> <span class="kn">import</span> <span class="n">LoginDetails</span>
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.security.roles</span> <span class="kn">import</span> <span class="n">Roles</span>
@@ -187,7 +184,6 @@
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.settings.appliance_ssh_access</span> <span class="kn">import</span> <span class="n">ApplianceSshAccess</span>
 
 <span class="n">ONEVIEW_CLIENT_INVALID_PROXY</span> <span class="o">=</span> <span class="s1">&#39;Invalid Proxy format&#39;</span>
-<span class="n">ONEVIEW_CLIENT_INVALID_I3S_IP</span> <span class="o">=</span> <span class="s1">&#39;Image streamer ip address is missing&#39;</span>
 <span class="n">ONEVIEW_CLIENT_MISSING_IP</span> <span class="o">=</span> <span class="s1">&#39;Oneview ip address is missing&#39;</span>
 
 
@@ -196,7 +192,6 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">sessionID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span> <span class="o">=</span> <span class="n">connection</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ip&#39;</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api_version&#39;</span><span class="p">),</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ssl_certificate&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
                                        <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;timeout&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__image_streamer_ip</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;image_streamer_ip&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__validate_host</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__set_proxy</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;credentials&quot;</span><span class="p">],</span> <span class="n">sessionID</span><span class="o">=</span><span class="n">sessionID</span><span class="p">)</span>
@@ -267,8 +262,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__alerts</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__events</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__drive_enclures</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__os_deployment_plans</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__os_deployment_servers</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__certificate_rabbitmq</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__users</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__appliance_device_read_community</span> <span class="o">=</span> <span class="kc">None</span>
@@ -314,14 +307,13 @@
 <span class="sd">        Construct OneViewClient using environment variables.</span>
 
 <span class="sd">        Allowed variables: ONEVIEWSDK_IP (required), ONEVIEWSDK_USERNAME (required), ONEVIEWSDK_PASSWORD (required),</span>
-<span class="sd">        ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_IMAGE_STREAMER_IP, ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,</span>
+<span class="sd">        ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,</span>
 <span class="sd">        ONEVIEWSDK_CONNECTION_TIMEOUT and ONEVIEWSDK_PROXY.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            OneViewClient:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ip</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ONEVIEWSDK_IP&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">image_streamer_ip</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ONEVIEWSDK_IMAGE_STREAMER_IP&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">api_version</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ONEVIEWSDK_API_VERSION&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">ssl_certificate</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ONEVIEWSDK_SSL_CERTIFICATE&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">username</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ONEVIEWSDK_USERNAME&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -332,7 +324,6 @@
         <span class="n">timeout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ONEVIEWSDK_CONNECTION_TIMEOUT&#39;</span><span class="p">)</span>
 
         <span class="n">config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="n">ip</span><span class="p">,</span>
-                      <span class="n">image_streamer_ip</span><span class="o">=</span><span class="n">image_streamer_ip</span><span class="p">,</span>
                       <span class="n">api_version</span><span class="o">=</span><span class="n">api_version</span><span class="p">,</span>
                       <span class="n">ssl_certificate</span><span class="o">=</span><span class="n">ssl_certificate</span><span class="p">,</span>
                       <span class="n">credentials</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">userName</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">authLoginDomain</span><span class="o">=</span><span class="n">auth_login_domain</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span> <span class="n">sessionID</span><span class="o">=</span><span class="n">sessionID</span><span class="p">),</span>
@@ -385,23 +376,6 @@
 <span class="sd">            connection:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span>
-
-<div class="viewcode-block" id="OneViewClient.create_image_streamer_client"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.oneview_client.OneViewClient.create_image_streamer_client">[docs]</a>    <span class="k">def</span> <span class="nf">create_image_streamer_client</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Create the Image Streamer API Client.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            ImageStreamerClient:</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__image_streamer_ip</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ONEVIEW_CLIENT_INVALID_I3S_IP</span><span class="p">)</span>
-
-        <span class="n">image_streamer</span> <span class="o">=</span> <span class="n">ImageStreamerClient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__image_streamer_ip</span><span class="p">,</span>
-                                             <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="o">.</span><span class="n">get_session_id</span><span class="p">(),</span>
-                                             <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="o">.</span><span class="n">_apiVersion</span><span class="p">,</span>
-                                             <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="o">.</span><span class="n">_sslBundle</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">image_streamer</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_authority</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1100,28 +1074,6 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__events</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__events</span> <span class="o">=</span> <span class="n">Events</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__events</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">os_deployment_plans</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets the Os Deployment Plans API client.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            OsDeploymentPlans:</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">OsDeploymentPlans</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">os_deployment_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gets the Os Deployment Servers API client.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            OsDeploymentServers:</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__os_deployment_servers</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__os_deployment_servers</span> <span class="o">=</span> <span class="n">OsDeploymentServers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__os_deployment_servers</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_rabbitmq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
