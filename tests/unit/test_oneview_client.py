@@ -332,7 +332,6 @@ class OneViewClientTest(unittest.TestCase):
 
         self.assertEqual(201, oneview_client.connection._apiVersion)
 
-
     @mock.patch.dict('os.environ', OS_ENVIRON_CONFIG_FULL)
     @mock.patch.object(OneViewClient, '__init__')
     def test_from_environment_variables_is_passing_right_arguments_to_the_constructor(self, mock_cls):
