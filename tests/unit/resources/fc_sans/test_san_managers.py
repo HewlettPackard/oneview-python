@@ -54,6 +54,32 @@ class SanManagersTest(TestCase):
 
         mock_update.assert_called_once_with(resource=info, uri=uri_rest_call)
 
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_san_manager(self, mock_update):
+        update_info = {
+                "connectionInfo":[
+                    {
+                    "name":"Host",
+                    "value":"fos.example.com"
+                    },
+                    {
+                    "name":"Username",
+                    "value":"Administrator"
+                    },
+                    {
+                    "name":"Password",
+                    "value":"password"
+                    },
+                    {
+                    "name":"UseHttps",
+                    "value":"true"
+                    }
+                ]
+        }
+        uri_rest_call = self.uri
+        self._san_manager.update(update_info, uri_rest_call)
+        mock_update.assert_called_once_with(resource=update_info, uri=uri_rest_call)
+
     @mock.patch.object(ResourceHelper, 'delete')
     def test_remove_called_once(self, mock_delete):
         self._san_manager.remove(force=False)
