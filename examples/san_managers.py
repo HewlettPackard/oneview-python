@@ -32,10 +32,10 @@ config = {
 }
 
 # # To run this sample you must define the following resources for a Brocade Network Advisor
-manager_host = '<san_manager_hostname_or_ip>'
+manager_host = '172.18.19.1'
 manager_port = '<port_number_not_quoted>'
-manager_username = '<san_manager_username>'
-manager_password = '<san_manager_password>'
+manager_username = 'dcs'
+manager_password = 'dcs'
 
 # Try load config from a file (if there is a config file)
 config = try_load_from_file(config)
@@ -179,6 +179,46 @@ info = {
 }
 san_manager = san_managers.update(resource=info, id_or_uri=san_manager['uri'])
 print("   'refreshState' successfully updated to '{refreshState}'".format(**san_manager))
+
+print("\nUpdate SAN manager")
+update_info = {
+    'connectionInfo': [
+        {
+            "name": "Host",
+            "displayName": "Host",
+            "required": True,
+            "value": manager_host,
+            "valueType": "String",
+            "valueFormat": "IPAddressOrHostname"
+        },
+        {
+            "name": "Username",
+            "displayName": "Username",
+            "required": True,
+            "value": manager_username,
+            "valueType": "String",
+            "valueFormat": "None"
+        },
+        {
+            "name": "Password",
+            "displayName": "Password",
+            "required": True,
+            "value": manager_password,
+            "valueType": "String",
+            "valueFormat": "SecuritySensitive"
+        },
+        {
+            "name": "UseHttps",
+            "displayName": "UseHttps",
+            "required": True,
+            "value": True,
+            "valueType": "Boolean",
+            "valueFormat": "None"
+        }
+    ]
+}
+san_manager = san_managers.update(resource=update_info, id_or_uri=san_manager['uri'])
+print("\nSan manager updated successfully.")
 
 print("\nGet SAN manager by uri")
 san_manager_byuri = san_managers.get_by_uri(san_manager['uri'])
