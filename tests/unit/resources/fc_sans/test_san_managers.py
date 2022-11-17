@@ -57,24 +57,24 @@ class SanManagersTest(TestCase):
     @mock.patch.object(ResourceHelper, 'update')
     def test_update_san_manager(self, mock_update):
         update_info = {
-                "connectionInfo":[
-                    {
-                    "name":"Host",
-                    "value":"fos.example.com"
-                    },
-                    {
-                    "name":"Username",
-                    "value":"Administrator"
-                    },
-                    {
-                    "name":"Password",
-                    "value":"password"
-                    },
-                    {
-                    "name":"UseHttps",
-                    "value":"true"
-                    }
-                ]
+            'connectionInfo': [
+                {
+                    "name": "Host",
+                    "value": "manager_host"
+                },
+                {
+                    "name": "Username",
+                    "value": "manager_username"
+                },
+                {
+                    "name": "Password",
+                    "value": "manager_password"
+                },
+                {
+                    "name": "UseHttps",
+                    "value": "True"
+                }
+            ]
         }
         uri_rest_call = self.uri
         self._san_manager.update(update_info, uri_rest_call)
