@@ -6,6 +6,7 @@ Subpackages
 
 .. toctree::
 
+    hpeOneView.image_streamer
     hpeOneView.resources
 
 Submodules
