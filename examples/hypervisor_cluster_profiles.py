@@ -57,10 +57,6 @@ options = {
         "virtualSwitchType": "Standard"
     },
     "hypervisorHostProfileTemplate": {
-        "deploymentPlan": {
-            "serverPassword": "",
-            "deploymentCustomArgs": []
-        },
         "serverProfileTemplateUri": spt_uri,
         "hostprefix": "Test_cluster_profile",
         "virtualSwitches": [],

@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         python_version:
-        - 3.6
+        - 3.7
     runs-on: ubuntu-latest
 
     steps:
