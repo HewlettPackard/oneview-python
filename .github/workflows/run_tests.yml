@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         python_version:
-        - 3.7
-    runs-on: ubuntu-latest
+        - 3.6
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -34,7 +34,7 @@ jobs:
       with:
        target_branch: gh-pages
        keep_history: true
-       build_dir: public #docs/build/html/.
+       build_dir: docs/build/html/.
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
