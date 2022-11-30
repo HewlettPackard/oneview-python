@@ -59,35 +59,19 @@ options_for_brocade = {
     'connectionInfo': [
         {
             "name": "Host",
-            "displayName": "Host",
-            "required": True,
-            "value": manager_host,
-            "valueType": "String",
-            "valueFormat": "IPAddressOrHostname"
+            "value": manager_host
         },
         {
             "name": "Username",
-            "displayName": "Username",
-            "required": True,
-            "value": manager_username,
-            "valueType": "String",
-            "valueFormat": "None"
+            "value": manager_username
         },
         {
             "name": "Password",
-            "displayName": "Password",
-            "required": True,
-            "value": manager_password,
-            "valueType": "String",
-            "valueFormat": "SecuritySensitive"
+            "value": manager_password
         },
         {
             "name": "UseHttps",
-            "displayName": "UseHttps",
-            "required": True,
-            "value": True,
-            "valueType": "Boolean",
-            "valueFormat": "None"
+            "value": True
         }
     ]
 }
@@ -97,67 +81,35 @@ options_for_cisco = {
     'connectionInfo': [
         {
             'name': 'Host',
-            'displayName': 'Host',
-            'required': True,
-            'value': manager_host,
-            'valueFormat': 'IPAddressOrHostname',
-            'valueType': 'String'
+            'value': manager_host
         },
         {
             'name': 'SnmpPort',
-            'displayName': 'SnmpPort',
-            'required': True,
-            'value': manager_port,
-            'valueFormat': 'None',
-            'valueType': 'Integer'
+            'value': manager_port
         },
         {
             'name': 'SnmpUserName',
-            'displayName': 'SnmpUserName',
-            'required': True,
-            'value': manager_username,
-            'valueFormat': 'None',
-            'valueType': 'String'
+            'value': manager_username
         },
         {
             'name': 'SnmpAuthLevel',
-            'displayName': 'SnmpAuthLevel',
-            'required': True,
-            'value': 'authnopriv',
-            'valueFormat': 'None',
-            'valueType': 'String'
+            'value': 'authnopriv'
         },
         {
             'name': 'SnmpAuthProtocol',
-            'displayName': 'SnmpAuthProtocol',
-            'required': False,
-            'value': 'sha',
-            'valueFormat': 'None',
-            'valueType': 'String'
+            'value': 'sha'
         },
         {
             'name': 'SnmpAuthString',
-            'displayName': 'SnmpAuthString',
-            'required': False,
-            'value': manager_password,
-            'valueFormat': 'SecuritySensitive',
-            'valueType': 'String'
+            'value': manager_password
         },
         {
             'name': 'SnmpPrivProtocol',
-            'displayName': 'SnmpPrivProtocol',
-            'required': False,
-            'value': '',
-            'valueFormat': 'None',
-            'valueType': 'String'
+            'value': ''
         },
         {
             'name': 'SnmpPrivString',
-            'displayName': 'SnmpPrivString',
-            'required': False,
-            'value': '',
-            'valueFormat': 'SecuritySensitive',
-            'valueType': 'String'
+            'value': ''
         }
     ]
 }
@@ -185,35 +137,19 @@ update_info = {
     'connectionInfo': [
         {
             "name": "Host",
-            "displayName": "Host",
-            "required": True,
-            "value": manager_host,
-            "valueType": "String",
-            "valueFormat": "IPAddressOrHostname"
+            "value": manager_host
         },
         {
             "name": "Username",
-            "displayName": "Username",
-            "required": True,
-            "value": manager_username,
-            "valueType": "String",
-            "valueFormat": "None"
+            "value": manager_username
         },
         {
             "name": "Password",
-            "displayName": "Password",
-            "required": True,
-            "value": manager_password,
-            "valueType": "String",
-            "valueFormat": "SecuritySensitive"
+            "value": manager_password
         },
         {
             "name": "UseHttps",
-            "displayName": "UseHttps",
-            "required": True,
-            "value": True,
-            "valueType": "Boolean",
-            "valueFormat": "None"
+            "value": True
         }
     ]
 }
