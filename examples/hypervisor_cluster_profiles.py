@@ -15,7 +15,7 @@
 # limitations under the License.
 ###
 
-# This example requires a ServerProfileTemplate with name "spt_hcp" and HypervisorManager
+# This example requires a ServerProfileTemplate with name "ProfileTemplate-1" and HypervisorManager
 # with name "172.18.13.11"
 
 from pprint import pprint
@@ -37,16 +37,13 @@ oneview_client = OneViewClient(config)
 hypervisor_cluster_profiles = oneview_client.hypervisor_cluster_profiles
 hypervisor_managers = oneview_client.hypervisor_managers
 profile_templates = oneview_client.server_profile_templates
-os_deployment_plans = oneview_client.os_deployment_plans
 
 hypervisor_manager = "172.18.13.11"
 spt_name = "ProfileTemplate-1"  # spt without os deployment plan and one mgmt connection
-deployment_plan = "Basic Deployment Plan"
 
 # Getting the uris from name
 hyp_mgr_uri = hypervisor_managers.get_by_name(hypervisor_manager).data['uri']
 spt_uri = profile_templates.get_by_name(spt_name).data['uri']
-dp_uri = os_deployment_plans.get_by_name(deployment_plan).data['uri']
 
 options = {
     "name": "Test_cluster_profile",
@@ -61,11 +58,6 @@ options = {
     },
     "hypervisorHostProfileTemplate": {
         "serverProfileTemplateUri": spt_uri,
-        "deploymentPlan": {
-            "deploymentPlanUri": dp_uri,
-            "serverPassword": "",
-            "deploymentCustomArgs": []
-        },
         "hostprefix": "Test_cluster_profile",
         "virtualSwitches": [],
         "hostConfigPolicy": {
@@ -73,9 +65,11 @@ options = {
             "useHostnameToRegister": False
         },
         "virtualSwitchConfigPolicy": {
-            "manageVirtualSwitches": True,
+            "manageVirtualSwitches": False,
             "configurePortGroups": True
-        }
+        },
+        "dataStoreNameSync": True,
+        "deploymentManagerType": "UserManaged"
     },
     "mgmtIpSettingsOverride": None,
     "hypervisorManagerUri": hyp_mgr_uri,

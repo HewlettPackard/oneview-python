@@ -31,7 +31,7 @@ from hpeOneView.resources.search.index_resources import IndexResources
 category_list = ['connection-templates', 'drive-enclosures', 'ethernet-networks', 'enclosures', 'enclosure-groups',
                  'fc-networks', 'fcoe-networks', 'firmware-bundles', 'hypervisor-cluster-profiles',
                  'hypervisor-host-profiles', 'hypervisor-managers', 'interconnects', 'logical-enclosures',
-                 'logical-interconnect-groups', 'logical-interconnects', 'network-sets', 'os-deployment-plans',
+                 'logical-interconnect-groups', 'logical-interconnects', 'network-sets',
                  'sas-interconnects', 'sas-logical-interconnect-groups', 'sas-logical-interconnects',
                  'sas-logical-jbods', 'scopes', 'server-hardware', 'server-profile-templates', 'server-profiles',
                  'storage-pools', 'storage-volume-sets', 'storage-volume-templates', 'storage-volumes']

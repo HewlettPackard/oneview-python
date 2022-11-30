@@ -31,7 +31,6 @@ import json
 import os
 
 from hpeOneView.connection import connection
-from hpeOneView.image_streamer.image_streamer_client import ImageStreamerClient
 from hpeOneView.resources.security.certificate_authority import CertificateAuthority
 from hpeOneView.resources.servers.connections import Connections
 from hpeOneView.resources.networking.fc_networks import FcNetworks
@@ -98,8 +97,6 @@ from hpeOneView.resources.search.index_resources import IndexResources
 from hpeOneView.resources.search.labels import Labels
 from hpeOneView.resources.activity.alerts import Alerts
 from hpeOneView.resources.activity.events import Events
-from hpeOneView.resources.uncategorized.os_deployment_plans import OsDeploymentPlans
-from hpeOneView.resources.uncategorized.os_deployment_servers import OsDeploymentServers
 from hpeOneView.resources.security.certificate_rabbitmq import CertificateRabbitMQ
 from hpeOneView.resources.security.login_details import LoginDetails
 from hpeOneView.resources.security.roles import Roles
@@ -122,7 +119,6 @@ from hpeOneView.resources.settings.appliance_configuration_timeconfig import App
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
-ONEVIEW_CLIENT_INVALID_I3S_IP = 'Image streamer ip address is missing'
 ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 
 
@@ -131,7 +127,6 @@ class OneViewClient(object):
     def __init__(self, config, sessionID=None):
         self.__connection = connection(config.get('ip'), config.get('api_version'), config.get('ssl_certificate', False),
                                        config.get('timeout'))
-        self.__image_streamer_ip = config.get("image_streamer_ip")
         self.__validate_host()
         self.__set_proxy(config)
         self.__connection.login(config["credentials"], sessionID=sessionID)
@@ -202,8 +197,6 @@ class OneViewClient(object):
         self.__alerts = None
         self.__events = None
         self.__drive_enclures = None
-        self.__os_deployment_plans = None
-        self.__os_deployment_servers = None
         self.__certificate_rabbitmq = None
         self.__users = None
         self.__appliance_device_read_community = None
@@ -249,14 +242,13 @@ class OneViewClient(object):
         Construct OneViewClient using environment variables.
 
         Allowed variables: ONEVIEWSDK_IP (required), ONEVIEWSDK_USERNAME (required), ONEVIEWSDK_PASSWORD (required),
-        ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_IMAGE_STREAMER_IP, ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,
+        ONEVIEWSDK_AUTH_LOGIN_DOMAIN, ONEVIEWSDK_API_VERSION, ONEVIEWSDK_SESSIONID, ONEVIEWSDK_SSL_CERTIFICATE,
         ONEVIEWSDK_CONNECTION_TIMEOUT and ONEVIEWSDK_PROXY.
 
         Returns:
             OneViewClient:
         """
         ip = os.environ.get('ONEVIEWSDK_IP', '')
-        image_streamer_ip = os.environ.get('ONEVIEWSDK_IMAGE_STREAMER_IP', '')
         api_version = os.environ.get('ONEVIEWSDK_API_VERSION', '')
         ssl_certificate = os.environ.get('ONEVIEWSDK_SSL_CERTIFICATE', '')
         username = os.environ.get('ONEVIEWSDK_USERNAME', '')
@@ -267,7 +259,6 @@ class OneViewClient(object):
         timeout = os.environ.get('ONEVIEWSDK_CONNECTION_TIMEOUT')
 
         config = dict(ip=ip,
-                      image_streamer_ip=image_streamer_ip,
                       api_version=api_version,
                       ssl_certificate=ssl_certificate,
                       credentials=dict(userName=username, authLoginDomain=auth_login_domain, password=password, sessionID=sessionID),
@@ -320,23 +311,6 @@ class OneViewClient(object):
             connection:
         """
         return self.__connection
-
-    def create_image_streamer_client(self):
-        """
-        Create the Image Streamer API Client.
-
-        Returns:
-            ImageStreamerClient:
-        """
-        if not self.__image_streamer_ip:
-            raise ValueError(ONEVIEW_CLIENT_INVALID_I3S_IP)
-
-        image_streamer = ImageStreamerClient(self.__image_streamer_ip,
-                                             self.__connection.get_session_id(),
-                                             self.__connection._apiVersion,
-                                             self.__connection._sslBundle)
-
-        return image_streamer
 
     @property
     def certificate_authority(self):
@@ -1035,28 +1009,6 @@ class OneViewClient(object):
         if not self.__events:
             self.__events = Events(self.__connection)
         return self.__events
-
-    @property
-    def os_deployment_plans(self):
-        """
-        Gets the Os Deployment Plans API client.
-
-        Returns:
-            OsDeploymentPlans:
-        """
-        return OsDeploymentPlans(self.__connection)
-
-    @property
-    def os_deployment_servers(self):
-        """
-        Gets the Os Deployment Servers API client.
-
-        Returns:
-            OsDeploymentServers:
-        """
-        if not self.__os_deployment_servers:
-            self.__os_deployment_servers = OsDeploymentServers(self.__connection)
-        return self.__os_deployment_servers
 
     @property
     def certificate_rabbitmq(self):
