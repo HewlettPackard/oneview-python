@@ -176,6 +176,9 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
 
 For more details on the Installation , Configuration , Logging , Troubleshooting refer to [WIKI# Installation & Configuration section](https://github.com/HewlettPackard/oneview-python/wiki#installation).
 
+### HPE Synergy Image Streamer
+
+From Release 8.1, Image streamer is no longer supported.
 
 ## Getting Help 
 
