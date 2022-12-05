@@ -66,8 +66,6 @@ from hpeOneView.resources.security.login_details import LoginDetails
 from hpeOneView.resources.networking.internal_link_sets import InternalLinkSets
 from hpeOneView.resources.search.index_resources import IndexResources
 from hpeOneView.resources.search.labels import Labels
-from hpeOneView.resources.uncategorized.os_deployment_plans import OsDeploymentPlans
-from hpeOneView.resources.uncategorized.os_deployment_servers import OsDeploymentServers
 from hpeOneView.resources.activity.alerts import Alerts
 from hpeOneView.resources.activity.events import Events
 from hpeOneView.resources.security.certificate_rabbitmq import CertificateRabbitMQ
@@ -106,7 +104,6 @@ OS_ENVIRON_CONFIG_MINIMAL_WITH_SESSIONID = {
 
 OS_ENVIRON_CONFIG_FULL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
-    'ONEVIEWSDK_IMAGE_STREAMER_IP': '172.172.172.172',
     'ONEVIEWSDK_USERNAME': 'admin',
     'ONEVIEWSDK_PASSWORD': 'secret123',
     'ONEVIEWSDK_API_VERSION': '201',
@@ -117,7 +114,6 @@ OS_ENVIRON_CONFIG_FULL = {
 
 OS_ENVIRON_CONFIG_FULL_WITH_SESSIONID = {
     'ONEVIEWSDK_IP': '172.16.100.199',
-    'ONEVIEWSDK_IMAGE_STREAMER_IP': '172.172.172.172',
     'ONEVIEWSDK_USERNAME': 'admin',
     'ONEVIEWSDK_PASSWORD': 'secret123',
     'ONEVIEWSDK_SESSIONID': '123',
@@ -321,8 +317,6 @@ class OneViewClientTest(unittest.TestCase):
         mock_set_proxy.assert_called_once_with('172.16.100.195', 9999)
 
         self.assertEqual(201, oneview_client.connection._apiVersion)
-        self.assertEqual(oneview_client.create_image_streamer_client().connection.get_host(),
-                         OS_ENVIRON_CONFIG_FULL['ONEVIEWSDK_IMAGE_STREAMER_IP'])
 
     @mock.patch.object(connection, 'login')
     @mock.patch.object(connection, 'set_proxy')
@@ -337,8 +331,6 @@ class OneViewClientTest(unittest.TestCase):
         mock_set_proxy.assert_called_once_with('172.16.100.195', 9999)
 
         self.assertEqual(201, oneview_client.connection._apiVersion)
-        self.assertEqual(oneview_client.create_image_streamer_client().connection.get_host(),
-                         OS_ENVIRON_CONFIG_FULL_WITH_SESSIONID['ONEVIEWSDK_IMAGE_STREAMER_IP'])
 
     @mock.patch.dict('os.environ', OS_ENVIRON_CONFIG_FULL)
     @mock.patch.object(OneViewClient, '__init__')
@@ -350,7 +342,6 @@ class OneViewClientTest(unittest.TestCase):
                                           'timeout': '20',
                                           'ip': '172.16.100.199',
                                           'ssl_certificate': '',
-                                          'image_streamer_ip': '172.172.172.172',
                                           'credentials':
                                               {'userName': 'admin',
                                                'password': 'secret123',
@@ -366,7 +357,6 @@ class OneViewClientTest(unittest.TestCase):
                                           'proxy': '172.16.100.195:9999',
                                           'timeout': '20',
                                           'ip': '172.16.100.199',
-                                          'image_streamer_ip': '172.172.172.172',
                                           'ssl_certificate': '',
                                           'credentials':
                                               {'userName': 'admin',
@@ -383,50 +373,12 @@ class OneViewClientTest(unittest.TestCase):
                                           'proxy': '',
                                           'timeout': None,
                                           'ip': '172.16.100.199',
-                                          'image_streamer_ip': '',
                                           'ssl_certificate': '',
                                           'credentials':
                                               {'userName': '',
                                                'password': '',
                                                'authLoginDomain': '',
                                                'sessionID': '123'}})
-
-    @mock.patch.object(connection, 'login')
-    def test_create_image_streamer_client_without_image_streamer_ip(self, mock_login):
-
-        config = {"ip": "172.16.102.59",
-                  "api_version": 800,
-                  "credentials": {
-                      "userName": "administrator",
-                      "password": "password"}}
-
-        client = OneViewClient(config)
-        client.connection.set_session_id('123')
-
-        try:
-            client.create_image_streamer_client()
-        except ValueError as e:
-            self.assertTrue("Image streamer ip" in e.args[0])
-
-    @mock.patch.object(connection, 'login')
-    def test_create_image_streamer_client_with_image_streamer_ip(self, mock_login):
-
-        config = {"ip": "172.16.102.59",
-                  "image_streamer_ip": "172.16.102.50",
-                  "api_version": 800,
-                  "credentials": {
-                      "userName": "administrator",
-                      "password": "password"}}
-
-        client = OneViewClient(config)
-        client.connection.set_session_id('124')
-
-        i3s = client.create_image_streamer_client()
-
-        self.assertEqual(i3s.connection.get_session_id(), client.connection.get_session_id())
-        self.assertEqual(i3s.connection._apiVersion, client.api_version)
-        self.assertEqual(i3s.connection.get_host(), "172.16.102.50")
-        self.assertEqual(client.connection.get_host(), "172.16.102.59")
 
     def test_fc_networks_has_right_type(self):
         self.assertIsInstance(self._oneview.fc_networks, FcNetworks)
@@ -910,20 +862,6 @@ class OneViewClientTest(unittest.TestCase):
     def test_lazy_loading_events(self):
         events = self._oneview.events
         self.assertEqual(events, self._oneview.events)
-
-    def test_os_deployment_plans_has_right_type(self):
-        self.assertIsInstance(self._oneview.os_deployment_plans, OsDeploymentPlans)
-
-    def test_os_deployment_plans_return(self):
-        self.assertNotEqual(self._oneview.os_deployment_plans,
-                            self._oneview.os_deployment_plans)
-
-    def test_os_deployment_servers_has_right_type(self):
-        self.assertIsInstance(self._oneview.os_deployment_servers, OsDeploymentServers)
-
-    def test_lazy_loading_os_deployment_servers(self):
-        os_deployment_servers = self._oneview.os_deployment_servers
-        self.assertEqual(os_deployment_servers, self._oneview.os_deployment_servers)
 
     def test_certificate_rabbitmq_has_right_type(self):
         self.assertIsInstance(self._oneview.certificate_rabbitmq, CertificateRabbitMQ)
