@@ -112,3 +112,4 @@ class SanManagers(Resource):
 
         return self.new(self._connection, result[0])if result else None
 
+
