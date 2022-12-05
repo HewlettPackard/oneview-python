@@ -111,5 +111,3 @@ class SanManagers(Resource):
         result = [x for x in san_managers if x['name'] == name]
 
         return self.new(self._connection, result[0])if result else None
-
-
