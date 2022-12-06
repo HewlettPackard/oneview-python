@@ -39,7 +39,6 @@ ethernet_networks = oneview_client.ethernet_networks
 fc_networks = oneview_client.fc_networks
 
 # Define the scope name to add the logical interconnect group to it
-# iscsi_network = "iscsi_nw"  # iscsi network for image streamer uplinkset
 mgmt_untagged = "mgmt_nw"  # untagged managament network
 fc_fabric = "FC_fabric_nw"  # Fabric attach FC network
 scope_name = "test_scope"

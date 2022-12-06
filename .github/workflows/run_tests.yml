@@ -10,7 +10,7 @@ jobs:
       matrix:
         python_version:
         - 3.6
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
        build_dir: docs/build/html/.
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
     - name: coveralls
       uses: AndreMiras/coveralls-python-action@develop
       with:
