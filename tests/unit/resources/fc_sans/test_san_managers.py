@@ -54,6 +54,32 @@ class SanManagersTest(TestCase):
 
         mock_update.assert_called_once_with(resource=info, uri=uri_rest_call)
 
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_update_san_manager(self, mock_update):
+        update_info = {
+            'connectionInfo': [
+                {
+                    "name": "Host",
+                    "value": "manager_host"
+                },
+                {
+                    "name": "Username",
+                    "value": "manager_username"
+                },
+                {
+                    "name": "Password",
+                    "value": "manager_password"
+                },
+                {
+                    "name": "UseHttps",
+                    "value": "True"
+                }
+            ]
+        }
+        uri_rest_call = self.uri
+        self._san_manager.update(update_info, uri_rest_call)
+        mock_update.assert_called_once_with(resource=update_info, uri=uri_rest_call)
+
     @mock.patch.object(ResourceHelper, 'delete')
     def test_remove_called_once(self, mock_delete):
         self._san_manager.remove(force=False)
@@ -71,28 +97,6 @@ class SanManagersTest(TestCase):
 
         self.assertEqual(san_manager.data,
                          {"name": "172.18.15.2", "uri": "/rest/fc-sans/device-managers/2"})
-
-    @mock.patch.object(ResourceHelper, 'get_all')
-    def test_get_by_provider_display_name_san_manager(self, mock_get_all):
-        mock_get_all.return_value = [
-            {"providerDisplayName": "Brocade Network Advisor 1", "uri": "/rest/fc-sans/device-managers/1"},
-            {"providerDisplayName": "Brocade Network Advisor 2", "uri": "/rest/fc-sans/device-managers/2"}
-        ]
-        san_manager = self._san_manager.get_by_provider_display_name("Brocade Network Advisor 1")
-
-        self.assertEqual(san_manager.data,
-                         {"providerDisplayName": "Brocade Network Advisor 1", "uri": "/rest/fc-sans/device-managers/1"})
-
-    @mock.patch.object(ResourceHelper, 'get_all')
-    def test_get_by_provider_display_name_should_return_null_when_not_found(self, mock_get_all):
-        existent_san_managers = [
-            {"providerDisplayName": "Brocade Network Advisor 1", "uri": "/rest/fc-sans/device-managers/1"},
-            {"providerDisplayName": "Brocade Network Advisor 2", "uri": "/rest/fc-sans/device-managers/2"}
-        ]
-        mock_get_all.return_value = existent_san_managers
-        san_manager = self._san_manager.get_by_provider_display_name("Brocade Network Advisor 3")
-
-        self.assertIsNone(san_manager)
 
     @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_by_name_should_return_null_when_not_found(self, mock_get_all):

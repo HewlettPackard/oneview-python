@@ -111,17 +111,3 @@ class SanManagers(Resource):
         result = [x for x in san_managers if x['name'] == name]
 
         return self.new(self._connection, result[0])if result else None
-
-    def get_by_provider_display_name(self, provider_display_name):
-        """
-        Gets a SAN Manager by provider display name.
-
-        Args:
-            provider_display_name: Name of the Provider Display Name
-
-        Returns:
-            SAN Manager.
-        """
-        san_managers = self.get_all()
-        result = [x for x in san_managers if x['providerDisplayName'] == provider_display_name]
-        return self.new(self._connection, result[0])if result else None
