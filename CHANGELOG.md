@@ -3,8 +3,8 @@
 Extends support of the SDK to OneView REST API version 4600 (OneView v8.1.0)
 
 #### Major changes
-Added support for San Manager Update Functionality
-Removed support for Image Streamer Cleanup
+- Added support for San Manager Update Functionality
+- Removed support for Image Streamer Cleanup
 
 ##### Features supported with the current release
 - Appliance Configuration Timeconfig 
@@ -67,8 +67,8 @@ Removed support for Image Streamer Cleanup
 Extends support of the SDK to OneView REST API version 4600 (OneView v8.0.0)
 
 #### Major changes
-Added support for Rack Manager resources
-Added support for San Manager resources
+- Added support for Rack Manager resources
+- Added support for San Manager resources
 
 ##### Features supported with the current release
 - Appliance Configuration Timeconfig 
