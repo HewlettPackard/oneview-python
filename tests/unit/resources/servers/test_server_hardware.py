@@ -281,3 +281,26 @@ class ServerHardwareTest(TestCase):
         self._server_hardware.get_local_storage(ip='172.16.8.4')
 
         mock_get.assert_called_once_with(uri_rest_call)
+
+    @mock.patch.object(ResourceHelper, 'do_post')
+    def test_check_firmware_compliance(self, mock_post):
+        self._server_hardware.check_firmware_compliance(configuration={"firmwareBaselineId": "abcd-1234-defg",
+                                                                       "serverUUID": "1234567-8901"})
+
+        mock_post.assert_called_once_with('/rest/server-hardware/firmware-compliance', {"firmwareBaselineId": "abcd-1234-defg",
+                                                          "serverUUID": "1234567-8901"}, timeout=-1, custom_headers=None )
+
+    @mock.patch.object(ResourcePatchMixin, 'patch_request')
+    def test_perform_firmware_update_called_once(self, mock_patch):
+        uri_rest_call= '{}/firmware/settings'.format(self.uri)
+        self._server_hardware.perform_firmware_update([
+                    { "op": "replace", "value": {"baselineUri":"/rest/firmware-drivers/sdsdfsdf",
+                      "firmwareInstallType":"FirmwareOnlyOfflineMode", "installationPolicy":"LowerThanBaseline"}
+                    }])
+
+        mock_patch.assert_called_once_with(uri_rest_call,
+                                           [{ "op": "replace", "value": {"baselineUri":"/rest/firmware-drivers/sdsdfsdf",
+                                              "firmwareInstallType":"FirmwareOnlyOfflineMode", "installationPolicy":"LowerThanBaseline"}
+                                           }],
+                                           custom_headers=None,
+                                           timeout=-1)

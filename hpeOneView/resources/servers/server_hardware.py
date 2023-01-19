@@ -326,3 +326,34 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
             uri = "{}?ip={}".format(uri, ip)
 
         return self._helper.do_get(uri)
+
+    def check_firmware_compliance(self, configuration, timeout=-1, custom_headers=None):
+        """
+        Checks the firmware compliance of a server with the selected firmware baseline.
+        Returns the compliance status of each individual component as well as the overall
+        firmware compliance status of the server.
+
+        Args:
+            configuration: Firmware Compliance Configuration
+
+        Returns:
+            Resource
+        """
+        uri = "{}/firmware-compliance".format(self.URI)
+        return self._helper.do_post(uri, configuration, timeout=timeout, custom_headers=custom_headers)
+
+    @ensure_resource_client
+    def perform_firmware_update(self, configuration, timeout=-1, custom_headers=None):
+        """
+        Performs a specific patch operation on the firmware settings for the given server.
+        If the server supports the particular operation, the operation is performed and a response is
+        returned to the caller with the results.
+
+        Args:
+            configuration: Firmware Update Configuration
+
+        Returns:
+            Updated Resource
+        """
+        uri =  uri = "{}/firmware/settings".format(self.data["uri"])
+        return self.patch_request(uri, configuration, timeout=timeout, custom_headers=custom_headers)
