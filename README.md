@@ -118,7 +118,10 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
 
   Once you have created the JSON file, you can initialize the OneViewClient:
 
-   ```oneview_client = OneViewClient.from_json_file('/path/config.json')``` <br />
+   ```python 
+   from hpeOneView.oneview_client import OneViewClient
+   oneview_client = OneViewClient.from_json_file('/path/config.json')
+   ``` 
    
   :lock: Tip: Check the file permissions because the password is stored in clear-text.
 
@@ -139,6 +142,7 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
   Once you have defined the environment variables, you can initialize the OneViewClient using the following code snippet:
 
   ```python 
+   from hpeOneView.oneview_client import OneViewClient
    oneview_client = OneViewClient.from_environment_variables()
    ```
   :lock: Tip: Make sure no unauthorized person has access to the environment variables, since the password is stored in clear-text.
@@ -169,6 +173,7 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
   ```
 
   ```python 
+   from hpeOneView.oneview_client import OneViewClient
    oneview_client = OneViewClient(config) 
    ```
   :lock: Tip: Check the file permissions because the password is stored in clear-text.
