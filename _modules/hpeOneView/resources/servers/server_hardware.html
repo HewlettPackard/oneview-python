@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers.server_hardware &mdash; HPE OneView Python SDK 8.1.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <title>hpeOneView.resources.servers.server_hardware &mdash; HPE OneView Python SDK 8.0.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
             <a href="../../../../index.html" class="icon icon-home"> HPE OneView Python SDK
           </a>
               <div class="version">
-                8.1.0
+                8.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -390,7 +390,38 @@
         <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">?ip=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ServerHardware.check_firmware_compliance"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance">[docs]</a>    <span class="k">def</span> <span class="nf">check_firmware_compliance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks the firmware compliance of a server with the selected firmware baseline.</span>
+<span class="sd">        Returns the compliance status of each individual component as well as the overall</span>
+<span class="sd">        firmware compliance status of the server.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            configuration: Firmware Compliance Configuration</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Resource</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/firmware-compliance&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
+
+    <span class="nd">@ensure_resource_client</span>
+    <span class="k">def</span> <span class="nf">perform_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs a specific patch operation on the firmware settings for the given server.</span>
+<span class="sd">        If the server supports the particular operation, the operation is performed and a response is</span>
+<span class="sd">        returned to the caller with the results.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            configuration: Firmware Update Configuration</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Updated Resource</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/firmware/settings&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch_request</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers package &mdash; HPE OneView Python SDK 8.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>hpeOneView.resources.servers package &mdash; HPE OneView Python SDK 8.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
             <a href="index.html" class="icon icon-home"> HPE OneView Python SDK
           </a>
               <div class="version">
-                8.1.0
+                8.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -1408,6 +1408,24 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance">
+<code class="descname">check_firmware_compliance</code><span class="sig-paren">(</span><em>configuration</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/server_hardware.html#ServerHardware.check_firmware_compliance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the firmware compliance of a server with the selected firmware baseline.
+Returns the compliance status of each individual component as well as the overall
+firmware compliance status of the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>configuration</strong> – Firmware Compliance Configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.get_all_firmwares">
 <code class="descname">get_all_firmwares</code><span class="sig-paren">(</span><em>filter=u''</em>, <em>start=0</em>, <em>count=-1</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/server_hardware.html#ServerHardware.get_all_firmwares"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.get_all_firmwares" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a list of firmware inventory across all servers. To filter the returned data, specify a filter
@@ -1483,6 +1501,11 @@ on create time with the oldest entry first.</li>
 <dl class="attribute">
 <dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.get_remote_console_url">
 <code class="descname">get_remote_console_url</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.get_remote_console_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.perform_firmware_update">
+<code class="descname">perform_firmware_update</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.perform_firmware_update" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
