@@ -153,11 +153,9 @@ compliance_configuration = {
     "firmwareBaselineId": config['server_hardware']['firmware_baseline_id'],
     "serverUUID": server.data['uuid']
 }
-firmware_update_configuration = [
-    { "op": "replace", "value": {"baselineUri":"/rest/firmware-drivers/" + config['server_hardware']['firmware_baseline_id'],
-      "firmwareInstallType":"FirmwareOnlyOfflineMode", "installationPolicy":"LowerThanBaseline"}
-    }
-]
+firmware_update_configuration = [{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/" + config['server_hardware']['firmware_baseline_id'],
+                                  "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
+                                  }]
 if server:
     if server.data['state'] == 'NoProfileApplied':
         if server.data['powerState'] == 'Off':

@@ -355,5 +355,5 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
         Returns:
             Updated Resource
         """
-        uri =  uri = "{}/firmware/settings".format(self.data["uri"])
+        uri = "{}/firmware/settings".format(self.data["uri"])
         return self.patch_request(uri, configuration, timeout=timeout, custom_headers=custom_headers)

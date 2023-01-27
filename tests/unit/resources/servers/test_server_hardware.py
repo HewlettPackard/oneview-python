@@ -288,19 +288,18 @@ class ServerHardwareTest(TestCase):
                                                                        "serverUUID": "1234567-8901"})
 
         mock_post.assert_called_once_with('/rest/server-hardware/firmware-compliance', {"firmwareBaselineId": "abcd-1234-defg",
-                                                          "serverUUID": "1234567-8901"}, timeout=-1, custom_headers=None )
+                                                                                        "serverUUID": "1234567-8901"}, timeout=-1, custom_headers=None)
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_called_once(self, mock_patch):
-        uri_rest_call= '{}/firmware/settings'.format(self.uri)
-        self._server_hardware.perform_firmware_update([
-                    { "op": "replace", "value": {"baselineUri":"/rest/firmware-drivers/sdsdfsdf",
-                      "firmwareInstallType":"FirmwareOnlyOfflineMode", "installationPolicy":"LowerThanBaseline"}
-                    }])
+        uri_rest_call = '{}/firmware/settings'.format(self.uri)
+        self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
+                                                        "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
+                                                        }])
 
         mock_patch.assert_called_once_with(uri_rest_call,
-                                           [{ "op": "replace", "value": {"baselineUri":"/rest/firmware-drivers/sdsdfsdf",
-                                              "firmwareInstallType":"FirmwareOnlyOfflineMode", "installationPolicy":"LowerThanBaseline"}
-                                           }],
+                                           [{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
+                                             "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
+                                             }],
                                            custom_headers=None,
                                            timeout=-1)
