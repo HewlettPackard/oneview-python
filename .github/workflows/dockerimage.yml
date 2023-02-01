@@ -37,4 +37,4 @@ jobs:
     - name: Build the tagged Docker image
       run: docker build . --file Dockerfile --tag hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV8.1
     - name: Push the tagged Docker image
-      run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV8.0
+      run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV8.1
