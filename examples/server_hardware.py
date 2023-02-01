@@ -157,16 +157,10 @@ firmware_update_configuration = [{"op": "replace", "value": {"baselineUri": "/re
                                   "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
                                   }]
 if server:
-    if server.data['state'] == 'NoProfileApplied':
-        if server.data['powerState'] == 'Off':
-            firmware_compliance = server.check_firmware_compliance(compliance_configuration)
-            if firmware_compliance['serverFirmwareUpdateRequired']:
-                print("Updating firmware for the server hardware..")
-                server.perform_firmware_update(firmware_update_configuration)
-            else:
-                print("No Firmware Update required for the server")
-    else:
-        print("Firmware Update can be done on Server Hardware with no profile attached.")
+    firmware_compliance = server.check_firmware_compliance(compliance_configuration)
+    if firmware_compliance['serverFirmwareUpdateRequired']:
+        print("Updating firmware for the server hardware..")
+        server.perform_firmware_update(firmware_update_configuration)
 
 # Refresh server state
 configuration = {
