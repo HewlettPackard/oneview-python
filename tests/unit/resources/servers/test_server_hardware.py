@@ -293,7 +293,8 @@ class ServerHardwareTest(TestCase):
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_called_once(self, mock_patch):
         uri_rest_call = '{}/firmware/settings'.format(self.uri)
-        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileApplied", "serverProfileUri": None, "powerState": "Off", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
+        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileApplied", "serverProfileUri": None,
+                                      "powerState": "Off", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
         self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
                                                         "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
                                                         }])
@@ -307,14 +308,15 @@ class ServerHardwareTest(TestCase):
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_with_sh_powered_on_should_error(self, mock_patch):
-        uri_rest_call = '{}/firmware/settings'.format(self.uri)
         expected_error_list = ['Server Hardware is in Powered On state']
-        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileApplied", "serverProfileUri": None, "powerState": "On", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
+        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileApplied", "serverProfileUri": None,
+                                      "powerState": "On", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
 
         try:
             self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
-                                                        "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
-                                                        }])
+                                                                                       "firmwareInstallType": "FirmwareOnlyOfflineMode",
+                                                                                       "installationPolicy": "LowerThanBaseline"}
+                                                            }])
         except ValueError as e:
             self.assertEqual(expected_error_list, e.args[0])
         else:
@@ -322,14 +324,15 @@ class ServerHardwareTest(TestCase):
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_with_profile_attached_should_error(self, mock_patch):
-        uri_rest_call = '{}/firmware/settings'.format(self.uri)
         expected_error_list = ["Server Hardware has a Profile attached"]
-        self._server_hardware.data = {"uri": self.uri, "state": "ProfileApplied", "serverProfileUri": "some_uri", "powerState": "Off", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
+        self._server_hardware.data = {"uri": self.uri, "state": "ProfileApplied", "serverProfileUri": "some_uri",
+                                      "powerState": "Off", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
 
         try:
             self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
-                                                        "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
-                                                        }])
+                                                                                       "firmwareInstallType": "FirmwareOnlyOfflineMode",
+                                                                                       "installationPolicy": "LowerThanBaseline"}
+                                                            }])
         except ValueError as e:
             self.assertEqual(expected_error_list, e.args[0])
         else:
@@ -337,14 +340,15 @@ class ServerHardwareTest(TestCase):
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_with_server_below_gen10_should_error(self, mock_patch):
-        uri_rest_call = '{}/firmware/settings'.format(self.uri)
         expected_error_list = ["Server Hardware generation is below Gen10"]
-        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileApplied", "serverProfileUri": None, "powerState": "Off", "mpModel": "iLO4", "mpLicenseType": "iLO Advanced"}
+        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileApplied", "serverProfileUri": None,
+                                      "powerState": "Off", "mpModel": "iLO4", "mpLicenseType": "iLO Advanced"}
 
         try:
             self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
-                                                        "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
-                                                        }])
+                                                                                       "firmwareInstallType": "FirmwareOnlyOfflineMode",
+                                                                                       "installationPolicy": "LowerThanBaseline"}
+                                                            }])
         except ValueError as e:
             self.assertEqual(expected_error_list, e.args[0])
         else:
@@ -352,14 +356,15 @@ class ServerHardwareTest(TestCase):
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_with_an_ongoing_update_profile_attached_should_error(self, mock_patch):
-        uri_rest_call = '{}/firmware/settings'.format(self.uri)
         expected_error_list = ["Server Hardware has a Profile attached", "Server Hardware is undergoing a firmware update"]
-        self._server_hardware.data = {"uri": self.uri, "state": "UpdatingFirmware", "powerState": "Off", "serverProfileUri": "some_uri", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
+        self._server_hardware.data = {"uri": self.uri, "state": "UpdatingFirmware", "powerState": "Off",
+                                      "serverProfileUri": "some_uri", "mpModel": "iLO5", "mpLicenseType": "iLO Advanced"}
 
         try:
             self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
-                                                        "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
-                                                        }])
+                                                                                       "firmwareInstallType": "FirmwareOnlyOfflineMode",
+                                                                                       "installationPolicy": "LowerThanBaseline"}
+                                                            }])
         except ValueError as e:
             self.assertEqual(expected_error_list, e.args[0])
         else:
@@ -367,13 +372,14 @@ class ServerHardwareTest(TestCase):
 
     @mock.patch.object(ResourcePatchMixin, 'patch_request')
     def test_perform_firmware_update_with_no_ilo_advanced_license_should_error(self, mock_patch):
-        uri_rest_call = '{}/firmware/settings'.format(self.uri)
-        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileAttached", "serverProfileUri": None, "powerState": "Off", "mpModel": "iLO5", "mpLicenseType": "iLO"}
+        self._server_hardware.data = {"uri": self.uri, "state": "NoProfileAttached", "serverProfileUri": None,
+                                      "powerState": "Off", "mpModel": "iLO5", "mpLicenseType": "iLO"}
         expected_error_list = ["Requires an HPE iLO Advanced license for monitored hardware"]
         try:
             self._server_hardware.perform_firmware_update([{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/sdsdfsdf",
-                                                        "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
-                                                        }])
+                                                                                       "firmwareInstallType": "FirmwareOnlyOfflineMode",
+                                                                                       "installationPolicy": "LowerThanBaseline"}
+                                                            }])
         except ValueError as e:
             self.assertEqual(expected_error_list, e.args[0])
         else:

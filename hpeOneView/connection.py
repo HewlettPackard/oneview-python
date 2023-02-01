@@ -455,7 +455,7 @@ class connection(object):
             if self._validateVersion is False:
                 self.validateVersion()
         except Exception:
-            raise(HPEOneViewException('Failure during login attempt.\n %s' % traceback.format_exc()))
+            raise (HPEOneViewException('Failure during login attempt.\n %s' % traceback.format_exc()))
 
         cred['loginMsgAck'] = True  # This will handle the login acknowledgement message
         self._cred = cred

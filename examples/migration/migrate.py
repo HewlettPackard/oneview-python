@@ -102,7 +102,7 @@ class ServerHardware(Thread):
             if self._secure_header['Auth'] is None:
                 raise Exception('Auth token for the header is undefined.  No Session ID available. Status: {0}.'.format(r.status_code))
             return self._secure_header
-        except ValueError as e:
+        except ValueError:
             raise Exception('Failure to get a JSON value from the response. Status: {0}.'.format(r.status_code))
         except KeyError:
             raise Exception('Failure to access the sessionID from the response. Status: {0}. JSON: {1}'.format(r.status_code, r.json()))
@@ -224,7 +224,7 @@ class ServerHardware(Thread):
                 else:
                     logging.debug("Exception during get call, response was not set")
                     logging.debug("Unable to get the task tree for {0}".format(full_rest_url))
-            return(task_state, task_status)
+            return (task_state, task_status)
         except ValueError as e:
             raise Exception('Error getting the JSON results from the task. Originating request on URL: {0}. Exception: {1}'.format(calling_url, e))
         except Exception as e:
