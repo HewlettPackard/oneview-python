@@ -33,19 +33,21 @@ config = {
 config = try_load_from_file(config)
 
 oneview_client = OneViewClient(config)
+sas_logical_jbods = oneview_client.sas_logical_jbods 
 
 print("\nGet all SAS logical JBODs")
-all_sas_logical_jbods = oneview_client.sas_logical_jbods.get_all()
-pprint(all_sas_logical_jbods)
+all_sas_logical_jbods =sas_logical_jbods.get_all()
+#pprint(all_sas_logical_jbods)
 
 if all_sas_logical_jbods:
 
     sas_logical_jbod_uri = all_sas_logical_jbods[0]["uri"]
 
     print("\nGet the SAS logical JBOD by uri")
-    sas_logical_jbod_by_uri = oneview_client.sas_logical_jbods.get(id_or_uri=sas_logical_jbod_uri)
-    pprint(sas_logical_jbod_by_uri)
+    sas_logical_jbod_by_uri = oneview_client.sas_logical_jbods.get_by_uri(sas_logical_jbod_uri)
+    pprint(sas_logical_jbod_by_uri.data)
 
-    print("\nGet the list of drives allocated to this SAS logical JBOD")
-    drives = oneview_client.sas_logical_jbods.get_drives(id_or_uri=sas_logical_jbod_uri)
-    pprint(drives)
+    # print("\nGet the list of drives allocated to this SAS logical JBOD")
+    drives = sas_logical_jbod_by_uri.get_drives()
+    # #drives = oneview_client.sas_logical_jbods.get_drives(id_or_uri=sas_logical_jbod_uri)
+    print(drives)
