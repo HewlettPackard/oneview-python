@@ -43,7 +43,7 @@ if drive_enclosures:
     drive_enclosure_uri = first_drive_enclosure["uri"]
 
     print("\nGet the drive enclosure by URI")
-    drive_enclosure_by_uri = oneview_client.drive_enclosures.get(drive_enclosure_uri)
+    drive_enclosure_by_uri = oneview_client.drive_enclosures.get_by_uri(drive_enclosure_uri)
     pprint(drive_enclosure_by_uri)
 
     product_name = first_drive_enclosure['productName']
@@ -52,20 +52,44 @@ if drive_enclosures:
     drive_enclosure_by_product_name = oneview_client.drive_enclosures.get_by('productName', product_name)
     pprint(drive_enclosure_by_product_name)
 
+if drive_enclosure_by_uri:
     print("\nGet the drive enclosure port map")
-    port_map = oneview_client.drive_enclosures.get_port_map(drive_enclosure_uri)
+    port_map = drive_enclosure_by_uri.get_port_map()
     pprint(port_map)
 
     print("\nRefresh the drive enclosure")
     refresh_config = dict(refreshState="RefreshPending")
-    refreshed_drive_enclosure = oneview_client.drive_enclosures.refresh_state(drive_enclosure_uri, refresh_config)
+    refreshed_drive_enclosure = drive_enclosure_by_uri.refresh_state(refresh_config)
     pprint(refreshed_drive_enclosure)
 
     print("\nPower off a drive enclosure")
-    drive_enclosure_powered_off = oneview_client.drive_enclosures.patch(
-        id_or_uri=drive_enclosure_uri,
+    drive_enclosure_powered_off = drive_enclosure_by_uri.patch(
         operation="replace",
         path="/powerState",
         value="Off"
     )
     pprint(drive_enclosure_powered_off)
+
+    print("\nPower on a drive enclosure")
+    drive_enclosure_powered_on = drive_enclosure_by_uri.patch(
+        operation="replace",
+        path="/powerState",
+        value="On"
+    )
+    pprint(drive_enclosure_powered_on)
+
+    print("\nChange Uid state of a drive enclosure")
+    drive_enclosure_uid_on = drive_enclosure_by_uri.patch(
+        operation="replace",
+        path="/uidState",
+        value="On"
+    )
+    pprint(drive_enclosure_uid_on)
+
+    print("\nHard Reset of a drive enclosure")
+    drive_enclosure_hard_reset = drive_enclosure_by_uri.patch(
+        operation="replace",
+        path="/hardResetState",
+        value="Reset"
+    )
+    pprint(drive_enclosure_hard_reset)
