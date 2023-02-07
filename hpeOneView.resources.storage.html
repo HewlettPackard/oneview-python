@@ -85,176 +85,27 @@
 <span id="hpeoneview-resources-storage-drive-enclosures-module"></span><h2>hpeOneView.resources.storage.drive_enclosures module<a class="headerlink" href="#module-hpeOneView.resources.storage.drive_enclosures" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.drive_enclosures.</code><code class="descname">DriveEnclosures</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.drive_enclosures.</code><code class="descname">DriveEnclosures</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a></p>
 <p>Drive Enclosures API client.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This resource is only available on HPE Synergy</p>
 </div>
 <dl class="attribute">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.PORT_MAP_PATH">
-<code class="descname">PORT_MAP_PATH</code><em class="property"> = u'/port-map'</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.PORT_MAP_PATH" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.REFRESH_STATE_PATH">
-<code class="descname">REFRESH_STATE_PATH</code><em class="property"> = u'/refreshState'</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.REFRESH_STATE_PATH" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/drive-enclosures'</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the specified drive enclosure resource by ID or by URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the drive enclosure ID or the drive enclosure URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The drive enclosure.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets information about all drive enclosures. Filtering and sorting are supported with the retrieval of
-managed storage systems. The following storage system attributes can be used with filtering and sorting
-operation: name, model, serialNumber, firmware, status, managedDomain, and state.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
-The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of all drive enclosures.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all drive enclosures that match the filter.</p>
-<p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Field</strong> – field name to filter.</li>
-<li><strong>Value</strong> – value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of drive enclosures.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
+<dl class="attribute">
 <dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map">
-<code class="descname">get_port_map</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures.get_port_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use to get the drive enclosure I/O adapter port to SAS interconnect port connectivity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Drive Enclosure Port Map</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<code class="descname">get_port_map</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.patch">
-<code class="descname">patch</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>operation</em>, <em>path</em>, <em>value</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures.patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.patch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a specific patch operation for the given drive enclosure. If the server supports the particular
-operation, the operation is performed and a response is returned to the caller with the results.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
-<li><strong>operation</strong> – Patch operation</li>
-<li><strong>path</strong> – Path</li>
-<li><strong>value</strong> – Value</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Drive Enclosure.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
+<dl class="attribute">
 <dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state">
-<code class="descname">refresh_state</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>configuration</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures.refresh_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Refreshes a drive enclosure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</li>
-<li><strong>configuration</strong> – Configuration</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Drive Enclosure</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<code class="descname">refresh_state</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -263,8 +114,8 @@ in OneView; it just stops waiting for its completion.</li>
 <span id="hpeoneview-resources-storage-sas-logical-jbod-attachments-module"></span><h2>hpeOneView.resources.storage.sas_logical_jbod_attachments module<a class="headerlink" href="#module-hpeOneView.resources.storage.sas_logical_jbod_attachments" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.sas_logical_jbod_attachments.</code><code class="descname">SasLogicalJbodAttachments</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.sas_logical_jbod_attachments.</code><code class="descname">SasLogicalJbodAttachments</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
 <p>SAS Logical JBOD Attachments API client.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -275,81 +126,6 @@ in OneView; it just stops waiting for its completion.</li>
 <code class="descname">URI</code><em class="property"> = u'/rest/sas-logical-jbod-attachments'</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the SAS Logical JBOD Attachment with the specified ID or URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – ID or URI of the SAS Logical JBOD Attachment.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">SAS Logical JBOD Attachment</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a paginated collection of SAS Logical JBOD Attachments. The collection is based on optional
-sorting and filtering and is constrained by start and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
-The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SAS Logical JBOD Attachments.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all SAS Logical JBOD Attachments that match the filter.</p>
-<p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SAS Logical JBOD Attachments.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -357,115 +133,22 @@ on create time with the oldest entry first.</li>
 <span id="hpeoneview-resources-storage-sas-logical-jbods-module"></span><h2>hpeOneView.resources.storage.sas_logical_jbods module<a class="headerlink" href="#module-hpeOneView.resources.storage.sas_logical_jbods" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.sas_logical_jbods.</code><code class="descname">SasLogicalJbods</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.sas_logical_jbods.</code><code class="descname">SasLogicalJbods</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a></p>
 <p>SAS Logical JBODs API client.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This resource is only available on HPE Synergy</p>
 </div>
 <dl class="attribute">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.DRIVES_PATH">
-<code class="descname">DRIVES_PATH</code><em class="property"> = u'/drives'</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.DRIVES_PATH" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI">
 <code class="descname">URI</code><em class="property"> = u'/rest/sas-logical-jbods'</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the specified SAS logical JBODs resource by ID or by URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the SAS logical JBOD ID or the SAS logical JBOD URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The SAS logical JBOD.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a paginated collection of SAS logical JBODs based on optional sorting and filtering and constrained by
-start and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
-The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of all SAS logical JBODs.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_by" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets all SAS Logical JBODs that match the filter.</p>
-<p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SAS Logical JBODs.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
+<dl class="attribute">
 <dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives">
-<code class="descname">get_drives</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods.get_drives"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the list of drives allocated to this SAS logical JBOD.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the SAS logical JBOD ID or the SAS logical JBOD URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of Drives</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<code class="descname">get_drives</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
