@@ -21,37 +21,39 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.storage.sas_logical_jbod_attachments import SasLogicalJbodAttachments
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceHelper
 
 
 class SasLogicalJbodAttachmentsTest(unittest.TestCase):
+    SAS_LOGICAL_JBOD_ATTACHMENT_ID = 'c8ed5329-f9c1-492c-aa46-b78665ee7734'
+    SAS_LOGICAL_JBOD_ATTACHMENT_URI = '/rest/sas-logical-jbod-attachments/' + SAS_LOGICAL_JBOD_ATTACHMENT_ID
+
     def setUp(self):
         self.host = '127.0.0.1'
         self.connection = connection(self.host, 800)
         self._sas_logical_jbod_attachments = SasLogicalJbodAttachments(self.connection)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
 
-        self._sas_logical_jbod_attachments.get_all(2, 500, filter, sort)
+        mock_get_all.get_all(2, 500, filter, sort)
 
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):
         self._sas_logical_jbod_attachments.get_by('name', 'SAS Logical JBOD Attachment Name')
 
         mock_get_by.assert_called_once_with('name', 'SAS Logical JBOD Attachment Name')
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_called_once(self, mock_get):
-        self._sas_logical_jbod_attachments.get('3518be0e-17c1-4189-8f81-83f3724f6155')
+    @mock.patch.object(Resource, 'get_by_id')
+    def test_get_by_id_called_once(self, mock_get):
+        self._sas_logical_jbod_attachments.get_by_id(self.SAS_LOGICAL_JBOD_ATTACHMENT_ID)
 
-        mock_get.assert_called_once_with('3518be0e-17c1-4189-8f81-83f3724f6155')
+        mock_get.assert_called_once_with(self.SAS_LOGICAL_JBOD_ATTACHMENT_ID)
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_with_uri_called_once(self, mock_get):
-        uri = '/rest/sas-logical-jbods-attachments/3518be0e-17c1-4189-8f81-83f3724f6155'
-        self._sas_logical_jbod_attachments.get(uri)
+    @mock.patch.object(Resource, 'get_by_uri')
+    def test_get_by_uri_called_once(self, mock_get):
+        self._sas_logical_jbod_attachments.get_by_uri(self.SAS_LOGICAL_JBOD_ATTACHMENT_URI)
 
-        mock_get.assert_called_once_with(uri)
+        mock_get.assert_called_once_with(self.SAS_LOGICAL_JBOD_ATTACHMENT_URI)
