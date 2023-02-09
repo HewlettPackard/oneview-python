@@ -48,6 +48,7 @@ logger = logging.getLogger(__name__)
 
 ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 
+
 class connection(object):
     def __init__(self, applianceIp, api_version=None, sslBundle=False, timeout=None, proxy=None):
         self._session = None
@@ -96,8 +97,7 @@ class connection(object):
             splitted = proxy.split(':')
             if len(splitted) != 2:
                 raise ValueError(ONEVIEW_CLIENT_INVALID_PROXY)
-
-            self._proxyHost  = splitted[0]
+            self._proxyHost = splitted[0]
             self._proxyPort = int(splitted[1])
             self._doProxy = True
 
