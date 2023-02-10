@@ -146,22 +146,6 @@ if server:
     server_power = server.update_power_state(configuration)
     print("Successfully changed the power state of server '{name}' to '{powerState}'".format(**server_power))
 
-# Perform a firmware update on server
-# Firmware update can only be done on server hardware(Gen10 and later) with no server profile assigned, and server hardware
-# should be in powered off state
-compliance_configuration = {
-    "firmwareBaselineId": config['server_hardware']['firmware_baseline_id'],
-    "serverUUID": server.data['uuid']
-}
-firmware_update_configuration = [{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/" + config['server_hardware']['firmware_baseline_id'],
-                                  "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
-                                  }]
-if server:
-    firmware_compliance = server.check_firmware_compliance(compliance_configuration)
-    if firmware_compliance['serverFirmwareUpdateRequired']:
-        print("Updating firmware for the server hardware..")
-        server.perform_firmware_update(firmware_update_configuration)
-
 # Refresh server state
 configuration = {
     "refreshState": "RefreshPending"
