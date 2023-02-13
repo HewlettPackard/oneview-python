@@ -115,15 +115,18 @@
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
+<span class="n">ONEVIEW_CLIENT_INVALID_PROXY</span> <span class="o">=</span> <span class="s1">&#39;Invalid Proxy format&#39;</span>
+
 
 <div class="viewcode-block" id="connection"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection">[docs]</a><span class="k">class</span> <span class="nc">connection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">applianceIp</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sslBundle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">applianceIp</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sslBundle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">applianceIp</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxyHost</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxyPort</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_doProxy</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_proxy</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sslTrustAll</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sslBundle</span> <span class="o">=</span> <span class="n">sslBundle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sslTrustedBundle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_trusted_ssl_bundle</span><span class="p">(</span><span class="n">sslBundle</span><span class="p">)</span>
@@ -158,10 +161,14 @@
                 <span class="k">raise</span> <span class="n">HPEOneViewException</span><span class="p">(</span><span class="s1">&#39;Unsupported API Version&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validateVersion</span> <span class="o">=</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="connection.set_proxy"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.set_proxy">[docs]</a>    <span class="k">def</span> <span class="nf">set_proxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxyHost</span><span class="p">,</span> <span class="n">proxyPort</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_proxyHost</span> <span class="o">=</span> <span class="n">proxyHost</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_proxyPort</span> <span class="o">=</span> <span class="n">proxyPort</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_doProxy</span> <span class="o">=</span> <span class="kc">True</span></div>
+<div class="viewcode-block" id="connection.set_proxy"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.set_proxy">[docs]</a>    <span class="k">def</span> <span class="nf">set_proxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">proxy</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">splitted</span> <span class="o">=</span> <span class="n">proxy</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitted</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ONEVIEW_CLIENT_INVALID_PROXY</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proxyHost</span> <span class="o">=</span> <span class="n">splitted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proxyPort</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitted</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_doProxy</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="connection.set_trusted_ssl_bundle"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.set_trusted_ssl_bundle">[docs]</a>    <span class="k">def</span> <span class="nf">set_trusted_ssl_bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sslBundle</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">sslBundle</span><span class="p">:</span>
@@ -524,7 +531,7 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validateVersion</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">validateVersion</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="p">(</span><span class="n">HPEOneViewException</span><span class="p">(</span><span class="s1">&#39;Failure during login attempt.</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()))</span>
+            <span class="k">raise</span><span class="p">(</span><span class="n">HPEOneViewException</span><span class="p">(</span><span class="s1">&#39;Failure during login attempt.</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()))</span>
 
         <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;loginMsgAck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># This will handle the login acknowledgement message</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cred</span> <span class="o">=</span> <span class="n">cred</span>
