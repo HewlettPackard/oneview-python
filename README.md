@@ -164,11 +164,23 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
   
   ```python 
   #Or if you have an active and valid login session and want to use it, define the sessionID in the Credentials:
-  config = 
+  config = {
     "ip": "172.16.102.82",
     "credentials": { 
         "sessionID": "123" 
     } 
+  }
+  ```
+
+  ```python
+  # If you need to use a proxy server, You can add the same in config dictionary as below: <br />
+  config = { 
+    "ip": "172.16.102.82",
+    "proxy": "1.2.3.4:8080",
+    "credentials": {
+        "userName": "Administrator",
+        "password": "secret123"
+    }
   }
   ```
 
