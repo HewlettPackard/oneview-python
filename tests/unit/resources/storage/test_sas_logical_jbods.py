@@ -20,7 +20,7 @@ import unittest
 import mock
 
 from hpeOneView.connection import connection
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 from hpeOneView.resources.storage.sas_logical_jbods import SasLogicalJbods
 
 
@@ -34,7 +34,7 @@ class SasLogicalJbodsTest(unittest.TestCase):
         self.connection = connection(self.host, 800)
         self._resource = SasLogicalJbods(self.connection)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         args = dict(
             start=2,
@@ -46,23 +46,60 @@ class SasLogicalJbodsTest(unittest.TestCase):
         self._resource.get_all(**args)
         mock_get_all.assert_called_once_with(**args)
 
-    @mock.patch.object(ResourceClient, 'get')
+    @mock.patch.object(Resource, 'get_by_uri')
     def test_get_called_once(self, mock_get):
-        self._resource.get(id_or_uri=self.SAS_LOGICAL_JBOD_ID)
-        mock_get.assert_called_once_with(id_or_uri=self.SAS_LOGICAL_JBOD_ID)
+        self._resource.get_by_uri(self.SAS_LOGICAL_JBOD_URI)
+        mock_get.assert_called_once_with(self.SAS_LOGICAL_JBOD_URI)
 
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):
         self._resource.get_by('name', 'SAS Logical JBOD Name')
 
         mock_get_by.assert_called_once_with('name', 'SAS Logical JBOD Name')
 
-    @mock.patch.object(ResourceClient, 'build_uri')
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_drives_called_once(self, mock_get, mock_build_uri):
-        mock_build_uri.return_value = self.SAS_LOGICAL_JBOD_URI
-        self._resource.get_drives(id_or_uri=self.SAS_LOGICAL_JBOD_ID)
+    @mock.patch.object(ResourceHelper, 'do_post')
+    def test_create_called_once(self, mock_do_post):
+        options = {
+            "numPhysicalDrives": 1,
+            "name": "SasLogicalJBOD1",
+            "description": "Sas Jbod description",
+            "minSizeGB": 200,
+            "maxSizeGB": 600,
+            "eraseData": "true",
+            "driveTechnology":
+            {
+                "deviceInterface": "SAS",
+                "driveMedia": "HDD"
+            },
+            "driveEnclosureUris": ["drive_enclosure_uri_list"],
+        }
+        self._resource.create(options)
+        mock_do_post.assert_called_once_with(SasLogicalJbods.URI, options, -1, None)
 
-        expected_uri = self.SAS_LOGICAL_JBOD_URI + SasLogicalJbods.DRIVES_PATH
-        mock_build_uri.assert_called_once_with(id_or_uri=self.SAS_LOGICAL_JBOD_ID)
-        mock_get.assert_called_once_with(id_or_uri=expected_uri)
+    @mock.patch.object(ResourcePatchMixin, 'patch')
+    def test_patch_called_once(self, mock_patch):
+        patch_config = dict(
+            operation="replace",
+            path="/name",
+            value="jbod_new_name"
+        )
+        self._resource.data = {"name": "name",
+                               "uri": self.SAS_LOGICAL_JBOD_URI}
+        self._resource.patch(**patch_config)
+        mock_patch.assert_called_once_with(**patch_config)
+
+    @mock.patch.object(Resource, 'delete')
+    def test_delete_called_once(self, mock_delete):
+        self._resource.delete(self.SAS_LOGICAL_JBOD_ID, force=False, timeout=-1)
+
+        mock_delete.assert_called_once_with(self.SAS_LOGICAL_JBOD_ID, force=False, timeout=-1)
+
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_drives_called_once(self, mock_do_get):
+
+        self._resource.data = {"name": "name",
+                                       "uri": self.SAS_LOGICAL_JBOD_URI}
+        self._resource.get_drives()
+
+        expected_uri = self.SAS_LOGICAL_JBOD_URI + "/drives"
+        mock_do_get.assert_called_once_with(expected_uri)

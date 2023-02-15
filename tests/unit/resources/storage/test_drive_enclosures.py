@@ -21,7 +21,7 @@ import mock
 
 from hpeOneView.connection import connection
 from hpeOneView.resources.storage.drive_enclosures import DriveEnclosures
-from hpeOneView.resources.resource import ResourceClient
+from hpeOneView.resources.resource import Resource, ResourceHelper, ResourcePatchMixin
 
 
 class DriveEnclosuresTest(unittest.TestCase):
@@ -34,7 +34,7 @@ class DriveEnclosuresTest(unittest.TestCase):
         self.connection = connection(self.host, 800)
         self._drive_enclosures = DriveEnclosures(self.connection)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once(self, mock_get_all):
         filter = 'name=TestName'
         sort = 'name:ascending'
@@ -43,51 +43,52 @@ class DriveEnclosuresTest(unittest.TestCase):
 
         mock_get_all.assert_called_once_with(start=2, count=500, filter=filter, sort=sort)
 
-    @mock.patch.object(ResourceClient, 'get_all')
+    @mock.patch.object(ResourceHelper, 'get_all')
     def test_get_all_called_once_with_default(self, mock_get_all):
         self._drive_enclosures.get_all()
         mock_get_all.assert_called_once_with(start=0, count=-1, filter='', sort='')
 
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_by_id_called_once(self, mock_get):
-        self._drive_enclosures.get(self.DRIVE_ENCLOSURE_ID)
-        mock_get.assert_called_once_with(id_or_uri=self.DRIVE_ENCLOSURE_ID)
+    @mock.patch.object(Resource, 'get_by_id')
+    def test_get_by_id_called_once(self, mock_get_by_id):
+        self._drive_enclosures.get_by_id(self.DRIVE_ENCLOSURE_ID)
+        mock_get_by_id.assert_called_once_with(self.DRIVE_ENCLOSURE_ID)
 
-    @mock.patch.object(ResourceClient, 'get_by')
+    @mock.patch.object(Resource, 'get_by')
     def test_get_by_called_once(self, mock_get_by):
         field = 'serialNumber'
         value = 'SN123101'
 
         self._drive_enclosures.get_by(field, value)
-        mock_get_by.assert_called_once_with(field=field, value=value)
+        mock_get_by.assert_called_once_with(field, value)
 
-    @mock.patch.object(ResourceClient, 'build_uri')
-    @mock.patch.object(ResourceClient, 'get')
-    def test_get_port_map_called_once(self, mock_get, mock_build_uri):
-        mock_build_uri.return_value = self.DRIVE_ENCLOSURE_URI
-        self._drive_enclosures.get_port_map(self.DRIVE_ENCLOSURE_ID)
+    @mock.patch.object(ResourceHelper, 'do_get')
+    def test_get_port_map_called_once(self, mock_do_get):
+        self._drive_enclosures.data = {"name": "name",
+                                       "uri": self.DRIVE_ENCLOSURE_URI}
+        self._drive_enclosures.get_port_map()
 
-        expected_uri = self.DRIVE_ENCLOSURE_URI + DriveEnclosures.PORT_MAP_PATH
-        mock_get.assert_called_once_with(id_or_uri=expected_uri)
+        expected_uri = self.DRIVE_ENCLOSURE_URI + "/port-map"
+        mock_do_get.assert_called_once_with(expected_uri)
 
-    @mock.patch.object(ResourceClient, 'build_uri')
-    @mock.patch.object(ResourceClient, 'update')
-    def test_refresh_state_called_once(self, mock_update, mock_build_uri):
+    @mock.patch.object(ResourceHelper, 'update')
+    def test_refresh_state_called_once(self, mock_update):
         refresh_config = dict(refreshState="RefreshPending")
-        mock_build_uri.return_value = self.DRIVE_ENCLOSURE_URI
-        self._drive_enclosures.refresh_state(id_or_uri=self.DRIVE_ENCLOSURE_ID, configuration=refresh_config)
+        self._drive_enclosures.data = {"name": "name",
+                                       "uri": self.DRIVE_ENCLOSURE_URI}
 
-        expected_uri = self.DRIVE_ENCLOSURE_URI + DriveEnclosures.REFRESH_STATE_PATH
+        self._drive_enclosures.refresh_state(refresh_config)
+
+        expected_uri = self.DRIVE_ENCLOSURE_URI + "/refreshState"
         mock_update.assert_called_once_with(uri=expected_uri, resource=refresh_config, timeout=-1)
 
-    @mock.patch.object(ResourceClient, 'patch')
+    @mock.patch.object(ResourcePatchMixin, 'patch')
     def test_patch_called_once(self, mock_patch):
         patch_config = dict(
-            id_or_uri=self.DRIVE_ENCLOSURE_URI,
             operation="replace",
             path="/powerState",
             value="Off"
         )
-
+        self._drive_enclosures.data = {"name": "name",
+                                       "uri": self.DRIVE_ENCLOSURE_URI}
         self._drive_enclosures.patch(**patch_config)
-        mock_patch.assert_called_once_with(timeout=-1, **patch_config)
+        mock_patch.assert_called_once_with(**patch_config)
