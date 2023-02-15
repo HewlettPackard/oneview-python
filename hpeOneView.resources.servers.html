@@ -1412,6 +1412,24 @@ in OneView; it just stops waiting for its completion.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance">
+<code class="descname">check_firmware_compliance</code><span class="sig-paren">(</span><em>configuration</em>, <em>timeout=-1</em>, <em>custom_headers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/server_hardware.html#ServerHardware.check_firmware_compliance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the firmware compliance of a server with the selected firmware baseline.
+Returns the compliance status of each individual component as well as the overall
+firmware compliance status of the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>configuration</strong> – Firmware Compliance Configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.get_all_firmwares">
 <code class="descname">get_all_firmwares</code><span class="sig-paren">(</span><em>filter=u''</em>, <em>start=0</em>, <em>count=-1</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/servers/server_hardware.html#ServerHardware.get_all_firmwares"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.get_all_firmwares" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a list of firmware inventory across all servers. To filter the returned data, specify a filter
@@ -1490,6 +1508,11 @@ on create time with the oldest entry first.</li>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.perform_firmware_update">
+<code class="descname">perform_firmware_update</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.perform_firmware_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.refresh_state">
 <code class="descname">refresh_state</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.refresh_state" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1534,6 +1557,11 @@ in OneView; it just stops waiting for its completion.</li>
 <dl class="attribute">
 <dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.update_power_state">
 <code class="descname">update_power_state</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.update_power_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hpeOneView.resources.servers.server_hardware.ServerHardware.validate_server_hardware_for_firmware_update">
+<code class="descname">validate_server_hardware_for_firmware_update</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.servers.server_hardware.ServerHardware.validate_server_hardware_for_firmware_update" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
