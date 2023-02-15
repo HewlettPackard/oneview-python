@@ -1,6 +1,19 @@
+# 8.2.0(Unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 5000 (OneView v8.2.0)
+
+#### Major changes
+- Added support for Drive Enclosures
+- Added support for SAS logical JBOD
+- Added support for SAS logical JBOD attachments
+- Added support for firmware update on a Server Hardware without profile
+
+#### Bug fixes & Enhancements
+- [#240] (https://github.com/HewlettPackard/oneview-python/issues/240) Problems connecting with OneViewClient
+
 # 8.1.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4600 (OneView v8.1.0)
+Extends support of the SDK to OneView REST API version 4800 (OneView v8.1.0)
 
 #### Major changes
 - Added support for San Manager Update Functionality

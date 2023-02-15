@@ -2,6 +2,7 @@
   "ip": "",
   "api_version": 3400,
   "ssl_certificate": "",
+  "proxy":"",
   "credentials": {
     "userName": "",
     "authLoginDomain": "",
