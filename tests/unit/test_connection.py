@@ -1069,7 +1069,7 @@ class ConnectionTest(unittest.TestCase):
 
     def test_get_connection_ssl_trust_all_with_proxy(self):
 
-        self.connection.set_proxy('10.0.0.1', 3128)
+        self.connection.set_proxy('10.0.0.1:3128')
 
         conn = self.connection.get_connection()
 
@@ -1080,7 +1080,7 @@ class ConnectionTest(unittest.TestCase):
     @patch.object(ssl.SSLContext, 'load_verify_locations')
     def test_get_connection_trusted_ssl_bundle_with_proxy(self, mock_lvl):
 
-        self.connection.set_proxy('10.0.0.1', 3128)
+        self.connection.set_proxy('10.0.0.1:3128')
         self.connection.set_trusted_ssl_bundle('/test')
 
         conn = self.connection.get_connection()
