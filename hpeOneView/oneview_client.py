@@ -118,7 +118,6 @@ from hpeOneView.resources.hypervisors.hypervisor_cluster_profiles import Hypervi
 from hpeOneView.resources.settings.appliance_configuration_timeconfig import ApplianceConfigurationTimeconfig
 from hpeOneView.resources.settings.appliance_ssh_access import ApplianceSshAccess
 
-ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 ONEVIEW_CLIENT_MISSING_IP = 'Oneview ip address is missing'
 
 
@@ -126,9 +125,8 @@ class OneViewClient(object):
 
     def __init__(self, config, sessionID=None):
         self.__connection = connection(config.get('ip'), config.get('api_version'), config.get('ssl_certificate', False),
-                                       config.get('timeout'))
+                                       config.get('timeout'), config.get("proxy"))
         self.__validate_host()
-        self.__set_proxy(config)
         self.__connection.login(config["credentials"], sessionID=sessionID)
         self.__certificate_authority = None
         self.__connections = None
@@ -268,22 +266,6 @@ class OneViewClient(object):
             return cls(config, sessionID=session_id)
         else:
             return cls(config)
-
-    def __set_proxy(self, config):
-        """
-        Set proxy if needed
-        Args:
-            config: Config dict
-        """
-        if "proxy" in config and config["proxy"]:
-            proxy = config["proxy"]
-            splitted = proxy.split(':')
-            if len(splitted) != 2:
-                raise ValueError(ONEVIEW_CLIENT_INVALID_PROXY)
-
-            proxy_host = splitted[0]
-            proxy_port = int(splitted[1])
-            self.__connection.set_proxy(proxy_host, proxy_port)
 
     def __validate_host(self):
         """

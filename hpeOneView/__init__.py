@@ -74,8 +74,8 @@ def main():
     args = parser.parse_args()
     con = connection(args.host)
     if args.proxy:
-        con.set_proxy(args.proxy.split(':')[0], args.proxy.split(':')[1])
-    if args.cert:
+        con.set_proxy(args.proxy)
+    if args.cert:   
         con.set_trusted_ssl_bundle(args.cert)
     credential = {'userName': args.user, 'password': args.passwd}
     con.login(args.host, credential)

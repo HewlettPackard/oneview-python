@@ -46,15 +46,18 @@ from hpeOneView.exceptions import HPEOneViewException
 
 logger = logging.getLogger(__name__)
 
+ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
+
 
 class connection(object):
-    def __init__(self, applianceIp, api_version=None, sslBundle=False, timeout=None):
+    def __init__(self, applianceIp, api_version=None, sslBundle=False, timeout=None, proxy=None):
         self._session = None
         self._host = applianceIp
         self._cred = None
         self._proxyHost = None
         self._proxyPort = None
         self._doProxy = False
+        self.set_proxy(proxy)
         self._sslTrustAll = True
         self._sslBundle = sslBundle
         self._sslTrustedBundle = self.set_trusted_ssl_bundle(sslBundle)
@@ -89,10 +92,14 @@ class connection(object):
                 raise HPEOneViewException('Unsupported API Version')
         self._validateVersion = True
 
-    def set_proxy(self, proxyHost, proxyPort):
-        self._proxyHost = proxyHost
-        self._proxyPort = proxyPort
-        self._doProxy = True
+    def set_proxy(self, proxy):
+        if proxy and len(proxy) > 0:
+            splitted = proxy.split(':')
+            if len(splitted) != 2:
+                raise ValueError(ONEVIEW_CLIENT_INVALID_PROXY)
+            self._proxyHost = splitted[0]
+            self._proxyPort = int(splitted[1])
+            self._doProxy = True
 
     def set_trusted_ssl_bundle(self, sslBundle):
         if sslBundle:
