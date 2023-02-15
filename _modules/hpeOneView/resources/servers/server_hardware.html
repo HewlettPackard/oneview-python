@@ -88,7 +88,6 @@
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">import</span> <span class="nn">re</span>
 
 <span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
 
@@ -97,12 +96,6 @@
 
 <span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceUtilizationMixin</span><span class="p">,</span>
                                            <span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">ensure_resource_client</span><span class="p">)</span>
-
-<span class="n">SERVER_HARWARE_BELOW_GEN10</span> <span class="o">=</span> <span class="s1">&#39;Server Hardware generation is below Gen10&#39;</span>
-<span class="n">SERVER_PROFILE_ATTACHED</span> <span class="o">=</span> <span class="s1">&#39;Server Hardware has a Profile attached&#39;</span>
-<span class="n">SERVER_POWERED_ON</span> <span class="o">=</span> <span class="s1">&#39;Server Hardware is in Powered On state&#39;</span>
-<span class="n">ONGOING_FIRMWARE_UPDATE</span> <span class="o">=</span> <span class="s1">&#39;Server Hardware is undergoing a firmware update&#39;</span>
-<span class="n">ILO_ADVANCED_LICENSE_REQUIRED</span> <span class="o">=</span> <span class="s1">&#39;Requires an HPE iLO Advanced license for monitored hardware&#39;</span>
 
 
 <div class="viewcode-block" id="ServerHardware"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware">[docs]</a><span class="k">class</span> <span class="nc">ServerHardware</span><span class="p">(</span><span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">ResourceUtilizationMixin</span><span class="p">,</span> <span class="n">Resource</span><span class="p">):</span>
@@ -401,72 +394,7 @@
         <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">?ip=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-
-<div class="viewcode-block" id="ServerHardware.check_firmware_compliance"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance">[docs]</a>    <span class="k">def</span> <span class="nf">check_firmware_compliance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Checks the firmware compliance of a server with the selected firmware baseline.</span>
-<span class="sd">        Returns the compliance status of each individual component as well as the overall</span>
-<span class="sd">        firmware compliance status of the server.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            configuration: Firmware Compliance Configuration</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            Resource</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/firmware-compliance&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
-
-    <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">validate_server_hardware_for_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Performs a validation for the prerequisites before firmware update.</span>
-<span class="sd">        Checks if the server hardware is in powered off state, No server profile attached to server</span>
-<span class="sd">        hardware, server hardware model is Gen10 or above, server hardware has advanced ilo license type.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span>
-        <span class="n">server_profile_uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;serverProfileUri&quot;</span><span class="p">]</span>
-        <span class="n">power_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;powerState&quot;</span><span class="p">]</span>
-        <span class="n">generation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;mpModel&quot;</span><span class="p">]</span>
-        <span class="n">license_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;mpLicenseType&quot;</span><span class="p">]</span>
-
-        <span class="n">validation_error_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;\d+$&quot;</span><span class="p">,</span> <span class="n">generation</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="n">validation_error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SERVER_HARWARE_BELOW_GEN10</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">server_profile_uri</span><span class="p">:</span>
-            <span class="n">validation_error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SERVER_PROFILE_ATTACHED</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;UpdatingFirmware&quot;</span><span class="p">:</span>
-            <span class="n">validation_error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ONGOING_FIRMWARE_UPDATE</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">power_state</span> <span class="o">!=</span> <span class="s2">&quot;Off&quot;</span><span class="p">:</span>
-            <span class="n">validation_error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SERVER_POWERED_ON</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">license_type</span> <span class="o">!=</span> <span class="s2">&quot;iLO Advanced&quot;</span><span class="p">:</span>
-            <span class="n">validation_error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ILO_ADVANCED_LICENSE_REQUIRED</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">validation_error_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">validation_error_list</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">perform_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Performs a specific patch operation on the firmware settings for the given server.</span>
-<span class="sd">        If the server supports the particular operation, the operation is performed and a response is</span>
-<span class="sd">        returned to the caller with the results.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            configuration: Firmware Update Configuration</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            Updated Resource</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/firmware/settings&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_server_hardware_for_firmware_update</span><span class="p">():</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch_request</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
