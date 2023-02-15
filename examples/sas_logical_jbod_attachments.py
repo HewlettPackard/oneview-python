@@ -43,11 +43,11 @@ if sas_logical_jbod_attachments:
     # Get by URI
     print("\nGet a SAS logical JBOD attachment by URI")
     uri = sas_logical_jbod_attachments[0]['uri']
-    sas_logical_jbod_attachment_by_uri = oneview_client.sas_logical_jbod_attachments.get(uri)
+    sas_logical_jbod_attachment_by_uri = oneview_client.sas_logical_jbod_attachments.get_by_uri(uri)
     pprint(sas_logical_jbod_attachment_by_uri)
 
     # Get by name
     print("\nGet a SAS logical JBOD attachment by name")
     name = sas_logical_jbod_attachments[0]['name']
-    sas_logical_jbod_attachment_by_name = oneview_client.sas_logical_jbod_attachments.get_by('name', name)
+    sas_logical_jbod_attachment_by_name = oneview_client.sas_logical_jbod_attachments.get_by_name(name)
     pprint(sas_logical_jbod_attachment_by_name)

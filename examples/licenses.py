@@ -59,7 +59,7 @@ license = oneview_client.licenses.get_by_id(uri)
 pprint(license)
 
 # Delete License by ID
-print ("\n\n   ********** Delete the license by ID:  **********")
+print("\n\n   ********** Delete the license by ID:  **********")
 print(uri)
 oneview_client.licenses.delete(uri)
 try:
