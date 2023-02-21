@@ -1,3 +1,47 @@
+# 8.2.0
+#### Notes
+Extends support of the SDK to OneView REST API version 4800 (OneView v8.2.0)
+
+##### Features supported with the current release
+-  
+- # 8.2.0(Unreleased) 
+- #### Bug Fixes & Enhancements 
+- #### Major Changes 
+- #### Notes 
+- Added Support For Drive Enclosures 
+- Added Support For Firmware Update On A Server Hardware Without Profile 
+- Added Support For Sas Logical Jbod 
+- Added Support For Sas Logical Jbod Attachments 
+- Certificates Server 
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0) 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Drivers 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Interconnect Types 
+- Interconnects 
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Volume Attachments 
+- Storage Volume Templates 
+- Tasks 
+- Uplink Sets 
+- Volumes 
+- [#240] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/240) Problems Connecting With Oneviewclient 
 # 8.2.0(Unreleased)
 #### Notes
 Extends support of the SDK to OneView REST API version 5000 (OneView v8.2.0)
