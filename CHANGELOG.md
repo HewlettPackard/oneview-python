@@ -67,6 +67,139 @@ Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
 - Version 
 - Volumes
 
+# 8.2.0
+#### Notes
+Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
+
+#### Major Changes
+- Added Support For Drive Enclosures
+- Added Support For Sas Logical Jbod
+- Added Support For Sas Logical Jbod Attachments
+- Added Support For Firmware Update On A Server Hardware Without Profile
+
+#### Bug Fixes & Enhancements
+- [#240] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/240) Problems Connecting With Oneviewclient
+
+##### Features Supported With The Current Release
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server 
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
+- Labels 
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Rack Managers
+- Repositories 
+- Restores 
+- San Managers
+- San Providers
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates 
+- Tasks 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes
+
+# 8.1.0
+#### Notes
+Extends Support Of The Sdk To Oneview Rest Api Version 4800 (Oneview V8.1.0)
+
+#### Major Changes
+- Added Support For San Manager Update Functionality
+- Removed Support For Image Streamer Cleanup
+
+##### Features Supported With The Current Release
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server 
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
+- Labels 
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Rack Managers
+- Repositories 
+- Restores 
+- San Managers
+- San Providers
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates 
+- Tasks 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes
+
 # 8.1.0
 #### Notes
 Extends Support Of The Sdk To Oneview Rest Api Version 4800 (Oneview V8.1.0)
