@@ -1,25 +1,81 @@
-# 8.2.0(Unreleased)
+# 8.2.0
 #### Notes
-Extends support of the SDK to OneView REST API version 5000 (OneView v8.2.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
 
-#### Major changes
-- Added support for Drive Enclosures
-- Added support for SAS logical JBOD
-- Added support for SAS logical JBOD attachments
-- Added support for firmware update on a Server Hardware without profile
+#### Major Changes
+- Added Support For Drive Enclosures
+- Added Support For Sas Logical Jbod
+- Added Support For Sas Logical Jbod Attachments
+- Added Support For Firmware Update On A Server Hardware Without Profile
 
-#### Bug fixes & Enhancements
-- [#240] (https://github.com/HewlettPackard/oneview-python/issues/240) Problems connecting with OneViewClient
+#### Bug Fixes & Enhancements
+- [#240] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/240) Problems Connecting With Oneviewclient
+
+##### Features Supported With The Current Release
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server 
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
+- Labels 
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Rack Managers
+- Repositories 
+- Restores 
+- San Managers
+- San Providers
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates 
+- Tasks 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes
 
 # 8.1.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4800 (OneView v8.1.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 4800 (Oneview V8.1.0)
 
-#### Major changes
-- Added support for San Manager Update Functionality
-- Removed support for Image Streamer Cleanup
+#### Major Changes
+- Added Support For San Manager Update Functionality
+- Removed Support For Image Streamer Cleanup
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
 - Appliance Health Status 
 - Appliance Network Interfaces 
@@ -77,13 +133,13 @@ Extends support of the SDK to OneView REST API version 4800 (OneView v8.1.0)
 
 # 8.0.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4600 (OneView v8.0.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 4600 (Oneview V8.0.0)
 
-#### Major changes
-- Added support for Rack Manager resources
-- Added support for San Manager resources
+#### Major Changes
+- Added Support For Rack Manager Resources
+- Added Support For San Manager Resources
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
 - Appliance Health Status 
 - Appliance Network Interfaces 
@@ -141,9 +197,9 @@ Extends support of the SDK to OneView REST API version 4600 (OneView v8.0.0)
 
 # 7.2.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4400 (OneView v7.2.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 4400 (Oneview V7.2.0)
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
 - Appliance Health Status 
 - Appliance Network Interfaces 
@@ -197,9 +253,9 @@ Extends support of the SDK to OneView REST API version 4400 (OneView v7.2.0)
 - Volumes 
 # 7.1.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4200 (OneView v7.1.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 4200 (Oneview V7.1.0)
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
 - Appliance Health Status 
 - Appliance Network Interfaces 
@@ -253,9 +309,9 @@ Extends support of the SDK to OneView REST API version 4200 (OneView v7.1.0)
 - Volumes 
 # 7.0.0
 #### Notes
-Extends support of the SDK to OneView REST API version 4000 (OneView v7.0.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 4000 (Oneview V7.0.0)
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
 - Appliance Health Status 
 - Appliance Network Interfaces 
@@ -309,33 +365,33 @@ Extends support of the SDK to OneView REST API version 4000 (OneView v7.0.0)
 - Volumes 
 # 6.6.0
 #### Notes
-Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
+Extends Support Of The Sdk To Oneview Rest Api Version 3800 (Oneview V6.60)
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig
 - Appliance Health Status
 - Appliance Network Interfaces
 - Appliance Node Information
 - Appliance Proxy Configuration
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Bundles
 - Firmware Drivers
-- HA Nodes
+- Ha Nodes
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Index Resources
 - Interconnects
 - Interconnect Types
@@ -343,7 +399,7 @@ Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Repositories
 - Restores
 - Scopes
@@ -357,38 +413,38 @@ Extends support of the SDK to OneView REST API version 3800 (OneView v6.60)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink Set
 - Users
 - Version
 # 6.5.0
 #### Notes
-Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
+Extends Support Of The Sdk To Oneview Rest Api Version 3600 (Oneview V6.50)
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig
 - Appliance Health Status
 - Appliance Network Interfaces
 - Appliance Node Information
 - Appliance Proxy Configuration
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Bundles
 - Firmware Drivers
-- HA Nodes
+- Ha Nodes
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Index Resources
 - Interconnects
 - Interconnect Types
@@ -396,7 +452,7 @@ Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Repositories
 - Restores
 - Scopes
@@ -410,39 +466,39 @@ Extends support of the SDK to OneView REST API version 3600 (OneView v6.50)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink Set
 - Users
 - Version
   
 # 6.4.0
 #### Notes
-Extends support of the SDK to OneView REST API version 3400 (OneView v6.40)
+Extends Support Of The Sdk To Oneview Rest Api Version 3400 (Oneview V6.40)
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig
 - Appliance Health Status
 - Appliance Network Interfaces
 - Appliance Node Information
 - Appliance Proxy Configuration
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Bundles
 - Firmware Drivers
-- HA Nodes
+- Ha Nodes
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Index Resources
 - Interconnects
 - Interconnect Types
@@ -450,7 +506,7 @@ Extends support of the SDK to OneView REST API version 3400 (OneView v6.40)
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Repositories
 - Restores
 - Scopes
@@ -464,42 +520,42 @@ Extends support of the SDK to OneView REST API version 3400 (OneView v6.40)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink Set
 - Users
 - Version
 
 # 6.3.0
 #### Notes
-Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
+Extends Support Of The Sdk To Oneview Rest Api Version 3200 (Oneview V6.30)
 
-#### Bug fixes & Enhancements
-- [#173] (https://github.com/HewlettPackard/oneview-python/issues/73) is this a typo https://github.com/HewlettPackard/oneview-python/blob/master/examples/server_hardware.py#L200-201
+#### Bug Fixes & Enhancements
+- [#173] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/73) Is This A Typo Https://Github.Com/Hewlettpackard/Oneview-Python/Blob/Master/Examples/Server_Hardware.Py#L200-201
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig
 - Appliance Health Status
 - Appliance Network Interfaces
 - Appliance Node Information
 - Appliance Proxy Configuration
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Bundles
 - Firmware Drivers
-- HA Nodes
+- Ha Nodes
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Index Resources
 - Interconnects
 - Interconnect Types
@@ -507,7 +563,7 @@ Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Restores
 - Scopes
 - Server Hardware
@@ -520,39 +576,39 @@ Extends support of the SDK to OneView REST API version 3200 (OneView v6.30)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink Set
 - Users
 - Version
 
 # 6.2.0
 #### Notes
-Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
+Extends Support Of The Sdk To Oneview Rest Api Version 3000 (Oneview V6.20)
 
-#### Bug fixes & Enhancements
-- [#157] (https://github.com/HewlettPackard/oneview-python/issues/157) Add appliance ha-nodes endpoint to sdk
+#### Bug Fixes & Enhancements
+- [#157] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/157) Add Appliance Ha-Nodes Endpoint To Sdk
 
-##### Features supported with the current release
+##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig
 - Appliance Health Status
 - Appliance Node Information
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
-- HA Nodes
+- Ha Nodes
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Index Resources
 - Interconnects
 - Interconnect Types
@@ -560,7 +616,7 @@ Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Restores
 - Scopes
 - Server Hardware
@@ -573,27 +629,27 @@ Extends support of the SDK to OneView REST API version 3000 (OneView v6.20)
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink Set
 - Users
 - Version
 
 # 6.1.0
 #### Notes
-Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and ImageStreamer REST API version 2020 (I3S v6.10).
+Extends Support Of The Sdk To Oneview Rest Api Version 2800 (Oneview V6.10) And Imagestreamer Rest Api Version 2020 (I3S V6.10).
 
-#### Bug fixes & Enhancements
-- [#139] (https://github.com/HewlettPackard/oneview-python/issues/139) Hardware needs attachment to existing SCOPE and PROFILE
-- [#140] (https://github.com/HewlettPackard/oneview-python/issues/140) Detach a profile from the hardware resource
-- [#145] (https://github.com/HewlettPackard/oneview-python/issues/145) get_by_uri() method in scope is not listing few category resources like drive-enclosures & sas-interconnects
+#### Bug Fixes & Enhancements
+- [#139] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/139) Hardware Needs Attachment To Existing Scope And Profile
+- [#140] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/140) Detach A Profile From The Hardware Resource
+- [#145] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/145) Get_By_Uri() Method In Scope Is Not Listing Few Category Resources Like Drive-Enclosures & Sas-Interconnects
 
-#### Features supported
+#### Features Supported
 
 - Appliance Configuration Timeconfig
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Artifact Bundles
 - Certificates Server
 - Connection Templates
@@ -601,16 +657,16 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Deployment Groups
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Golden Images
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Index Resources
 - Interconnects
 - Interconnect Types
@@ -618,10 +674,10 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
-- OS Build Plans
-- OS Deployment Plans
-- OS Volumes
+- Network Set
+- Os Build Plans
+- Os Deployment Plans
+- Os Volumes
 - Restores
 - Scopes
 - Server Hardware
@@ -634,43 +690,43 @@ Extends support of the SDK to OneView REST API version 2800 (OneView v6.10) and 
 - Storage Volume Attachments
 - Storage Volume 
 - Tasks
-- Uplink set
+- Uplink Set
 - Users
 - Version
 
 # 6.0.0
 #### Notes
-Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and ImageStreamer REST API version 2010 (I3S v6.00).
+Extends Support Of The Sdk To Oneview Rest Api Version 2600 (Oneview V6.00) And Imagestreamer Rest Api Version 2010 (I3S V6.00).
 
-#### Features supported
+#### Features Supported
 - Appliance Configuration Timeconfig
-- Appliance SNMPv1 Trap Destinations
-- Appliance SNMPv3 Trap Destinations
-- Appliance SNMPv3 Users
-- Appliance SSH Access
-- Appliance Time and Locale Configuration
+- Appliance Snmpv1 Trap Destinations
+- Appliance Snmpv3 Trap Destinations
+- Appliance Snmpv3 Users
+- Appliance Ssh Access
+- Appliance Time And Locale Configuration
 - Artifact Bundles
 - Certificates Server
 - Connection Templates
 - Deployment Plans
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
-- ID Pools
-- ID Pool IPv4 Range
-- ID Pool IPv4 Subnets
+- Id Pools
+- Id Pool Ipv4 Range
+- Id Pool Ipv4 Subnets
 - Interconnects
 - Interconnect Types
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
-- OS Deployment Plans
+- Network Set
+- Os Deployment Plans
 - Restores
 - Scopes
 - Server Hardware
@@ -683,24 +739,24 @@ Extends support of the SDK to OneView REST API version 2600 (OneView v6.00) and 
 - Storage Volume Attachments
 - Storage Volume 
 - Tasks
-- Uplink set
+- Uplink Set
 
 # 5.6.0
 #### Notes
-Extends support of the SDK to OneView REST API version 2400 (OneView v5.60).
+Extends Support Of The Sdk To Oneview Rest Api Version 2400 (Oneview V5.60).
 
-#### Bug fixes & Enhancements
-- [#110] (https://github.com/HewlettPackard/oneview-python/issues/110) certificate_authority.get() does not return certificate string
+#### Bug Fixes & Enhancements
+- [#110] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/110) Certificate_Authority.Get() Does Not Return Certificate String
 
-#### Features supported with the current release
-- Appliance SNMPv1 Trap Destinations
+#### Features Supported With The Current Release
+- Appliance Snmpv1 Trap Destinations
 - Connection Templates
 - Certificates Server
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
@@ -709,8 +765,8 @@ Extends support of the SDK to OneView REST API version 2400 (OneView v5.60).
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
-- OS Deployment Plans
+- Network Set
+- Os Deployment Plans
 - Restores
 - Scopes
 - Server Hardware
@@ -723,26 +779,26 @@ Extends support of the SDK to OneView REST API version 2400 (OneView v5.60).
 - Storage Volume Attachments
 - Storage Volume 
 - Tasks
-- Uplink set
+- Uplink Set
 
 # 5.5.0
 #### Notes
-Extends support of the SDK to OneView REST API version 2200 (OneView v5.50) and ImageStreamer REST API version 2000 (I3S v5.40).
+Extends Support Of The Sdk To Oneview Rest Api Version 2200 (Oneview V5.50) And Imagestreamer Rest Api Version 2000 (I3S V5.40).
 
-#### Bug fixes & Enhancements
-- [#103] (https://github.com/HewlettPackard/oneview-python/issues/103) enclosure_groups.create() Does not take valid data and returns JSON error.
+#### Bug Fixes & Enhancements
+- [#103] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/103) Enclosure_Groups.Create() Does Not Take Valid Data And Returns Json Error.
 
-#### Features supported with the current release
-- Appliance SNMPv1 Trap Destinations
+#### Features Supported With The Current Release
+- Appliance Snmpv1 Trap Destinations
 - Artifact Bundles
 - Certificates Server
 - Connection Templates
-- Deployment plan
+- Deployment Plan
 - Enclosures
 - Enclosure Groups
 - Ethernet Network
-- FC Network
-- FCoE Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
@@ -768,33 +824,33 @@ Extends support of the SDK to OneView REST API version 2200 (OneView v5.50) and 
 
 # 5.4.0
 #### Notes
-Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
+Extends Support Of The Sdk To Oneview Rest Api Version 2000 (Oneview V5.40).
 
 #### Breaking Changes
-  Enhancement made in this version breaks the previous version of the SDK.
-  From this version onwards, hpOneView module name is renamed to hpeOneView and all the oneview libraries and examples will import the hpeOneView module as parent.
+  Enhancement Made In This Version Breaks The Previous Version Of The Sdk.
+  From This Version Onwards, Hponeview Module Name Is Renamed To Hpeoneview And All The Oneview Libraries And Examples Will Import The Hpeoneview Module As Parent.
 
-  E.g.
+  E.G.
 ```
-       from hpeOneView.oneview_client import OneViewClient
-       oneview_client = OneViewClient(config)              # Create OneView client
-       fc_networks = oneview_client.fc_networks            # Get FCNetowrk resource client
+       From Hpeoneview.Oneview_Client Import Oneviewclient
+       Oneview_Client = Oneviewclient(Config)              # Create Oneview Client
+       Fc_Networks = Oneview_Client.Fc_Networks            # Get Fcnetowrk Resource Client
 ```
 
-#### Major changes
-- Refactored base class to take default API version as per provided Oneview appliance.
-- Removed provision of "type" field as those are optional from API1600.
-- Added support for automatic publish of Docker Image when there is a new release in GitHub
+#### Major Changes
+- Refactored Base Class To Take Default Api Version As Per Provided Oneview Appliance.
+- Removed Provision Of "Type" Field As Those Are Optional From Api1600.
+- Added Support For Automatic Publish Of Docker Image When There Is A New Release In Github
 
-#### Features supported with the current release
-- Appliance SNMPv1 Trap Destinations
+#### Features Supported With The Current Release
+- Appliance Snmpv1 Trap Destinations
 - Connection Templates
 - Certificates Server
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
@@ -803,7 +859,7 @@ Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Restores
 - Scopes
 - Server Hardware
@@ -816,26 +872,26 @@ Extends support of the SDK to OneView REST API version 2000 (OneView v5.40).
 - Storage Volume Attachments
 - Storage Volume 
 - Tasks
-- Uplink set
+- Uplink Set
 
-#### Bug fixes & Enhancements
-- [#81](https://github.com/HewlettPackard/oneview-python/issues/81) EthernetNetworks Update does not work.
-- [#91](https://github.com/HewlettPackard/oneview-python/issues/91) Change Password Sample?
+#### Bug Fixes & Enhancements
+- [#81](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/81) Ethernetnetworks Update Does Not Work.
+- [#91](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/91) Change Password Sample?
 
 
 # 5.3.0
 #### Notes
-Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
+Extends Support Of The Sdk To Oneview Rest Api Version 1800 (Oneview V5.30).
 
-#### Features supported with the current release
-- Appliance SNMPv1 Trap Destinations
+#### Features Supported With The Current Release
+- Appliance Snmpv1 Trap Destinations
 - Certificates Server
 - Connection Templates
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
@@ -844,7 +900,7 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Group
-- Network set
+- Network Set
 - Restores
 - Scopes
 - Server Hardware
@@ -857,34 +913,34 @@ Extends support of the SDK to OneView REST API version 1800 (OneView v5.30).
 - Storage Volume Attachments
 - Storage Volume 
 - Tasks
-- Uplink set
+- Uplink Set
 
 # 5.2.1
 #### Notes
-Added support to OneView 'Restores' feature for REST API versions 800, 1000, 1200 and 1600.
-Added code to handle login acknowledgement.
+Added Support To Oneview 'Restores' Feature For Rest Api Versions 800, 1000, 1200 And 1600.
+Added Code To Handle Login Acknowledgement.
 
-#### Bug fixes & Enhancements
-- [#21](https://github.com/HewlettPackard/oneview-python/issues/21) In correct endpoint passed when uploading a downloaded appliance backup
-- [#23](https://github.com/HewlettPackard/oneview-python/issues/23) MISSING_JSON_TYPE error code is thrown when attempting to restore the appliance
-- [#58](https://github.com/HewlettPackard/oneview-python/issues/58) loginMsgAck is not handled in python code
-- [#60](https://github.com/HewlettPackard/oneview-python/issues/60) SPT type for api1600 should be ServerProfileTemplateV8
-- [#67](https://github.com/HewlettPackard/oneview-python/issues/67) raise exception with proper error message when ip is not provided in config
+#### Bug Fixes & Enhancements
+- [#21](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/21) In Correct Endpoint Passed When Uploading A Downloaded Appliance Backup
+- [#23](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/23) Missing_Json_Type Error Code Is Thrown When Attempting To Restore The Appliance
+- [#58](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/58) Loginmsgack Is Not Handled In Python Code
+- [#60](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/60) Spt Type For Api1600 Should Be Serverprofiletemplatev8
+- [#67](Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/67) Raise Exception With Proper Error Message When Ip Is Not Provided In Config
 
 # 5.2.0
 #### Notes
-Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
+Extends Support Of The Sdk To Oneview Rest Api Version 1600 (Oneview V5.20).
 
-#### Features supported with the current release
-- Appliance SNMPv1 Trap Destinations
+#### Features Supported With The Current Release
+- Appliance Snmpv1 Trap Destinations
 - Artifact Bundles
 - Certificates Server
-- Deployment plan
+- Deployment Plan
 - Enclosures
 - Enclosure Groups
-- Ethernet network
-- FC network
-- FCOE network
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Firmware Drivers
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
@@ -893,7 +949,7 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Logical Enclosures
 - Logical Interconnects
 - Logical Interconnect Groups
-- Network set
+- Network Set
 - Scopes
 - Server Hardware
 - Server Hardware Types
@@ -905,89 +961,89 @@ Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
 - Storage Volume Attachments
 - Storage Volume
 - Tasks
-- Uplink set
+- Uplink Set
 
 # 5.1.1
 
-#### Bug fixes & Enhancements
-- #34 Handle exception of get_by_aliasname method in certificates_server resource and return resource object
+#### Bug Fixes & Enhancements
+- #34 Handle Exception Of Get_By_Aliasname Method In Certificates_Server Resource And Return Resource Object
 
 # 5.1.0
 #### Notes
-Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
+Extends Support Of The Sdk To Oneview Rest Api Version 800, 1000 And 1200.
 
-#### Features supported
+#### Features Supported
 - Certificates Server
 - Hypervisor Cluster Profiles
 - Hypervisor Managers
 
 # 5.0.0
 #### Notes
-Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
+Extends Support Of The Sdk To Oneview Rest Api Version 1200 (Oneview V5.00).
 
-#### Major changes
- 1. Extending support of the SDK to API version 1200.
- 2. Refactored base classes to make resource data available with the resource object.
-    This will help to add more helper methods for the resources and hide data complexity from the user.
- 3. Introduced mixin classes to include the optional features of the resources.
- 4. Added below methods for all the resources by introducing a base class for the resource client classes.
-    Appropriate exception will be raised, if any of the features are not available for a resource.
+#### Major Changes
+ 1. Extending Support Of The Sdk To Api Version 1200.
+ 2. Refactored Base Classes To Make Resource Data Available With The Resource Object.
+    This Will Help To Add More Helper Methods For The Resources And Hide Data Complexity From The User.
+ 3. Introduced Mixin Classes To Include The Optional Features Of The Resources.
+ 4. Added Below Methods For All The Resources By Introducing A Base Class For The Resource Client Classes.
+    Appropriate Exception Will Be Raised, If Any Of The Features Are Not Available For A Resource.
     
     | Method      | Returns               |
     | ----------- | --------------------- |
-    | create      | resource object       |
-    | update      | resource object       |
-    | delete      | boolean               |
-    | get_all     | list of resource data |
-    | get_by_name | resource object       |
-    | get_by_uri  | resource object       |
-    | get_by      | resource data         |
+    | Create      | Resource Object       |
+    | Update      | Resource Object       |
+    | Delete      | Boolean               |
+    | Get_All     | List Of Resource Data |
+    | Get_By_Name | Resource Object       |
+    | Get_By_Uri  | Resource Object       |
+    | Get_By      | Resource Data         |
     
 #### Breaking
-  Enhancement made in this version breaks the previous version of the SDK.
-  From this version onwards, create/update/get_by_name/get_by_uri will return an object of the resource instead of data.
+  Enhancement Made In This Version Breaks The Previous Version Of The Sdk.
+  From This Version Onwards, Create/Update/Get_By_Name/Get_By_Uri Will Return An Object Of The Resource Instead Of Data.
 
-  E.g.
+  E.G.
 ```
-       oneview_client = OneViewClient(config)              # Create OneView client
-       fc_networks = oneview_client.fc_networks            # Get FCNetowrk resource client
-       fc_network = fc_networks.get_by_name(name) / create # Get an existing FCNetwork's object by it's name or create one
-       fc_network.update(update_data)                      # Update FCNetwork
-       fc_network.delete()                                 # Delete FCNetwork
+       Oneview_Client = Oneviewclient(Config)              # Create Oneview Client
+       Fc_Networks = Oneview_Client.Fc_Networks            # Get Fcnetowrk Resource Client
+       Fc_Network = Fc_Networks.Get_By_Name(Name) / Create # Get An Existing Fcnetwork'S Object By It'S Name Or Create One
+       Fc_Network.Update(Update_Data)                      # Update Fcnetwork
+       Fc_Network.Delete()                                 # Delete Fcnetwork
 ```
-  Refer example directory for more examples.
+  Refer Example Directory For More Examples.
 
-#### Features supported with the current release
-- Connection template
-- Deployment plan
+#### Features Supported With The Current Release
+- Connection Template
+- Deployment Plan
 - Enclosure
-- Enclosure group
-- Ethernet network
-- FC network
-- FCOE network
+- Enclosure Group
+- Ethernet Network
+- Fc Network
+- Fcoe Network
 - Interconnect
-- Interconnect type
-- Internal link set
-- Logical enclosure
-- Logical switch group
-- Logical interconnect
-- Logical interconnect group
-- Managed SAN
-- Network set
-- OS deployment plan
-- SAS interconnect
-- SAS interconnect type
-- SAS logical interconnect
-- SAS logical interconnect group
-- Network set
-- Server hardware
-- Server hardware type
-- Server profile
-- Server profile template
-- Storage pool
-- Storage system
-- Storage volume
-- Storage volume attachment
-- Storage volume template
-- Switch type
-- Uplink set
+- Interconnect Type
+- Internal Link Set
+- Logical Enclosure
+- Logical Switch Group
+- Logical Interconnect
+- Logical Interconnect Group
+- Managed San
+- Network Set
+- Os Deployment Plan
+- Sas Interconnect
+- Sas Interconnect Type
+- Sas Logical Interconnect
+- Sas Logical Interconnect Group
+- Network Set
+- Server Hardware
+- Server Hardware Type
+- Server Profile
+- Server Profile Template
+- Storage Pool
+- Storage System
+- Storage Volume
+- Storage Volume Attachment
+- Storage Volume Template
+- Switch Type
+- Uplink Set
