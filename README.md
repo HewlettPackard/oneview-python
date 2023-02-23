@@ -1,4 +1,4 @@
-# HPE OneView SDK for Python vjvhjghjss
+# HPE OneView SDK for Python
 
 ## Build Status 
 
