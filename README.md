@@ -1,4 +1,4 @@
-# HPE OneView SDK for Python I am changing it
+# HPE OneView SDK for Python
 
 ## Build Status 
 
