@@ -1,4 +1,4 @@
-# HPE OneView SDK for Python dhfgsd
+# HPE OneView SDK for Python
 
 ## Build Status 
 
