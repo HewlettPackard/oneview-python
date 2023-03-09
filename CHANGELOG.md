@@ -22,7 +22,8 @@ Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
 - Appliance Snmpv3 Users 
 - Appliance Ssh Access 
 - Appliance Time And Locale Configuration 
-- Certificates Server 
+- Certificates Server
+- Drive Enclosures
 - Connection Templates 
 - Enclosure Groups 
 - Enclosures 
@@ -50,6 +51,12 @@ Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
 - Restores 
 - San Managers
 - San Providers
+- SAS Interconnects
+- SAS Interconnect Types
+- SAS Logical Interconnect Groups
+- SAS Logical Interconnects
+- SAS Logical JBODs
+- SAS Logical JBOD Attachments
 - Scopes 
 - Server Hardware 
 - Server Hardware Types 
@@ -60,7 +67,7 @@ Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
 - Storage Templates 
 - Storage Volume 
 - Storage Volume Attachments 
-- Storage Volume Templates 
+- Storage Volume Templates
 - Tasks 
 - Uplink Sets 
 - Users 
