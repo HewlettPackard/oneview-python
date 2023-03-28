@@ -17,6 +17,7 @@ jobs:
         env:
           github_token: ${{ secrets.CD_TOKEN }}
           tag_prefix: true
+          
           custom_tag: "v8.2.0"
       - name: Display
         run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
