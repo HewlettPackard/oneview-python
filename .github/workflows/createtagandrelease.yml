@@ -15,9 +15,9 @@ jobs:
         id: tag_and_prepare_release
         uses: miguelfito/github-bump-and-tag-action@v1
         env:
-          github_token: ${{ secrets.CD_TOKEN }}
-          tag_prefix: true
-          custom_tag: "v8.3.0"
+          GITHUB_TOKEN: ${{ secrets.CD_TOKEN }}
+          WITH_V: true
+          CUSTOM_TAG: "v8.3.0"
       - name: Display
         run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
       - uses: actions/checkout@v2
