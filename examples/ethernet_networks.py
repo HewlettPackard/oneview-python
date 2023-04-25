@@ -163,7 +163,7 @@ ethernet_network.delete()
 print("Successfully deleted ethernet-network")
 
 # Create networks for automation 'mgmt_nw' and 'iscsi_nw'
-mgmt_subnet = '10.1.0.0'
+mgmt_subnet = '172.27.0.0'
 iscsi_subnet = '192.168.10.0'
 all_subnets = oneview_client.id_pools_ipv4_subnets.get_all()
 
