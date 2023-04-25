@@ -19,6 +19,7 @@ from pprint import pprint
 from hpeOneView.oneview_client import OneViewClient
 from hpeOneView.exceptions import HPEOneViewException
 from config_loader import try_load_from_file
+import time
 
 config = {
     "ip": "<ov_ip>",
@@ -197,3 +198,5 @@ try:
     pprint(interconnect_patch.data)
 except HPEOneViewException as e:
     print(e.msg)
+
+time.sleep(8*60)
