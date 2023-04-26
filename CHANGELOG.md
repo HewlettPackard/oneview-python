@@ -1,15 +1,6 @@
 # 8.3.0
 #### Notes
-Extends Support Of The Sdk To Oneview Rest Api Version 5000 (Oneview V8.2.0)
-
-#### Major Changes
-- Added Support For Drive Enclosures
-- Added Support For Sas Logical Jbod
-- Added Support For Sas Logical Jbod Attachments
-- Added Support For Firmware Update On A Server Hardware Without Profile
-
-#### Bug Fixes & Enhancements
-- [#240] (Https://Github.Com/Hewlettpackard/Oneview-Python/Issues/240) Problems Connecting With Oneviewclient
+Extends Support Of The Sdk To Oneview Rest Api Version 5200 (Oneview V8.3.0)
 
 ##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
