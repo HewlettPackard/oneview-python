@@ -8,16 +8,16 @@ jobs:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
-    if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR') && startsWith(github.base_ref, 'master')
+    if: github.event.pull_request.merged && startsWith(github.head_ref, 'Tags_PR') && startsWith(github.base_ref, 'PR')
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
         id: tag_and_prepare_release
-        uses: moble/github-tag-action@main
+        uses: anothrNick/github-tag-action@1.61.0
         env:
-          GITHUB_TOKEN:  ${{ secrets.CD_TOKEN }}
+          GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
-          CUSTOM_TAG: "v8.3.0"
+          CUSTOM_TAG: "v8.4.0"
       - name: Display
         run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
       - uses: actions/checkout@v2
