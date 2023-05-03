@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
-    if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR') && startsWith(github.base_ref, 'master')
+    if: github.event.pull_request.merged && startsWith(github.head_ref, 'test') && startsWith(github.base_ref, 'PR')
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
