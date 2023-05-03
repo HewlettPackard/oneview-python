@@ -15,7 +15,7 @@ jobs:
         id: tag_and_prepare_release
         uses: anothrNick/github-tag-action@1.61.0
         env:
-          GITHUB_TOKEN:  ${{ secrets.CD_TOKEN }}
+          GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           CUSTOM_TAG: "v8.3.0"
       - name: Display
