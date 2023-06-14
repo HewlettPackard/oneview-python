@@ -26,6 +26,7 @@ from future.utils import lmap
 standard_library.install_aliases()
 
 import logging
+import logging.handlers
 import os
 from copy import deepcopy
 from urllib.parse import quote
@@ -45,7 +46,13 @@ UNAVAILABLE_METHOD = "Method is not available for this resource"
 MISSING_UNIQUE_IDENTIFIERS = "Missing unique identifiers(URI/Name) for the resource"
 RESOURCE_DOES_NOT_EXIST = "Resource does not exist with the provided unique identifiers"
 
-logger = logging.getLogger(__name__)
+
+handler = logging.handlers.WatchedFileHandler(os.environ.get("LOGFILE", "resource.txt"))
+formatter = logging.Formatter(logging.BASIC_FORMAT)
+handler.setFormatter(formatter)
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(handler)
 
 
 class EnsureResourceClient(object):
@@ -176,7 +183,7 @@ class Resource(object):
         default_values = self._get_default_values()
         data = self._helper.update_resource_fields(data, default_values)
 
-        logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
+        logging.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
         resource_data = self._helper.create(data, uri, timeout, custom_headers, force)
         new_resource = self.new(self._connection, resource_data)
 
@@ -193,7 +200,7 @@ class Resource(object):
         """
         uri = self.data['uri']
 
-        logger.debug("Delete resource (uri = %s)" % (str(uri)))
+        logging.debug("Delete resource (uri = %s)" % (str(uri)))
 
         return self._helper.delete(uri, timeout=timeout,
                                    custom_headers=custom_headers, force=force)
@@ -217,7 +224,7 @@ class Resource(object):
         resource = deepcopy(self.data)
         resource.update(data)
 
-        logger.debug('Update async (uri = %s, resource = %s)' %
+        logging.debug('Update async (uri = %s, resource = %s)' %
                      (uri, str(resource)))
 
         self.data = self._helper.update(resource, uri, force, timeout, custom_headers)
@@ -238,7 +245,7 @@ class Resource(object):
             dict
         """
         if not field:
-            logger.exception(RESOURCE_CLIENT_INVALID_FIELD)
+            logging.exception(RESOURCE_CLIENT_INVALID_FIELD)
             raise ValueError(RESOURCE_CLIENT_INVALID_FIELD)
 
         filter = "\"{0}='{1}'\"".format(field, value)
@@ -279,7 +286,7 @@ class Resource(object):
             Resource object or None if resource does not exist.
         """
         if not field:
-            logger.exception(RESOURCE_CLIENT_INVALID_FIELD)
+            logging.exception(RESOURCE_CLIENT_INVALID_FIELD)
             raise ValueError(RESOURCE_CLIENT_INVALID_FIELD)
 
         results = self.get_all()
@@ -417,7 +424,7 @@ class ResourceHelper(object):
                                    childLimit=childLimit,
                                    topCount=topCount)
 
-        logger.debug('Getting all resources with uri: {0}'.format(uri))
+        logging.debug('Getting all resources with uri: {0}'.format(uri))
 
         return self.do_requests_to_getall(uri, count, custom_headers=custom_headers)
 
@@ -439,7 +446,7 @@ class ResourceHelper(object):
             bool: Indicates if the resources were successfully deleted.
         """
         uri = "{}?filter={}&force={}".format(self._base_uri, quote(filter), force)
-        logger.debug("Delete all resources (uri = %s)" % uri)
+        logging.debug("Delete all resources (uri = %s)" % uri)
 
         return self.delete(uri)
 
@@ -461,7 +468,7 @@ class ResourceHelper(object):
         if force:
             uri += '?force={}'.format(force)
 
-        logger.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
+        logging.debug('Create (uri = %s, resource = %s)' % (uri, str(data)))
         return self.do_post(uri, data, timeout, custom_headers)
 
     def delete(self, uri, force=False, timeout=-1, custom_headers=None):
@@ -475,7 +482,7 @@ class ResourceHelper(object):
         if force:
             uri += '?force=True'
 
-        logger.debug("Delete resource (uri = %s)" % (str(uri)))
+        logging.debug("Delete resource (uri = %s)" % (str(uri)))
 
         task, body = self._connection.delete(uri, custom_headers=custom_headers)
 
@@ -503,7 +510,7 @@ class ResourceHelper(object):
         Returns:
             A dict with the updated resource data.
         """
-        logger.debug('Update async (uri = %s, resource = %s)' %
+        logging.debug('Update async (uri = %s, resource = %s)' %
                      (uri, str(resource)))
         if not uri:
             uri = resource['uri']
@@ -525,7 +532,7 @@ class ResourceHelper(object):
         Returns:
             A dict with updated resource data.
         """
-        logger.debug('Update with zero length body (uri = %s)' % uri)
+        logging.debug('Update with zero length body (uri = %s)' % uri)
 
         return self.do_put(uri, None, timeout, custom_headers)
 
@@ -542,7 +549,7 @@ class ResourceHelper(object):
         Returns:
             list:
         """
-        logger.debug('Creating Report')
+        logging.debug('Creating Report')
         task, _ = self._connection.post(uri, {})
 
         if not task:
@@ -575,7 +582,7 @@ class ResourceHelper(object):
             filter = "?" + filter[1:]
 
         uri = "{uri}{path}{filter}".format(uri=uri, path=path, filter=filter)
-        logger.debug('Get resource collection (uri = %s)' % uri)
+        logging.debug('Get resource collection (uri = %s)' % uri)
 
         response = self._connection.get(uri)
 
@@ -678,7 +685,7 @@ class ResourceHelper(object):
             Returns a valid resource URI
         """
         if not id_or_uri:
-            logger.exception(RESOURCE_CLIENT_INVALID_ID)
+            logging.exception(RESOURCE_CLIENT_INVALID_ID)
             raise ValueError(RESOURCE_CLIENT_INVALID_ID)
 
         if "/" in id_or_uri:
@@ -717,7 +724,7 @@ class ResourceHelper(object):
     def validate_resource_uri(self, path):
         """Helper method to validate URI of the resource."""
         if self._base_uri not in path:
-            logger.exception('Get by uri : unrecognized uri: (%s)' % path)
+            logging.exception('Get by uri : unrecognized uri: (%s)' % path)
             raise exceptions.HPEOneViewUnknownType(UNRECOGNIZED_URI)
 
     def make_query_filter(self, filters):
@@ -761,15 +768,15 @@ class ResourceHelper(object):
         """
         items = []
         while uri:
-            logger.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
+            logging.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
             response = self._connection.get(uri, custom_headers=custom_headers)
             members = self.get_members(response)
             items += members
 
-            logger.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri, str(len(members))))
+            logging.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri, str(len(members))))
             uri = self.get_next_page(response, items, requested_count)
 
-        logger.debug('Total # of members found = {0}'.format(str(len(items))))
+        logging.debug('Total # of members found = {0}'.format(str(len(items))))
         return items
 
     def get_next_page(self, response, items, requested_count):
@@ -894,7 +901,7 @@ class ResourcePatchMixin(object):
         Returns:
             Updated resource.
         """
-        logger.debug('Patch resource (uri = %s, data = %s)' % (uri, body))
+        logging.debug('Patch resource (uri = %s, data = %s)' % (uri, body))
 
         if not custom_headers:
             custom_headers = {}
@@ -1059,7 +1066,7 @@ class ResourceZeroBodyMixin(object):
         if not uri:
             uri = self.URI
 
-        logger.debug('Create with zero body (uri = %s)' % uri)
+        logging.debug('Create with zero body (uri = %s)' % uri)
         resource_data = self._helper.do_post(uri, {}, timeout, custom_headers)
 
         return resource_data
@@ -1079,7 +1086,7 @@ class ResourceZeroBodyMixin(object):
         if not uri:
             uri = self.data['uri']
 
-        logger.debug('Update with zero length body (uri = %s)' % uri)
+        logging.debug('Update with zero length body (uri = %s)' % uri)
         resource_data = self._helper.do_put(uri, None, timeout, custom_headers)
 
         return resource_data
@@ -1207,7 +1214,7 @@ class ResourceClient(object):
         uri = self.build_query_uri(start=start, count=count, filter=filter,
                                    query=query, sort=sort, view=view, fields=fields, uri=uri, scope_uris=scope_uris)
 
-        logger.debug('Getting all resources with uri: {0}'.format(uri))
+        logging.debug('Getting all resources with uri: {0}'.format(uri))
 
         result = self.__do_requests_to_getall(uri, count)
 
@@ -1231,7 +1238,7 @@ class ResourceClient(object):
             bool: Indicates if the resources were successfully deleted.
         """
         uri = "{}?filter={}&force={}".format(self._uri, quote(filter), force)
-        logger.debug("Delete all resources (uri = %s)" % uri)
+        logging.debug("Delete all resources (uri = %s)" % uri)
 
         task, body = self._connection.delete(uri)
 
@@ -1245,14 +1252,14 @@ class ResourceClient(object):
     def delete(self, resource, force=False, timeout=-1, custom_headers=None):
 
         if not resource:
-            logger.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
+            logging.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
             raise ValueError(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
 
         if isinstance(resource, dict):
             if 'uri' in resource and resource['uri']:
                 uri = resource['uri']
             else:
-                logger.exception(RESOURCE_CLIENT_UNKNOWN_OBJECT_TYPE)
+                logging.exception(RESOURCE_CLIENT_UNKNOWN_OBJECT_TYPE)
                 raise exceptions.HPEOneViewUnknownType(RESOURCE_CLIENT_UNKNOWN_OBJECT_TYPE)
         else:
             uri = self.build_uri(resource)
@@ -1260,7 +1267,7 @@ class ResourceClient(object):
         if force:
             uri += '?force=True'
 
-        logger.debug("Delete resource (uri = %s, resource = %s)" %
+        logging.debug("Delete resource (uri = %s, resource = %s)" %
                      (self._uri, str(resource)))
 
         task, body = self._connection.delete(uri, custom_headers=custom_headers)
@@ -1275,7 +1282,7 @@ class ResourceClient(object):
         return task
 
     def get_schema(self):
-        logger.debug('Get schema (uri = %s, resource = %s)' %
+        logging.debug('Get schema (uri = %s, resource = %s)' %
                      (self._uri, self._uri))
         return self._connection.get(self._uri + '/schema')
 
@@ -1288,7 +1295,7 @@ class ResourceClient(object):
              The requested resource.
         """
         uri = self.build_uri(id_or_uri)
-        logger.debug('Get resource (uri = %s, ID = %s)' %
+        logging.debug('Get resource (uri = %s, ID = %s)' %
                      (uri, str(id_or_uri)))
         return self._connection.get(uri)
 
@@ -1313,7 +1320,7 @@ class ResourceClient(object):
             filter = "?" + filter[1:]
 
         uri = "{uri}{filter}".format(uri=self.build_uri(id_or_uri), filter=filter)
-        logger.debug('Get resource collection (uri = %s)' % uri)
+        logging.debug('Get resource collection (uri = %s)' % uri)
         response = self._connection.get(uri)
         return self.__get_members(response)
 
@@ -1333,7 +1340,7 @@ class ResourceClient(object):
         Returns:
             Updated resource.
         """
-        logger.debug('Update with zero length body (uri = %s)' % uri)
+        logging.debug('Update with zero length body (uri = %s)' % uri)
 
         return self.__do_put(uri, None, timeout, custom_headers)
 
@@ -1368,10 +1375,10 @@ class ResourceClient(object):
             Updated resource.
         """
         if not resource:
-            logger.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
+            logging.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
             raise ValueError(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
 
-        logger.debug('Update async (uri = %s, resource = %s)' %
+        logging.debug('Update async (uri = %s, resource = %s)' %
                      (self._uri, str(resource)))
 
         if not uri:
@@ -1403,7 +1410,7 @@ class ResourceClient(object):
         if not uri:
             uri = self._uri
 
-        logger.debug('Create with zero body (uri = %s)' % uri)
+        logging.debug('Create with zero body (uri = %s)' % uri)
 
         return self.__do_post(uri, {}, timeout, custom_headers)
 
@@ -1435,13 +1442,13 @@ class ResourceClient(object):
             Created resource.
         """
         if not resource:
-            logger.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
+            logging.exception(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
             raise ValueError(RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED)
 
         if not uri:
             uri = self._uri
 
-        logger.debug('Create (uri = %s, resource = %s)' %
+        logging.debug('Create (uri = %s, resource = %s)' %
                      (uri, str(resource)))
 
         resource = self.merge_default_values(resource, default_values)
@@ -1516,7 +1523,7 @@ class ResourceClient(object):
         """
         uri = self.build_uri(id_or_uri)
 
-        logger.debug('Patch resource (uri = %s, data = %s)' % (uri, body))
+        logging.debug('Patch resource (uri = %s, data = %s)' % (uri, body))
 
         custom_headers_copy = custom_headers.copy() if custom_headers else {}
         if self._connection._apiVersion >= 300 and 'Content-Type' not in custom_headers_copy:
@@ -1544,14 +1551,14 @@ class ResourceClient(object):
             dict
         """
         if not field:
-            logger.exception(RESOURCE_CLIENT_INVALID_FIELD)
+            logging.exception(RESOURCE_CLIENT_INVALID_FIELD)
             raise ValueError(RESOURCE_CLIENT_INVALID_FIELD)
 
         if not uri:
             uri = self._uri
         self.__validate_resource_uri(uri)
 
-        logger.debug('Get by (uri = %s, field = %s, value = %s)' %
+        logging.debug('Get by (uri = %s, field = %s, value = %s)' %
                      (uri, field, str(value)))
 
         filter = "\"{0}='{1}'\"".format(field, value)
@@ -1683,7 +1690,7 @@ class ResourceClient(object):
         Returns:
             list:
         """
-        logger.debug('Creating Report')
+        logging.debug('Creating Report')
         task, _ = self._connection.post(uri, {})
 
         if not task:
@@ -1695,7 +1702,7 @@ class ResourceClient(object):
 
     def build_uri(self, id_or_uri):
         if not id_or_uri:
-            logger.exception(RESOURCE_CLIENT_INVALID_ID)
+            logging.exception(RESOURCE_CLIENT_INVALID_ID)
             raise ValueError(RESOURCE_CLIENT_INVALID_ID)
 
         if "/" in id_or_uri:
@@ -1740,7 +1747,7 @@ class ResourceClient(object):
 
     def __validate_resource_uri(self, path):
         if self._uri not in path:
-            logger.exception('Get by uri : unrecognized uri: (%s)' % path)
+            logging.exception('Get by uri : unrecognized uri: (%s)' % path)
             raise exceptions.HPEOneViewUnknownType(UNRECOGNIZED_URI)
 
     def __make_query_filter(self, filters):
@@ -1777,15 +1784,15 @@ class ResourceClient(object):
         items = []
 
         while uri:
-            logger.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
+            logging.debug('Making HTTP request to get all resources. Uri: {0}'.format(uri))
             response = self._connection.get(uri)
             members = self.__get_members(response)
             items += members
 
-            logger.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri, str(len(members))))
+            logging.debug("Response getAll: nextPageUri = {0}, members list length: {1}".format(uri, str(len(members))))
             uri = self.__get_next_page(response, items, requested_count)
 
-        logger.debug('Total # of members found = {0}'.format(str(len(items))))
+        logging.debug('Total # of members found = {0}'.format(str(len(items))))
         return items
 
     def __get_next_page(self, response, items, requested_count):
