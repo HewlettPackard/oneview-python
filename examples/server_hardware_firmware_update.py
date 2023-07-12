@@ -67,14 +67,16 @@ firmware_update_configuration = [{"op": "replace", "value": {"baselineUri": "/re
                                   "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
                                   }]
 # if server loop 
-
-if server:
-    print("Checking if firmware compliance required..")
-    firmware_compliance = server.check_firmware_compliance(compliance_configuration)
-    print(firmware_compliance['serverFirmwareUpdateRequired'])
-    if firmware_compliance['serverFirmwareUpdateRequired']:
-        print("Updating firmware for the server hardware..")
-        server.perform_firmware_update(firmware_update_configuration)
-    else:
-        print("Firmware update is not required for this server")
         
+if oneview_client.api_version >=4600:
+    if server:
+        print("Checking if firmware compliance required..")
+        firmware_compliance = server.check_firmware_compliance(compliance_configuration)
+        print(firmware_compliance['serverFirmwareUpdateRequired'])
+        if firmware_compliance['serverFirmwareUpdateRequired']:
+            print("Updating firmware for the server hardware..")
+            server.perform_firmware_update(firmware_update_configuration)
+        else:
+            print("Firmware update is not required for this server")
+else:
+    print("Firmware update feature is supported only for api version above 4600")
