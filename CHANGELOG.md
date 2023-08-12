@@ -1,6 +1,140 @@
+# 8.5.0
+#### Notes
+Extends Support Of The Sdk To Oneview Rest Api Version 5400 (Oneview V8.4.0)
+
+##### Features Supported With The Current Release
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server
+- Drive Enclosures
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
+- Labels 
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Rack Managers
+- Repositories 
+- Restores 
+- San Managers
+- San Providers
+- Sas Interconnects
+- Sas Interconnect Types
+- Sas Logical Interconnect Groups
+- Sas Logical Interconnects
+- Sas Logical Jbods
+- Sas Logical Jbod Attachments
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates
+- Tasks 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes
+
 # 8.4.0
 #### Notes
 Extends Support Of The Sdk To Oneview Rest Api Version 5400 (Oneview V8.4.0)
+
+##### Features Supported With The Current Release
+- Appliance Configuration Timeconfig 
+- Appliance Health Status 
+- Appliance Network Interfaces 
+- Appliance Node Information 
+- Appliance Proxy Configuration 
+- Appliance Snmpv1 Trap Destinations 
+- Appliance Snmpv3 Trap Destinations 
+- Appliance Snmpv3 Users 
+- Appliance Ssh Access 
+- Appliance Time And Locale Configuration 
+- Certificates Server
+- Drive Enclosures
+- Connection Templates 
+- Enclosure Groups 
+- Enclosures 
+- Ethernet Networks 
+- Fc Networks 
+- Fcoe Networks 
+- Firmware Bundles 
+- Firmware Drivers 
+- Ha Nodes 
+- Hypervisor Cluster Profiles 
+- Hypervisor Managers 
+- Id Pool Ipv4 Range 
+- Id Pool Ipv4 Subnets 
+- Id Pools 
+- Index Resources 
+- Interconnect Types 
+- Interconnects 
+- Labels 
+- Logical Enclosures 
+- Logical Interconnect Groups 
+- Logical Interconnects 
+- Network Sets 
+- Rack Managers
+- Repositories 
+- Restores 
+- San Managers
+- San Providers
+- Sas Interconnects
+- Sas Interconnect Types
+- Sas Logical Interconnect Groups
+- Sas Logical Interconnects
+- Sas Logical Jbods
+- Sas Logical Jbod Attachments
+- Scopes 
+- Server Hardware 
+- Server Hardware Types 
+- Server Profile Templates 
+- Server Profiles 
+- Storage Pools 
+- Storage Systems 
+- Storage Templates 
+- Storage Volume 
+- Storage Volume Attachments 
+- Storage Volume Templates
+- Tasks 
+- Uplink Sets 
+- Users 
+- Version 
+- Volumes
+
+# 8.3.0
+#### Notes
+Extends Support Of The Sdk To Oneview Rest Api Version 5200 (Oneview V8.3.0)
 
 ##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
