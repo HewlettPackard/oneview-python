@@ -1,6 +1,6 @@
 # 8.6.0
 #### Notes
-Extends Support Of The Sdk To Oneview Rest Api Version 5600 (Oneview V8.5.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 5800 (Oneview V8.6.0)
 
 ##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
