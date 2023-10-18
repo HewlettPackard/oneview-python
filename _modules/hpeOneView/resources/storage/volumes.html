@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.storage.volumes &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.storage.volumes &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -100,7 +103,7 @@
 
 
 <div class="viewcode-block" id="VolumeSnapshots"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.VolumeSnapshots">[docs]</a><span class="k">class</span> <span class="nc">VolumeSnapshots</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Volume snapshots API client.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -115,7 +118,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">VolumeSnapshots</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="VolumeSnapshots.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.VolumeSnapshots.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            data: Additional fields can be passed to create the resource.</span>
@@ -129,7 +132,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="VolumeSnapshots.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.VolumeSnapshots.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes a snapshot from OneView and the storage system.</span>
 
 <span class="sd">        Args:</span>
@@ -150,7 +153,7 @@
 
 
 <div class="viewcode-block" id="Volumes"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes">[docs]</a><span class="k">class</span> <span class="nc">Volumes</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Volumes API client.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -166,7 +169,7 @@
                                               <span class="n">volume_uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
 
 <div class="viewcode-block" id="Volumes.add_from_existing"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.add_from_existing">[docs]</a>    <span class="k">def</span> <span class="nf">add_from_existing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a volume that already exists in the Storage system</span>
 
 <span class="sd">        Args:</span>
@@ -183,7 +186,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.create_from_snapshot"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.create_from_snapshot">[docs]</a>    <span class="k">def</span> <span class="nf">create_from_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a new volume on the storage system from a snapshot of a volume.</span>
 <span class="sd">        A volume template must also be specified when creating a volume from a snapshot.</span>
 
@@ -207,7 +210,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suppress_device_updates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes a managed volume.</span>
 
 <span class="sd">        Args:</span>
@@ -238,7 +241,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.get_snapshots"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.get_snapshots">[docs]</a>    <span class="k">def</span> <span class="nf">get_snapshots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all snapshots of a volume. Returns a list of snapshots based on optional sorting and filtering, and</span>
 <span class="sd">        constrained by start and count parameters.</span>
 
@@ -264,7 +267,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snapshots</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.create_snapshot"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.create_snapshot">[docs]</a>    <span class="k">def</span> <span class="nf">create_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snapshot</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a snapshot for the specified volume.</span>
 
 <span class="sd">        Args:</span>
@@ -281,7 +284,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snapshots</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">snapshot</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.get_snapshot_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_snapshot_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets snapshot by name.</span>
 
 <span class="sd">        Args:</span>
@@ -294,7 +297,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snapshots</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.get_snapshot_by_uri"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_snapshot_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets snapshot by uri.</span>
 
 <span class="sd">        Args:</span>
@@ -307,7 +310,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snapshots</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.get_snapshot_by"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by">[docs]</a>    <span class="k">def</span> <span class="nf">get_snapshot_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all snapshots that match the filter.</span>
 
 <span class="sd">        The search is case-insensitive.</span>
@@ -323,7 +326,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snapshots</span><span class="o">.</span><span class="n">get_by</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.get_extra_managed_storage_volume_paths"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths">[docs]</a>    <span class="k">def</span> <span class="nf">get_extra_managed_storage_volume_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the list of extra managed storage volume paths.</span>
 
 <span class="sd">        Args:</span>
@@ -348,7 +351,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.repair"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.repair">[docs]</a>    <span class="k">def</span> <span class="nf">repair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes extra presentations from a specified volume on the storage system.</span>
 
 <span class="sd">        Args:</span>
@@ -368,7 +371,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Volumes.get_attachable_volumes"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.volumes.Volumes.get_attachable_volumes">[docs]</a>    <span class="k">def</span> <span class="nf">get_attachable_volumes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">connections</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the volumes that are connected on the specified networks based on the storage system port&#39;s expected</span>
 <span class="sd">        network connectivity.</span>
 

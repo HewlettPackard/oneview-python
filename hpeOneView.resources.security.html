@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.security package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.security package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,12 +47,77 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.security package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.security.certificate_authority">hpeOneView.resources.security.certificate_authority module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.security.certificate_rabbitmq">hpeOneView.resources.security.certificate_rabbitmq module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.security.certificates_server">hpeOneView.resources.security.certificates_server module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.security.login_details">hpeOneView.resources.security.login_details module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.security.roles">hpeOneView.resources.security.roles module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.security.users">hpeOneView.resources.security.users module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.security.certificate_authority">hpeOneView.resources.security.certificate_authority module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.URI"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.create"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority.create()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority.get_by_aliasname()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority.get_crl()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname"><code class="docutils literal notranslate"><span class="pre">CertificateAuthority.get_crl_by_aliasname()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.security.certificate_rabbitmq">hpeOneView.resources.security.certificate_rabbitmq module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ"><code class="docutils literal notranslate"><span class="pre">CertificateRabbitMQ</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.URI"><code class="docutils literal notranslate"><span class="pre">CertificateRabbitMQ.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate"><code class="docutils literal notranslate"><span class="pre">CertificateRabbitMQ.generate()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get"><code class="docutils literal notranslate"><span class="pre">CertificateRabbitMQ.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair"><code class="docutils literal notranslate"><span class="pre">CertificateRabbitMQ.get_key_pair()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys"><code class="docutils literal notranslate"><span class="pre">CertificateRabbitMQ.get_keys()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.security.certificates_server">hpeOneView.resources.security.certificates_server module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificates_server.CertificatesServer"><code class="docutils literal notranslate"><span class="pre">CertificatesServer</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.URI"><code class="docutils literal notranslate"><span class="pre">CertificatesServer.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.create"><code class="docutils literal notranslate"><span class="pre">CertificatesServer.create()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name"><code class="docutils literal notranslate"><span class="pre">CertificatesServer.get_by_alias_name()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote"><code class="docutils literal notranslate"><span class="pre">CertificatesServer.get_remote()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.security.login_details">hpeOneView.resources.security.login_details module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.login_details.LoginDetails"><code class="docutils literal notranslate"><span class="pre">LoginDetails</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.login_details.LoginDetails.URI"><code class="docutils literal notranslate"><span class="pre">LoginDetails.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.login_details.LoginDetails.get_login_details"><code class="docutils literal notranslate"><span class="pre">LoginDetails.get_login_details()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.security.roles">hpeOneView.resources.security.roles module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.roles.Roles"><code class="docutils literal notranslate"><span class="pre">Roles</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.roles.Roles.RESOURCES_PATH"><code class="docutils literal notranslate"><span class="pre">Roles.RESOURCES_PATH</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.roles.Roles.URI"><code class="docutils literal notranslate"><span class="pre">Roles.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.roles.Roles.get"><code class="docutils literal notranslate"><span class="pre">Roles.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.roles.Roles.get_all"><code class="docutils literal notranslate"><span class="pre">Roles.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.security.users">hpeOneView.resources.security.users module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users"><code class="docutils literal notranslate"><span class="pre">Users</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.URI"><code class="docutils literal notranslate"><span class="pre">Users.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.add_role_to_userName"><code class="docutils literal notranslate"><span class="pre">Users.add_role_to_userName()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.change_password"><code class="docutils literal notranslate"><span class="pre">Users.change_password()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.create_multiple_user"><code class="docutils literal notranslate"><span class="pre">Users.create_multiple_user()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.delete_multiple_user"><code class="docutils literal notranslate"><span class="pre">Users.delete_multiple_user()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.get_by_userName"><code class="docutils literal notranslate"><span class="pre">Users.get_by_userName()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.get_role_associated_with_userName"><code class="docutils literal notranslate"><span class="pre">Users.get_role_associated_with_userName()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.get_user_by_role"><code class="docutils literal notranslate"><span class="pre">Users.get_user_by_role()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.query_filter"><code class="docutils literal notranslate"><span class="pre">Users.query_filter()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.remove_role_from_username"><code class="docutils literal notranslate"><span class="pre">Users.remove_role_from_username()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.update"><code class="docutils literal notranslate"><span class="pre">Users.update()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.update_role_to_userName"><code class="docutils literal notranslate"><span class="pre">Users.update_role_to_userName()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.validate_full_name"><code class="docutils literal notranslate"><span class="pre">Users.validate_full_name()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.security.users.Users.validate_user_name"><code class="docutils literal notranslate"><span class="pre">Users.validate_user_name()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.security">Module contents</a></li>
 </ul>
 </li>
@@ -78,671 +147,603 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-security-package">
-<h1>hpeOneView.resources.security package<a class="headerlink" href="#hpeoneview-resources-security-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.security.certificate_authority">
-<span id="hpeoneview-resources-security-certificate-authority-module"></span><h2>hpeOneView.resources.security.certificate_authority module<a class="headerlink" href="#module-hpeOneView.resources.security.certificate_authority" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.certificate_authority.</code><code class="descname">CertificateAuthority</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+  <section id="hpeoneview-resources-security-package">
+<h1>hpeOneView.resources.security package<a class="headerlink" href="#hpeoneview-resources-security-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.security.certificate_authority">
+<span id="hpeoneview-resources-security-certificate-authority-module"></span><h2>hpeOneView.resources.security.certificate_authority module<a class="headerlink" href="#module-hpeOneView.resources.security.certificate_authority" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.security.certificate_authority.</span></span><span class="sig-name descname"><span class="pre">CertificateAuthority</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Certificate Authority API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/certificates/ca'</em><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/certificates/ca'</span></em><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>parent_task=u''</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.create" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.create" title="Permalink to this definition"></a></dt>
 <dd><p>Imports an external CA root certificate or CA certificate chain into the appliance trust store.
 Same CA certificate will not be allowed to be imported into the appliance trust store.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> – Fields passed to create the resource.</li>
-<li><strong>parent_task</strong> – The parentTask can be passed only if auth header has either a valid trusted token
-or a valid combined token consisting of a trusted token.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Fields passed to create the resource.</p></li>
+<li><p><strong>parent_task</strong> – The parentTask can be passed only if auth header has either a valid trusted token
+or a valid combined token consisting of a trusted token.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">response body of imported CA Certificate.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>response body of imported CA Certificate.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>filter=u''</em>, <em>cert_details=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cert_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves all the CA certificates.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filter</strong> – Filter based on a specific value. Supported filter is filter=certType:INTERNAL</li>
-<li><strong>cert_details</strong> – If this is set to true the api returns all the CA certificates with full certificate details</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filter</strong> – Filter based on a specific value. Supported filter is filter=certType:INTERNAL</p></li>
+<li><p><strong>cert_details</strong> – If this is set to true the api returns all the CA certificates with full certificate details</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of all CA Certificate.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of all CA Certificate.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname">
-<code class="descname">get_by_aliasname</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_by_aliasname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname">
+<span class="sig-name descname"><span class="pre">get_by_aliasname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_by_aliasname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the collection having CA certificates</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> – alias name of CA certificate</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The Certificate details by certificate authority alias name</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alias_name</strong> – alias name of CA certificate</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Certificate details by certificate authority alias name</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl">
-<code class="descname">get_crl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_crl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl">
+<span class="sig-name descname"><span class="pre">get_crl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_crl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the contents of the CRL file maintained by the internal CA; in Base-64 encoded format, in the form
 of a string.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The Certificate Revocation List</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The Certificate Revocation List</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname">
-<code class="descname">get_crl_by_aliasname</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_crl_by_aliasname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname">
+<span class="sig-name descname"><span class="pre">get_crl_by_aliasname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_authority.html#CertificateAuthority.get_crl_by_aliasname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname" title="Permalink to this definition"></a></dt>
 <dd><p>Downloads the CRL file associated with the given certificate authority alias name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> – alias name of CA certificate</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The Certificate Revocation List by certificate authority alias name</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alias_name</strong> – alias name of CA certificate</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Certificate Revocation List by certificate authority alias name</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.security.certificate_rabbitmq">
-<span id="hpeoneview-resources-security-certificate-rabbitmq-module"></span><h2>hpeOneView.resources.security.certificate_rabbitmq module<a class="headerlink" href="#module-hpeOneView.resources.security.certificate_rabbitmq" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.certificate_rabbitmq.</code><code class="descname">CertificateRabbitMQ</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-hpeOneView.resources.security.certificate_rabbitmq">
+<span id="hpeoneview-resources-security-certificate-rabbitmq-module"></span><h2>hpeOneView.resources.security.certificate_rabbitmq module<a class="headerlink" href="#module-hpeOneView.resources.security.certificate_rabbitmq" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.security.certificate_rabbitmq.</span></span><span class="sig-name descname"><span class="pre">CertificateRabbitMQ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/certificates/client/rabbitmq'</em><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/certificates/client/rabbitmq'</span></em><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate">
-<code class="descname">generate</code><span class="sig-paren">(</span><em>information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.generate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">information</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate" title="Permalink to this definition"></a></dt>
 <dd><p>Generates a self signed certificate or an internal CA signed certificate for RabbitMQ clients.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>information</strong> (<em>dict</em>) – Information to generate the certificate for RabbitMQ clients.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>information</strong> (<em>dict</em>) – Information to generate the certificate for RabbitMQ clients.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">RabbitMQ certificate generated</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RabbitMQ certificate generated</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the base-64 encoded certificate associated with the RabbitMQ user.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> – Key pair associated with the RabbitMQ</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">RabbitMQ certificate</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alias_name</strong> – Key pair associated with the RabbitMQ</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RabbitMQ certificate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair">
-<code class="descname">get_key_pair</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.get_key_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair">
+<span class="sig-name descname"><span class="pre">get_key_pair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.get_key_pair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the public and private key pair associated with the specified alias name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> – Key pair associated with the RabbitMQ</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">RabbitMQ certificate</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alias_name</strong> – Key pair associated with the RabbitMQ</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RabbitMQ certificate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys">
-<code class="descname">get_keys</code><span class="sig-paren">(</span><em>alias_name</em>, <em>key_format</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.get_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys">
+<span class="sig-name descname"><span class="pre">get_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_format</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificate_rabbitmq.html#CertificateRabbitMQ.get_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the contents of PKCS12 file in the format specified.
 This PKCS12 formatted file contains both the certificate as well as the key file data.
 Valid key formats are Base64 and PKCS12.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>alias_name</strong> – Key pair associated with the RabbitMQ</li>
-<li><strong>key_format</strong> – Valid key formats are Base64 and PKCS12.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alias_name</strong> – Key pair associated with the RabbitMQ</p></li>
+<li><p><strong>key_format</strong> – Valid key formats are Base64 and PKCS12.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">RabbitMQ certificate</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RabbitMQ certificate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.security.certificates_server">
-<span id="hpeoneview-resources-security-certificates-server-module"></span><h2>hpeOneView.resources.security.certificates_server module<a class="headerlink" href="#module-hpeOneView.resources.security.certificates_server" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.security.certificates_server.CertificatesServer">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.certificates_server.</code><code class="descname">CertificatesServer</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.security.certificates_server">
+<span id="hpeoneview-resources-security-certificates-server-module"></span><h2>hpeOneView.resources.security.certificates_server module<a class="headerlink" href="#module-hpeOneView.resources.security.certificates_server" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificates_server.CertificatesServer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.security.certificates_server.</span></span><span class="sig-name descname"><span class="pre">CertificatesServer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>The Certificates Servers resource provides REST APIs for configuration of device or
 server certificates for the appliance to establish SSL communication with other managed network entities.</p>
 <p>Import, Update and Delete APIs are asynchronous and GET API is synchronous.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.certificates_server.CertificatesServer.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/certificates'</em><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificates_server.CertificatesServer.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/certificates'</span></em><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificates_server.CertificatesServer.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.create" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificates_server.CertificatesServer.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.create" title="Permalink to this definition"></a></dt>
 <dd><p>Makes a POST request to create a server certificate resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> – Fields passed to create the resource.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Fields passed to create the resource.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created certificate resource.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created certificate resource.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name">
-<code class="descname">get_by_alias_name</code><span class="sig-paren">(</span><em>alias_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer.get_by_alias_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name">
+<span class="sig-name descname"><span class="pre">get_by_alias_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer.get_by_alias_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the device or server certificate, already trusted in the appliance,
 with the specified aliasName.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alias_name</strong> (<em>str</em>) – Alias name.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Certificate of trusted appliance</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alias_name</strong> (<em>str</em>) – Alias name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Certificate of trusted appliance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote">
-<code class="descname">get_remote</code><span class="sig-paren">(</span><em>remote_address</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer.get_remote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote">
+<span class="sig-name descname"><span class="pre">get_remote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/certificates_server.html#CertificatesServer.get_remote"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the device or server certificate and certificate chain of the specified device or server.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>remote_address</strong> – Address of remote server</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Certificate chain of remote server</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>remote_address</strong> – Address of remote server</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Certificate chain of remote server</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.security.login_details">
-<span id="hpeoneview-resources-security-login-details-module"></span><h2>hpeOneView.resources.security.login_details module<a class="headerlink" href="#module-hpeOneView.resources.security.login_details" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.security.login_details.LoginDetails">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.login_details.</code><code class="descname">LoginDetails</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/login_details.html#LoginDetails"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.login_details.LoginDetails" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-hpeOneView.resources.security.login_details">
+<span id="hpeoneview-resources-security-login-details-module"></span><h2>hpeOneView.resources.security.login_details module<a class="headerlink" href="#module-hpeOneView.resources.security.login_details" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.login_details.LoginDetails">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.security.login_details.</span></span><span class="sig-name descname"><span class="pre">LoginDetails</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/login_details.html#LoginDetails"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.login_details.LoginDetails" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>list login details.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.login_details.LoginDetails.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/logindetails'</em><a class="headerlink" href="#hpeOneView.resources.security.login_details.LoginDetails.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.login_details.LoginDetails.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/logindetails'</span></em><a class="headerlink" href="#hpeOneView.resources.security.login_details.LoginDetails.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.login_details.LoginDetails.get_login_details">
-<code class="descname">get_login_details</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/login_details.html#LoginDetails.get_login_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.login_details.LoginDetails.get_login_details" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.login_details.LoginDetails.get_login_details">
+<span class="sig-name descname"><span class="pre">get_login_details</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/login_details.html#LoginDetails.get_login_details"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.login_details.LoginDetails.get_login_details" title="Permalink to this definition"></a></dt>
 <dd><p>List the login details</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">login details.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>login details.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.security.roles">
-<span id="hpeoneview-resources-security-roles-module"></span><h2>hpeOneView.resources.security.roles module<a class="headerlink" href="#module-hpeOneView.resources.security.roles" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.security.roles.Roles">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.roles.</code><code class="descname">Roles</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/roles.html#Roles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-hpeOneView.resources.security.roles">
+<span id="hpeoneview-resources-security-roles-module"></span><h2>hpeOneView.resources.security.roles module<a class="headerlink" href="#module-hpeOneView.resources.security.roles" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.roles.Roles">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.security.roles.</span></span><span class="sig-name descname"><span class="pre">Roles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/roles.html#Roles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Roles API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.roles.Roles.RESOURCES_PATH">
-<code class="descname">RESOURCES_PATH</code><em class="property"> = u'/resources'</em><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.RESOURCES_PATH" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.roles.Roles.RESOURCES_PATH">
+<span class="sig-name descname"><span class="pre">RESOURCES_PATH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/resources'</span></em><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.RESOURCES_PATH" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.roles.Roles.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/roles'</em><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.roles.Roles.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/roles'</span></em><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.roles.Roles.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>name_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/roles.html#Roles.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.roles.Roles.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/roles.html#Roles.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.get" title="Permalink to this definition"></a></dt>
 <dd><p>Get the role by its URI or Name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_or_uri</strong> – Can be either the Name or the URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Role</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name_or_uri</strong> – Can be either the Name or the URI.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Role</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.roles.Roles.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/roles.html#Roles.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.roles.Roles.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/roles.html#Roles.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.roles.Roles.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of roles based on optional sorting and filtering and is constrained by start
 and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of roles.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of roles.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.security.users">
-<span id="hpeoneview-resources-security-users-module"></span><h2>hpeOneView.resources.security.users module<a class="headerlink" href="#module-hpeOneView.resources.security.users" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.security.users.Users">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.security.users.</code><code class="descname">Users</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.security.users">
+<span id="hpeoneview-resources-security-users-module"></span><h2>hpeOneView.resources.security.users module<a class="headerlink" href="#module-hpeOneView.resources.security.users" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.security.users.</span></span><span class="sig-name descname"><span class="pre">Users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Users API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.security.users.Users.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/users'</em><a class="headerlink" href="#hpeOneView.resources.security.users.Users.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/users'</span></em><a class="headerlink" href="#hpeOneView.resources.security.users.Users.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.add_role_to_userName">
-<code class="descname">add_role_to_userName</code><span class="sig-paren">(</span><em>username</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.add_role_to_userName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.add_role_to_userName" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.add_role_to_userName">
+<span class="sig-name descname"><span class="pre">add_role_to_userName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.add_role_to_userName"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.add_role_to_userName" title="Permalink to this definition"></a></dt>
 <dd><p>Add roles to a given user name</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<em>str</em>) – userName of the user</li>
-<li><strong>data</strong> (<em>list</em>) – roles to be added</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – userName of the user</p></li>
+<li><p><strong>data</strong> (<em>list</em>) – roles to be added</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">User</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict object</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.change_password">
-<code class="descname">change_password</code><span class="sig-paren">(</span><em>resource</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.change_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.change_password" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change one’s own password</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to change password</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-OneView, just stops waiting for its completion.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.create_multiple_user">
-<code class="descname">create_multiple_user</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.create_multiple_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.create_multiple_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a multiple user</p>
-<dl class="docutils">
-<dt>Agrs:</dt>
-<dd>data (list): multiple user</dd>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict object</p>
+</dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">User</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict object</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.delete_multiple_user">
-<code class="descname">delete_multiple_user</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.delete_multiple_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.delete_multiple_user" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.change_password">
+<span class="sig-name descname"><span class="pre">change_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.change_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.change_password" title="Permalink to this definition"></a></dt>
+<dd><p>Change one’s own password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to change password</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+OneView, just stops waiting for its completion.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.create_multiple_user">
+<span class="sig-name descname"><span class="pre">create_multiple_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.create_multiple_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.create_multiple_user" title="Permalink to this definition"></a></dt>
+<dd><p>Create a multiple user</p>
+<dl class="simple">
+<dt>Agrs:</dt><dd><p>data (list): multiple user</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>User</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.delete_multiple_user">
+<span class="sig-name descname"><span class="pre">delete_multiple_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.delete_multiple_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.delete_multiple_user" title="Permalink to this definition"></a></dt>
 <dd><p>Delete the multiple users</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>list</em>) – List of users to be deleted</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>list</em>) – List of users to be deleted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.get_by_userName">
-<code class="descname">get_by_userName</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.get_by_userName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.get_by_userName" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.get_by_userName">
+<span class="sig-name descname"><span class="pre">get_by_userName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.get_by_userName"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.get_by_userName" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a complete json body for username</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – userName of the user</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">User</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict object</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – userName of the user</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.get_role_associated_with_userName">
-<code class="descname">get_role_associated_with_userName</code><span class="sig-paren">(</span><em>userName</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.get_role_associated_with_userName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.get_role_associated_with_userName" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.get_role_associated_with_userName">
+<span class="sig-name descname"><span class="pre">get_role_associated_with_userName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userName</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.get_role_associated_with_userName"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.get_role_associated_with_userName" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a user by userName.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – userName of the user.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">User</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict object</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – userName of the user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.get_user_by_role">
-<code class="descname">get_user_by_role</code><span class="sig-paren">(</span><em>rolename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.get_user_by_role"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.get_user_by_role" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.get_user_by_role">
+<span class="sig-name descname"><span class="pre">get_user_by_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rolename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.get_user_by_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.get_user_by_role" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all the users associated with this role</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rolename</strong> (<em>str</em>) – rolename of the user</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">User</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rolename</strong> (<em>str</em>) – rolename of the user</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>User</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.query_filter">
-<code class="descname">query_filter</code><span class="sig-paren">(</span><em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.query_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.query_filter" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.query_filter">
+<span class="sig-name descname"><span class="pre">query_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.query_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.query_filter" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.remove_role_from_username">
-<code class="descname">remove_role_from_username</code><span class="sig-paren">(</span><em>username</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.remove_role_from_username"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.remove_role_from_username" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.remove_role_from_username">
+<span class="sig-name descname"><span class="pre">remove_role_from_username</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.remove_role_from_username"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.remove_role_from_username" title="Permalink to this definition"></a></dt>
 <dd><p>Removes a specified role from the username</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>username</strong> (<em>str</em>) – username of the user</li>
-<li><strong>data</strong> (<em>str/list</em>) – list role to be removed from user</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – username of the user</p></li>
+<li><p><strong>data</strong> (<em>str/list</em>) – list role to be removed from user</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">boolean</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Makes a PUT request to update a resource when a request body is required.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> (<em>dict</em>) – Data to update the resource.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-<li><strong>custom_headers</strong> – Allows to add custom HTTP headers.</li>
-<li><strong>force</strong> – Force the update operation.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict with the updated resource data.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.update_role_to_userName">
-<code class="descname">update_role_to_userName</code><span class="sig-paren">(</span><em>username</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.update_role_to_userName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.update_role_to_userName" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update roles to a given user name</p>
-<dl class="docutils">
-<dt>Agrs:</dt>
-<dd>username (str): username of the user
-data (list): roles to be updated</dd>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">User</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.validate_full_name">
-<code class="descname">validate_full_name</code><span class="sig-paren">(</span><em>full_name</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.validate_full_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.validate_full_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Verifies if a fullName is already in use.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>full_name</strong> (<em>str</em>) – The fullName to be verified.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-OneView, just stops waiting for its completion.</li>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.update" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a PUT request to update a resource when a request body is required.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – Data to update the resource.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
+<li><p><strong>custom_headers</strong> – Allows to add custom HTTP headers.</p></li>
+<li><p><strong>force</strong> – Force the update operation.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dict with the updated resource data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.update_role_to_userName">
+<span class="sig-name descname"><span class="pre">update_role_to_userName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.update_role_to_userName"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.update_role_to_userName" title="Permalink to this definition"></a></dt>
+<dd><p>Update roles to a given user name</p>
+<dl class="simple">
+<dt>Agrs:</dt><dd><p>username (str): username of the user
+data (list): roles to be updated</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>User</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.validate_full_name">
+<span class="sig-name descname"><span class="pre">validate_full_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.validate_full_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.validate_full_name" title="Permalink to this definition"></a></dt>
+<dd><p>Verifies if a fullName is already in use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_name</strong> (<em>str</em>) – The fullName to be verified.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+OneView, just stops waiting for its completion.</p></li>
+</ul>
+</dd>
+</dl>
 <p>Returns: True if full name is in use, False if it is not.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.security.users.Users.validate_user_name">
-<code class="descname">validate_user_name</code><span class="sig-paren">(</span><em>user_name</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.validate_user_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.validate_user_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.security.users.Users.validate_user_name">
+<span class="sig-name descname"><span class="pre">validate_user_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/security/users.html#Users.validate_user_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.security.users.Users.validate_user_name" title="Permalink to this definition"></a></dt>
 <dd><p>Verifies if a userName is already in use.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>user_name</strong> (<em>str</em>) – The userName to be verified.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-OneView, just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_name</strong> (<em>str</em>) – The userName to be verified.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+OneView, just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>Returns: True if user name is in use, False if it is not.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.security">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.security" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.security">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.security" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.fc_sans.managed_sans &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.fc_sans.managed_sans &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -98,7 +101,7 @@
 
 
 <div class="viewcode-block" id="ManagedSANs"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs">[docs]</a><span class="k">class</span> <span class="nc">ManagedSANs</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Managed SANs API client.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -108,7 +111,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">ManagedSANs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ManagedSANs.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the list of registered Managed SANs</span>
 
 <span class="sd">        Args:</span>
@@ -132,7 +135,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ManagedSANs.get_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a Managed SAN by name.</span>
 
 <span class="sd">        Args:</span>
@@ -151,16 +154,16 @@
         <span class="k">return</span> <span class="n">resource</span></div>
 
 <div class="viewcode-block" id="ManagedSANs.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create method is not available&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create method is not available&quot;&quot;&quot;</span>
         <span class="n">unavailable_method</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="ManagedSANs.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Delete method is not available&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete method is not available&quot;&quot;&quot;</span>
         <span class="n">unavailable_method</span><span class="p">()</span></div>
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">get_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a list of endpoints in a SAN.</span>
 
 <span class="sd">        Args:</span>
@@ -186,7 +189,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">create_endpoints_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates an endpoints CSV file for a SAN.</span>
 
 <span class="sd">        Args:</span>
@@ -202,7 +205,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">create_issues_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates an unexpected zoning report for a SAN.</span>
 
 <span class="sd">        Args:</span>
@@ -217,7 +220,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create_report</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ManagedSANs.get_wwn"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn">[docs]</a>    <span class="k">def</span> <span class="nf">get_wwn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wwn</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves a list of associations between provided WWNs and the SANs (if any) on which they reside.</span>
 
 <span class="sd">        Note:</span>

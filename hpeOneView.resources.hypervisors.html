@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.hypervisors package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.hypervisors package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,8 +47,26 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.hypervisors package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles">hpeOneView.resources.hypervisors.hypervisor_cluster_profiles module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.hypervisors.hypervisor_managers">hpeOneView.resources.hypervisors.hypervisor_managers module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles">hpeOneView.resources.hypervisors.hypervisor_cluster_profiles module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles.DEFAULT_VALUES</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles.create_virtual_switch_layout()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles.delete()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview"><code class="docutils literal notranslate"><span class="pre">HypervisorClusterProfiles.get_compliance_preview()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.hypervisors.hypervisor_managers">hpeOneView.resources.hypervisors.hypervisor_managers module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers"><code class="docutils literal notranslate"><span class="pre">HypervisorManagers</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.URI"><code class="docutils literal notranslate"><span class="pre">HypervisorManagers.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.get_all"><code class="docutils literal notranslate"><span class="pre">HypervisorManagers.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.hypervisors">Module contents</a></li>
 </ul>
 </li>
@@ -74,184 +96,165 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-hypervisors-package">
-<h1>hpeOneView.resources.hypervisors package<a class="headerlink" href="#hpeoneview-resources-hypervisors-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles">
-<span id="hpeoneview-resources-hypervisors-hypervisor-cluster-profiles-module"></span><h2>hpeOneView.resources.hypervisors.hypervisor_cluster_profiles module<a class="headerlink" href="#module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.</code><code class="descname">HypervisorClusterProfiles</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+  <section id="hpeoneview-resources-hypervisors-package">
+<h1>hpeOneView.resources.hypervisors package<a class="headerlink" href="#hpeoneview-resources-hypervisors-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles">
+<span id="hpeoneview-resources-hypervisors-hypervisor-cluster-profiles-module"></span><h2>hpeOneView.resources.hypervisors.hypervisor_cluster_profiles module<a class="headerlink" href="#module-hpeOneView.resources.hypervisors.hypervisor_cluster_profiles" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.</span></span><span class="sig-name descname"><span class="pre">HypervisorClusterProfiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>The cluster profile resource manager REST APIs to create, retrieve, modify and delete hypervisor cluster profiles.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'2200': {u'type': u'HypervisorClusterProfileV4'}}</em><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES">
+<span class="sig-name descname"><span class="pre">DEFAULT_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'2200':</span> <span class="pre">{'type':</span> <span class="pre">'HypervisorClusterProfileV4'}}</span></em><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.DEFAULT_VALUES" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/hypervisor-cluster-profiles'</em><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/hypervisor-cluster-profiles'</span></em><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout">
-<code class="descname">create_virtual_switch_layout</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.create_virtual_switch_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout">
+<span class="sig-name descname"><span class="pre">create_virtual_switch_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.create_virtual_switch_layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.create_virtual_switch_layout" title="Permalink to this definition"></a></dt>
 <dd><p>Generates vSwitch layout using information specified in the request body.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> – Fields passed to create the resource.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Fields passed to create the resource.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created virtual switch layout.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created virtual switch layout.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>timeout=-1</em>, <em>soft_delete=False</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.delete" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes a hypervisor cluster profile object from the appliance based on Hypervisor Cluster Profile UUID</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>force</strong> – If set to true, the operation completes despite any probles with network
-connectivity or errors on the resource itself. Default is false.</li>
-<li><strong>soft_delete</strong> – If set to true, the hypervisor cluster profile and its hypervisor profiles
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> – If set to true, the operation completes despite any probles with network
+connectivity or errors on the resource itself. Default is false.</p></li>
+<li><p><strong>soft_delete</strong> – If set to true, the hypervisor cluster profile and its hypervisor profiles
 are removed from appliance only. If set to false, the associated cluster and
-hosts are also removed in the hypervisor manager.</li>
+hosts are also removed in the hypervisor manager.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Boolean value. True for success and False for failure.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean value. True for success and False for failure.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em>, <em>query=u''</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_uris</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of hypervisor cluster profiles based on optional sorting and filtering,
 and constrained by start and count parameters.</p>
 <p>The maximum number of profiles is restricted to 100, i.e.,
 if user requests more than 100, this will be internally limited to 100.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
-is no query - all resources are returned.</li>
-<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
-which they are assigned.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</p></li>
+<li><p><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of Hypervisor cluster profiles</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of Hypervisor cluster profiles</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview">
-<code class="descname">get_compliance_preview</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.get_compliance_preview"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview">
+<span class="sig-name descname"><span class="pre">get_compliance_preview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_cluster_profiles.html#HypervisorClusterProfiles.get_compliance_preview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_cluster_profiles.HypervisorClusterProfiles.get_compliance_preview" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the preview of manual and automatic updates required to make the cluster profile consistent with its template.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">cluster profile compliance preview</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>cluster profile compliance preview</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.hypervisors.hypervisor_managers">
-<span id="hpeoneview-resources-hypervisors-hypervisor-managers-module"></span><h2>hpeOneView.resources.hypervisors.hypervisor_managers module<a class="headerlink" href="#module-hpeOneView.resources.hypervisors.hypervisor_managers" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.hypervisors.hypervisor_managers.</code><code class="descname">HypervisorManagers</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_managers.html#HypervisorManagers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.hypervisors.hypervisor_managers">
+<span id="hpeoneview-resources-hypervisors-hypervisor-managers-module"></span><h2>hpeOneView.resources.hypervisors.hypervisor_managers module<a class="headerlink" href="#module-hpeOneView.resources.hypervisors.hypervisor_managers" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.hypervisors.hypervisor_managers.</span></span><span class="sig-name descname"><span class="pre">HypervisorManagers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_managers.html#HypervisorManagers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Hypervisor Managers API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/hypervisor-managers'</em><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/hypervisor-managers'</span></em><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em>, <em>query=u''</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_managers.html#HypervisorManagers.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_uris</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/hypervisors/hypervisor_managers.html#HypervisorManagers.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.hypervisors.hypervisor_managers.HypervisorManagers.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of Hypervisor Managers based on optional sorting and filtering, and constrained by start and count
 parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
-is no query - all resources are returned.</li>
-<li><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
-which they are assigned.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</p></li>
+<li><p><strong>scope_uris</strong> – An expression to restrict the resources returned according to the scopes to
+which they are assigned.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of Hypervisor Managers</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of Hypervisor Managers</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.hypervisors">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.hypervisors" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.hypervisors">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.hypervisors" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

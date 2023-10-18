@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers.logical_enclosures &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.servers.logical_enclosures &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -97,7 +100,7 @@
 
 
 <div class="viewcode-block" id="LogicalEnclosures"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.logical_enclosures.LogicalEnclosures">[docs]</a><span class="k">class</span> <span class="nc">LogicalEnclosures</span><span class="p">(</span><span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The logical enclosure resource provides methods for managing one or more enclosures that are</span>
 <span class="sd">    linked or stacked with stacking links.</span>
 
@@ -108,7 +111,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">LogicalEnclosures</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LogicalEnclosures.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.logical_enclosures.LogicalEnclosures.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a list of logical enclosures matching the specified filter. A maximum of 40 logical enclosures are</span>
 <span class="sd">        returned to the caller. Additional calls can be made to retrieve any other logical enclosures matching the</span>
 <span class="sd">        filter. Valid filter parameters include attributes of a Logical Enclosure resource.</span>
@@ -139,7 +142,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">update_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Reapplies the appliance&#39;s configuration on enclosures for the logical enclosure by ID or URI. This includes</span>
 <span class="sd">        running the same configure steps that were performed as part of the enclosure add.</span>
 
@@ -158,7 +161,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">get_script</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the configuration script of the logical enclosure by ID or URI.</span>
 
 <span class="sd">        Return:</span>
@@ -169,7 +172,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">update_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates the configuration script of the logical enclosure and on all enclosures in the logical enclosure with</span>
 <span class="sd">        the specified ID.</span>
 
@@ -186,7 +189,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">generate_support_dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a support dump for the logical enclosure with the specified ID. A logical enclosure support dump</span>
 <span class="sd">        includes content for logical interconnects associated with that logical enclosure. By default, it also contains</span>
 <span class="sd">        appliance support dump content.</span>
@@ -204,7 +207,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">update_from_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Use this action to make a logical enclosure consistent with the enclosure group when the logical enclosure is</span>
 <span class="sd">        in the Inconsistent state.</span>
 

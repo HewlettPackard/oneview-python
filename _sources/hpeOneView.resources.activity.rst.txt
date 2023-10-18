@@ -8,31 +8,30 @@ hpeOneView.resources.activity.alerts module
 -------------------------------------------
 
 .. automodule:: hpeOneView.resources.activity.alerts
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.activity.events module
 -------------------------------------------
 
 .. automodule:: hpeOneView.resources.activity.events
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.activity.tasks module
 ------------------------------------------
 
 .. automodule:: hpeOneView.resources.activity.tasks
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: hpeOneView.resources.activity
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

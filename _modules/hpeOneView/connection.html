@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.connection &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.connection &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -328,7 +331,7 @@
         <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
 
 <div class="viewcode-block" id="connection.encode_multipart_formdata"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.encode_multipart_formdata">[docs]</a>    <span class="k">def</span> <span class="nf">encode_multipart_formdata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">baseName</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fields is a sequence of (name, value) elements for regular form fields.</span>
 <span class="sd">        Files is a sequence of (name, filename, value) elements for data</span>
 <span class="sd">        to be uploaded as files</span>
@@ -572,7 +575,7 @@
         <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="connection.enable_etag_validation"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.enable_etag_validation">[docs]</a>    <span class="k">def</span> <span class="nf">enable_etag_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Enable the concurrency control for the PUT and DELETE requests, in which the requests are conditionally</span>
 <span class="sd">        processed only if the provided entity tag in the body matches the latest entity tag stored for the resource.</span>
 
@@ -581,7 +584,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;If-Match&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="connection.disable_etag_validation"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.disable_etag_validation">[docs]</a>    <span class="k">def</span> <span class="nf">disable_etag_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Disable the concurrency control for the PUT and DELETE requests. The requests will be forced without specifying</span>
 <span class="sd">        an explicit ETag. This method sets an If-Match header of &quot;*&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

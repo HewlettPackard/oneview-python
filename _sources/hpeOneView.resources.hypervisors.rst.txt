@@ -8,23 +8,22 @@ hpeOneView.resources.hypervisors.hypervisor\_cluster\_profiles module
 ---------------------------------------------------------------------
 
 .. automodule:: hpeOneView.resources.hypervisors.hypervisor_cluster_profiles
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.hypervisors.hypervisor\_managers module
 ------------------------------------------------------------
 
 .. automodule:: hpeOneView.resources.hypervisors.hypervisor_managers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: hpeOneView.resources.hypervisors
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

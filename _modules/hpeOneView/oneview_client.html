@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.oneview_client &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.oneview_client &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -287,7 +290,7 @@
 
 <div class="viewcode-block" id="OneViewClient.from_json_file"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.oneview_client.OneViewClient.from_json_file">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_json_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">sessionID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct OneViewClient using a json file.</span>
 
 <span class="sd">        Args:</span>
@@ -305,7 +308,7 @@
 
 <div class="viewcode-block" id="OneViewClient.from_environment_variables"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.oneview_client.OneViewClient.from_environment_variables">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_environment_variables</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct OneViewClient using environment variables.</span>
 
 <span class="sd">        Allowed variables: ONEVIEWSDK_IP (required), ONEVIEWSDK_USERNAME (required), ONEVIEWSDK_PASSWORD (required),</span>
@@ -337,7 +340,7 @@
             <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__validate_host</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fails if oneview ip is not provided</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__connection</span><span class="o">.</span><span class="n">_host</span><span class="p">:</span>
@@ -345,7 +348,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">api_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the OneView API Version.</span>
 
 <span class="sd">        Returns:</span>
@@ -355,7 +358,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the underlying HPE OneView connection used by the OneViewClient.</span>
 
 <span class="sd">        Returns:</span>
@@ -365,7 +368,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_authority</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Certificate Authority API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -375,7 +378,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Connections API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -388,7 +391,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">connection_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ConnectionTemplates API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -398,7 +401,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fc_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the FcNetworks API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -408,7 +411,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fcoe_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the FcoeNetworks API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -418,7 +421,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ethernet_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the EthernetNetworks API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -428,7 +431,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fabrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Fabrics API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -440,7 +443,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">restores</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Restores API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -450,7 +453,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scopes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Scopes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -460,7 +463,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">datacenters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Datacenters API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -472,7 +475,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">network_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the NetworkSets API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -482,7 +485,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">server_hardware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ServerHardware API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -492,7 +495,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">server_hardware_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ServerHardwareTypes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -502,7 +505,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rack_managers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Rack Manager API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -512,7 +515,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_vsn_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the IdPoolsRanges API Client for VSN Ranges.</span>
 
 <span class="sd">        Returns:</span>
@@ -524,7 +527,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_vmac_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the IdPoolsRanges API Client for VMAC Ranges.</span>
 
 <span class="sd">        Returns:</span>
@@ -536,7 +539,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_vwwn_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the IdPoolsRanges API Client for VWWN Ranges.</span>
 
 <span class="sd">        Returns:</span>
@@ -548,7 +551,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_ipv4_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the IdPoolsIpv4Ranges API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -558,7 +561,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools_ipv4_subnets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the IdPoolsIpv4Subnets API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -568,7 +571,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id_pools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the IdPools API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -578,7 +581,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">switches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Switches API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -590,7 +593,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">roles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Roles API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -602,7 +605,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">switch_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SwitchTypes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -612,7 +615,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_switch_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the LogicalSwitchGroups API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -622,7 +625,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_switches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the LogicalSwitches API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -634,7 +637,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Tasks API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -646,7 +649,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enclosure_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the EnclosureGroups API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -656,7 +659,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">enclosures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Enclosures API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -666,7 +669,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_enclosures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the LogicalEnclosures API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -676,7 +679,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">metric_streaming</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the MetricStreaming API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -688,7 +691,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interconnects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Interconnects API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -698,7 +701,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interconnect_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the InterconnectTypes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -708,7 +711,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">interconnect_link_topologies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the InterconnectLinkTopologies API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -720,7 +723,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_interconnect_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SasInterconnectTypes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -730,7 +733,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">internal_link_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the InternalLinkSets API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -740,7 +743,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_interconnect_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the LogicalInterconnectGroups API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -750,7 +753,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_interconnects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the LogicalInterconnects API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -760,7 +763,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_logical_interconnects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SasLogicalInterconnects API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -770,7 +773,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">logical_downlinks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the LogicalDownlinks API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -783,7 +786,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">power_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the PowerDevices API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -795,7 +798,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">unmanaged_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Unmanaged Devices API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -807,7 +810,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">racks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Racks API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -819,7 +822,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">san_managers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Repositories API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -829,7 +832,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Endpoints API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -841,7 +844,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">server_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ServerProfiles API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -851,7 +854,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">server_profile_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ServerProfileTemplate API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -861,7 +864,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the StorageSystems API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -871,7 +874,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_pools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the StoragePools API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -881,7 +884,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_volume_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the StorageVolumeTemplates API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -891,7 +894,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">storage_volume_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the StorageVolumeAttachments API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -901,7 +904,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">firmware_drivers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the FirmwareDrivers API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -911,7 +914,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">firmware_bundles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the FirmwareBundles API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -921,7 +924,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">uplink_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the UplinkSets API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -931,7 +934,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">volumes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Volumes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -941,7 +944,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_logical_jbod_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SAS Logical JBOD Attachments client.</span>
 
 <span class="sd">        Returns:</span>
@@ -953,7 +956,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">managed_sans</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Managed SANs API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -963,7 +966,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">migratable_vc_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the VC Migration Manager API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -975,7 +978,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_interconnects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SAS Interconnects API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -985,7 +988,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_logical_interconnect_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SasLogicalInterconnectGroups API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -995,7 +998,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">drive_enclosures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Drive Enclosures API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1007,7 +1010,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sas_logical_jbods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the SAS Logical JBODs API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1019,7 +1022,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Labels API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1029,7 +1032,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">index_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Index Resources API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1039,7 +1042,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">alerts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Alerts API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1051,7 +1054,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Events API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1063,7 +1066,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificate_rabbitmq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Certificate RabbitMQ API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1075,7 +1078,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Users API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1085,7 +1088,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_device_read_community</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceDeviceReadCommunity API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1097,7 +1100,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_device_snmp_v1_trap_destinations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceDeviceSNMPv1TrapDestinations API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1107,7 +1110,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_device_snmp_v3_trap_destinations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceDeviceSNMPv3TrapDestinations API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1117,7 +1120,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_device_snmp_v3_users</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceDeviceSNMPv3Users API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1127,7 +1130,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_node_information</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceNodeInformation API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1137,7 +1140,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_health_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceHealthStatus API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1147,7 +1150,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_proxy_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceProxyConfiguration API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1157,7 +1160,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_network_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceNetworkInterfaces API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1167,7 +1170,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ha_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the HANodes API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1177,7 +1180,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_time_and_locale_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceTimeAndLocaleConfiguration API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1187,7 +1190,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">versions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Version API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1199,7 +1202,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">backups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Backup API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1211,7 +1214,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">login_details</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the login details</span>
 
 <span class="sd">        Returns:</span>
@@ -1223,7 +1226,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">licenses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all the licenses</span>
 <span class="sd">        Returns:</span>
 <span class="sd">        List of licenses</span>
@@ -1234,7 +1237,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hypervisor_managers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Hypervisor Managers API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1244,7 +1247,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">certificates_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Certificates Server API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1254,7 +1257,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hypervisor_cluster_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Hypervisor Cluster Profiles API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1264,7 +1267,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_configuration_timeconfig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceConfigurationTimeconfig API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1274,7 +1277,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">appliance_ssh_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the ApplianceSshAccess API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1284,7 +1287,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">repositories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Repositories API client.</span>
 
 <span class="sd">        Returns:</span>
@@ -1294,7 +1297,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">san_providers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the Repositories API client.</span>
 
 <span class="sd">        Returns:</span>

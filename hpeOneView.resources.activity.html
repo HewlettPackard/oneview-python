@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.activity package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.activity package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,9 +47,41 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.activity package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.activity.alerts">hpeOneView.resources.activity.alerts module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.activity.events">hpeOneView.resources.activity.events module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.activity.tasks">hpeOneView.resources.activity.tasks module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.activity.alerts">hpeOneView.resources.activity.alerts module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts"><code class="docutils literal notranslate"><span class="pre">Alerts</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.URI"><code class="docutils literal notranslate"><span class="pre">Alerts.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.delete"><code class="docutils literal notranslate"><span class="pre">Alerts.delete()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.delete_alert_change_log"><code class="docutils literal notranslate"><span class="pre">Alerts.delete_alert_change_log()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.delete_all"><code class="docutils literal notranslate"><span class="pre">Alerts.delete_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.get"><code class="docutils literal notranslate"><span class="pre">Alerts.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.get_all"><code class="docutils literal notranslate"><span class="pre">Alerts.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.get_by"><code class="docutils literal notranslate"><span class="pre">Alerts.get_by()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.alerts.Alerts.update"><code class="docutils literal notranslate"><span class="pre">Alerts.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.activity.events">hpeOneView.resources.activity.events module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events"><code class="docutils literal notranslate"><span class="pre">Events</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events.DEFAULT_VALUES"><code class="docutils literal notranslate"><span class="pre">Events.DEFAULT_VALUES</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events.URI"><code class="docutils literal notranslate"><span class="pre">Events.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events.create"><code class="docutils literal notranslate"><span class="pre">Events.create()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events.get"><code class="docutils literal notranslate"><span class="pre">Events.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events.get_all"><code class="docutils literal notranslate"><span class="pre">Events.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.events.Events.get_by"><code class="docutils literal notranslate"><span class="pre">Events.get_by()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.activity.tasks">hpeOneView.resources.activity.tasks module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.tasks.Tasks"><code class="docutils literal notranslate"><span class="pre">Tasks</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.tasks.Tasks.URI"><code class="docutils literal notranslate"><span class="pre">Tasks.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.tasks.Tasks.get_all"><code class="docutils literal notranslate"><span class="pre">Tasks.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.activity.tasks.Tasks.patch"><code class="docutils literal notranslate"><span class="pre">Tasks.patch()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.activity">Module contents</a></li>
 </ul>
 </li>
@@ -75,399 +111,357 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-activity-package">
-<h1>hpeOneView.resources.activity package<a class="headerlink" href="#hpeoneview-resources-activity-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.activity.alerts">
-<span id="hpeoneview-resources-activity-alerts-module"></span><h2>hpeOneView.resources.activity.alerts module<a class="headerlink" href="#module-hpeOneView.resources.activity.alerts" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.activity.alerts.Alerts">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.activity.alerts.</code><code class="descname">Alerts</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts" title="Permalink to this definition">¶</a></dt>
+  <section id="hpeoneview-resources-activity-package">
+<h1>hpeOneView.resources.activity package<a class="headerlink" href="#hpeoneview-resources-activity-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.activity.alerts">
+<span id="hpeoneview-resources-activity-alerts-module"></span><h2>hpeOneView.resources.activity.alerts module<a class="headerlink" href="#module-hpeOneView.resources.activity.alerts" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.activity.alerts.</span></span><span class="sig-name descname"><span class="pre">Alerts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/alerts'</em><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/alerts'</span></em><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>resource</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.delete" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes an alert.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resource</strong> – dict object to delete</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Indicates if the resource was successfully deleted.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resource</strong> – dict object to delete</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Indicates if the resource was successfully deleted.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.delete_alert_change_log">
-<code class="descname">delete_alert_change_log</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.delete_alert_change_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.delete_alert_change_log" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.delete_alert_change_log">
+<span class="sig-name descname"><span class="pre">delete_alert_change_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.delete_alert_change_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.delete_alert_change_log" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes alert change log by alert ID or URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – alert ID or URI.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – alert ID or URI.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.delete_all">
-<code class="descname">delete_all</code><span class="sig-paren">(</span><em>filter</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.delete_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.delete_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.delete_all">
+<span class="sig-name descname"><span class="pre">delete_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.delete_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.delete_all" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes all Alert objects from the appliance that match the provided filter.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter string to narrow the list of items to delete. The default is no filter; all
-resources are deleted.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter string to narrow the list of items to delete. The default is no filter; all
+resources are deleted.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates whether the alerts were successfully deleted.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Indicates whether the alerts were successfully deleted.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.get" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieve an alert by its URI or ID.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – alert ID or URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The alert.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – alert ID or URI.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The alert.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all the alerts based upon filters provided.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
+first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
 the response may differ from the requested count if the sum of start and count exceed the total number
-of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no filter; all
-resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default is no query (all
-resources are returned).</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time, with the
-oldest entry first.</li>
-<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
+of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no filter; all
+resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default is no query (all
+resources are returned).</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time, with the
+oldest entry first.</p></li>
+<li><p><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
 predefined view. The default view is expand (show all attributes of the resource and all elements of
-collections of resources).</li>
+collections of resources).</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of alerts.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of alerts.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.get_by" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.get_by">
+<span class="sig-name descname"><span class="pre">get_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.get_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.get_by" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all alerts that match the filter.</p>
 <p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> – Field name to filter.</p></li>
+<li><p><strong>value</strong> – Value to filter.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of alerts.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of alerts.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.alerts.Alerts.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>id_or_uri=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.update" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.alerts.Alerts.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/alerts.html#Alerts.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.alerts.Alerts.update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the specified alert resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to update.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated alert.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Updated alert.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.activity.events">
-<span id="hpeoneview-resources-activity-events-module"></span><h2>hpeOneView.resources.activity.events module<a class="headerlink" href="#module-hpeOneView.resources.activity.events" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.activity.events.Events">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.activity.events.</code><code class="descname">Events</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-hpeOneView.resources.activity.events">
+<span id="hpeoneview-resources-activity-events-module"></span><h2>hpeOneView.resources.activity.events module<a class="headerlink" href="#module-hpeOneView.resources.activity.events" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.activity.events.</span></span><span class="sig-name descname"><span class="pre">Events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.activity.events.Events.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'EventResourceV3'}, u'300': {u'type': u'EventResourceV3'}}</em><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events.DEFAULT_VALUES">
+<span class="sig-name descname"><span class="pre">DEFAULT_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'200':</span> <span class="pre">{'type':</span> <span class="pre">'EventResourceV3'},</span> <span class="pre">'300':</span> <span class="pre">{'type':</span> <span class="pre">'EventResourceV3'}}</span></em><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.DEFAULT_VALUES" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.activity.events.Events.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/events'</em><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/events'</span></em><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.events.Events.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.create" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.create" title="Permalink to this definition"></a></dt>
 <dd><p>Creates an Event.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stop waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to create.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.events.Events.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.get" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieve an event by its URI or ID.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – event ID or URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The event.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – event ID or URI.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The event.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.events.Events.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all the events based upon filters provided.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
+first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
 the response may differ from the requested count if the sum of start and count exceed the total number
-of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no filter; all
-resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default is no query (all
-resources are returned).</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time, with the
-oldest entry first.</li>
-<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
+of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no filter; all
+resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default is no query (all
+resources are returned).</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time, with the
+oldest entry first.</p></li>
+<li><p><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
 predefined view. The default view is expand (show all attributes of the resource and all elements of
-collections of resources).</li>
+collections of resources).</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of events.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of events.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.events.Events.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.get_by" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.events.Events.get_by">
+<span class="sig-name descname"><span class="pre">get_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/events.html#Events.get_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.events.Events.get_by" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all events that match the filter.</p>
 <p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> – Field name to filter.</p></li>
+<li><p><strong>value</strong> – Value to filter.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of events.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of events.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.activity.tasks">
-<span id="hpeoneview-resources-activity-tasks-module"></span><h2>hpeOneView.resources.activity.tasks module<a class="headerlink" href="#module-hpeOneView.resources.activity.tasks" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.activity.tasks.Tasks">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.activity.tasks.</code><code class="descname">Tasks</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.activity.tasks">
+<span id="hpeoneview-resources-activity-tasks-module"></span><h2>hpeOneView.resources.activity.tasks module<a class="headerlink" href="#module-hpeOneView.resources.activity.tasks" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.tasks.Tasks">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.activity.tasks.</span></span><span class="sig-name descname"><span class="pre">Tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResourcePatchMixin</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Tasks API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.activity.tasks.Tasks.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/tasks'</em><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.tasks.Tasks.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/tasks'</span></em><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.tasks.Tasks.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>fields=u''</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>view=u''</em>, <em>topCount=0</em>, <em>childLimit=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.tasks.Tasks.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topCount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">childLimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all the tasks based upon filters provided.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Filters are optional.</p>
+<p class="admonition-title">Note</p>
+<p>Filters are optional.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
-first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing. If not specified, the default is 0 - start with the
+first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
 the response may differ from the requested count if the sum of start and count exceed the total number
-of items.</li>
-<li><strong>fields</strong> – Specifies which fields should be returned in the result set.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no filter; all
-resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default is no query (all
-resources are returned).</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time, with the
-oldest entry first.</li>
-<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
+of items.</p></li>
+<li><p><strong>fields</strong> – Specifies which fields should be returned in the result set.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The default is no filter; all
+resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default is no query (all
+resources are returned).</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time, with the
+oldest entry first.</p></li>
+<li><p><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection, by specifying the name of a
 predefined view. The default view is expand (show all attributes of the resource and all elements of
-collections of resources).</li>
-<li><strong>childLimit</strong> – Total number of associated resources in an aggregated manner. Default value is 10.</li>
-<li><strong>topCount</strong> – Total number of immediate children the task should send back. Otherwise, the task sends back the
-aggregated view of the tree. Default value is 3.</li>
+collections of resources).</p></li>
+<li><p><strong>childLimit</strong> – Total number of associated resources in an aggregated manner. Default value is 10.</p></li>
+<li><p><strong>topCount</strong> – Total number of immediate children the task should send back. Otherwise, the task sends back the
+aggregated view of the tree. Default value is 3.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of tasks.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of tasks.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.activity.tasks.Tasks.patch">
-<code class="descname">patch</code><span class="sig-paren">(</span><em>uri</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks.patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.patch" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.activity.tasks.Tasks.patch">
+<span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/activity/tasks.html#Tasks.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.activity.tasks.Tasks.patch" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the state of task to cancelling only if IsCancellable is set to true for the task and its children or
 children are in terminal state.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>uri</strong> – URI of task resource.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> – URI of task resource.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Updated resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.activity">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.activity" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.activity">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.activity" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

@@ -8,15 +8,14 @@ hpeOneView.resources.data\_services.metric\_streaming module
 ------------------------------------------------------------
 
 .. automodule:: hpeOneView.resources.data_services.metric_streaming
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: hpeOneView.resources.data_services
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

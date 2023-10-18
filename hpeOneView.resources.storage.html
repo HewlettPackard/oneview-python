@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.storage package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.storage package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,14 +47,102 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.storage package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.drive_enclosures">hpeOneView.resources.storage.drive_enclosures module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.sas_logical_jbod_attachments">hpeOneView.resources.storage.sas_logical_jbod_attachments module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.sas_logical_jbods">hpeOneView.resources.storage.sas_logical_jbods module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_pools">hpeOneView.resources.storage.storage_pools module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_systems">hpeOneView.resources.storage.storage_systems module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_volume_attachments">hpeOneView.resources.storage.storage_volume_attachments module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_volume_templates">hpeOneView.resources.storage.storage_volume_templates module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.storage.volumes">hpeOneView.resources.storage.volumes module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.drive_enclosures">hpeOneView.resources.storage.drive_enclosures module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures"><code class="docutils literal notranslate"><span class="pre">DriveEnclosures</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI"><code class="docutils literal notranslate"><span class="pre">DriveEnclosures.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map"><code class="docutils literal notranslate"><span class="pre">DriveEnclosures.get_port_map()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state"><code class="docutils literal notranslate"><span class="pre">DriveEnclosures.refresh_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.sas_logical_jbod_attachments">hpeOneView.resources.storage.sas_logical_jbod_attachments module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments"><code class="docutils literal notranslate"><span class="pre">SasLogicalJbodAttachments</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.URI"><code class="docutils literal notranslate"><span class="pre">SasLogicalJbodAttachments.URI</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.sas_logical_jbods">hpeOneView.resources.storage.sas_logical_jbods module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods"><code class="docutils literal notranslate"><span class="pre">SasLogicalJbods</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI"><code class="docutils literal notranslate"><span class="pre">SasLogicalJbods.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives"><code class="docutils literal notranslate"><span class="pre">SasLogicalJbods.get_drives()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_pools">hpeOneView.resources.storage.storage_pools module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_pools.StoragePools"><code class="docutils literal notranslate"><span class="pre">StoragePools</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_pools.StoragePools.URI"><code class="docutils literal notranslate"><span class="pre">StoragePools.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_pools.StoragePools.add"><code class="docutils literal notranslate"><span class="pre">StoragePools.add()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_pools.StoragePools.get_reachable_storage_pools"><code class="docutils literal notranslate"><span class="pre">StoragePools.get_reachable_storage_pools()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_pools.StoragePools.remove"><code class="docutils literal notranslate"><span class="pre">StoragePools.remove()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_systems">hpeOneView.resources.storage.storage_systems module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems"><code class="docutils literal notranslate"><span class="pre">StorageSystems</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.URI"><code class="docutils literal notranslate"><span class="pre">StorageSystems.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.add"><code class="docutils literal notranslate"><span class="pre">StorageSystems.add()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_by_hostname()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_by_ip_hostname()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_host_types()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_managed_ports()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_reachable_ports()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_storage_pools()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates"><code class="docutils literal notranslate"><span class="pre">StorageSystems.get_templates()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.remove"><code class="docutils literal notranslate"><span class="pre">StorageSystems.remove()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_volume_attachments">hpeOneView.resources.storage.storage_volume_attachments module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments"><code class="docutils literal notranslate"><span class="pre">StorageVolumeAttachments</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.URI"><code class="docutils literal notranslate"><span class="pre">StorageVolumeAttachments.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_extra_unmanaged_storage_volumes"><code class="docutils literal notranslate"><span class="pre">StorageVolumeAttachments.get_extra_unmanaged_storage_volumes()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_paths"><code class="docutils literal notranslate"><span class="pre">StorageVolumeAttachments.get_paths()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.remove_extra_presentations"><code class="docutils literal notranslate"><span class="pre">StorageVolumeAttachments.remove_extra_presentations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.storage_volume_templates">hpeOneView.resources.storage.storage_volume_templates module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.DEFAULT_VALUES"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates.DEFAULT_VALUES</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.URI"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.delete"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates.delete()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_compatible_systems"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates.get_compatible_systems()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_connectable_volume_templates"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates.get_connectable_volume_templates()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_reachable_volume_templates"><code class="docutils literal notranslate"><span class="pre">StorageVolumeTemplates.get_reachable_volume_templates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.storage.volumes">hpeOneView.resources.storage.volumes module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots"><code class="docutils literal notranslate"><span class="pre">VolumeSnapshots</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES"><code class="docutils literal notranslate"><span class="pre">VolumeSnapshots.DEFAULT_VALUES</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.create"><code class="docutils literal notranslate"><span class="pre">VolumeSnapshots.create()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.delete"><code class="docutils literal notranslate"><span class="pre">VolumeSnapshots.delete()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes"><code class="docutils literal notranslate"><span class="pre">Volumes</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.URI"><code class="docutils literal notranslate"><span class="pre">Volumes.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.add_from_existing"><code class="docutils literal notranslate"><span class="pre">Volumes.add_from_existing()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.create_from_snapshot"><code class="docutils literal notranslate"><span class="pre">Volumes.create_from_snapshot()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.create_snapshot"><code class="docutils literal notranslate"><span class="pre">Volumes.create_snapshot()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.delete"><code class="docutils literal notranslate"><span class="pre">Volumes.delete()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.get_attachable_volumes"><code class="docutils literal notranslate"><span class="pre">Volumes.get_attachable_volumes()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths"><code class="docutils literal notranslate"><span class="pre">Volumes.get_extra_managed_storage_volume_paths()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by"><code class="docutils literal notranslate"><span class="pre">Volumes.get_snapshot_by()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_name"><code class="docutils literal notranslate"><span class="pre">Volumes.get_snapshot_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri"><code class="docutils literal notranslate"><span class="pre">Volumes.get_snapshot_by_uri()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshots"><code class="docutils literal notranslate"><span class="pre">Volumes.get_snapshots()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.storage.volumes.Volumes.repair"><code class="docutils literal notranslate"><span class="pre">Volumes.repair()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.storage">Module contents</a></li>
 </ul>
 </li>
@@ -80,664 +172,600 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-storage-package">
-<h1>hpeOneView.resources.storage package<a class="headerlink" href="#hpeoneview-resources-storage-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.drive_enclosures">
-<span id="hpeoneview-resources-storage-drive-enclosures-module"></span><h2>hpeOneView.resources.storage.drive_enclosures module<a class="headerlink" href="#module-hpeOneView.resources.storage.drive_enclosures" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.drive_enclosures.</code><code class="descname">DriveEnclosures</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a></p>
+  <section id="hpeoneview-resources-storage-package">
+<h1>hpeOneView.resources.storage package<a class="headerlink" href="#hpeoneview-resources-storage-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.storage.drive_enclosures">
+<span id="hpeoneview-resources-storage-drive-enclosures-module"></span><h2>hpeOneView.resources.storage.drive_enclosures module<a class="headerlink" href="#module-hpeOneView.resources.storage.drive_enclosures" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.drive_enclosures.</span></span><span class="sig-name descname"><span class="pre">DriveEnclosures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/drive_enclosures.html#DriveEnclosures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResourcePatchMixin</span></code></a></p>
 <p>Drive Enclosures API client.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This resource is only available on HPE Synergy</p>
+<p class="admonition-title">Note</p>
+<p>This resource is only available on HPE Synergy</p>
 </div>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/drive-enclosures'</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/drive-enclosures'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map">
-<code class="descname">get_port_map</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map">
+<span class="sig-name descname"><span class="pre">get_port_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.get_port_map" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state">
-<code class="descname">refresh_state</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state">
+<span class="sig-name descname"><span class="pre">refresh_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hpeOneView.resources.storage.drive_enclosures.DriveEnclosures.refresh_state" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.sas_logical_jbod_attachments">
-<span id="hpeoneview-resources-storage-sas-logical-jbod-attachments-module"></span><h2>hpeOneView.resources.storage.sas_logical_jbod_attachments module<a class="headerlink" href="#module-hpeOneView.resources.storage.sas_logical_jbod_attachments" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.sas_logical_jbod_attachments.</code><code class="descname">SasLogicalJbodAttachments</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.sas_logical_jbod_attachments">
+<span id="hpeoneview-resources-storage-sas-logical-jbod-attachments-module"></span><h2>hpeOneView.resources.storage.sas_logical_jbod_attachments module<a class="headerlink" href="#module-hpeOneView.resources.storage.sas_logical_jbod_attachments" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.sas_logical_jbod_attachments.</span></span><span class="sig-name descname"><span class="pre">SasLogicalJbodAttachments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbod_attachments.html#SasLogicalJbodAttachments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>SAS Logical JBOD Attachments API client.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This resource is only available on HPE Synergy</p>
+<p class="admonition-title">Note</p>
+<p>This resource is only available on HPE Synergy</p>
 </div>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/sas-logical-jbod-attachments'</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/sas-logical-jbod-attachments'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbod_attachments.SasLogicalJbodAttachments.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.sas_logical_jbods">
-<span id="hpeoneview-resources-storage-sas-logical-jbods-module"></span><h2>hpeOneView.resources.storage.sas_logical_jbods module<a class="headerlink" href="#module-hpeOneView.resources.storage.sas_logical_jbods" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.sas_logical_jbods.</code><code class="descname">SasLogicalJbods</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.ResourcePatchMixin</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.sas_logical_jbods">
+<span id="hpeoneview-resources-storage-sas-logical-jbods-module"></span><h2>hpeOneView.resources.storage.sas_logical_jbods module<a class="headerlink" href="#module-hpeOneView.resources.storage.sas_logical_jbods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.sas_logical_jbods.</span></span><span class="sig-name descname"><span class="pre">SasLogicalJbods</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/sas_logical_jbods.html#SasLogicalJbods"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a>, <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin" title="hpeOneView.resources.resource.ResourcePatchMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResourcePatchMixin</span></code></a></p>
 <p>SAS Logical JBODs API client.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This resource is only available on HPE Synergy</p>
+<p class="admonition-title">Note</p>
+<p>This resource is only available on HPE Synergy</p>
 </div>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/sas-logical-jbods'</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/sas-logical-jbods'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives">
-<code class="descname">get_drives</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives">
+<span class="sig-name descname"><span class="pre">get_drives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hpeOneView.resources.storage.sas_logical_jbods.SasLogicalJbods.get_drives" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.storage_pools">
-<span id="hpeoneview-resources-storage-storage-pools-module"></span><h2>hpeOneView.resources.storage.storage_pools module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_pools" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.storage_pools.StoragePools">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.storage_pools.</code><code class="descname">StoragePools</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.storage_pools">
+<span id="hpeoneview-resources-storage-storage-pools-module"></span><h2>hpeOneView.resources.storage.storage_pools module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_pools" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_pools.StoragePools">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.storage_pools.</span></span><span class="sig-name descname"><span class="pre">StoragePools</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Storage Pools API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.storage_pools.StoragePools.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/storage-pools'</em><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_pools.StoragePools.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/storage-pools'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_pools.StoragePools.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_pools.StoragePools.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.add" title="Permalink to this definition"></a></dt>
 <dd><p>Adds storage pool for management by the appliance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to create</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to create</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created storage pool.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created storage pool.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_pools.StoragePools.get_reachable_storage_pools">
-<code class="descname">get_reachable_storage_pools</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>networks=None</em>, <em>scope_exclusions=None</em>, <em>scope_uris=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools.get_reachable_storage_pools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.get_reachable_storage_pools" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_pools.StoragePools.get_reachable_storage_pools">
+<span class="sig-name descname"><span class="pre">get_reachable_storage_pools</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_exclusions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_uris</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools.get_reachable_storage_pools"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.get_reachable_storage_pools" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the storage pools that are connected on the specified networks
 based on the storage system port’s expected network connectivity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing. If not specified,
-the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing. If not specified,
+the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> – A general filter/query string to narrow the list of items returned.
-The default is no filter - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order
-is based on create time with the oldest entry first.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned.
-The default is no query - all resources are returned.</li>
-<li><strong>networks</strong> – Specifies the comma-separated list of network URIs used by the
-reachable storage pools.</li>
-<li><strong>scope_exclusions</strong> – Specifies the comma-separated list of storage-pools URIs
-that will be excluded from the scope validation checks.</li>
-<li><strong>scope_uris</strong> – Specifies the comma-separated list of scope URIs used by the
-reachable storage pools.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> – A general filter/query string to narrow the list of items returned.
+The default is no filter - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order
+is based on create time with the oldest entry first.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned.
+The default is no query - all resources are returned.</p></li>
+<li><p><strong>networks</strong> – Specifies the comma-separated list of network URIs used by the
+reachable storage pools.</p></li>
+<li><p><strong>scope_exclusions</strong> – Specifies the comma-separated list of storage-pools URIs
+that will be excluded from the scope validation checks.</p></li>
+<li><p><strong>scope_uris</strong> – Specifies the comma-separated list of scope URIs used by the
+reachable storage pools.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Reachable Storage Pools List.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reachable Storage Pools List.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_pools.StoragePools.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_pools.StoragePools.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_pools.html#StoragePools.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_pools.StoragePools.remove" title="Permalink to this definition"></a></dt>
 <dd><p>Removes an imported storage pool from OneView.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to remove.</li>
-<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to remove.</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Details of associated resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Details of associated resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.storage_systems">
-<span id="hpeoneview-resources-storage-storage-systems-module"></span><h2>hpeOneView.resources.storage.storage_systems module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_systems" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.storage_systems.</code><code class="descname">StorageSystems</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.storage_systems">
+<span id="hpeoneview-resources-storage-storage-systems-module"></span><h2>hpeOneView.resources.storage.storage_systems module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_systems" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.storage_systems.</span></span><span class="sig-name descname"><span class="pre">StorageSystems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Storage Systems API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/storage-systems'</em><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/storage-systems'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.add" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a storage system for management by the appliance. The storage system resource created will be in a
 Connected state and will not yet be available for further operations. Users are required to perform a PUT API
 on the storage system resource to complete the management of the storage system resource. An asynchronous task
 will be created as a result of this API call to discover available domains, target ports, and storage pools.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to create.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created storage system.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created storage system.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname">
-<code class="descname">get_by_hostname</code><span class="sig-paren">(</span><em>hostname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_by_hostname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname">
+<span class="sig-name descname"><span class="pre">get_by_hostname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hostname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_by_hostname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieve a storage system by its hostname.</p>
 <p>Works only in API500 onwards.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hostname</strong> – Storage system hostname.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hostname</strong> – Storage system hostname.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname">
-<code class="descname">get_by_ip_hostname</code><span class="sig-paren">(</span><em>ip_hostname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_by_ip_hostname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname">
+<span class="sig-name descname"><span class="pre">get_by_ip_hostname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_hostname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_by_ip_hostname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieve a storage system by its IP.</p>
 <p>Works only with API version &lt;= 300.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ip_hostname</strong> – Storage system IP or hostname.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ip_hostname</strong> – Storage system IP or hostname.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types">
-<code class="descname">get_host_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_host_types"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types">
+<span class="sig-name descname"><span class="pre">get_host_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_host_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the list of supported host types.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Host types.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Host types.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports">
-<code class="descname">get_managed_ports</code><span class="sig-paren">(</span><em>port_id_or_uri=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_managed_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports">
+<span class="sig-name descname"><span class="pre">get_managed_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port_id_or_uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_managed_ports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all ports or a specific managed target port for the specified storage system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>port_id_or_uri</strong> – Can be either the port id or the port uri.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Managed ports.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>port_id_or_uri</strong> – Can be either the port id or the port uri.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Managed ports.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports">
-<code class="descname">get_reachable_ports</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>networks=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_reachable_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports">
+<span class="sig-name descname"><span class="pre">get_reachable_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_reachable_ports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the storage ports that are connected on the specified networks
 based on the storage system port’s expected network connectivity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Reachable Storage Port List.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Reachable Storage Port List.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools">
-<code class="descname">get_storage_pools</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_storage_pools"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools">
+<span class="sig-name descname"><span class="pre">get_storage_pools</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_storage_pools"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of Storage pools. Returns a list of storage pools belonging to the storage system referred by the
 Path property {ID} parameter or URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Host types.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Host types.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates">
-<code class="descname">get_templates</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_templates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates">
+<span class="sig-name descname"><span class="pre">get_templates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.get_templates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of volume templates. Returns a list of storage templates belonging to the storage system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Storage Template List.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Storage Template List.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_systems.StorageSystems.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_systems.StorageSystems.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_systems.html#StorageSystems.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_systems.StorageSystems.remove" title="Permalink to this definition"></a></dt>
 <dd><p>Removes the storage system from OneView.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Details of associated resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Details of associated resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.storage_volume_attachments">
-<span id="hpeoneview-resources-storage-storage-volume-attachments-module"></span><h2>hpeOneView.resources.storage.storage_volume_attachments module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_volume_attachments" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.storage_volume_attachments.</code><code class="descname">StorageVolumeAttachments</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.storage_volume_attachments">
+<span id="hpeoneview-resources-storage-storage-volume-attachments-module"></span><h2>hpeOneView.resources.storage.storage_volume_attachments module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_volume_attachments" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.storage_volume_attachments.</span></span><span class="sig-name descname"><span class="pre">StorageVolumeAttachments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Storage Volume Attachments API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/storage-volume-attachments'</em><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/storage-volume-attachments'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_extra_unmanaged_storage_volumes">
-<code class="descname">get_extra_unmanaged_storage_volumes</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments.get_extra_unmanaged_storage_volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_extra_unmanaged_storage_volumes" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_extra_unmanaged_storage_volumes">
+<span class="sig-name descname"><span class="pre">get_extra_unmanaged_storage_volumes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments.get_extra_unmanaged_storage_volumes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_extra_unmanaged_storage_volumes" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the list of extra unmanaged storage volumes.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Extra unmanaged storage volumes.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Extra unmanaged storage volumes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_paths">
-<code class="descname">get_paths</code><span class="sig-paren">(</span><em>path_id=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments.get_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_paths" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_paths">
+<span class="sig-name descname"><span class="pre">get_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments.get_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.get_paths" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all paths or a specific attachment path for the specified volume attachment.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path_id</strong> – path id</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Paths.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path_id</strong> – path id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.remove_extra_presentations">
-<code class="descname">remove_extra_presentations</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments.remove_extra_presentations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.remove_extra_presentations" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.remove_extra_presentations">
+<span class="sig-name descname"><span class="pre">remove_extra_presentations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_attachments.html#StorageVolumeAttachments.remove_extra_presentations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_attachments.StorageVolumeAttachments.remove_extra_presentations" title="Permalink to this definition"></a></dt>
 <dd><p>Removes extra presentations from a specified server profile.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to create</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to create</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Associated storage attachment resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Associated storage attachment resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.storage_volume_templates">
-<span id="hpeoneview-resources-storage-storage-volume-templates-module"></span><h2>hpeOneView.resources.storage.storage_volume_templates module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_volume_templates" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.storage_volume_templates.</code><code class="descname">StorageVolumeTemplates</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.storage_volume_templates">
+<span id="hpeoneview-resources-storage-storage-volume-templates-module"></span><h2>hpeOneView.resources.storage.storage_volume_templates module<a class="headerlink" href="#module-hpeOneView.resources.storage.storage_volume_templates" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.storage_volume_templates.</span></span><span class="sig-name descname"><span class="pre">StorageVolumeTemplates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Storage Volume Templates API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'StorageVolumeTemplateV3'}, u'300': {u'type': u'StorageVolumeTemplateV3'}}</em><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.DEFAULT_VALUES">
+<span class="sig-name descname"><span class="pre">DEFAULT_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'200':</span> <span class="pre">{'type':</span> <span class="pre">'StorageVolumeTemplateV3'},</span> <span class="pre">'300':</span> <span class="pre">{'type':</span> <span class="pre">'StorageVolumeTemplateV3'}}</span></em><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.DEFAULT_VALUES" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/storage-volume-templates'</em><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/storage-volume-templates'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.delete" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes the specified storage volume template.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the resource was successfully deleted.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Indicates if the resource was successfully deleted.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_compatible_systems">
-<code class="descname">get_compatible_systems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.get_compatible_systems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_compatible_systems" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_compatible_systems">
+<span class="sig-name descname"><span class="pre">get_compatible_systems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.get_compatible_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_compatible_systems" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves a collection of all storage systems that is applicable to this storage volume template.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Storage systems.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Storage systems.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_connectable_volume_templates">
-<code class="descname">get_connectable_volume_templates</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.get_connectable_volume_templates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_connectable_volume_templates" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_connectable_volume_templates">
+<span class="sig-name descname"><span class="pre">get_connectable_volume_templates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.get_connectable_volume_templates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_connectable_volume_templates" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the storage volume templates that are available on the specified networks based on the storage system
 port’s expected network connectivity. If there are no storage volume templates that meet the specified
 connectivity criteria, an empty collection will be returned.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Storage volume templates.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Storage volume templates.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_reachable_volume_templates">
-<code class="descname">get_reachable_volume_templates</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>networks=None</em>, <em>scope_uris=u''</em>, <em>private_allowed_only=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.get_reachable_volume_templates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_reachable_volume_templates" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_reachable_volume_templates">
+<span class="sig-name descname"><span class="pre">get_reachable_volume_templates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_uris</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_allowed_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/storage_volume_templates.html#StorageVolumeTemplates.get_reachable_volume_templates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_reachable_volume_templates" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the storage templates that are connected on the specified networks based on the storage system
 port’s expected network connectivity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Storage volume templates.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Storage volume templates.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage.volumes">
-<span id="hpeoneview-resources-storage-volumes-module"></span><h2>hpeOneView.resources.storage.volumes module<a class="headerlink" href="#module-hpeOneView.resources.storage.volumes" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.storage.volumes.VolumeSnapshots">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.volumes.</code><code class="descname">VolumeSnapshots</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em>, <em>volume_uri=None</em>, <em>snapshot_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#VolumeSnapshots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.storage.volumes">
+<span id="hpeoneview-resources-storage-volumes-module"></span><h2>hpeOneView.resources.storage.volumes module<a class="headerlink" href="#module-hpeOneView.resources.storage.volumes" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.VolumeSnapshots">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.volumes.</span></span><span class="sig-name descname"><span class="pre">VolumeSnapshots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snapshot_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#VolumeSnapshots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Volume snapshots API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES">
-<code class="descname">DEFAULT_VALUES</code><em class="property"> = {u'200': {u'type': u'Snapshot'}, u'300': {u'type': u'Snapshot'}, u'500': {}}</em><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES">
+<span class="sig-name descname"><span class="pre">DEFAULT_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'200':</span> <span class="pre">{'type':</span> <span class="pre">'Snapshot'},</span> <span class="pre">'300':</span> <span class="pre">{'type':</span> <span class="pre">'Snapshot'},</span> <span class="pre">'500':</span> <span class="pre">{}}</span></em><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.DEFAULT_VALUES" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.VolumeSnapshots.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>data=None</em>, <em>timeout=-1</em>, <em>custom_headers=None</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#VolumeSnapshots.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.create" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.VolumeSnapshots.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#VolumeSnapshots.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.create" title="Permalink to this definition"></a></dt>
 <dd><p>Makes a POST request to create a resource when a request body is required.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> – Additional fields can be passed to create the resource.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-<li><strong>custom_headers</strong> – Allows set specific HTTP headers.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Additional fields can be passed to create the resource.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
+<li><p><strong>custom_headers</strong> – Allows set specific HTTP headers.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Created resource.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created resource.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.VolumeSnapshots.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#VolumeSnapshots.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.VolumeSnapshots.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#VolumeSnapshots.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.VolumeSnapshots.delete" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes a snapshot from OneView and the storage system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Details of associated volume.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Details of associated volume.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="hpeOneView.resources.storage.volumes.Volumes">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.storage.volumes.</code><code class="descname">Volumes</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.storage.volumes.</span></span><span class="sig-name descname"><span class="pre">Volumes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Volumes API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/storage-volumes'</em><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/storage-volumes'</span></em><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.add_from_existing">
-<code class="descname">add_from_existing</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.add_from_existing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.add_from_existing" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.add_from_existing">
+<span class="sig-name descname"><span class="pre">add_from_existing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.add_from_existing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.add_from_existing" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a volume that already exists in the Storage system</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to create.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stop waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to create.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Added resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Added resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.create_from_snapshot">
-<code class="descname">create_from_snapshot</code><span class="sig-paren">(</span><em>data</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.create_from_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.create_from_snapshot" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.create_from_snapshot">
+<span class="sig-name descname"><span class="pre">create_from_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.create_from_snapshot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.create_from_snapshot" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a new volume on the storage system from a snapshot of a volume.
 A volume template must also be specified when creating a volume from a snapshot.</p>
 <p>The global setting “StorageVolumeTemplateRequired” controls whether or
@@ -745,279 +773,247 @@ not root volume templates can be used to provision volumes.
 The value of this setting defaults to “false”.
 If the value is set to “true”, then only templates with an “isRoot” value of “false”
 can be used to provision a volume.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> (<em>dict</em>) – Object to create.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stop waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – Object to create.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Created data.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Created data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.create_snapshot">
-<code class="descname">create_snapshot</code><span class="sig-paren">(</span><em>snapshot</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.create_snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.create_snapshot" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.create_snapshot">
+<span class="sig-name descname"><span class="pre">create_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snapshot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.create_snapshot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.create_snapshot" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a snapshot for the specified volume.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>snapshot</strong> (<em>dict</em>) – Object to create.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-OneView, just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snapshot</strong> (<em>dict</em>) – Object to create.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+OneView, just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Storage volume.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Storage volume.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>force=False</em>, <em>export_only=None</em>, <em>suppress_device_updates=None</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_device_updates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.delete" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes a managed volume.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
-<li><strong>export_only</strong> – Valid prior to API500. By default, volumes will be deleted from OneView, and storage system.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
+<li><p><strong>export_only</strong> – Valid prior to API500. By default, volumes will be deleted from OneView, and storage system.
 To delete the volume from OneView only, you must set its value to True.
-Setting its value to False has the same behavior as the default behavior.</li>
-<li><strong>suppress_device_updates</strong> – Valid API500 onwards. By default, volumes will be deleted from OneView, and storage system.
+Setting its value to False has the same behavior as the default behavior.</p></li>
+<li><p><strong>suppress_device_updates</strong> – Valid API500 onwards. By default, volumes will be deleted from OneView, and storage system.
 To delete the volume from OneView only, you must set its value to True.
-Setting its value to False has the same behavior as the default behavior.</li>
+Setting its value to False has the same behavior as the default behavior.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Indicates if the volume was successfully deleted.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Indicates if the volume was successfully deleted.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.get_attachable_volumes">
-<code class="descname">get_attachable_volumes</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em>, <em>scope_uris=u''</em>, <em>connections=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_attachable_volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_attachable_volumes" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.get_attachable_volumes">
+<span class="sig-name descname"><span class="pre">get_attachable_volumes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_uris</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_attachable_volumes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_attachable_volumes" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the volumes that are connected on the specified networks based on the storage system port’s expected
 network connectivity.</p>
-<dl class="docutils">
-<dt>A volume is attachable if it satisfies either of the following conditions:</dt>
-<dd><ul class="first last simple">
-<li>The volume is shareable.</li>
-<li>The volume not shareable and not attached.</li>
+<dl class="simple">
+<dt>A volume is attachable if it satisfies either of the following conditions:</dt><dd><ul class="simple">
+<li><p>The volume is shareable.</p></li>
+<li><p>The volume not shareable and not attached.</p></li>
 </ul>
 </dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
-is no query; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-<li><strong>connections</strong> – A list of dicts specifics the connections used by the attachable volumes. Needs network uri, initiatoer
-name and optional proxy name</li>
-<li><strong>scope_uris</strong> – A list specifics the list of scope uris used by the attachable volumed.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
+<li><p><strong>connections</strong> – A list of dicts specifics the connections used by the attachable volumes. Needs network uri, initiatoer
+name and optional proxy name</p></li>
+<li><p><strong>scope_uris</strong> – A list specifics the list of scope uris used by the attachable volumed.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of attachable volumes that the appliance manages.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of attachable volumes that the appliance manages.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths">
-<code class="descname">get_extra_managed_storage_volume_paths</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_extra_managed_storage_volume_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths">
+<span class="sig-name descname"><span class="pre">get_extra_managed_storage_volume_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_extra_managed_storage_volume_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_extra_managed_storage_volume_paths" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the list of extra managed storage volume paths.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of extra managed storage volume paths.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of extra managed storage volume paths.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by">
-<code class="descname">get_snapshot_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshot_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by">
+<span class="sig-name descname"><span class="pre">get_snapshot_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshot_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all snapshots that match the filter.</p>
 <p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> – Field name to filter.</p></li>
+<li><p><strong>value</strong> – Value to filter.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Snapshots</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Snapshots</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_name">
-<code class="descname">get_snapshot_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshot_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_name">
+<span class="sig-name descname"><span class="pre">get_snapshot_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshot_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_name" title="Permalink to this definition"></a></dt>
 <dd><p>Gets snapshot by name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Snapshot name</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">VolumeSnapshots</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">object</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Snapshot name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>VolumeSnapshots</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri">
-<code class="descname">get_snapshot_by_uri</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshot_by_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri">
+<span class="sig-name descname"><span class="pre">get_snapshot_by_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshot_by_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshot_by_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Gets snapshot by uri.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> – Snapshot uri</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">VolumeSnapshots</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">object</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> – Snapshot uri</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>VolumeSnapshots</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.get_snapshots">
-<code class="descname">get_snapshots</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshots" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.get_snapshots">
+<span class="sig-name descname"><span class="pre">get_snapshots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.get_snapshots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.get_snapshots" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all snapshots of a volume. Returns a list of snapshots based on optional sorting and filtering, and
 constrained by start and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of snapshots.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of snapshots.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.storage.volumes.Volumes.repair">
-<code class="descname">repair</code><span class="sig-paren">(</span><em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.repair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.repair" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.storage.volumes.Volumes.repair">
+<span class="sig-name descname"><span class="pre">repair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/storage/volumes.html#Volumes.repair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.storage.volumes.Volumes.repair" title="Permalink to this definition"></a></dt>
 <dd><p>Removes extra presentations from a specified volume on the storage system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
-OneView, just stops waiting for its completion.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Storage volume.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in
+OneView, just stops waiting for its completion.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Storage volume.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.storage">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.storage" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.storage">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.storage" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

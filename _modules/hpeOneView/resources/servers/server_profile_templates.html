@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers.server_profile_templates &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.servers.server_profile_templates &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -98,7 +101,7 @@
 
 
 <div class="viewcode-block" id="ServerProfileTemplate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_profile_templates.ServerProfileTemplate">[docs]</a><span class="k">class</span> <span class="nc">ServerProfileTemplate</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The server profile template resource provides methods to create, retrieve, modify, and delete server</span>
 <span class="sd">    profile templates.</span>
 
@@ -134,7 +137,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">ServerProfileTemplate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ServerProfileTemplate.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_profile_templates.ServerProfileTemplate.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a list of server profile templates based on optional sorting and filtering and is constrained by start and</span>
 <span class="sd">        count parameters.</span>
 
@@ -161,7 +164,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="n">scope_uris</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ServerProfileTemplate.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_profile_templates.ServerProfileTemplate.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            data: Additional fields can be passed to create the resource.</span>
@@ -187,7 +190,7 @@
 
     <span class="nd">@ensure_resource_client</span><span class="p">(</span><span class="n">update_data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates server profile template.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates server profile template.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            data: Data to update the resource.</span>
@@ -209,7 +212,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">get_new_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A profile object will be returned with the configuration based on this template. Specify the profile name and</span>
 <span class="sd">        server hardware to assign. If template has any fiber channel connection (which is specified as bootable) but no</span>
 <span class="sd">        boot target was defined, that connection will be instantiated as a non-bootable connection. So modify that</span>
@@ -223,7 +226,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span> <span class="nf">get_transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_hardware_type_uri</span><span class="p">,</span> <span class="n">enclosure_group_uri</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Transforms an existing profile template by supplying a new server hardware type and enclosure group or both.</span>
 <span class="sd">        A profile template will be returned with a new configuration based on the capabilities of the supplied</span>
 <span class="sd">        server hardware type and/or enclosure group. All configured connections will have their port assignments</span>
@@ -246,7 +249,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ServerProfileTemplate.get_available_networks"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_profile_templates.ServerProfileTemplate.get_available_networks">[docs]</a>    <span class="k">def</span> <span class="nf">get_available_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the list of Ethernet networks, Fibre Channel networks and network sets that are available</span>
 <span class="sd">        to a server profile template along with their respective ports. The scopeUris, serverHardwareTypeUri and</span>
 <span class="sd">        enclosureGroupUri parameters should be specified to get the available networks for a new server profile template.</span>

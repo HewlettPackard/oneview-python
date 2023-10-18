@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.search package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.search package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,8 +47,29 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.search package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.search.index_resources">hpeOneView.resources.search.index_resources module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.search.labels">hpeOneView.resources.search.labels module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.search.index_resources">hpeOneView.resources.search.index_resources module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.search.index_resources.IndexResources"><code class="docutils literal notranslate"><span class="pre">IndexResources</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.search.index_resources.IndexResources.URI"><code class="docutils literal notranslate"><span class="pre">IndexResources.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.index_resources.IndexResources.get_aggregated"><code class="docutils literal notranslate"><span class="pre">IndexResources.get_aggregated()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.index_resources.IndexResources.get_all"><code class="docutils literal notranslate"><span class="pre">IndexResources.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.index_resources.IndexResources.get_by_uri"><code class="docutils literal notranslate"><span class="pre">IndexResources.get_by_uri()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.search.labels">hpeOneView.resources.search.labels module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels"><code class="docutils literal notranslate"><span class="pre">Labels</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels.RESOURCES_PATH"><code class="docutils literal notranslate"><span class="pre">Labels.RESOURCES_PATH</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels.URI"><code class="docutils literal notranslate"><span class="pre">Labels.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels.create"><code class="docutils literal notranslate"><span class="pre">Labels.create()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels.get_all"><code class="docutils literal notranslate"><span class="pre">Labels.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels.get_assigned_resources"><code class="docutils literal notranslate"><span class="pre">Labels.get_assigned_resources()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.Labels.get_by_resource"><code class="docutils literal notranslate"><span class="pre">Labels.get_by_resource()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hpeOneView.resources.search.labels.get_resources_associated_with_label"><code class="docutils literal notranslate"><span class="pre">get_resources_associated_with_label()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.search">Module contents</a></li>
 </ul>
 </li>
@@ -74,235 +99,220 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-search-package">
-<h1>hpeOneView.resources.search package<a class="headerlink" href="#hpeoneview-resources-search-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.search.index_resources">
-<span id="hpeoneview-resources-search-index-resources-module"></span><h2>hpeOneView.resources.search.index_resources module<a class="headerlink" href="#module-hpeOneView.resources.search.index_resources" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.search.index_resources.IndexResources">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.search.index_resources.</code><code class="descname">IndexResources</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+  <section id="hpeoneview-resources-search-package">
+<h1>hpeOneView.resources.search package<a class="headerlink" href="#hpeoneview-resources-search-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.search.index_resources">
+<span id="hpeoneview-resources-search-index-resources-module"></span><h2>hpeOneView.resources.search.index_resources module<a class="headerlink" href="#module-hpeOneView.resources.search.index_resources" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.index_resources.IndexResources">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.search.index_resources.</span></span><span class="sig-name descname"><span class="pre">IndexResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Index Resources API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.search.index_resources.IndexResources.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/index/resources'</em><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.index_resources.IndexResources.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/index/resources'</span></em><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.index_resources.IndexResources.get_aggregated">
-<code class="descname">get_aggregated</code><span class="sig-paren">(</span><em>attribute</em>, <em>category</em>, <em>child_limit=6</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>user_query=u''</em>, <em>attribute_query=u''</em>, <em>scope_query=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources.get_aggregated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.get_aggregated" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.index_resources.IndexResources.get_aggregated">
+<span class="sig-name descname"><span class="pre">get_aggregated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">child_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources.get_aggregated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.get_aggregated" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of index resources based on optional sorting and filtering and is constrained by start
 and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>attribute</strong> (<em>list</em><em> or </em><em>str</em>) – Attribute to pass in as query filter.</li>
-<li><strong>category</strong> (<em>str</em>) – Category of resources. Multiple Category parameters are applied with an OR condition.</li>
-<li><strong>child_limit</strong> (<em>int</em>) – Number of resources to be retrieved. Default=6.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>query</strong> (<em>str</em>) – A general query string to narrow the list of resources returned.
-The default is no query - all resources are returned.</li>
-<li><strong>user_query</strong> (<em>str</em>) – Free text Query string to search the resources.
-This will match the string in any field that is indexed.</li>
-<li><strong>attribute_query</strong> (<em>list</em><em> or </em><em>str</em>) – attributeQuery is used along with query parameter to filter out the details by attributes.
-One or more attributeQuery should be used.</li>
-<li><strong>scope_query</strong> (<em>str</em>) – ScopeQuery is used to filter the dashboard view by scope.
-ScopeQuery can be a single scope or a valid scope expression.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>list</em><em> or </em><em>str</em>) – Attribute to pass in as query filter.</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category of resources. Multiple Category parameters are applied with an OR condition.</p></li>
+<li><p><strong>child_limit</strong> (<em>int</em>) – Number of resources to be retrieved. Default=6.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>query</strong> (<em>str</em>) – A general query string to narrow the list of resources returned.
+The default is no query - all resources are returned.</p></li>
+<li><p><strong>user_query</strong> (<em>str</em>) – Free text Query string to search the resources.
+This will match the string in any field that is indexed.</p></li>
+<li><p><strong>attribute_query</strong> (<em>list</em><em> or </em><em>str</em>) – attributeQuery is used along with query parameter to filter out the details by attributes.
+One or more attributeQuery should be used.</p></li>
+<li><p><strong>scope_query</strong> (<em>str</em>) – ScopeQuery is used to filter the dashboard view by scope.
+ScopeQuery can be a single scope or a valid scope expression.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An aggregated list of index resources.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An aggregated list of index resources.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.index_resources.IndexResources.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>category=u''</em>, <em>count=-1</em>, <em>fields=u''</em>, <em>filter=u''</em>, <em>padding=0</em>, <em>query=u''</em>, <em>reference_uri=u''</em>, <em>sort=u''</em>, <em>start=0</em>, <em>user_query=u''</em>, <em>view=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.index_resources.IndexResources.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of index resources based on optional sorting and filtering and is constrained by start
 and count parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>category</strong> (<em>str</em><em> or </em><em>list</em>) – Category of resources. Multiple Category parameters are applied with OR condition.</li>
-<li><strong>count</strong> (<em>int</em>) – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>category</strong> (<em>str</em><em> or </em><em>list</em>) – Category of resources. Multiple Category parameters are applied with OR condition.</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>fields</strong> (<em>str</em>) – Specifies which fields should be returned in the result set.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>padding</strong> (<em>int</em>) – Number of resources to be returned before the reference URI resource.</li>
-<li><strong>query</strong> (<em>str</em>) – A general query string to narrow the list of resources returned.
-The default is no query - all resources are returned.</li>
-<li><strong>reference_uri</strong> (<em>str</em>) – Load one page of resources, pagination is applied with reference to referenceUri provided.</li>
-<li><strong>sort</strong> (<em>str</em>) – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
-<li><strong>start</strong> (<em>int</em>) – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>user_query</strong> (<em>str</em>) – Free text Query string to search the resources. This will match the string in any field that is indexed.</li>
-<li><strong>view</strong> (<em>str</em>) – Return a specific subset of the attributes of the resource or collection, by specifying the name of a predefined view.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>fields</strong> (<em>str</em>) – Specifies which fields should be returned in the result set.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>padding</strong> (<em>int</em>) – Number of resources to be returned before the reference URI resource.</p></li>
+<li><p><strong>query</strong> (<em>str</em>) – A general query string to narrow the list of resources returned.
+The default is no query - all resources are returned.</p></li>
+<li><p><strong>reference_uri</strong> (<em>str</em>) – Load one page of resources, pagination is applied with reference to referenceUri provided.</p></li>
+<li><p><strong>sort</strong> (<em>str</em>) – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
+<li><p><strong>start</strong> (<em>int</em>) – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>user_query</strong> (<em>str</em>) – Free text Query string to search the resources. This will match the string in any field that is indexed.</p></li>
+<li><p><strong>view</strong> (<em>str</em>) – Return a specific subset of the attributes of the resource or collection, by specifying the name of a predefined view.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of index resources.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of index resources.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.index_resources.IndexResources.get_by_uri">
-<code class="descname">get_by_uri</code><span class="sig-paren">(</span><em>resource_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources.get_by_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.get_by_uri" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.index_resources.IndexResources.get_by_uri">
+<span class="sig-name descname"><span class="pre">get_by_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/index_resources.html#IndexResources.get_by_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.index_resources.IndexResources.get_by_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the index resources of specified resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resource_uri</strong> – Uri of specified resource</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">index resources associated with specified resource</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resource_uri</strong> – Uri of specified resource</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>index resources associated with specified resource</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.search.labels">
-<span id="hpeoneview-resources-search-labels-module"></span><h2>hpeOneView.resources.search.labels module<a class="headerlink" href="#module-hpeOneView.resources.search.labels" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.search.labels.Labels">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.search.labels.</code><code class="descname">Labels</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.search.labels">
+<span id="hpeoneview-resources-search-labels-module"></span><h2>hpeOneView.resources.search.labels module<a class="headerlink" href="#module-hpeOneView.resources.search.labels" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.search.labels.</span></span><span class="sig-name descname"><span class="pre">Labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Labels API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.search.labels.Labels.RESOURCES_PATH">
-<code class="descname">RESOURCES_PATH</code><em class="property"> = u'/resources'</em><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.RESOURCES_PATH" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels.RESOURCES_PATH">
+<span class="sig-name descname"><span class="pre">RESOURCES_PATH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/resources'</span></em><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.RESOURCES_PATH" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.search.labels.Labels.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/labels'</em><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/labels'</span></em><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.labels.Labels.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.create" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.create" title="Permalink to this definition"></a></dt>
 <dd><p>Set all the labels for a resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resource</strong> – The object containing the resource URI and a list of labels</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource Labels</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resource</strong> – The object containing the resource URI and a list of labels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Resource Labels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.labels.Labels.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>count=-1</em>, <em>sort=u''</em>, <em>start=0</em>, <em>view=u''</em>, <em>fields=u''</em>, <em>filter=u''</em>, <em>name_prefix=u''</em>, <em>category=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all items according with the given arguments.
 :param start: The first item to return, using 0-based indexing.</p>
 <blockquote>
-<div>If not specified, the default is 0 - start with the first available item.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
-oldest entry first.</li>
-<li><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection by specifying the name of a
+<div><p>If not specified, the default is 0 - start with the first available item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items (default).</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based on create time with the
+oldest entry first.</p></li>
+<li><p><strong>view</strong> – Returns a specific subset of the attributes of the resource or collection by specifying the name of a
 predefined view. The default view is expand (show all attributes of the resource and all elements of
-the collections or resources).</li>
-<li><strong>fields</strong> – Name of the fields.</li>
+the collections or resources).</p></li>
+<li><p><strong>fields</strong> – Name of the fields.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of items matching the specified filter.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of items matching the specified filter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.labels.Labels.get_assigned_resources">
-<code class="descname">get_assigned_resources</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.get_assigned_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.get_assigned_resources" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels.get_assigned_resources">
+<span class="sig-name descname"><span class="pre">get_assigned_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.get_assigned_resources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.get_assigned_resources" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the assigned resource of a label by name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – name of the label.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Get assigned resources of specified label resource.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – name of the label.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Get assigned resources of specified label resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.search.labels.Labels.get_by_resource">
-<code class="descname">get_by_resource</code><span class="sig-paren">(</span><em>resource_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.get_by_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.get_by_resource" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.Labels.get_by_resource">
+<span class="sig-name descname"><span class="pre">get_by_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#Labels.get_by_resource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.Labels.get_by_resource" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all the labels for the specified resource</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resource_uri</strong> – The resource URI</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Resource Labels</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resource_uri</strong> – The resource URI</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Resource Labels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="hpeOneView.resources.search.labels.get_resources_associated_with_label">
-<code class="descclassname">hpeOneView.resources.search.labels.</code><code class="descname">get_resources_associated_with_label</code><span class="sig-paren">(</span><em>connection</em>, <em>label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#get_resources_associated_with_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.get_resources_associated_with_label" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="hpeOneView.resources.search.labels.get_resources_associated_with_label">
+<span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.search.labels.</span></span><span class="sig-name descname"><span class="pre">get_resources_associated_with_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/search/labels.html#get_resources_associated_with_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.search.labels.get_resources_associated_with_label" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.search">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.search" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.search">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.search" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

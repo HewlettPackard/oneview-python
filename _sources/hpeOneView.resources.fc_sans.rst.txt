@@ -8,39 +8,38 @@ hpeOneView.resources.fc\_sans.endpoints module
 ----------------------------------------------
 
 .. automodule:: hpeOneView.resources.fc_sans.endpoints
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.fc\_sans.managed\_sans module
 --------------------------------------------------
 
 .. automodule:: hpeOneView.resources.fc_sans.managed_sans
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.fc\_sans.san\_managers module
 --------------------------------------------------
 
 .. automodule:: hpeOneView.resources.fc_sans.san_managers
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.fc\_sans.san\_providers module
 ---------------------------------------------------
 
 .. automodule:: hpeOneView.resources.fc_sans.san_providers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: hpeOneView.resources.fc_sans
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

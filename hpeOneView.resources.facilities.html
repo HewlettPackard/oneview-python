@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.facilities package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.facilities package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,9 +47,56 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.facilities package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.facilities.datacenters">hpeOneView.resources.facilities.datacenters module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.facilities.power_devices">hpeOneView.resources.facilities.power_devices module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.facilities.racks">hpeOneView.resources.facilities.racks module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.facilities.datacenters">hpeOneView.resources.facilities.datacenters module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters"><code class="docutils literal notranslate"><span class="pre">Datacenters</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.URI"><code class="docutils literal notranslate"><span class="pre">Datacenters.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.add"><code class="docutils literal notranslate"><span class="pre">Datacenters.add()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get"><code class="docutils literal notranslate"><span class="pre">Datacenters.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_all"><code class="docutils literal notranslate"><span class="pre">Datacenters.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_by"><code class="docutils literal notranslate"><span class="pre">Datacenters.get_by()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_visual_content"><code class="docutils literal notranslate"><span class="pre">Datacenters.get_visual_content()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.remove"><code class="docutils literal notranslate"><span class="pre">Datacenters.remove()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.remove_all"><code class="docutils literal notranslate"><span class="pre">Datacenters.remove_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.datacenters.Datacenters.update"><code class="docutils literal notranslate"><span class="pre">Datacenters.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.facilities.power_devices">hpeOneView.resources.facilities.power_devices module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices"><code class="docutils literal notranslate"><span class="pre">PowerDevices</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.URI"><code class="docutils literal notranslate"><span class="pre">PowerDevices.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.add"><code class="docutils literal notranslate"><span class="pre">PowerDevices.add()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.add_ipdu"><code class="docutils literal notranslate"><span class="pre">PowerDevices.add_ipdu()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get"><code class="docutils literal notranslate"><span class="pre">PowerDevices.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_all"><code class="docutils literal notranslate"><span class="pre">PowerDevices.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_by"><code class="docutils literal notranslate"><span class="pre">PowerDevices.get_by()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_power_state"><code class="docutils literal notranslate"><span class="pre">PowerDevices.get_power_state()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_uid_state"><code class="docutils literal notranslate"><span class="pre">PowerDevices.get_uid_state()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_utilization"><code class="docutils literal notranslate"><span class="pre">PowerDevices.get_utilization()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.remove"><code class="docutils literal notranslate"><span class="pre">PowerDevices.remove()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.remove_synchronous"><code class="docutils literal notranslate"><span class="pre">PowerDevices.remove_synchronous()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update"><code class="docutils literal notranslate"><span class="pre">PowerDevices.update()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_power_state"><code class="docutils literal notranslate"><span class="pre">PowerDevices.update_power_state()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_refresh_state"><code class="docutils literal notranslate"><span class="pre">PowerDevices.update_refresh_state()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_uid_state"><code class="docutils literal notranslate"><span class="pre">PowerDevices.update_uid_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.facilities.racks">hpeOneView.resources.facilities.racks module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks"><code class="docutils literal notranslate"><span class="pre">Racks</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.URI"><code class="docutils literal notranslate"><span class="pre">Racks.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.add"><code class="docutils literal notranslate"><span class="pre">Racks.add()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.get"><code class="docutils literal notranslate"><span class="pre">Racks.get()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.get_all"><code class="docutils literal notranslate"><span class="pre">Racks.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.get_by"><code class="docutils literal notranslate"><span class="pre">Racks.get_by()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.get_device_topology"><code class="docutils literal notranslate"><span class="pre">Racks.get_device_topology()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.remove"><code class="docutils literal notranslate"><span class="pre">Racks.remove()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.facilities.racks.Racks.update"><code class="docutils literal notranslate"><span class="pre">Racks.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.facilities">Module contents</a></li>
 </ul>
 </li>
@@ -75,442 +126,395 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-facilities-package">
-<h1>hpeOneView.resources.facilities package<a class="headerlink" href="#hpeoneview-resources-facilities-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.facilities.datacenters">
-<span id="hpeoneview-resources-facilities-datacenters-module"></span><h2>hpeOneView.resources.facilities.datacenters module<a class="headerlink" href="#module-hpeOneView.resources.facilities.datacenters" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.facilities.datacenters.</code><code class="descname">Datacenters</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters" title="Permalink to this definition">¶</a></dt>
+  <section id="hpeoneview-resources-facilities-package">
+<h1>hpeOneView.resources.facilities package<a class="headerlink" href="#hpeoneview-resources-facilities-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.facilities.datacenters">
+<span id="hpeoneview-resources-facilities-datacenters-module"></span><h2>hpeOneView.resources.facilities.datacenters module<a class="headerlink" href="#module-hpeOneView.resources.facilities.datacenters" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.facilities.datacenters.</span></span><span class="sig-name descname"><span class="pre">Datacenters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Datacenters API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/datacenters'</em><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/datacenters'</span></em><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">information</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.add" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a data center resource based upon the attributes specified.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>information</strong> – Data center information</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>information</strong> – Data center information</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Added data center.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Added data center.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a single data center resource based upon its ID or URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the data center id or the data center uri.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The data center.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the data center id or the data center uri.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The data center.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a set of data center resources according to the specified parameters. Filters can be used to get a specific
 set of data centers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – <p>The first item to return, using 0-based indexing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – <p>The first item to return, using 0-based indexing.</p>
 <p>If not specified, the default is 0 - start with the first available item.</p>
-</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
-is no query - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of data centers.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of data centers.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_by" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.get_by">
+<span class="sig-name descname"><span class="pre">get_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_by" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all data centers that match the filter.</p>
 <p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> – Field name to filter.</p></li>
+<li><p><strong>value</strong> – Value to filter.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of data centers.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of data centers.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.get_visual_content">
-<code class="descname">get_visual_content</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get_visual_content"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_visual_content" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.get_visual_content">
+<span class="sig-name descname"><span class="pre">get_visual_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.get_visual_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.get_visual_content" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of visual content objects describing each rack within the data center. The response aggregates data
 center and rack data with a specified metric (peak24HourTemp) to provide simplified access to display data for
 the data center.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of visual content objects.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of visual content objects.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.remove" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes the resource specified.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to remove.</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors on the
-resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to remove.</p></li>
+<li><p><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors on the
+resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>Returns: Result status.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.remove_all">
-<code class="descname">remove_all</code><span class="sig-paren">(</span><em>filter</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.remove_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.remove_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.remove_all">
+<span class="sig-name descname"><span class="pre">remove_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.remove_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.remove_all" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes the set of datacenters according to the specified parameters. A filter is required to identify the set
 of resources to be deleted.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filter</strong> – A general filter/query string to narrow the list of items that will be removed.</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filter</strong> – A general filter/query string to narrow the list of items that will be removed.</p></li>
+<li><p><strong>force</strong> – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">operation success</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>operation success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.datacenters.Datacenters.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.update" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.datacenters.Datacenters.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/datacenters.html#Datacenters.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.datacenters.Datacenters.update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the specified data center resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to update.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated data center.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Updated data center.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.facilities.power_devices">
-<span id="hpeoneview-resources-facilities-power-devices-module"></span><h2>hpeOneView.resources.facilities.power_devices module<a class="headerlink" href="#module-hpeOneView.resources.facilities.power_devices" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.facilities.power_devices.</code><code class="descname">PowerDevices</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-hpeOneView.resources.facilities.power_devices">
+<span id="hpeoneview-resources-facilities-power-devices-module"></span><h2>hpeOneView.resources.facilities.power_devices module<a class="headerlink" href="#module-hpeOneView.resources.facilities.power_devices" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.facilities.power_devices.</span></span><span class="sig-name descname"><span class="pre">PowerDevices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Power Devices API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/power-devices'</em><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/power-devices'</span></em><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">information</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.add" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a power delivery device resource based upon the attributes specified. Use this method to create a
 representation of power delivery devices that provide power to other resources but cannot otherwise be
 discovered by the management appliance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>information</strong> – power device information</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>information</strong> – power device information</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">added power device.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>added power device.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.add_ipdu">
-<code class="descname">add_ipdu</code><span class="sig-paren">(</span><em>information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.add_ipdu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.add_ipdu" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.add_ipdu">
+<span class="sig-name descname"><span class="pre">add_ipdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">information</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.add_ipdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.add_ipdu" title="Permalink to this definition"></a></dt>
 <dd><p>Add an HP iPDU and bring all components under management by discovery of its management module. Bring the
 management module under exclusive management by the appliance, configure any management or data collection
 settings, and create a private set of administrative credentials to enable ongoing communication and management
 of the iPDU. Use “force” to claim the device, even if claimed by another management appliance</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> – power device information</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – power device information</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">added power device.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>added power device.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a single power delivery device resource based upon its uri or id.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the power device id or the uri</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The power device</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the power device id or the uri</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The power device</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a set of power delivery device resources according to the specified parameters. Filters can be used to get
 a specific set of power delivery devices. With no filters specified, the API returns a potentially paginated
 list of all the power delivery device resources subject to start/count/sort parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
-is no query - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list of power devices</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of power devices</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_by" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_by">
+<span class="sig-name descname"><span class="pre">get_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_by" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all power devices that match the filter
 The search is case-insensitive</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – field name to filter</li>
-<li><strong>value</strong> – value to filter</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> – field name to filter</p></li>
+<li><p><strong>value</strong> – value to filter</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">power devices</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>power devices</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_power_state">
-<code class="descname">get_power_state</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_power_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_power_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_power_state">
+<span class="sig-name descname"><span class="pre">get_power_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_power_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_power_state" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the power state (on, off or unknown) of the specified power delivery device that supports power control.
 The device must be an HP Intelligent Outlet.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the power device id or the uri</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The power state</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the power device id or the uri</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The power state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_uid_state">
-<code class="descname">get_uid_state</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_uid_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_uid_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_uid_state">
+<span class="sig-name descname"><span class="pre">get_uid_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_uid_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_uid_state" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the unit identification (UID) state (on, off, unknown) of the specified power outlet or extension bar
 resource. The device must be an HP iPDU component with a locator light (HP Intelligent Load Segment,
 HP AC Module, HP Intelligent Outlet Bar, or HP Intelligent Outlet).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the power device id or the uri</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">unit identification (UID) state</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the power device id or the uri</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>unit identification (UID) state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_utilization">
-<code class="descname">get_utilization</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>fields=None</em>, <em>filter=None</em>, <em>refresh=False</em>, <em>view=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_utilization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_utilization" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.get_utilization">
+<span class="sig-name descname"><span class="pre">get_utilization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.get_utilization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.get_utilization" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves historical utilization data for the specified metrics and time span. The device must be a component
 of an HPE iPDU.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – The power device id or the resource uri</li>
-<li><strong>fields</strong> – <p>Name of the metric(s) to be retrieved in the format METRIC[,METRIC]…If unspecified, all metrics
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_or_uri</strong> – The power device id or the resource uri</p></li>
+<li><p><strong>fields</strong> – <p>Name of the metric(s) to be retrieved in the format METRIC[,METRIC]…If unspecified, all metrics
 supported are returned. Power delivery devices support the following utilization metrics:</p>
 <blockquote>
 <div><ul>
-<li><dl class="first docutils">
-<dt>AveragePower</dt>
-<dd>Average power consumption in Watts during this sample interval.</dd>
+<li><dl class="simple">
+<dt>AveragePower</dt><dd><p>Average power consumption in Watts during this sample interval.</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>PeakPower</dt>
-<dd>Peak power consumption in Watts during this sample interval.</dd>
+<li><dl class="simple">
+<dt>PeakPower</dt><dd><p>Peak power consumption in Watts during this sample interval.</p>
+</dd>
 </dl>
 </li>
 </ul>
 </div></blockquote>
-</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – <p>Filters should be in the format: FILTER_NAME=VALUE[,FILTER_NAME=VALUE]…</p>
+</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – <p>Filters should be in the format: FILTER_NAME=VALUE[,FILTER_NAME=VALUE]…</p>
 <p>For Example: ‘startDate=2016-05-30T11:20:44.541Z,endDate=2016-05-30T19:20:44.541Z’</p>
-<dl class="docutils">
-<dt>startDate:</dt>
-<dd>Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
-determined by the endDate minus 24 hours.</dd>
-<dt>endDate:</dt>
-<dd>End date of requested starting time range in ISO 8601 format. When omitted the endDate includes the
-latest data sample available.</dd>
+<dl class="simple">
+<dt>startDate:</dt><dd><p>Start date of requested starting time range in ISO 8601 format. If omitted, the startDate is
+determined by the endDate minus 24 hours.</p>
+</dd>
+<dt>endDate:</dt><dd><p>End date of requested starting time range in ISO 8601 format. When omitted the endDate includes the
+latest data sample available.</p>
+</dd>
 </dl>
 <p>If an excessive number of samples would otherwise be returned, the results will be segmented. The caller
 is responsible for comparing the returned sliceStartTime with the requested startTime in the response.
@@ -522,399 +526,351 @@ sliceStartTime/sliceEndTime will be equal. oldestSampleTime/newestSampleTime wil
 appropriately (null if no data is available). If the filter does not happen to overlap the data
 that a resource does have, then the metric history service will return null sample values for any
 missing samples.</p>
-</li>
-<li><strong>refresh</strong> – Specifies that if necessary, an additional request will be queued to obtain the most recent utilization
+</p></li>
+<li><p><strong>refresh</strong> – Specifies that if necessary, an additional request will be queued to obtain the most recent utilization
 data from the enclosure. The response will not include any refreshed data. To track the availability
 of the newly collected data, monitor the TaskResource identified by the refreshTaskUri property in
-the response. If null, no refresh was queued.</li>
-<li><strong>view</strong> – <p>Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
+the response. If null, no refresh was queued.</p></li>
+<li><p><strong>view</strong> – <p>Specifies the resolution interval length of the samples to be retrieved. This is reflected in the
 resolution in the returned response. Utilization data is automatically purged to stay within storage
 space constraints. Supported views are listed below:</p>
-<dl class="docutils">
-<dt>native (DEFAULT)</dt>
-<dd>Resolution of the samples returned will be one sample for each 5-minute time period. This is the
+<dl class="simple">
+<dt>native (DEFAULT)</dt><dd><p>Resolution of the samples returned will be one sample for each 5-minute time period. This is the
 default view and matches the resolution of the data returned by the enclosure. Samples at this
-resolution are retained up to one year.</dd>
-<dt>hour</dt>
-<dd>Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
+resolution are retained up to one year.</p>
+</dd>
+<dt>hour</dt><dd><p>Resolution of the samples returned will be one sample for each 60-minute time period. Samples are
 calculated by averaging the available 5-minute data samples that occurred within the hour, except
 for PeakPower which is calculated by reporting the peak observed 5-minute sample value data during
-the hour. Samples at this resolution are retained up to three years.</dd>
-<dt>day</dt>
-<dd>Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
+the hour. Samples at this resolution are retained up to three years.</p>
+</dd>
+<dt>day</dt><dd><p>Resolution of the samples returned will be one sample for each 24-hour time period. One day is a
 24-hour period that starts at midnight GMT regardless of the time zone in which the appliance or
 client is located. Samples are calculated by averaging the available 5-minute data samples that
 occurred during the day, except for PeakPower which is calculated by reporting the peak observed
 5-minute sample value data during the day. Samples at this resolution are retained up to three
-years.</dd>
+years.</p>
+</dd>
 </dl>
-</li>
+</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Utilization data</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Utilization data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.remove" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes the set of power-devices according to the specified parameters. A filter is required to identify the
 set of resources to be deleted.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> – dict object to remove</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – dict object to remove</p></li>
+<li><p><strong>force</strong> – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">operation success</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>operation success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.remove_synchronous">
-<code class="descname">remove_synchronous</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.remove_synchronous"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.remove_synchronous" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.remove_synchronous">
+<span class="sig-name descname"><span class="pre">remove_synchronous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.remove_synchronous"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.remove_synchronous" title="Permalink to this definition"></a></dt>
 <dd><p>Deletes the resource specified by {id} synchronously.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> – dict object to remove</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – dict object to remove</p></li>
+<li><p><strong>force</strong> – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">operation success</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>operation success</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the resource for the specified {id}. The properties that are omitted (not included as part of the the
 request body) are reset to their respective default values. The id and uuid properties are required and cannot
 be changed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to update</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated power device</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Updated power device</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.update_power_state">
-<code class="descname">update_power_state</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>power_state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update_power_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_power_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.update_power_state">
+<span class="sig-name descname"><span class="pre">update_power_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update_power_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_power_state" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the power state of the specified power delivery device. The device must be an HP Intelligent Outlet.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the power device id or the uri</li>
-<li><strong>power_state</strong> – {“powerState”:”On|Off”}</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_or_uri</strong> – Can be either the power device id or the uri</p></li>
+<li><p><strong>power_state</strong> – {“powerState”:”On|Off”}</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The power state</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The power state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.update_refresh_state">
-<code class="descname">update_refresh_state</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>refresh_state_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update_refresh_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_refresh_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.update_refresh_state">
+<span class="sig-name descname"><span class="pre">update_refresh_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh_state_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update_refresh_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_refresh_state" title="Permalink to this definition"></a></dt>
 <dd><p>Refreshes a given intelligent power delivery device.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the power device id or the uri</li>
-<li><strong>refresh_state_data</strong> – Power device refresh request</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_or_uri</strong> – Can be either the power device id or the uri</p></li>
+<li><p><strong>refresh_state_data</strong> – Power device refresh request</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The power state</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The power state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.power_devices.PowerDevices.update_uid_state">
-<code class="descname">update_uid_state</code><span class="sig-paren">(</span><em>id_or_uri</em>, <em>refresh_state_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update_uid_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_uid_state" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.power_devices.PowerDevices.update_uid_state">
+<span class="sig-name descname"><span class="pre">update_uid_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh_state_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/power_devices.html#PowerDevices.update_uid_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.power_devices.PowerDevices.update_uid_state" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the unit identification (UID) light state of the specified power delivery device. The device must be an
 HP iPDU component with a locator light (HP Intelligent Load Segment, HP AC Module, HP Intelligent Outlet Bar,
 or HP Intelligent Outlet)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id_or_uri</strong> – Can be either the power device id or the uri</li>
-<li><strong>refresh_state_data</strong> – Power device refresh request</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_or_uri</strong> – Can be either the power device id or the uri</p></li>
+<li><p><strong>refresh_state_data</strong> – Power device refresh request</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The UID state</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The UID state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.facilities.racks">
-<span id="hpeoneview-resources-facilities-racks-module"></span><h2>hpeOneView.resources.facilities.racks module<a class="headerlink" href="#module-hpeOneView.resources.facilities.racks" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.facilities.racks.Racks">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.facilities.racks.</code><code class="descname">Racks</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-hpeOneView.resources.facilities.racks">
+<span id="hpeoneview-resources-facilities-racks-module"></span><h2>hpeOneView.resources.facilities.racks module<a class="headerlink" href="#module-hpeOneView.resources.facilities.racks" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.facilities.racks.</span></span><span class="sig-name descname"><span class="pre">Racks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Racks API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.facilities.racks.Racks.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/racks'</em><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/racks'</span></em><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>information</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">information</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.add" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a rack resource based upon the attributes specified. All attributes without default values must be
 specified in the POST body. The response contains the rack resource as added to the appliance with default and
 assigned properties expanded. The id and uri are assigned by the management appliance and are used to uniquely
 identify this particular resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>information</strong> – Rack information</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>information</strong> – Rack information</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Added rack.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Added rack.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a rack with the specified ID or URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the rack id or the rack uri.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The rack.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the rack id or the rack uri.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The rack.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a set of rack resources according to the specified parameters. Filters can be used to get a specific set
 of racks. With no filters specified, the API returns a potentially paginated list of all the racks subject
 to start/count/sort parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – <p>The first item to return, using 0-based indexing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – <p>The first item to return, using 0-based indexing.</p>
 <p>If not specified, the default is 0 - start with the first available item.</p>
-</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
+</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items.
 The actual number of items in the response might differ from the requested
-count if the sum of start and count exceeds the total number of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned. The default
-is no query - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+count if the sum of start and count exceeds the total number of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned. The default
+is no query - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of racks.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of racks.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.get_by">
-<code class="descname">get_by</code><span class="sig-paren">(</span><em>field</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get_by" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.get_by">
+<span class="sig-name descname"><span class="pre">get_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get_by" title="Permalink to this definition"></a></dt>
 <dd><p>Gets all racks that match the filter.</p>
 <p>The search is case-insensitive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>field</strong> – Field name to filter.</li>
-<li><strong>value</strong> – Value to filter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> – Field name to filter.</p></li>
+<li><p><strong>value</strong> – Value to filter.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of racks.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of racks.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.get_device_topology">
-<code class="descname">get_device_topology</code><span class="sig-paren">(</span><em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get_device_topology"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get_device_topology" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.get_device_topology">
+<span class="sig-name descname"><span class="pre">get_device_topology</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.get_device_topology"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.get_device_topology" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the topology information for the rack resource specified by ID or URI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Device topology.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id_or_uri</strong> – Can be either the resource ID or the resource URI.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Device topology.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>resource</em>, <em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.remove" title="Permalink to this definition"></a></dt>
 <dd><p>Removes the specified rack.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to remove.</li>
-<li><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors on the
-resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to remove.</p></li>
+<li><p><strong>force</strong> – If set to true, the operation completes despite any problems with network connectivity or errors on the
+resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>Returns: Result status.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.facilities.racks.Racks.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.update" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.facilities.racks.Racks.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/facilities/racks.html#Racks.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.facilities.racks.Racks.update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the specified rack resource. The properties that are omitted (not included as part of the request body)
 are reset to their respective default values. The id and uuid properties are required and cannot be changed.
 To update existing racks first perform a get() request to retrieve the current properties, update the desired
 properties, and then update() the request body containing the new representation of the resource.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to update.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Updated rack.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Updated rack.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.facilities">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.facilities" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.facilities">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.facilities" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

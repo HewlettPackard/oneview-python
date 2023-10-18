@@ -8,23 +8,22 @@ hpeOneView.resources.search.index\_resources module
 ---------------------------------------------------
 
 .. automodule:: hpeOneView.resources.search.index_resources
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.search.labels module
 -----------------------------------------
 
 .. automodule:: hpeOneView.resources.search.labels
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: hpeOneView.resources.search
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

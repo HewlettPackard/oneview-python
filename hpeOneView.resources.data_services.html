@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.data_services package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.data_services package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,7 +47,16 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.data_services package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.data_services.metric_streaming">hpeOneView.resources.data_services.metric_streaming module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.data_services.metric_streaming">hpeOneView.resources.data_services.metric_streaming module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming"><code class="docutils literal notranslate"><span class="pre">MetricStreaming</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.URI"><code class="docutils literal notranslate"><span class="pre">MetricStreaming.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_capability"><code class="docutils literal notranslate"><span class="pre">MetricStreaming.get_capability()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_configuration"><code class="docutils literal notranslate"><span class="pre">MetricStreaming.get_configuration()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.update_configuration"><code class="docutils literal notranslate"><span class="pre">MetricStreaming.update_configuration()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.data_services">Module contents</a></li>
 </ul>
 </li>
@@ -73,120 +86,114 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-data-services-package">
-<h1>hpeOneView.resources.data_services package<a class="headerlink" href="#hpeoneview-resources-data-services-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.data_services.metric_streaming">
-<span id="hpeoneview-resources-data-services-metric-streaming-module"></span><h2>hpeOneView.resources.data_services.metric_streaming module<a class="headerlink" href="#module-hpeOneView.resources.data_services.metric_streaming" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.data_services.metric_streaming.</code><code class="descname">MetricStreaming</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming" title="Permalink to this definition">¶</a></dt>
+  <section id="hpeoneview-resources-data-services-package">
+<h1>hpeOneView.resources.data_services package<a class="headerlink" href="#hpeoneview-resources-data-services-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.data_services.metric_streaming">
+<span id="hpeoneview-resources-data-services-metric-streaming-module"></span><h2>hpeOneView.resources.data_services.metric_streaming module<a class="headerlink" href="#module-hpeOneView.resources.data_services.metric_streaming" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.data_services.metric_streaming.</span></span><span class="sig-name descname"><span class="pre">MetricStreaming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Metrics API client.</p>
 <p>Metrics can be relayed from OneView for managed resources at a specified interval. The following steps can be
 followed to enable the metric relay in OneView:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Get the list of resource types and metrics which can be configured for live streaming</li>
-<li>Configure the live metric stream in OneView</li>
-<li>Receive the stream of metric on MSMB</li>
+<li><p>Get the list of resource types and metrics which can be configured for live streaming</p></li>
+<li><p>Configure the live metric stream in OneView</p></li>
+<li><p>Receive the stream of metric on MSMB</p></li>
 </ul>
 </div></blockquote>
-<dl class="docutils">
-<dt>The list below describes the structure of message relayed to MSMB:</dt>
-<dd><dl class="first last docutils">
-<dt>startTime (str):</dt>
-<dd>The starting time of the metric collection.</dd>
-<dt>sampleIntervalInSeconds (int):</dt>
-<dd>Interval between samples.</dd>
-<dt>numberOfSamples (int):</dt>
-<dd>Number of samples in the list for each metric type.</dd>
-<dt>resourceType (str):</dt>
-<dd>Identifies the resource type.</dd>
-<dt>resourceDataList (list):</dt>
-<dd>Metric sample list.</dd>
-<dt>uri (str):</dt>
-<dd>Canonical URI of the resource.</dd>
-<dt>category (str):</dt>
-<dd>Identifies the category of resource. The supported devices are server-hardware, enclosures, and
-power-devices.</dd>
-<dt>created (timestamp):</dt>
-<dd>Date and time when the resource was created.</dd>
-<dt>modified (timestamp):</dt>
-<dd>Date and time when the resource was last modified.</dd>
-<dt>eTag (str):</dt>
-<dd>Entity tag/version ID of the resource, the same value that is returned in the ETag header on a GET of the
-resource.</dd>
-<dt>type (str):</dt>
-<dd>Uniquely identifies the type of the JSON object.</dd>
+<dl class="simple">
+<dt>The list below describes the structure of message relayed to MSMB:</dt><dd><dl class="simple">
+<dt>startTime (str):</dt><dd><p>The starting time of the metric collection.</p>
+</dd>
+<dt>sampleIntervalInSeconds (int):</dt><dd><p>Interval between samples.</p>
+</dd>
+<dt>numberOfSamples (int):</dt><dd><p>Number of samples in the list for each metric type.</p>
+</dd>
+<dt>resourceType (str):</dt><dd><p>Identifies the resource type.</p>
+</dd>
+<dt>resourceDataList (list):</dt><dd><p>Metric sample list.</p>
+</dd>
+<dt>uri (str):</dt><dd><p>Canonical URI of the resource.</p>
+</dd>
+<dt>category (str):</dt><dd><p>Identifies the category of resource. The supported devices are server-hardware, enclosures, and
+power-devices.</p>
+</dd>
+<dt>created (timestamp):</dt><dd><p>Date and time when the resource was created.</p>
+</dd>
+<dt>modified (timestamp):</dt><dd><p>Date and time when the resource was last modified.</p>
+</dd>
+<dt>eTag (str):</dt><dd><p>Entity tag/version ID of the resource, the same value that is returned in the ETag header on a GET of the
+resource.</p>
+</dd>
+<dt>type (str):</dt><dd><p>Uniquely identifies the type of the JSON object.</p>
+</dd>
 </dl>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/metrics'</em><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/metrics'</span></em><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_capability">
-<code class="descname">get_capability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming.get_capability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_capability" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_capability">
+<span class="sig-name descname"><span class="pre">get_capability</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming.get_capability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_capability" title="Permalink to this definition"></a></dt>
 <dd><p>Fetches the list of resource types and supported metrics that OneView is capable of relaying.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of resource types and supported metrics.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of resource types and supported metrics.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_configuration">
-<code class="descname">get_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming.get_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_configuration" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_configuration">
+<span class="sig-name descname"><span class="pre">get_configuration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming.get_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.get_configuration" title="Permalink to this definition"></a></dt>
 <dd><p>Fetches the current configuration for which metrics are being relayed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of objects which contain frequency, sample interval, and source type for each resource-type.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of objects which contain frequency, sample interval, and source type for each resource-type.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.update_configuration">
-<code class="descname">update_configuration</code><span class="sig-paren">(</span><em>configuration</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming.update_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.update_configuration" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.data_services.metric_streaming.MetricStreaming.update_configuration">
+<span class="sig-name descname"><span class="pre">update_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configuration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/data_services/metric_streaming.html#MetricStreaming.update_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.data_services.metric_streaming.MetricStreaming.update_configuration" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the metrics configuration with the new values. Overwrites the existing configuration.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>configuration</strong> (<em>dict</em>) – Dictionary with a list of objects which contain frequency, sample interval, and source type for each
-resource-type.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The current configuration for which metrics are being relayed.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>configuration</strong> (<em>dict</em>) – Dictionary with a list of objects which contain frequency, sample interval, and source type for each
+resource-type.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The current configuration for which metrics are being relayed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.data_services">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.data_services" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.data_services">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.data_services" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

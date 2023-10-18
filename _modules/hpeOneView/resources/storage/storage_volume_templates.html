@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.storage.storage_volume_templates &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.storage.storage_volume_templates &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -98,7 +101,7 @@
 
 
 <div class="viewcode-block" id="StorageVolumeTemplates"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates">[docs]</a><span class="k">class</span> <span class="nc">StorageVolumeTemplates</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Storage Volume Templates API client.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -113,7 +116,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">StorageVolumeTemplates</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="StorageVolumeTemplates.get_connectable_volume_templates"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_connectable_volume_templates">[docs]</a>    <span class="k">def</span> <span class="nf">get_connectable_volume_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the storage volume templates that are available on the specified networks based on the storage system</span>
 <span class="sd">        port&#39;s expected network connectivity. If there are no storage volume templates that meet the specified</span>
 <span class="sd">        connectivity criteria, an empty collection will be returned.</span>
@@ -129,7 +132,7 @@
 
 <div class="viewcode-block" id="StorageVolumeTemplates.get_reachable_volume_templates"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_reachable_volume_templates">[docs]</a>    <span class="k">def</span> <span class="nf">get_reachable_volume_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                                        <span class="n">networks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">private_allowed_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the storage templates that are connected on the specified networks based on the storage system</span>
 <span class="sd">        port&#39;s expected network connectivity.</span>
 
@@ -145,7 +148,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">get_uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StorageVolumeTemplates.get_compatible_systems"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.get_compatible_systems">[docs]</a>    <span class="k">def</span> <span class="nf">get_compatible_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves a collection of all storage systems that is applicable to this storage volume template.</span>
 
 <span class="sd">        Returns:</span>
@@ -155,7 +158,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StorageVolumeTemplates.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_volume_templates.StorageVolumeTemplates.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes the specified storage volume template.</span>
 
 <span class="sd">        Args:</span>

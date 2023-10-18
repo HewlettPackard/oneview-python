@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -97,7 +100,7 @@
 
 
 <div class="viewcode-block" id="ApplianceDeviceSNMPv1TrapDestinations"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations">[docs]</a><span class="k">class</span> <span class="nc">ApplianceDeviceSNMPv1TrapDestinations</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ApplianceDeviceSNMPv1TrapDestinations API client.</span>
 <span class="sd">    The appliance has the ability to forward events received from monitored or managed</span>
 <span class="sd">    server hardware to the specified destinations as SNMPv1 traps.</span>
@@ -108,7 +111,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">ApplianceDeviceSNMPv1TrapDestinations</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ApplianceDeviceSNMPv1TrapDestinations.get_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination_address</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Retrieves a resource by its destination.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves a resource by its destination.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            destination_address: Resource destination address.</span>
@@ -119,7 +122,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ApplianceDeviceSNMPv1TrapDestinations</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_field</span><span class="p">(</span><span class="s1">&#39;destination&#39;</span><span class="p">,</span> <span class="n">destination_address</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ApplianceDeviceSNMPv1TrapDestinations.create_validation"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.create_validation">[docs]</a>    <span class="k">def</span> <span class="nf">create_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">community_string</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate whether a hostname or ip address is a valid trap destination.</span>
 <span class="sd">        If validation fails, it returns an error identifying the problem that occurred.</span>
 
@@ -144,7 +147,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">validation_uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ApplianceDeviceSNMPv1TrapDestinations.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.appliance_device_snmp_v1_trap_destinations.ApplianceDeviceSNMPv1TrapDestinations.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds the specified trap forwarding destination.</span>
 <span class="sd">        The trap destination associated with the specified id will be created if trap destination with that id does not exists.</span>
 <span class="sd">        The id can only be an integer greater than 0.</span>
@@ -170,7 +173,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">ApplianceDeviceSNMPv1TrapDestinations</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__findFirstMissing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Find the smallest elements missing in a sorted array.</span>
 
 <span class="sd">        Args:</span>
@@ -195,7 +198,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__findFirstMissing</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__get_first_available_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Private method to get the first available id.</span>
 <span class="sd">        The id can only be an integer greater than 0.</span>
 

@@ -8,31 +8,30 @@ hpeOneView.resources.facilities.datacenters module
 --------------------------------------------------
 
 .. automodule:: hpeOneView.resources.facilities.datacenters
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.facilities.power\_devices module
 -----------------------------------------------------
 
 .. automodule:: hpeOneView.resources.facilities.power_devices
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 hpeOneView.resources.facilities.racks module
 --------------------------------------------
 
 .. automodule:: hpeOneView.resources.facilities.racks
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: hpeOneView.resources.facilities
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.fc_sans package &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.fc_sans package &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -29,7 +33,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,10 +47,50 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">hpeOneView.resources.fc_sans package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.endpoints">hpeOneView.resources.fc_sans.endpoints module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.managed_sans">hpeOneView.resources.fc_sans.managed_sans module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.san_managers">hpeOneView.resources.fc_sans.san_managers module</a></li>
-<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.san_providers">hpeOneView.resources.fc_sans.san_providers module</a></li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.endpoints">hpeOneView.resources.fc_sans.endpoints module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints"><code class="docutils literal notranslate"><span class="pre">Endpoints</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints.URI"><code class="docutils literal notranslate"><span class="pre">Endpoints.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints.get_all"><code class="docutils literal notranslate"><span class="pre">Endpoints.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.managed_sans">hpeOneView.resources.fc_sans.managed_sans module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs"><code class="docutils literal notranslate"><span class="pre">ManagedSANs</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.URI"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.create()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_endpoints_csv_file"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.create_endpoints_csv_file()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_issues_report"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.create_issues_report()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.delete()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.get_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_endpoints"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.get_endpoints()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn"><code class="docutils literal notranslate"><span class="pre">ManagedSANs.get_wwn()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.san_managers">hpeOneView.resources.fc_sans.san_managers module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers"><code class="docutils literal notranslate"><span class="pre">SanManagers</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.URI"><code class="docutils literal notranslate"><span class="pre">SanManagers.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_all"><code class="docutils literal notranslate"><span class="pre">SanManagers.get_all()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_name"><code class="docutils literal notranslate"><span class="pre">SanManagers.get_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.remove"><code class="docutils literal notranslate"><span class="pre">SanManagers.remove()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.update"><code class="docutils literal notranslate"><span class="pre">SanManagers.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans.san_providers">hpeOneView.resources.fc_sans.san_providers module</a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders"><code class="docutils literal notranslate"><span class="pre">SanProviders</span></code></a><ul>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.URI"><code class="docutils literal notranslate"><span class="pre">SanProviders.URI</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.add"><code class="docutils literal notranslate"><span class="pre">SanProviders.add()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_default_connection_info"><code class="docutils literal notranslate"><span class="pre">SanProviders.get_default_connection_info()</span></code></a></li>
+<li><a class="reference internal" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_provider_uri"><code class="docutils literal notranslate"><span class="pre">SanProviders.get_provider_uri()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-hpeOneView.resources.fc_sans">Module contents</a></li>
 </ul>
 </li>
@@ -76,364 +120,334 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="hpeoneview-resources-fc-sans-package">
-<h1>hpeOneView.resources.fc_sans package<a class="headerlink" href="#hpeoneview-resources-fc-sans-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-hpeOneView.resources.fc_sans.endpoints">
-<span id="hpeoneview-resources-fc-sans-endpoints-module"></span><h2>hpeOneView.resources.fc_sans.endpoints module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.endpoints" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.fc_sans.endpoints.Endpoints">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.fc_sans.endpoints.</code><code class="descname">Endpoints</code><span class="sig-paren">(</span><em>con</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/endpoints.html#Endpoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints" title="Permalink to this definition">¶</a></dt>
+  <section id="hpeoneview-resources-fc-sans-package">
+<h1>hpeOneView.resources.fc_sans package<a class="headerlink" href="#hpeoneview-resources-fc-sans-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-hpeOneView.resources.fc_sans.endpoints">
+<span id="hpeoneview-resources-fc-sans-endpoints-module"></span><h2>hpeOneView.resources.fc_sans.endpoints module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.endpoints" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.endpoints.Endpoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.fc_sans.endpoints.</span></span><span class="sig-name descname"><span class="pre">Endpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/endpoints.html#Endpoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Endpoints API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.endpoints.Endpoints.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/fc-sans/endpoints'</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.endpoints.Endpoints.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/fc-sans/endpoints'</span></em><a class="headerlink" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.endpoints.Endpoints.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/endpoints.html#Endpoints.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.endpoints.Endpoints.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/endpoints.html#Endpoints.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.endpoints.Endpoints.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the list of endpoints known by the appliance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
 the response may differ from the requested count if the sum of start and count exceed the total number
-of items.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned.
-The default is no query - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+of items.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned.
+The default is no query - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The endpoints known by the appliance.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The endpoints known by the appliance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.fc_sans.managed_sans">
-<span id="hpeoneview-resources-fc-sans-managed-sans-module"></span><h2>hpeOneView.resources.fc_sans.managed_sans module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.managed_sans" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.fc_sans.managed_sans.</code><code class="descname">ManagedSANs</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.fc_sans.managed_sans">
+<span id="hpeoneview-resources-fc-sans-managed-sans-module"></span><h2>hpeOneView.resources.fc_sans.managed_sans module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.managed_sans" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.fc_sans.managed_sans.</span></span><span class="sig-name descname"><span class="pre">ManagedSANs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>Managed SANs API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/fc-sans/managed-sans'</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/fc-sans/managed-sans'</span></em><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create">
-<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create" title="Permalink to this definition"></a></dt>
 <dd><p>Create method is not available</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_endpoints_csv_file">
-<code class="descname">create_endpoints_csv_file</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_endpoints_csv_file" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_endpoints_csv_file">
+<span class="sig-name descname"><span class="pre">create_endpoints_csv_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_endpoints_csv_file" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_issues_report">
-<code class="descname">create_issues_report</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_issues_report" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_issues_report">
+<span class="sig-name descname"><span class="pre">create_issues_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create_issues_report" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete" title="Permalink to this definition"></a></dt>
 <dd><p>Delete method is not available</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>query=u''</em>, <em>sort=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the list of registered Managed SANs</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> – The first item to return, using 0-based indexing.
-If not specified, the default is 0 - start with the first available item.</li>
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – The first item to return, using 0-based indexing.
+If not specified, the default is 0 - start with the first available item.</p></li>
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
 the response may differ from the requested count if the sum of start and count exceed the total number
-of items.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned.
-The default is no query - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+of items.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned.
+The default is no query - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of Managed SANs</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of Managed SANs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name">
-<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name">
+<span class="sig-name descname"><span class="pre">get_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.get_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a Managed SAN by name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Name of the Managed SAN</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Managed SAN.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the Managed SAN</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Managed SAN.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_endpoints">
-<code class="descname">get_endpoints</code><em class="property"> = &lt;functools.partial object&gt;</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_endpoints" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_endpoints">
+<span class="sig-name descname"><span class="pre">get_endpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_endpoints" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn">
-<code class="descname">get_wwn</code><span class="sig-paren">(</span><em>wwn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.get_wwn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn">
+<span class="sig-name descname"><span class="pre">get_wwn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wwn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/managed_sans.html#ManagedSANs.get_wwn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves a list of associations between provided WWNs and the SANs (if any) on which they reside.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method is available for API version 300 or later.</p>
+<p class="admonition-title">Note</p>
+<p>This method is available for API version 300 or later.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wwn</strong> (<em>str</em>) – The WWN that may be associated with the SAN.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Associations between provided WWNs and the SANs</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wwn</strong> (<em>str</em>) – The WWN that may be associated with the SAN.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Associations between provided WWNs and the SANs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.fc_sans.san_managers">
-<span id="hpeoneview-resources-fc-sans-san-managers-module"></span><h2>hpeOneView.resources.fc_sans.san_managers module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.san_managers" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.fc_sans.san_managers.SanManagers">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.fc_sans.san_managers.</code><code class="descname">SanManagers</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.fc_sans.san_managers">
+<span id="hpeoneview-resources-fc-sans-san-managers-module"></span><h2>hpeOneView.resources.fc_sans.san_managers module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.san_managers" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_managers.SanManagers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.fc_sans.san_managers.</span></span><span class="sig-name descname"><span class="pre">SanManagers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>SAN Managers API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.san_managers.SanManagers.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/fc-sans/device-managers'</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_managers.SanManagers.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/fc-sans/device-managers'</span></em><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_managers.SanManagers.get_all">
-<code class="descname">get_all</code><span class="sig-paren">(</span><em>start=0</em>, <em>count=-1</em>, <em>filter=u''</em>, <em>sort=u''</em>, <em>query=u''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.get_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_managers.SanManagers.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_all" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieves the list of registered SAN Managers.
 :param start: The first item to return, using 0-based indexing.</p>
 <blockquote>
-<div>If not specified, the default is 0 - start with the first available item.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
+<div><p>If not specified, the default is 0 - start with the first available item.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>count</strong> – The number of resources to return. A count of -1 requests all items. The actual number of items in
 the response may differ from the requested count if the sum of start and count exceed the total number
-of items.</li>
-<li><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
-default is no filter; all resources are returned.</li>
-<li><strong>query</strong> – A general query string to narrow the list of resources returned.
-The default is no query - all resources are returned.</li>
-<li><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
-on create time with the oldest entry first.</li>
+of items.</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em> or </em><em>str</em>) – A general filter/query string to narrow the list of items returned. The
+default is no filter; all resources are returned.</p></li>
+<li><p><strong>query</strong> – A general query string to narrow the list of resources returned.
+The default is no query - all resources are returned.</p></li>
+<li><p><strong>sort</strong> – The sort order of the returned data set. By default, the sort order is based
+on create time with the oldest entry first.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of SAN managers.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of SAN managers.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_name">
-<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_name">
+<span class="sig-name descname"><span class="pre">get_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.get_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.get_by_name" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a SAN Manager by name.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Name of the SAN Manager</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">SAN Manager.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the SAN Manager</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SAN Manager.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_managers.SanManagers.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>force=False</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_managers.SanManagers.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.remove" title="Permalink to this definition"></a></dt>
 <dd><p>Removes the  SAN Manager from OneView.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
-network connectivity or errors on the resource itself. The default is false.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView; it just stops waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> (<em>bool</em>) – If set to true, the operation completes despite any problems with
+network connectivity or errors on the resource itself. The default is false.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView; it just stops waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Details of associated resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Details of associated resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_managers.SanManagers.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>resource</em>, <em>id_or_uri</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.update" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_managers.SanManagers.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_or_uri</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_managers.html#SanManagers.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_managers.SanManagers.update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates a registered Device Manager.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to update.</li>
-<li><strong>id_or_uri</strong> – Can be either the Device manager ID or URI.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to update.</p></li>
+<li><p><strong>id_or_uri</strong> – Can be either the Device manager ID or URI.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The device manager resource.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The device manager resource.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.fc_sans.san_providers">
-<span id="hpeoneview-resources-fc-sans-san-providers-module"></span><h2>hpeOneView.resources.fc_sans.san_providers module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.san_providers" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="hpeOneView.resources.fc_sans.san_providers.SanProviders">
-<em class="property">class </em><code class="descclassname">hpeOneView.resources.fc_sans.san_providers.</code><code class="descname">SanProviders</code><span class="sig-paren">(</span><em>connection</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">hpeOneView.resources.resource.Resource</span></code></a></p>
+</section>
+<section id="module-hpeOneView.resources.fc_sans.san_providers">
+<span id="hpeoneview-resources-fc-sans-san-providers-module"></span><h2>hpeOneView.resources.fc_sans.san_providers module<a class="headerlink" href="#module-hpeOneView.resources.fc_sans.san_providers" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_providers.SanProviders">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hpeOneView.resources.fc_sans.san_providers.</span></span><span class="sig-name descname"><span class="pre">SanProviders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="hpeOneView.resources.html#hpeOneView.resources.resource.Resource" title="hpeOneView.resources.resource.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
 <p>SAN Managers API client.</p>
-<dl class="attribute">
-<dt id="hpeOneView.resources.fc_sans.san_providers.SanProviders.URI">
-<code class="descname">URI</code><em class="property"> = u'/rest/fc-sans/providers'</em><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.URI" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_providers.SanProviders.URI">
+<span class="sig-name descname"><span class="pre">URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rest/fc-sans/providers'</span></em><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.URI" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_providers.SanProviders.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>resource</em>, <em>provider_uri_or_id</em>, <em>timeout=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_providers.SanProviders.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provider_uri_or_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.add" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a Device Manager under the specified provider.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resource</strong> (<em>dict</em>) – Object to add.</li>
-<li><strong>provider_uri_or_id</strong> – ID or URI of provider.</li>
-<li><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
-in OneView, just stop waiting for its completion.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> (<em>dict</em>) – Object to add.</p></li>
+<li><p><strong>provider_uri_or_id</strong> – ID or URI of provider.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation
+in OneView, just stop waiting for its completion.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Added SAN Manager.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Added SAN Manager.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_providers.SanProviders.get_default_connection_info">
-<code class="descname">get_default_connection_info</code><span class="sig-paren">(</span><em>provider_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders.get_default_connection_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_default_connection_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_providers.SanProviders.get_default_connection_info">
+<span class="sig-name descname"><span class="pre">get_default_connection_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">provider_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders.get_default_connection_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_default_connection_info" title="Permalink to this definition"></a></dt>
 <dd><p>Gets default connection info for a specific provider.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provider_name</strong> – Name of the provider.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Default connection information.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider_name</strong> – Name of the provider.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Default connection information.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="hpeOneView.resources.fc_sans.san_providers.SanProviders.get_provider_uri">
-<code class="descname">get_provider_uri</code><span class="sig-paren">(</span><em>provider_display_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders.get_provider_uri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_provider_uri" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="hpeOneView.resources.fc_sans.san_providers.SanProviders.get_provider_uri">
+<span class="sig-name descname"><span class="pre">get_provider_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">provider_display_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/fc_sans/san_providers.html#SanProviders.get_provider_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.fc_sans.san_providers.SanProviders.get_provider_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Gets uri for a specific provider.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provider_display_name</strong> – Display name of the provider.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">uri</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>provider_display_name</strong> – Display name of the provider.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>uri</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-hpeOneView.resources.fc_sans">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.fc_sans" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="module-hpeOneView.resources.fc_sans">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hpeOneView.resources.fc_sans" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>

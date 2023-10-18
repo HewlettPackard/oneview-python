@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.security.certificate_authority &mdash; HPE OneView Python SDK 8.5.1 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <title>hpeOneView.resources.security.certificate_authority &mdash; HPE OneView Python SDK 8.6.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
@@ -29,7 +32,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                8.5.1
+                8.6.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -97,7 +100,7 @@
 
 
 <div class="viewcode-block" id="CertificateAuthority"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority">[docs]</a><span class="k">class</span> <span class="nc">CertificateAuthority</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Certificate Authority API client.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -107,7 +110,7 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CertificateAuthority.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parent_task</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Imports an external CA root certificate or CA certificate chain into the appliance trust store.</span>
 <span class="sd">        Same CA certificate will not be allowed to be imported into the appliance trust store.</span>
 
@@ -128,7 +131,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri_create</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CertificateAuthority.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cert_details</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves all the CA certificates.</span>
 
 <span class="sd">        Args:</span>
@@ -142,7 +145,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CertificateAuthority.get_crl"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl">[docs]</a>    <span class="k">def</span> <span class="nf">get_crl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the contents of the CRL file maintained by the internal CA; in Base-64 encoded format, in the form</span>
 <span class="sd">        of a string.</span>
 
@@ -153,7 +156,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri_crl</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CertificateAuthority.get_by_aliasname"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_by_aliasname">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_aliasname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the collection having CA certificates</span>
 
 <span class="sd">        Args:</span>
@@ -166,7 +169,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificateAuthority</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CertificateAuthority.get_crl_by_aliasname"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_authority.CertificateAuthority.get_crl_by_aliasname">[docs]</a>    <span class="k">def</span> <span class="nf">get_crl_by_aliasname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Downloads the CRL file associated with the given certificate authority alias name.</span>
 
 <span class="sd">        Args:</span>
