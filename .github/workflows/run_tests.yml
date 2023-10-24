@@ -8,8 +8,7 @@ jobs:
     name: Run tox (${{ matrix.python_version }})
     strategy:
       matrix:
-        python_version:
-        - 3.6
+        python_version: [3.7]
     runs-on: ubuntu-20.04
 
     steps:
