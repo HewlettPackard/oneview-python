@@ -22,7 +22,7 @@ Latest version of the OneView Python [SDK Documentation](https://hewlettpackard.
 
 ## What's New
 
-HPE OneView Python library extends support of the SDK to OneView REST API version 6600 (OneView v9.00)
+HPE OneView Python library extends support of the SDK to OneView REST API version 6800 (OneView v9.10)
 ### Migration script
 Perform migration from HPE OneView 6.x to HPE OneView 7.0 for non-Synergy appliance using below script.
 ```bash
@@ -97,13 +97,13 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
    Download and store a local copy of hpe-oneview-sdk-for-python and use it as a Docker image. <br />
    ```bash
 
-   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.0.0-OV9.0
+   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.1.0-OV9.1
    ```
 
    Run docker commands and this will in turn create sh session where you can create files, issue commands and execute the tests <br />
    ```bash
 
-   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.0.0-OV9.0 /bin/sh
+   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.1.0-OV9.1 /bin/sh
 
    ```
    
