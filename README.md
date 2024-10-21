@@ -97,13 +97,13 @@ HPE OneView SDK for Python can be installed from Source,Pypi and Docker containe
    Download and store a local copy of hpe-oneview-sdk-for-python and use it as a Docker image. <br />
    ```bash
 
-   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.1.0-OV9.1
+   $ docker pull hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.2.0-OV9.2
    ```
 
    Run docker commands and this will in turn create sh session where you can create files, issue commands and execute the tests <br />
    ```bash
 
-   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.1.0-OV9.1 /bin/sh
+   $ docker run -it hewlettpackardenterprise/hpe-oneview-sdk-for-python:v9.2.0-OV9.2 /bin/sh
 
    ```
    
