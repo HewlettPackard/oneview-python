@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers.server_hardware &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.servers.server_hardware &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,18 +89,18 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceUtilizationMixin</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceUtilizationMixin</span><span class="p">,</span>
                                            <span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">ensure_resource_client</span><span class="p">)</span>
 
 <span class="n">SERVER_HARWARE_BELOW_GEN10</span> <span class="o">=</span> <span class="s1">&#39;Server Hardware generation is below Gen10&#39;</span>
@@ -110,7 +110,7 @@
 <span class="n">ILO_ADVANCED_LICENSE_REQUIRED</span> <span class="o">=</span> <span class="s1">&#39;Requires an HPE iLO Advanced license for monitored hardware&#39;</span>
 
 
-<div class="viewcode-block" id="ServerHardware"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware">[docs]</a><span class="k">class</span> <span class="nc">ServerHardware</span><span class="p">(</span><span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">ResourceUtilizationMixin</span><span class="p">,</span> <span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerHardware"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ServerHardware</span><span class="p">(</span><span class="n">ResourcePatchMixin</span><span class="p">,</span> <span class="n">ResourceUtilizationMixin</span><span class="p">,</span> <span class="n">Resource</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The server hardware resource is a representation of a physical server.</span>
 <span class="sd">    The server hardware resource provides methods for server management tasks such</span>
@@ -119,10 +119,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/server-hardware&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ServerHardware</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ServerHardware.add"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerHardware.add"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.add">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a rack-mount server for management by the appliance. This API initiates the asynchronous addition of</span>
 <span class="sd">        supported server models.</span>
@@ -140,7 +140,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ServerHardware.add_multiple_servers"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.add_multiple_servers">[docs]</a>    <span class="k">def</span> <span class="nf">add_multiple_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerHardware.add_multiple_servers"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.add_multiple_servers">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_multiple_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds multiple rack-mount servers for management by the appliance. This API initiates the asynchronous addition of</span>
 <span class="sd">        supported server models.</span>
@@ -161,7 +161,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/discovery&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ServerHardware.remove"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerHardware.remove"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.remove">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes the rackserver with the specified URI.</span>
 <span class="sd">        Note: This operation is only supported on appliances that support rack-mounted servers.</span>
@@ -180,7 +180,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_bios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_bios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the list of BIOS/UEFI values currently set on the physical server.</span>
 
@@ -191,7 +191,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_environmental_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_environmental_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the settings that describe the environmental configuration (supported feature set, calibrated minimum and</span>
 <span class="sd">        maximum power, location and dimensions, etc.) of the server hardware resource.</span>
@@ -203,7 +203,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">update_environmental_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_environmental_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the calibrated max power of an unmanaged or unsupported server hardware resource.</span>
 
@@ -219,7 +219,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_ilo_sso_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_ilo_sso_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the URL to launch a Single Sign-On (SSO) session for the iLO web interface. If the server hardware is</span>
 <span class="sd">        unsupported, the resulting URL will not use SSO and the iLO web interface will prompt for credentials.</span>
@@ -238,7 +238,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ServerHardware.get_all_firmwares"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.get_all_firmwares">[docs]</a>    <span class="k">def</span> <span class="nf">get_all_firmwares</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerHardware.get_all_firmwares"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.get_all_firmwares">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all_firmwares</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a list of firmware inventory across all servers. To filter the returned data, specify a filter</span>
 <span class="sd">        expression to select a particular server model, component name, and/or component firmware version.</span>
@@ -271,7 +271,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">sort</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_firmware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_firmware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the firmware inventory of a server.</span>
 
@@ -285,7 +285,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_java_remote_console_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_java_remote_console_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a Single Sign-On (SSO) session for the iLO Java Applet console and returns the URL to launch it.</span>
 <span class="sd">        If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO and the iLO Java Applet</span>
@@ -305,7 +305,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">update_mp_firware_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_mp_firware_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates the iLO firmware on a physical server to a minimum ILO firmware version required by OneView to</span>
 <span class="sd">        manage the server.</span>
@@ -321,7 +321,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">update_power_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_power_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Refreshes the server hardware to fix configuration issues.</span>
 
@@ -337,7 +337,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">refresh_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">refresh_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Refreshes the server hardware to fix configuration issues.</span>
 
@@ -353,7 +353,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_remote_console_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">consoleType</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_remote_console_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">consoleType</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a Single Sign-On (SSO) session for the iLO Integrated Remote Console Application (IRC) and returns the</span>
 <span class="sd">        URL to launch it. If the server hardware is unmanaged or unsupported, the resulting URL will not use SSO and the</span>
@@ -378,7 +378,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_physical_server_hardware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_physical_server_hardware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Information describing an &#39;SDX&#39; partition including a list of physical server blades represented by a server</span>
 <span class="sd">        hardware. Used with SDX enclosures only.</span>
@@ -390,7 +390,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">get_local_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the updated version 2 local storage resource for the server, including storage controllers,</span>
 <span class="sd">        drives, and volumes.</span>
@@ -408,7 +408,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ServerHardware.check_firmware_compliance"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance">[docs]</a>    <span class="k">def</span> <span class="nf">check_firmware_compliance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ServerHardware.check_firmware_compliance"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.server_hardware.ServerHardware.check_firmware_compliance">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">check_firmware_compliance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Checks the firmware compliance of a server with the selected firmware baseline.</span>
 <span class="sd">        Returns the compliance status of each individual component as well as the overall</span>
@@ -424,7 +424,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">validate_server_hardware_for_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_server_hardware_for_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Performs a validation for the prerequisites before firmware update.</span>
 <span class="sd">        Checks if the server hardware is in powered off state, No server profile attached to server</span>
@@ -457,7 +457,7 @@
             <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">perform_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">perform_firmware_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Performs a specific patch operation on the firmware settings for the given server.</span>
 <span class="sd">        If the server supports the particular operation, the operation is performed and a response is</span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.search.labels &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.search.labels &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,18 +89,18 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.search.index_resources</span> <span class="kn">import</span> <span class="n">IndexResources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.search.index_resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexResources</span>
 
 <span class="n">category_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;connection-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;drive-enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;ethernet-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosure-groups&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;fc-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;fcoe-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;firmware-bundles&#39;</span><span class="p">,</span> <span class="s1">&#39;hypervisor-cluster-profiles&#39;</span><span class="p">,</span>
@@ -111,7 +111,7 @@
                  <span class="s1">&#39;storage-pools&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-sets&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volumes&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="get_resources_associated_with_label"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.get_resources_associated_with_label">[docs]</a><span class="k">def</span> <span class="nf">get_resources_associated_with_label</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="get_resources_associated_with_label"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.get_resources_associated_with_label">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">get_resources_associated_with_label</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
     <span class="n">index_resource</span> <span class="o">=</span> <span class="n">IndexResources</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
     <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;labels=&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
     <span class="n">all_index_resources</span> <span class="o">=</span> <span class="n">index_resource</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">category_list</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query_string</span><span class="p">)</span>
@@ -119,7 +119,7 @@
     <span class="k">return</span> <span class="n">response</span></div>
 
 
-<div class="viewcode-block" id="Labels"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels">[docs]</a><span class="k">class</span> <span class="nc">Labels</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Labels</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Labels API client.</span>
 
@@ -128,10 +128,10 @@
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/labels&#39;</span>
     <span class="n">RESOURCES_PATH</span> <span class="o">=</span> <span class="s1">&#39;/resources&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Labels</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Labels.get_assigned_resources"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.get_assigned_resources">[docs]</a>    <span class="k">def</span> <span class="nf">get_assigned_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.get_assigned_resources"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.get_assigned_resources">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_assigned_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the assigned resource of a label by name.</span>
 
@@ -147,7 +147,7 @@
             <span class="n">assigned_resource</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">assignedResourceUris</span><span class="o">=</span><span class="n">resources_list</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">assigned_resource</span></div>
 
-<div class="viewcode-block" id="Labels.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set all the labels for a resource.</span>
 
@@ -160,7 +160,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">RESOURCES_PATH</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Labels</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Labels.get_by_resource"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.get_by_resource">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.get_by_resource"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.get_by_resource">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all the labels for the specified resource</span>
 
@@ -173,7 +173,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">RESOURCES_PATH</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">resource_uri</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Labels</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Labels.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name_prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="p">[]):</span>
+<div class="viewcode-block" id="Labels.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.search.html#hpeOneView.resources.search.labels.Labels.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name_prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all items according with the given arguments.</span>
 <span class="sd">        Args:</span>

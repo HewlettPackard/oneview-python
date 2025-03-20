@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.networking.network_sets &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.networking.network_sets &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,18 +89,18 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceHelper</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceHelper</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span>
 
 
-<div class="viewcode-block" id="NetworkSets"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.network_sets.NetworkSets">[docs]</a><span class="k">class</span> <span class="nc">NetworkSets</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="NetworkSets"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.network_sets.NetworkSets">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">NetworkSets</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Network Sets API client.</span>
 
@@ -119,10 +119,10 @@
         <span class="s1">&#39;1800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network-setV5&quot;</span><span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NetworkSets</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NetworkSets.get_all_without_ethernet"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.network_sets.NetworkSets.get_all_without_ethernet">[docs]</a>    <span class="k">def</span> <span class="nf">get_all_without_ethernet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="NetworkSets.get_all_without_ethernet"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.network_sets.NetworkSets.get_all_without_ethernet">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all_without_ethernet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a paginated collection of network sets without ethernet. The collection is based</span>
 <span class="sd">        on optional sorting and filtering and is constrained by start and count parameters.</span>
@@ -151,7 +151,7 @@
 
         <span class="k">return</span> <span class="n">without_ethernet_client</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="NetworkSets.get_without_ethernet"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.network_sets.NetworkSets.get_without_ethernet">[docs]</a>    <span class="k">def</span> <span class="nf">get_without_ethernet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="NetworkSets.get_without_ethernet"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.network_sets.NetworkSets.get_without_ethernet">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_without_ethernet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the network set with the specified ID or URI without ethernet.</span>
 

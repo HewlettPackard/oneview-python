@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.security.certificate_rabbitmq &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.security.certificate_rabbitmq &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,27 +89,27 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">ResourceClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResourceClient</span>
 
 
-<div class="viewcode-block" id="CertificateRabbitMQ"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ">[docs]</a><span class="k">class</span> <span class="nc">CertificateRabbitMQ</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateRabbitMQ"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">CertificateRabbitMQ</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/certificates/client/rabbitmq&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
 
-<div class="viewcode-block" id="CertificateRabbitMQ.generate"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateRabbitMQ.generate"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.generate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a self signed certificate or an internal CA signed certificate for RabbitMQ clients.</span>
 
@@ -124,7 +124,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificateRabbitMQ.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateRabbitMQ.get"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the base-64 encoded certificate associated with the RabbitMQ user.</span>
 
@@ -136,7 +136,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">alias_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificateRabbitMQ.get_key_pair"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair">[docs]</a>    <span class="k">def</span> <span class="nf">get_key_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateRabbitMQ.get_key_pair"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_key_pair">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_key_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the public and private key pair associated with the specified alias name.</span>
 
@@ -149,7 +149,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s2">&quot;/keypair/&quot;</span> <span class="o">+</span> <span class="n">alias_name</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificateRabbitMQ.get_keys"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys">[docs]</a>    <span class="k">def</span> <span class="nf">get_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">,</span> <span class="n">key_format</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificateRabbitMQ.get_keys"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificate_rabbitmq.CertificateRabbitMQ.get_keys">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">,</span> <span class="n">key_format</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the contents of PKCS12 file in the format specified.</span>
 <span class="sd">        This PKCS12 formatted file contains both the certificate as well as the key file data.</span>

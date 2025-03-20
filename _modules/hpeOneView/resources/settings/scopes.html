@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.settings.scopes &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.settings.scopes &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,17 +89,17 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span>
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.search.index_resources</span> <span class="kn">import</span> <span class="n">IndexResources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.search.index_resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexResources</span>
 
 
 <span class="n">category_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;connection-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;drive-enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;ethernet-networks&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosures&#39;</span><span class="p">,</span> <span class="s1">&#39;enclosure-groups&#39;</span><span class="p">,</span>
@@ -111,7 +111,7 @@
                  <span class="s1">&#39;storage-pools&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-sets&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volume-templates&#39;</span><span class="p">,</span> <span class="s1">&#39;storage-volumes&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="get_resources_associated_with_scope"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.get_resources_associated_with_scope">[docs]</a><span class="k">def</span> <span class="nf">get_resources_associated_with_scope</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">scope_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="get_resources_associated_with_scope"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.get_resources_associated_with_scope">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">get_resources_associated_with_scope</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">scope_uri</span><span class="p">):</span>
     <span class="n">index_resource</span> <span class="o">=</span> <span class="n">IndexResources</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
     <span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;scopeUris=&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scope_uri</span><span class="p">)</span>
     <span class="n">all_index_resources</span> <span class="o">=</span> <span class="n">index_resource</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">category_list</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query_string</span><span class="p">)</span>
@@ -119,7 +119,7 @@
     <span class="k">return</span> <span class="n">response</span></div>
 
 
-<div class="viewcode-block" id="Scopes"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes">[docs]</a><span class="k">class</span> <span class="nc">Scopes</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Scopes</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourcePatchMixin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Scopes API client.</span>
 
@@ -139,10 +139,10 @@
         <span class="s1">&#39;1800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ScopeV3&quot;</span><span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Scopes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Scopes.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">         Gets a list of scopes.</span>
 
@@ -173,7 +173,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Scopes.get_by_uri"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_by_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.get_by_uri"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_by_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the specified scope resource by uri.</span>
 
@@ -189,7 +189,7 @@
             <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;addedResourceUris&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resource_list</span>
         <span class="k">return</span> <span class="n">response</span></div>
 
-<div class="viewcode-block" id="Scopes.get_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.get_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_by_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the specified scope resource by name.</span>
 
@@ -205,7 +205,7 @@
             <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;addedResourceUris&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resource_list</span>
         <span class="k">return</span> <span class="n">response</span></div>
 
-<div class="viewcode-block" id="Scopes.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.update">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates a scope.</span>
 
@@ -222,7 +222,7 @@
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;If-Match&#39;</span><span class="p">:</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eTag&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)}</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Scopes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Scopes.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.delete">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes a Scope.</span>
 
@@ -238,7 +238,7 @@
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;If-Match&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">}</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Scopes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Scopes.get_scope_resource"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_scope_resource">[docs]</a>    <span class="k">def</span> <span class="nf">get_scope_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.get_scope_resource"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.get_scope_resource">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_scope_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a resource&#39;s scope, containing a list of the scopes to which the resource is assigned.</span>
 
@@ -252,7 +252,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Scopes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
     <span class="c1"># This function will work till API version 300</span>
-<div class="viewcode-block" id="Scopes.update_resource_assignments"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.update_resource_assignments">[docs]</a>    <span class="k">def</span> <span class="nf">update_resource_assignments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">resource_assignments</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Scopes.update_resource_assignments"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.scopes.Scopes.update_resource_assignments">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_resource_assignments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">resource_assignments</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Modifies scope membership by adding or removing resource assignments.</span>
 

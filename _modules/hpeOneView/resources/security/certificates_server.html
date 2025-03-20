@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.security.certificates_server &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.security.certificates_server &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,20 +89,20 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
-<span class="kn">from</span> <span class="nn">hpeOneView.exceptions</span> <span class="kn">import</span> <span class="n">HPEOneViewException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">HPEOneViewException</span>
 
 
-<div class="viewcode-block" id="CertificatesServer"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer">[docs]</a><span class="k">class</span> <span class="nc">CertificatesServer</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificatesServer"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">CertificatesServer</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The Certificates Servers resource provides REST APIs for configuration of device or</span>
 <span class="sd">    server certificates for the appliance to establish SSL communication with other managed network entities.</span>
@@ -112,13 +112,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/certificates&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CertificatesServer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__default_values</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;CertificateInfoV2&#39;</span>
         <span class="p">}</span>
 
-<div class="viewcode-block" id="CertificatesServer.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificatesServer.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a POST request to create a server certificate resource.</span>
 
@@ -133,7 +133,7 @@
         <span class="n">uri_create</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/servers&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificatesServer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri_create</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificatesServer.get_remote"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote">[docs]</a>    <span class="k">def</span> <span class="nf">get_remote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remote_address</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificatesServer.get_remote"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer.get_remote">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_remote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remote_address</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the device or server certificate and certificate chain of the specified device or server.</span>
 
@@ -147,7 +147,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/https/remote/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span> <span class="n">remote_address</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CertificatesServer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CertificatesServer.get_by_alias_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_alias_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
+<div class="viewcode-block" id="CertificatesServer.get_by_alias_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.certificates_server.CertificatesServer.get_by_alias_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_alias_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias_name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the device or server certificate, already trusted in the appliance,</span>
 <span class="sd">        with the specified aliasName.</span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.resource &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.resource &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -89,24 +89,24 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
-<span class="kn">from</span> <span class="nn">future.utils</span> <span class="kn">import</span> <span class="n">lmap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">lmap</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">quote</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.task_monitor</span> <span class="kn">import</span> <span class="n">TaskMonitor</span>
-<span class="kn">from</span> <span class="nn">hpeOneView</span> <span class="kn">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.task_monitor</span><span class="w"> </span><span class="kn">import</span> <span class="n">TaskMonitor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView</span><span class="w"> </span><span class="kn">import</span> <span class="n">exceptions</span>
 
 <span class="n">RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED</span> <span class="o">=</span> <span class="s1">&#39;Resource was not provided&#39;</span>
 <span class="n">RESOURCE_CLIENT_INVALID_FIELD</span> <span class="o">=</span> <span class="s1">&#39;Invalid field was provided&#39;</span>
@@ -122,22 +122,22 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="EnsureResourceClient"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.EnsureResourceClient">[docs]</a><span class="k">class</span> <span class="nc">EnsureResourceClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EnsureResourceClient"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.EnsureResourceClient">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">EnsureResourceClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator class to update the resource data.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">update_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">update_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_data</span> <span class="o">=</span> <span class="n">update_data</span>
 
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__call__</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">:</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">ensure_resource_data</span><span class="p">(</span><span class="n">update_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrap</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ensure_resource_data</span><span class="p">(</span><span class="n">update_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">obj</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -148,7 +148,7 @@
 <span class="n">ensure_resource_client</span> <span class="o">=</span> <span class="n">EnsureResourceClient</span>
 
 
-<div class="viewcode-block" id="Resource"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource">[docs]</a><span class="k">class</span> <span class="nc">Resource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Resource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for OneView resources.</span>
 
 <span class="sd">    Args:</span>
@@ -164,7 +164,7 @@
     <span class="c1"># Default values required for the api versions</span>
     <span class="n">DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">connection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span> <span class="o">=</span> <span class="n">TaskMonitor</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span> <span class="o">=</span> <span class="n">ResourceHelper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">,</span>
@@ -176,7 +176,7 @@
         <span class="c1"># Merge resoure data with the default values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_merge_default_values</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Resource.ensure_resource_data"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.ensure_resource_data">[docs]</a>    <span class="k">def</span> <span class="nf">ensure_resource_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">update_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.ensure_resource_data"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.ensure_resource_data">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">ensure_resource_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">update_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves data from OneView and updates resource object.</span>
 
 <span class="sd">        Args:</span>
@@ -210,11 +210,11 @@
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">HPEOneViewResourceNotFound</span><span class="p">(</span><span class="n">RESOURCE_DOES_NOT_EXIST</span><span class="p">)</span></div>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to get the latest resource data from the server.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
 
-<div class="viewcode-block" id="Resource.get_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.get_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets all items according with the given arguments.</span>
 
 <span class="sd">        Args:</span>
@@ -232,7 +232,7 @@
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="Resource.create"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.create"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -257,7 +257,7 @@
         <span class="k">return</span> <span class="n">new_resource</span></div>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes current resource.</span>
 
 <span class="sd">        Args:</span>
@@ -273,7 +273,7 @@
                                    <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Resource.update"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.update">[docs]</a>    <span class="nd">@ensure_resource_client</span><span class="p">(</span><span class="n">update_data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a PUT request to update a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -298,7 +298,7 @@
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="Resource.get_by"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by">[docs]</a>    <span class="k">def</span> <span class="nf">get_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.get_by"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the resource by passing a field and its value.</span>
 
 <span class="sd">        Note:</span>
@@ -324,7 +324,7 @@
             <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
         <span class="k">return</span> <span class="n">results</span></div>
 
-<div class="viewcode-block" id="Resource.get_by_name"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.get_by_name"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves a resource by its name.</span>
 
 <span class="sd">        Args:</span>
@@ -342,7 +342,7 @@
         <span class="k">return</span> <span class="n">new_resource</span></div>
 
     <span class="c1"># Sometimes get_all() with filters are not returning correct values, so added this method to overcome that issue</span>
-<div class="viewcode-block" id="Resource.get_by_field"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_field">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.get_by_field"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_field">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves a resource by its field.</span>
 
 <span class="sd">        Args:</span>
@@ -369,7 +369,7 @@
             <span class="n">new_resource</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">new_resource</span></div>
 
-<div class="viewcode-block" id="Resource.get_by_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.get_by_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves a resource by its URI</span>
 
 <span class="sd">        Args:</span>
@@ -388,7 +388,7 @@
 
         <span class="k">return</span> <span class="n">new_resource</span></div>
 
-<div class="viewcode-block" id="Resource.get_by_id"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<div class="viewcode-block" id="Resource.get_by_id"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.get_by_id">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves a resource by its id.</span>
 
 <span class="sd">        Args:</span>
@@ -410,7 +410,7 @@
 
         <span class="k">return</span> <span class="n">new_resource</span></div>
 
-    <span class="k">def</span> <span class="nf">_get_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the default values set for a resource&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">default_values</span><span class="p">:</span>
@@ -424,7 +424,7 @@
 
         <span class="k">return</span> <span class="n">values</span>
 
-    <span class="k">def</span> <span class="nf">_merge_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_merge_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge default values with resource data.&quot;&quot;&quot;</span>
         <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_default_values</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -432,19 +432,19 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
 <div class="viewcode-block" id="Resource.new"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.Resource.new">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a new resource object&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="ResourceHelper"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper">[docs]</a><span class="k">class</span> <span class="nc">ResourceHelper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourceHelper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">task_monitor</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">task_monitor</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_base_uri</span> <span class="o">=</span> <span class="n">base_uri</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">connection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span> <span class="o">=</span> <span class="n">task_monitor</span>
 
-<div class="viewcode-block" id="ResourceHelper.get_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="ResourceHelper.get_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">name_prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="p">[],</span> <span class="n">childLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">topCount</span><span class="o">=</span><span class="mi">0</span><span class="p">,):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets all items according with the given arguments.</span>
 
@@ -495,7 +495,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_requests_to_getall</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.delete_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.delete_all">[docs]</a>    <span class="k">def</span> <span class="nf">delete_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.delete_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.delete_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes all resources from the appliance that match the provided filter.</span>
 
@@ -517,7 +517,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.create"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.create"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -538,7 +538,7 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Create (uri = </span><span class="si">%s</span><span class="s1">, resource = </span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.delete"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.delete"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.delete">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes current resource.</span>
 
 <span class="sd">        Args:</span>
@@ -562,7 +562,7 @@
 
         <span class="k">return</span> <span class="n">task</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.update"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.update"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.update">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a PUT request to update a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -587,7 +587,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.update_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.update_with_zero_body">[docs]</a>    <span class="k">def</span> <span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.update_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.update_with_zero_body">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a PUT request to update a resource when no request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -603,7 +603,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.create_report"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.create_report">[docs]</a>    <span class="k">def</span> <span class="nf">create_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.create_report"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.create_report">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a report and returns the output.</span>
 
@@ -626,7 +626,7 @@
 
         <span class="k">return</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskOutput&#39;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.get_collection"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_collection">[docs]</a>    <span class="k">def</span> <span class="nf">get_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.get_collection"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_collection">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves a collection of resources.</span>
 
 <span class="sd">        Use this function when the &#39;start&#39; and &#39;count&#39; parameters are not allowed in the GET call.</span>
@@ -655,7 +655,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_members</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.build_query_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_query_uri">[docs]</a>    <span class="k">def</span> <span class="nf">build_query_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="ResourceHelper.build_query_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_query_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_query_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                         <span class="n">name_prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="p">[],</span> <span class="n">childLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">topCount</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds the URI from given parameters.</span>
 
@@ -735,14 +735,14 @@
                                                                            <span class="n">view</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">scope_uris</span><span class="p">,</span> <span class="n">name_prefix</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">uri</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.build_uri_with_query_string"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_uri_with_query_string">[docs]</a>    <span class="k">def</span> <span class="nf">build_uri_with_query_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">sufix_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.build_uri_with_query_string"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_uri_with_query_string">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_uri_with_query_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">sufix_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">uri</span><span class="p">:</span>
             <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_uri</span>
 
         <span class="n">query_string</span> <span class="o">=</span> <span class="s1">&#39;&amp;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">uri</span> <span class="o">+</span> <span class="n">sufix_path</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">query_string</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.build_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_uri">[docs]</a>    <span class="k">def</span> <span class="nf">build_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.build_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to build the URI from resource id and validate the URI.</span>
 
 <span class="sd">        Args:</span>
@@ -761,7 +761,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_uri</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">id_or_uri</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.build_subresource_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_subresource_uri">[docs]</a>    <span class="k">def</span> <span class="nf">build_subresource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.build_subresource_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.build_subresource_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_subresource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to build a URI with resource path and its sub resource path.</span>
 
 <span class="sd">        Args:</span>
@@ -788,13 +788,13 @@
 
             <span class="k">return</span> <span class="n">uri</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.validate_resource_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.validate_resource_uri">[docs]</a>    <span class="k">def</span> <span class="nf">validate_resource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.validate_resource_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.validate_resource_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate_resource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper method to validate URI of the resource.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_uri</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Get by uri : unrecognized uri: (</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">HPEOneViewUnknownType</span><span class="p">(</span><span class="n">UNRECOGNIZED_URI</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.make_query_filter"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.make_query_filter">[docs]</a>    <span class="k">def</span> <span class="nf">make_query_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.make_query_filter"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.make_query_filter">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">make_query_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper method to build filter query parameter.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">formated_filter</span> <span class="o">=</span> <span class="s2">&quot;&amp;filter=&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quote</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">)</span>
@@ -803,14 +803,14 @@
 
         <span class="k">return</span> <span class="s2">&quot;&amp;filter=&quot;</span> <span class="o">+</span> <span class="n">formated_filter</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.get_members"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_members">[docs]</a>    <span class="k">def</span> <span class="nf">get_members</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mlist</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.get_members"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_members">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_members</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mlist</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get members from list of resources&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">mlist</span> <span class="ow">and</span> <span class="n">mlist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;members&#39;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">mlist</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.update_resource_fields"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.update_resource_fields">[docs]</a>    <span class="k">def</span> <span class="nf">update_resource_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_to_add</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.update_resource_fields"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.update_resource_fields">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_resource_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_to_add</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update resource data with new fields.</span>
 
 <span class="sd">        Args:</span>
@@ -826,7 +826,7 @@
 
         <span class="k">return</span> <span class="n">data</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.do_requests_to_getall"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall">[docs]</a>    <span class="k">def</span> <span class="nf">do_requests_to_getall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.do_requests_to_getall"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_requests_to_getall">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">do_requests_to_getall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to make http request for get_all method.</span>
 
 <span class="sd">        Note:</span>
@@ -846,7 +846,7 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Total # of members found = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))))</span>
         <span class="k">return</span> <span class="n">items</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.get_next_page"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_next_page">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.get_next_page"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.get_next_page">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_next_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns next page URI.&quot;&quot;&quot;</span>
         <span class="n">next_page_is_empty</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageUri&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
         <span class="n">has_different_next_page</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageUri&#39;</span><span class="p">)</span>
@@ -857,7 +857,7 @@
 
         <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageUri&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">has_next_page</span> <span class="k">else</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.do_get"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_get">[docs]</a>    <span class="k">def</span> <span class="nf">do_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.do_get"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_get">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">do_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to make get requests</span>
 
 <span class="sd">        Args:</span>
@@ -869,7 +869,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">validate_resource_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.do_post"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_post">[docs]</a>    <span class="k">def</span> <span class="nf">do_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.do_post"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_post">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">do_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to make post requests.</span>
 
 <span class="sd">        Args:</span>
@@ -889,7 +889,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.do_put"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_put">[docs]</a>    <span class="k">def</span> <span class="nf">do_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.do_put"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.do_put">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">do_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helps to make put requests.</span>
 
 <span class="sd">        Args:</span>
@@ -909,7 +909,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceHelper.add_new_fields"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.add_new_fields">[docs]</a>    <span class="k">def</span> <span class="nf">add_new_fields</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data_to_add</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceHelper.add_new_fields"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceHelper.add_new_fields">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_new_fields</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data_to_add</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update resource data with new fields.</span>
 
 <span class="sd">        Args:</span>
@@ -926,10 +926,10 @@
         <span class="k">return</span> <span class="n">data</span></div></div>
 
 
-<div class="viewcode-block" id="ResourcePatchMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin">[docs]</a><span class="k">class</span> <span class="nc">ResourcePatchMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourcePatchMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourcePatchMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses the PATCH to update a resource.</span>
 
 <span class="sd">        Only one operation can be performed in each PATCH call.</span>
@@ -954,7 +954,7 @@
                                        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
 
-<div class="viewcode-block" id="ResourcePatchMixin.patch_request"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin.patch_request">[docs]</a>    <span class="k">def</span> <span class="nf">patch_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourcePatchMixin.patch_request"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourcePatchMixin.patch_request">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">patch_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses the PATCH to update a resource.</span>
 
 <span class="sd">        Only one operation can be performed in each PATCH call.</span>
@@ -984,9 +984,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="ResourceFileHandlerMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin">[docs]</a><span class="k">class</span> <span class="nc">ResourceFileHandlerMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceFileHandlerMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourceFileHandlerMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<div class="viewcode-block" id="ResourceFileHandlerMixin.upload"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin.upload">[docs]</a>    <span class="k">def</span> <span class="nf">upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceFileHandlerMixin.upload"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin.upload">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a multipart request.</span>
 
 <span class="sd">        Args:</span>
@@ -1009,7 +1009,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceFileHandlerMixin.download"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceFileHandlerMixin.download"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceFileHandlerMixin.download">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads the contents of the requested URI to a stream.</span>
 
 <span class="sd">        Args:</span>
@@ -1023,9 +1023,9 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">download_to_stream</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="ResourceUtilizationMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceUtilizationMixin">[docs]</a><span class="k">class</span> <span class="nc">ResourceUtilizationMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceUtilizationMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceUtilizationMixin">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourceUtilizationMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<div class="viewcode-block" id="ResourceUtilizationMixin.get_utilization"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceUtilizationMixin.get_utilization">[docs]</a>    <span class="k">def</span> <span class="nf">get_utilization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceUtilizationMixin.get_utilization"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceUtilizationMixin.get_utilization">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_utilization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves historical utilization data for the specified resource, metrics, and time span.</span>
 
 <span class="sd">        Args:</span>
@@ -1106,9 +1106,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="ResourceSchemaMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin">[docs]</a><span class="k">class</span> <span class="nc">ResourceSchemaMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceSchemaMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourceSchemaMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<div class="viewcode-block" id="ResourceSchemaMixin.get_schema"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin.get_schema">[docs]</a>    <span class="k">def</span> <span class="nf">get_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceSchemaMixin.get_schema"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceSchemaMixin.get_schema">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Supports schema requests.</span>
 
 <span class="sd">        Returns:</span>
@@ -1117,9 +1117,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/schema&#39;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="ResourceZeroBodyMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceZeroBodyMixin">[docs]</a><span class="k">class</span> <span class="nc">ResourceZeroBodyMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceZeroBodyMixin"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceZeroBodyMixin">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourceZeroBodyMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<div class="viewcode-block" id="ResourceZeroBodyMixin.create_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceZeroBodyMixin.create_with_zero_body">[docs]</a>    <span class="k">def</span> <span class="nf">create_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceZeroBodyMixin.create_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceZeroBodyMixin.create_with_zero_body">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a POST request to create a resource when no request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -1138,7 +1138,7 @@
 
         <span class="k">return</span> <span class="n">resource_data</span></div>
 
-<div class="viewcode-block" id="ResourceZeroBodyMixin.update_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceZeroBodyMixin.update_with_zero_body">[docs]</a>    <span class="k">def</span> <span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceZeroBodyMixin.update_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceZeroBodyMixin.update_with_zero_body">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a PUT request to update a resource when no request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -1159,17 +1159,17 @@
         <span class="k">return</span> <span class="n">resource_data</span></div></div>
 
 
-<div class="viewcode-block" id="ResourceClient"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient">[docs]</a><span class="k">class</span> <span class="nc">ResourceClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ResourceClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class implements common functions for HpOneView API rest</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">con</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_uri</span> <span class="o">=</span> <span class="n">uri</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span> <span class="o">=</span> <span class="n">TaskMonitor</span><span class="p">(</span><span class="n">con</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ResourceClient.build_query_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.build_query_uri">[docs]</a>    <span class="k">def</span> <span class="nf">build_query_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.build_query_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.build_query_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_query_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Builds the URI given the parameters.</span>
 
@@ -1243,7 +1243,7 @@
                                                                    <span class="n">view</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">scope_uris</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">uri</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope_uris</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all items according with the given arguments.</span>
 
@@ -1287,7 +1287,7 @@
 
         <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="ResourceClient.delete_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.delete_all">[docs]</a>    <span class="k">def</span> <span class="nf">delete_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.delete_all"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.delete_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes all resources from the appliance that match the provided filter.</span>
 
@@ -1316,7 +1316,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.delete"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.delete"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.delete">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">resource</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">RESOURCE_CLIENT_RESOURCE_WAS_NOT_PROVIDED</span><span class="p">)</span>
@@ -1348,12 +1348,12 @@
 
         <span class="k">return</span> <span class="n">task</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get_schema"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_schema">[docs]</a>    <span class="k">def</span> <span class="nf">get_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get_schema"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_schema">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Get schema (uri = </span><span class="si">%s</span><span class="s1">, resource = </span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span>
                      <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_uri</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uri</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_uri</span> <span class="o">+</span> <span class="s1">&#39;/schema&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            id_or_uri: Can be either the resource ID or the resource URI.</span>
@@ -1366,7 +1366,7 @@
                      <span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">)))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get_collection"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_collection">[docs]</a>    <span class="k">def</span> <span class="nf">get_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get_collection"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_collection">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves a collection of resources.</span>
 
@@ -1391,7 +1391,7 @@
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_members</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.update_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.update_with_zero_body">[docs]</a>    <span class="k">def</span> <span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.update_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.update_with_zero_body">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a PUT request to update a resource when no request body is required.</span>
 
@@ -1411,7 +1411,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.update"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="p">{}):</span>
+<div class="viewcode-block" id="ResourceClient.update"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.update">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="p">{}):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a PUT request to update a resource when a request body is required.</span>
 
@@ -1458,7 +1458,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__do_put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.create_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.create_with_zero_body">[docs]</a>    <span class="k">def</span> <span class="nf">create_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.create_with_zero_body"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.create_with_zero_body">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_with_zero_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a POST request to create a resource when no request body is required.</span>
 
@@ -1481,7 +1481,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="p">{},</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.create"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="p">{}):</span>
+<div class="viewcode-block" id="ResourceClient.create"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_values</span><span class="o">=</span><span class="p">{}):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a POST request to create a resource when a request body is required.</span>
 
@@ -1522,7 +1522,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.upload"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.upload">[docs]</a>    <span class="k">def</span> <span class="nf">upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.upload"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.upload">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a multipart request.</span>
 
@@ -1549,7 +1549,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.patch"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.patch">[docs]</a>    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.patch"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.patch">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses the PATCH to update a resource.</span>
 
@@ -1573,7 +1573,7 @@
                                   <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
                                   <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.patch_request"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.patch_request">[docs]</a>    <span class="k">def</span> <span class="nf">patch_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.patch_request"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.patch_request">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">patch_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses the PATCH to update a resource.</span>
 
@@ -1603,7 +1603,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get_by"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_by">[docs]</a>    <span class="k">def</span> <span class="nf">get_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get_by"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_by">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function uses get_all passing a filter.</span>
 
@@ -1638,7 +1638,7 @@
 
         <span class="k">return</span> <span class="n">results</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get_by_name"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get_by_name"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_by_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a resource by its name.</span>
 
@@ -1654,7 +1654,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="ResourceClient.get_utilization"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_utilization">[docs]</a>    <span class="k">def</span> <span class="nf">get_utilization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.get_utilization"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.get_utilization">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_utilization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves historical utilization data for the specified resource, metrics, and time span.</span>
 
@@ -1744,7 +1744,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ResourceClient.create_report"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.create_report">[docs]</a>    <span class="k">def</span> <span class="nf">create_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.create_report"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.create_report">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a report and returns the output.</span>
 
@@ -1767,7 +1767,7 @@
 
         <span class="k">return</span> <span class="n">task</span><span class="p">[</span><span class="s1">&#39;taskOutput&#39;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="ResourceClient.build_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.build_uri">[docs]</a>    <span class="k">def</span> <span class="nf">build_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.build_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.build_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_or_uri</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">id_or_uri</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">RESOURCE_CLIENT_INVALID_ID</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">RESOURCE_CLIENT_INVALID_ID</span><span class="p">)</span>
@@ -1778,7 +1778,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uri</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">id_or_uri</span></div>
 
-<div class="viewcode-block" id="ResourceClient.build_subresource_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.build_subresource_uri">[docs]</a>    <span class="k">def</span> <span class="nf">build_subresource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.build_subresource_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.build_subresource_uri">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_subresource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_id_or_uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subresource_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">subresource_id_or_uri</span> <span class="ow">and</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="n">subresource_id_or_uri</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">subresource_id_or_uri</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1795,7 +1795,7 @@
 
             <span class="k">return</span> <span class="n">uri</span></div>
 
-<div class="viewcode-block" id="ResourceClient.download"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.download"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.download">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Downloads the contents of the requested URI to a stream.</span>
 
@@ -1812,12 +1812,12 @@
                 <span class="n">uri</span><span class="p">,</span>
                 <span class="n">custom_headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/octetstream;q=0.8, application/json&quot;</span><span class="p">})</span></div>
 
-    <span class="k">def</span> <span class="nf">__validate_resource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__validate_resource_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uri</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Get by uri : unrecognized uri: (</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">HPEOneViewUnknownType</span><span class="p">(</span><span class="n">UNRECOGNIZED_URI</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__make_query_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__make_query_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">formated_filter</span> <span class="o">=</span> <span class="s2">&quot;&amp;filter=&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quote</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1825,13 +1825,13 @@
 
         <span class="k">return</span> <span class="s2">&quot;&amp;filter=&quot;</span> <span class="o">+</span> <span class="n">formated_filter</span>
 
-    <span class="k">def</span> <span class="nf">__get_members</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mlist</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__get_members</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mlist</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">mlist</span> <span class="ow">and</span> <span class="s1">&#39;members&#39;</span> <span class="ow">in</span> <span class="n">mlist</span> <span class="ow">and</span> <span class="n">mlist</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="n">mlist</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__do_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__do_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
         <span class="n">task</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
@@ -1839,7 +1839,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__do_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__do_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="p">):</span>
         <span class="n">task</span><span class="p">,</span> <span class="n">body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">custom_headers</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
@@ -1847,7 +1847,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_monitor</span><span class="o">.</span><span class="n">wait_for_task</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__do_requests_to_getall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__do_requests_to_getall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">):</span>
         <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">while</span> <span class="n">uri</span><span class="p">:</span>
@@ -1862,7 +1862,7 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Total # of members found = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))))</span>
         <span class="k">return</span> <span class="n">items</span>
 
-    <span class="k">def</span> <span class="nf">__get_next_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__get_next_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">requested_count</span><span class="p">):</span>
         <span class="n">next_page_is_empty</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageUri&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
         <span class="n">has_different_next_page</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageUri&#39;</span><span class="p">)</span>
         <span class="n">has_next_page</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">next_page_is_empty</span> <span class="ow">and</span> <span class="n">has_different_next_page</span>
@@ -1872,7 +1872,7 @@
 
         <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nextPageUri&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">has_next_page</span> <span class="k">else</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="ResourceClient.merge_default_values"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.merge_default_values">[docs]</a>    <span class="k">def</span> <span class="nf">merge_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">default_values</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceClient.merge_default_values"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.ResourceClient.merge_default_values">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">merge_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">default_values</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">default_values</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">resource</span>
 
@@ -1886,7 +1886,7 @@
         <span class="k">return</span> <span class="n">merged_resource</span> <span class="ow">or</span> <span class="n">resource</span></div></div>
 
 
-<div class="viewcode-block" id="merge_resources"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.merge_resources">[docs]</a><span class="k">def</span> <span class="nf">merge_resources</span><span class="p">(</span><span class="n">resource1</span><span class="p">,</span> <span class="n">resource2</span><span class="p">):</span>
+<div class="viewcode-block" id="merge_resources"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.merge_resources">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">merge_resources</span><span class="p">(</span><span class="n">resource1</span><span class="p">,</span> <span class="n">resource2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates a copy of resource1 with resource2 values and returns the merged dictionary.</span>
 
@@ -1902,7 +1902,7 @@
     <span class="k">return</span> <span class="n">merged</span></div>
 
 
-<div class="viewcode-block" id="merge_default_values"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.merge_default_values">[docs]</a><span class="k">def</span> <span class="nf">merge_default_values</span><span class="p">(</span><span class="n">resource_list</span><span class="p">,</span> <span class="n">default_values</span><span class="p">):</span>
+<div class="viewcode-block" id="merge_default_values"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.merge_default_values">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">merge_default_values</span><span class="p">(</span><span class="n">resource_list</span><span class="p">,</span> <span class="n">default_values</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a new list where each item of original resource_list will be merged with the default_values.</span>
 
@@ -1915,13 +1915,13 @@
 <span class="sd">        list: list containing each item merged with default_values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">merge_item</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">merge_item</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">merge_resources</span><span class="p">(</span><span class="n">default_values</span><span class="p">,</span> <span class="n">resource</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">lmap</span><span class="p">(</span><span class="n">merge_item</span><span class="p">,</span> <span class="n">resource_list</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="transform_list_to_dict"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.transform_list_to_dict">[docs]</a><span class="k">def</span> <span class="nf">transform_list_to_dict</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<div class="viewcode-block" id="transform_list_to_dict"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.transform_list_to_dict">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">transform_list_to_dict</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Transforms a list into a dictionary, putting values as keys</span>
 <span class="sd">    Args:</span>
@@ -1941,7 +1941,7 @@
     <span class="k">return</span> <span class="n">ret</span></div>
 
 
-<div class="viewcode-block" id="extract_id_from_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.extract_id_from_uri">[docs]</a><span class="k">def</span> <span class="nf">extract_id_from_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">):</span>
+<div class="viewcode-block" id="extract_id_from_uri"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.extract_id_from_uri">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">extract_id_from_uri</span><span class="p">(</span><span class="n">id_or_uri</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract ID from the end of the URI</span>
 
@@ -1957,7 +1957,7 @@
         <span class="k">return</span> <span class="n">id_or_uri</span></div>
 
 
-<div class="viewcode-block" id="unavailable_method"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.unavailable_method">[docs]</a><span class="k">def</span> <span class="nf">unavailable_method</span><span class="p">():</span>
+<div class="viewcode-block" id="unavailable_method"><a class="viewcode-back" href="../../../hpeOneView.resources.html#hpeOneView.resources.resource.unavailable_method">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">unavailable_method</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raise an exception if method is not available for the resource.&quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">HPEOneViewUnavailableMethod</span><span class="p">(</span><span class="n">UNAVAILABLE_METHOD</span><span class="p">)</span></div>
 </pre></div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.servers.id_pools &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.servers.id_pools &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,27 +89,27 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceSchemaMixin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceSchemaMixin</span>
 
 
-<div class="viewcode-block" id="IdPools"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools">[docs]</a><span class="k">class</span> <span class="nc">IdPools</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceSchemaMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">IdPools</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceSchemaMixin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for Id Pools API client.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/id-pools&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">IdPools</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="IdPools.get_pool_type"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.get_pool_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_pool_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.get_pool_type"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.get_pool_type">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_pool_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a pool along with the list of ranges present in it</span>
 
@@ -122,7 +122,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">pool_type</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IdPools</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.update_pool_type"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.update_pool_type">[docs]</a>    <span class="k">def</span> <span class="nf">update_pool_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.update_pool_type"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.update_pool_type">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_pool_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Enables or disables the pool</span>
 
@@ -136,7 +136,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">pool_type</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.validate_id_pool"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.validate_id_pool">[docs]</a>    <span class="k">def</span> <span class="nf">validate_id_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">ids_pools</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.validate_id_pool"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.validate_id_pool">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate_id_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">ids_pools</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validates an ID pool.</span>
 
@@ -152,7 +152,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">pool_type</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/validate?idList=&quot;</span> <span class="o">+</span> <span class="s2">&quot;&amp;idList=&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ids_pools</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IdPools</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.validate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.validate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.validate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validates a set of user specified IDs to reserve in the pool.</span>
 
@@ -174,7 +174,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">pool_type</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/validate&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.allocate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.allocate">[docs]</a>    <span class="k">def</span> <span class="nf">allocate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.allocate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.allocate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">allocate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Allocates a set of IDs from range.</span>
 
@@ -197,7 +197,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.collect"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.collect">[docs]</a>    <span class="k">def</span> <span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.collect"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.collect">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">information</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Collects one or more IDs to be returned to a pool.</span>
 
@@ -218,7 +218,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.get_check_range_availability"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.get_check_range_availability">[docs]</a>    <span class="k">def</span> <span class="nf">get_check_range_availability</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">ids_pools</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.get_check_range_availability"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.get_check_range_availability">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_check_range_availability</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">,</span> <span class="n">ids_pools</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Checks the range availability in the ID pool.</span>
 
@@ -234,7 +234,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">pool_type</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/checkrangeavailability?idList=&quot;</span> <span class="o">+</span> <span class="s2">&quot;&amp;idList=&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ids_pools</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IdPools</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IdPools.generate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">):</span>
+<div class="viewcode-block" id="IdPools.generate"><a class="viewcode-back" href="../../../../hpeOneView.resources.servers.html#hpeOneView.resources.servers.id_pools.IdPools.generate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_type</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates and returns a random range.</span>
 

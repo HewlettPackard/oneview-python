@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hpeOneView.resources.storage.storage_systems &mdash; HPE OneView Python SDK 9.3.0 documentation</title>
+  <title>hpeOneView.resources.storage.storage_systems &mdash; HPE OneView Python SDK 9.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
 
@@ -34,7 +34,7 @@
             HPE OneView Python SDK
           </a>
               <div class="version">
-                9.3.0
+                9.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -89,29 +89,29 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">###</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="kn">from</span> <span class="nn">future</span> <span class="kn">import</span> <span class="n">standard_library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">future</span><span class="w"> </span><span class="kn">import</span> <span class="n">standard_library</span>
 
 <span class="n">standard_library</span><span class="o">.</span><span class="n">install_aliases</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">hpeOneView.resources.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hpeOneView.resources.resource</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resource</span>
 
 
-<div class="viewcode-block" id="StorageSystems"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems">[docs]</a><span class="k">class</span> <span class="nc">StorageSystems</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">StorageSystems</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Storage Systems API client.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/storage-systems&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">StorageSystems</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="StorageSystems.add"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.add"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.add">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a storage system for management by the appliance. The storage system resource created will be in a</span>
 <span class="sd">        Connected state and will not yet be available for further operations. Users are required to perform a PUT API</span>
@@ -129,7 +129,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_host_types"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types">[docs]</a>    <span class="k">def</span> <span class="nf">get_host_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.get_host_types"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_host_types">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_host_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the list of supported host types.</span>
 
@@ -139,7 +139,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s2">&quot;/host-types&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_storage_pools"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools">[docs]</a>    <span class="k">def</span> <span class="nf">get_storage_pools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.get_storage_pools"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_storage_pools">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_storage_pools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a list of Storage pools. Returns a list of storage pools belonging to the storage system referred by the</span>
 <span class="sd">        Path property {ID} parameter or URI.</span>
@@ -150,7 +150,7 @@
         <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/storage-pools&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="StorageSystems.remove"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.remove"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.remove">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes the storage system from OneView.</span>
 
@@ -168,7 +168,7 @@
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;If-Match&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_managed_ports"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports">[docs]</a>    <span class="k">def</span> <span class="nf">get_managed_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port_id_or_uri</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.get_managed_ports"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_managed_ports">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_managed_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port_id_or_uri</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets all ports or a specific managed target port for the specified storage system.</span>
 
@@ -188,7 +188,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_by_ip_hostname"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_ip_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip_hostname</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.get_by_ip_hostname"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_ip_hostname">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_ip_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip_hostname</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a storage system by its IP.</span>
 
@@ -209,7 +209,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_by_hostname"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hostname</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.get_by_hostname"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_by_hostname">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hostname</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a storage system by its hostname.</span>
 
@@ -230,7 +230,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_reachable_ports"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports">[docs]</a>    <span class="k">def</span> <span class="nf">get_reachable_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">networks</span><span class="o">=</span><span class="p">[]):</span>
+<div class="viewcode-block" id="StorageSystems.get_reachable_ports"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_reachable_ports">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_reachable_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">networks</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the storage ports that are connected on the specified networks</span>
 <span class="sd">        based on the storage system port&#39;s expected network connectivity.</span>
@@ -250,7 +250,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_query_uri</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
                                                                 <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="StorageSystems.get_templates"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates">[docs]</a>    <span class="k">def</span> <span class="nf">get_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="StorageSystems.get_templates"><a class="viewcode-back" href="../../../../hpeOneView.resources.storage.html#hpeOneView.resources.storage.storage_systems.StorageSystems.get_templates">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_templates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets a list of volume templates. Returns a list of storage templates belonging to the storage system.</span>
 
