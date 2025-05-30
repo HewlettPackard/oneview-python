@@ -5,7 +5,7 @@ on:
     types: [closed]
 jobs:
   create-tag:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR') && startsWith(github.base_ref, 'master')
