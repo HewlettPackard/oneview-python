@@ -10,7 +10,7 @@ on:
 jobs:
   deploy:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +35,6 @@ jobs:
     - name: Login to Docker Hub
       run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
     - name: Build the tagged Docker image
-      run: docker build . --file Dockerfile --tag hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV9.4
+      run: docker build . --file Dockerfile --tag hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV10.0
     - name: Push the tagged Docker image
-      run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV9.4
+      run: docker push hewlettpackardenterprise/hpe-oneview-sdk-for-python:${{ env.GITHUB_REF }}-OV10.0

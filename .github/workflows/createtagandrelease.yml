@@ -5,7 +5,7 @@ on:
     types: [closed]
 jobs:
   create-tag:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     if: github.event.pull_request.merged && startsWith(github.head_ref, 'PR') && startsWith(github.base_ref, 'master')
@@ -17,7 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
-          CUSTOM_TAG: "v9.4.0"
+          CUSTOM_TAG: "v10.0.0"
       - name: Display
         run: echo ${{ steps.tag_and_prepare_release.outputs.new_tag }}
       - uses: actions/checkout@v2
