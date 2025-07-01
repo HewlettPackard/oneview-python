@@ -1,34 +1,35 @@
-# See README.md to see how to build and run this
 FROM python:3.6-slim-buster
 
-LABEL maintainer "Chebrolu Harika <bala-sai-harika.chebrolu@hpe.com>"
+ARG http_proxy
+ARG https_proxy
+ARG no_proxy
+
+ENV http_proxy=$http_proxy
+ENV https_proxy=$https_proxy
+ENV no_proxy=$no_proxy
 
 WORKDIR /root
 
-# Some optional but recommended packages
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get update -y \
-    && apt-get install --no-install-recommends -y \
-    vim \
-    curl
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
+    apt-get install --no-install-recommends -y \
+    vim curl && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/*
 
-# install dependencies to run examples
 RUN python -m pip install --upgrade pip
+
+
+RUN pip install future==0.18.2
+
+
 RUN pip install hpeOneView
 
-ADD . oneview/
 
+COPY . /root/oneview
 WORKDIR /root/oneview
 
-# packages to run tests
-RUN cd /root/oneview/
-RUN pip install -r test_requirements.txt
-RUN pip install tox
-
-# Clean and remove not required packages
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get autoremove -y && \
-    apt-get clean -y && \
-    rm -rf /var/cache/apt/archives/* /var/cache/apt/lists/* /tmp/* /root/cache/.
+RUN pip install -r test_requirements.txt && \
+    pip install tox
 
 CMD ["/bin/bash"]
