@@ -73,7 +73,7 @@ compliance_configuration = {
 firmware_update_configuration = [{"op": "replace", "value": {"baselineUri": "/rest/firmware-drivers/" + config['server_hardware']['firmware_baseline_id'],
                                   "firmwareInstallType": "FirmwareOnlyOfflineMode", "installationPolicy": "LowerThanBaseline"}
                                   }]
-if server:
+if server and oneview_client.api_version >= 4600:
     firmware_compliance = server.check_firmware_compliance(compliance_configuration)
     if firmware_compliance['serverFirmwareUpdateRequired']:
         print("Updating firmware for the server hardware..")
