@@ -38,7 +38,7 @@ jobs:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: coveralls
-      uses: AndreMiras/coveralls-python-action@develop
+      uses: AndreMiras/coveralls-python-action@latest
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         flag-name: 'Unit Test'
