@@ -42,7 +42,7 @@ jobs:
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: coveralls
+    - name: Upload coverage to Coveralls
       uses: coverallsapp/github-action@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -50,6 +50,9 @@ jobs:
         parallel: false
         format: cobertura
         file: coverage.xml
+        base-path: .
+        compare-ref: master
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+      continue-on-error: true
 
