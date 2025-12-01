@@ -27,6 +27,11 @@ jobs:
     - name: Run tox tests
       run: tox
 
+    - name: Generate coverage XML
+      run: |
+        pip install coverage
+        coverage xml
+
     - name: Deploy to GitHub Pages
       if: success()
       uses: crazy-max/ghaction-github-pages@v2
@@ -37,9 +42,12 @@ jobs:
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: coveralls
-      uses: AndreMiras/coveralls-python-action@develop
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@v2
       with:
-        github-token: ${{ secrets.COVERALLS_TOKEN }}
-        flag-name: 'Unit Test'
-        debug: true
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        flag-name: Unit-Test
+        format: cobertura
+        file: coverage.xml
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
