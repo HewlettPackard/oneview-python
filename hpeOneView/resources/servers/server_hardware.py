@@ -32,6 +32,7 @@ from hpeOneView.resources.resource import (Resource, ResourceUtilizationMixin,
 SERVER_HARWARE_BELOW_GEN10 = 'Server Hardware generation is below Gen10'
 SERVER_PROFILE_ATTACHED = 'Server Hardware has a Profile attached'
 SERVER_POWERED_ON = 'Server Hardware is in Powered On state'
+SERVER_POWERED_OFF = 'Server Hardware is in Powered Off state'
 ONGOING_FIRMWARE_UPDATE = 'Server Hardware is undergoing a firmware update'
 ILO_ADVANCED_LICENSE_REQUIRED = 'Requires an HPE iLO Advanced license for monitored hardware'
 
@@ -350,11 +351,14 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
         return self._helper.do_post(uri, configuration, timeout=timeout, custom_headers=custom_headers)
 
     @ensure_resource_client
-    def validate_server_hardware_for_firmware_update(self):
+    def validate_server_hardware_for_firmware_update(self, configuration=None):
         """
         Performs a validation for the prerequisites before firmware update.
         Checks if the server hardware is in powered off state, No server profile attached to server
         hardware, server hardware model is Gen10 or above, server hardware has advanced ilo license type.
+
+        Args:
+            configuration: Optional firmware update configuration
 
         """
         state = self.data["state"]
@@ -362,6 +366,12 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
         power_state = self.data["powerState"]
         generation = self.data["mpModel"]
         license_type = self.data["mpLicenseType"]
+
+        # Extract firmwareInstallType from configuration
+        firmware_install_type = None
+        if configuration and isinstance(configuration, list) and len(configuration) > 0:
+            if "value" in configuration[0] and "firmwareInstallType" in configuration[0]["value"]:
+                firmware_install_type = configuration[0]["value"]["firmwareInstallType"]
 
         validation_error_list = []
 
@@ -372,8 +382,10 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
             validation_error_list.append(SERVER_PROFILE_ATTACHED)
         if state == "UpdatingFirmware":
             validation_error_list.append(ONGOING_FIRMWARE_UPDATE)
-        if power_state != "Off":
+        if power_state != "Off" and firmware_install_type == "FirmwareOnlyOfflineMode":
             validation_error_list.append(SERVER_POWERED_ON)
+        if power_state != "On" and firmware_install_type in ["FirmwareOnly", "FirmwareAndOSDrivers"]:
+            validation_error_list.append(SERVER_POWERED_OFF)
         if license_type != "iLO Advanced":
             validation_error_list.append(ILO_ADVANCED_LICENSE_REQUIRED)
 
@@ -396,5 +408,5 @@ class ServerHardware(ResourcePatchMixin, ResourceUtilizationMixin, Resource):
             Updated Resource
         """
         uri = "{}/firmware/settings".format(self.data["uri"])
-        if self.validate_server_hardware_for_firmware_update():
+        if self.validate_server_hardware_for_firmware_update(configuration):
             return self.patch_request(uri, configuration, timeout=timeout, custom_headers=custom_headers)
