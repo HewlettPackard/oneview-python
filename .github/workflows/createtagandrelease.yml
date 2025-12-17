@@ -26,4 +26,4 @@ jobs:
           name:  ${{ steps.tag_and_prepare_release.outputs.new_tag }}
           tag: ${{ steps.tag_and_prepare_release.outputs.new_tag }}
           body: See the <a href="https://github.com/HewlettPackard/oneview-python/blob/master/CHANGELOG.md">CHANGELOG.md</a> for details.
-          token:  ${{ secrets.CD_TOKEN }}
+          token:  ${{ secrets.GITHUB_TOKEN }}
