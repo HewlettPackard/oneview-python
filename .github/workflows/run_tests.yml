@@ -8,14 +8,14 @@ jobs:
     name: Run tox (${{ matrix.python_version }})
     strategy:
       matrix:
-        python_version: [3.10]
+        python_version: [3.9]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Set up Python ${{ matrix.python_version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python_version }}
 
