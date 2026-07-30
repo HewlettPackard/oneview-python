@@ -39,15 +39,9 @@ import sys
 import warnings
 
 PYTHON_VERSION = sys.version_info[:3]
-PY2 = (PYTHON_VERSION[0] == 2)
-if PY2:
-    if PYTHON_VERSION < (2, 7, 9):
-        warning_message = 'Running unsupported Python version: %s, unexpected errors might occur.'
-        warning_message += ' Use of Python v2.7.9+ is advised.'
-        warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
-elif PYTHON_VERSION < (3, 9):
+if PYTHON_VERSION < (3, 12):
     warning_message = 'Running unsupported Python version> %s, unexpected errors might occur.'
-    warning_message += ' Use of Python v3.9+ is advised.'
+    warning_message += ' Use of Python v3.12+ is advised.'
     warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
 
 from hpeOneView.connection import *

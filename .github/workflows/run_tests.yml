@@ -8,7 +8,7 @@ jobs:
     name: Run tox (${{ matrix.python_version }})
     strategy:
       matrix:
-        python_version: [3.9, 3.12]
+        python_version: [3.12]
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +44,7 @@ jobs:
         coverage xml
 
     - name: Deploy to GitHub Pages
-      if: success() && matrix.python_version == '3.9'
+      if: success() && matrix.python_version == '3.12'
       uses: crazy-max/ghaction-github-pages@v2
       with:
        target_branch: gh-pages

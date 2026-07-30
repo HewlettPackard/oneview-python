@@ -17,7 +17,7 @@ The HPE OneView Python library provides a pure Python interface to the HPE OneVi
 
 For PQC-ready TLS negotiation, use an environment where Python is linked to a PQC-capable OpenSSL runtime.
 
-- Minimum Python runtime: 3.9+
+- Minimum Python runtime: 3.12+
 - Minimum OpenSSL runtime for PQC paths: 3.2+ with OQS provider, or 3.5+ with native PQC support
 - TLS requirement for PQC handshake: TLS 1.3
 
