@@ -15,6 +15,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      statuses: write
 
     steps:
     - uses: actions/checkout@v2
@@ -84,17 +85,20 @@ jobs:
       continue-on-error: true
 
     - name: Create coverage status check
-      if: always()
+      if: always() && (github.event_name == 'push' || github.event.pull_request.head.repo.fork == false)
       uses: actions/github-script@v6
       with:
         script: |
           const coverage_result = '${{ steps.coveralls.outcome }}';
           const conclusion = coverage_result === 'success' ? 'success' : 'neutral';
+          const sha = context.eventName === 'pull_request'
+            ? context.payload.pull_request.head.sha
+            : context.sha;
           
           await github.rest.repos.createCommitStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            sha: context.payload.pull_request.head.sha,
+            sha,
             state: conclusion === 'success' ? 'success' : 'failure',
             target_url: 'https://coveralls.io/github/${{ github.repository }}',
             description: 'Coverage report uploaded',
