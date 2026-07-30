@@ -45,9 +45,9 @@ if PY2:
         warning_message = 'Running unsupported Python version: %s, unexpected errors might occur.'
         warning_message += ' Use of Python v2.7.9+ is advised.'
         warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
-elif PYTHON_VERSION < (3, 4):
+elif PYTHON_VERSION < (3, 9):
     warning_message = 'Running unsupported Python version> %s, unexpected errors might occur.'
-    warning_message += ' Use of Python v3.4+ is advised.'
+    warning_message += ' Use of Python v3.9+ is advised.'
     warnings.warn(warning_message % '.'.join(map(str, PYTHON_VERSION)), Warning)
 
 from hpeOneView.connection import *

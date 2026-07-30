@@ -1065,7 +1065,8 @@ class ConnectionTest(unittest.TestCase):
 
         self.assertEqual(conn.host, '127.0.0.1')
         self.assertEqual(conn.port, 443)
-        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLSv1_2)
+        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLS_CLIENT)
+        self.assertEqual(conn._context.minimum_version, ssl.TLSVersion.TLSv1_3)
 
     def test_get_connection_ssl_trust_all_with_proxy(self):
 
@@ -1075,7 +1076,8 @@ class ConnectionTest(unittest.TestCase):
 
         self.assertEqual(conn.host, '10.0.0.1')
         self.assertEqual(conn.port, 3128)
-        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLSv1_2)
+        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLS_CLIENT)
+        self.assertEqual(conn._context.minimum_version, ssl.TLSVersion.TLSv1_3)
 
     @patch.object(ssl.SSLContext, 'load_verify_locations')
     def test_get_connection_trusted_ssl_bundle_with_proxy(self, mock_lvl):
@@ -1087,7 +1089,8 @@ class ConnectionTest(unittest.TestCase):
 
         self.assertEqual(conn.host, '10.0.0.1')
         self.assertEqual(conn.port, 3128)
-        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLSv1_2)
+        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLS_CLIENT)
+        self.assertEqual(conn._context.minimum_version, ssl.TLSVersion.TLSv1_3)
 
     @patch.object(ssl.SSLContext, 'load_verify_locations')
     def test_get_connection_trusted_ssl_bundle(self, mock_lvl):
@@ -1098,7 +1101,8 @@ class ConnectionTest(unittest.TestCase):
 
         self.assertEqual(conn.host, '127.0.0.1')
         self.assertEqual(conn.port, 443)
-        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLSv1_2)
+        self.assertEqual(conn._context.protocol, ssl.PROTOCOL_TLS_CLIENT)
+        self.assertEqual(conn._context.minimum_version, ssl.TLSVersion.TLSv1_3)
 
 
 if __name__ == '__main__':
