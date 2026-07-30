@@ -2,7 +2,6 @@ name: python CI
 
 on:
 - pull_request
-- push
 
 jobs:
   tox_test:
@@ -11,13 +10,6 @@ jobs:
       matrix:
         python_version: [3.9, 3.12]
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-      statuses: write
 
     steps:
     - uses: actions/checkout@v2
@@ -51,29 +43,6 @@ jobs:
         pip install coverage
         coverage xml
 
-    - name: Build docs for Pages deploy
-      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
-      run: tox -e docs
-
-    - name: Verify docs build output exists
-      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
-      run: test -d docs/build/html
-
-    - name: Configure GitHub Pages
-      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
-      uses: actions/configure-pages@v5
-
-    - name: Upload GitHub Pages artifact
-      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: docs/build/html
-
-    - name: Deploy to GitHub Pages
-      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
-      id: deployment
-      uses: actions/deploy-pages@v4
-
     - name: Upload coverage to Coveralls
       id: coveralls
       uses: coverallsapp/github-action@v2
@@ -86,21 +55,28 @@ jobs:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       continue-on-error: true
 
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+       target_branch: gh-pages
+       keep_history: true
+       build_dir: docs/build/html/.
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Create coverage status check
-      if: always() && (github.event_name == 'push' || github.event.pull_request.head.repo.fork == false)
+      if: always()
       uses: actions/github-script@v6
       with:
         script: |
           const coverage_result = '${{ steps.coveralls.outcome }}';
           const conclusion = coverage_result === 'success' ? 'success' : 'neutral';
-          const sha = context.eventName === 'pull_request'
-            ? context.payload.pull_request.head.sha
-            : context.sha;
           
           await github.rest.repos.createCommitStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            sha,
+            sha: context.payload.pull_request.head.sha,
             state: conclusion === 'success' ? 'success' : 'failure',
             target_url: 'https://coveralls.io/github/${{ github.repository }}',
             description: 'Coverage report uploaded',
