@@ -52,25 +52,25 @@ jobs:
         coverage xml
 
     - name: Build docs for Pages deploy
-      if: success() && github.event_name == 'push' && matrix.python_version == '3.9'
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
       run: tox -e docs
 
     - name: Verify docs build output exists
-      if: success() && github.event_name == 'push' && matrix.python_version == '3.9'
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
       run: test -d docs/build/html
 
     - name: Configure GitHub Pages
-      if: success() && github.event_name == 'push' && matrix.python_version == '3.9'
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
       uses: actions/configure-pages@v5
 
     - name: Upload GitHub Pages artifact
-      if: success() && github.event_name == 'push' && matrix.python_version == '3.9'
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
       uses: actions/upload-pages-artifact@v3
       with:
         path: docs/build/html
 
     - name: Deploy to GitHub Pages
-      if: success() && github.event_name == 'push' && matrix.python_version == '3.9'
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/gh-pages' && matrix.python_version == '3.9'
       id: deployment
       uses: actions/deploy-pages@v4
 
