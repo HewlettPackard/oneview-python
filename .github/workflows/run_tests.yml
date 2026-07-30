@@ -43,6 +43,16 @@ jobs:
         pip install coverage
         coverage xml
 
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+       target_branch: gh-pages
+       keep_history: true
+       build_dir: docs/build/html/.
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload coverage to Coveralls
       id: coveralls
       uses: coverallsapp/github-action@v2
@@ -54,16 +64,6 @@ jobs:
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       continue-on-error: true
-
-    - name: Deploy to GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v2
-      with:
-       target_branch: gh-pages
-       keep_history: true
-       build_dir: docs/build/html/.
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create coverage status check
       if: always()
