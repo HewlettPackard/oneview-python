@@ -11,6 +11,8 @@ jobs:
       matrix:
         python_version: [3.9, 3.12]
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     permissions:
       contents: read
       pages: write
