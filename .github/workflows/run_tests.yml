@@ -44,7 +44,7 @@ jobs:
         coverage xml
 
     - name: Deploy to GitHub Pages
-      if: success()
+      if: success() && matrix.python_version == '3.9'
       uses: crazy-max/ghaction-github-pages@v2
       with:
        target_branch: gh-pages
