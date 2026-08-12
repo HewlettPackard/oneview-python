@@ -65,9 +65,9 @@ Extends Support Of The Sdk To Oneview Rest Api Version 8800 (Oneview V11.40.0)
 - Version 
 - Volumes
 
-# 11.40.0
+# 11.30.0
 #### Notes
-Extends Support Of The Sdk To Oneview Rest Api Version 8800 (Oneview V11.40.0)
+Extends Support Of The Sdk To Oneview Rest Api Version 8600 (Oneview V11.30.0)
 
 ##### Features Supported With The Current Release
 - Appliance Configuration Timeconfig 
