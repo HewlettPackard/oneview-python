@@ -76,14 +76,14 @@
 <span class="c1">###</span>
 <span class="c1"># (C) Copyright [2020] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the "License");</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
 <span class="c1"># You may obtain a copy of the License at</span>
 <span class="c1">#</span>
 <span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c1">#</span>
 <span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># distributed under the License is distributed on an "AS IS" BASIS,</span>
 <span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
@@ -106,22 +106,22 @@
 
 
 <div class="viewcode-block" id="UplinkSets"><a class="viewcode-back" href="../../../../hpeOneView.resources.networking.html#hpeOneView.resources.networking.uplink_sets.UplinkSets">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">UplinkSets</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Uplink Sets API client.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/uplink-sets&#39;</span>
+<span class="sd">    """</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">'/rest/uplink-sets'</span>
 
     <span class="n">DEFAULT_VALUES</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV3&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;300&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV300&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;500&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV300&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV4&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV4&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;1000&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV5&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;1200&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV6&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;1600&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV7&quot;</span><span class="p">},</span>
-        <span class="s1">&#39;1800&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uplink-setV7&quot;</span><span class="p">}</span>
+        <span class="s1">'200'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV3"</span><span class="p">},</span>
+        <span class="s1">'300'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV300"</span><span class="p">},</span>
+        <span class="s1">'500'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV300"</span><span class="p">},</span>
+        <span class="s1">'600'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV4"</span><span class="p">},</span>
+        <span class="s1">'800'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV4"</span><span class="p">},</span>
+        <span class="s1">'1000'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV5"</span><span class="p">},</span>
+        <span class="s1">'1200'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV6"</span><span class="p">},</span>
+        <span class="s1">'1600'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV7"</span><span class="p">},</span>
+        <span class="s1">'1800'</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"uplink-setV7"</span><span class="p">}</span>
     <span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -130,7 +130,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_ethernet_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Gets a list of associated ethernet networks of an uplink set.</span>
 
 <span class="sd">        Args:</span>
@@ -138,8 +138,8 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: Associated ethernet networks.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">network_uris</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;networkUris&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">network_uris</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'networkUris'</span><span class="p">)</span>
         <span class="n">networks</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">network_uris</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">uri</span> <span class="ow">in</span> <span class="n">network_uris</span><span class="p">:</span>
@@ -148,7 +148,7 @@
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_ethernet_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ethernet_names</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Adds existing ethernet networks to an uplink set.</span>
 
 <span class="sd">        Args:</span>
@@ -158,13 +158,13 @@
 <span class="sd">                Could be either one or more ethernet network names.</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: The updated uplink set.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__set_ethernet_uris</span><span class="p">(</span><span class="n">ethernet_names</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__set_ethernet_uris</span><span class="p">(</span><span class="n">ethernet_names</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">"add"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_ethernet_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ethernet_names</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Remove existing ethernet networks of an uplink set.</span>
 
 <span class="sd">        Args:</span>
@@ -175,34 +175,34 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: The updated uplink set.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__set_ethernet_uris</span><span class="p">(</span><span class="n">ethernet_names</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">&quot;remove&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__set_ethernet_uris</span><span class="p">(</span><span class="n">ethernet_names</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">"remove"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">__set_ethernet_uris</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ethernet_names</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates network uris.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__set_ethernet_uris</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ethernet_names</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">"add"</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Updates network uris."""</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ethernet_names</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">ethernet_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">ethernet_names</span><span class="p">]</span>
 
-        <span class="n">associated_enets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;networkUris&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">associated_enets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'networkUris'</span><span class="p">,</span> <span class="p">[])</span>
         <span class="n">ethernet_uris</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">enet</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ethernet_names</span><span class="p">):</span>
             <span class="n">enet_exists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ethernet_networks</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">enet</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">enet_exists</span><span class="p">:</span>
-                <span class="n">ethernet_uris</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">enet_exists</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">])</span>
+                <span class="n">ethernet_uris</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">enet_exists</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'uri'</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">HPEOneViewResourceNotFound</span><span class="p">(</span><span class="s2">&quot;Ethernet: </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">foramt</span><span class="p">(</span><span class="n">enet</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">HPEOneViewResourceNotFound</span><span class="p">(</span><span class="s2">"Ethernet: </span><span class="si">{}</span><span class="s2"> does not exist"</span><span class="o">.</span><span class="n">foramt</span><span class="p">(</span><span class="n">enet</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="n">operation</span> <span class="o">==</span> <span class="s2">&quot;remove&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">operation</span> <span class="o">==</span> <span class="s2">"remove"</span><span class="p">:</span>
             <span class="n">enets_to_update</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">associated_enets</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">ethernet_uris</span><span class="p">)))</span>
-        <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s2">"add"</span><span class="p">:</span>
             <span class="n">enets_to_update</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">associated_enets</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ethernet_uris</span><span class="p">))))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Value </span><span class="si">{}</span><span class="s2"> is not supported as operation. The supported values are: [&#39;add&#39;, &#39;remove&#39;]&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Value </span><span class="si">{}</span><span class="s2"> is not supported as operation. The supported values are: ['add', 'remove']"</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">enets_to_update</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">associated_enets</span><span class="p">):</span>
-            <span class="n">updated_network</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;networkUris&#39;</span><span class="p">:</span> <span class="n">enets_to_update</span><span class="p">}</span>
+            <span class="n">updated_network</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'networkUris'</span><span class="p">:</span> <span class="n">enets_to_update</span><span class="p">}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">updated_network</span><span class="p">)</span></div>
 </pre></div>
 

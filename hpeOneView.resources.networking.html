@@ -452,15 +452,15 @@ in OneView; it just stops waiting for its completion.</p></li>
 <span class="sig-name descname"><span class="pre">dissociate_values_or_ranges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vlan_id_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/networking/ethernet_networks.html#EthernetNetworks.dissociate_values_or_ranges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.networking.ethernet_networks.EthernetNetworks.dissociate_values_or_ranges" title="Permalink to this definition"></a></dt>
 <dd><p>Build a list of vlan ids given a combination of ranges and/or values</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">dissociate_values_or_ranges</span><span class="p">(</span><span class="s1">&#39;1-2,5&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">dissociate_values_or_ranges</span><span class="p">(</span><span class="s1">'1-2,5'</span><span class="p">)</span>
 <span class="go">    [1, 2, 5]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">dissociate_values_or_ranges</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">dissociate_values_or_ranges</span><span class="p">(</span><span class="s1">'5'</span><span class="p">)</span>
 <span class="go">    [1, 2, 3, 4, 5]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">dissociate_values_or_ranges</span><span class="p">(</span><span class="s1">&#39;4-5,7-8&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">dissociate_values_or_ranges</span><span class="p">(</span><span class="s1">'4-5,7-8'</span><span class="p">)</span>
 <span class="go">    [4, 5, 7, 8]</span>
 </pre></div>
 </div>
@@ -492,14 +492,14 @@ in OneView; it just stops waiting for its completion.</p></li>
 <span class="sig-name descname"><span class="pre">get_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hpeOneView/resources/networking/ethernet_networks.html#EthernetNetworks.get_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hpeOneView.resources.networking.ethernet_networks.EthernetNetworks.get_range" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a list of Ethernet Networks that match the ‘given name_prefix’ and the ‘vlan_id_range’.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s1">&#39;Enet_name&#39;</span><span class="p">,</span> <span class="s1">&#39;1-2,5&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s1">'Enet_name'</span><span class="p">,</span> <span class="s1">'1-2,5'</span><span class="p">)</span>
 <span class="go">    # The result contains the ethernet network with names:</span>
-<span class="go">    [&#39;Enet_name_1&#39;, &#39;Enet_name_2&#39;, &#39;Enet_name_5&#39;]</span>
+<span class="go">    ['Enet_name_1', 'Enet_name_2', 'Enet_name_5']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s1">&#39;Enet_name&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enet</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s1">'Enet_name'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">)</span>
 <span class="go">    # The result contains the ethernet network with names:</span>
-<span class="go">    [&#39;Enet_name_1&#39;, &#39;Enet_name_2&#39;]</span>
+<span class="go">    ['Enet_name_1', 'Enet_name_2']</span>
 </pre></div>
 </div>
 <dl class="field-list simple">

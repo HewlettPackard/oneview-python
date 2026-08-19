@@ -76,14 +76,14 @@
 <span class="c1">###</span>
 <span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the "License");</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
 <span class="c1"># You may obtain a copy of the License at</span>
 <span class="c1">#</span>
 <span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c1">#</span>
 <span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># distributed under the License is distributed on an "AS IS" BASIS,</span>
 <span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
@@ -102,17 +102,17 @@
 
 
 <div class="viewcode-block" id="Versions"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.versions.Versions">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Versions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Version API client. It indicates the range of API versions supported by the appliance.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/version&#39;</span>
+<span class="sd">    """</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">'/rest/version'</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ResourceClient</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Versions.get_version"><a class="viewcode-back" href="../../../../hpeOneView.resources.settings.html#hpeOneView.resources.settings.versions.Versions.get_version">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the range of possible API versions supported by the appliance.</span>
 <span class="sd">        The response contains the current version and the minimum version.</span>
 <span class="sd">        The current version is the recommended version to specify in the REST header.</span>
@@ -120,7 +120,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: The minimum and maximum supported API versions.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">URI</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">version</span></div></div>
 </pre></div>

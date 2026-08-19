@@ -76,14 +76,14 @@
 <span class="c1">###</span>
 <span class="c1"># (C) Copyright [2019] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the "License");</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
 <span class="c1"># You may obtain a copy of the License at</span>
 <span class="c1">#</span>
 <span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c1">#</span>
 <span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># distributed under the License is distributed on an "AS IS" BASIS,</span>
 <span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
@@ -103,17 +103,17 @@
 
 
 <div class="viewcode-block" id="ManagedSANs"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ManagedSANs</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Managed SANs API client.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/fc-sans/managed-sans&#39;</span>
+<span class="sd">    """</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">'/rest/fc-sans/managed-sans'</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ManagedSANs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ManagedSANs.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ManagedSANs.get_all"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_all">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieves the list of registered Managed SANs</span>
 
 <span class="sd">        Args:</span>
@@ -133,11 +133,11 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list of Managed SANs</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ManagedSANs.get_by_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_by_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Gets a Managed SAN by name.</span>
 
 <span class="sd">        Args:</span>
@@ -145,9 +145,9 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Managed SAN.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">managed_sans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">managed_sans</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">managed_sans</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span>
 
         <span class="n">resource</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">resource</span><span class="p">:</span>
@@ -156,16 +156,16 @@
         <span class="k">return</span> <span class="n">resource</span></div>
 
 <div class="viewcode-block" id="ManagedSANs.create"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.create">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create method is not available&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Create method is not available"""</span>
         <span class="n">unavailable_method</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="ManagedSANs.delete"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.delete">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete method is not available&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Delete method is not available"""</span>
         <span class="n">unavailable_method</span><span class="p">()</span></div>
 
     <span class="nd">@ensure_resource_client</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Gets a list of endpoints in a SAN.</span>
 
 <span class="sd">        Args:</span>
@@ -185,13 +185,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list of endpoints.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/endpoints/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">/endpoints/"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"uri"</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_endpoints_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Creates an endpoints CSV file for a SAN.</span>
 
 <span class="sd">        Args:</span>
@@ -201,13 +201,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Endpoint CSV File Response.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/endpoints/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">/endpoints/"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"uri"</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_post</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="p">{},</span> <span class="n">timeout</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="nd">@ensure_resource_client</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_issues_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Creates an unexpected zoning report for a SAN.</span>
 
 <span class="sd">        Args:</span>
@@ -217,12 +217,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list of FCIssueResponse dict.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/issues/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">/issues/"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"uri"</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create_report</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ManagedSANs.get_wwn"><a class="viewcode-back" href="../../../../hpeOneView.resources.fc_sans.html#hpeOneView.resources.fc_sans.managed_sans.ManagedSANs.get_wwn">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_wwn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wwn</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieves a list of associations between provided WWNs and the SANs (if any) on which they reside.</span>
 
 <span class="sd">        Note:</span>
@@ -233,8 +233,8 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: Associations between provided WWNs and the SANs</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="s1">&#39;/rest/fc-sans/managed-sans?locate=&#39;</span> <span class="o">+</span> <span class="n">wwn</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="s1">'/rest/fc-sans/managed-sans?locate='</span> <span class="o">+</span> <span class="n">wwn</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">do_get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div></div>
 </pre></div>
 

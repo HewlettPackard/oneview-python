@@ -76,14 +76,14 @@
 <span class="c1">###</span>
 <span class="c1"># (C) Copyright [2021] Hewlett Packard Enterprise Development LP</span>
 <span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the "License");</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
 <span class="c1"># You may obtain a copy of the License at</span>
 <span class="c1">#</span>
 <span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="c1">#</span>
 <span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># distributed under the License is distributed on an "AS IS" BASIS,</span>
 <span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
@@ -105,21 +105,21 @@
 
 
 <div class="viewcode-block" id="Users"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Users</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Users API client.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">URI</span> <span class="o">=</span> <span class="s1">&#39;/rest/users&#39;</span>
+    <span class="n">URI</span> <span class="o">=</span> <span class="s1">'/rest/users'</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Users</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__default_values</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;UserAndRoles&#39;</span>
+            <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'UserAndRoles'</span>
         <span class="p">}</span>
 
 <div class="viewcode-block" id="Users.validate_user_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.validate_user_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate_user_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_name</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Verifies if a userName is already in use.</span>
 
 <span class="sd">        Args:</span>
@@ -130,12 +130,12 @@
 <span class="sd">                OneView, just stops waiting for its completion.</span>
 
 <span class="sd">        Returns: True if user name is in use, False if it is not.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/validateLoginName/&#39;</span> <span class="o">+</span> <span class="n">user_name</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/validateLoginName/'</span> <span class="o">+</span> <span class="n">user_name</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.validate_full_name"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.validate_full_name">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate_full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_name</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Verifies if a fullName is already in use.</span>
 
 <span class="sd">        Args:</span>
@@ -146,13 +146,13 @@
 <span class="sd">                OneView, just stops waiting for its completion.</span>
 
 <span class="sd">        Returns: True if full name is in use, False if it is not.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/validateUserName/&#39;</span> <span class="o">+</span> <span class="n">full_name</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/validateUserName/'</span> <span class="o">+</span> <span class="n">full_name</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.change_password"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.change_password">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">change_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Change one&#39;s own password</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Change one's own password</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            resource (dict): Object to change password</span>
@@ -160,12 +160,12 @@
 <span class="sd">                Timeout in seconds. Wait for task completion by default. The timeout does not abort the operation in</span>
 <span class="sd">                OneView, just stops waiting for its completion.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="s1">&#39;changePassword&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="s1">'changePassword'</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.get_role_associated_with_userName"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.get_role_associated_with_userName">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_role_associated_with_userName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userName</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Gets a user by userName.</span>
 
 <span class="sd">        Args:</span>
@@ -173,22 +173,22 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict object: User</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">users</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
 
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;userName&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">userName</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">'userName'</span><span class="p">]</span> <span class="o">==</span> <span class="n">userName</span><span class="p">]</span>
         <span class="n">resource</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">resource</span><span class="p">:</span>
-            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/role/&#39;</span> <span class="o">+</span> <span class="n">userName</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/role/'</span> <span class="o">+</span> <span class="n">userName</span>
             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">]</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'members'</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">result</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="Users.get_by_userName"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.get_by_userName">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_userName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Gets a complete json body for username</span>
 
 <span class="sd">        Args:</span>
@@ -196,7 +196,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">           dict object: User</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">build_uri</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
@@ -207,7 +207,7 @@
         <span class="k">return</span> <span class="n">resource</span></div>
 
 <div class="viewcode-block" id="Users.get_user_by_role"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.get_user_by_role">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_user_by_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rolename</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Gets all the users associated with this role</span>
 
 <span class="sd">        Args:</span>
@@ -215,19 +215,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">          list: User</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">rolename</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">rolename</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/roles/users/&#39;</span> <span class="o">+</span> <span class="n">rolename</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/roles/users/'</span> <span class="o">+</span> <span class="n">rolename</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;members&#39;</span><span class="p">])):</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;members&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'members'</span><span class="p">])):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"members"</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="Users.create_multiple_user"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.create_multiple_user">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_multiple_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Create a multiple user</span>
 
 <span class="sd">        Agrs:</span>
@@ -235,13 +235,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">          dict object: User</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;?multiResource=true&#39;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'?multiResource=true'</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.update"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.update">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">custom_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Makes a PUT request to update a resource when a request body is required.</span>
 
 <span class="sd">        Args:</span>
@@ -253,7 +253,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            A dict with the updated resource data.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">resource</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="n">resource</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -263,7 +263,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Users.add_role_to_userName"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.add_role_to_userName">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_role_to_userName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Add roles to a given user name</span>
 
 <span class="sd">        Args:</span>
@@ -272,13 +272,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">          dict object: User</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;/roles?multiResource=true&#39;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">'/roles?multiResource=true'</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.update_role_to_userName"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.update_role_to_userName">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_role_to_userName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Update roles to a given user name</span>
 
 <span class="sd">        Agrs:</span>
@@ -287,13 +287,13 @@
 
 <span class="sd">        Return:</span>
 <span class="sd">          dict: User</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">&#39;/roles?multiResource=true&#39;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/'</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s1">'/roles?multiResource=true'</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.remove_role_from_username"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.remove_role_from_username">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">remove_role_from_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Removes a specified role from the username</span>
 
 <span class="sd">        Args:</span>
@@ -302,14 +302,14 @@
 
 <span class="sd">        Return:</span>
 <span class="sd">          boolean</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">rolelist_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_filter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;/roles?filter&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&quot;userName=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">rolelist_query</span><span class="p">)</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'/roles?filter'</span> <span class="o">+</span> <span class="s1">'="userName=</span><span class="se">\'</span><span class="si">{}</span><span class="se">\'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">rolelist_query</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.delete_multiple_user"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.delete_multiple_user">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">delete_multiple_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Delete the multiple users</span>
 
 <span class="sd">        Args:</span>
@@ -317,21 +317,21 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">          None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">&#39;?query=&#39;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">+</span> <span class="s1">'?query='</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
-            <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="s1">&#39;(loginname=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="s1">'(loginname=</span><span class="se">\'</span><span class="si">{}</span><span class="se">\'</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">break</span>
-            <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="p">)</span>
+            <span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="s1">' or '</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_helper</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Users.query_filter"><a class="viewcode-back" href="../../../../hpeOneView.resources.security.html#hpeOneView.resources.security.users.Users.query_filter">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">query_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
 
-        <span class="n">formated_filter</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="n">base_query</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&amp;filter=</span><span class="se">\&quot;</span><span class="s2">roleName=</span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;\&quot;</span><span class="s2">&quot;</span>
+        <span class="n">formated_filter</span> <span class="o">=</span> <span class="s1">''</span>
+        <span class="n">base_query</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">&amp;filter=</span><span class="se">\"</span><span class="s2">roleName=</span><span class="se">\'</span><span class="si">{}</span><span class="se">\'\"</span><span class="s2">"</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
                 <span class="n">formated_filter</span> <span class="o">+=</span> <span class="n">base_query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">quote</span><span class="p">(</span><span class="n">role</span><span class="p">))</span>

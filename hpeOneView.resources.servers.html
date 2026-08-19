@@ -1811,12 +1811,12 @@ in OneView; it just stops waiting for its completion.</p></li>
 Filters are supported only for the following profile attributes:  name, description, serialnumber, uuid,
 mactype, wwntype, serialnumbertype, status, and state.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">server_profile_client</span><span class="o">.</span><span class="n">delete_all</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;name=&#39;Exchange Server&#39;&quot;</span><span class="p">)</span>
-<span class="go"># Remove all profiles that match the name &quot;Exchange Server&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">server_profile_client</span><span class="o">.</span><span class="n">delete_all</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">"name='Exchange Server'"</span><span class="p">)</span>
+<span class="go"># Remove all profiles that match the name "Exchange Server"</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">server_profile_client</span><span class="o">.</span><span class="n">delete_all</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;name matches&#39;%25Database%25&#39;&quot;</span><span class="p">)</span>
-<span class="go"># Remove all profiles that have the word &quot;Database&quot; in its name</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">server_profile_client</span><span class="o">.</span><span class="n">delete_all</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">"name matches'%25Database%25'"</span><span class="p">)</span>
+<span class="go"># Remove all profiles that have the word "Database" in its name</span>
 </pre></div>
 </div>
 <p>The filter function here operates similarly to the function defined for GET Server Profiles. It allows
