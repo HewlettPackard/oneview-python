@@ -50,7 +50,7 @@ ONEVIEW_CLIENT_INVALID_PROXY = 'Invalid Proxy format'
 
 
 class connection(object):
-    def __init__(self, applianceIp, api_version=None, sslBundle=False, timeout=None, proxy=None):
+    def __init__(self, applianceIp, api_version=None, sslBundle=False, timeout=None, proxy=None, trustAllCerts=False):
         self._session = None
         self._host = applianceIp
         self._cred = None
@@ -58,7 +58,8 @@ class connection(object):
         self._proxyPort = None
         self._doProxy = False
         self.set_proxy(proxy)
-        self._sslTrustAll = True
+        # Certificate verification is enabled by default; disabling it requires an explicit opt-in.
+        self._sslTrustAll = trustAllCerts
         self._sslBundle = sslBundle
         self._sslTrustedBundle = self.set_trusted_ssl_bundle(sslBundle)
         self._nextPage = None
@@ -229,7 +230,11 @@ class connection(object):
         context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
         if self._sslTrustAll is False:
             context.verify_mode = ssl.CERT_REQUIRED
-            context.load_verify_locations(self._sslTrustedBundle)
+            context.check_hostname = True
+            if self._sslTrustedBundle:
+                context.load_verify_locations(self._sslTrustedBundle)
+            else:
+                context.load_default_certs()
             if self._doProxy is False:
                 conn = http.client.HTTPSConnection(self._host,
                                                    context=context,
@@ -241,6 +246,7 @@ class connection(object):
                                                    timeout=self._timeout)
                 conn.set_tunnel(self._host, 443)
         else:
+            context.check_hostname = False
             context.verify_mode = ssl.CERT_NONE
             if self._doProxy is False:
                 conn = http.client.HTTPSConnection(self._host,
