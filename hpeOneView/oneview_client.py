@@ -125,7 +125,7 @@ class OneViewClient(object):
 
     def __init__(self, config, sessionID=None):
         self.__connection = connection(config.get('ip'), config.get('api_version'), config.get('ssl_certificate', False),
-                                       config.get('timeout'), config.get("proxy"))
+                                       config.get('timeout'), config.get("proxy"), config.get('trust_all_certs', False))
         self.__validate_host()
         self.__connection.login(config["credentials"], sessionID=sessionID)
         self.__certificate_authority = None
