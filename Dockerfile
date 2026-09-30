@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.12-slim-bookworm
 
 ARG http_proxy
 ARG https_proxy
@@ -18,9 +18,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/*
 
 RUN python -m pip install --upgrade pip
-
-
-RUN pip install future==0.18.2
 
 
 RUN pip install hpeOneView

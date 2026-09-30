@@ -28,6 +28,7 @@ setup(name='hpeOneView',
       author_email='pdl-oneview-sdk@hpe.com',
       license='Apache',
       packages=find_packages(exclude=['examples*', 'tests*']),
+      python_requires='>=3.12',
       keywords=['oneview', 'hpe'],
       long_description_content_type="text/markdown",
       install_requires=['future>=0.15.2', 'docutils<0.18'])

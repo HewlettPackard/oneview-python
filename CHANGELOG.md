@@ -1,3 +1,12 @@
+# Unreleased
+#### Notes
+- Updated HTTPS client context from TLS 1.2 pinning to TLS client mode with TLS 1.3 minimum.
+- Added explicit trust-all hostname handling for non-verified SSL mode.
+- Updated unit tests to validate TLS client protocol and TLS 1.3 minimum.
+- Updated SCMB example to remove TLS 1.2 pinning.
+- Updated Docker base image to Python 3.12 Bookworm and refreshed CI/tox matrix for Python 3.12 coverage.
+- Added README guidance for OpenSSL runtime and PQC validation commands.
+
 # 11.40.0
 #### Notes
 Extends Support Of The Sdk To Oneview Rest Api Version 8800 (Oneview V11.40.0)

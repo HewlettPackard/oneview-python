@@ -11,7 +11,26 @@
 
 HPE OneView makes it simple to deploy and manage today’s complex hybrid cloud infrastructure. HPE OneView can help you transform your data center to software-defined, and it supports HPE’s broad portfolio of servers, storage, and networking solutions, ensuring the simple and automated management of your hybrid infrastructure. Software-defined intelligence enables a template-driven approach for deploying, provisioning, updating, and integrating compute, storage, and networking infrastructure.
 
-The HPE OneView Python library provides a pure Python interface to the HPE OneView REST APIs. It depends on the [Python-Future](http://python-future.org/index.html) library to provide Python 2/3 compatibility.
+The HPE OneView Python library provides a pure Python interface to the HPE OneView REST APIs.
+
+## TLS and PQC Requirements
+
+For PQC-ready TLS negotiation, use an environment where Python is linked to a PQC-capable OpenSSL runtime.
+
+- Minimum Python runtime: 3.12+
+- Minimum OpenSSL runtime for PQC paths: 3.2+ with OQS provider, or 3.5+ with native PQC support
+- TLS requirement for PQC handshake: TLS 1.3
+
+To verify runtime capabilities:
+
+```bash
+python -c "import ssl; print(ssl.OPENSSL_VERSION)"
+openssl list -providers
+openssl list -public-key-algorithms | grep -i mldsa
+openssl list -public-key-algorithms | grep -i mlkem
+```
+
+Note: Do not pin ciphers or groups in the SDK; rely on OpenSSL defaults so hybrid PQC groups can be negotiated by the TLS stack.
 
 You can find the latest supported HPE OneView Python SDK [here](https://github.com/HewlettPackard/oneview-python/releases/latest)
 

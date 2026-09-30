@@ -227,7 +227,8 @@ class connection(object):
         raise HPEOneViewException(body)
 
     def get_connection(self):
-        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+        context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        context.minimum_version = ssl.TLSVersion.TLSv1_3
         if self._sslTrustAll is False:
             context.verify_mode = ssl.CERT_REQUIRED
             context.check_hostname = True

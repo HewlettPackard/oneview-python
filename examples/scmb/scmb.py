@@ -91,7 +91,7 @@ def recv(host, route):
                     'certfile': 'client.pem',
                     'keyfile': 'key.pem',
                     'cert_reqs': ssl.CERT_NONE,
-                    'ssl_version': ssl.PROTOCOL_TLSv1_2,
+                    'ssl_version': ssl.PROTOCOL_TLS_CLIENT,
                     'server_side': False})
 
     # Checking whether the file is present or not
