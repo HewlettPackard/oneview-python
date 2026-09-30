@@ -301,7 +301,8 @@
         <span class="k">raise</span> <span class="n">HPEOneViewException</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
 
 <div class="viewcode-block" id="connection.get_connection"><a class="viewcode-back" href="../../hpeOneView.html#hpeOneView.connection.connection.get_connection">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLContext</span><span class="p">(</span><span class="n">ssl</span><span class="o">.</span><span class="n">PROTOCOL_TLSv1_2</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLContext</span><span class="p">(</span><span class="n">ssl</span><span class="o">.</span><span class="n">PROTOCOL_TLS_CLIENT</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">minimum_version</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">TLSVersion</span><span class="o">.</span><span class="n">TLSv1_3</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslTrustAll</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">context</span><span class="o">.</span><span class="n">verify_mode</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">CERT_REQUIRED</span>
             <span class="n">context</span><span class="o">.</span><span class="n">check_hostname</span> <span class="o">=</span> <span class="kc">True</span>
